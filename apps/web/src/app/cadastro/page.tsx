@@ -59,7 +59,7 @@ export default async function CadastroPage({
                 type="text"
                 autoComplete="name"
                 className="w-full rounded-md border border-[color:var(--bd)] bg-[color:var(--s2)] px-3 py-2.5 text-sm text-[color:var(--tx)] placeholder:text-[color:var(--tx3)] focus:border-[color:var(--or)] focus:outline-none"
-                placeholder="Luanthony"
+                placeholder="Nome"
               />
             </div>
             <div>
