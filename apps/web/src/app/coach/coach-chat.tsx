@@ -149,7 +149,9 @@ export function CoachChat({ userName }: { userName: string }) {
                   </div>
                 )}
                 <div className="whitespace-pre-wrap">
-                  {msg.content || (
+                  {msg.content ? (
+                    <RenderMarkdownLinks text={msg.content} />
+                  ) : (
                     <span className="animate-pulse text-[color:var(--tx3)]">
                       Coach pensando...
                     </span>
@@ -188,5 +190,30 @@ export function CoachChat({ userName }: { userName: string }) {
         </form>
       </div>
     </div>
+  );
+}
+
+function RenderMarkdownLinks({ text }: { text: string }) {
+  const parts = text.split(/(\[.*?\]\(.*?\))/g);
+  return (
+    <>
+      {parts.map((part, i) => {
+        const match = part.match(/^\[(.*?)\]\((.*?)\)$/);
+        if (match) {
+          return (
+            <a
+              key={i}
+              href={match[2]}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="yt-btn inline-flex !text-[11px]"
+            >
+              ▶ {match[1]}
+            </a>
+          );
+        }
+        return <span key={i}>{part}</span>;
+      })}
+    </>
   );
 }

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { logout } from "../login/actions";
+import { RegionSelector } from "./region-selector";
 
 export default async function ContaPage() {
   const supabase = await createClient();
@@ -13,7 +14,7 @@ export default async function ContaPage() {
 
   const { data: profile } = await supabase
     .from("profiles")
-    .select("display_name, fitness_level, created_at")
+    .select("display_name, fitness_level, region, created_at")
     .eq("id", user.id)
     .single();
 
@@ -86,6 +87,8 @@ export default async function ContaPage() {
               <div className="ks-l">Recorde</div>
             </div>
           </div>
+
+          <RegionSelector currentRegion={profile?.region ?? null} />
 
           <div className="rounded-lg border border-[color:var(--bd)] bg-[color:var(--s1)] p-5">
             <div className="slbl mb-3">Assinatura</div>
