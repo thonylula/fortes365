@@ -27,6 +27,12 @@ export const metadata: Metadata = {
   title: "FORTE 365 — Calistenia em casa, 12 meses",
   description:
     "Plano anual de calistenia e nutrição em português. Funciona offline, custa R$14,90/mês.",
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "FORTE 365",
+  },
 };
 
 export const viewport: Viewport = {
