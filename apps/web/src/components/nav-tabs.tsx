@@ -8,6 +8,7 @@ const TABS = [
   { href: "/nutricao", icon: "🥗", label: "Nutrição" },
   { href: "/receitas", icon: "📖", label: "Receitas" },
   { href: "/compras", icon: "🛒", label: "Compras" },
+  { href: "/coach", icon: "🤖", label: "Coach IA" },
 ] as const;
 
 export function NavTabs() {
