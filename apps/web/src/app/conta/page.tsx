@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { logout } from "../login/actions";
 import { RegionSelector } from "./region-selector";
+import { AchievementSummary } from "./achievement-summary";
 
 export default async function ContaPage() {
   const supabase = await createClient();
@@ -18,11 +19,21 @@ export default async function ContaPage() {
     .eq("id", user.id)
     .single();
 
-  const { data: progress } = await supabase
-    .from("user_progress")
-    .select("total_xp, current_streak, longest_streak, last_workout_at")
-    .eq("user_id", user.id)
-    .single();
+  const [{ data: progress }, { data: allAchievements }, { data: userAchievements }] = await Promise.all([
+    supabase
+      .from("user_progress")
+      .select("total_xp, current_streak, longest_streak, last_workout_at")
+      .eq("user_id", user.id)
+      .single(),
+    supabase
+      .from("achievements")
+      .select("id, title, emoji")
+      .order("sort_order"),
+    supabase
+      .from("user_achievements")
+      .select("achievement_id, unlocked_at")
+      .eq("user_id", user.id),
+  ]);
 
   const memberSince = profile?.created_at
     ? new Date(profile.created_at).toLocaleDateString("pt-BR", {
@@ -87,6 +98,14 @@ export default async function ContaPage() {
               <div className="ks-l">Recorde</div>
             </div>
           </div>
+
+          <AchievementSummary
+            total={allAchievements?.length ?? 0}
+            unlocked={(userAchievements ?? []).map(ua => {
+              const a = allAchievements?.find(a => a.id === ua.achievement_id);
+              return a ? { emoji: a.emoji, title: a.title } : null;
+            }).filter(Boolean) as { emoji: string; title: string }[]}
+          />
 
           <RegionSelector currentRegion={profile?.region ?? null} />
 

@@ -4,6 +4,9 @@ import { useMemo, useState, useTransition } from "react";
 import { toggleExerciseDone } from "@/lib/supabase/mutations";
 import { NavTabs } from "@/components/nav-tabs";
 import { PaywallModal } from "@/components/paywall-modal";
+import { AchievementToast } from "@/components/achievement-toast";
+
+type AchievementInfo = { slug: string; title: string; emoji: string };
 
 // ──────────────────────────────────────────────────────────────────────────
 // Tipos
@@ -105,6 +108,13 @@ export function PlanExplorer({
     () => new Set(initialCompleted ?? []),
   );
   const [showPaywall, setShowPaywall] = useState(false);
+  const [pendingAchievements, setPendingAchievements] = useState<AchievementInfo[]>([]);
+
+  const handleNewAchievements = (achievements: AchievementInfo[]) => {
+    if (achievements.length > 0) {
+      setPendingAchievements(achievements);
+    }
+  };
 
   const allowedMonths = new Set(freeMonths ?? [0, 1]);
   const isMonthLocked = !isPremium && !allowedMonths.has(monthId);
@@ -204,6 +214,13 @@ export function PlanExplorer({
         <PaywallModal isLoggedIn={!!user} onClose={() => setShowPaywall(false)} />
       )}
 
+      {pendingAchievements.length > 0 && (
+        <AchievementToast
+          achievements={pendingAchievements}
+          onDone={() => setPendingAchievements([])}
+        />
+      )}
+
       {/* Main content */}
       <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-5 pb-20">
         {day && (
@@ -222,6 +239,7 @@ export function PlanExplorer({
                 return next;
               });
             }}
+            onAchievement={handleNewAchievements}
           />
         )}
       </main>
@@ -280,6 +298,7 @@ type DayCtx = {
   isLoggedIn: boolean;
   completedSlugs: Set<string>;
   onToggle: (slug: string) => void;
+  onAchievement: (achievements: AchievementInfo[]) => void;
 };
 
 function DayView(ctx: DayCtx) {
@@ -339,7 +358,7 @@ function Cover({ day }: { day: PlanDay }) {
 // Treino: kcal summary + exercise list + tip
 // ──────────────────────────────────────────────────────────────────────────
 function TreinoBlock(ctx: DayCtx) {
-  const { day, volumeMultiplier, monthId, weekIndex, isLoggedIn, completedSlugs, onToggle } = ctx;
+  const { day, volumeMultiplier, monthId, weekIndex, isLoggedIn, completedSlugs, onToggle, onAchievement } = ctx;
   const exercises = [...day.plan_day_exercises].sort((a, b) => a.position - b.position);
   const totalKcal = Math.round(
     exercises.reduce((sum, ex) => sum + (ex.exercises?.kcal_estimate ?? 0), 0) * volumeMultiplier,
@@ -394,6 +413,7 @@ function TreinoBlock(ctx: DayCtx) {
               isLoggedIn={isLoggedIn}
               isDone={!!ex.exercises && completedSlugs.has(ex.exercises.slug)}
               onToggle={onToggle}
+              onAchievement={onAchievement}
             />
           ))}
         </div>
@@ -412,6 +432,7 @@ function ExerciseCard({
   isLoggedIn,
   isDone,
   onToggle,
+  onAchievement,
 }: {
   ex: PlanDayExercise;
   index: number;
@@ -422,6 +443,7 @@ function ExerciseCard({
   isLoggedIn: boolean;
   isDone: boolean;
   onToggle: (slug: string) => void;
+  onAchievement: (achievements: AchievementInfo[]) => void;
 }) {
   const [isPending, startTransition] = useTransition();
   const e = ex.exercises;
@@ -439,7 +461,10 @@ function ExerciseCard({
       fd.set("sets", String(ex.sets ?? 1));
       fd.set("reps", ex.reps ?? "");
       fd.set("isDone", String(isDone));
-      await toggleExerciseDone(fd);
+      const result = await toggleExerciseDone(fd);
+      if (result?.newAchievements?.length) {
+        onAchievement(result.newAchievements);
+      }
     });
   };
 

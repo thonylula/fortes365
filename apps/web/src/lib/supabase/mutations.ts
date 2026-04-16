@@ -75,8 +75,11 @@ export async function toggleExerciseDone(formData: FormData) {
   // Atualiza progresso do usuário.
   await updateUserProgress(supabase, user.id);
 
+  // Checa conquistas novas
+  const newAchievements = isDone ? [] : await checkAchievements(supabase, user.id);
+
   revalidatePath("/treino");
-  return { success: true };
+  return { success: true, newAchievements };
 }
 
 async function updateUserProgress(
@@ -141,6 +144,75 @@ async function updateUserProgress(
       updated_at: new Date().toISOString(),
     })
     .eq("user_id", userId);
+}
+
+async function checkAchievements(
+  supabase: Awaited<ReturnType<typeof createClient>>,
+  userId: string,
+): Promise<{ slug: string; title: string; emoji: string }[]> {
+  const { data: progress } = await supabase
+    .from("user_progress")
+    .select("total_xp, current_streak")
+    .eq("user_id", userId)
+    .single();
+
+  if (!progress) return [];
+
+  const { count: totalWorkouts } = await supabase
+    .from("workout_sessions")
+    .select("id", { count: "exact", head: true })
+    .eq("user_id", userId);
+
+  // Count total exercises done by this user (via their sessions)
+  const { data: userSessions } = await supabase
+    .from("workout_sessions")
+    .select("id")
+    .eq("user_id", userId);
+
+  let exerciseCount = 0;
+  if (userSessions && userSessions.length > 0) {
+    const sessionIds = userSessions.map(s => s.id);
+    const { count } = await supabase
+      .from("exercise_sets")
+      .select("id", { count: "exact", head: true })
+      .in("session_id", sessionIds);
+    exerciseCount = count ?? 0;
+  }
+
+  const stats = {
+    streak: progress.current_streak ?? 0,
+    xp: progress.total_xp ?? 0,
+    workout: totalWorkouts ?? 0,
+    exercise: exerciseCount,
+  };
+
+  // Get all achievements not yet unlocked
+  const { data: allAchievements } = await supabase
+    .from("achievements")
+    .select("id, slug, title, emoji, category, threshold");
+
+  const { data: unlocked } = await supabase
+    .from("user_achievements")
+    .select("achievement_id")
+    .eq("user_id", userId);
+
+  const unlockedIds = new Set((unlocked ?? []).map(u => u.achievement_id));
+  const newlyUnlocked: { slug: string; title: string; emoji: string }[] = [];
+
+  for (const a of allAchievements ?? []) {
+    if (unlockedIds.has(a.id)) continue;
+    const cat = a.category as string;
+    if (!(cat in stats)) continue;
+    if (stats[cat as keyof typeof stats] >= a.threshold) {
+      await supabase.from("user_achievements").insert({
+        user_id: userId,
+        achievement_id: a.id,
+      });
+      newlyUnlocked.push({ slug: a.slug, title: a.title, emoji: a.emoji });
+    }
+  }
+
+  return newlyUnlocked;
 }
 
 export async function getCompletedExercises(
