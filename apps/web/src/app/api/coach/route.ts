@@ -5,7 +5,7 @@ import { createClient } from "@/lib/supabase/server";
 function getKimi() {
   const key = process.env.KIMI_API_KEY;
   if (!key) throw new Error("KIMI_API_KEY não configurada");
-  return new OpenAI({ apiKey: key, baseURL: "https://api.moonshot.ai/v1" });
+  return new OpenAI({ apiKey: key, baseURL: "https://integrate.api.nvidia.com/v1" });
 }
 
 const SYSTEM_PROMPT = `Você é o Coach FORTE 365, um treinador pessoal virtual especializado em calistenia para iniciantes e intermediários brasileiros que treinam em casa, sem academia e sem equipamentos.
@@ -55,7 +55,7 @@ export async function POST(request: Request) {
   try {
     const kimi = getKimi();
     const completion = await kimi.chat.completions.create({
-      model: "kimi-k2.5",
+      model: "moonshotai/kimi-k2.5",
       messages: [
         { role: "system", content: SYSTEM_PROMPT },
         ...messages.slice(-10),
