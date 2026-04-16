@@ -1,0 +1,421 @@
+export type StepType = "single-select" | "single-card" | "multi-select" | "number-input" | "interstitial" | "summary" | "loading";
+
+export type QuizStep = {
+  id: string;
+  section: string;
+  sectionLabel: string;
+  type: StepType;
+  question?: string;
+  subtitle?: string;
+  options?: { value: string; label: string; emoji?: string }[];
+  min?: number;
+  max?: number;
+  suffix?: string;
+  interstitialTitle?: string;
+  interstitialText?: string;
+  required?: boolean;
+  dbColumn?: string;
+};
+
+export const SECTIONS = ["perfil", "atividade", "habitos", "medidas", "resultado"] as const;
+
+export const SECTION_LABELS: Record<string, string> = {
+  perfil: "Perfil",
+  atividade: "Atividade",
+  habitos: "Hábitos",
+  medidas: "Medidas",
+  resultado: "Resultado",
+};
+
+export const STEPS: QuizStep[] = [
+  // ── Seção 1: Perfil ──
+  {
+    id: "age_range",
+    section: "perfil",
+    sectionLabel: "Perfil",
+    type: "single-card",
+    question: "Qual a sua faixa etária?",
+    options: [
+      { value: "18-29", label: "18-29", emoji: "🔥" },
+      { value: "30-39", label: "30-39", emoji: "💪" },
+      { value: "40-49", label: "40-49", emoji: "⚡" },
+      { value: "50+", label: "50+", emoji: "👑" },
+    ],
+    dbColumn: "age_range",
+  },
+  {
+    id: "social_1",
+    section: "perfil",
+    sectionLabel: "Perfil",
+    type: "interstitial",
+    interstitialTitle: "Mais de 10 mil pessoas já escolheram a calistenia",
+    interstitialText: "A calistenia é o método mais acessível e eficiente para transformar seu corpo. Sem academia, sem equipamentos — só você e a gravidade.",
+    required: false,
+  },
+  {
+    id: "goals",
+    section: "perfil",
+    sectionLabel: "Perfil",
+    type: "multi-select",
+    question: "Qual seu objetivo principal?",
+    subtitle: "Selecione todas as opções que se aplicam.",
+    options: [
+      { value: "muscle", label: "Ganhar músculo e força" },
+      { value: "fat_loss", label: "Perder gordura" },
+      { value: "mobility", label: "Melhorar mobilidade" },
+      { value: "flexibility", label: "Desenvolver flexibilidade" },
+      { value: "fitness", label: "Melhorar condicionamento geral" },
+      { value: "new_workouts", label: "Experimentar novos treinos" },
+    ],
+    dbColumn: "goals",
+  },
+  {
+    id: "body_goal",
+    section: "perfil",
+    sectionLabel: "Perfil",
+    type: "single-card",
+    question: "Qual corpo você quer alcançar?",
+    options: [
+      { value: "defined", label: "Definido", emoji: "🎯" },
+      { value: "athletic", label: "Atlético", emoji: "🏃" },
+      { value: "shredded", label: "Rasgado", emoji: "⚡" },
+      { value: "muscular", label: "Musculoso", emoji: "💪" },
+    ],
+    dbColumn: "body_goal",
+  },
+  {
+    id: "body_type",
+    section: "perfil",
+    sectionLabel: "Perfil",
+    type: "single-card",
+    question: "Como você descreve seu corpo atual?",
+    options: [
+      { value: "slim", label: "Magro", emoji: "🌿" },
+      { value: "average", label: "Normal", emoji: "⚖️" },
+      { value: "stocky", label: "Forte", emoji: "🦁" },
+      { value: "overweight", label: "Acima do peso", emoji: "🐻" },
+    ],
+    dbColumn: "body_type",
+  },
+  {
+    id: "peak_fitness",
+    section: "perfil",
+    sectionLabel: "Perfil",
+    type: "single-select",
+    question: "Quando foi seu melhor momento físico?",
+    options: [
+      { value: "less_1y", label: "Há menos de um ano" },
+      { value: "1_2y", label: "1 a 2 anos atrás" },
+      { value: "more_3y", label: "Há mais de 3 anos" },
+      { value: "never", label: "Nunca" },
+    ],
+  },
+  {
+    id: "social_2",
+    section: "perfil",
+    sectionLabel: "Perfil",
+    type: "interstitial",
+    interstitialTitle: "48% dos nossos usuários estão na mesma situação que você.",
+    interstitialText: "A calistenia está aqui para trazer de volta aquele corpo em forma. Experimente uma maneira eficiente de perder gordura e ganhar massa muscular ao mesmo tempo!",
+    required: false,
+  },
+
+  // ── Seção 2: Atividade ──
+  {
+    id: "calisthenics_level",
+    section: "atividade",
+    sectionLabel: "Atividade",
+    type: "single-select",
+    question: "Qual sua experiência com calistenia?",
+    options: [
+      { value: "starting", label: "Estou apenas começando" },
+      { value: "some", label: "Tenho alguma experiência" },
+      { value: "proficient", label: "Sou praticante avançado" },
+    ],
+    dbColumn: "calisthenics_level",
+  },
+  {
+    id: "barriers",
+    section: "atividade",
+    sectionLabel: "Atividade",
+    type: "multi-select",
+    question: "O que te impediu de entrar em forma antes?",
+    options: [
+      { value: "motivation", label: "Falta de motivação" },
+      { value: "no_plan", label: "Não tinha um plano claro" },
+      { value: "too_hard", label: "Meus treinos eram muito difíceis" },
+      { value: "bad_coaching", label: "Treinamento ruim" },
+      { value: "none", label: "Nenhuma das acima" },
+    ],
+  },
+  {
+    id: "social_3",
+    section: "atividade",
+    sectionLabel: "Atividade",
+    type: "interstitial",
+    interstitialTitle: "A falta de motivação é muito comum, mas...",
+    interstitialText: "Seu plano personalizado de calistenia foi desenvolvido para um progresso constante. Você receberá lembretes amigáveis e ferramentas práticas para manter sua motivação em alta.",
+    required: false,
+  },
+  {
+    id: "pullup_level",
+    section: "atividade",
+    sectionLabel: "Atividade",
+    type: "single-select",
+    question: "Quantas barras você consegue fazer de uma vez?",
+    options: [
+      { value: "none", label: "Barra fixa não é a minha praia" },
+      { value: "less_5", label: "Menos de 5" },
+      { value: "5_10", label: "5 a 10" },
+      { value: "more_10", label: "Mais de 10" },
+    ],
+    dbColumn: "pullup_level",
+  },
+  {
+    id: "flexibility",
+    section: "atividade",
+    sectionLabel: "Atividade",
+    type: "single-select",
+    question: "Quão flexível você é?",
+    options: [
+      { value: "very", label: "Muito flexível" },
+      { value: "quite", label: "Bastante flexível" },
+      { value: "not_great", label: "Não tão bom" },
+      { value: "not_sure", label: "Eu não tenho certeza" },
+    ],
+    dbColumn: "flexibility",
+  },
+  {
+    id: "exercise_frequency",
+    section: "atividade",
+    sectionLabel: "Atividade",
+    type: "single-select",
+    question: "Com que frequência você se exercita?",
+    options: [
+      { value: "daily", label: "Quase todos os dias" },
+      { value: "several_week", label: "Várias vezes por semana" },
+      { value: "several_month", label: "Várias vezes por mês" },
+      { value: "never", label: "Nunca" },
+    ],
+    dbColumn: "exercise_frequency",
+  },
+  {
+    id: "social_4",
+    section: "atividade",
+    sectionLabel: "Atividade",
+    type: "interstitial",
+    interstitialTitle: "Nunca é tarde demais!",
+    interstitialText: "Seja você iniciante ou simplesmente não tenha tempo suficiente para se exercitar, a calistenia foi criada para todos os níveis de condicionamento físico e horários.",
+    required: false,
+  },
+  {
+    id: "target_zones",
+    section: "atividade",
+    sectionLabel: "Atividade",
+    type: "multi-select",
+    question: "Quais são as suas zonas-alvo?",
+    subtitle: "Selecione todas as opções aplicáveis.",
+    options: [
+      { value: "belly", label: "Abdômen", emoji: "🎯" },
+      { value: "chest", label: "Peitorais", emoji: "💪" },
+      { value: "arms", label: "Braços", emoji: "✊" },
+      { value: "legs", label: "Pernas", emoji: "🦵" },
+    ],
+    dbColumn: "target_zones",
+  },
+  {
+    id: "physical_issues",
+    section: "atividade",
+    sectionLabel: "Atividade",
+    type: "multi-select",
+    question: "Você tem dificuldade com algum dos seguintes?",
+    options: [
+      { value: "back", label: "Costas sensíveis", emoji: "🔴" },
+      { value: "knees", label: "Joelhos sensíveis", emoji: "🔴" },
+      { value: "shoulders", label: "Ombros sensíveis", emoji: "🔴" },
+      { value: "none", label: "Nenhuma das acima", emoji: "✅" },
+    ],
+    dbColumn: "physical_issues",
+  },
+  {
+    id: "preferred_location",
+    section: "atividade",
+    sectionLabel: "Atividade",
+    type: "single-card",
+    question: "Onde você prefere treinar?",
+    options: [
+      { value: "gym", label: "Academia", emoji: "🏋️" },
+      { value: "home", label: "Em casa", emoji: "🏠" },
+    ],
+    dbColumn: "preferred_location",
+  },
+
+  // ── Seção 3: Hábitos ──
+  {
+    id: "weekly_sessions",
+    section: "habitos",
+    sectionLabel: "Hábitos",
+    type: "single-select",
+    question: "Quantas vezes por semana você gostaria de treinar?",
+    options: [
+      { value: "1_2", label: "1-2 vezes" },
+      { value: "3_4", label: "3-4 vezes" },
+      { value: "5_plus", label: "Mais de 5 vezes" },
+    ],
+    dbColumn: "weekly_sessions",
+  },
+  {
+    id: "workout_duration",
+    section: "habitos",
+    sectionLabel: "Hábitos",
+    type: "single-select",
+    question: "Qual a duração desejada para seus treinos?",
+    options: [
+      { value: "10_15", label: "10-15 minutos" },
+      { value: "15_25", label: "15-25 minutos" },
+      { value: "25_plus", label: "25+ minutos" },
+      { value: "not_sure", label: "Não sei" },
+    ],
+    dbColumn: "workout_duration",
+  },
+  {
+    id: "work_routine",
+    section: "habitos",
+    sectionLabel: "Hábitos",
+    type: "single-select",
+    question: "Como é sua rotina de trabalho?",
+    options: [
+      { value: "9_to_5", label: "9 às 5", emoji: "🏢" },
+      { value: "night", label: "Turnos noturnos", emoji: "🌙" },
+      { value: "flexible", label: "Meus horários são flexíveis", emoji: "⏰" },
+      { value: "retired", label: "Aposentado / não estou trabalhando", emoji: "🏖️" },
+    ],
+    dbColumn: "work_routine",
+  },
+  {
+    id: "daily_activity",
+    section: "habitos",
+    sectionLabel: "Hábitos",
+    type: "single-select",
+    question: "Como você descreveria um dia típico seu?",
+    options: [
+      { value: "sitting", label: "Passo a maior parte do dia sentado", emoji: "🪑" },
+      { value: "active_breaks", label: "Eu faço pausas ativas", emoji: "🚶" },
+      { value: "standing", label: "Eu fico de pé o dia todo", emoji: "🧍" },
+    ],
+    dbColumn: "daily_activity",
+  },
+  {
+    id: "sleep_hours",
+    section: "habitos",
+    sectionLabel: "Hábitos",
+    type: "single-select",
+    question: "Quantas horas de sono você costuma ter?",
+    options: [
+      { value: "less_5", label: "Menos de 5 horas" },
+      { value: "5_6", label: "5 a 6 horas" },
+      { value: "7_8", label: "7 a 8 horas" },
+      { value: "more_8", label: "Mais de 8 horas" },
+    ],
+    dbColumn: "sleep_hours",
+  },
+  {
+    id: "water_intake",
+    section: "habitos",
+    sectionLabel: "Hábitos",
+    type: "single-select",
+    question: "Qual é a sua ingestão diária de água?",
+    options: [
+      { value: "coffee_only", label: "Eu só tomo café ou chá" },
+      { value: "2_glasses", label: "Aproximadamente 2 copos" },
+      { value: "2_6_glasses", label: "2 a 6 copos" },
+      { value: "6_plus", label: "Mais de 6 copos" },
+    ],
+    dbColumn: "water_intake",
+  },
+  {
+    id: "bad_habits",
+    section: "habitos",
+    sectionLabel: "Hábitos",
+    type: "multi-select",
+    question: "Você tem algum dos seguintes hábitos?",
+    subtitle: "Selecione todas as opções aplicáveis.",
+    options: [
+      { value: "alcohol", label: "Sou um bebedor ocasional", emoji: "🍺" },
+      { value: "sweets", label: "Tenho vontade de comer doces", emoji: "🍬" },
+      { value: "soda", label: "Não consigo viver sem refrigerante", emoji: "🥤" },
+      { value: "salty", label: "Eu gosto de salgado e crocante", emoji: "🍿" },
+      { value: "screen_meals", label: "Eu misturo tela com as refeições", emoji: "📱" },
+      { value: "none", label: "Nenhuma das acima", emoji: "✅" },
+    ],
+    dbColumn: "bad_habits",
+  },
+
+  // ── Seção 4: Medidas ──
+  {
+    id: "region",
+    section: "medidas",
+    sectionLabel: "Medidas",
+    type: "single-card",
+    question: "Qual a sua região?",
+    subtitle: "O coach IA adapta a linguagem e gírias da sua região.",
+    options: [
+      { value: "nordeste", label: "Nordeste", emoji: "🌵" },
+      { value: "sudeste", label: "Sudeste", emoji: "🏙️" },
+      { value: "sul", label: "Sul", emoji: "🧉" },
+      { value: "norte", label: "Norte", emoji: "🌳" },
+      { value: "centro_oeste", label: "Centro-Oeste", emoji: "🌾" },
+    ],
+    dbColumn: "region",
+  },
+  {
+    id: "height_cm",
+    section: "medidas",
+    sectionLabel: "Medidas",
+    type: "number-input",
+    question: "Qual é a sua altura?",
+    min: 90,
+    max: 243,
+    suffix: "cm",
+    dbColumn: "height_cm",
+  },
+  {
+    id: "weight_kg",
+    section: "medidas",
+    sectionLabel: "Medidas",
+    type: "number-input",
+    question: "Qual é o seu peso atual?",
+    min: 25,
+    max: 300,
+    suffix: "kg",
+    dbColumn: "weight_kg",
+  },
+  {
+    id: "target_weight_kg",
+    section: "medidas",
+    sectionLabel: "Medidas",
+    type: "number-input",
+    question: "Qual é o seu peso ideal?",
+    min: 25,
+    max: 300,
+    suffix: "kg",
+    dbColumn: "target_weight_kg",
+  },
+
+  // ── Seção 5: Resultado ──
+  {
+    id: "summary",
+    section: "resultado",
+    sectionLabel: "Resultado",
+    type: "summary",
+    question: "Aqui está o seu perfil de bem-estar.",
+    required: false,
+  },
+  {
+    id: "loading",
+    section: "resultado",
+    sectionLabel: "Resultado",
+    type: "loading",
+    required: false,
+  },
+];
