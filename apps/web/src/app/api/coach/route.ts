@@ -2,10 +2,10 @@ import { NextResponse } from "next/server";
 import OpenAI from "openai";
 import { createClient } from "@/lib/supabase/server";
 
-function getKimi() {
-  const key = process.env.KIMI_API_KEY;
-  if (!key) throw new Error("KIMI_API_KEY não configurada");
-  return new OpenAI({ apiKey: key, baseURL: "https://integrate.api.nvidia.com/v1" });
+function getLLM() {
+  const key = process.env.GROQ_API_KEY;
+  if (!key) throw new Error("GROQ_API_KEY não configurada");
+  return new OpenAI({ apiKey: key, baseURL: "https://api.groq.com/openai/v1" });
 }
 
 const SYSTEM_PROMPT = `Você é o Coach FORTE 365, um treinador pessoal virtual especializado em calistenia para iniciantes e intermediários brasileiros que treinam em casa, sem academia e sem equipamentos.
@@ -53,9 +53,9 @@ export async function POST(request: Request) {
   }
 
   try {
-    const kimi = getKimi();
-    const completion = await kimi.chat.completions.create({
-      model: "moonshotai/kimi-k2.5",
+    const llm = getLLM();
+    const completion = await llm.chat.completions.create({
+      model: "llama-3.3-70b-versatile",
       messages: [
         { role: "system", content: SYSTEM_PROMPT },
         ...messages.slice(-6),
