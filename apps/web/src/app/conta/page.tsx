@@ -19,21 +19,25 @@ export default async function ContaPage() {
     .eq("id", user.id)
     .single();
 
-  const [{ data: progress }, { data: allAchievements }, { data: userAchievements }] = await Promise.all([
-    supabase
-      .from("user_progress")
-      .select("total_xp, current_streak, longest_streak, last_workout_at")
-      .eq("user_id", user.id)
-      .single(),
-    supabase
-      .from("achievements")
-      .select("id, title, emoji")
-      .order("sort_order"),
-    supabase
-      .from("user_achievements")
-      .select("achievement_id, unlocked_at")
-      .eq("user_id", user.id),
-  ]);
+  const { data: progress } = await supabase
+    .from("user_progress")
+    .select("total_xp, current_streak, longest_streak, last_workout_at")
+    .eq("user_id", user.id)
+    .single();
+
+  // Achievements tables may not exist if migration 0003 hasn't been applied
+  let allAchievements: { id: number; title: string; emoji: string }[] | null = null;
+  let userAchievements: { achievement_id: number; unlocked_at: string }[] | null = null;
+  try {
+    const [achRes, uaRes] = await Promise.all([
+      supabase.from("achievements").select("id, title, emoji").order("sort_order"),
+      supabase.from("user_achievements").select("achievement_id, unlocked_at").eq("user_id", user.id),
+    ]);
+    if (!achRes.error) allAchievements = achRes.data;
+    if (!uaRes.error) userAchievements = uaRes.data;
+  } catch {
+    // Tables don't exist yet
+  }
 
   const memberSince = profile?.created_at
     ? new Date(profile.created_at).toLocaleDateString("pt-BR", {
