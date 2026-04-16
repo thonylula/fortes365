@@ -6,6 +6,10 @@ export const dynamic = "force-dynamic";
 export default async function TreinoPage() {
   const supabase = await createClient();
 
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
   const [{ data: monthsData }, { data: daysData }, { data: volumeData }] = await Promise.all([
     supabase
       .from("months")
@@ -65,5 +69,9 @@ export default async function TreinoPage() {
     );
   }
 
-  return <PlanExplorer months={months} days={days} weekVolume={weekVolume} />;
+  const userInfo = user
+    ? { email: user.email ?? "", name: user.user_metadata?.display_name as string | undefined }
+    : null;
+
+  return <PlanExplorer months={months} days={days} weekVolume={weekVolume} user={userInfo} />;
 }

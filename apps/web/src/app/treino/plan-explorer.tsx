@@ -76,14 +76,18 @@ const DAY_TYPE_LABEL: Record<PlanDay["type"], string> = {
 // ──────────────────────────────────────────────────────────────────────────
 // Componente
 // ──────────────────────────────────────────────────────────────────────────
+type UserInfo = { email: string; name?: string } | null;
+
 export function PlanExplorer({
   months,
   days,
   weekVolume,
+  user,
 }: {
   months: Month[];
   days: PlanDay[];
   weekVolume: number[];
+  user: UserInfo;
 }) {
   const [monthId, setMonthId] = useState(0);
   const [weekIndex, setWeekIndex] = useState(0);
@@ -107,7 +111,7 @@ export function PlanExplorer({
 
   return (
     <div className="flex min-h-screen flex-col bg-[color:var(--bg)]">
-      <Header />
+      <Header user={user} />
 
       {/* Month strip */}
       <div className="border-b border-[color:var(--bd)] bg-[color:var(--s2)] px-3 py-2 overflow-x-auto">
@@ -182,46 +186,40 @@ export function PlanExplorer({
 // ──────────────────────────────────────────────────────────────────────────
 // Header
 // ──────────────────────────────────────────────────────────────────────────
-function Header() {
+function Header({ user }: { user: UserInfo }) {
+  const initial = user
+    ? (user.name ?? user.email).charAt(0).toUpperCase()
+    : null;
+
   return (
     <header className="sticky top-0 z-20 flex h-[52px] items-center justify-between border-b border-[color:var(--bd)] bg-[color:var(--s1)] px-4">
-      <div className="logo">
+      <a href="/" className="logo">
         FORT<span>E</span>
         <sub>365</sub>
-      </div>
-      <div className="flex gap-[5px]">
-        <PlayerBadge initials="LL" name="Luanthony" variant="or" />
-        <PlayerBadge initials="JO" name="Jéssica" variant="pk" />
+      </a>
+      <div className="flex items-center gap-2">
+        {user ? (
+          <a
+            href="/conta"
+            className="flex items-center gap-2 rounded-md border border-[color:var(--or)] bg-[color:var(--ord)] px-2.5 py-1 transition-colors hover:bg-[color:var(--or)] hover:text-black"
+          >
+            <span className="flex h-[22px] w-[22px] items-center justify-center rounded-full bg-[color:var(--ord)] font-[family-name:var(--font-display)] text-[9px] text-[color:var(--or)]">
+              {initial}
+            </span>
+            <span className="text-[11px] font-semibold">
+              {user.name ?? user.email.split("@")[0]}
+            </span>
+          </a>
+        ) : (
+          <a
+            href="/login"
+            className="rounded-md border border-[color:var(--or)] bg-[color:var(--ord)] px-3 py-1.5 font-[family-name:var(--font-condensed)] text-[11px] font-bold uppercase tracking-wider text-[color:var(--or)] transition-colors hover:bg-[color:var(--or)] hover:text-black"
+          >
+            Entrar
+          </a>
+        )}
       </div>
     </header>
-  );
-}
-
-function PlayerBadge({
-  initials,
-  name,
-  variant,
-}: {
-  initials: string;
-  name: string;
-  variant: "or" | "pk";
-}) {
-  const borderColor = variant === "or" ? "var(--or)" : "var(--pk)";
-  const bg = variant === "or" ? "var(--ord)" : "var(--pkd)";
-  const fg = variant === "or" ? "var(--or)" : "var(--pk)";
-  return (
-    <div
-      className="flex items-center gap-[5px] rounded-md px-2 py-1"
-      style={{ border: `1.5px solid ${borderColor}`, background: bg }}
-    >
-      <div
-        className="flex h-[22px] w-[22px] items-center justify-center rounded-full font-[family-name:var(--font-display)] text-[9px]"
-        style={{ background: bg, color: fg }}
-      >
-        {initials}
-      </div>
-      <span className="text-[11px] font-semibold">{name}</span>
-    </div>
   );
 }
 
