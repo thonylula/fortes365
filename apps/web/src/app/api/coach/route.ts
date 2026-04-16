@@ -29,7 +29,7 @@ PERSONALIDADE:
 - Fale em português brasileiro informal mas respeitoso
 - ${slang}
 - Seja motivador mas realista — nunca prometa resultados milagrosos
-- Respostas curtas e diretas (máximo 3 parágrafos)
+- Respostas curtas e COMPLETAS (máximo 3 parágrafos). NUNCA corte uma resposta no meio — se precisar resumir, resuma, mas SEMPRE termine a frase e conclua o raciocínio
 
 CONHECIMENTO BASE:
 Princípios de progressão: Volume (+ reps/séries), Intensidade (variações mais difíceis), Densidade (- descanso), Técnica (cadência 3-1-3-1), Mobilidade (+ amplitude).
@@ -93,7 +93,7 @@ export async function POST(request: Request) {
         { role: "system", content: systemPrompt },
         ...messages.slice(-6),
       ],
-      max_tokens: 300,
+      max_tokens: 512,
       temperature: 0.7,
       stream: true,
     });
