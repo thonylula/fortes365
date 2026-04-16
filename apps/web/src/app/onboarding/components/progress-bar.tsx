@@ -3,32 +3,53 @@
 import { STEPS, SECTIONS, SECTION_LABELS } from "../steps";
 
 export function ProgressBar({ currentStep }: { currentStep: number }) {
-  const sectionProgress = SECTIONS.map((section) => {
-    const sectionSteps = STEPS.filter((s) => s.section === section);
-    const startIdx = STEPS.indexOf(sectionSteps[0]);
-    const endIdx = startIdx + sectionSteps.length;
-    const completed = Math.max(0, Math.min(currentStep - startIdx, sectionSteps.length));
-    const pct = sectionSteps.length > 0 ? (completed / sectionSteps.length) * 100 : 0;
-    return { section, label: SECTION_LABELS[section], pct, active: currentStep >= startIdx && currentStep < endIdx };
-  });
+  const totalReal = STEPS.filter((s) => s.type !== "interstitial" && s.type !== "loading").length;
+  const doneReal = STEPS.filter((s, i) => i < currentStep && s.type !== "interstitial" && s.type !== "loading").length;
+  const overallPct = totalReal > 0 ? (doneReal / totalReal) * 100 : 0;
+
+  const currentSection = STEPS[currentStep]?.section;
 
   return (
-    <div className="flex gap-1.5 px-4 pt-4 pb-2">
-      {sectionProgress.map((s) => (
-        <div key={s.section} className="flex-1">
-          <div className="mb-1 text-center font-[family-name:var(--font-condensed)] text-[8px] font-bold uppercase tracking-[1.5px]"
-            style={{ color: s.active ? "var(--or)" : "var(--tx3)" }}
-          >
-            {s.label}
-          </div>
-          <div className="h-1 rounded-full bg-[color:var(--s2)]">
-            <div
-              className="h-1 rounded-full transition-all duration-300"
-              style={{ width: `${s.pct}%`, background: "var(--or)" }}
-            />
-          </div>
-        </div>
-      ))}
+    <div className="px-4 pt-3 pb-1">
+      {/* Section dots */}
+      <div className="mb-2 flex items-center justify-center gap-1">
+        {SECTIONS.map((section) => {
+          const isCurrent = section === currentSection;
+          const sectionSteps = STEPS.filter((s) => s.section === section);
+          const sectionStart = STEPS.indexOf(sectionSteps[0]);
+          const isDone = currentStep > sectionStart + sectionSteps.length - 1;
+          return (
+            <div key={section} className="flex items-center gap-1">
+              <div
+                className="flex items-center gap-1 rounded-full px-2 py-0.5 transition-all"
+                style={{
+                  background: isCurrent ? "var(--ord)" : "transparent",
+                  border: isCurrent ? "1px solid rgba(255,85,0,0.3)" : "1px solid transparent",
+                }}
+              >
+                <div
+                  className="h-1.5 w-1.5 rounded-full transition-all"
+                  style={{ background: isDone ? "var(--gn)" : isCurrent ? "var(--or)" : "var(--s2)" }}
+                />
+                <span
+                  className="font-[family-name:var(--font-condensed)] text-[8px] font-bold uppercase tracking-[1px] transition-colors"
+                  style={{ color: isCurrent ? "var(--or)" : isDone ? "var(--gn)" : "var(--tx3)" }}
+                >
+                  {SECTION_LABELS[section]}
+                </span>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Overall progress bar */}
+      <div className="h-[3px] rounded-full bg-[color:var(--s2)]">
+        <div
+          className="h-[3px] rounded-full transition-all duration-500"
+          style={{ width: `${overallPct}%`, background: "linear-gradient(90deg, var(--or), #ff9944)" }}
+        />
+      </div>
     </div>
   );
 }
