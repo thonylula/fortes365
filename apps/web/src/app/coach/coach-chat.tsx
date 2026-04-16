@@ -35,13 +35,18 @@ export function CoachChat({ userName }: { userName: string }) {
     scrollToBottom();
 
     try {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 30000);
+
       const res = await fetch("/api/coach", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           messages: newMessages.map((m) => ({ role: m.role, content: m.content })),
         }),
+        signal: controller.signal,
       });
+      clearTimeout(timeout);
 
       if (!res.ok) {
         const err = await res.json();
@@ -78,8 +83,17 @@ export function CoachChat({ userName }: { userName: string }) {
           }
         }
       }
-    } catch {
-      setMessages([...newMessages, { role: "assistant", content: "Erro de conexão. Tente novamente." }]);
+    } catch (err) {
+      const isTimeout = err instanceof DOMException && err.name === "AbortError";
+      setMessages([
+        ...newMessages,
+        {
+          role: "assistant",
+          content: isTimeout
+            ? "O coach demorou demais para responder (servidor carregando). Tente novamente — a segunda tentativa costuma ser mais rápida."
+            : "Erro de conexão. Tente novamente.",
+        },
+      ]);
     } finally {
       setIsStreaming(false);
     }
@@ -134,7 +148,13 @@ export function CoachChat({ userName }: { userName: string }) {
                     Coach
                   </div>
                 )}
-                <div className="whitespace-pre-wrap">{msg.content || "..."}</div>
+                <div className="whitespace-pre-wrap">
+                  {msg.content || (
+                    <span className="animate-pulse text-[color:var(--tx3)]">
+                      Coach pensando...
+                    </span>
+                  )}
+                </div>
               </div>
             </div>
           ))}

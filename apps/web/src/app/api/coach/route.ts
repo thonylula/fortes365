@@ -58,9 +58,9 @@ export async function POST(request: Request) {
       model: "moonshotai/kimi-k2.5",
       messages: [
         { role: "system", content: SYSTEM_PROMPT },
-        ...messages.slice(-10),
+        ...messages.slice(-6),
       ],
-      max_tokens: 500,
+      max_tokens: 300,
       temperature: 0.7,
       stream: true,
     });
