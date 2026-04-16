@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useTransition } from "react";
+import { toggleExerciseDone } from "@/lib/supabase/mutations";
 
 // ──────────────────────────────────────────────────────────────────────────
 // Tipos
@@ -83,15 +84,20 @@ export function PlanExplorer({
   days,
   weekVolume,
   user,
+  initialCompleted,
 }: {
   months: Month[];
   days: PlanDay[];
   weekVolume: number[];
   user: UserInfo;
+  initialCompleted?: string[];
 }) {
   const [monthId, setMonthId] = useState(0);
   const [weekIndex, setWeekIndex] = useState(0);
   const [dayIndex, setDayIndex] = useState(0);
+  const [completedSlugs, setCompletedSlugs] = useState<Set<string>>(
+    () => new Set(initialCompleted ?? []),
+  );
 
   // Agrupa dias por phase_id para lookup O(1).
   const daysByPhase = useMemo(() => {
@@ -177,7 +183,24 @@ export function PlanExplorer({
 
       {/* Main content */}
       <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-5 pb-20">
-        {day && <DayView day={day} volumeMultiplier={volumeMultiplier} />}
+        {day && (
+          <DayView
+            day={day}
+            volumeMultiplier={volumeMultiplier}
+            monthId={monthId}
+            weekIndex={weekIndex}
+            isLoggedIn={!!user}
+            completedSlugs={completedSlugs}
+            onToggle={(slug) => {
+              setCompletedSlugs((prev) => {
+                const next = new Set(prev);
+                if (next.has(slug)) next.delete(slug);
+                else next.add(slug);
+                return next;
+              });
+            }}
+          />
+        )}
       </main>
     </div>
   );
@@ -226,11 +249,22 @@ function Header({ user }: { user: UserInfo }) {
 // ──────────────────────────────────────────────────────────────────────────
 // DayView — roteador por tipo de dia
 // ──────────────────────────────────────────────────────────────────────────
-function DayView({ day, volumeMultiplier }: { day: PlanDay; volumeMultiplier: number }) {
+type DayCtx = {
+  day: PlanDay;
+  volumeMultiplier: number;
+  monthId: number;
+  weekIndex: number;
+  isLoggedIn: boolean;
+  completedSlugs: Set<string>;
+  onToggle: (slug: string) => void;
+};
+
+function DayView(ctx: DayCtx) {
+  const { day } = ctx;
   return (
     <div className="space-y-4">
       <Cover day={day} />
-      {day.type === "treino" && <TreinoBlock day={day} volumeMultiplier={volumeMultiplier} />}
+      {day.type === "treino" && <TreinoBlock {...ctx} />}
       {(day.type === "caminhada" || day.type === "bike") && <CardioBlock day={day} />}
       {day.type === "mobilidade" && <MobilidadeBlock day={day} />}
       {day.type === "descanso" && <DescansoBlock day={day} />}
@@ -281,12 +315,14 @@ function Cover({ day }: { day: PlanDay }) {
 // ──────────────────────────────────────────────────────────────────────────
 // Treino: kcal summary + exercise list + tip
 // ──────────────────────────────────────────────────────────────────────────
-function TreinoBlock({ day, volumeMultiplier }: { day: PlanDay; volumeMultiplier: number }) {
+function TreinoBlock(ctx: DayCtx) {
+  const { day, volumeMultiplier, monthId, weekIndex, isLoggedIn, completedSlugs, onToggle } = ctx;
   const exercises = [...day.plan_day_exercises].sort((a, b) => a.position - b.position);
   const totalKcal = Math.round(
     exercises.reduce((sum, ex) => sum + (ex.exercises?.kcal_estimate ?? 0), 0) * volumeMultiplier,
   );
   const totalSets = exercises.reduce((sum, ex) => sum + (ex.sets ?? 0), 0);
+  const doneCount = exercises.filter((ex) => ex.exercises && completedSlugs.has(ex.exercises.slug)).length;
 
   return (
     <div className="space-y-4">
@@ -306,10 +342,10 @@ function TreinoBlock({ day, volumeMultiplier }: { day: PlanDay; volumeMultiplier
           <div className="ks-l">Kcal est.</div>
         </div>
         <div className="ks-box">
-          <div className="ks-v" style={{ color: "var(--bl)" }}>
-            {volumeMultiplier.toFixed(2)}×
+          <div className="ks-v" style={{ color: doneCount === exercises.length && doneCount > 0 ? "var(--gn)" : "var(--bl)" }}>
+            {doneCount}/{exercises.length}
           </div>
-          <div className="ks-l">Volume</div>
+          <div className="ks-l">Feitos</div>
         </div>
       </div>
 
@@ -324,7 +360,18 @@ function TreinoBlock({ day, volumeMultiplier }: { day: PlanDay; volumeMultiplier
         <div className="slbl mb-2.5">Exercícios</div>
         <div className="flex flex-col gap-[7px]">
           {exercises.map((ex, i) => (
-            <ExerciseCard key={ex.position} ex={ex} index={i} />
+            <ExerciseCard
+              key={ex.position}
+              ex={ex}
+              index={i}
+              planDayId={day.id}
+              monthId={monthId}
+              weekIndex={weekIndex}
+              dayIndex={day.day_index}
+              isLoggedIn={isLoggedIn}
+              isDone={!!ex.exercises && completedSlugs.has(ex.exercises.slug)}
+              onToggle={onToggle}
+            />
           ))}
         </div>
       </div>
@@ -332,12 +379,55 @@ function TreinoBlock({ day, volumeMultiplier }: { day: PlanDay; volumeMultiplier
   );
 }
 
-function ExerciseCard({ ex, index }: { ex: PlanDayExercise; index: number }) {
+function ExerciseCard({
+  ex,
+  index,
+  planDayId,
+  monthId,
+  weekIndex,
+  dayIndex,
+  isLoggedIn,
+  isDone,
+  onToggle,
+}: {
+  ex: PlanDayExercise;
+  index: number;
+  planDayId: string;
+  monthId: number;
+  weekIndex: number;
+  dayIndex: number;
+  isLoggedIn: boolean;
+  isDone: boolean;
+  onToggle: (slug: string) => void;
+}) {
+  const [isPending, startTransition] = useTransition();
   const e = ex.exercises;
   if (!e) return null;
+
+  const handleToggle = () => {
+    onToggle(e.slug);
+    startTransition(async () => {
+      const fd = new FormData();
+      fd.set("planDayId", planDayId);
+      fd.set("exerciseSlug", e.slug);
+      fd.set("monthId", String(monthId));
+      fd.set("weekIndex", String(weekIndex));
+      fd.set("dayIndex", String(dayIndex));
+      fd.set("sets", String(ex.sets ?? 1));
+      fd.set("reps", ex.reps ?? "");
+      fd.set("isDone", String(isDone));
+      await toggleExerciseDone(fd);
+    });
+  };
+
   return (
-    <div className="ex-card">
-      <div className="ex-num">{String(index + 1).padStart(2, "0")}</div>
+    <div
+      className="ex-card"
+      style={isDone ? { borderColor: "var(--gn)", background: "rgba(34,197,94,.06)" } : undefined}
+    >
+      <div className="ex-num" style={isDone ? { color: "var(--gn)" } : undefined}>
+        {isDone ? "✓" : String(index + 1).padStart(2, "0")}
+      </div>
       <div className="flex-1">
         <div className="ex-name">{e.name}</div>
         {e.muscle_group && <div className="ex-muscle">{e.muscle_group}</div>}
@@ -349,16 +439,32 @@ function ExerciseCard({ ex, index }: { ex: PlanDayExercise; index: number }) {
         </div>
         {e.modifier && <div className="ex-mod">{e.modifier}</div>}
       </div>
-      {e.youtube_search_url && (
-        <a
-          href={e.youtube_search_url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="yt-btn shrink-0"
-        >
-          ▶ YouTube
-        </a>
-      )}
+      <div className="flex shrink-0 flex-col items-end gap-1.5">
+        {e.youtube_search_url && (
+          <a
+            href={e.youtube_search_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="yt-btn"
+          >
+            ▶ YouTube
+          </a>
+        )}
+        {isLoggedIn && (
+          <button
+            onClick={handleToggle}
+            disabled={isPending}
+            className="flex items-center gap-1 rounded-md px-2 py-1 font-[family-name:var(--font-condensed)] text-[10px] font-bold uppercase tracking-wider transition-colors"
+            style={
+              isDone
+                ? { background: "var(--gnd)", border: "1.5px solid var(--gn)", color: "var(--gn)" }
+                : { background: "none", border: "1.5px solid var(--bd)", color: "var(--tx2)" }
+            }
+          >
+            {isPending ? "..." : isDone ? "✓ Feito" : "Concluir"}
+          </button>
+        )}
+      </div>
     </div>
   );
 }
