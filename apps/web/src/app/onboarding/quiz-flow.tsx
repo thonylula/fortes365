@@ -103,6 +103,12 @@ export function QuizFlow({ initialData }: { initialData?: Answers }) {
   const [direction, setDirection] = useState<"next" | "back">("next");
   const [animating, setAnimating] = useState(false);
 
+  const handleSave = useCallback(async () => {
+    if (saving) return;
+    setSaving(true);
+    await saveOnboarding(answers);
+  }, [answers, saving]);
+
   if (!started) return <WelcomeScreen onStart={() => setStarted(true)} />;
 
   const current = STEPS[step];
@@ -144,12 +150,6 @@ export function QuizFlow({ initialData }: { initialData?: Answers }) {
     setAnswer(val);
     setTimeout(() => goTo(Math.min(step + 1, STEPS.length - 1), "next"), 250);
   };
-
-  const handleSave = useCallback(async () => {
-    if (saving) return;
-    setSaving(true);
-    await saveOnboarding(answers);
-  }, [answers, saving]);
 
   const slideStyle = {
     opacity: animating ? 0 : 1,
