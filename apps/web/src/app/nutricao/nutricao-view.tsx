@@ -2,6 +2,8 @@
 
 import { useMemo, useState } from "react";
 import { NavTabs } from "@/components/nav-tabs";
+import { PaywallModal } from "@/components/paywall-modal";
+import type { SubscriptionInfo } from "@/lib/supabase/guards";
 
 type Month = { id: number; short_name: string; name: string; season: string };
 type MealRow = {
@@ -31,9 +33,11 @@ const SLOT_BG: Record<string, string> = {
   ln: "rgba(34,197,94,.1)",
 };
 
-export function NutricaoView({ months, meals }: { months: Month[]; meals: MealRow[] }) {
+export function NutricaoView({ months, meals, subInfo }: { months: Month[]; meals: MealRow[]; subInfo: SubscriptionInfo }) {
   const [monthId, setMonthId] = useState(0);
   const [dayIndex, setDayIndex] = useState(0);
+  const [showPaywall, setShowPaywall] = useState(false);
+  const freeSet = new Set(subInfo.freeMonths);
 
   const month = months.find((m) => m.id === monthId) ?? months[0];
 
@@ -58,19 +62,30 @@ export function NutricaoView({ months, meals }: { months: Month[]; meals: MealRo
     <>
       <NavTabs />
 
+      {showPaywall && (
+        <PaywallModal isLoggedIn={subInfo.isLoggedIn} onClose={() => setShowPaywall(false)} />
+      )}
+
       {/* Month strip */}
       <div className="border-b border-[color:var(--bd)] bg-[color:var(--s2)] px-3 py-2 overflow-x-auto">
         <div className="flex min-w-max gap-[5px]">
-          {months.map((m) => (
-            <button
-              key={m.id}
-              className="chipbtn"
-              data-active={m.id === monthId}
-              onClick={() => { setMonthId(m.id); setDayIndex(0); }}
-            >
-              {m.short_name}
-            </button>
-          ))}
+          {months.map((m) => {
+            const locked = !subInfo.isPremium && !freeSet.has(m.id);
+            return (
+              <button
+                key={m.id}
+                className="chipbtn"
+                data-active={m.id === monthId}
+                style={locked ? { opacity: 0.5 } : undefined}
+                onClick={() => {
+                  if (locked) { setShowPaywall(true); return; }
+                  setMonthId(m.id); setDayIndex(0);
+                }}
+              >
+                {locked ? "🔒 " : ""}{m.short_name}
+              </button>
+            );
+          })}
         </div>
       </div>
 

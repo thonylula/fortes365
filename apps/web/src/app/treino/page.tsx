@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import { getCompletedExercises } from "@/lib/supabase/mutations";
+import { getSubscriptionInfo } from "@/lib/supabase/guards";
 import { PlanExplorer, type Month, type PlanDay } from "./plan-explorer";
 
 export const dynamic = "force-dynamic";
@@ -74,8 +75,8 @@ export default async function TreinoPage() {
     ? { email: user.email ?? "", name: user.user_metadata?.display_name as string | undefined }
     : null;
 
-  // Busca exercícios já completados para o primeiro dia visível (mês 0, semana 0).
-  // O PlanExplorer vai re-fetch conforme o usuário navega.
+  const subInfo = await getSubscriptionInfo();
+
   const firstDay = (days as PlanDay[]).find((d) => d.phase_id === 0 && d.day_index === 0);
   let initialCompleted: string[] = [];
   if (user && firstDay) {
@@ -90,6 +91,8 @@ export default async function TreinoPage() {
       weekVolume={weekVolume}
       user={userInfo}
       initialCompleted={initialCompleted}
+      isPremium={subInfo.isPremium}
+      freeMonths={subInfo.freeMonths}
     />
   );
 }

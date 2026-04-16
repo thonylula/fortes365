@@ -3,6 +3,7 @@
 import { useMemo, useState, useTransition } from "react";
 import { toggleExerciseDone } from "@/lib/supabase/mutations";
 import { NavTabs } from "@/components/nav-tabs";
+import { PaywallModal } from "@/components/paywall-modal";
 
 // ──────────────────────────────────────────────────────────────────────────
 // Tipos
@@ -86,12 +87,16 @@ export function PlanExplorer({
   weekVolume,
   user,
   initialCompleted,
+  isPremium,
+  freeMonths,
 }: {
   months: Month[];
   days: PlanDay[];
   weekVolume: number[];
   user: UserInfo;
   initialCompleted?: string[];
+  isPremium?: boolean;
+  freeMonths?: number[];
 }) {
   const [monthId, setMonthId] = useState(0);
   const [weekIndex, setWeekIndex] = useState(0);
@@ -99,6 +104,10 @@ export function PlanExplorer({
   const [completedSlugs, setCompletedSlugs] = useState<Set<string>>(
     () => new Set(initialCompleted ?? []),
   );
+  const [showPaywall, setShowPaywall] = useState(false);
+
+  const allowedMonths = new Set(freeMonths ?? [0, 1]);
+  const isMonthLocked = !isPremium && !allowedMonths.has(monthId);
 
   // Agrupa dias por phase_id para lookup O(1).
   const daysByPhase = useMemo(() => {
@@ -124,19 +133,27 @@ export function PlanExplorer({
       {/* Month strip */}
       <div className="border-b border-[color:var(--bd)] bg-[color:var(--s2)] px-3 py-2 overflow-x-auto">
         <div className="flex min-w-max gap-[5px]">
-          {months.map((m) => (
-            <button
-              key={m.id}
-              className="chipbtn"
-              data-active={m.id === monthId}
-              onClick={() => {
-                setMonthId(m.id);
-                setWeekIndex(0);
-              }}
-            >
-              {m.short_name}
-            </button>
-          ))}
+          {months.map((m) => {
+            const locked = !isPremium && !allowedMonths.has(m.id);
+            return (
+              <button
+                key={m.id}
+                className="chipbtn"
+                data-active={m.id === monthId}
+                onClick={() => {
+                  if (locked) {
+                    setShowPaywall(true);
+                    return;
+                  }
+                  setMonthId(m.id);
+                  setWeekIndex(0);
+                }}
+                style={locked ? { opacity: 0.5 } : undefined}
+              >
+                {locked ? "🔒 " : ""}{m.short_name}
+              </button>
+            );
+          })}
         </div>
       </div>
 
@@ -182,6 +199,10 @@ export function PlanExplorer({
           })}
         </div>
       </div>
+
+      {showPaywall && (
+        <PaywallModal isLoggedIn={!!user} onClose={() => setShowPaywall(false)} />
+      )}
 
       {/* Main content */}
       <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-5 pb-20">

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
+import { getSubscriptionInfo } from "@/lib/supabase/guards";
 import { ComprasView } from "./compras-view";
 
 export const dynamic = "force-dynamic";
@@ -37,7 +38,7 @@ export default async function ComprasPage() {
           {user ? "Conta" : "Entrar"}
         </Link>
       </header>
-      <ComprasView items={(items ?? []) as ShopItem[]} months={(months ?? []) as Month[]} />
+      <ComprasView items={(items ?? []) as ShopItem[]} months={(months ?? []) as Month[]} subInfo={await getSubscriptionInfo()} />
     </div>
   );
 }

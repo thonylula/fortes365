@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
+import { getSubscriptionInfo } from "@/lib/supabase/guards";
 import { NutricaoView } from "./nutricao-view";
 
 export const dynamic = "force-dynamic";
@@ -45,7 +46,7 @@ export default async function NutricaoPage() {
           </Link>
         )}
       </header>
-      <NutricaoView months={(months ?? []) as Month[]} meals={(meals ?? []) as MealRow[]} />
+      <NutricaoView months={(months ?? []) as Month[]} meals={(meals ?? []) as MealRow[]} subInfo={await getSubscriptionInfo()} />
     </div>
   );
 }

@@ -2,6 +2,8 @@
 
 import { useMemo, useState } from "react";
 import { NavTabs } from "@/components/nav-tabs";
+import { PaywallModal } from "@/components/paywall-modal";
+import type { SubscriptionInfo } from "@/lib/supabase/guards";
 
 type ShopItem = {
   scope: string;
@@ -13,8 +15,10 @@ type ShopItem = {
 };
 type Month = { id: number; short_name: string; name: string };
 
-export function ComprasView({ items, months }: { items: ShopItem[]; months: Month[] }) {
+export function ComprasView({ items, months, subInfo }: { items: ShopItem[]; months: Month[]; subInfo: SubscriptionInfo }) {
   const [monthId, setMonthId] = useState(0);
+  const [showPaywall, setShowPaywall] = useState(false);
+  const freeSet = new Set(subInfo.freeMonths);
   const month = months.find((m) => m.id === monthId) ?? months[0];
 
   const baseItems = useMemo(
@@ -40,19 +44,30 @@ export function ComprasView({ items, months }: { items: ShopItem[]; months: Mont
     <>
       <NavTabs />
 
+      {showPaywall && (
+        <PaywallModal isLoggedIn={subInfo.isLoggedIn} onClose={() => setShowPaywall(false)} />
+      )}
+
       {/* Month strip */}
       <div className="border-b border-[color:var(--bd)] bg-[color:var(--s2)] px-3 py-2 overflow-x-auto">
         <div className="flex min-w-max gap-[5px]">
-          {months.map((m) => (
-            <button
-              key={m.id}
-              className="chipbtn"
-              data-active={m.id === monthId}
-              onClick={() => setMonthId(m.id)}
-            >
-              {m.short_name}
-            </button>
-          ))}
+          {months.map((m) => {
+            const locked = !subInfo.isPremium && !freeSet.has(m.id);
+            return (
+              <button
+                key={m.id}
+                className="chipbtn"
+                data-active={m.id === monthId}
+                style={locked ? { opacity: 0.5 } : undefined}
+                onClick={() => {
+                  if (locked) { setShowPaywall(true); return; }
+                  setMonthId(m.id);
+                }}
+              >
+                {locked ? "🔒 " : ""}{m.short_name}
+              </button>
+            );
+          })}
         </div>
       </div>
 
