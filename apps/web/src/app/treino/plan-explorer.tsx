@@ -2,6 +2,7 @@
 
 import { useMemo, useState, useTransition } from "react";
 import { toggleExerciseDone } from "@/lib/supabase/mutations";
+import { NavTabs } from "@/components/nav-tabs";
 
 // ──────────────────────────────────────────────────────────────────────────
 // Tipos
@@ -118,6 +119,7 @@ export function PlanExplorer({
   return (
     <div className="flex min-h-screen flex-col bg-[color:var(--bg)]">
       <Header user={user} />
+      <NavTabs />
 
       {/* Month strip */}
       <div className="border-b border-[color:var(--bd)] bg-[color:var(--s2)] px-3 py-2 overflow-x-auto">
