@@ -9,7 +9,7 @@ export type SubscriptionInfo = {
   freeMonths: number[];
 };
 
-const FREE_MONTHS = [0, 1]; // Janeiro e Fevereiro
+const FREE_MONTHS = [0]; // Janeiro
 
 export async function getSubscriptionInfo(): Promise<SubscriptionInfo> {
   const supabase = await createClient();

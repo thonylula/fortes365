@@ -29,7 +29,7 @@ export function PaywallModal({
           </h2>
           <p className="mt-2 text-sm text-[color:var(--tx2)]">
             Este mês faz parte do plano completo de 12 meses.
-            Os meses 1 e 2 são grátis para sempre.
+            O mes 1 e gratis para sempre.
           </p>
         </div>
 

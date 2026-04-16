@@ -22,7 +22,7 @@ export default async function CadastroPage({
           CRIAR CONTA
         </h1>
         <p className="mb-6 text-sm text-[color:var(--tx2)]">
-          Comece grátis — meses 1 e 2 liberados, sem cartão.
+          Comece gratis — mes 1 liberado, sem cartao.
         </p>
 
         {error && (

@@ -121,7 +121,7 @@ export default async function ContaPage() {
                   Grátis
                 </span>
                 <span className="text-xs text-[color:var(--tx3)]">
-                  Meses 1 e 2 liberados
+                  Mes 1 liberado
                 </span>
               </div>
             </div>

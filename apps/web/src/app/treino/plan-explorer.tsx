@@ -116,7 +116,7 @@ export function PlanExplorer({
     }
   };
 
-  const allowedMonths = new Set(freeMonths ?? [0, 1]);
+  const allowedMonths = new Set(freeMonths ?? [0]);
   const isMonthLocked = !isPremium && !allowedMonths.has(monthId);
 
   // Agrupa dias por phase_id para lookup O(1).

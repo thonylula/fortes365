@@ -9,10 +9,10 @@ export default function Home() {
           <sub>365</sub>
         </div>
         <Link
-          href="/treino"
-          className="font-[family-name:var(--font-condensed)] text-[11px] font-bold uppercase tracking-[1.5px] text-[color:var(--or)]"
+          href="/login"
+          className="rounded-md border border-[color:var(--or)] bg-[color:var(--ord)] px-3 py-1.5 font-[family-name:var(--font-condensed)] text-[11px] font-bold uppercase tracking-wider text-[color:var(--or)] transition-colors hover:bg-[color:var(--or)] hover:text-black"
         >
-          Entrar →
+          Entrar
         </Link>
       </header>
 
@@ -28,41 +28,41 @@ export default function Home() {
             <br />
             EM CASA
           </h1>
-          <p className="max-w-xl text-base text-[color:var(--tx2)]">
-            Quatro fases progressivas, nutrição adaptada à safra brasileira, coach IA em
-            português e funciona offline. Pensado pra quem treina em casa, sem academia.
+          <p className="max-w-xl text-base leading-relaxed text-[color:var(--tx2)]">
+            Quatro fases progressivas, nutricao adaptada a safra brasileira, coach IA em
+            portugues e funciona offline. Pensado pra quem treina em casa, sem academia.
           </p>
         </section>
 
         <section className="grid gap-2 sm:grid-cols-3">
-          <PriceCard label="Grátis" value="R$ 0" detail="Meses 1 e 2 · para sempre" />
+          <PriceCard label="Gratis" value="R$ 0" detail="Mes 1 liberado" />
           <PriceCard
             label="Mensal"
             value="R$ 14,90"
             detail="12 meses + coach IA"
             highlight
           />
-          <PriceCard label="Anual" value="R$ 99,90" detail="~R$ 8,30/mês · 44% off" />
+          <PriceCard label="Anual" value="R$ 99,90" detail="~R$ 8,30/mes · 44% off" />
         </section>
 
         <section className="flex flex-wrap items-center gap-4">
           <Link
-            href="/treino"
+            href="/cadastro"
             className="inline-flex h-12 items-center gap-2 rounded-md bg-[color:var(--or)] px-6 font-[family-name:var(--font-condensed)] text-sm font-bold uppercase tracking-[1.5px] text-black transition-colors hover:bg-[#ff7733]"
           >
-            Ver plano de treino
-            <span aria-hidden>→</span>
+            Comecar agora
+            <span aria-hidden="true">→</span>
           </Link>
           <span className="text-[11px] uppercase tracking-wider text-[color:var(--tx3)]">
-            Sem cartão · Pix aceito
+            Sem cartao · Pix aceito
           </span>
         </section>
       </main>
 
       <footer className="border-t border-[color:var(--bd)] bg-[color:var(--s1)] px-6 py-5">
         <div className="mx-auto flex max-w-3xl items-center justify-between text-[11px] text-[color:var(--tx3)]">
-          <span>FORTE 365 · Luanthony & Jéssica</span>
-          <span>MVP · Fase 0</span>
+          <span>FORTE 365</span>
+          <span>Calistenia em casa</span>
         </div>
       </footer>
     </div>
