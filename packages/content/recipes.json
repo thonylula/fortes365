@@ -1,0 +1,867 @@
+{
+  "cuscuz": {
+    "id": "cuscuz",
+    "ico": "🌽",
+    "nome": "Cuscuz Nordestino",
+    "cat": "Café · Pré-Treino",
+    "tempo": "10 min",
+    "desc": "O rei do café nordestino! Rico em carboidrato complexo, sacia por horas.",
+    "ings": [
+      {
+        "n": "Fubá de cuscuz",
+        "a": "L:4col · J:3col"
+      },
+      {
+        "n": "Água morna",
+        "a": "~70ml"
+      },
+      {
+        "n": "Sal",
+        "a": "pitada"
+      },
+      {
+        "n": "Manteiga ou azeite",
+        "a": "1 col chá"
+      },
+      {
+        "n": "Ovo mexido (opcional)",
+        "a": "1-2 ovos"
+      }
+    ],
+    "porcao": {
+      "l": "Luanthony: 4 colheres",
+      "j": "Jéssica: 3 colheres"
+    },
+    "steps": [
+      "Misture fubá com sal na tigela.",
+      "Adicione água morna aos poucos. Massa deve agrupar mas não escorrer.",
+      "Coloque no cuscuzeiro (ou peneira sobre panela c/ água fervendo). Tampe.",
+      "Cozinhe no vapor 5-7 min. Firme = pronto.",
+      "Desenforme. Adicione manteiga/azeite. Sirva c/ ovo, queijo ou sardinha."
+    ],
+    "tip": "Sem cuscuzeiro? Use peneira grande sobre panela c/ água fervendo, cubra c/ pano limpo. Funciona igual! Cuscuz + sardinha desfiada = café da manhã completo nordestino."
+  },
+  "sardinha_grelhada": {
+    "id": "sardinha_grelhada",
+    "ico": "🐟",
+    "nome": "Sardinha Grelhada",
+    "cat": "Almoço · Jantar",
+    "tempo": "15 min",
+    "desc": "O peixe mais nutritivo e barato do Brasil. Na Bahia, fresca na feira!",
+    "ings": [
+      {
+        "n": "Sardinha fresca limpa",
+        "a": "L:200g · J:150g"
+      },
+      {
+        "n": "Limão taiti",
+        "a": "1 unidade"
+      },
+      {
+        "n": "Alho",
+        "a": "3 dentes"
+      },
+      {
+        "n": "Coentro fresco",
+        "a": "punhado"
+      },
+      {
+        "n": "Sal, pimenta",
+        "a": "a gosto"
+      },
+      {
+        "n": "Azeite",
+        "a": "1 fio"
+      }
+    ],
+    "porcao": {
+      "l": "Luanthony: 200g",
+      "j": "Jéssica: 150g"
+    },
+    "steps": [
+      "Peça na feira para limpar. Faça cortes diagonais na lateral.",
+      "Tempere c/ limão, alho, sal, pimenta e coentro. Marine 10 min.",
+      "Frigideira c/ azeite fogo MÉDIO-ALTO. Grelhe 3-4 min cada lado.",
+      "Quando soltar sozinha, está no ponto.",
+      "Finalize c/ limão e coentro fresco."
+    ],
+    "tip": "Sardinha fresca da Bahia é incomparável ao enlatado. Para refogada: após grelhar, adicione tomate, cebola e molho de pimenta. Excelente c/ cuscuz!"
+  },
+  "frango_grelhado": {
+    "id": "frango_grelhado",
+    "ico": "🍗",
+    "nome": "Frango Grelhado",
+    "cat": "Almoço · Jantar",
+    "tempo": "20 min",
+    "desc": "Base da alimentação fitness. Simples, econômico e proteico.",
+    "ings": [
+      {
+        "n": "Peito de frango",
+        "a": "L:200g · J:150g"
+      },
+      {
+        "n": "Limão",
+        "a": "1/2"
+      },
+      {
+        "n": "Alho",
+        "a": "2-3 dentes"
+      },
+      {
+        "n": "Coentro e cebolinha",
+        "a": "punhado"
+      },
+      {
+        "n": "Sal, cominho",
+        "a": "a gosto"
+      },
+      {
+        "n": "Azeite",
+        "a": "1 fio"
+      }
+    ],
+    "porcao": {
+      "l": "Luanthony: 200g",
+      "j": "Jéssica: 150g"
+    },
+    "steps": [
+      "Bata o peito para espessura uniforme. Marine c/ tudo por 15 min.",
+      "Frigideira em fogo ALTO por 2 min antes de colocar.",
+      "Grelhe 6-7 min cada lado. Não mexa!",
+      "Descanse 2 min antes de cortar."
+    ],
+    "tip": "Frigideira bem quente cria crosta que retém suco. Marinar c/ coentro e limão de véspera = sabor nordestino incrível."
+  },
+  "tilap_grelhada": {
+    "id": "tilap_grelhada",
+    "ico": "🐠",
+    "nome": "Tilápia Grelhada Baiana",
+    "cat": "Almoço · Jantar",
+    "tempo": "15 min",
+    "desc": "Peixe suave, proteico e fácil. Tempero baiano faz toda diferença!",
+    "ings": [
+      {
+        "n": "Filé de tilápia",
+        "a": "L:200g · J:150g"
+      },
+      {
+        "n": "Limão",
+        "a": "1/2"
+      },
+      {
+        "n": "Alho",
+        "a": "2 dentes"
+      },
+      {
+        "n": "Colorau",
+        "a": "pitada"
+      },
+      {
+        "n": "Coentro, sal",
+        "a": "a gosto"
+      },
+      {
+        "n": "Azeite",
+        "a": "1 fio"
+      }
+    ],
+    "porcao": {
+      "l": "Luanthony: 200g",
+      "j": "Jéssica: 150g"
+    },
+    "steps": [
+      "Seque o filé com papel toalha.",
+      "Tempere c/ limão, alho, colorau, sal, coentro. Marine 10 min.",
+      "Frigideira c/ azeite fogo MÉDIO-ALTO. 3-4 min cada lado.",
+      "Finalize c/ coentro fresco e limão."
+    ],
+    "tip": "Colorau (urucum/annatto) é o tempero nordestino que dá cor e tem antioxidantes. Essencial na cozinha baiana!"
+  },
+  "moqueca_light": {
+    "id": "moqueca_light",
+    "ico": "🫕",
+    "nome": "Moqueca de Peixe Light",
+    "cat": "Almoço Especial",
+    "tempo": "35 min",
+    "desc": "A glória da culinária baiana adaptada para o plano fitness! Menos dendê, mesmo sabor.",
+    "ings": [
+      {
+        "n": "Filé de tilápia",
+        "a": "L:200g · J:150g"
+      },
+      {
+        "n": "Leite de coco light",
+        "a": "100ml"
+      },
+      {
+        "n": "Tomate",
+        "a": "2 médios"
+      },
+      {
+        "n": "Cebola",
+        "a": "1 média"
+      },
+      {
+        "n": "Pimentão",
+        "a": "1/2 de cada cor"
+      },
+      {
+        "n": "Alho",
+        "a": "3 dentes"
+      },
+      {
+        "n": "Coentro",
+        "a": "maço"
+      },
+      {
+        "n": "Colorau",
+        "a": "1 col chá"
+      },
+      {
+        "n": "Dendê",
+        "a": "1 col chá APENAS"
+      },
+      {
+        "n": "Sal, limão",
+        "a": "a gosto"
+      }
+    ],
+    "porcao": {
+      "l": "Luanthony: 200g peixe",
+      "j": "Jéssica: 150g peixe"
+    },
+    "steps": [
+      "Marine o peixe c/ limão, sal e alho por 20 min.",
+      "Refogue cebola, alho e pimentão em azeite (5 min).",
+      "Adicione tomate e colorau. Cozinhe 5 min.",
+      "Adicione leite de coco. Ferva levemente.",
+      "Coloque os filés delicadamente. Tampe. Fogo baixo 8-10 min.",
+      "Finalize c/ coentro e 1 col chá de dendê."
+    ],
+    "tip": "Só 1 col chá de dendê para aroma autêntico. Leite de coco light compensa. Sabor baiano intacto! Sirva c/ pirão ou farinha de mandioca leve."
+  },
+  "baiao_dois": {
+    "id": "baiao_dois",
+    "ico": "🍛",
+    "nome": "Baião de Dois Light",
+    "cat": "Almoço Especial",
+    "tempo": "40 min",
+    "desc": "Prato típico nordestino adaptado. Feijão de corda + arroz integral = proteína completa!",
+    "ings": [
+      {
+        "n": "Arroz integral",
+        "a": "L:4col · J:3col"
+      },
+      {
+        "n": "Feijão de corda cozido",
+        "a": "3 col por pessoa"
+      },
+      {
+        "n": "Queijo coalho",
+        "a": "50g em cubos"
+      },
+      {
+        "n": "Coentro e cebolinha",
+        "a": "punhado"
+      },
+      {
+        "n": "Cebola, alho",
+        "a": "tempero base"
+      },
+      {
+        "n": "Azeite",
+        "a": "1 fio"
+      },
+      {
+        "n": "Cominho, sal",
+        "a": "a gosto"
+      }
+    ],
+    "porcao": {
+      "l": "Luanthony: porção maior",
+      "j": "Jéssica: porção menor"
+    },
+    "steps": [
+      "Cozinhe feijão de corda c/ sal e alho até macio.",
+      "Refogue cebola e alho em azeite.",
+      "Adicione arroz, misture 2 min. Adicione 2x o volume em água fervente. Tampe 20 min.",
+      "Quando quase pronto, adicione feijão e queijo em cubos.",
+      "Finalize c/ coentro e cebolinha."
+    ],
+    "tip": "Baião de dois = proteína completa (feijão + arroz = aminoácidos complementares). Queijo de coalho light ou sem carne = versão fitness perfeita."
+  },
+  "aveia_mingau": {
+    "id": "aveia_mingau",
+    "ico": "🥣",
+    "nome": "Mingau de Aveia c/ Banana",
+    "cat": "Café da Manhã",
+    "tempo": "5 min",
+    "desc": "Café perfeito para treino: fibras, energia lenta, saciante.",
+    "ings": [
+      {
+        "n": "Aveia em flocos finos",
+        "a": "L:5col · J:4col"
+      },
+      {
+        "n": "Leite desnatado",
+        "a": "200ml"
+      },
+      {
+        "n": "Banana madura",
+        "a": "1 unidade"
+      },
+      {
+        "n": "Canela em pó",
+        "a": "a gosto"
+      },
+      {
+        "n": "Mel",
+        "a": "1 col chá (opcional)"
+      }
+    ],
+    "porcao": {
+      "l": "Luanthony: 5 colheres",
+      "j": "Jéssica: 4 colheres"
+    },
+    "steps": [
+      "Aqueça leite fogo médio. Adicione aveia mexendo continuamente.",
+      "Cozinhe 2-3 min até engrossar.",
+      "Adicione canela. Sirva na tigela.",
+      "Amasse banana por cima. Mel se desejar."
+    ],
+    "tip": "Overnight oats: misture tudo à noite na geladeira. De manhã está pronto sem cozinhar!"
+  },
+  "sopa_legumes": {
+    "id": "sopa_legumes",
+    "ico": "🍲",
+    "nome": "Sopa Nordestina de Legumes",
+    "cat": "Jantar",
+    "tempo": "35 min",
+    "desc": "Sopa nutritiva c/ jerimum, macaxeira e frango. Leve para dormir.",
+    "ings": [
+      {
+        "n": "Frango desfiado",
+        "a": "L:150g · J:100g"
+      },
+      {
+        "n": "Macaxeira em cubos",
+        "a": "100g"
+      },
+      {
+        "n": "Jerimum em cubos",
+        "a": "100g"
+      },
+      {
+        "n": "Cenoura",
+        "a": "1 média"
+      },
+      {
+        "n": "Cebola, alho",
+        "a": "tempero"
+      },
+      {
+        "n": "Coentro fresco",
+        "a": "punhado"
+      },
+      {
+        "n": "Sal, pimenta",
+        "a": "a gosto"
+      }
+    ],
+    "porcao": {
+      "l": "Luanthony: 350ml",
+      "j": "Jéssica: 250ml"
+    },
+    "steps": [
+      "Cozinhe frango c/ sal. Reserve caldo. Desfie.",
+      "No caldo, adicione macaxeira, jerimum e cenoura. Ferva 15 min.",
+      "Adicione frango, cebola e alho. Cozinhe 5 min.",
+      "Ajuste sal. Finalize c/ coentro."
+    ],
+    "tip": "Jerimum nordestino adoça a sopa naturalmente. Macaxeira engrossa o caldo. Típico baiano!"
+  },
+  "tapioca": {
+    "id": "tapioca",
+    "ico": "🫓",
+    "nome": "Tapioca Fitness",
+    "cat": "Café da Manhã",
+    "tempo": "5 min",
+    "desc": "Sem glúten, rápida. Carboidrato de fácil digestão. Recheio proteico.",
+    "ings": [
+      {
+        "n": "Goma de tapioca",
+        "a": "L:6col · J:4col"
+      },
+      {
+        "n": "Queijo de coalho",
+        "a": "50g"
+      },
+      {
+        "n": "Ovo (opcional)",
+        "a": "1 ovo"
+      },
+      {
+        "n": "Frango desfiado (opcional)",
+        "a": "50g"
+      }
+    ],
+    "porcao": {
+      "l": "Luanthony: 2 tapiocas",
+      "j": "Jéssica: 1.5"
+    },
+    "steps": [
+      "Peneire a goma. Frigideira antiaderente fogo médio. Sem óleo!",
+      "Espalhe a goma em camada fina.",
+      "Bordas soltando (~2 min) → vire com espátula.",
+      "Adicione queijo. Dobre ao meio."
+    ],
+    "tip": "C/ ovo: quebre sobre a tapioca antes de dobrar. Tampe 1 min. Tapioca + queijo coalho + coentro = o café nordestino mais gostoso!"
+  },
+  "omelete": {
+    "id": "omelete",
+    "ico": "🍳",
+    "nome": "Omelete de Legumes",
+    "cat": "Jantar",
+    "tempo": "8 min",
+    "desc": "Jantar rápido e proteico. Versatil com os legumes que tiver.",
+    "ings": [
+      {
+        "n": "Ovos",
+        "a": "L:3 · J:2"
+      },
+      {
+        "n": "Espinafre ou couve",
+        "a": "punhado"
+      },
+      {
+        "n": "Tomate, pimentão",
+        "a": "1/2 de cada"
+      },
+      {
+        "n": "Queijo coalho ralado",
+        "a": "1 col sopa"
+      },
+      {
+        "n": "Sal, coentro",
+        "a": "a gosto"
+      },
+      {
+        "n": "Azeite",
+        "a": "1 fio"
+      }
+    ],
+    "porcao": {
+      "l": "Luanthony: 3 ovos",
+      "j": "Jéssica: 2 ovos"
+    },
+    "steps": [
+      "Bata ovos c/ sal e pimenta.",
+      "Frigideira c/ azeite. Refogue espinafre 1 min. Adicione tomate e pimentão.",
+      "Despeje ovos por cima. Tampe 2-3 min.",
+      "Adicione queijo. Dobre ao meio."
+    ],
+    "tip": "Não mexa após despejar os ovos. Fogo médio sempre."
+  },
+  "ovos_mexidos": {
+    "id": "ovos_mexidos",
+    "ico": "🍳",
+    "nome": "Ovos Mexidos Cremosos",
+    "cat": "Café da Manhã",
+    "tempo": "8 min",
+    "desc": "Versão cremosa e proteica. Fogo baixo = resultado profissional.",
+    "ings": [
+      {
+        "n": "Ovos",
+        "a": "L:3 · J:2"
+      },
+      {
+        "n": "Azeite",
+        "a": "1 fio"
+      },
+      {
+        "n": "Sal, pimenta",
+        "a": "a gosto"
+      },
+      {
+        "n": "Cream cheese light",
+        "a": "1 col chá (opcional)"
+      }
+    ],
+    "porcao": {
+      "l": "Luanthony: 3 ovos",
+      "j": "Jéssica: 2 ovos"
+    },
+    "steps": [
+      "Bata levemente. Tempere.",
+      "Frigideira antiaderente fogo BAIXO c/ azeite.",
+      "Despeje. Mexa CONTINUAMENTE c/ espátula. Movimentos lentos.",
+      "Quando quase firme mas brilhante, desligue. Calor residual termina.",
+      "Adicione cream cheese se desejar."
+    ],
+    "tip": "FOGO BAIXO é o segredo. C/ coentro picado por cima = autenticamente nordestino!"
+  },
+  "vitamina_pos": {
+    "id": "vitamina_pos",
+    "ico": "🥤",
+    "nome": "Vitamina Pós-Treino",
+    "cat": "Pós-Treino",
+    "tempo": "3 min",
+    "desc": "Janela pós-treino: 30 min após exercício = melhor absorção de nutrientes.",
+    "ings": [
+      {
+        "n": "Banana madura",
+        "a": "1 unidade"
+      },
+      {
+        "n": "Leite desnatado",
+        "a": "200ml"
+      },
+      {
+        "n": "Cacau em pó 100%",
+        "a": "1 col chá"
+      },
+      {
+        "n": "Mel",
+        "a": "1 col chá"
+      }
+    ],
+    "porcao": {
+      "l": "Luanthony: copo grande",
+      "j": "Jéssica: copo médio"
+    },
+    "steps": [
+      "Bata tudo no liquidificador 30 segundos.",
+      "Tome em até 30 min após treino."
+    ],
+    "tip": "Para mais proteína: 1 col sopa pasta de amendoim. Versão tropical: troque banana por manga!"
+  },
+  "pre_treino": {
+    "id": "pre_treino",
+    "ico": "⚡",
+    "nome": "Pré-Treino: Banana + Amendoim",
+    "cat": "Pré-Treino",
+    "tempo": "1 min",
+    "desc": "60-90 min antes: carboidrato + gordura boa = energia que dura o treino.",
+    "ings": [
+      {
+        "n": "Banana madura",
+        "a": "1 unidade"
+      },
+      {
+        "n": "Pasta amendoim integral",
+        "a": "L:1col sopa · J:1col chá"
+      },
+      {
+        "n": "Água",
+        "a": "400ml"
+      }
+    ],
+    "porcao": {
+      "l": "Luanthony: banana + 1 col sopa",
+      "j": "Jéssica: banana + 1 col chá"
+    },
+    "steps": [
+      "Consuma 60-90 min antes do treino (15:00 para treino às 16:00).",
+      "Banana c/ pasta ao lado para mergulhar.",
+      "Beba água gradualmente."
+    ],
+    "tip": "Evite refeições pesadas nas 2h antes. Cuscuz ou batata doce também funcionam como pré-treino natural."
+  },
+  "iogurte_granola": {
+    "id": "iogurte_granola",
+    "ico": "🫙",
+    "nome": "Iogurte Grego c/ Granola",
+    "cat": "Pós-Treino · Lanche",
+    "tempo": "2 min",
+    "desc": "17g de proteína por 100g. Mais que muitos suplementos!",
+    "ings": [
+      {
+        "n": "Iogurte grego natural",
+        "a": "1 pote 170g"
+      },
+      {
+        "n": "Granola s/ açúcar",
+        "a": "L:2col · J:1col"
+      },
+      {
+        "n": "Frutas frescas",
+        "a": "manga, morango ou banana"
+      },
+      {
+        "n": "Mel",
+        "a": "1 col chá"
+      }
+    ],
+    "porcao": {
+      "l": "Luanthony: 1 pote + 2 col",
+      "j": "Jéssica: 1 pote + 1 col"
+    },
+    "steps": [
+      "Iogurte na tigela. Granola por cima (não misture — amolece).",
+      "Fruta picada. Fio de mel.",
+      "Sirva imediatamente."
+    ],
+    "tip": "Com manga picada = açaí nordestino saudável! Com acerola = vitamina C extra."
+  },
+  "vit_manga": {
+    "id": "vit_manga",
+    "ico": "🥭",
+    "nome": "Vitamina de Manga",
+    "cat": "Lanche · Pós-Treino",
+    "tempo": "3 min",
+    "desc": "A vitamina tropical do Nordeste! Betacaroteno + vitamina C.",
+    "ings": [
+      {
+        "n": "Manga Palmer ou espada",
+        "a": "1/2 manga grande"
+      },
+      {
+        "n": "Leite desnatado",
+        "a": "200ml"
+      },
+      {
+        "n": "Mel",
+        "a": "1 col chá"
+      },
+      {
+        "n": "Gelo",
+        "a": "3-4 cubos"
+      }
+    ],
+    "porcao": {
+      "l": "Luanthony: copo grande",
+      "j": "Jéssica: copo médio"
+    },
+    "steps": [
+      "Descasque e pique a manga.",
+      "Bata c/ leite, mel e gelo 30 segundos.",
+      "Sirva imediatamente."
+    ],
+    "tip": "Na safra (dez-jan na Bahia) manga é baratíssima. Congele em cubos fora da temporada!"
+  },
+  "vit_maracuja": {
+    "id": "vit_maracuja",
+    "ico": "🍋",
+    "nome": "Vitamina de Maracujá",
+    "cat": "Lanche da Manhã",
+    "tempo": "3 min",
+    "desc": "Calmante natural + vitamina C. Efeito ansiolítico leve.",
+    "ings": [
+      {
+        "n": "Maracujá",
+        "a": "2 unidades"
+      },
+      {
+        "n": "Leite ou água de coco",
+        "a": "200ml"
+      },
+      {
+        "n": "Mel",
+        "a": "1 col chá"
+      },
+      {
+        "n": "Banana (opcional)",
+        "a": "1/2"
+      }
+    ],
+    "porcao": {
+      "l": "Luanthony: copo grande",
+      "j": "Jéssica: copo médio"
+    },
+    "steps": [
+      "Retire polpa dos maracujás.",
+      "Bata c/ leite (ou água de coco) e mel.",
+      "Para mais espesso: adicione 1/2 banana.",
+      "Coe se preferir, ou beba com semente (fibra!)."
+    ],
+    "tip": "Não coe! Sementes são ricas em fibras e calmantes. Suco integral é mais nutritivo. Na Bahia, maracujá fresco da feira custa muito menos que industrializado."
+  },
+  "frango_cozido": {
+    "id": "frango_cozido",
+    "ico": "🍲",
+    "nome": "Frango Cozido Desfiado em Quantidade",
+    "cat": "Preparo da Semana",
+    "tempo": "35 min",
+    "desc": "Estratégia de meal prep: cozinhe 500g de uma vez e use durante a semana toda!",
+    "ings": [
+      {
+        "n": "Peito de frango",
+        "a": "500g"
+      },
+      {
+        "n": "Alho",
+        "a": "3 dentes"
+      },
+      {
+        "n": "Cebola",
+        "a": "1/2"
+      },
+      {
+        "n": "Sal, cominho",
+        "a": "a gosto"
+      },
+      {
+        "n": "Coentro",
+        "a": "punhado"
+      },
+      {
+        "n": "Louro",
+        "a": "1 folha"
+      }
+    ],
+    "porcao": {
+      "l": "Rende ~350g desfiado",
+      "j": "Rende ~350g desfiado"
+    },
+    "steps": [
+      "Coloque frango na panela com água que cubra.",
+      "Adicione alho, cebola, sal, cominho e louro.",
+      "Cozinhe 25-30 min em fogo médio com tampa.",
+      "Tire o frango. Reserve o caldo (use na sopa!).",
+      "Desfie com 2 garfos enquanto ainda quente.",
+      "Divida em porções de 150g. Refrigere por 4 dias."
+    ],
+    "tip": "Esse caldo de frango é nutritivo! Use na sopa de legumes em vez de água. Rende 2-3 refeições. Congele o excesso."
+  },
+  "acai_nordestino": {
+    "id": "acai_nordestino",
+    "ico": "🫐",
+    "nome": "Açaí Nordestino (sem açaí)",
+    "cat": "Lanche · Pós-Treino",
+    "tempo": "5 min",
+    "desc": "A versão nordestina do açaí! Iogurte grego + manga + granola. Rico em proteína.",
+    "ings": [
+      {
+        "n": "Iogurte grego natural",
+        "a": "170g"
+      },
+      {
+        "n": "Manga picada congelada ou fresca",
+        "a": "100g"
+      },
+      {
+        "n": "Granola s/ açúcar",
+        "a": "2 col sopa"
+      },
+      {
+        "n": "Banana fatiada",
+        "a": "1/2"
+      },
+      {
+        "n": "Mel",
+        "a": "1 col chá"
+      },
+      {
+        "n": "Castanha de caju picada",
+        "a": "1 col sopa"
+      }
+    ],
+    "porcao": {
+      "l": "Luanthony: pote grande",
+      "j": "Jéssica: pote médio"
+    },
+    "steps": [
+      "Congele a manga em cubos (ou use fresca).",
+      "Bata iogurte c/ manga no liquidificador brevemente para textura cremosa.",
+      "Despeje em tigela. Adicione granola, banana, castanha e mel.",
+      "Sirva imediatamente — a granola fica crocante."
+    ],
+    "tip": "Manga congelada deixa a textura igual ao açaí. Acerola fresca picada por cima = explosão de vitamina C nordestina!"
+  },
+  "peixe_assado": {
+    "id": "peixe_assado",
+    "ico": "🐡",
+    "nome": "Peixe Assado no Forno",
+    "cat": "Jantar · Almoço",
+    "tempo": "30 min",
+    "desc": "Método mais saudável: sem fritura, mantém todos os nutrientes.",
+    "ings": [
+      {
+        "n": "Peixe inteiro ou filé",
+        "a": "L:250g · J:180g"
+      },
+      {
+        "n": "Limão",
+        "a": "1 inteiro"
+      },
+      {
+        "n": "Alho",
+        "a": "4 dentes amassados"
+      },
+      {
+        "n": "Coentro fresco",
+        "a": "maço"
+      },
+      {
+        "n": "Colorau e pimenta",
+        "a": "a gosto"
+      },
+      {
+        "n": "Azeite",
+        "a": "2 col chá"
+      },
+      {
+        "n": "Sal grosso",
+        "a": "a gosto"
+      }
+    ],
+    "porcao": {
+      "l": "Luanthony: 250g",
+      "j": "Jéssica: 180g"
+    },
+    "steps": [
+      "Pré-aqueça forno a 200°C.",
+      "Faça cortes no peixe. Recheie c/ alho e coentro.",
+      "Esfregue limão, colorau, sal e azeite por toda superfície.",
+      "Coloque em assadeira forrada c/ papel alumínio.",
+      "Asse 20-25 min. Abra o alumínio nos últimos 5 min para dourar."
+    ],
+    "tip": "Peixe está pronto quando a carne se solta com garfo facilmente. Não asse em excesso — resseca. Sirva com farofa de macaxeira light ou arroz integral."
+  },
+  "caldo_verde_nordestino": {
+    "id": "caldo_verde_nordestino",
+    "ico": "🥬",
+    "nome": "Caldo Verde Nordestino",
+    "cat": "Jantar · Lanche",
+    "tempo": "25 min",
+    "desc": "Releitura nordestina do caldo verde: couve + macaxeira + linguiça de frango light.",
+    "ings": [
+      {
+        "n": "Couve fatiada fino",
+        "a": "1 maço"
+      },
+      {
+        "n": "Macaxeira cozida",
+        "a": "300g"
+      },
+      {
+        "n": "Linguiça de frango light (opcional)",
+        "a": "100g"
+      },
+      {
+        "n": "Caldo de frango caseiro",
+        "a": "500ml"
+      },
+      {
+        "n": "Alho, cebola",
+        "a": "tempero"
+      },
+      {
+        "n": "Azeite, sal",
+        "a": "a gosto"
+      }
+    ],
+    "porcao": {
+      "l": "Luanthony: 350ml",
+      "j": "Jéssica: 250ml"
+    },
+    "steps": [
+      "Bata a macaxeira cozida c/ um pouco do caldo até cremosa.",
+      "Refogue alho e cebola em azeite.",
+      "Adicione o caldo e o creme de macaxeira. Ferva.",
+      "Adicione couve fatiada. Cozinhe 3 min (não passe!).",
+      "Adicione linguiça fatiada se desejar."
+    ],
+    "tip": "A couve deve ficar verde viva — não cozinhe mais que 3 min. Macaxeira substitui a batata do caldo verde tradicional e fica mais cremoso e nordestino!"
+  }
+}

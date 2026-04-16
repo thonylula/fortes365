@@ -1,0 +1,301 @@
+[
+  {
+    "cat": "🥩 Proteínas",
+    "items": [
+      {
+        "n": "Peito de frango",
+        "ql": "1,2kg",
+        "qj": "900g",
+        "obs": "Compre em quantidade e congele em porções."
+      },
+      {
+        "n": "Sardinha fresca",
+        "ql": "400g",
+        "qj": "300g",
+        "obs": "Feira local — mais fresca e barata!"
+      },
+      {
+        "n": "Tilápia (filé)",
+        "ql": "600g",
+        "qj": "450g",
+        "obs": "Ou badejo, robalo — peixes baianos."
+      },
+      {
+        "n": "Ovos",
+        "ql": "30 unidades",
+        "qj": "24 unidades",
+        "obs": "1-3 ovos/dia conforme o cardápio."
+      },
+      {
+        "n": "Carne moída magra (patinho)",
+        "ql": "400g",
+        "qj": "300g",
+        "obs": "Patinho = mais magro. Use 2x na semana."
+      }
+    ]
+  },
+  {
+    "cat": "🌾 Carboidratos",
+    "items": [
+      {
+        "n": "Fubá de cuscuz",
+        "ql": "500g",
+        "qj": "400g",
+        "obs": "Produto nordestino! Granel na feira é mais barato."
+      },
+      {
+        "n": "Arroz integral",
+        "ql": "1kg",
+        "qj": "800g",
+        "obs": "Mais fibra que o branco. Cozinhe em quantidade."
+      },
+      {
+        "n": "Aveia em flocos finos",
+        "ql": "500g",
+        "qj": "400g",
+        "obs": "Café da manhã + pré-treino."
+      },
+      {
+        "n": "Tapioca (goma)",
+        "ql": "500g",
+        "qj": "400g",
+        "obs": "Peneire antes de usar."
+      },
+      {
+        "n": "Batata doce",
+        "ql": "1kg",
+        "qj": "700g",
+        "obs": "Feira é muito mais barata. Ótimo pré-treino."
+      },
+      {
+        "n": "Macaxeira (aipim)",
+        "ql": "500g",
+        "qj": "400g",
+        "obs": "Cozinhe em quantidade e refrigere."
+      },
+      {
+        "n": "Feijão de corda",
+        "ql": "500g",
+        "qj": "400g",
+        "obs": "Feijão nordestino mais leve e proteico!"
+      },
+      {
+        "n": "Pão integral",
+        "ql": "1 pacote",
+        "qj": "1 pacote",
+        "obs": "Sem açúcar no rótulo."
+      }
+    ]
+  },
+  {
+    "cat": "🥦 Hortifruti",
+    "items": [
+      {
+        "n": "Brócolis",
+        "ql": "1 cabeça grande",
+        "qj": "1 cabeça",
+        "obs": "Congele já picado para praticidade."
+      },
+      {
+        "n": "Cenoura",
+        "ql": "1kg",
+        "qj": "800g",
+        "obs": "Crua e cozida. Sempre na feira."
+      },
+      {
+        "n": "Abobrinha",
+        "ql": "2 unidades",
+        "qj": "2 unidades",
+        "obs": "Jantar e refogados."
+      },
+      {
+        "n": "Espinafre ou couve",
+        "ql": "1 maço",
+        "qj": "1 maço",
+        "obs": "Omelete e vitaminas."
+      },
+      {
+        "n": "Tomate",
+        "ql": "1kg",
+        "qj": "800g",
+        "obs": "Molho, salada e tempero."
+      },
+      {
+        "n": "Alface + rúcula",
+        "ql": "2 pés",
+        "qj": "2 pés",
+        "obs": "Saladas diárias."
+      },
+      {
+        "n": "Cebola",
+        "ql": "1kg",
+        "qj": "800g",
+        "obs": "Tempero base. Feira é mais barata."
+      },
+      {
+        "n": "Alho",
+        "ql": "1 cabeça",
+        "qj": "1 cabeça",
+        "obs": "Essencial na cozinha nordestina."
+      },
+      {
+        "n": "Pimentão",
+        "ql": "2 unidades",
+        "qj": "2 unidades",
+        "obs": "Vitamina A e C."
+      },
+      {
+        "n": "Maxixe ou chuchu",
+        "ql": "3 unidades",
+        "qj": "3 unidades",
+        "obs": "Legume nordestino leve e barato."
+      },
+      {
+        "n": "Jerimum (abóbora)",
+        "ql": "1 pedaço",
+        "qj": "1 pedaço",
+        "obs": "Sopas e refogados."
+      }
+    ]
+  },
+  {
+    "cat": "🥜 Gorduras Boas",
+    "items": [
+      {
+        "n": "Pasta de amendoim integral",
+        "ql": "1 pote 400g",
+        "qj": "1 pote",
+        "obs": "Sem açúcar e sem óleo adicionado!"
+      },
+      {
+        "n": "Castanha de caju",
+        "ql": "200g",
+        "qj": "150g",
+        "obs": "Produto regional! Granel na feira."
+      },
+      {
+        "n": "Amendoim torrado s/ sal",
+        "ql": "300g",
+        "qj": "250g",
+        "obs": "Granel mais barato."
+      },
+      {
+        "n": "Azeite extra virgem",
+        "ql": "250ml",
+        "qj": "250ml",
+        "obs": "Um fio por refeição."
+      }
+    ]
+  },
+  {
+    "cat": "🧀 Laticínios",
+    "items": [
+      {
+        "n": "Iogurte grego natural",
+        "ql": "6 potes",
+        "qj": "5 potes",
+        "obs": "Sem sabor. Vigor ou Danio."
+      },
+      {
+        "n": "Queijo branco/coalho",
+        "ql": "300g",
+        "qj": "250g",
+        "obs": "Queijo de coalho nordestino!"
+      },
+      {
+        "n": "Leite desnatado",
+        "ql": "2 litros",
+        "qj": "1,5 litros",
+        "obs": "Para vitaminas e café."
+      },
+      {
+        "n": "Requeijão light",
+        "ql": "1 pote",
+        "qj": "1 pote",
+        "obs": "Para tapioca e cuscuz."
+      }
+    ]
+  },
+  {
+    "cat": "🧂 Temperos",
+    "items": [
+      {
+        "n": "Coentro fresco",
+        "ql": "1 maço",
+        "qj": "1 maço",
+        "obs": "Essencial na cozinha baiana!"
+      },
+      {
+        "n": "Cebolinha fresca",
+        "ql": "1 maço",
+        "qj": "1 maço",
+        "obs": "Finalização de pratos."
+      },
+      {
+        "n": "Limão Taiti",
+        "ql": "1kg",
+        "qj": "1kg",
+        "obs": "Peixe, frango, saladas. Compre bastante."
+      },
+      {
+        "n": "Cacau em pó 100%",
+        "ql": "1 lata",
+        "qj": "1 lata",
+        "obs": "Vitaminas. Não é achocolatado!"
+      },
+      {
+        "n": "Mel puro",
+        "ql": "250g",
+        "qj": "250g",
+        "obs": "Mel nordestino da caatinga — excelente!"
+      },
+      {
+        "n": "Canela em pó",
+        "ql": "1 vidro",
+        "qj": "1 vidro",
+        "obs": "Aveia e iogurte."
+      },
+      {
+        "n": "Colorau (urucum)",
+        "ql": "1 vidro",
+        "qj": "1 vidro",
+        "obs": "Tempero baiano. Cor e sabor."
+      }
+    ]
+  },
+  {
+    "cat": "💧 Bebidas e Outros",
+    "items": [
+      {
+        "n": "Água de coco",
+        "ql": "8 caixinhas",
+        "qj": "6 caixinhas",
+        "obs": "Isotônico natural da Bahia!"
+      },
+      {
+        "n": "Chá de camomila",
+        "ql": "1 caixa",
+        "qj": "1 caixa",
+        "obs": "Lanche da noite. Ajuda a dormir."
+      },
+      {
+        "n": "Chá de hibisco",
+        "ql": "1 caixa",
+        "qj": "1 caixa",
+        "obs": "Diurético natural. Ótimo gelado."
+      },
+      {
+        "n": "Granola s/ açúcar",
+        "ql": "500g",
+        "qj": "400g",
+        "obs": "Para iogurte."
+      },
+      {
+        "n": "Água mineral",
+        "ql": "3L/dia",
+        "qj": "2,5L/dia",
+        "obs": "Fundamental! Hidratação no calor baiano."
+      }
+    ]
+  }
+]

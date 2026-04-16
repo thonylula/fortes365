@@ -1,0 +1,18 @@
+node_modules/
+.next/
+out/
+dist/
+.vercel/
+.env
+.env.local
+.env*.local
+*.log
+.DS_Store
+Thumbs.db
+
+# Arquivos pesados / pessoais que não vão pro repo
+data/
+livros_e_pdfs/
+*.rar
+projeto atividade fisica/
+.agents/

@@ -1,0 +1,870 @@
+[
+  [
+    {
+      "type": "treino",
+      "cover": "treino",
+      "focus": "Mobilidade + Força I",
+      "tip": "Não force nada. Técnica perfeita > quantidade.",
+      "exs": [
+        {
+          "n": "Marcha no Lugar",
+          "m": "Aquecimento",
+          "s": 1,
+          "r": "3 min",
+          "rest": "—",
+          "kcal": 15,
+          "mod": "Joelhos até o quadril. Ritmo tranquilo.",
+          "yt": "https://www.youtube.com/results?search_query=marcha%20no%20lugar%20aquecimento%20iniciante%20casa"
+        },
+        {
+          "n": "Agachamento com Cadeira",
+          "m": "Pernas · Glúteos",
+          "s": 3,
+          "r": "8x",
+          "rest": "60s",
+          "kcal": 25,
+          "mod": "Use a cadeira como guia. Desça devagar, suba controlado.",
+          "yt": "https://www.youtube.com/results?search_query=agachamento%20cadeira%20iniciante%20iniciante%20casa"
+        },
+        {
+          "n": "Flexão na Parede",
+          "m": "Peito · Tríceps",
+          "s": 3,
+          "r": "8x",
+          "rest": "60s",
+          "kcal": 18,
+          "mod": "60cm da parede. Cotovelos a 45°.",
+          "yt": "https://www.youtube.com/results?search_query=flex%C3%A3o%20parede%20iniciante%20iniciante%20casa"
+        },
+        {
+          "n": "Superman Deitado",
+          "m": "Lombar · Glúteo",
+          "s": 2,
+          "r": "8x",
+          "rest": "45s",
+          "kcal": 12,
+          "mod": "Segure 2s no topo.",
+          "yt": "https://www.youtube.com/results?search_query=superman%20exerc%C3%ADcio%20lombar%20iniciante%20casa"
+        },
+        {
+          "n": "Elevação de Joelhos no Lugar",
+          "m": "Core · Cardio",
+          "s": 2,
+          "r": "10 cada",
+          "rest": "30s",
+          "kcal": 18,
+          "mod": "Use a parede para equilíbrio.",
+          "yt": "https://www.youtube.com/results?search_query=eleva%C3%A7%C3%A3o%20joelhos%20exerc%C3%ADcio%20iniciante%20casa"
+        }
+      ]
+    },
+    {
+      "type": "caminhada",
+      "cover": "caminhada",
+      "dist": "20-25 min",
+      "kcal": 120,
+      "tip": "Ritmo de conversa: se não conseguir falar, está rápido."
+    },
+    {
+      "type": "treino",
+      "cover": "treino",
+      "focus": "Força Básica I",
+      "tip": "Sinta o músculo. Qualidade > quantidade.",
+      "exs": [
+        {
+          "n": "Marcha no Lugar",
+          "m": "Aquecimento",
+          "s": 1,
+          "r": "3 min",
+          "rest": "—",
+          "kcal": 15,
+          "mod": "Acelere no último minuto.",
+          "yt": "https://www.youtube.com/results?search_query=marcha%20aquecimento%20iniciante%20casa"
+        },
+        {
+          "n": "Agachamento Livre",
+          "m": "Pernas · Glúteos",
+          "s": 3,
+          "r": "10x",
+          "rest": "60s",
+          "kcal": 30,
+          "mod": "Braços à frente. Pés na largura dos ombros.",
+          "yt": "https://www.youtube.com/results?search_query=agachamento%20livre%20forma%20iniciante%20casa"
+        },
+        {
+          "n": "Ponte de Glúteo",
+          "m": "Glúteo · Posterior",
+          "s": 3,
+          "r": "10x",
+          "rest": "45s",
+          "kcal": 20,
+          "mod": "Contraia o glúteo no topo. Segure 2s.",
+          "yt": "https://www.youtube.com/results?search_query=ponte%20gl%C3%BAteo%20iniciante%20iniciante%20casa"
+        },
+        {
+          "n": "Superman",
+          "m": "Lombar",
+          "s": 3,
+          "r": "10x",
+          "rest": "45s",
+          "kcal": 12,
+          "mod": "Segure 3s no topo.",
+          "yt": "https://www.youtube.com/results?search_query=superman%20lombar%20iniciante%20casa"
+        },
+        {
+          "n": "Flexão de Joelhos",
+          "m": "Peito · Tríceps",
+          "s": 2,
+          "r": "6x",
+          "rest": "60s",
+          "kcal": 15,
+          "mod": "Corpo reto da cabeça aos joelhos.",
+          "yt": "https://www.youtube.com/results?search_query=flex%C3%A3o%20joelhos%20iniciante%20iniciante%20casa"
+        },
+        {
+          "n": "Prancha no Joelho",
+          "m": "Core",
+          "s": 2,
+          "r": "20s",
+          "rest": "30s",
+          "kcal": 8,
+          "mod": "Costas retas. Respire normalmente.",
+          "yt": "https://www.youtube.com/results?search_query=prancha%20joelho%20iniciante%20casa"
+        }
+      ]
+    },
+    {
+      "type": "caminhada",
+      "cover": "caminhada",
+      "dist": "25 min",
+      "kcal": 135,
+      "tip": "Caminhada pós-almoço melhora digestão e controle glicêmico."
+    },
+    {
+      "type": "treino",
+      "cover": "treino",
+      "focus": "Cardio Suave + Core",
+      "tip": "Movimentar sem exaurir. Criar hábito.",
+      "exs": [
+        {
+          "n": "Polichinelo Lento",
+          "m": "Full Body · Cardio",
+          "s": 3,
+          "r": "15x",
+          "rest": "45s",
+          "kcal": 22,
+          "mod": "Step lateral se joelhos incomodarem.",
+          "yt": "https://www.youtube.com/results?search_query=polichinelo%20sem%20impacto%20iniciante%20casa"
+        },
+        {
+          "n": "Dead Bug",
+          "m": "Core",
+          "s": 3,
+          "r": "8 cada",
+          "rest": "45s",
+          "kcal": 10,
+          "mod": "Costas coladas no chão o tempo todo.",
+          "yt": "https://www.youtube.com/results?search_query=dead%20bug%20core%20iniciante%20casa"
+        },
+        {
+          "n": "Agachamento Livre",
+          "m": "Pernas",
+          "s": 2,
+          "r": "10x",
+          "rest": "60s",
+          "kcal": 25,
+          "mod": "Foque em descer devagar.",
+          "yt": "https://www.youtube.com/results?search_query=agachamento%20livre%20iniciante%20casa"
+        },
+        {
+          "n": "Prancha no Joelho",
+          "m": "Core",
+          "s": 3,
+          "r": "25s",
+          "rest": "30s",
+          "kcal": 10,
+          "mod": "+5 segundos a mais.",
+          "yt": "https://www.youtube.com/results?search_query=prancha%20iniciante%20casa"
+        }
+      ]
+    },
+    {
+      "type": "mobilidade",
+      "cover": "mobilidade",
+      "dist": "20 min",
+      "stretches": [
+        {
+          "n": "Posição da Criança",
+          "dur": "2x 45s"
+        },
+        {
+          "n": "Isquiotibiais c/ Toalha",
+          "dur": "2x 30s cada"
+        },
+        {
+          "n": "Abertura de Quadril",
+          "dur": "2x 30s cada"
+        },
+        {
+          "n": "Cat-Cow",
+          "dur": "2x 10 reps"
+        },
+        {
+          "n": "Rotação Espinal",
+          "dur": "2x 30s cada"
+        },
+        {
+          "n": "Peitorais na Parede",
+          "dur": "2x 30s cada"
+        }
+      ]
+    },
+    {
+      "type": "descanso",
+      "cover": "descanso",
+      "msg": "Descanso total. Hidrate-se, durma bem. Parabéns — mais uma semana!"
+    }
+  ],
+  [
+    {
+      "type": "treino",
+      "cover": "treino",
+      "focus": "Push Intermediário",
+      "tip": "Flexão na mesa agora. Corpo reto sempre!",
+      "exs": [
+        {
+          "n": "Polichinelo Lento",
+          "m": "Aquecimento",
+          "s": 2,
+          "r": "20x",
+          "rest": "20s",
+          "kcal": 28,
+          "mod": "Aumenta velocidade nos últimos 10.",
+          "yt": "https://www.youtube.com/results?search_query=polichinelo%20aquecimento%20iniciante%20casa"
+        },
+        {
+          "n": "Flexão Inclinada na Mesa",
+          "m": "Peito · Tríceps",
+          "s": 4,
+          "r": "12x",
+          "rest": "60s",
+          "kcal": 40,
+          "mod": "Desça o peito à mesa. Corpo reto.",
+          "yt": "https://www.youtube.com/results?search_query=flex%C3%A3o%20inclinada%20mesa%20iniciante%20casa"
+        },
+        {
+          "n": "Pike Push-up",
+          "m": "Deltóide",
+          "s": 3,
+          "r": "8x",
+          "rest": "60s",
+          "kcal": 28,
+          "mod": "Quadril elevado. Testa quase toca o chão.",
+          "yt": "https://www.youtube.com/results?search_query=pike%20push%20up%20iniciante%20casa"
+        },
+        {
+          "n": "Agachamento Livre",
+          "m": "Pernas · Glúteos",
+          "s": 4,
+          "r": "15x",
+          "rest": "60s",
+          "kcal": 50,
+          "mod": "2s para baixo. Pausa 1s no fundo.",
+          "yt": "https://www.youtube.com/results?search_query=agachamento%20livre%20iniciante%20casa"
+        },
+        {
+          "n": "Prancha Frontal",
+          "m": "Core",
+          "s": 3,
+          "r": "35s",
+          "rest": "30s",
+          "kcal": 18,
+          "mod": "Nos pés agora! Cotovelos no chão.",
+          "yt": "https://www.youtube.com/results?search_query=prancha%20abdominal%20iniciante%20casa"
+        },
+        {
+          "n": "Mountain Climber",
+          "m": "Core · Cardio",
+          "s": 3,
+          "r": "20 alt.",
+          "rest": "45s",
+          "kcal": 30,
+          "mod": "Lento e controlado.",
+          "yt": "https://www.youtube.com/results?search_query=mountain%20climber%20iniciante%20casa"
+        }
+      ]
+    },
+    {
+      "type": "bike",
+      "cover": "bike",
+      "dist": "30-35 min",
+      "zona": "Zona 2 · Conversa",
+      "kcal": 240,
+      "tip": "Pedale em ritmo que você consiga conversar.",
+      "phases": [
+        "5 min: aquecimento suave",
+        "20-25 min: ritmo constante (zona de conversa)",
+        "5 min: desaceleração gradual"
+      ]
+    },
+    {
+      "type": "treino",
+      "cover": "treino",
+      "focus": "Legs Intermediário",
+      "tip": "Maior grupo muscular = maior queima de gordura!",
+      "exs": [
+        {
+          "n": "Agachamento com Pausa",
+          "m": "Pernas · Glúteos",
+          "s": 4,
+          "r": "12x",
+          "rest": "60s",
+          "kcal": 50,
+          "mod": "Pause 2s no fundo. Mais eficiente!",
+          "yt": "https://www.youtube.com/results?search_query=agachamento%20pausa%20iniciante%20casa"
+        },
+        {
+          "n": "Avanço Alternado",
+          "m": "Pernas · Equilíbrio",
+          "s": 3,
+          "r": "12 cada",
+          "rest": "60s",
+          "kcal": 45,
+          "mod": "Use parede se precisar de equilíbrio.",
+          "yt": "https://www.youtube.com/results?search_query=avan%C3%A7o%20lunge%20iniciante%20casa"
+        },
+        {
+          "n": "Ponte de Glúteo c/ Pausa",
+          "m": "Glúteo · Posterior",
+          "s": 4,
+          "r": "15x",
+          "rest": "45s",
+          "kcal": 25,
+          "mod": "3s no topo. Máxima contração.",
+          "yt": "https://www.youtube.com/results?search_query=ponte%20gl%C3%BAteo%20iniciante%20casa"
+        },
+        {
+          "n": "Agachamento Sumô",
+          "m": "Adutores · Glúteo",
+          "s": 3,
+          "r": "15x",
+          "rest": "60s",
+          "kcal": 35,
+          "mod": "Pés abertos, dedos para fora.",
+          "yt": "https://www.youtube.com/results?search_query=agachamento%20sumo%20iniciante%20casa"
+        },
+        {
+          "n": "Dead Bug",
+          "m": "Core",
+          "s": 3,
+          "r": "10 cada",
+          "rest": "45s",
+          "kcal": 12,
+          "mod": "Costas coladas.",
+          "yt": "https://www.youtube.com/results?search_query=dead%20bug%20iniciante%20casa"
+        }
+      ]
+    },
+    {
+      "type": "bike",
+      "cover": "bike",
+      "dist": "35-40 min",
+      "zona": "Moderado + Pico",
+      "kcal": 290,
+      "tip": "2-3 minutos mais intensos no meio. Intro ao interval.",
+      "phases": [
+        "5 min: aquecimento",
+        "10 min: ritmo base",
+        "3 min: acelera forte!",
+        "12 min: ritmo base",
+        "5 min: desaquecimento"
+      ]
+    },
+    {
+      "type": "treino",
+      "cover": "treino",
+      "focus": "Full Body Circuito",
+      "tip": "3 rodadas sem parar dentro da rodada!",
+      "exs": [
+        {
+          "n": "CIRCUITO 3 rodadas",
+          "m": "Full Body · Cardio",
+          "s": 3,
+          "r": "Ver abaixo",
+          "rest": "90s entre rodadas",
+          "kcal": 180,
+          "mod": "Sem descanso dentro: 15 agachamentos → 10 flexões mesa → 20 marchadas → 30s prancha. 90s entre rodadas.",
+          "yt": "https://www.youtube.com/results?search_query=circuito%20funcional%20casa%20iniciante%20casa"
+        }
+      ]
+    },
+    {
+      "type": "bike",
+      "cover": "bike",
+      "dist": "45 min",
+      "zona": "Long Ride Base",
+      "kcal": 330,
+      "tip": "45 min contínuos — grande marco!",
+      "phases": [
+        "5 min: aquecimento",
+        "35 min: ritmo base constante",
+        "5 min: desaquecimento"
+      ]
+    },
+    {
+      "type": "descanso",
+      "cover": "descanso",
+      "msg": "Descanso total. O corpo reconstruindo músculos. Hidrate-se!"
+    }
+  ],
+  [
+    {
+      "type": "treino",
+      "cover": "treino",
+      "focus": "Push Avançado + Core",
+      "tip": "Flexão no chão! Marco importante no seu progresso.",
+      "exs": [
+        {
+          "n": "Polichinelo",
+          "m": "Aquecimento",
+          "s": 2,
+          "r": "30x",
+          "rest": "15s",
+          "kcal": 35,
+          "mod": "Aquecimento cardiovascular completo.",
+          "yt": "https://www.youtube.com/results?search_query=polichinelo%20iniciante%20casa"
+        },
+        {
+          "n": "Flexão Normal no Chão",
+          "m": "Peito · Tríceps",
+          "s": 4,
+          "r": "10x",
+          "rest": "60s",
+          "kcal": 50,
+          "mod": "MARCO! Corpo reto. Desça quase tocando o chão.",
+          "yt": "https://www.youtube.com/results?search_query=flex%C3%A3o%20correta%20iniciante%20casa"
+        },
+        {
+          "n": "Flexão Diamante",
+          "m": "Tríceps · Peito Interno",
+          "s": 3,
+          "r": "8x",
+          "rest": "60s",
+          "kcal": 35,
+          "mod": "Mãos formam losango. Mais difícil!",
+          "yt": "https://www.youtube.com/results?search_query=flex%C3%A3o%20diamante%20iniciante%20casa"
+        },
+        {
+          "n": "Pike Push-up Avançado",
+          "m": "Deltóide",
+          "s": 3,
+          "r": "10x",
+          "rest": "60s",
+          "kcal": 32,
+          "mod": "Quadril mais alto. Testa quase toca.",
+          "yt": "https://www.youtube.com/results?search_query=pike%20push%20up%20avan%C3%A7ado%20iniciante%20casa"
+        },
+        {
+          "n": "Prancha c/ Toque no Ombro",
+          "m": "Core",
+          "s": 3,
+          "r": "20 alt.",
+          "rest": "45s",
+          "kcal": 22,
+          "mod": "Toque um ombro com a mão oposta. Core firme.",
+          "yt": "https://www.youtube.com/results?search_query=prancha%20toque%20ombro%20iniciante%20casa"
+        },
+        {
+          "n": "Abdominal Bicicleta",
+          "m": "Oblíquos",
+          "s": 4,
+          "r": "20 alt.",
+          "rest": "45s",
+          "kcal": 28,
+          "mod": "Cotovelo ao joelho oposto. Lento.",
+          "yt": "https://www.youtube.com/results?search_query=abdominal%20bicicleta%20iniciante%20casa"
+        }
+      ]
+    },
+    {
+      "type": "bike",
+      "cover": "bike",
+      "dist": "40-50 min",
+      "zona": "Interval Training",
+      "kcal": 400,
+      "tip": "Bike HIIT! Queima gordura por horas depois (afterburn).",
+      "phases": [
+        "5 min: aquecimento",
+        "Repita 6x: 2 min intenso / 3 min recuperação",
+        "5 min: desaquecimento"
+      ]
+    },
+    {
+      "type": "treino",
+      "cover": "treino",
+      "focus": "Legs + Explosão",
+      "tip": "Agachamento com salto entra! Luanthony: versão sem salto se joelhos doerem.",
+      "exs": [
+        {
+          "n": "Agachamento c/ Salto",
+          "m": "Pernas · Cardio",
+          "s": 4,
+          "r": "12x",
+          "rest": "60s",
+          "kcal": 70,
+          "mod": "Luanthony: agachamento pulsado. Jéssica: salto leve.",
+          "yt": "https://www.youtube.com/results?search_query=agachamento%20salto%20iniciante%20casa"
+        },
+        {
+          "n": "Avanço Alternado",
+          "m": "Pernas",
+          "s": 4,
+          "r": "12 cada",
+          "rest": "60s",
+          "kcal": 55,
+          "mod": "Mais volume. Tronco ereto.",
+          "yt": "https://www.youtube.com/results?search_query=avan%C3%A7o%20alternado%20iniciante%20casa"
+        },
+        {
+          "n": "Ponte Unilateral",
+          "m": "Glúteo · Posterior",
+          "s": 3,
+          "r": "10 cada",
+          "rest": "60s",
+          "kcal": 28,
+          "mod": "Uma perna levantada! Jéssica: ambas se não conseguir.",
+          "yt": "https://www.youtube.com/results?search_query=ponte%20unilateral%20iniciante%20casa"
+        },
+        {
+          "n": "Agachamento Búlgaro",
+          "m": "Quadríceps · Glúteo",
+          "s": 3,
+          "r": "8 cada",
+          "rest": "75s",
+          "kcal": 55,
+          "mod": "Pé traseiro na cadeira. Devagar 2s.",
+          "yt": "https://www.youtube.com/results?search_query=agachamento%20b%C3%BAlgaro%20iniciante%20casa"
+        },
+        {
+          "n": "Panturrilha no Degrau",
+          "m": "Panturrilha",
+          "s": 3,
+          "r": "20x",
+          "rest": "30s",
+          "kcal": 15,
+          "mod": "Sobe nas pontas dos pés.",
+          "yt": "https://www.youtube.com/results?search_query=panturrilha%20degrau%20iniciante%20casa"
+        }
+      ]
+    },
+    {
+      "type": "bike",
+      "cover": "bike",
+      "dist": "50 min",
+      "zona": "Tempo Moderado",
+      "kcal": 440,
+      "tip": "50 min em esforço — fala mas prefere não.",
+      "phases": [
+        "5 min: aquecimento",
+        "40 min: ritmo moderado constante",
+        "5 min: desaquecimento"
+      ]
+    },
+    {
+      "type": "treino",
+      "cover": "treino",
+      "focus": "HIIT Circuito",
+      "tip": "20s esforço / 40s descanso. Metabolismo acelerado 24h!",
+      "exs": [
+        {
+          "n": "Jumping Jack – 20s/40s",
+          "m": "Full Body",
+          "s": 5,
+          "r": "20s esforço",
+          "rest": "40s",
+          "kcal": 55,
+          "mod": "5 rodadas. Máximo nos 20s!",
+          "yt": "https://www.youtube.com/results?search_query=jumping%20jack%20hiit%20iniciante%20casa"
+        },
+        {
+          "n": "Agachamento Salto – 20s/40s",
+          "m": "Pernas",
+          "s": 5,
+          "r": "20s esforço",
+          "rest": "40s",
+          "kcal": 70,
+          "mod": "Luanthony: pulsado sem salto.",
+          "yt": "https://www.youtube.com/results?search_query=agachamento%20salto%20hiit%20iniciante%20casa"
+        },
+        {
+          "n": "Flexão – 20s/40s",
+          "m": "Peito",
+          "s": 5,
+          "r": "20s esforço",
+          "rest": "40s",
+          "kcal": 45,
+          "mod": "Máximo de reps em 20s com boa forma.",
+          "yt": "https://www.youtube.com/results?search_query=flex%C3%A3o%20hiit%20iniciante%20casa"
+        },
+        {
+          "n": "Mountain Climber – 20s/40s",
+          "m": "Core",
+          "s": 5,
+          "r": "20s esforço",
+          "rest": "40s",
+          "kcal": 60,
+          "mod": "Ritmo alto. Costas retas.",
+          "yt": "https://www.youtube.com/results?search_query=mountain%20climber%20hiit%20iniciante%20casa"
+        }
+      ]
+    },
+    {
+      "type": "bike",
+      "cover": "bike",
+      "dist": "60 min",
+      "zona": "Long Ride",
+      "kcal": 500,
+      "tip": "60 min contínuos — seu novo recorde!",
+      "phases": [
+        "5 min: aquecimento",
+        "50 min: ritmo base",
+        "5 min: desaquecimento"
+      ]
+    },
+    {
+      "type": "descanso",
+      "cover": "descanso",
+      "msg": "Descanso total. Você está no nível intermediário!"
+    }
+  ],
+  [
+    {
+      "type": "treino",
+      "cover": "treino",
+      "focus": "Push Elite",
+      "tip": "1 ano de progressão: de parede ao Archer. Impressionante!",
+      "exs": [
+        {
+          "n": "Polichinelo",
+          "m": "Aquecimento",
+          "s": 2,
+          "r": "40x",
+          "rest": "15s",
+          "kcal": 45,
+          "mod": "Aquecimento rápido.",
+          "yt": "https://www.youtube.com/results?search_query=polichinelo%20iniciante%20casa"
+        },
+        {
+          "n": "Flexão Archer",
+          "m": "Peito Unilateral",
+          "s": 4,
+          "r": "6 cada",
+          "rest": "75s",
+          "kcal": 65,
+          "mod": "Braços bem abertos. Precursor do one-arm!",
+          "yt": "https://www.youtube.com/results?search_query=archer%20push%20up%20iniciante%20casa"
+        },
+        {
+          "n": "Flexão Explosiva (Clap)",
+          "m": "Peito · Potência",
+          "s": 3,
+          "r": "6x",
+          "rest": "75s",
+          "kcal": 50,
+          "mod": "Empurra FORTE e bate palma no ar.",
+          "yt": "https://www.youtube.com/results?search_query=clap%20push%20up%20iniciante%20casa"
+        },
+        {
+          "n": "Pike Push-up c/ Pés Elevados",
+          "m": "Ombro · Tríceps",
+          "s": 4,
+          "r": "10x",
+          "rest": "60s",
+          "kcal": 45,
+          "mod": "Pés na cadeira. Simula handstand.",
+          "yt": "https://www.youtube.com/results?search_query=pike%20push%20up%20p%C3%A9s%20elevados%20iniciante%20casa"
+        },
+        {
+          "n": "Prancha Dinâmica (cotovelo↔mão)",
+          "m": "Core · Ombro",
+          "s": 4,
+          "r": "20 alt.",
+          "rest": "45s",
+          "kcal": 30,
+          "mod": "Alterna entre prancha de mão e cotovelo.",
+          "yt": "https://www.youtube.com/results?search_query=prancha%20din%C3%A2mica%20iniciante%20casa"
+        },
+        {
+          "n": "L-Sit Negativo (cadeiras)",
+          "m": "Core · Tríceps",
+          "s": 3,
+          "r": "15s",
+          "rest": "60s",
+          "kcal": 25,
+          "mod": "Braços esticados, levanta quadril entre 2 cadeiras.",
+          "yt": "https://www.youtube.com/results?search_query=L-sit%20iniciante%20iniciante%20casa"
+        }
+      ]
+    },
+    {
+      "type": "bike",
+      "cover": "bike",
+      "dist": "45-55 min",
+      "zona": "Performance Interval",
+      "kcal": 490,
+      "tip": "Simulação de subida: 3 min resistência alta.",
+      "phases": [
+        "5 min: aquecimento",
+        "Repita 5x: 3 min \"subida\" / 4 min recuperação ativa",
+        "5 min: cool down"
+      ]
+    },
+    {
+      "type": "treino",
+      "cover": "treino",
+      "focus": "Legs Elite",
+      "tip": "Pistol squat assistido — objetivo de atleta!",
+      "exs": [
+        {
+          "n": "Pistol Squat Assistido",
+          "m": "Quadríceps · Equilíbrio",
+          "s": 4,
+          "r": "6 cada",
+          "rest": "90s",
+          "kcal": 70,
+          "mod": "Segure a parede. Uma perna à frente.",
+          "yt": "https://www.youtube.com/results?search_query=pistol%20squat%20assistido%20iniciante%20casa"
+        },
+        {
+          "n": "Jump Lunge (Avanço c/ Salto)",
+          "m": "Pernas · Potência",
+          "s": 4,
+          "r": "10 cada",
+          "rest": "75s",
+          "kcal": 85,
+          "mod": "Troca de perna no ar. Luanthony: sem salto mas rápido.",
+          "yt": "https://www.youtube.com/results?search_query=jump%20lunge%20iniciante%20casa"
+        },
+        {
+          "n": "Ponte Unilateral + Extensão",
+          "m": "Glúteo · Posterior",
+          "s": 4,
+          "r": "12 cada",
+          "rest": "60s",
+          "kcal": 35,
+          "mod": "Perna levantada estendida. Eleva e abaixa.",
+          "yt": "https://www.youtube.com/results?search_query=ponte%20unilateral%20iniciante%20casa"
+        },
+        {
+          "n": "Búlgaro c/ Pausa",
+          "m": "Quadríceps · Glúteo",
+          "s": 3,
+          "r": "10 cada",
+          "rest": "75s",
+          "kcal": 60,
+          "mod": "3s descendo. 1s pausa no fundo.",
+          "yt": "https://www.youtube.com/results?search_query=agachamento%20b%C3%BAlgaro%20iniciante%20casa"
+        },
+        {
+          "n": "Box Jump (degrau)",
+          "m": "Explosão",
+          "s": 3,
+          "r": "8x",
+          "rest": "75s",
+          "kcal": 55,
+          "mod": "Salte sobre degrau. Desça andando. Luanthony: step up rápido.",
+          "yt": "https://www.youtube.com/results?search_query=box%20jump%20degrau%20iniciante%20casa"
+        }
+      ]
+    },
+    {
+      "type": "bike",
+      "cover": "bike",
+      "dist": "60-75 min",
+      "zona": "Endurance",
+      "kcal": 590,
+      "tip": "Long ride de resistência: define o contorno muscular.",
+      "phases": [
+        "5 min: aquecimento",
+        "55-65 min: moderado constante, respiração nasal",
+        "5 min: desaquecimento"
+      ]
+    },
+    {
+      "type": "treino",
+      "cover": "treino",
+      "focus": "HIIT Elite",
+      "tip": "10 meses de treino resultam nisso. Vocês chegaram!",
+      "exs": [
+        {
+          "n": "Burpee Completo",
+          "m": "Full Body",
+          "s": 5,
+          "r": "8x",
+          "rest": "60s",
+          "kcal": 90,
+          "mod": "Flexão → salta → palma. Completo.",
+          "yt": "https://www.youtube.com/results?search_query=burpee%20completo%20iniciante%20casa"
+        },
+        {
+          "n": "Flexão Explosiva",
+          "m": "Peito · Potência",
+          "s": 4,
+          "r": "8x",
+          "rest": "60s",
+          "kcal": 60,
+          "mod": "Palma batida no ar.",
+          "yt": "https://www.youtube.com/results?search_query=clap%20push%20up%20iniciante%20casa"
+        },
+        {
+          "n": "Jump Squat",
+          "m": "Pernas · Cardio",
+          "s": 5,
+          "r": "12x",
+          "rest": "60s",
+          "kcal": 80,
+          "mod": "Salto completo. Luanthony: pulsado.",
+          "yt": "https://www.youtube.com/results?search_query=jump%20squat%20iniciante%20casa"
+        },
+        {
+          "n": "V-Up Abdominal",
+          "m": "Core Completo",
+          "s": 4,
+          "r": "12x",
+          "rest": "45s",
+          "kcal": 38,
+          "mod": "Sobe pernas + tronco ao mesmo tempo.",
+          "yt": "https://www.youtube.com/results?search_query=V%20up%20abdominal%20iniciante%20casa"
+        },
+        {
+          "n": "Mountain Climber Rápido",
+          "m": "Core · Cardio",
+          "s": 5,
+          "r": "30s",
+          "rest": "30s",
+          "kcal": 65,
+          "mod": "Ritmo máximo.",
+          "yt": "https://www.youtube.com/results?search_query=mountain%20climber%20r%C3%A1pido%20iniciante%20casa"
+        }
+      ]
+    },
+    {
+      "type": "bike",
+      "cover": "bike",
+      "dist": "75-90 min",
+      "zona": "Long Ride Elite",
+      "kcal": 690,
+      "tip": "75-90 min = treino cardiovascular mais completo possível!",
+      "phases": [
+        "5 min: aquecimento",
+        "65-80 min: moderado com 3 picos de 5 min forte",
+        "5 min: desaquecimento"
+      ]
+    },
+    {
+      "type": "descanso",
+      "cover": "descanso",
+      "msg": "1 ANO COMPLETO. Você é um atleta. Parabéns Luanthony e Jéssica!"
+    }
+  ]
+]

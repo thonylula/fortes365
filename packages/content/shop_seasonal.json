@@ -1,0 +1,278 @@
+{
+  "0": {
+    "cat": "🥭 Frutas de Janeiro",
+    "items": [
+      {
+        "n": "Manga (variedade)",
+        "ql": "6 unidades",
+        "qj": "5 unidades",
+        "obs": "Safra plena! Preço mínimo."
+      },
+      {
+        "n": "Caju fresco",
+        "ql": "1kg",
+        "qj": "800g",
+        "obs": "Regional! Riquíssimo em vitamina C."
+      },
+      {
+        "n": "Umbu (se achar)",
+        "ql": "500g",
+        "qj": "400g",
+        "obs": "Fruta do sertão baiano — rara e deliciosa."
+      }
+    ]
+  },
+  "1": {
+    "cat": "🥤 Frutas de Fevereiro",
+    "items": [
+      {
+        "n": "Caju fresco",
+        "ql": "1,5kg",
+        "qj": "1kg",
+        "obs": "Safra máxima. Compre bastante!"
+      },
+      {
+        "n": "Graviola",
+        "ql": "1kg",
+        "qj": "800g",
+        "obs": "Para vitaminas. Sabor tropical."
+      },
+      {
+        "n": "Banana prata",
+        "ql": "2 cachos",
+        "qj": "1,5 cacho",
+        "obs": "Base do pré/pós-treino."
+      }
+    ]
+  },
+  "2": {
+    "cat": "🍑 Frutas de Março",
+    "items": [
+      {
+        "n": "Pitanga",
+        "ql": "500g",
+        "qj": "400g",
+        "obs": "Rica em licopeno. Típica da Bahia."
+      },
+      {
+        "n": "Cajá",
+        "ql": "500g",
+        "qj": "400g",
+        "obs": "Ácida, vitamina C. Boa para sucos."
+      },
+      {
+        "n": "Banana",
+        "ql": "2 cachos",
+        "qj": "1,5 cacho",
+        "obs": "Treino e lanches."
+      }
+    ]
+  },
+  "3": {
+    "cat": "🍋 Frutas de Abril",
+    "items": [
+      {
+        "n": "Maracujá",
+        "ql": "6 unidades",
+        "qj": "5 unidades",
+        "obs": "Calmante natural. Vitaminas e chás."
+      },
+      {
+        "n": "Umbu (se achar)",
+        "ql": "500g",
+        "qj": "400g",
+        "obs": "Fruta do sertão com sabor único."
+      },
+      {
+        "n": "Laranja",
+        "ql": "1kg",
+        "qj": "1kg",
+        "obs": "Vitamina C. Suco matinal."
+      }
+    ]
+  },
+  "4": {
+    "cat": "🌿 Frutas de Maio",
+    "items": [
+      {
+        "n": "Seriguela",
+        "ql": "500g",
+        "qj": "400g",
+        "obs": "Fruta nordestina. Rica em betacaroteno."
+      },
+      {
+        "n": "Jaca madura",
+        "ql": "1 pedaço",
+        "qj": "1 pedaço",
+        "obs": "Energética. Use com moderação."
+      },
+      {
+        "n": "Banana",
+        "ql": "2 cachos",
+        "qj": "1,5 cacho",
+        "obs": "Base dos treinos."
+      }
+    ]
+  },
+  "5": {
+    "cat": "🍃 Frutas de Junho",
+    "items": [
+      {
+        "n": "Goiaba vermelha",
+        "ql": "500g",
+        "qj": "400g",
+        "obs": "Rica em licopeno e vitamina C."
+      },
+      {
+        "n": "Laranja lima/pérsia",
+        "ql": "2kg",
+        "qj": "1,5kg",
+        "obs": "Suco e vitaminas."
+      },
+      {
+        "n": "Banana prata",
+        "ql": "2 cachos",
+        "qj": "1,5 cacho",
+        "obs": "Essencial."
+      }
+    ]
+  },
+  "6": {
+    "cat": "🍊 Frutas de Julho",
+    "items": [
+      {
+        "n": "Laranja variada",
+        "ql": "2kg",
+        "qj": "1,5kg",
+        "obs": "Safra alta. Suco e vitaminas."
+      },
+      {
+        "n": "Mandarina/mexerica",
+        "ql": "1kg",
+        "qj": "800g",
+        "obs": "Lanche fácil. Vitamina C."
+      },
+      {
+        "n": "Banana",
+        "ql": "2 cachos",
+        "qj": "1,5 cacho",
+        "obs": "Treino."
+      }
+    ]
+  },
+  "7": {
+    "cat": "🍌 Frutas de Agosto",
+    "items": [
+      {
+        "n": "Mamão formosa",
+        "ql": "1 unidade",
+        "qj": "1 unidade",
+        "obs": "Digestão + fibras."
+      },
+      {
+        "n": "Banana nanica",
+        "ql": "2 cachos",
+        "qj": "1,5 cacho",
+        "obs": "Mais doce para vitaminas."
+      },
+      {
+        "n": "Maracujá",
+        "ql": "4 unidades",
+        "qj": "3 unidades",
+        "obs": "Chás noturnos."
+      }
+    ]
+  },
+  "8": {
+    "cat": "🍉 Frutas de Setembro",
+    "items": [
+      {
+        "n": "Melancia pequena",
+        "ql": "1 unidade",
+        "qj": "1 unidade",
+        "obs": "Hidratação + refrescante no calor."
+      },
+      {
+        "n": "Uva (quando achar)",
+        "ql": "500g",
+        "qj": "400g",
+        "obs": "Antioxidante. Lanche da tarde."
+      },
+      {
+        "n": "Banana",
+        "ql": "2 cachos",
+        "qj": "1,5 cacho",
+        "obs": "Essencial."
+      }
+    ]
+  },
+  "9": {
+    "cat": "🥭 Frutas de Outubro",
+    "items": [
+      {
+        "n": "Manga primeira safra",
+        "ql": "4 unidades",
+        "qj": "3 unidades",
+        "obs": "Volta da safra! Preços caindo."
+      },
+      {
+        "n": "Acerola fresca",
+        "ql": "300g",
+        "qj": "250g",
+        "obs": "Vitamina C máxima."
+      },
+      {
+        "n": "Banana",
+        "ql": "2 cachos",
+        "qj": "1,5 cacho",
+        "obs": "Treino."
+      }
+    ]
+  },
+  "10": {
+    "cat": "🥭 Frutas de Novembro",
+    "items": [
+      {
+        "n": "Manga Palmer/Espada",
+        "ql": "6 unidades",
+        "qj": "5 unidades",
+        "obs": "Safra aumentando. Compre na feira."
+      },
+      {
+        "n": "Caju novo",
+        "ql": "1kg",
+        "qj": "800g",
+        "obs": "Chegando a safra."
+      },
+      {
+        "n": "Banana",
+        "ql": "2 cachos",
+        "qj": "1,5 cacho",
+        "obs": "Essencial."
+      }
+    ]
+  },
+  "11": {
+    "cat": "🥭 Frutas de Dezembro",
+    "items": [
+      {
+        "n": "Manga plena safra",
+        "ql": "8 unidades",
+        "qj": "6 unidades",
+        "obs": "PREÇO MÍNIMO! Compre em quantidade."
+      },
+      {
+        "n": "Caju plena safra",
+        "ql": "1,5kg",
+        "qj": "1kg",
+        "obs": "Safra máxima. Rico em vitamina C."
+      },
+      {
+        "n": "Abacaxi",
+        "ql": "1 unidade",
+        "qj": "1 unidade",
+        "obs": "Digestão. Vitamina C. Antiinflamatório."
+      }
+    ]
+  }
+}

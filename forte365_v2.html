@@ -1,0 +1,1749 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FORTE 365 — Luanthony & Jéssica</title>
+<meta name="theme-color" content="#FF5500">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.json">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0b0b;--s1:#141414;--s2:#1c1c1c;--s3:#252525;--bd:#2e2e2e;--or:#FF5500;--ord:rgba(255,85,0,.13);--pk:#EC4899;--pkd:rgba(236,72,153,.12);--gn:#22C55E;--gnd:rgba(34,197,94,.12);--bl:#3B82F6;--bld:rgba(59,130,246,.12);--yw:#EAB308;--ywd:rgba(234,179,8,.12);--rd:#EF4444;--pu:#a855f7;--pud:rgba(168,85,247,.12);--tx:#f0f0f0;--tx2:#999;--tx3:#555;--r:12px;--rs:8px}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tx);font-family:'Barlow',sans-serif;min-height:100vh}
+.app{display:flex;flex-direction:column;min-height:100vh}
+.hdr{background:var(--s1);border-bottom:1px solid var(--bd);padding:0 1rem;display:flex;align-items:center;justify-content:space-between;height:52px;position:sticky;top:0;z-index:200}
+.logo{font-family:'Anton',sans-serif;font-size:22px;letter-spacing:3px;color:var(--or)}
+.logo span{color:var(--tx)}.logo sub{font-size:10px;color:var(--tx3);letter-spacing:1px;font-family:'Barlow',sans-serif;font-weight:600;margin-left:4px}
+.prow{display:flex;gap:5px}
+.pmini{display:flex;align-items:center;gap:5px;border-radius:6px;padding:4px 8px;border:1.5px solid}
+.pl{border-color:var(--or);background:var(--ord)}.pj{border-color:var(--pk);background:var(--pkd)}
+.pav{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Anton',sans-serif;font-size:9px}
+.avl{background:var(--ord);color:var(--or)}.avj{background:var(--pkd);color:var(--pk)}
+.pmn{font-size:11px;font-weight:600}
+.nav-tabs{background:var(--s1);border-bottom:1px solid var(--bd);display:flex;overflow-x:auto}
+.nav-tab{flex:1;min-width:56px;padding:9px 4px;display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;border-bottom:2px solid transparent;transition:.2s;background:none;border-top:none;border-left:none;border-right:none;color:var(--tx2);font-family:'Barlow',sans-serif}
+.nav-tab:hover{color:var(--tx);background:var(--s2)}.nav-tab.active{border-bottom-color:var(--or);color:var(--tx)}
+.nav-icon{font-size:14px}.nav-lbl{font-size:9px;letter-spacing:1px;text-transform:uppercase;font-weight:600}
+.mstrip{background:var(--s2);border-bottom:1px solid var(--bd);padding:.5rem .8rem;overflow-x:auto}
+.mbtns{display:flex;gap:5px;min-width:max-content}
+.mbtn{padding:4px 9px;border:1.5px solid var(--bd);border-radius:5px;background:var(--s3);cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;color:var(--tx2);letter-spacing:.5px;transition:.2s}
+.mbtn:hover{border-color:var(--or);color:var(--tx)}.mbtn.active{border-color:var(--or);background:var(--ord);color:var(--or)}
+.wstrip{background:var(--bg);border-bottom:1px solid var(--bd);padding:.5rem .8rem;display:flex;align-items:center;gap:.7rem;overflow-x:auto}
+.wlbl{font-size:10px;color:var(--tx3);letter-spacing:1.5px;text-transform:uppercase;flex-shrink:0}
+.wbtns{display:flex;gap:5px;flex-shrink:0}
+.wbtn{padding:4px 9px;border:1.5px solid var(--bd);border-radius:5px;background:var(--s2);cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;color:var(--tx2);letter-spacing:.5px;transition:.2s}
+.wbtn:hover{border-color:var(--or);color:var(--tx)}.wbtn.active{border-color:var(--or);background:var(--ord);color:var(--or)}
+.pchip{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 8px;border-radius:3px;flex-shrink:0}
+.phv{background:var(--gnd);color:var(--gn)}.pha{background:var(--ywd);color:var(--yw)}.pho{background:var(--ord);color:var(--or)}.phr{background:rgba(239,68,68,.15);color:var(--rd)}.php{background:var(--pud);color:var(--pu)}
+.dstrip{background:var(--s1);border-bottom:1px solid var(--bd);padding:.5rem .8rem;overflow-x:auto}
+.dbtns{display:flex;gap:5px;min-width:max-content}
+.dbtn{display:flex;flex-direction:column;align-items:center;gap:2px;background:var(--s2);border:1.5px solid var(--bd);border-radius:7px;padding:6px 11px;cursor:pointer;transition:.2s;min-width:52px}
+.dbtn:hover{border-color:var(--or)}.dbtn.active{background:var(--or);border-color:var(--or)}
+.dbtn.active .da{color:#fff}.dbtn.active .dn{color:rgba(255,255,255,.7)}
+.da{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12px;letter-spacing:1px;color:var(--tx)}.dn{font-size:9px;color:var(--tx2)}
+.main{flex:1;max-width:1100px;margin:0 auto;width:100%;padding:1rem .8rem 4rem}
+.slbl{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--tx3);margin-bottom:.7rem;display:flex;align-items:center;gap:6px}
+.slbl::after{content:'';flex:1;height:1px;background:var(--bd)}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+@media(max-width:820px){.two-col{grid-template-columns:1fr}}
+/* COVER PHOTO */
+.cover-wrap{border-radius:var(--r);overflow:hidden;margin-bottom:1rem;position:relative;height:180px;background:linear-gradient(135deg,var(--s2),var(--s3))}
+.cover-img{width:100%;height:100%;object-fit:cover;display:block}
+.cover-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.85) 0%,rgba(0,0,0,.2) 60%,transparent 100%)}
+.cover-content{position:absolute;bottom:0;left:0;right:0;padding:.9rem 1rem}
+.cover-title{font-family:'Anton',sans-serif;font-size:24px;letter-spacing:2px;line-height:1;margin-bottom:3px}
+.cover-sub{font-size:12px;color:rgba(255,255,255,.75)}
+.cover-tags{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}
+.ctag{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:10px;letter-spacing:.5px;padding:2px 7px;border-radius:3px;text-transform:uppercase}
+.ct-or{background:var(--or);color:#fff}.ct-gn{background:var(--gn);color:#000}.ct-bl{background:var(--bl);color:#fff}.ct-yw{background:rgba(234,179,8,.9);color:#000}.ct-pk{background:var(--pk);color:#fff}
+/* CALORIE BURN SUMMARY */
+.kcal-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-bottom:1rem}
+.ks-box{background:var(--s2);border:1px solid var(--bd);border-radius:var(--rs);padding:9px;text-align:center}
+.ks-v{font-family:'Anton',sans-serif;font-size:18px;line-height:1;margin-bottom:2px}
+.ks-l{font-size:9px;color:var(--tx3);letter-spacing:.5px;text-transform:uppercase}
+.ks-bar{margin-top:1rem;background:var(--s2);border:1px solid var(--bd);border-radius:var(--rs);padding:10px;margin-bottom:1rem}
+.ks-bar-t{font-size:11px;color:var(--tx2);margin-bottom:6px;display:flex;justify-content:space-between}
+.ks-bar-bg{background:var(--s3);border-radius:3px;height:8px;overflow:hidden}
+.ks-bar-fill{height:100%;background:linear-gradient(90deg,var(--or),#ff7733);border-radius:3px;transition:width .5s ease}
+/* EXERCISE CARDS */
+.ex-list{display:flex;flex-direction:column;gap:7px}
+.ex-card{background:var(--s1);border:1.5px solid var(--bd);border-radius:var(--r);padding:.9rem;display:flex;gap:.7rem;align-items:flex-start;transition:all .2s;cursor:default}
+.ex-card:hover{border-color:rgba(255,85,0,.4)}
+.ex-card.done{border-color:var(--gn);background:rgba(34,197,94,.06)}
+.ex-num{font-family:'Anton',sans-serif;font-size:20px;color:var(--tx3);min-width:26px;line-height:1;padding-top:2px;transition:.2s}
+.ex-card.done .ex-num{color:var(--gn)}
+.ex-body{flex:1}
+.ex-name{font-weight:600;font-size:14px;margin-bottom:2px}
+.ex-muscle{font-size:11px;color:var(--tx2);margin-bottom:5px}
+.ex-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:5px}
+.et{font-size:10px;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.5px;padding:2px 6px;border-radius:3px}
+.ts{background:var(--ord);color:var(--or)}.tr{background:var(--bld);color:var(--bl)}.td{background:rgba(255,255,255,.05);color:var(--tx3)}.tk{background:rgba(239,68,68,.12);color:#ff6b6b}
+.ex-mod{font-size:11px;color:var(--tx2);border-left:2px solid var(--bd);padding-left:7px;margin-top:3px;line-height:1.5}
+.ex-right{display:flex;flex-direction:column;align-items:flex-end;gap:5px;flex-shrink:0}
+.yt-btn{display:flex;align-items:center;gap:4px;background:rgba(255,0,0,.12);border:1px solid rgba(255,0,0,.3);border-radius:5px;padding:4px 8px;cursor:pointer;font-size:10px;color:#ff6b6b;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-decoration:none;transition:.2s}
+.yt-btn:hover{background:rgba(255,0,0,.25);color:#fff}
+.done-btn{display:flex;align-items:center;gap:4px;border:1.5px solid var(--bd);border-radius:5px;padding:4px 8px;cursor:pointer;font-size:10px;font-family:'Barlow Condensed',sans-serif;font-weight:700;background:none;color:var(--tx2);transition:.2s}
+.done-btn:hover{border-color:var(--gn);color:var(--gn)}
+.done-btn.marked{background:var(--gnd);border-color:var(--gn);color:var(--gn)}
+.done-badge{display:inline-flex;align-items:center;gap:3px;background:var(--gnd);border:1px solid var(--gn);border-radius:3px;padding:2px 7px;font-size:10px;font-family:'Barlow Condensed',sans-serif;font-weight:700;color:var(--gn);letter-spacing:.5px}
+/* SPECIAL CARDS */
+.sp-card{background:var(--s1);border-radius:var(--r);padding:1.2rem;text-align:center;border:1px solid}
+.cr{border-color:var(--gn)}.cw{border-color:var(--bl)}.cm{border-color:var(--yw)}
+.sp-icon{font-size:36px;margin-bottom:.6rem}.sp-title{font-family:'Anton',sans-serif;font-size:20px;letter-spacing:2px;margin-bottom:.4rem}
+.str-items{margin-top:.8rem;display:flex;flex-direction:column;gap:5px;text-align:left}
+.str-item{background:var(--s2);border-radius:var(--rs);padding:7px 10px;font-size:12px;color:var(--tx2);border-left:3px solid var(--yw);display:flex;justify-content:space-between;align-items:center}
+.str-item strong{color:var(--tx)}.str-dur{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:10px;color:var(--yw)}
+/* BIKE */
+.bike-card{background:var(--s1);border:1px solid var(--bl);border-radius:var(--r);padding:1.1rem}
+.bike-title{font-family:'Anton',sans-serif;font-size:20px;letter-spacing:2px;color:var(--bl);margin-bottom:.4rem}
+.bike-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:.8rem 0}
+.bst{background:var(--bld);border-radius:var(--rs);padding:8px;text-align:center}
+.bst-v{font-family:'Anton',sans-serif;font-size:18px;color:var(--bl)}.bst-l{font-size:9px;color:var(--tx2);text-transform:uppercase}
+.bike-phases{display:flex;flex-direction:column;gap:5px}
+.bph{background:var(--s2);border-radius:var(--rs);padding:7px 10px;font-size:12px;color:var(--tx2);border-left:3px solid var(--bl)}
+/* MEAL */
+.meal-list{display:flex;flex-direction:column;gap:7px}
+.meal-card{background:var(--s1);border:1px solid var(--bd);border-radius:var(--r);overflow:hidden}
+.meal-hdr{display:flex;align-items:center;gap:7px;padding:8px 12px;background:var(--s2);border-bottom:1px solid var(--bd)}
+.meal-ico{width:26px;height:26px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.ico-cafe{background:var(--ywd)}.ico-lm{background:var(--pud)}.ico-alm{background:var(--gnd)}.ico-pre{background:var(--ord)}.ico-pos{background:var(--bld)}.ico-jan{background:rgba(59,130,246,.1)}.ico-ln{background:rgba(34,197,94,.1)}.ico-ext{background:rgba(239,68,68,.15)}
+.meal-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12px;letter-spacing:1px;text-transform:uppercase;flex:1}
+.meal-time{font-size:10px;color:var(--tx2);background:var(--s3);padding:2px 6px;border-radius:3px;font-family:'Barlow Condensed',sans-serif;font-weight:600}
+.meal-body{padding:9px 12px}
+.mi{font-size:12px;color:var(--tx2);display:flex;gap:5px;line-height:1.4;margin-bottom:3px}
+.mi::before{content:'•';color:var(--tx3);flex-shrink:0}
+.pt-row{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}
+.ptl{font-size:10px;padding:2px 7px;border-radius:3px;background:var(--ord);color:var(--or);font-family:'Barlow Condensed',sans-serif;font-weight:600}
+.ptj{font-size:10px;padding:2px 7px;border-radius:3px;background:var(--pkd);color:var(--pk);font-family:'Barlow Condensed',sans-serif;font-weight:600}
+.meal-footer{padding:3px 12px 8px;display:flex;gap:6px;flex-wrap:wrap}
+.rbtn{font-size:10px;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.5px;padding:2px 7px;border-radius:3px;background:var(--gnd);color:var(--gn);border:1px solid rgba(34,197,94,.3);cursor:pointer;text-transform:uppercase;transition:.2s}
+.rbtn:hover{background:rgba(34,197,94,.25)}
+/* EXTERNAL MEAL */
+.ext-zone{background:var(--s1);border:1.5px dashed var(--bd);border-radius:var(--r);padding:1rem;margin-top:.8rem}
+.ext-zone-t{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--tx2);margin-bottom:.8rem;display:flex;justify-content:space-between;align-items:center}
+.ext-inputs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:.7rem}
+.ext-inp{background:var(--s2);border:1px solid var(--bd);border-radius:var(--rs);padding:7px 10px;font-size:13px;color:var(--tx);font-family:'Barlow',sans-serif;flex:1;min-width:140px}
+.ext-inp:focus{outline:none;border-color:var(--or)}
+.ext-btn{background:var(--or);border:none;border-radius:var(--rs);padding:7px 14px;font-size:12px;color:#fff;font-family:'Barlow Condensed',sans-serif;font-weight:700;cursor:pointer;letter-spacing:.5px;white-space:nowrap}
+.ext-btn:hover{background:#e84a00}
+.ext-suggest{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:.7rem}
+.sug-btn{background:var(--s2);border:1px solid var(--bd);border-radius:4px;padding:3px 8px;font-size:11px;color:var(--tx2);cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-weight:600;transition:.2s}
+.sug-btn:hover{border-color:var(--or);color:var(--or)}
+.ext-list{display:flex;flex-direction:column;gap:5px;max-height:200px;overflow-y:auto}
+.ext-item{background:var(--s2);border-radius:var(--rs);padding:7px 10px;display:flex;justify-content:space-between;align-items:center;font-size:12px}
+.ext-item-nm{color:var(--tx2)}.ext-item-k{font-family:'Barlow Condensed',sans-serif;font-weight:700;color:var(--or)}
+.ext-del{background:none;border:none;color:var(--tx3);cursor:pointer;font-size:14px;padding:0 3px}
+.ext-del:hover{color:var(--rd)}
+/* CALORIE TOTAL BAR */
+.cal-bar-wrap{background:var(--s2);border:1px solid var(--bd);border-radius:var(--r);padding:1rem;margin-top:.8rem}
+.cal-bar-t{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--tx2);margin-bottom:.5rem}
+.cal-person{margin-bottom:.7rem}
+.cal-label{display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px}
+.cal-name{color:var(--tx2)}.cal-nums{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12px}
+.cal-bg{background:var(--s3);border-radius:3px;height:10px;overflow:hidden}
+.cal-fill{height:100%;border-radius:3px;transition:width .4s ease}
+.cal-l-fill{background:linear-gradient(90deg,var(--or),#ff7733)}
+.cal-j-fill{background:linear-gradient(90deg,var(--pk),#f472b6)}
+/* PROFILE CARDS */
+.prof-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:1.2rem}
+@media(max-width:560px){.prof-grid{grid-template-columns:1fr}}
+.prof-card{background:var(--s1);border-radius:var(--r);padding:1rem;border:1.5px solid}
+.pfl{border-color:var(--or)}.pfj{border-color:var(--pk)}
+.pf-top{display:flex;align-items:center;gap:.7rem;margin-bottom:.7rem}
+.pf-av{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Anton',sans-serif;font-size:14px}
+.avbl{background:var(--ord);color:var(--or)}.avbj{background:var(--pkd);color:var(--pk)}
+.pf-name{font-family:'Anton',sans-serif;font-size:18px;letter-spacing:1px}.pf-role{font-size:11px;color:var(--tx2)}
+.pf-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}
+.pf-st{background:var(--s2);border-radius:var(--rs);padding:6px;text-align:center}
+.pf-st-v{font-weight:700;font-size:13px}.pf-st-l{font-size:9px;color:var(--tx3);text-transform:uppercase}
+.pf-goal{margin-top:.7rem;font-size:12px;color:var(--tx2);background:var(--s2);border-radius:var(--rs);padding:7px 9px;border-left:3px solid}
+.gll{border-color:var(--or)}.glj{border-color:var(--pk)}
+/* SHOPPING */
+.shop-cat{background:var(--s1);border:1px solid var(--bd);border-radius:var(--r);overflow:hidden;margin-bottom:.8rem}
+.shop-hdr{padding:9px 13px;background:var(--s2);border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:7px}
+.shop-hdr-t{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:1px;text-transform:uppercase;flex:1}
+.shop-cnt{font-size:11px;color:var(--tx2);background:var(--s3);padding:2px 7px;border-radius:3px}
+.shop-items{padding:10px 13px;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:7px}
+.si{background:var(--s2);border-radius:var(--rs);padding:8px 10px}
+.si-n{font-size:13px;font-weight:600}.si-l{font-size:11px;color:var(--or)}.si-j{font-size:11px;color:var(--pk)}.si-o{font-size:10px;color:var(--tx3);font-style:italic;margin-top:2px}
+/* RECIPE */
+.rec-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px}
+.rcd{background:var(--s1);border:1px solid var(--bd);border-radius:var(--r);padding:.9rem;cursor:pointer;transition:.2s}
+.rcd:hover{border-color:var(--or);transform:translateY(-2px)}
+.rcd-ico{font-size:26px;margin-bottom:.4rem}.rcd-nm{font-weight:600;font-size:13px;margin-bottom:2px}.rcd-cat{font-size:10px;color:var(--tx2);text-transform:uppercase;letter-spacing:.8px}.rcd-t{font-size:10px;color:var(--tx3);margin-top:.4rem}
+/* PHYSIO */
+.phy-card{background:var(--s1);border:1px solid var(--bd);border-radius:var(--r);overflow:hidden;margin-bottom:.8rem}
+.phy-hdr{padding:9px 13px;background:var(--s2);border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:7px}
+.phy-ht{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:1px;text-transform:uppercase}
+.phy-body{padding:11px 13px;display:flex;flex-direction:column;gap:8px}
+.phy-tip{font-size:12px;color:var(--tx2);line-height:1.7;border-left:2px solid var(--bd);padding-left:7px}
+.phy-tip strong{color:var(--tx)}
+.phy-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+@media(max-width:560px){.phy-grid{grid-template-columns:1fr}}
+.pp-box{background:var(--s2);border-radius:var(--rs);padding:10px}
+.pp-nm{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px}
+.pp-l{color:var(--or)}.pp-j{color:var(--pk)}
+.pp-t{font-size:11px;color:var(--tx2);display:flex;gap:5px;line-height:1.5;margin-bottom:4px}
+.pp-t::before{content:'→';color:var(--tx3);flex-shrink:0}
+.sig-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+@media(max-width:560px){.sig-grid{grid-template-columns:1fr}}
+.sig{background:var(--s2);border-radius:var(--rs);padding:9px;font-size:11px;color:var(--tx2);border-left:3px solid}
+.sg{border-color:var(--gn)}.sw{border-color:var(--rd)}
+.sig strong{display:block;font-size:10px;font-weight:600;margin-bottom:3px;text-transform:uppercase;letter-spacing:.5px}
+.sg strong{color:var(--gn)}.sw strong{color:var(--rd)}
+/* MODAL */
+.modal-ov{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:500;display:flex;align-items:flex-end;justify-content:center}
+.modal-ov.hidden{display:none}
+.modal-sh{background:var(--s1);border-radius:14px 14px 0 0;max-width:660px;width:100%;max-height:88vh;overflow-y:auto;padding:1.2rem;animation:su .22s ease}
+@keyframes su{from{transform:translateY(40px);opacity:0}to{transform:translateY(0);opacity:1}}
+.m-close{display:flex;justify-content:flex-end;margin-bottom:.8rem}
+.close-b{background:var(--s3);border:none;border-radius:5px;padding:5px 12px;color:var(--tx2);cursor:pointer;font-size:12px;font-family:'Barlow',sans-serif}
+.rec-title{font-family:'Anton',sans-serif;font-size:22px;letter-spacing:2px;color:var(--or);margin-bottom:3px}
+.rec-desc{font-size:12px;color:var(--tx2);margin-bottom:.9rem;line-height:1.6}
+.rec-sec{margin-bottom:.9rem}
+.rec-sec-t{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--tx3);margin-bottom:.5rem;border-bottom:1px solid var(--bd);padding-bottom:.4rem}
+.ing-row{display:flex;justify-content:space-between;align-items:center;font-size:12px;padding:4px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.ing-nm{color:var(--tx2)}.ing-amt{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;color:var(--tx);background:var(--s3);padding:2px 7px;border-radius:3px}
+.por-row{display:flex;gap:6px;margin-top:.5rem;flex-wrap:wrap}
+.step{display:flex;gap:7px;align-items:flex-start;margin-bottom:7px}
+.sn{width:21px;height:21px;border-radius:50%;background:var(--or);color:#fff;font-family:'Anton',sans-serif;font-size:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.st{font-size:12px;color:var(--tx2);line-height:1.6;flex:1}
+.rec-tip-box{background:var(--ord);border:1px solid var(--or);border-radius:var(--rs);padding:9px 12px;font-size:12px;color:var(--tx2);line-height:1.6}
+.rec-tip-box strong{color:var(--or)}
+/* TIP */
+.tip-box{background:var(--ord);border:1px solid var(--or);border-radius:var(--r);padding:.8rem;margin-top:.7rem}
+.tip-box-t{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:10px;letter-spacing:2px;color:var(--or);margin-bottom:4px}
+.tip-box-c{font-size:12px;color:var(--tx2);line-height:1.7}
+/* PH BANNER */
+.ph-banner{background:var(--s2);border:1px solid var(--bd);border-radius:var(--r);padding:.8rem 1rem;margin-bottom:1rem;display:flex;align-items:center;gap:.8rem;flex-wrap:wrap}
+.phb-icon{font-size:24px;flex-shrink:0}
+.phb-info{flex:1;min-width:150px}
+.phb-title{font-family:'Anton',sans-serif;font-size:17px;letter-spacing:1px;margin-bottom:2px}
+.phb-desc{font-size:12px;color:var(--tx2);line-height:1.5}
+.phb-stats{display:flex;gap:5px;flex-wrap:wrap}
+.phb-s{background:var(--s3);border-radius:3px;padding:2px 8px;font-size:11px;color:var(--tx2);font-family:'Barlow Condensed',sans-serif;font-weight:600}
+/* PROGRESS RING */
+.prog-ring{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.6);border-radius:50%;width:52px;height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.pr-v{font-family:'Anton',sans-serif;font-size:15px;color:var(--gn)}.pr-l{font-size:8px;color:rgba(255,255,255,.6)}
+/* MONTHLY SELECTOR FOR SHOPPING */
+.month-tabs{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:1rem}
+.mtab{padding:5px 10px;border:1.5px solid var(--bd);border-radius:5px;background:var(--s2);cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;color:var(--tx2);transition:.2s}
+.mtab:hover{border-color:var(--or);color:var(--or)}.mtab.active{border-color:var(--or);background:var(--ord);color:var(--or)}
+.slide-in{animation:fU .25s ease}
+@keyframes fU{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+::-webkit-scrollbar{width:3px;height:3px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--bd);border-radius:2px}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="hdr">
+  <div class="logo">FORT<span>E</span><sub>365</sub></div>
+  <div class="prow">
+    <div class="pmini pl"><div class="pav avl">LL</div><span class="pmn">Luanthony</span></div>
+    <div class="pmini pj"><div class="pav avj">JO</div><span class="pmn">Jéssica</span></div>
+  </div>
+</header>
+<nav class="nav-tabs" id="navTabs">
+  <button class="nav-tab active" onclick="setTab('treino')"><span class="nav-icon">💪</span><span class="nav-lbl">Treino</span></button>
+  <button class="nav-tab" onclick="setTab('nutricao')"><span class="nav-icon">🥗</span><span class="nav-lbl">Nutrição</span></button>
+  <button class="nav-tab" onclick="setTab('receitas')"><span class="nav-icon">📖</span><span class="nav-lbl">Receitas</span></button>
+  <button class="nav-tab" onclick="setTab('compras')"><span class="nav-icon">🛒</span><span class="nav-lbl">Compras</span></button>
+  <button class="nav-tab" onclick="setTab('fisio')"><span class="nav-icon">🏥</span><span class="nav-lbl">Fisio</span></button>
+</nav>
+<div id="mstrip" class="mstrip"><div class="mbtns" id="mbtns"></div></div>
+<div id="wstrip" class="wstrip">
+  <span class="wlbl">Semana:</span>
+  <div class="wbtns" id="wbtns"></div>
+  <span id="pchip" class="pchip phv"></span>
+</div>
+<div class="dstrip"><div class="dbtns" id="dbtns"></div></div>
+<main class="main slide-in" id="mainContent"></main>
+</div>
+<div class="modal-ov hidden" id="recModal">
+  <div class="modal-sh"><div class="m-close"><button class="close-b" onclick="closeRec()">✕ Fechar</button></div><div id="recContent"></div></div>
+</div>
+<script>
+const YT=q=>`https://www.youtube.com/results?search_query=${encodeURIComponent(q+' iniciante casa')}`;
+const YTB=q=>`https://www.youtube.com/results?search_query=${encodeURIComponent(q)}`;
+
+// COVERS
+const COVERS={
+  treino:'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=700&h=180&fit=crop&auto=format&q=75',
+  bike:'https://images.unsplash.com/photo-1571188654248-7a89213915f7?w=700&h=180&fit=crop&auto=format&q=75',
+  caminhada:'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=700&h=180&fit=crop&auto=format&q=75',
+  mobilidade:'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=700&h=180&fit=crop&auto=format&q=75',
+  descanso:'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=700&h=180&fit=crop&auto=format&q=75',
+};
+const COVER_GRADS={
+  treino:'linear-gradient(135deg,#2a1a0e,#3d1f00)',
+  bike:'linear-gradient(135deg,#0d1f3a,#0a2d6e)',
+  caminhada:'linear-gradient(135deg,#0f2218,#0a3320)',
+  mobilidade:'linear-gradient(135deg,#1a1a0e,#2a2a00)',
+  descanso:'linear-gradient(135deg,#0e1a1a,#0a2a25)',
+};
+
+const MONTHS=[
+  {n:'Jan',name:'Janeiro',ph:'Adaptação',pcls:'phv',icon:'🌱',level:0,hasBike:false,season:'Manga · Caju · Umbu'},
+  {n:'Fev',name:'Fevereiro',ph:'Ativação',pcls:'phv',icon:'🌿',level:0,hasBike:true,season:'Caju · Graviola'},
+  {n:'Mar',name:'Março',ph:'Consolidação',pcls:'pha',icon:'💪',level:0,hasBike:true,season:'Pitanga · Cajá'},
+  {n:'Abr',name:'Abril',ph:'Construção',pcls:'pha',icon:'🔨',level:1,hasBike:true,season:'Maracujá · Umbu'},
+  {n:'Mai',name:'Maio',ph:'Resistência',pcls:'pho',icon:'🚴',level:1,hasBike:true,season:'Seriguela · Jaca'},
+  {n:'Jun',name:'Junho',ph:'Composição',pcls:'pho',icon:'🎯',level:1,hasBike:true,season:'Goiaba · Laranja'},
+  {n:'Jul',name:'Julho',ph:'HIIT',pcls:'phr',icon:'⚡',level:2,hasBike:true,season:'Laranja · Mandarina'},
+  {n:'Ago',name:'Agosto',ph:'Força',pcls:'phr',icon:'🏋',level:2,hasBike:true,season:'Mamão · Banana'},
+  {n:'Set',name:'Setembro',ph:'Potência',pcls:'phr',icon:'💥',level:2,hasBike:true,season:'Melancia · Uva'},
+  {n:'Out',name:'Outubro',ph:'Performance',pcls:'php',icon:'🏆',level:3,hasBike:true,season:'Manga nova · Acerola'},
+  {n:'Nov',name:'Novembro',ph:'Definição',pcls:'php',icon:'💎',level:3,hasBike:true,season:'Manga · Caju'},
+  {n:'Dez',name:'Dezembro',ph:'Elite',pcls:'php',icon:'⭐',level:3,hasBike:true,season:'Manga plena · Caju'},
+];
+const WVOL=[0.8,1.0,1.15,0.9];
+const DL=['Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo'];
+const DA=['SEG','TER','QUA','QUI','SEX','SÁB','DOM'];
+
+// PHASE DATA [4 phases × 7 days]
+// kcal per exercise = approximate calories burned doing that exercise
+const PD=[
+// FASE 0: INICIANTE
+[
+ {type:'treino',cover:'treino',focus:'Mobilidade + Força I',tip:'Não force nada. Técnica perfeita > quantidade.',
+  exs:[{n:'Marcha no Lugar',m:'Aquecimento',s:1,r:'3 min',rest:'—',kcal:15,mod:'Joelhos até o quadril. Ritmo tranquilo.',yt:YT('marcha no lugar aquecimento')},
+       {n:'Agachamento com Cadeira',m:'Pernas · Glúteos',s:3,r:'8x',rest:'60s',kcal:25,mod:'Use a cadeira como guia. Desça devagar, suba controlado.',yt:YT('agachamento cadeira iniciante')},
+       {n:'Flexão na Parede',m:'Peito · Tríceps',s:3,r:'8x',rest:'60s',kcal:18,mod:'60cm da parede. Cotovelos a 45°.',yt:YT('flexão parede iniciante')},
+       {n:'Superman Deitado',m:'Lombar · Glúteo',s:2,r:'8x',rest:'45s',kcal:12,mod:'Segure 2s no topo.',yt:YT('superman exercício lombar')},
+       {n:'Elevação de Joelhos no Lugar',m:'Core · Cardio',s:2,r:'10 cada',rest:'30s',kcal:18,mod:'Use a parede para equilíbrio.',yt:YT('elevação joelhos exercício')},
+  ]},
+ {type:'caminhada',cover:'caminhada',dist:'20-25 min',kcal:120,tip:'Ritmo de conversa: se não conseguir falar, está rápido.'},
+ {type:'treino',cover:'treino',focus:'Força Básica I',tip:'Sinta o músculo. Qualidade > quantidade.',
+  exs:[{n:'Marcha no Lugar',m:'Aquecimento',s:1,r:'3 min',rest:'—',kcal:15,mod:'Acelere no último minuto.',yt:YT('marcha aquecimento')},
+       {n:'Agachamento Livre',m:'Pernas · Glúteos',s:3,r:'10x',rest:'60s',kcal:30,mod:'Braços à frente. Pés na largura dos ombros.',yt:YT('agachamento livre forma')},
+       {n:'Ponte de Glúteo',m:'Glúteo · Posterior',s:3,r:'10x',rest:'45s',kcal:20,mod:'Contraia o glúteo no topo. Segure 2s.',yt:YT('ponte glúteo iniciante')},
+       {n:'Superman',m:'Lombar',s:3,r:'10x',rest:'45s',kcal:12,mod:'Segure 3s no topo.',yt:YT('superman lombar')},
+       {n:'Flexão de Joelhos',m:'Peito · Tríceps',s:2,r:'6x',rest:'60s',kcal:15,mod:'Corpo reto da cabeça aos joelhos.',yt:YT('flexão joelhos iniciante')},
+       {n:'Prancha no Joelho',m:'Core',s:2,r:'20s',rest:'30s',kcal:8,mod:'Costas retas. Respire normalmente.',yt:YT('prancha joelho')},
+  ]},
+ {type:'caminhada',cover:'caminhada',dist:'25 min',kcal:135,tip:'Caminhada pós-almoço melhora digestão e controle glicêmico.'},
+ {type:'treino',cover:'treino',focus:'Cardio Suave + Core',tip:'Movimentar sem exaurir. Criar hábito.',
+  exs:[{n:'Polichinelo Lento',m:'Full Body · Cardio',s:3,r:'15x',rest:'45s',kcal:22,mod:'Step lateral se joelhos incomodarem.',yt:YT('polichinelo sem impacto')},
+       {n:'Dead Bug',m:'Core',s:3,r:'8 cada',rest:'45s',kcal:10,mod:'Costas coladas no chão o tempo todo.',yt:YT('dead bug core')},
+       {n:'Agachamento Livre',m:'Pernas',s:2,r:'10x',rest:'60s',kcal:25,mod:'Foque em descer devagar.',yt:YT('agachamento livre')},
+       {n:'Prancha no Joelho',m:'Core',s:3,r:'25s',rest:'30s',kcal:10,mod:'+5 segundos a mais.',yt:YT('prancha')},
+  ]},
+ {type:'mobilidade',cover:'mobilidade',dist:'20 min',stretches:[{n:'Posição da Criança',dur:'2x 45s'},{n:'Isquiotibiais c/ Toalha',dur:'2x 30s cada'},{n:'Abertura de Quadril',dur:'2x 30s cada'},{n:'Cat-Cow',dur:'2x 10 reps'},{n:'Rotação Espinal',dur:'2x 30s cada'},{n:'Peitorais na Parede',dur:'2x 30s cada'}]},
+ {type:'descanso',cover:'descanso',msg:'Descanso total. Hidrate-se, durma bem. Parabéns — mais uma semana!'}
+],
+// FASE 1: BÁSICO
+[
+ {type:'treino',cover:'treino',focus:'Push Intermediário',tip:'Flexão na mesa agora. Corpo reto sempre!',
+  exs:[{n:'Polichinelo Lento',m:'Aquecimento',s:2,r:'20x',rest:'20s',kcal:28,mod:'Aumenta velocidade nos últimos 10.',yt:YT('polichinelo aquecimento')},
+       {n:'Flexão Inclinada na Mesa',m:'Peito · Tríceps',s:4,r:'12x',rest:'60s',kcal:40,mod:'Desça o peito à mesa. Corpo reto.',yt:YT('flexão inclinada mesa')},
+       {n:'Pike Push-up',m:'Deltóide',s:3,r:'8x',rest:'60s',kcal:28,mod:'Quadril elevado. Testa quase toca o chão.',yt:YT('pike push up')},
+       {n:'Agachamento Livre',m:'Pernas · Glúteos',s:4,r:'15x',rest:'60s',kcal:50,mod:'2s para baixo. Pausa 1s no fundo.',yt:YT('agachamento livre')},
+       {n:'Prancha Frontal',m:'Core',s:3,r:'35s',rest:'30s',kcal:18,mod:'Nos pés agora! Cotovelos no chão.',yt:YT('prancha abdominal')},
+       {n:'Mountain Climber',m:'Core · Cardio',s:3,r:'20 alt.',rest:'45s',kcal:30,mod:'Lento e controlado.',yt:YT('mountain climber')},
+  ]},
+ {type:'bike',cover:'bike',dist:'30-35 min',zona:'Zona 2 · Conversa',kcal:240,tip:'Pedale em ritmo que você consiga conversar.',
+  phases:['5 min: aquecimento suave','20-25 min: ritmo constante (zona de conversa)','5 min: desaceleração gradual']},
+ {type:'treino',cover:'treino',focus:'Legs Intermediário',tip:'Maior grupo muscular = maior queima de gordura!',
+  exs:[{n:'Agachamento com Pausa',m:'Pernas · Glúteos',s:4,r:'12x',rest:'60s',kcal:50,mod:'Pause 2s no fundo. Mais eficiente!',yt:YT('agachamento pausa')},
+       {n:'Avanço Alternado',m:'Pernas · Equilíbrio',s:3,r:'12 cada',rest:'60s',kcal:45,mod:'Use parede se precisar de equilíbrio.',yt:YT('avanço lunge')},
+       {n:'Ponte de Glúteo c/ Pausa',m:'Glúteo · Posterior',s:4,r:'15x',rest:'45s',kcal:25,mod:'3s no topo. Máxima contração.',yt:YT('ponte glúteo')},
+       {n:'Agachamento Sumô',m:'Adutores · Glúteo',s:3,r:'15x',rest:'60s',kcal:35,mod:'Pés abertos, dedos para fora.',yt:YT('agachamento sumo')},
+       {n:'Dead Bug',m:'Core',s:3,r:'10 cada',rest:'45s',kcal:12,mod:'Costas coladas.',yt:YT('dead bug')},
+  ]},
+ {type:'bike',cover:'bike',dist:'35-40 min',zona:'Moderado + Pico',kcal:290,tip:'2-3 minutos mais intensos no meio. Intro ao interval.',
+  phases:['5 min: aquecimento','10 min: ritmo base','3 min: acelera forte!','12 min: ritmo base','5 min: desaquecimento']},
+ {type:'treino',cover:'treino',focus:'Full Body Circuito',tip:'3 rodadas sem parar dentro da rodada!',
+  exs:[{n:'CIRCUITO 3 rodadas',m:'Full Body · Cardio',s:3,r:'Ver abaixo',rest:'90s entre rodadas',kcal:180,mod:'Sem descanso dentro: 15 agachamentos → 10 flexões mesa → 20 marchadas → 30s prancha. 90s entre rodadas.',yt:YT('circuito funcional casa')},
+  ]},
+ {type:'bike',cover:'bike',dist:'45 min',zona:'Long Ride Base',kcal:330,tip:'45 min contínuos — grande marco!',
+  phases:['5 min: aquecimento','35 min: ritmo base constante','5 min: desaquecimento']},
+ {type:'descanso',cover:'descanso',msg:'Descanso total. O corpo reconstruindo músculos. Hidrate-se!'}
+],
+// FASE 2: INTERMEDIÁRIO
+[
+ {type:'treino',cover:'treino',focus:'Push Avançado + Core',tip:'Flexão no chão! Marco importante no seu progresso.',
+  exs:[{n:'Polichinelo',m:'Aquecimento',s:2,r:'30x',rest:'15s',kcal:35,mod:'Aquecimento cardiovascular completo.',yt:YT('polichinelo')},
+       {n:'Flexão Normal no Chão',m:'Peito · Tríceps',s:4,r:'10x',rest:'60s',kcal:50,mod:'MARCO! Corpo reto. Desça quase tocando o chão.',yt:YT('flexão correta')},
+       {n:'Flexão Diamante',m:'Tríceps · Peito Interno',s:3,r:'8x',rest:'60s',kcal:35,mod:'Mãos formam losango. Mais difícil!',yt:YT('flexão diamante')},
+       {n:'Pike Push-up Avançado',m:'Deltóide',s:3,r:'10x',rest:'60s',kcal:32,mod:'Quadril mais alto. Testa quase toca.',yt:YT('pike push up avançado')},
+       {n:'Prancha c/ Toque no Ombro',m:'Core',s:3,r:'20 alt.',rest:'45s',kcal:22,mod:'Toque um ombro com a mão oposta. Core firme.',yt:YT('prancha toque ombro')},
+       {n:'Abdominal Bicicleta',m:'Oblíquos',s:4,r:'20 alt.',rest:'45s',kcal:28,mod:'Cotovelo ao joelho oposto. Lento.',yt:YT('abdominal bicicleta')},
+  ]},
+ {type:'bike',cover:'bike',dist:'40-50 min',zona:'Interval Training',kcal:400,tip:'Bike HIIT! Queima gordura por horas depois (afterburn).',
+  phases:['5 min: aquecimento','Repita 6x: 2 min intenso / 3 min recuperação','5 min: desaquecimento']},
+ {type:'treino',cover:'treino',focus:'Legs + Explosão',tip:'Agachamento com salto entra! Luanthony: versão sem salto se joelhos doerem.',
+  exs:[{n:'Agachamento c/ Salto',m:'Pernas · Cardio',s:4,r:'12x',rest:'60s',kcal:70,mod:'Luanthony: agachamento pulsado. Jéssica: salto leve.',yt:YT('agachamento salto')},
+       {n:'Avanço Alternado',m:'Pernas',s:4,r:'12 cada',rest:'60s',kcal:55,mod:'Mais volume. Tronco ereto.',yt:YT('avanço alternado')},
+       {n:'Ponte Unilateral',m:'Glúteo · Posterior',s:3,r:'10 cada',rest:'60s',kcal:28,mod:'Uma perna levantada! Jéssica: ambas se não conseguir.',yt:YT('ponte unilateral')},
+       {n:'Agachamento Búlgaro',m:'Quadríceps · Glúteo',s:3,r:'8 cada',rest:'75s',kcal:55,mod:'Pé traseiro na cadeira. Devagar 2s.',yt:YT('agachamento búlgaro')},
+       {n:'Panturrilha no Degrau',m:'Panturrilha',s:3,r:'20x',rest:'30s',kcal:15,mod:'Sobe nas pontas dos pés.',yt:YT('panturrilha degrau')},
+  ]},
+ {type:'bike',cover:'bike',dist:'50 min',zona:'Tempo Moderado',kcal:440,tip:'50 min em esforço — fala mas prefere não.',
+  phases:['5 min: aquecimento','40 min: ritmo moderado constante','5 min: desaquecimento']},
+ {type:'treino',cover:'treino',focus:'HIIT Circuito',tip:'20s esforço / 40s descanso. Metabolismo acelerado 24h!',
+  exs:[{n:'Jumping Jack – 20s/40s',m:'Full Body',s:5,r:'20s esforço',rest:'40s',kcal:55,mod:'5 rodadas. Máximo nos 20s!',yt:YT('jumping jack hiit')},
+       {n:'Agachamento Salto – 20s/40s',m:'Pernas',s:5,r:'20s esforço',rest:'40s',kcal:70,mod:'Luanthony: pulsado sem salto.',yt:YT('agachamento salto hiit')},
+       {n:'Flexão – 20s/40s',m:'Peito',s:5,r:'20s esforço',rest:'40s',kcal:45,mod:'Máximo de reps em 20s com boa forma.',yt:YT('flexão hiit')},
+       {n:'Mountain Climber – 20s/40s',m:'Core',s:5,r:'20s esforço',rest:'40s',kcal:60,mod:'Ritmo alto. Costas retas.',yt:YT('mountain climber hiit')},
+  ]},
+ {type:'bike',cover:'bike',dist:'60 min',zona:'Long Ride',kcal:500,tip:'60 min contínuos — seu novo recorde!',
+  phases:['5 min: aquecimento','50 min: ritmo base','5 min: desaquecimento']},
+ {type:'descanso',cover:'descanso',msg:'Descanso total. Você está no nível intermediário!'}
+],
+// FASE 3: AVANÇADO
+[
+ {type:'treino',cover:'treino',focus:'Push Elite',tip:'1 ano de progressão: de parede ao Archer. Impressionante!',
+  exs:[{n:'Polichinelo',m:'Aquecimento',s:2,r:'40x',rest:'15s',kcal:45,mod:'Aquecimento rápido.',yt:YT('polichinelo')},
+       {n:'Flexão Archer',m:'Peito Unilateral',s:4,r:'6 cada',rest:'75s',kcal:65,mod:'Braços bem abertos. Precursor do one-arm!',yt:YT('archer push up')},
+       {n:'Flexão Explosiva (Clap)',m:'Peito · Potência',s:3,r:'6x',rest:'75s',kcal:50,mod:'Empurra FORTE e bate palma no ar.',yt:YT('clap push up')},
+       {n:'Pike Push-up c/ Pés Elevados',m:'Ombro · Tríceps',s:4,r:'10x',rest:'60s',kcal:45,mod:'Pés na cadeira. Simula handstand.',yt:YT('pike push up pés elevados')},
+       {n:'Prancha Dinâmica (cotovelo↔mão)',m:'Core · Ombro',s:4,r:'20 alt.',rest:'45s',kcal:30,mod:'Alterna entre prancha de mão e cotovelo.',yt:YT('prancha dinâmica')},
+       {n:'L-Sit Negativo (cadeiras)',m:'Core · Tríceps',s:3,r:'15s',rest:'60s',kcal:25,mod:'Braços esticados, levanta quadril entre 2 cadeiras.',yt:YT('L-sit iniciante')},
+  ]},
+ {type:'bike',cover:'bike',dist:'45-55 min',zona:'Performance Interval',kcal:490,tip:'Simulação de subida: 3 min resistência alta.',
+  phases:['5 min: aquecimento','Repita 5x: 3 min "subida" / 4 min recuperação ativa','5 min: cool down']},
+ {type:'treino',cover:'treino',focus:'Legs Elite',tip:'Pistol squat assistido — objetivo de atleta!',
+  exs:[{n:'Pistol Squat Assistido',m:'Quadríceps · Equilíbrio',s:4,r:'6 cada',rest:'90s',kcal:70,mod:'Segure a parede. Uma perna à frente.',yt:YT('pistol squat assistido')},
+       {n:'Jump Lunge (Avanço c/ Salto)',m:'Pernas · Potência',s:4,r:'10 cada',rest:'75s',kcal:85,mod:'Troca de perna no ar. Luanthony: sem salto mas rápido.',yt:YT('jump lunge')},
+       {n:'Ponte Unilateral + Extensão',m:'Glúteo · Posterior',s:4,r:'12 cada',rest:'60s',kcal:35,mod:'Perna levantada estendida. Eleva e abaixa.',yt:YT('ponte unilateral')},
+       {n:'Búlgaro c/ Pausa',m:'Quadríceps · Glúteo',s:3,r:'10 cada',rest:'75s',kcal:60,mod:'3s descendo. 1s pausa no fundo.',yt:YT('agachamento búlgaro')},
+       {n:'Box Jump (degrau)',m:'Explosão',s:3,r:'8x',rest:'75s',kcal:55,mod:'Salte sobre degrau. Desça andando. Luanthony: step up rápido.',yt:YT('box jump degrau')},
+  ]},
+ {type:'bike',cover:'bike',dist:'60-75 min',zona:'Endurance',kcal:590,tip:'Long ride de resistência: define o contorno muscular.',
+  phases:['5 min: aquecimento','55-65 min: moderado constante, respiração nasal','5 min: desaquecimento']},
+ {type:'treino',cover:'treino',focus:'HIIT Elite',tip:'10 meses de treino resultam nisso. Vocês chegaram!',
+  exs:[{n:'Burpee Completo',m:'Full Body',s:5,r:'8x',rest:'60s',kcal:90,mod:'Flexão → salta → palma. Completo.',yt:YT('burpee completo')},
+       {n:'Flexão Explosiva',m:'Peito · Potência',s:4,r:'8x',rest:'60s',kcal:60,mod:'Palma batida no ar.',yt:YT('clap push up')},
+       {n:'Jump Squat',m:'Pernas · Cardio',s:5,r:'12x',rest:'60s',kcal:80,mod:'Salto completo. Luanthony: pulsado.',yt:YT('jump squat')},
+       {n:'V-Up Abdominal',m:'Core Completo',s:4,r:'12x',rest:'45s',kcal:38,mod:'Sobe pernas + tronco ao mesmo tempo.',yt:YT('V up abdominal')},
+       {n:'Mountain Climber Rápido',m:'Core · Cardio',s:5,r:'30s',rest:'30s',kcal:65,mod:'Ritmo máximo.',yt:YT('mountain climber rápido')},
+  ]},
+ {type:'bike',cover:'bike',dist:'75-90 min',zona:'Long Ride Elite',kcal:690,tip:'75-90 min = treino cardiovascular mais completo possível!',
+  phases:['5 min: aquecimento','65-80 min: moderado com 3 picos de 5 min forte','5 min: desaquecimento']},
+ {type:'descanso',cover:'descanso',msg:'1 ANO COMPLETO. Você é um atleta. Parabéns Luanthony e Jéssica!'}
+]
+];
+
+// SEASONAL MEAL VARIATIONS
+const SEASONS={
+  0:{fruit:'manga/caju',vit:'manga',fish:'sardinha',spec:'Vitamina de umbu'},
+  1:{fruit:'caju/graviola',vit:'caju',fish:'sardinha',spec:'Suco de caju natural'},
+  2:{fruit:'pitanga/cajá',vit:'cajá',fish:'tilápia',spec:'Vitamina de pitanga'},
+  3:{fruit:'maracujá/umbu',vit:'maracujá',fish:'tilápia',spec:'Suco de umbu'},
+  4:{fruit:'seriguela/jaca',vit:'seriguela',fish:'robalo',spec:'Vitamina de seriguela'},
+  5:{fruit:'goiaba/laranja',vit:'goiaba',fish:'robalo',spec:'Suco de goiaba'},
+  6:{fruit:'laranja/mandarina',vit:'laranja',fish:'tilápia',spec:'Suco de laranja'},
+  7:{fruit:'mamão/banana',vit:'mamão',fish:'sardinha',spec:'Vitamina de mamão'},
+  8:{fruit:'melancia/uva',vit:'melancia',fish:'sardinha',spec:'Suco de melancia'},
+  9:{fruit:'manga nova/acerola',vit:'manga',fish:'tilápia',spec:'Vitamina de manga'},
+  10:{fruit:'manga/caju',vit:'manga',fish:'sardinha',spec:'Suco de caju'},
+  11:{fruit:'manga plena/caju',vit:'manga',fish:'sardinha',spec:'Vitamina especial de manga'},
+};
+
+// MEALS (7 days)
+// ── YEAR MEALS: 12 meses × 7 dias ────────────────────────────────────────────
+// Helper: MM = metadata por slot; m() cria objeto de refeição; d() cria dia
+const MM={
+  cafe:{t:'Café da Manhã',time:'07:00',ico:'☕',icoCls:'ico-cafe'},
+  lm:{t:'Lanche da Manhã',time:'09:30',ico:'🍎',icoCls:'ico-lm'},
+  alm:{t:'Almoço',time:'12:00',ico:'🍽',icoCls:'ico-alm'},
+  pre:{t:'Pré-Treino',time:'15:00',ico:'⚡',icoCls:'ico-pre'},
+  pos:{t:'Pós-Treino',time:'17:00',ico:'💪',icoCls:'ico-pos'},
+  jan:{t:'Jantar',time:'19:30',ico:'🌙',icoCls:'ico-jan'},
+  ln:{t:'Lanche da Noite',time:'21:30',ico:'🌿',icoCls:'ico-ln'},
+};
+const m=(k,items,ptl,ptj,rec=null)=>({...MM[k],items,ptl,ptj,rec});
+const d=(cafe,lm,alm,pre,pos,jan,ln)=>({cafe,lanche_m:lm,almoco:alm,pre,pos,jantar:jan,lanche_n:ln});
+
+const YEAR_MEALS=[
+// ══ JANEIRO ══ Verão baiano · Manga & Caju safra plena · Calor intenso ═══
+[
+d(m('cafe',['Cuscuz (L:4col·J:3col) c/ manteiga leve','3 ovos mexidos c/ coentro','Café c/ leite desnatado s/ açúcar'],'~450','~360','cuscuz'),
+ m('lm',['1 manga madura picada','20g castanha de caju torrada'],'~175','~155'),
+ m('alm',['Frango grelhado (L:200g·J:150g)','Arroz integral (L:4col·J:3col)','Feijão de corda (3col sopa)','Salada verde + coentro + azeite'],'~620','~490','frango_grelhado'),
+ m('pre',['1 banana grande','200ml água de coco gelada'],'~160','~140','pre_treino'),
+ m('pos',['Vitamina de manga: 1/2 manga+200ml leite+mel'],'~230','~200','vit_manga'),
+ m('jan',['Omelete (L:3·J:2 ovos) c/ espinafre + tomate','Salada verde + pepino + cebola roxa'],'~360','~285','omelete'),
+ m('ln',['Iogurte grego natural (1 pote) + fio de mel'],'~130','~120','iogurte_granola')),
+d(m('cafe',['Tapioca (L:2·J:1.5) c/ queijo coalho','2 ovos cozidos','Suco de caju natural 200ml'],'~430','~345','tapioca'),
+ m('lm',['Salada de frutas: manga+banana+caju fresco'],'~185','~160'),
+ m('alm',['Sardinha grelhada (L:200g·J:150g)','Arroz integral (L:3col·J:2col)','Macaxeira cozida (100g·70g)','Salada: alface+tomate+coentro'],'~560','~445','sardinha_grelhada'),
+ m('pre',['Iogurte grego 170g','1 maçã'],'~195','~170','pre_treino'),
+ m('pos',['200ml água de coco','2 ovos cozidos'],'~170','~155'),
+ m('jan',['Sopa de legumes c/ frango (L:350ml·J:250ml)','Jerimum+macaxeira+cenoura+coentro'],'~345','~275','sopa_legumes'),
+ m('ln',['Chá de caju (folha) s/ açúcar','1 banana'],'~90','~80')),
+d(m('cafe',['Aveia (L:5col·J:4col) c/ leite+canela','1 manga amassada na aveia','Café preto'],'~420','~335','aveia_mingau'),
+ m('lm',['Vitamina de manga: 1/2 manga+200ml leite+mel'],'~220','~190','vit_manga'),
+ m('alm',['Frango desfiado (L:180g·J:130g) c/ molho de tomate','Arroz integral (L:3col·J:2col)','Feijão de corda refogado','Maxixe refogado c/ alho'],'~570','~455','frango_grelhado'),
+ m('pre',['Cuscuz pequeno (2col) c/ requeijão light','Água 400ml'],'~170','~150','cuscuz'),
+ m('pos',['Vitamina pós: banana+200ml leite+cacau'],'~220','~190','vitamina_pos'),
+ m('jan',['Sardinha assada (L:180g·J:130g) c/ limão e coentro','Salada: tomate+cebola+pimentão'],'~330','~265','sardinha_grelhada'),
+ m('ln',['Iogurte grego + morangos','1 col granola'],'~135','~120','iogurte_granola')),
+d(m('cafe',['Cuscuz (L:4col·J:3col) c/ ovo mexido e coentro','Suco de caju natural 200ml'],'~460','~370','cuscuz'),
+ m('lm',['1 manga+1 col pasta de amendoim'],'~200','~175'),
+ m('alm',['Tilápia grelhada (L:200g·J:150g)','Batata doce cozida (L:120g·J:80g)','Brócolis+cenoura no vapor c/ coentro'],'~545','~430','tilap_grelhada'),
+ m('pre',['1 banana+1 col pasta amendoim','Água 400ml'],'~175','~155','pre_treino'),
+ m('pos',['Vitamina de manga: manga+leite+cacau'],'~230','~200','vit_manga'),
+ m('jan',['Omelete (L:3·J:2 ovos) c/ queijo coalho','Legumes: abobrinha+pimentão+tomate'],'~355','~280','omelete'),
+ m('ln',['Chá de hibisco s/ açúcar (diurético natural)','2 castanhas de caju'],'~70','~65')),
+d(m('cafe',['Tapioca (L:2·J:1.5) c/ frango desfiado+queijo','Suco de acerola 200ml (vitamina C!)','Café preto'],'~440','~355','tapioca'),
+ m('lm',['Salada de frutas: manga+banana+mamão'],'~165','~145'),
+ m('alm',['Frango grelhado (L:200g·J:150g)','Feijão de corda (3col)','Arroz integral (L:4col·J:3col)','Salada c/ vinagrete de coentro'],'~600','~475','frango_grelhado'),
+ m('pre',['Batata doce (L:100g·J:70g)','2 claras cozidas'],'~190','~155','pre_treino'),
+ m('pos',['Iogurte grego + granola (2col) + manga picada'],'~250','~215','iogurte_granola'),
+ m('jan',['Peixe assado (L:180g·J:130g)','Legumes assados: jerimum+cenoura+alho','Azeite+ervas+limão'],'~360','~285','peixe_assado'),
+ m('ln',['1 banana pequena','Chá de maracujá (ajuda no sono)'],'~85','~75')),
+d(m('cafe',['Vitamina: banana+aveia+leite+cacau','2 ovos mexidos ao lado','Café preto'],'~490','~390','vitamina_pos'),
+ m('lm',['Caju fresco (safra plena!)','20g castanha de caju torrada'],'~120','~100'),
+ m('alm',['Refeição especial do sábado 😊','Sugestão: frango na brasa+baião de dois+salada','Evite ultra processados'],'~700','~550','baiao_dois'),
+ m('pre',['1 manga fresca + castanhas','Água 400ml'],'~190','~165'),
+ m('pos',['Vitamina: banana+leite+mel'],'~210','~185','vitamina_pos'),
+ m('jan',['Frango grelhado (L:180g·J:130g)','Legumes salteados: abobrinha+brócolis','Arroz integral (L:3col·J:2col)'],'~410','~325','frango_grelhado'),
+ m('ln',['Chá de camomila c/ mel','1 maçã ou pera'],'~80','~70')),
+d(m('cafe',['Pão integral (L:2·J:1.5) c/ queijo coalho','1 ovo mexido c/ coentro','Suco de laranja natural 200ml'],'~430','~345','tapioca'),
+ m('lm',['Salada de frutas c/ granola (1col)','Iogurte natural (100ml) por cima'],'~210','~180','iogurte_granola'),
+ m('alm',['Moqueca de tilápia light (tradição baiana!)','Arroz integral','Salada verde c/ vinagrete'],'~670','~530','moqueca_light'),
+ m('pre',['Domingo sem treino — lanche leve','Frutas+iogurte grego'],'~210','~180','iogurte_granola'),
+ m('pos',['Dia de descanso — sem pós-treino','Beba 2,5-3L de água','Suco de caju gelado (natural)'],'—','—'),
+ m('jan',['Cuscuz c/ sardinha desfiada (L:3col·J:2col)','Salada verde+tomate+cebola roxa','Azeite+limão+coentro'],'~340','~270','cuscuz'),
+ m('ln',['Chá de maracujá (relaxante)','2 biscoitos de arroz integrais'],'~70','~65'))
+],
+// ══ FEVEREIRO ══ Caju safra máxima · Graviola · Ainda muito quente ═══════
+[
+d(m('cafe',['Cuscuz (L:4col·J:3col) c/ manteiga','3 ovos mexidos+coentro+cebolinha','Suco de caju natural 200ml — safra máxima!'],'~455','~365','cuscuz'),
+ m('lm',['Vitamina de caju: 2 caju+200ml leite+mel'],'~180','~155'),
+ m('alm',['Frango grelhado (L:200g·J:150g)','Arroz integral (L:4col·J:3col)','Feijão de corda','Salada nordestina c/ coentro'],'~615','~488','frango_grelhado'),
+ m('pre',['1 banana grande','200ml água de coco'],'~160','~140','pre_treino'),
+ m('pos',['Vitamina de caju: 2 caju frescos+leite+mel'],'~220','~195'),
+ m('jan',['Omelete (L:3·J:2 ovos) c/ espinafre+queijo','Salada verde+pepino+tomate'],'~355','~280','omelete'),
+ m('ln',['Iogurte grego+fio de mel'],'~130','~120','iogurte_granola')),
+d(m('cafe',['Tapioca (L:2·J:1.5) c/ queijo coalho+coentro','2 ovos cozidos','Suco de caju 200ml'],'~435','~348','tapioca'),
+ m('lm',['Caju fresco (à vontade na safra!)','20g castanha de caju'],'~130','~110'),
+ m('alm',['Sardinha grelhada (L:200g·J:150g)','Arroz integral (L:3col·J:2col)','Macaxeira cozida','Salada c/ alface+tomate+coentro'],'~560','~445','sardinha_grelhada'),
+ m('pre',['Iogurte grego 170g','1 banana'],'~190','~165','pre_treino'),
+ m('pos',['200ml água de coco','2 ovos cozidos'],'~170','~155'),
+ m('jan',['Sopa nordestina c/ frango+jerimum+macaxeira (L:350·J:250ml)'],'~340','~270','sopa_legumes'),
+ m('ln',['Chá de folha de caju s/ açúcar','1 banana pequena'],'~90','~80')),
+d(m('cafe',['Aveia (L:5col·J:4col) c/ leite+canela+banana','Café preto'],'~415','~330','aveia_mingau'),
+ m('lm',['Vitamina de graviola: 100g polpa+200ml leite+mel'],'~185','~160'),
+ m('alm',['Frango desfiado (L:180g·J:130g) c/ molho','Arroz integral (L:3col·J:2col)','Feijão de corda','Chuchu refogado c/ alho'],'~565','~450','frango_grelhado'),
+ m('pre',['Cuscuz pequeno (2col)+requeijão light'],'~170','~150','cuscuz'),
+ m('pos',['Vitamina pós: banana+leite+cacau em pó'],'~220','~190','vitamina_pos'),
+ m('jan',['Sardinha assada c/ limão+coentro (L:180g·J:130g)','Salada: tomate+cebola+pimentão'],'~330','~265','sardinha_grelhada'),
+ m('ln',['Iogurte grego+granola (1col)'],'~125','~115','iogurte_granola')),
+d(m('cafe',['Cuscuz (L:4col·J:3col) c/ requeijão light+coentro','Suco de caju 200ml'],'~445','~355','cuscuz'),
+ m('lm',['Caju fresco+1 banana+castanha (10g)'],'~165','~145'),
+ m('alm',['Tilápia grelhada (L:200g·J:150g)','Batata doce (L:120g·J:80g)','Brócolis+cenoura no vapor'],'~545','~430','tilap_grelhada'),
+ m('pre',['1 banana+1 col pasta amendoim'],'~175','~155','pre_treino'),
+ m('pos',['Vitamina de caju+banana+leite'],'~225','~195'),
+ m('jan',['Omelete (L:3·J:2 ovos) c/ queijo+tomate+coentro','Abobrinha refogada c/ alho'],'~350','~275','omelete'),
+ m('ln',['Chá de hibisco s/ açúcar','2 castanhas de caju'],'~70','~65')),
+d(m('cafe',['Tapioca (L:2·J:1.5) c/ frango desfiado+queijo coalho','Suco de acerola 200ml'],'~440','~355','tapioca'),
+ m('lm',['Caju fresco+mamão fresco+banana'],'~170','~148'),
+ m('alm',['Frango grelhado (L:200g·J:150g)','Feijão de corda+arroz integral','Salada completa c/ vinagrete'],'~605','~478','frango_grelhado'),
+ m('pre',['Batata doce cozida (L:100g·J:70g)','2 claras cozidas'],'~190','~155'),
+ m('pos',['Iogurte grego+granola (2col)+caju picado'],'~245','~210','iogurte_granola'),
+ m('jan',['Peixe assado no forno (L:180g·J:130g)','Legumes assados: jerimum+cenoura','Azeite+coentro+limão'],'~355','~280','peixe_assado'),
+ m('ln',['1 banana pequena','Chá de camomila c/ mel'],'~85','~75')),
+d(m('cafe',['Vitamina especial: caju+banana+leite+mel','2 ovos mexidos ao lado','Café preto'],'~485','~385','vitamina_pos'),
+ m('lm',['Caju fresco (safra!)+castanha de caju'],'~125','~105'),
+ m('alm',['Refeição livre do sábado 😊','Sugestão: peixe grelhado+arroz+salada+suco de caju natural'],'~695','~548','frango_grelhado'),
+ m('pre',['1 banana+castanha (15g)'],'~185','~160'),
+ m('pos',['Vitamina pós: banana+leite+cacau'],'~210','~182','vitamina_pos'),
+ m('jan',['Frango grelhado (L:180g·J:130g)+legumes salteados','Arroz integral (L:3col·J:2col)'],'~408','~322','frango_grelhado'),
+ m('ln',['Chá de maracujá+mel'],'~75','~65')),
+d(m('cafe',['Pão integral (L:2·J:1.5)+queijo coalho','Ovo mexido c/ coentro','Suco de laranja natural 200ml'],'~428','~342','tapioca'),
+ m('lm',['Salada de frutas: caju+banana+manga (se tiver)'],'~185','~160','iogurte_granola'),
+ m('alm',['Moqueca de tilápia light (domingo especial!)','Arroz integral+salada verde'],'~668','~528','moqueca_light'),
+ m('pre',['Domingo — lanche leve','Iogurte grego+fruta da época'],'~208','~178','iogurte_granola'),
+ m('pos',['Dia de descanso','Beba 2,5-3L de água+suco de caju gelado'],'—','—'),
+ m('jan',['Cuscuz c/ sardinha desfiada+coentro (L:3col·J:2col)','Salada verde+tomate+limão'],'~338','~268','cuscuz'),
+ m('ln',['Chá de folha de caju s/ açúcar'],'~5','~5'))
+],
+// ══ MARÇO ══ Final do verão · Pitanga · Cajá · Transição para o outono ═══
+[
+d(m('cafe',['Cuscuz (L:4col·J:3col) c/ ovo mexido+coentro','Vitamina de pitanga: 100g pitanga+150ml leite+mel'],'~440','~352','cuscuz'),
+ m('lm',['Pitanga fresca (100g)+20g amendoim s/ sal'],'~105','~90'),
+ m('alm',['Frango grelhado (L:200g·J:150g)','Arroz integral (L:4col·J:3col)','Feijão de corda','Salada c/ coentro+azeite'],'~618','~488','frango_grelhado'),
+ m('pre',['1 banana+1 col pasta amendoim'],'~175','~155','pre_treino'),
+ m('pos',['Vitamina pós: banana+leite+cacau em pó'],'~222','~192','vitamina_pos'),
+ m('jan',['Omelete (L:3·J:2 ovos)+espinafre+tomate','Salada verde+pepino'],'~358','~282','omelete'),
+ m('ln',['Iogurte grego+mel'],'~130','~120','iogurte_granola')),
+d(m('cafe',['Tapioca (L:2·J:1.5) c/ queijo coalho','2 ovos cozidos','Suco de cajá 200ml (vitamina C!)'],'~428','~342','tapioca'),
+ m('lm',['Cajá fresco (ácido + vitamina C) 100g','1 banana'],'~115','~98'),
+ m('alm',['Sardinha grelhada (L:200g·J:150g)','Arroz integral (L:3col·J:2col)','Macaxeira cozida','Salada: alface+tomate+coentro'],'~558','~443','sardinha_grelhada'),
+ m('pre',['Iogurte grego 170g','1 maçã'],'~193','~168'),
+ m('pos',['200ml água de coco','2 ovos cozidos'],'~170','~155'),
+ m('jan',['Sopa nordestina c/ frango+legumes (L:350·J:250ml)'],'~343','~272','sopa_legumes'),
+ m('ln',['Chá de camomila s/ açúcar','1 banana pequena'],'~90','~80')),
+d(m('cafe',['Aveia (L:5col·J:4col) c/ leite+canela','1 banana amassada','Café preto'],'~418','~332','aveia_mingau'),
+ m('lm',['Vitamina de cajá: 100g cajá+150ml leite+mel'],'~175','~150'),
+ m('alm',['Carne moída magra (L:180g·J:130g) refogada c/ tomate','Arroz integral (L:3col·J:2col)','Feijão de corda','Legumes: cenoura+chuchu'],'~575','~460','frango_grelhado'),
+ m('pre',['Cuscuz pequeno (2col)+requeijão light'],'~170','~150','cuscuz'),
+ m('pos',['Vitamina pós: banana+leite+mel'],'~215','~185','vitamina_pos'),
+ m('jan',['Tilápia grelhada (L:180g·J:130g)','Abobrinha+cenoura salteadas c/ alho'],'~328','~262','tilap_grelhada'),
+ m('ln',['Iogurte grego+granola (1col)'],'~125','~115','iogurte_granola')),
+d(m('cafe',['Cuscuz (L:4col·J:3col)+sardinha desfiada+coentro','Café c/ leite desnatado'],'~448','~358','cuscuz'),
+ m('lm',['Pitanga+banana+20g castanha'],'~148','~128'),
+ m('alm',['Tilápia grelhada (L:200g·J:150g)','Batata doce (L:120g·J:80g)','Brócolis no vapor c/ limão'],'~542','~428','tilap_grelhada'),
+ m('pre',['1 banana+1 col pasta amendoim','Água 400ml'],'~175','~155','pre_treino'),
+ m('pos',['Vitamina de cajá+banana+leite'],'~210','~182'),
+ m('jan',['Omelete (L:3·J:2 ovos)+queijo coalho+pimentão','Legumes refogados c/ alho'],'~352','~278','omelete'),
+ m('ln',['Chá de hibisco gelado s/ açúcar'],'~5','~5')),
+d(m('cafe',['Tapioca (L:2·J:1.5) c/ frango+queijo','Suco de laranja natural 200ml','Café preto'],'~438','~352','tapioca'),
+ m('lm',['Salada de frutas: pitanga+banana+mamão'],'~145','~125'),
+ m('alm',['Frango grelhado (L:200g·J:150g)','Feijão de corda (3col)','Arroz integral (L:4col·J:3col)','Salada completa c/ vinagrete de coentro'],'~602','~476','frango_grelhado'),
+ m('pre',['Batata doce (L:100g·J:70g)','2 claras cozidas'],'~188','~153'),
+ m('pos',['Iogurte grego+granola (2col)+banana fatiada'],'~248','~212','iogurte_granola'),
+ m('jan',['Peixe assado no forno (L:180g·J:130g)','Legumes assados c/ azeite+ervas'],'~353','~278','peixe_assado'),
+ m('ln',['1 banana pequena','Chá de maracujá'],'~85','~75')),
+d(m('cafe',['Vitamina: banana+aveia+leite+cacau','2 ovos mexidos ao lado','Café preto'],'~488','~388','vitamina_pos'),
+ m('lm',['Cajá fresco (vitamina C) + 1 banana'],'~130','~112'),
+ m('alm',['Almoço livre do sábado 😊','Sugestão: frango assado+feijão verde+arroz+salada'],'~692','~545','baiao_dois'),
+ m('pre',['Fruta da época + castanha (15g)'],'~183','~158'),
+ m('pos',['Vitamina pós: banana+leite+cacau'],'~218','~188','vitamina_pos'),
+ m('jan',['Frango grelhado (L:180g·J:130g)','Abobrinha+brócolis salteados','Arroz integral (L:3col·J:2col)'],'~405','~320','frango_grelhado'),
+ m('ln',['Chá de camomila+mel','1 maçã'],'~78','~68')),
+d(m('cafe',['Pão integral (L:2·J:1.5)+queijo coalho','Ovo mexido c/ coentro','Suco de laranja natural 200ml'],'~425','~340','tapioca'),
+ m('lm',['Salada de frutas c/ pitanga+cajá+banana+granola'],'~205','~175','iogurte_granola'),
+ m('alm',['Baião de dois light (feijão corda+arroz+queijo coalho)','Frango desfiado ao lado (L:150g·J:100g)'],'~662','~523','baiao_dois'),
+ m('pre',['Domingo — iogurte grego+fruta'],'~205','~175','iogurte_granola'),
+ m('pos',['Dia de descanso','Beba 2,5-3L de água+suco de cajá'],'—','—'),
+ m('jan',['Cuscuz c/ sardinha desfiada+coentro (L:3col·J:2col)','Salada verde+tomate+cebola roxa'],'~335','~265','cuscuz'),
+ m('ln',['Chá de erva-cidreira s/ açúcar'],'~5','~5'))
+],
+// ══ ABRIL ══ Outono baiano · Maracujá · Umbu · Chuvas ═══════════════════
+[
+d(m('cafe',['Cuscuz (L:4col·J:3col)+ovo mexido+coentro','Vitamina de maracujá: polpa+150ml leite+mel'],'~445','~358','cuscuz'),
+ m('lm',['Maracujá fresco (polpa) c/ iogurte (100ml)+mel'],'~145','~125'),
+ m('alm',['Frango grelhado (L:200g·J:150g)','Arroz integral (L:4col·J:3col)','Feijão de corda','Salada verde+coentro+azeite'],'~618','~488','frango_grelhado'),
+ m('pre',['1 banana+1 col pasta amendoim'],'~175','~155','pre_treino'),
+ m('pos',['Vitamina de maracujá+banana+leite'],'~218','~188','vitamina_pos'),
+ m('jan',['Omelete (L:3·J:2 ovos)+espinafre+queijo','Salada verde+pepino'],'~355','~280','omelete'),
+ m('ln',['Chá de maracujá natural (calmante) s/ açúcar+mel'],'~30','~28')),
+d(m('cafe',['Tapioca (L:2·J:1.5)+queijo coalho','2 ovos cozidos','Suco de laranja+acerola 200ml'],'~430','~344','tapioca'),
+ m('lm',['Umbu fresco (fruta sertaneja!) 100g','1 banana'],'~98','~82'),
+ m('alm',['Sardinha grelhada (L:200g·J:150g)','Arroz integral (L:3col·J:2col)','Macaxeira cozida','Salada: alface+tomate+coentro'],'~558','~443','sardinha_grelhada'),
+ m('pre',['Iogurte grego 170g','1 maçã'],'~193','~168'),
+ m('pos',['200ml água de coco','2 ovos cozidos'],'~170','~155'),
+ m('jan',['Sopa de frango c/ legumes nordestinos (L:350·J:250ml)','Jerimum+macaxeira+cenoura'],'~342','~272','sopa_legumes'),
+ m('ln',['Chá de camomila','1 banana pequena'],'~90','~80')),
+d(m('cafe',['Aveia (L:5col·J:4col)+leite+canela','1 banana amassada','Café preto'],'~418','~332','aveia_mingau'),
+ m('lm',['Vitamina de maracujá+banana+leite+mel'],'~215','~185','vit_maracuja'),
+ m('alm',['Carne moída magra (L:180g·J:130g) refogada','Arroz integral (L:3col·J:2col)','Feijão de corda','Chuchu refogado c/ alho'],'~572','~457','frango_grelhado'),
+ m('pre',['Cuscuz pequeno (2col)+requeijão light'],'~170','~150','cuscuz'),
+ m('pos',['Vitamina pós: banana+leite+cacau'],'~220','~190','vitamina_pos'),
+ m('jan',['Caldo verde nordestino c/ couve+macaxeira+frango (L:300·J:220ml)'],'~285','~228','caldo_verde_nordestino'),
+ m('ln',['Iogurte grego+mel+granola (1col)'],'~128','~118','iogurte_granola')),
+d(m('cafe',['Cuscuz (L:4col·J:3col)+sardinha desfiada+coentro','Suco de maracujá natural 200ml'],'~450','~360','cuscuz'),
+ m('lm',['1 banana+20g castanha de caju'],'~165','~142'),
+ m('alm',['Tilápia grelhada (L:200g·J:150g)','Batata doce (L:120g·J:80g)','Brócolis+cenoura no vapor'],'~542','~428','tilap_grelhada'),
+ m('pre',['1 banana+1 col pasta amendoim'],'~175','~155','pre_treino'),
+ m('pos',['Vitamina de maracujá+banana+leite'],'~215','~185','vitamina_pos'),
+ m('jan',['Omelete (L:3·J:2 ovos)+couve+tomate','Legumes refogados c/ alho+coentro'],'~350','~275','omelete'),
+ m('ln',['Chá de maracujá c/ mel (relaxa e ajuda dormir)'],'~28','~25')),
+d(m('cafe',['Tapioca (L:2·J:1.5)+frango desfiado+queijo','Suco de laranja natural 200ml','Café preto'],'~438','~352','tapioca'),
+ m('lm',['Salada de frutas: umbu+banana+laranja'],'~140','~120'),
+ m('alm',['Frango grelhado (L:200g·J:150g)','Feijão de corda (3col)','Arroz integral (L:4col·J:3col)','Salada completa+coentro'],'~602','~476','frango_grelhado'),
+ m('pre',['Batata doce (L:100g·J:70g)','2 claras cozidas'],'~188','~153'),
+ m('pos',['Iogurte grego+granola (2col)+laranja picada'],'~240','~205','iogurte_granola'),
+ m('jan',['Peixe assado no forno (L:180g·J:130g)','Legumes assados c/ alho+azeite+coentro'],'~352','~278','peixe_assado'),
+ m('ln',['1 banana pequena','Chá de maracujá'],'~85','~75')),
+d(m('cafe',['Vitamina: banana+aveia+leite+canela','2 ovos mexidos ao lado','Café preto'],'~485','~385','vitamina_pos'),
+ m('lm',['Maracujá + iogurte + mel'],'~138','~118'),
+ m('alm',['Almoço livre do sábado 😊','Sugestão: frango+feijão+arroz+salada+suco natural'],'~690','~542','baiao_dois'),
+ m('pre',['1 banana+castanha (15g)'],'~182','~158'),
+ m('pos',['Vitamina pós: banana+leite+mel'],'~212','~182','vitamina_pos'),
+ m('jan',['Frango grelhado (L:180g·J:130g)','Legumes salteados: abobrinha+cenoura+brócolis'],'~402','~318','frango_grelhado'),
+ m('ln',['Chá de camomila+mel'],'~28','~25')),
+d(m('cafe',['Pão integral (L:2·J:1.5)+queijo coalho','Ovo mexido c/ coentro','Suco de laranja natural 200ml'],'~425','~340','tapioca'),
+ m('lm',['Salada de frutas: laranja+banana+maracujá (polpa)'],'~148','~128','iogurte_granola'),
+ m('alm',['Baião de dois light+frango (L:150g·J:100g)','Salada verde+vinagrete'],'~660','~520','baiao_dois'),
+ m('pre',['Domingo — iogurte grego+banana'],'~202','~172','iogurte_granola'),
+ m('pos',['Dia de descanso','Chá de maracujá+2,5-3L água'],'—','—'),
+ m('jan',['Cuscuz c/ sardinha+coentro (L:3col·J:2col)','Salada verde+tomate+cebola roxa'],'~335','~265','cuscuz'),
+ m('ln',['Chá de erva-cidreira s/ açúcar'],'~5','~5'))
+],
+// ══ MAIO ══ Inverno seco baiano · Seriguela · São João chegando ══════════
+[
+d(m('cafe',['Cuscuz (L:4col·J:3col)+ovo mexido+coentro','Suco de seriguela 200ml (fruta nordestina!)'],'~442','~354','cuscuz'),
+ m('lm',['Seriguela fresca 100g','1 banana'],'~95','~80'),
+ m('alm',['Frango grelhado (L:200g·J:150g)','Arroz integral (L:4col·J:3col)','Feijão de corda','Salada c/ coentro+azeite'],'~618','~488','frango_grelhado'),
+ m('pre',['1 banana+1 col pasta amendoim'],'~175','~155','pre_treino'),
+ m('pos',['Vitamina pós: banana+leite+cacau'],'~220','~190','vitamina_pos'),
+ m('jan',['Omelete (L:3·J:2 ovos)+espinafre+queijo','Salada verde+tomate'],'~355','~280','omelete'),
+ m('ln',['Iogurte grego+mel'],'~130','~120','iogurte_granola')),
+d(m('cafe',['Tapioca (L:2·J:1.5)+queijo coalho','2 ovos cozidos','Suco de laranja natural 200ml'],'~430','~344','tapioca'),
+ m('lm',['Seriguela+laranja+1 banana'],'~130','~112'),
+ m('alm',['Sardinha grelhada (L:200g·J:150g)','Arroz integral (L:3col·J:2col)','Batata doce (L:100g·J:70g)','Salada verde+coentro'],'~572','~455','sardinha_grelhada'),
+ m('pre',['Iogurte grego 170g','1 banana'],'~190','~165'),
+ m('pos',['200ml água de coco','2 ovos cozidos'],'~170','~155'),
+ m('jan',['Caldo verde nordestino (L:300·J:220ml)','Couve+macaxeira+frango desfiado'],'~282','~225','caldo_verde_nordestino'),
+ m('ln',['Chá de camomila+mel','1 banana pequena'],'~88','~78')),
+d(m('cafe',['Aveia (L:5col·J:4col)+leite+canela+banana','Café preto'],'~415','~330','aveia_mingau'),
+ m('lm',['Vitamina de seriguela: 100g+150ml leite+mel'],'~170','~145'),
+ m('alm',['Carne moída magra (L:180g·J:130g) refogada','Arroz integral (L:3col·J:2col)','Feijão de corda','Maxixe+cenoura refogados'],'~570','~455','frango_grelhado'),
+ m('pre',['Cuscuz pequeno (2col)+requeijão light'],'~170','~150','cuscuz'),
+ m('pos',['Vitamina pós: banana+leite+mel'],'~215','~185','vitamina_pos'),
+ m('jan',['Sopa de frango c/ jerimum+macaxeira+cenoura (L:350·J:250ml)'],'~340','~270','sopa_legumes'),
+ m('ln',['Iogurte grego+granola (1col)+seriguela picada'],'~128','~115','iogurte_granola')),
+d(m('cafe',['Cuscuz (L:4col·J:3col)+sardinha desfiada+coentro','Suco de laranja natural 200ml'],'~448','~358','cuscuz'),
+ m('lm',['1 banana+20g amendoim torrado s/ sal'],'~165','~142'),
+ m('alm',['Tilápia grelhada (L:200g·J:150g)','Batata doce (L:120g·J:80g)','Brócolis no vapor c/ limão+coentro'],'~540','~425','tilap_grelhada'),
+ m('pre',['1 banana+1 col pasta amendoim'],'~175','~155','pre_treino'),
+ m('pos',['Vitamina de seriguela+banana+leite'],'~210','~180'),
+ m('jan',['Omelete (L:3·J:2 ovos)+couve+tomate+queijo','Legumes refogados'],'~350','~275','omelete'),
+ m('ln',['Chá de hortelã s/ açúcar'],'~5','~5')),
+d(m('cafe',['Tapioca (L:2·J:1.5)+frango desfiado+queijo','Vitamina de seriguela 200ml','Café preto'],'~440','~354','tapioca'),
+ m('lm',['Salada de frutas: seriguela+banana+laranja'],'~138','~118'),
+ m('alm',['Frango grelhado (L:200g·J:150g)','Feijão de corda+arroz integral','Salada completa+coentro'],'~600','~474','frango_grelhado'),
+ m('pre',['Batata doce (L:100g·J:70g)','2 claras cozidas'],'~188','~153'),
+ m('pos',['Iogurte grego+granola (2col)+banana'],'~245','~210','iogurte_granola'),
+ m('jan',['Peixe assado no forno (L:180g·J:130g)','Legumes: jerimum+cenoura+alho assados'],'~350','~275','peixe_assado'),
+ m('ln',['1 banana','Chá de camomila+mel'],'~88','~78')),
+d(m('cafe',['Vitamina: banana+aveia+leite+canela','2 ovos mexidos ao lado','Café preto'],'~482','~382','vitamina_pos'),
+ m('lm',['Seriguela fresca+castanha de caju'],'~108','~90'),
+ m('alm',['Almoço livre do sábado 😊','Sugestão: moqueca light ou frango c/ baião de dois'],'~688','~540','moqueca_light'),
+ m('pre',['1 banana+castanha'],'~180','~155'),
+ m('pos',['Vitamina pós: banana+leite+cacau'],'~218','~188','vitamina_pos'),
+ m('jan',['Frango grelhado (L:180g·J:130g)','Legumes salteados c/ alho'],'~400','~315','frango_grelhado'),
+ m('ln',['Chá de maracujá+mel'],'~28','~25')),
+d(m('cafe',['Pão integral (L:2·J:1.5)+queijo coalho','Ovo mexido c/ coentro','Suco de laranja natural 200ml'],'~425','~340','tapioca'),
+ m('lm',['Salada de frutas c/ seriguela+banana+laranja'],'~142','~122'),
+ m('alm',['Moqueca de peixe light (domingo especial!)','Arroz integral+salada verde+farofa leve'],'~665','~525','moqueca_light'),
+ m('pre',['Domingo — iogurte grego+fruta'],'~200','~170','iogurte_granola'),
+ m('pos',['Dia de descanso','2,5-3L água+chá natural'],'—','—'),
+ m('jan',['Cuscuz c/ sardinha+coentro (L:3col·J:2col)','Salada verde+tomate'],'~332','~262','cuscuz'),
+ m('ln',['Chá de camomila s/ açúcar'],'~5','~5'))
+],
+// ══ JUNHO ══ Festas Juninas · Goiaba · Laranja · Canjica · Mungunzá ═════
+[
+d(m('cafe',['Cuscuz (L:4col·J:3col)+ovo mexido+coentro','Vitamina de goiaba: 1 goiaba+150ml leite+mel'],'~445','~358','cuscuz'),
+ m('lm',['Goiaba vermelha fresca (rica em licopeno!)','1 banana'],'~102','~88'),
+ m('alm',['Frango grelhado (L:200g·J:150g)','Arroz integral (L:4col·J:3col)','Feijão de corda','Salada c/ coentro+azeite'],'~618','~488','frango_grelhado'),
+ m('pre',['1 banana+1 col pasta amendoim'],'~175','~155','pre_treino'),
+ m('pos',['Vitamina de goiaba+banana+leite+mel'],'~218','~188'),
+ m('jan',['Omelete (L:3·J:2 ovos)+espinafre+queijo','Salada verde+tomate'],'~355','~280','omelete'),
+ m('ln',['Iogurte grego+mel+goiaba picada'],'~135','~125','iogurte_granola')),
+d(m('cafe',['Tapioca (L:2·J:1.5)+queijo coalho','2 ovos cozidos','Suco de laranja+goiaba natural 200ml'],'~430','~344','tapioca'),
+ m('lm',['Goiaba vermelha+laranja','20g amendoim'],'~128','~110'),
+ m('alm',['Sardinha grelhada (L:200g·J:150g)','Arroz integral (L:3col·J:2col)','Batata doce (L:100g·J:70g)','Salada verde+coentro'],'~570','~453','sardinha_grelhada'),
+ m('pre',['Iogurte grego 170g','1 banana'],'~190','~165'),
+ m('pos',['200ml água de coco','2 ovos cozidos'],'~170','~155'),
+ m('jan',['Caldo verde nordestino (L:300·J:220ml)','Couve fina+macaxeira+frango desfiado'],'~282','~225','caldo_verde_nordestino'),
+ m('ln',['Chá de camomila+mel'],'~28','~25')),
+d(m('cafe',['Aveia (L:5col·J:4col)+leite+canela+banana','Café preto'],'~415','~330','aveia_mingau'),
+ m('lm',['Vitamina de goiaba: 1 goiaba+150ml leite+mel'],'~165','~142'),
+ m('alm',['Carne moída magra (L:180g·J:130g)','Arroz integral (L:3col·J:2col)','Feijão de corda','Chuchu+cenoura refogados'],'~568','~452','frango_grelhado'),
+ m('pre',['Cuscuz pequeno (2col)+requeijão light'],'~170','~150','cuscuz'),
+ m('pos',['Vitamina pós: banana+leite+cacau'],'~218','~188','vitamina_pos'),
+ m('jan',['Sopa c/ frango+legumes (L:350·J:250ml)','Jerimum+macaxeira+cenoura+coentro'],'~340','~270','sopa_legumes'),
+ m('ln',['Iogurte grego+granola (1col)+goiaba picada'],'~132','~120','iogurte_granola')),
+d(m('cafe',['Cuscuz (L:4col·J:3col)+sardinha desfiada+coentro','Suco de laranja natural 200ml'],'~448','~358','cuscuz'),
+ m('lm',['Laranja+goiaba+banana (trio vitamínico)'],'~148','~128'),
+ m('alm',['Tilápia grelhada (L:200g·J:150g)','Batata doce (L:120g·J:80g)','Brócolis+cenoura no vapor'],'~540','~425','tilap_grelhada'),
+ m('pre',['1 banana+1 col pasta amendoim'],'~175','~155','pre_treino'),
+ m('pos',['Vitamina de goiaba+banana+leite'],'~215','~185'),
+ m('jan',['Omelete (L:3·J:2 ovos)+couve+tomate','Legumes refogados'],'~350','~275','omelete'),
+ m('ln',['Chá de hibisco gelado s/ açúcar'],'~5','~5')),
+d(m('cafe',['Tapioca (L:2·J:1.5)+frango+queijo','Vitamina de laranja+goiaba natural','Café'],'~440','~354','tapioca'),
+ m('lm',['Salada de frutas de junho: goiaba+laranja+banana'],'~142','~122'),
+ m('alm',['Frango grelhado (L:200g·J:150g)','Feijão de corda+arroz integral','Salada completa+coentro'],'~600','~474','frango_grelhado'),
+ m('pre',['Batata doce (L:100g·J:70g)','2 claras cozidas'],'~188','~153'),
+ m('pos',['Iogurte grego+granola (2col)+goiaba picada'],'~242','~208','iogurte_granola'),
+ m('jan',['Peixe assado no forno (L:180g·J:130g)','Legumes assados c/ alho+azeite'],'~350','~275','peixe_assado'),
+ m('ln',['1 banana','Chá de camomila+mel'],'~88','~78')),
+d(m('cafe',['Vitamina de junho: goiaba+aveia+leite','2 ovos mexidos ao lado','Café preto'],'~480','~380','vitamina_pos'),
+ m('lm',['Goiaba fresca+castanha de caju'],'~102','~85'),
+ m('alm',['Almoço de festa junina saudável 😊','Sugestão: frango c/ baião de dois+salada verde','Canjica light de sobremesa (pequena porção)'],'~685','~538','baiao_dois'),
+ m('pre',['1 banana+castanha'],'~178','~154'),
+ m('pos',['Vitamina pós: banana+leite+cacau'],'~215','~185','vitamina_pos'),
+ m('jan',['Frango grelhado (L:180g·J:130g)','Legumes salteados: abobrinha+cenoura'],'~400','~315','frango_grelhado'),
+ m('ln',['Chá de maracujá+mel'],'~28','~25')),
+d(m('cafe',['Pão integral (L:2·J:1.5)+queijo coalho','Ovo mexido c/ coentro','Suco de goiaba+laranja natural 200ml'],'~428','~342','tapioca'),
+ m('lm',['Salada de frutas c/ goiaba+laranja+banana'],'~145','~125'),
+ m('alm',['Moqueca de peixe light (domingo!)','Arroz integral+salada verde'],'~665','~525','moqueca_light'),
+ m('pre',['Domingo — iogurte grego+fruta'],'~200','~170','iogurte_granola'),
+ m('pos',['Dia de descanso','2,5-3L água+suco de goiaba natural'],'—','—'),
+ m('jan',['Cuscuz c/ sardinha+coentro (L:3col·J:2col)','Salada verde+tomate+cebola roxa'],'~332','~262','cuscuz'),
+ m('ln',['Chá de camomila s/ açúcar'],'~5','~5'))
+],
+// ══ JULHO ══ Mês mais fresco da Bahia · Laranja · Mandarina ══════════════
+[
+d(m('cafe',['Cuscuz (L:4col·J:3col)+ovo mexido+coentro','Suco de laranja natural 200ml — safra alta!'],'~448','~360','cuscuz'),
+ m('lm',['2 laranjas ou mexericas frescas','20g amendoim torrado'],'~138','~118'),
+ m('alm',['Frango grelhado (L:200g·J:150g)','Arroz integral (L:4col·J:3col)','Feijão de corda','Salada verde+coentro+azeite'],'~618','~488','frango_grelhado'),
+ m('pre',['1 banana+1 col pasta amendoim'],'~175','~155','pre_treino'),
+ m('pos',['Vitamina pós: banana+leite+cacau'],'~220','~190','vitamina_pos'),
+ m('jan',['Omelete (L:3·J:2 ovos)+espinafre+queijo','Salada verde+tomate'],'~355','~280','omelete'),
+ m('ln',['Iogurte grego+mel+mandarina picada'],'~132','~122','iogurte_granola')),
+d(m('cafe',['Tapioca (L:2·J:1.5)+queijo coalho','2 ovos cozidos','Suco de laranja+acerola natural 200ml'],'~432','~346','tapioca'),
+ m('lm',['Laranja+banana+20g castanha de caju'],'~175','~152'),
+ m('alm',['Sardinha grelhada (L:200g·J:150g)','Arroz integral (L:3col·J:2col)','Macaxeira cozida','Salada: alface+tomate+coentro'],'~558','~442','sardinha_grelhada'),
+ m('pre',['Iogurte grego 170g','1 banana'],'~190','~165'),
+ m('pos',['200ml água de coco','2 ovos cozidos'],'~170','~155'),
+ m('jan',['Caldo verde nordestino (L:300·J:220ml)','Couve+macaxeira+frango desfiado'],'~282','~225','caldo_verde_nordestino'),
+ m('ln',['Chá de capim limão s/ açúcar','1 banana pequena'],'~90','~80')),
+d(m('cafe',['Aveia (L:5col·J:4col)+leite+canela+banana','Café preto'],'~415','~330','aveia_mingau'),
+ m('lm',['Vitamina de laranja+banana+leite'],'~198','~172'),
+ m('alm',['Carne moída magra (L:180g·J:130g)','Arroz integral (L:3col·J:2col)','Feijão de corda','Chuchu+cenoura refogados'],'~568','~452','frango_grelhado'),
+ m('pre',['Cuscuz pequeno (2col)+requeijão light'],'~170','~150','cuscuz'),
+ m('pos',['Vitamina pós: banana+leite+mel'],'~215','~185','vitamina_pos'),
+ m('jan',['Sopa c/ frango+jerimum+macaxeira (L:350·J:250ml)'],'~340','~270','sopa_legumes'),
+ m('ln',['Iogurte grego+granola (1col)+laranja picada'],'~130','~118','iogurte_granola')),
+d(m('cafe',['Cuscuz (L:4col·J:3col)+sardinha desfiada+coentro','Suco de laranja natural 200ml'],'~448','~358','cuscuz'),
+ m('lm',['Mandarina frescas (2 unidades)+banana'],'~152','~132'),
+ m('alm',['Tilápia grelhada (L:200g·J:150g)','Batata doce (L:120g·J:80g)','Brócolis no vapor c/ limão'],'~540','~425','tilap_grelhada'),
+ m('pre',['1 banana+1 col pasta amendoim'],'~175','~155','pre_treino'),
+ m('pos',['Vitamina de laranja+banana+leite'],'~198','~172'),
+ m('jan',['Omelete (L:3·J:2 ovos)+couve+tomate','Legumes refogados'],'~350','~275','omelete'),
+ m('ln',['Chá de gengibre+limão s/ açúcar'],'~8','~8')),
+d(m('cafe',['Tapioca (L:2·J:1.5)+frango+queijo','Suco de laranja+gengibre natural','Café'],'~440','~354','tapioca'),
+ m('lm',['Salada de cítricos: laranja+mandarina+banana'],'~148','~128'),
+ m('alm',['Frango grelhado (L:200g·J:150g)','Feijão de corda+arroz integral','Salada completa+coentro'],'~600','~474','frango_grelhado'),
+ m('pre',['Batata doce (L:100g·J:70g)','2 claras cozidas'],'~188','~153'),
+ m('pos',['Iogurte grego+granola (2col)+laranja picada'],'~240','~206','iogurte_granola'),
+ m('jan',['Peixe assado (L:180g·J:130g)','Legumes assados c/ alho+azeite+ervas'],'~350','~275','peixe_assado'),
+ m('ln',['1 banana','Chá de camomila+mel'],'~88','~78')),
+d(m('cafe',['Vitamina de julho: laranja+aveia+leite+canela','2 ovos mexidos ao lado','Café preto'],'~480','~380','vitamina_pos'),
+ m('lm',['Laranja+mandarina frescas','20g castanha de caju'],'~142','~122'),
+ m('alm',['Almoço livre do sábado 😊','Sugestão: frango assado+baião de dois+suco de laranja natural'],'~685','~538','baiao_dois'),
+ m('pre',['1 banana+castanha'],'~178','~154'),
+ m('pos',['Vitamina pós: banana+leite+cacau'],'~215','~185','vitamina_pos'),
+ m('jan',['Frango grelhado (L:180g·J:130g)','Legumes salteados c/ alho+coentro'],'~400','~315','frango_grelhado'),
+ m('ln',['Chá de maracujá+mel'],'~28','~25')),
+d(m('cafe',['Pão integral (L:2·J:1.5)+queijo coalho','Ovo mexido c/ coentro','Suco de laranja natural 200ml'],'~425','~340','tapioca'),
+ m('lm',['Salada de frutas c/ laranja+mandarina+banana'],'~148','~128'),
+ m('alm',['Moqueca de peixe light (domingo!)','Arroz integral+salada verde'],'~665','~525','moqueca_light'),
+ m('pre',['Domingo — iogurte grego+fruta'],'~200','~170','iogurte_granola'),
+ m('pos',['Dia de descanso','2,5-3L água+suco de laranja natural'],'—','—'),
+ m('jan',['Cuscuz c/ sardinha+coentro (L:3col·J:2col)','Salada verde+tomate+cebola roxa'],'~332','~262','cuscuz'),
+ m('ln',['Chá de erva-cidreira s/ açúcar'],'~5','~5'))
+],
+// ══ AGOSTO ══ Seco e quente · Mamão · Banana · Fim do inverno ═══════════
+[
+d(m('cafe',['Cuscuz (L:4col·J:3col)+ovo mexido+coentro','Vitamina de mamão: 1 fatia mamão+150ml leite+mel'],'~445','~358','cuscuz'),
+ m('lm',['Mamão papaia fresco (digestivo+vitaminas)','1 banana'],'~105','~90'),
+ m('alm',['Frango grelhado (L:200g·J:150g)','Arroz integral (L:4col·J:3col)','Feijão de corda','Salada verde+coentro+azeite'],'~618','~488','frango_grelhado'),
+ m('pre',['1 banana+1 col pasta amendoim'],'~175','~155','pre_treino'),
+ m('pos',['Vitamina pós: banana+leite+cacau'],'~220','~190','vitamina_pos'),
+ m('jan',['Omelete (L:3·J:2 ovos)+espinafre+queijo','Salada verde+tomate+pepino'],'~355','~280','omelete'),
+ m('ln',['Iogurte grego+mel+mamão picado'],'~132','~122','iogurte_granola')),
+d(m('cafe',['Tapioca (L:2·J:1.5)+queijo coalho','2 ovos cozidos','Suco de laranja natural 200ml'],'~430','~344','tapioca'),
+ m('lm',['Mamão fresco+banana+20g amendoim'],'~158','~136'),
+ m('alm',['Sardinha grelhada (L:200g·J:150g)','Arroz integral (L:3col·J:2col)','Macaxeira cozida','Salada: alface+tomate+coentro'],'~558','~443','sardinha_grelhada'),
+ m('pre',['Iogurte grego 170g','1 banana'],'~190','~165'),
+ m('pos',['200ml água de coco','2 ovos cozidos'],'~170','~155'),
+ m('jan',['Sopa nordestina c/ frango+legumes (L:350·J:250ml)'],'~340','~270','sopa_legumes'),
+ m('ln',['Chá de camomila+mel','1 banana pequena'],'~88','~78')),
+d(m('cafe',['Aveia (L:5col·J:4col)+leite+canela+mamão amassado','Café preto'],'~412','~328','aveia_mingau'),
+ m('lm',['Vitamina de mamão: 1 fatia+200ml leite+mel'],'~175','~150'),
+ m('alm',['Carne moída magra (L:180g·J:130g) refogada','Arroz integral (L:3col·J:2col)','Feijão de corda','Chuchu+cenoura refogados'],'~568','~452','frango_grelhado'),
+ m('pre',['Cuscuz pequeno (2col)+requeijão light'],'~170','~150','cuscuz'),
+ m('pos',['Vitamina de mamão+banana+leite'],'~182','~158'),
+ m('jan',['Caldo verde nordestino (L:300·J:220ml)'],'~282','~225','caldo_verde_nordestino'),
+ m('ln',['Iogurte grego+granola (1col)'],'~125','~115','iogurte_granola')),
+d(m('cafe',['Cuscuz (L:4col·J:3col)+sardinha desfiada+coentro','Vitamina de mamão 200ml'],'~448','~358','cuscuz'),
+ m('lm',['1 banana nanica+20g castanha de caju'],'~162','~140'),
+ m('alm',['Tilápia grelhada (L:200g·J:150g)','Batata doce (L:120g·J:80g)','Brócolis+cenoura no vapor'],'~540','~425','tilap_grelhada'),
+ m('pre',['1 banana+1 col pasta amendoim'],'~175','~155','pre_treino'),
+ m('pos',['Vitamina pós: banana+leite+mel'],'~215','~185','vitamina_pos'),
+ m('jan',['Omelete (L:3·J:2 ovos)+couve+tomate+queijo','Legumes refogados'],'~350','~275','omelete'),
+ m('ln',['Chá de gengibre+limão s/ açúcar'],'~8','~8')),
+d(m('cafe',['Tapioca (L:2·J:1.5)+frango+queijo','Vitamina de mamão natural 200ml','Café'],'~440','~354','tapioca'),
+ m('lm',['Salada de frutas: mamão+banana+laranja'],'~140','~120'),
+ m('alm',['Frango grelhado (L:200g·J:150g)','Feijão de corda+arroz integral','Salada completa'],'~600','~474','frango_grelhado'),
+ m('pre',['Batata doce (L:100g·J:70g)','2 claras cozidas'],'~188','~153'),
+ m('pos',['Iogurte grego+granola (2col)+mamão picado'],'~238','~204','iogurte_granola'),
+ m('jan',['Peixe assado no forno (L:180g·J:130g)','Legumes assados c/ azeite+coentro'],'~350','~275','peixe_assado'),
+ m('ln',['1 banana','Chá de camomila+mel'],'~88','~78')),
+d(m('cafe',['Vitamina de agosto: mamão+aveia+leite+canela','2 ovos mexidos ao lado','Café preto'],'~478','~378','vitamina_pos'),
+ m('lm',['Mamão fresco+castanha de caju'],'~105','~88'),
+ m('alm',['Almoço livre do sábado 😊','Sugestão: frango grelhado+arroz+feijão+salada'],'~685','~538','baiao_dois'),
+ m('pre',['1 banana+castanha'],'~178','~154'),
+ m('pos',['Vitamina de mamão+banana+leite'],'~182','~158'),
+ m('jan',['Frango grelhado (L:180g·J:130g)','Legumes salteados: abobrinha+cenoura'],'~400','~315','frango_grelhado'),
+ m('ln',['Chá de maracujá+mel'],'~28','~25')),
+d(m('cafe',['Pão integral (L:2·J:1.5)+queijo coalho','Ovo mexido c/ coentro','Vitamina de mamão 200ml'],'~428','~342','tapioca'),
+ m('lm',['Salada de frutas c/ mamão+banana+laranja'],'~142','~122'),
+ m('alm',['Moqueca de peixe light (domingo!)','Arroz integral+salada verde'],'~665','~525','moqueca_light'),
+ m('pre',['Domingo — iogurte grego+mamão picado'],'~145','~128','iogurte_granola'),
+ m('pos',['Dia de descanso','2,5-3L água+vitamina de mamão leve'],'—','—'),
+ m('jan',['Cuscuz c/ sardinha+coentro (L:3col·J:2col)','Salada verde+tomate+pepino'],'~332','~262','cuscuz'),
+ m('ln',['Chá de camomila s/ açúcar'],'~5','~5'))
+],
+// ══ SETEMBRO ══ Primavera · Melancia · Uva · Calor voltando ══════════════
+[
+d(m('cafe',['Cuscuz (L:4col·J:3col)+ovo mexido+coentro','Suco de melancia natural 200ml (hidratação!)'],'~442','~354','cuscuz'),
+ m('lm',['Melancia fresca (fatia generosa)','20g castanha de caju'],'~105','~88'),
+ m('alm',['Frango grelhado (L:200g·J:150g)','Arroz integral (L:4col·J:3col)','Feijão de corda','Salada verde+coentro+azeite'],'~618','~488','frango_grelhado'),
+ m('pre',['1 banana+1 col pasta amendoim'],'~175','~155','pre_treino'),
+ m('pos',['Vitamina pós: banana+leite+cacau'],'~220','~190','vitamina_pos'),
+ m('jan',['Omelete (L:3·J:2 ovos)+espinafre+queijo','Salada verde+tomate+pepino'],'~355','~280','omelete'),
+ m('ln',['Iogurte grego+mel+uva fresca (se achar)'],'~135','~125','iogurte_granola')),
+d(m('cafe',['Tapioca (L:2·J:1.5)+queijo coalho','2 ovos cozidos','Suco de melancia+hortelã 200ml'],'~428','~342','tapioca'),
+ m('lm',['Melancia fresca+banana+20g amendoim'],'~150','~130'),
+ m('alm',['Sardinha grelhada (L:200g·J:150g)','Arroz integral (L:3col·J:2col)','Macaxeira cozida','Salada: alface+tomate+coentro'],'~558','~443','sardinha_grelhada'),
+ m('pre',['Iogurte grego 170g','1 banana'],'~190','~165'),
+ m('pos',['200ml água de coco','2 ovos cozidos'],'~170','~155'),
+ m('jan',['Sopa c/ frango+legumes nordestinos (L:350·J:250ml)'],'~340','~270','sopa_legumes'),
+ m('ln',['Chá de camomila+mel','1 banana pequena'],'~88','~78')),
+d(m('cafe',['Aveia (L:5col·J:4col)+leite+canela+banana','Café preto'],'~415','~330','aveia_mingau'),
+ m('lm',['Vitamina de melancia: 200g melancia+200ml água de coco'],'~90','~78'),
+ m('alm',['Carne moída magra (L:180g·J:130g) refogada','Arroz integral (L:3col·J:2col)','Feijão de corda','Maxixe+cenoura refogados'],'~568','~452','frango_grelhado'),
+ m('pre',['Cuscuz pequeno (2col)+requeijão light'],'~170','~150','cuscuz'),
+ m('pos',['Vitamina pós: banana+leite+mel'],'~215','~185','vitamina_pos'),
+ m('jan',['Caldo verde nordestino (L:300·J:220ml)'],'~282','~225','caldo_verde_nordestino'),
+ m('ln',['Iogurte grego+granola (1col)+uva fresca'],'~132','~120','iogurte_granola')),
+d(m('cafe',['Cuscuz (L:4col·J:3col)+sardinha desfiada+coentro','Suco de laranja+melancia natural 200ml'],'~445','~355','cuscuz'),
+ m('lm',['Uva fresca (antioxidante!)+1 banana'],'~130','~112'),
+ m('alm',['Tilápia grelhada (L:200g·J:150g)','Batata doce (L:120g·J:80g)','Brócolis+cenoura no vapor'],'~540','~425','tilap_grelhada'),
+ m('pre',['1 banana+1 col pasta amendoim'],'~175','~155','pre_treino'),
+ m('pos',['Suco de melancia pós-treino: 300ml+pitada sal'],'~88','~75'),
+ m('jan',['Omelete (L:3·J:2 ovos)+couve+tomate+queijo'],'~350','~275','omelete'),
+ m('ln',['Chá de hibisco s/ açúcar (diurético natural)'],'~5','~5')),
+d(m('cafe',['Tapioca (L:2·J:1.5)+frango+queijo','Suco de melancia natural 200ml','Café preto'],'~438','~352','tapioca'),
+ m('lm',['Salada de frutas: melancia+uva+banana'],'~142','~122'),
+ m('alm',['Frango grelhado (L:200g·J:150g)','Feijão de corda+arroz integral','Salada completa+coentro'],'~600','~474','frango_grelhado'),
+ m('pre',['Batata doce (L:100g·J:70g)','2 claras cozidas'],'~188','~153'),
+ m('pos',['Iogurte grego+granola (2col)+melancia picada'],'~225','~192','iogurte_granola'),
+ m('jan',['Peixe assado no forno (L:180g·J:130g)','Legumes assados c/ azeite+coentro'],'~350','~275','peixe_assado'),
+ m('ln',['1 banana','Chá de maracujá+mel'],'~88','~78')),
+d(m('cafe',['Vitamina de setembro: melancia+aveia+leite','2 ovos mexidos ao lado','Café preto'],'~475','~375','vitamina_pos'),
+ m('lm',['Melancia fresca+castanha de caju'],'~100','~85'),
+ m('alm',['Almoço livre do sábado 😊','Sugestão: frango c/ baião de dois+suco de melancia natural gelado'],'~682','~535','baiao_dois'),
+ m('pre',['1 banana+castanha'],'~178','~154'),
+ m('pos',['Vitamina pós: banana+leite+cacau'],'~215','~185','vitamina_pos'),
+ m('jan',['Frango grelhado (L:180g·J:130g)','Legumes salteados c/ alho'],'~400','~315','frango_grelhado'),
+ m('ln',['Chá de camomila+mel'],'~28','~25')),
+d(m('cafe',['Pão integral (L:2·J:1.5)+queijo coalho','Ovo mexido c/ coentro','Suco de melancia natural 200ml'],'~422','~337','tapioca'),
+ m('lm',['Salada de frutas c/ melancia+uva+banana'],'~142','~122'),
+ m('alm',['Moqueca de peixe light (domingo!)','Arroz integral+salada verde'],'~665','~525','moqueca_light'),
+ m('pre',['Domingo — iogurte grego+melancia picada'],'~140','~122','iogurte_granola'),
+ m('pos',['Dia de descanso','2,5-3L água+suco de melancia gelado'],'—','—'),
+ m('jan',['Cuscuz c/ sardinha+coentro (L:3col·J:2col)','Salada verde+tomate+pepino'],'~332','~262','cuscuz'),
+ m('ln',['Chá de hibisco s/ açúcar'],'~5','~5'))
+],
+// ══ OUTUBRO ══ Calor voltando · Manga nova · Acerola safra ══════════════
+[
+d(m('cafe',['Cuscuz (L:4col·J:3col)+ovo mexido+coentro','Vitamina de manga nova: 1/2 manga+150ml leite+mel'],'~448','~360','cuscuz'),
+ m('lm',['Manga nova (voltando a safra!)','Acerola fresca 50g (vitamina C máxima!)'],'~128','~110'),
+ m('alm',['Frango grelhado (L:200g·J:150g)','Arroz integral (L:4col·J:3col)','Feijão de corda','Salada verde+coentro+azeite'],'~618','~488','frango_grelhado'),
+ m('pre',['1 banana+1 col pasta amendoim'],'~175','~155','pre_treino'),
+ m('pos',['Vitamina de manga+banana+leite+mel'],'~228','~198','vit_manga'),
+ m('jan',['Omelete (L:3·J:2 ovos)+espinafre+queijo','Salada verde+tomate+pepino'],'~355','~280','omelete'),
+ m('ln',['Iogurte grego+mel+manga picada'],'~138','~128','iogurte_granola')),
+d(m('cafe',['Tapioca (L:2·J:1.5)+queijo coalho','2 ovos cozidos','Suco de acerola natural 200ml (vitamina C!)'],'~428','~342','tapioca'),
+ m('lm',['Manga nova fresca (pré-safra baiana!)','20g castanha de caju'],'~145','~125'),
+ m('alm',['Sardinha grelhada (L:200g·J:150g)','Arroz integral (L:3col·J:2col)','Macaxeira cozida','Salada: alface+tomate+coentro'],'~558','~443','sardinha_grelhada'),
+ m('pre',['Iogurte grego 170g','1 banana'],'~190','~165'),
+ m('pos',['200ml água de coco','2 ovos cozidos'],'~170','~155'),
+ m('jan',['Sopa nordestina c/ frango+legumes (L:350·J:250ml)'],'~340','~270','sopa_legumes'),
+ m('ln',['Chá de camomila+mel','1 banana pequena'],'~88','~78')),
+d(m('cafe',['Aveia (L:5col·J:4col)+leite+canela+banana','Café preto'],'~415','~330','aveia_mingau'),
+ m('lm',['Vitamina de manga nova: 1/2 manga+200ml leite+mel'],'~228','~198','vit_manga'),
+ m('alm',['Carne moída magra (L:180g·J:130g) refogada','Arroz integral (L:3col·J:2col)','Feijão de corda','Chuchu+cenoura refogados'],'~568','~452','frango_grelhado'),
+ m('pre',['Cuscuz pequeno (2col)+requeijão light'],'~170','~150','cuscuz'),
+ m('pos',['Vitamina pós: banana+leite+cacau'],'~220','~190','vitamina_pos'),
+ m('jan',['Tilápia grelhada (L:180g·J:130g)','Abobrinha+cenoura salteadas'],'~328','~262','tilap_grelhada'),
+ m('ln',['Iogurte grego+granola (1col)+manga picada'],'~138','~126','iogurte_granola')),
+d(m('cafe',['Cuscuz (L:4col·J:3col)+sardinha desfiada+coentro','Suco de acerola+laranja 200ml'],'~445','~355','cuscuz'),
+ m('lm',['Manga fresca+acerola+banana'],'~168','~148'),
+ m('alm',['Tilápia grelhada (L:200g·J:150g)','Batata doce (L:120g·J:80g)','Brócolis no vapor c/ limão'],'~540','~425','tilap_grelhada'),
+ m('pre',['1 banana+1 col pasta amendoim'],'~175','~155','pre_treino'),
+ m('pos',['Vitamina de manga+acerola+leite'],'~225','~195','vit_manga'),
+ m('jan',['Omelete (L:3·J:2 ovos)+couve+tomate+queijo','Legumes refogados'],'~350','~275','omelete'),
+ m('ln',['Chá de hibisco s/ açúcar'],'~5','~5')),
+d(m('cafe',['Tapioca (L:2·J:1.5)+frango+queijo','Vitamina de manga+acerola natural 200ml','Café preto'],'~442','~356','tapioca'),
+ m('lm',['Salada de frutas: manga+acerola+banana'],'~178','~158'),
+ m('alm',['Frango grelhado (L:200g·J:150g)','Feijão de corda+arroz integral','Salada completa+coentro'],'~600','~474','frango_grelhado'),
+ m('pre',['Batata doce (L:100g·J:70g)','2 claras cozidas'],'~188','~153'),
+ m('pos',['Açaí nordestino: iogurte+manga+granola+castanha'],'~248','~212','acai_nordestino'),
+ m('jan',['Peixe assado no forno (L:180g·J:130g)','Legumes assados c/ azeite+coentro'],'~350','~275','peixe_assado'),
+ m('ln',['1 banana','Chá de maracujá+mel'],'~88','~78')),
+d(m('cafe',['Vitamina de outubro: manga+aveia+leite+mel','2 ovos mexidos ao lado','Café preto'],'~485','~385','vitamina_pos'),
+ m('lm',['Manga fresca+acerola+castanha de caju'],'~152','~132'),
+ m('alm',['Almoço livre do sábado 😊','Sugestão: frango c/ baião de dois+suco de acerola natural'],'~688','~540','baiao_dois'),
+ m('pre',['1 banana+castanha'],'~178','~154'),
+ m('pos',['Vitamina de manga+banana+leite+cacau'],'~238','~208','vit_manga'),
+ m('jan',['Frango grelhado (L:180g·J:130g)','Legumes salteados: abobrinha+brócolis'],'~400','~315','frango_grelhado'),
+ m('ln',['Chá de camomila+mel'],'~28','~25')),
+d(m('cafe',['Pão integral (L:2·J:1.5)+queijo coalho','Ovo mexido c/ coentro','Suco de acerola natural 200ml'],'~425','~340','tapioca'),
+ m('lm',['Salada de frutas c/ manga+acerola+banana'],'~178','~158'),
+ m('alm',['Moqueca de peixe light (domingo!)','Arroz integral+salada verde'],'~665','~525','moqueca_light'),
+ m('pre',['Domingo — açaí nordestino: iogurte+manga+granola'],'~238','~205','acai_nordestino'),
+ m('pos',['Dia de descanso','2,5-3L água+suco de acerola gelado'],'—','—'),
+ m('jan',['Cuscuz c/ sardinha+coentro (L:3col·J:2col)','Salada verde+tomate+cebola roxa'],'~332','~262','cuscuz'),
+ m('ln',['Chá de maracujá s/ açúcar'],'~5','~5'))
+],
+// ══ NOVEMBRO ══ Calor crescente · Manga crescendo · Caju chegando ════════
+[
+d(m('cafe',['Cuscuz (L:4col·J:3col)+ovo mexido+coentro','Vitamina de manga: 1/2 manga+150ml leite+mel'],'~450','~362','cuscuz'),
+ m('lm',['Manga fresca (safra crescendo!)','20g castanha de caju nova safra'],'~145','~125'),
+ m('alm',['Frango grelhado (L:200g·J:150g)','Arroz integral (L:4col·J:3col)','Feijão de corda','Salada verde+coentro+azeite'],'~618','~488','frango_grelhado'),
+ m('pre',['1 banana+1 col pasta amendoim'],'~175','~155','pre_treino'),
+ m('pos',['Vitamina de manga+banana+leite+cacau'],'~238','~208','vit_manga'),
+ m('jan',['Omelete (L:3·J:2 ovos)+espinafre+queijo','Salada verde+tomate+pepino'],'~355','~280','omelete'),
+ m('ln',['Iogurte grego+mel+manga picada'],'~138','~128','iogurte_granola')),
+d(m('cafe',['Tapioca (L:2·J:1.5)+queijo coalho','2 ovos cozidos','Suco de caju+acerola natural 200ml'],'~432','~346','tapioca'),
+ m('lm',['Caju fresco (nova safra!) + manga fresca'],'~142','~122'),
+ m('alm',['Sardinha grelhada (L:200g·J:150g)','Arroz integral (L:3col·J:2col)','Macaxeira cozida','Salada: alface+tomate+coentro'],'~558','~443','sardinha_grelhada'),
+ m('pre',['Iogurte grego 170g','1 banana'],'~190','~165'),
+ m('pos',['200ml água de coco','2 ovos cozidos'],'~170','~155'),
+ m('jan',['Sopa c/ frango+legumes nordestinos (L:350·J:250ml)'],'~340','~270','sopa_legumes'),
+ m('ln',['Chá de caju s/ açúcar','1 banana pequena'],'~90','~80')),
+d(m('cafe',['Aveia (L:5col·J:4col)+leite+canela+banana','Café preto'],'~415','~330','aveia_mingau'),
+ m('lm',['Vitamina de manga+caju: 1/2 manga+1 caju+leite+mel'],'~232','~202','vit_manga'),
+ m('alm',['Frango desfiado (L:180g·J:130g) c/ molho de tomate','Arroz integral (L:3col·J:2col)','Feijão de corda','Maxixe+cenoura refogados'],'~568','~452','frango_grelhado'),
+ m('pre',['Cuscuz pequeno (2col)+requeijão light'],'~170','~150','cuscuz'),
+ m('pos',['Vitamina pós: banana+leite+cacau'],'~220','~190','vitamina_pos'),
+ m('jan',['Tilápia grelhada (L:180g·J:130g)','Abobrinha+cenoura salteadas c/ alho'],'~328','~262','tilap_grelhada'),
+ m('ln',['Iogurte grego+granola (1col)+caju picado'],'~132','~120','iogurte_granola')),
+d(m('cafe',['Cuscuz (L:4col·J:3col)+sardinha desfiada+coentro','Suco de manga+caju natural 200ml'],'~452','~362','cuscuz'),
+ m('lm',['Manga fresca+caju fresco+banana'],'~188','~165'),
+ m('alm',['Tilápia grelhada (L:200g·J:150g)','Batata doce (L:120g·J:80g)','Brócolis+cenoura no vapor'],'~540','~425','tilap_grelhada'),
+ m('pre',['1 banana+1 col pasta amendoim'],'~175','~155','pre_treino'),
+ m('pos',['Vitamina de manga+banana+leite'],'~228','~198','vit_manga'),
+ m('jan',['Omelete (L:3·J:2 ovos)+couve+tomate+queijo','Legumes refogados'],'~350','~275','omelete'),
+ m('ln',['Chá de hibisco s/ açúcar'],'~5','~5')),
+d(m('cafe',['Tapioca (L:2·J:1.5)+frango+queijo','Vitamina de caju+manga 200ml','Café preto'],'~445','~358','tapioca'),
+ m('lm',['Salada de frutas de novembro: manga+caju+banana'],'~182','~160'),
+ m('alm',['Frango grelhado (L:200g·J:150g)','Feijão de corda+arroz integral','Salada completa+coentro'],'~600','~474','frango_grelhado'),
+ m('pre',['Batata doce (L:100g·J:70g)','2 claras cozidas'],'~188','~153'),
+ m('pos',['Açaí nordestino: iogurte+manga+granola+castanha'],'~248','~212','acai_nordestino'),
+ m('jan',['Peixe assado no forno (L:180g·J:130g)','Legumes assados c/ azeite+ervas'],'~350','~275','peixe_assado'),
+ m('ln',['1 banana','Chá de maracujá+mel'],'~88','~78')),
+d(m('cafe',['Vitamina de novembro: manga+aveia+leite+cacau','2 ovos mexidos ao lado','Café preto'],'~490','~390','vitamina_pos'),
+ m('lm',['Manga fresca+caju fresco (safra!)','20g castanha'],'~155','~135'),
+ m('alm',['Almoço livre do sábado 😊','Sugestão: frango assado+baião de dois+suco de manga natural'],'~692','~545','baiao_dois'),
+ m('pre',['1 manga fresca (pré-treino natural)'],'~100','~88'),
+ m('pos',['Vitamina de manga+banana+leite+cacau'],'~238','~208','vit_manga'),
+ m('jan',['Frango grelhado (L:180g·J:130g)','Legumes salteados: abobrinha+brócolis+coentro'],'~400','~315','frango_grelhado'),
+ m('ln',['Chá de camomila+mel'],'~28','~25')),
+d(m('cafe',['Pão integral (L:2·J:1.5)+queijo coalho','Ovo mexido c/ coentro','Suco de caju natural 200ml'],'~428','~342','tapioca'),
+ m('lm',['Salada de frutas c/ manga+caju+banana'],'~185','~162'),
+ m('alm',['Moqueca de peixe light (domingo!)','Arroz integral+salada verde+farofa leve'],'~665','~525','moqueca_light'),
+ m('pre',['Domingo — açaí nordestino: iogurte+manga+granola'],'~238','~205','acai_nordestino'),
+ m('pos',['Dia de descanso','2,5-3L água+suco de caju gelado'],'—','—'),
+ m('jan',['Cuscuz c/ sardinha+coentro (L:3col·J:2col)','Salada verde+tomate+cebola roxa'],'~332','~262','cuscuz'),
+ m('ln',['Chá de maracujá s/ açúcar'],'~5','~5'))
+],
+// ══ DEZEMBRO ══ Verão pleno · Manga safra máxima · Caju · Abacaxi ════════
+[
+d(m('cafe',['Cuscuz (L:4col·J:3col)+ovo mexido+coentro','Vitamina especial: manga+caju+200ml leite+mel (SAFRA MÁXIMA!)'],'~458','~368','cuscuz'),
+ m('lm',['Manga palmer madura (PREÇO MÍNIMO!)','20g castanha de caju nova'],'~168','~145'),
+ m('alm',['Frango grelhado (L:200g·J:150g)','Arroz integral (L:4col·J:3col)','Feijão de corda','Salada verde+coentro+azeite'],'~618','~488','frango_grelhado'),
+ m('pre',['1 banana+1 col pasta amendoim'],'~175','~155','pre_treino'),
+ m('pos',['Vitamina de manga+banana+leite+cacau'],'~240','~210','vit_manga'),
+ m('jan',['Omelete (L:3·J:2 ovos)+espinafre+queijo','Salada verde+pepino+coentro'],'~355','~280','omelete'),
+ m('ln',['Iogurte grego+manga picada+mel'],'~142','~132','iogurte_granola')),
+d(m('cafe',['Tapioca (L:2·J:1.5)+queijo coalho','2 ovos cozidos','Suco de caju+manga natural 200ml'],'~435','~348','tapioca'),
+ m('lm',['Manga fresca (safra plena) + caju fresco'],'~155','~135'),
+ m('alm',['Sardinha grelhada (L:200g·J:150g)','Arroz integral (L:3col·J:2col)','Macaxeira cozida','Salada: alface+tomate+coentro'],'~558','~443','sardinha_grelhada'),
+ m('pre',['Iogurte grego 170g','1 banana'],'~190','~165'),
+ m('pos',['200ml água de coco gelada','2 ovos cozidos'],'~170','~155'),
+ m('jan',['Sopa leve c/ frango+legumes (L:350·J:250ml)','Jerimum+macaxeira+cenoura+coentro'],'~340','~270','sopa_legumes'),
+ m('ln',['Chá de caju gelado s/ açúcar','1 banana pequena'],'~90','~80')),
+d(m('cafe',['Aveia (L:5col·J:4col)+leite+canela+manga amassada','Café preto'],'~422','~336','aveia_mingau'),
+ m('lm',['Vitamina especial de dezembro: manga+caju+leite+mel'],'~238','~208','vit_manga'),
+ m('alm',['Frango desfiado (L:180g·J:130g) c/ molho','Arroz integral (L:3col·J:2col)','Feijão de corda','Maxixe+cenoura refogados'],'~568','~452','frango_grelhado'),
+ m('pre',['Cuscuz pequeno (2col)+requeijão light'],'~170','~150','cuscuz'),
+ m('pos',['Vitamina pós: banana+leite+cacau em pó'],'~220','~190','vitamina_pos'),
+ m('jan',['Sardinha assada c/ limão+coentro (L:180g·J:130g)','Salada: tomate+cebola+pimentão'],'~330','~265','sardinha_grelhada'),
+ m('ln',['Iogurte grego+granola (1col)+manga picada'],'~142','~130','iogurte_granola')),
+d(m('cafe',['Cuscuz (L:4col·J:3col)+sardinha desfiada+coentro','Suco de manga+abacaxi 200ml (digestivo + vitamina C!)'],'~455','~365','cuscuz'),
+ m('lm',['Abacaxi fresco (antiinflamatório natural!)','20g castanha de caju'],'~118','~100'),
+ m('alm',['Tilápia grelhada (L:200g·J:150g)','Batata doce (L:120g·J:80g)','Brócolis no vapor c/ coentro'],'~540','~425','tilap_grelhada'),
+ m('pre',['1 banana+1 col pasta amendoim'],'~175','~155','pre_treino'),
+ m('pos',['Vitamina de manga+banana+leite+mel'],'~235','~205','vit_manga'),
+ m('jan',['Omelete (L:3·J:2 ovos)+couve+tomate+queijo coalho','Legumes refogados c/ alho'],'~350','~275','omelete'),
+ m('ln',['Chá de hibisco s/ açúcar (diurético)'],'~5','~5')),
+d(m('cafe',['Tapioca (L:2·J:1.5)+frango+queijo','Suco de manga+acerola 200ml (vitamina C!!)','Café preto'],'~445','~358','tapioca'),
+ m('lm',['Salada de frutas de dezembro: manga+caju+abacaxi+banana'],'~195','~172'),
+ m('alm',['Frango grelhado (L:200g·J:150g)','Feijão de corda+arroz integral','Salada completa+vinagrete de coentro'],'~600','~474','frango_grelhado'),
+ m('pre',['Batata doce (L:100g·J:70g)','2 claras cozidas'],'~188','~153'),
+ m('pos',['Açaí nordestino: iogurte+manga+granola+castanha'],'~252','~215','acai_nordestino'),
+ m('jan',['Peixe assado no forno (L:180g·J:130g)','Legumes assados: jerimum+cenoura+alho+coentro'],'~352','~278','peixe_assado'),
+ m('ln',['1 banana','Chá de maracujá+mel'],'~88','~78')),
+d(m('cafe',['Vitamina especial de dezembro: manga+aveia+leite+cacau+mel','2 ovos mexidos ao lado','Café preto'],'~495','~395','vitamina_pos'),
+ m('lm',['Manga plena safra+caju+20g castanha (FESTA DE DEZEMBRO!)'],'~168','~145'),
+ m('alm',['Almoço de festa junina saudável 😊 / Natal / Confraternização','Sugestão: frango assado+arroz integral+feijão+salada','Manga de sobremesa — você MERECE!'],'~700','~552','baiao_dois'),
+ m('pre',['1 manga fresca (pré-treino natural de dezembro)'],'~100','~88'),
+ m('pos',['Vitamina de manga+banana+leite+cacau'],'~240','~210','vit_manga'),
+ m('jan',['Frango grelhado (L:180g·J:130g)','Legumes salteados: abobrinha+brócolis+coentro'],'~400','~315','frango_grelhado'),
+ m('ln',['Chá de camomila+mel (celebre e descanse!)'],'~28','~25')),
+d(m('cafe',['Pão integral (L:2·J:1.5)+queijo coalho','Ovo mexido c/ coentro','Suco de caju natural 200ml — SAFRA MÁXIMA!'],'~430','~344','tapioca'),
+ m('lm',['Salada de frutas do fim do ano: manga+caju+abacaxi+banana'],'~200','~178'),
+ m('alm',['Moqueca de peixe baiana (domingo especial de dezembro!)','Arroz integral+salada verde+farofa de macaxeira'],'~672','~532','moqueca_light'),
+ m('pre',['Domingo — açaí nordestino: iogurte+manga+granola+castanha'],'~252','~215','acai_nordestino'),
+ m('pos',['Dia de descanso — PARABÉNS POR 1 ANO COMPLETO!','Beba 2,5-3L água+suco de manga gelado'],'—','—'),
+ m('jan',['Cuscuz c/ sardinha desfiada+coentro (L:3col·J:2col)','Salada verde+tomate+cebola roxa — sabores que fizeram parte deste ano'],'~335','~265','cuscuz'),
+ m('ln',['Chá de maracujá s/ açúcar (1 ano de hábito saudável celebrado!)'],'~5','~5'))
+]
+];
+
+// COMMON FOODS DATABASE
+const FOODS=[
+  {n:'Cuscuz médio',k:180},{n:'Tapioca simples',k:130},{n:'Arroz integral 4col',k:140},{n:'Feijão de corda 3col',k:120},
+  {n:'Frango grelhado 100g',k:165},{n:'Sardinha grelhada 100g',k:150},{n:'Tilápia grelhada 100g',k:140},
+  {n:'Ovo cozido',k:78},{n:'Ovo mexido c/azeite',k:100},{n:'Banana média',k:90},{n:'Manga média',k:100},
+  {n:'Mamão fatia',k:55},{n:'Laranja média',k:60},{n:'Caju fresco',k:45},{n:'Maracujá inteiro',k:50},
+  {n:'Iogurte grego 170g',k:100},{n:'Queijo coalho 30g',k:90},{n:'Leite desnatado 200ml',k:70},
+  {n:'Pasta amendoim 1col',k:95},{n:'Castanha caju 20g',k:120},{n:'Água de coco 200ml',k:40},
+  {n:'Batata doce 100g',k:86},{n:'Macaxeira cozida 100g',k:134},{n:'Pizza fatia',k:285},
+  {n:'Hambúrguer (lanche)',k:500},{n:'Refrigerante 350ml',k:140},{n:'Cerveja 350ml',k:150},
+  {n:'Pão francês',k:135},{n:'Granola 2col',k:120},{n:'Aveia 4col',k:150},
+];
+
+// MONTHLY SHOPPING VARIATIONS
+const SHOP_BASE=[
+  {cat:'🥩 Proteínas',items:[
+    {n:'Peito de frango',ql:'1,2kg',qj:'900g',obs:'Compre em quantidade e congele em porções.'},
+    {n:'Sardinha fresca',ql:'400g',qj:'300g',obs:'Feira local — mais fresca e barata!'},
+    {n:'Tilápia (filé)',ql:'600g',qj:'450g',obs:'Ou badejo, robalo — peixes baianos.'},
+    {n:'Ovos',ql:'30 unidades',qj:'24 unidades',obs:'1-3 ovos/dia conforme o cardápio.'},
+    {n:'Carne moída magra (patinho)',ql:'400g',qj:'300g',obs:'Patinho = mais magro. Use 2x na semana.'},
+  ]},
+  {cat:'🌾 Carboidratos',items:[
+    {n:'Fubá de cuscuz',ql:'500g',qj:'400g',obs:'Produto nordestino! Granel na feira é mais barato.'},
+    {n:'Arroz integral',ql:'1kg',qj:'800g',obs:'Mais fibra que o branco. Cozinhe em quantidade.'},
+    {n:'Aveia em flocos finos',ql:'500g',qj:'400g',obs:'Café da manhã + pré-treino.'},
+    {n:'Tapioca (goma)',ql:'500g',qj:'400g',obs:'Peneire antes de usar.'},
+    {n:'Batata doce',ql:'1kg',qj:'700g',obs:'Feira é muito mais barata. Ótimo pré-treino.'},
+    {n:'Macaxeira (aipim)',ql:'500g',qj:'400g',obs:'Cozinhe em quantidade e refrigere.'},
+    {n:'Feijão de corda',ql:'500g',qj:'400g',obs:'Feijão nordestino mais leve e proteico!'},
+    {n:'Pão integral',ql:'1 pacote',qj:'1 pacote',obs:'Sem açúcar no rótulo.'},
+  ]},
+  {cat:'🥦 Hortifruti',items:[
+    {n:'Brócolis',ql:'1 cabeça grande',qj:'1 cabeça',obs:'Congele já picado para praticidade.'},
+    {n:'Cenoura',ql:'1kg',qj:'800g',obs:'Crua e cozida. Sempre na feira.'},
+    {n:'Abobrinha',ql:'2 unidades',qj:'2 unidades',obs:'Jantar e refogados.'},
+    {n:'Espinafre ou couve',ql:'1 maço',qj:'1 maço',obs:'Omelete e vitaminas.'},
+    {n:'Tomate',ql:'1kg',qj:'800g',obs:'Molho, salada e tempero.'},
+    {n:'Alface + rúcula',ql:'2 pés',qj:'2 pés',obs:'Saladas diárias.'},
+    {n:'Cebola',ql:'1kg',qj:'800g',obs:'Tempero base. Feira é mais barata.'},
+    {n:'Alho',ql:'1 cabeça',qj:'1 cabeça',obs:'Essencial na cozinha nordestina.'},
+    {n:'Pimentão',ql:'2 unidades',qj:'2 unidades',obs:'Vitamina A e C.'},
+    {n:'Maxixe ou chuchu',ql:'3 unidades',qj:'3 unidades',obs:'Legume nordestino leve e barato.'},
+    {n:'Jerimum (abóbora)',ql:'1 pedaço',qj:'1 pedaço',obs:'Sopas e refogados.'},
+  ]},
+  {cat:'🥜 Gorduras Boas',items:[
+    {n:'Pasta de amendoim integral',ql:'1 pote 400g',qj:'1 pote',obs:'Sem açúcar e sem óleo adicionado!'},
+    {n:'Castanha de caju',ql:'200g',qj:'150g',obs:'Produto regional! Granel na feira.'},
+    {n:'Amendoim torrado s/ sal',ql:'300g',qj:'250g',obs:'Granel mais barato.'},
+    {n:'Azeite extra virgem',ql:'250ml',qj:'250ml',obs:'Um fio por refeição.'},
+  ]},
+  {cat:'🧀 Laticínios',items:[
+    {n:'Iogurte grego natural',ql:'6 potes',qj:'5 potes',obs:'Sem sabor. Vigor ou Danio.'},
+    {n:'Queijo branco/coalho',ql:'300g',qj:'250g',obs:'Queijo de coalho nordestino!'},
+    {n:'Leite desnatado',ql:'2 litros',qj:'1,5 litros',obs:'Para vitaminas e café.'},
+    {n:'Requeijão light',ql:'1 pote',qj:'1 pote',obs:'Para tapioca e cuscuz.'},
+  ]},
+  {cat:'🧂 Temperos',items:[
+    {n:'Coentro fresco',ql:'1 maço',qj:'1 maço',obs:'Essencial na cozinha baiana!'},
+    {n:'Cebolinha fresca',ql:'1 maço',qj:'1 maço',obs:'Finalização de pratos.'},
+    {n:'Limão Taiti',ql:'1kg',qj:'1kg',obs:'Peixe, frango, saladas. Compre bastante.'},
+    {n:'Cacau em pó 100%',ql:'1 lata',qj:'1 lata',obs:'Vitaminas. Não é achocolatado!'},
+    {n:'Mel puro',ql:'250g',qj:'250g',obs:'Mel nordestino da caatinga — excelente!'},
+    {n:'Canela em pó',ql:'1 vidro',qj:'1 vidro',obs:'Aveia e iogurte.'},
+    {n:'Colorau (urucum)',ql:'1 vidro',qj:'1 vidro',obs:'Tempero baiano. Cor e sabor.'},
+  ]},
+  {cat:'💧 Bebidas e Outros',items:[
+    {n:'Água de coco',ql:'8 caixinhas',qj:'6 caixinhas',obs:'Isotônico natural da Bahia!'},
+    {n:'Chá de camomila',ql:'1 caixa',qj:'1 caixa',obs:'Lanche da noite. Ajuda a dormir.'},
+    {n:'Chá de hibisco',ql:'1 caixa',qj:'1 caixa',obs:'Diurético natural. Ótimo gelado.'},
+    {n:'Granola s/ açúcar',ql:'500g',qj:'400g',obs:'Para iogurte.'},
+    {n:'Água mineral',ql:'3L/dia',qj:'2,5L/dia',obs:'Fundamental! Hidratação no calor baiano.'},
+  ]}
+];
+
+const SHOP_SEASONAL={
+  0:{cat:'🥭 Frutas de Janeiro',items:[{n:'Manga (variedade)',ql:'6 unidades',qj:'5 unidades',obs:'Safra plena! Preço mínimo.'},{n:'Caju fresco',ql:'1kg',qj:'800g',obs:'Regional! Riquíssimo em vitamina C.'},{n:'Umbu (se achar)',ql:'500g',qj:'400g',obs:'Fruta do sertão baiano — rara e deliciosa.'}]},
+  1:{cat:'🥤 Frutas de Fevereiro',items:[{n:'Caju fresco',ql:'1,5kg',qj:'1kg',obs:'Safra máxima. Compre bastante!'},{n:'Graviola',ql:'1kg',qj:'800g',obs:'Para vitaminas. Sabor tropical.'},{n:'Banana prata',ql:'2 cachos',qj:'1,5 cacho',obs:'Base do pré/pós-treino.'}]},
+  2:{cat:'🍑 Frutas de Março',items:[{n:'Pitanga',ql:'500g',qj:'400g',obs:'Rica em licopeno. Típica da Bahia.'},{n:'Cajá',ql:'500g',qj:'400g',obs:'Ácida, vitamina C. Boa para sucos.'},{n:'Banana',ql:'2 cachos',qj:'1,5 cacho',obs:'Treino e lanches.'}]},
+  3:{cat:'🍋 Frutas de Abril',items:[{n:'Maracujá',ql:'6 unidades',qj:'5 unidades',obs:'Calmante natural. Vitaminas e chás.'},{n:'Umbu (se achar)',ql:'500g',qj:'400g',obs:'Fruta do sertão com sabor único.'},{n:'Laranja',ql:'1kg',qj:'1kg',obs:'Vitamina C. Suco matinal.'}]},
+  4:{cat:'🌿 Frutas de Maio',items:[{n:'Seriguela',ql:'500g',qj:'400g',obs:'Fruta nordestina. Rica em betacaroteno.'},{n:'Jaca madura',ql:'1 pedaço',qj:'1 pedaço',obs:'Energética. Use com moderação.'},{n:'Banana',ql:'2 cachos',qj:'1,5 cacho',obs:'Base dos treinos.'}]},
+  5:{cat:'🍃 Frutas de Junho',items:[{n:'Goiaba vermelha',ql:'500g',qj:'400g',obs:'Rica em licopeno e vitamina C.'},{n:'Laranja lima/pérsia',ql:'2kg',qj:'1,5kg',obs:'Suco e vitaminas.'},{n:'Banana prata',ql:'2 cachos',qj:'1,5 cacho',obs:'Essencial.'}]},
+  6:{cat:'🍊 Frutas de Julho',items:[{n:'Laranja variada',ql:'2kg',qj:'1,5kg',obs:'Safra alta. Suco e vitaminas.'},{n:'Mandarina/mexerica',ql:'1kg',qj:'800g',obs:'Lanche fácil. Vitamina C.'},{n:'Banana',ql:'2 cachos',qj:'1,5 cacho',obs:'Treino.'}]},
+  7:{cat:'🍌 Frutas de Agosto',items:[{n:'Mamão formosa',ql:'1 unidade',qj:'1 unidade',obs:'Digestão + fibras.'},{n:'Banana nanica',ql:'2 cachos',qj:'1,5 cacho',obs:'Mais doce para vitaminas.'},{n:'Maracujá',ql:'4 unidades',qj:'3 unidades',obs:'Chás noturnos.'}]},
+  8:{cat:'🍉 Frutas de Setembro',items:[{n:'Melancia pequena',ql:'1 unidade',qj:'1 unidade',obs:'Hidratação + refrescante no calor.'},{n:'Uva (quando achar)',ql:'500g',qj:'400g',obs:'Antioxidante. Lanche da tarde.'},{n:'Banana',ql:'2 cachos',qj:'1,5 cacho',obs:'Essencial.'}]},
+  9:{cat:'🥭 Frutas de Outubro',items:[{n:'Manga primeira safra',ql:'4 unidades',qj:'3 unidades',obs:'Volta da safra! Preços caindo.'},{n:'Acerola fresca',ql:'300g',qj:'250g',obs:'Vitamina C máxima.'},{n:'Banana',ql:'2 cachos',qj:'1,5 cacho',obs:'Treino.'}]},
+  10:{cat:'🥭 Frutas de Novembro',items:[{n:'Manga Palmer/Espada',ql:'6 unidades',qj:'5 unidades',obs:'Safra aumentando. Compre na feira.'},{n:'Caju novo',ql:'1kg',qj:'800g',obs:'Chegando a safra.'},{n:'Banana',ql:'2 cachos',qj:'1,5 cacho',obs:'Essencial.'}]},
+  11:{cat:'🥭 Frutas de Dezembro',items:[{n:'Manga plena safra',ql:'8 unidades',qj:'6 unidades',obs:'PREÇO MÍNIMO! Compre em quantidade.'},{n:'Caju plena safra',ql:'1,5kg',qj:'1kg',obs:'Safra máxima. Rico em vitamina C.'},{n:'Abacaxi',ql:'1 unidade',qj:'1 unidade',obs:'Digestão. Vitamina C. Antiinflamatório.'}]},
+};
+
+// RECIPES
+const RECIPES={
+cuscuz:{id:'cuscuz',ico:'🌽',nome:'Cuscuz Nordestino',cat:'Café · Pré-Treino',tempo:'10 min',
+ desc:'O rei do café nordestino! Rico em carboidrato complexo, sacia por horas.',
+ ings:[{n:'Fubá de cuscuz',a:'L:4col · J:3col'},{n:'Água morna',a:'~70ml'},{n:'Sal',a:'pitada'},{n:'Manteiga ou azeite',a:'1 col chá'},{n:'Ovo mexido (opcional)',a:'1-2 ovos'}],
+ porcao:{l:'Luanthony: 4 colheres',j:'Jéssica: 3 colheres'},
+ steps:['Misture fubá com sal na tigela.','Adicione água morna aos poucos. Massa deve agrupar mas não escorrer.','Coloque no cuscuzeiro (ou peneira sobre panela c/ água fervendo). Tampe.','Cozinhe no vapor 5-7 min. Firme = pronto.','Desenforme. Adicione manteiga/azeite. Sirva c/ ovo, queijo ou sardinha.'],
+ tip:'Sem cuscuzeiro? Use peneira grande sobre panela c/ água fervendo, cubra c/ pano limpo. Funciona igual! Cuscuz + sardinha desfiada = café da manhã completo nordestino.'
+},
+sardinha_grelhada:{id:'sardinha_grelhada',ico:'🐟',nome:'Sardinha Grelhada',cat:'Almoço · Jantar',tempo:'15 min',
+ desc:'O peixe mais nutritivo e barato do Brasil. Na Bahia, fresca na feira!',
+ ings:[{n:'Sardinha fresca limpa',a:'L:200g · J:150g'},{n:'Limão taiti',a:'1 unidade'},{n:'Alho',a:'3 dentes'},{n:'Coentro fresco',a:'punhado'},{n:'Sal, pimenta',a:'a gosto'},{n:'Azeite',a:'1 fio'}],
+ porcao:{l:'Luanthony: 200g',j:'Jéssica: 150g'},
+ steps:['Peça na feira para limpar. Faça cortes diagonais na lateral.','Tempere c/ limão, alho, sal, pimenta e coentro. Marine 10 min.','Frigideira c/ azeite fogo MÉDIO-ALTO. Grelhe 3-4 min cada lado.','Quando soltar sozinha, está no ponto.','Finalize c/ limão e coentro fresco.'],
+ tip:'Sardinha fresca da Bahia é incomparável ao enlatado. Para refogada: após grelhar, adicione tomate, cebola e molho de pimenta. Excelente c/ cuscuz!'
+},
+frango_grelhado:{id:'frango_grelhado',ico:'🍗',nome:'Frango Grelhado',cat:'Almoço · Jantar',tempo:'20 min',
+ desc:'Base da alimentação fitness. Simples, econômico e proteico.',
+ ings:[{n:'Peito de frango',a:'L:200g · J:150g'},{n:'Limão',a:'1/2'},{n:'Alho',a:'2-3 dentes'},{n:'Coentro e cebolinha',a:'punhado'},{n:'Sal, cominho',a:'a gosto'},{n:'Azeite',a:'1 fio'}],
+ porcao:{l:'Luanthony: 200g',j:'Jéssica: 150g'},
+ steps:['Bata o peito para espessura uniforme. Marine c/ tudo por 15 min.','Frigideira em fogo ALTO por 2 min antes de colocar.','Grelhe 6-7 min cada lado. Não mexa!','Descanse 2 min antes de cortar.'],
+ tip:'Frigideira bem quente cria crosta que retém suco. Marinar c/ coentro e limão de véspera = sabor nordestino incrível.'
+},
+tilap_grelhada:{id:'tilap_grelhada',ico:'🐠',nome:'Tilápia Grelhada Baiana',cat:'Almoço · Jantar',tempo:'15 min',
+ desc:'Peixe suave, proteico e fácil. Tempero baiano faz toda diferença!',
+ ings:[{n:'Filé de tilápia',a:'L:200g · J:150g'},{n:'Limão',a:'1/2'},{n:'Alho',a:'2 dentes'},{n:'Colorau',a:'pitada'},{n:'Coentro, sal',a:'a gosto'},{n:'Azeite',a:'1 fio'}],
+ porcao:{l:'Luanthony: 200g',j:'Jéssica: 150g'},
+ steps:['Seque o filé com papel toalha.','Tempere c/ limão, alho, colorau, sal, coentro. Marine 10 min.','Frigideira c/ azeite fogo MÉDIO-ALTO. 3-4 min cada lado.','Finalize c/ coentro fresco e limão.'],
+ tip:'Colorau (urucum/annatto) é o tempero nordestino que dá cor e tem antioxidantes. Essencial na cozinha baiana!'
+},
+moqueca_light:{id:'moqueca_light',ico:'🫕',nome:'Moqueca de Peixe Light',cat:'Almoço Especial',tempo:'35 min',
+ desc:'A glória da culinária baiana adaptada para o plano fitness! Menos dendê, mesmo sabor.',
+ ings:[{n:'Filé de tilápia',a:'L:200g · J:150g'},{n:'Leite de coco light',a:'100ml'},{n:'Tomate',a:'2 médios'},{n:'Cebola',a:'1 média'},{n:'Pimentão',a:'1/2 de cada cor'},{n:'Alho',a:'3 dentes'},{n:'Coentro',a:'maço'},{n:'Colorau',a:'1 col chá'},{n:'Dendê',a:'1 col chá APENAS'},{n:'Sal, limão',a:'a gosto'}],
+ porcao:{l:'Luanthony: 200g peixe',j:'Jéssica: 150g peixe'},
+ steps:['Marine o peixe c/ limão, sal e alho por 20 min.','Refogue cebola, alho e pimentão em azeite (5 min).','Adicione tomate e colorau. Cozinhe 5 min.','Adicione leite de coco. Ferva levemente.','Coloque os filés delicadamente. Tampe. Fogo baixo 8-10 min.','Finalize c/ coentro e 1 col chá de dendê.'],
+ tip:'Só 1 col chá de dendê para aroma autêntico. Leite de coco light compensa. Sabor baiano intacto! Sirva c/ pirão ou farinha de mandioca leve.'
+},
+baiao_dois:{id:'baiao_dois',ico:'🍛',nome:'Baião de Dois Light',cat:'Almoço Especial',tempo:'40 min',
+ desc:'Prato típico nordestino adaptado. Feijão de corda + arroz integral = proteína completa!',
+ ings:[{n:'Arroz integral',a:'L:4col · J:3col'},{n:'Feijão de corda cozido',a:'3 col por pessoa'},{n:'Queijo coalho',a:'50g em cubos'},{n:'Coentro e cebolinha',a:'punhado'},{n:'Cebola, alho',a:'tempero base'},{n:'Azeite',a:'1 fio'},{n:'Cominho, sal',a:'a gosto'}],
+ porcao:{l:'Luanthony: porção maior',j:'Jéssica: porção menor'},
+ steps:['Cozinhe feijão de corda c/ sal e alho até macio.','Refogue cebola e alho em azeite.','Adicione arroz, misture 2 min. Adicione 2x o volume em água fervente. Tampe 20 min.','Quando quase pronto, adicione feijão e queijo em cubos.','Finalize c/ coentro e cebolinha.'],
+ tip:'Baião de dois = proteína completa (feijão + arroz = aminoácidos complementares). Queijo de coalho light ou sem carne = versão fitness perfeita.'
+},
+aveia_mingau:{id:'aveia_mingau',ico:'🥣',nome:'Mingau de Aveia c/ Banana',cat:'Café da Manhã',tempo:'5 min',
+ desc:'Café perfeito para treino: fibras, energia lenta, saciante.',
+ ings:[{n:'Aveia em flocos finos',a:'L:5col · J:4col'},{n:'Leite desnatado',a:'200ml'},{n:'Banana madura',a:'1 unidade'},{n:'Canela em pó',a:'a gosto'},{n:'Mel',a:'1 col chá (opcional)'}],
+ porcao:{l:'Luanthony: 5 colheres',j:'Jéssica: 4 colheres'},
+ steps:['Aqueça leite fogo médio. Adicione aveia mexendo continuamente.','Cozinhe 2-3 min até engrossar.','Adicione canela. Sirva na tigela.','Amasse banana por cima. Mel se desejar.'],
+ tip:'Overnight oats: misture tudo à noite na geladeira. De manhã está pronto sem cozinhar!'
+},
+sopa_legumes:{id:'sopa_legumes',ico:'🍲',nome:'Sopa Nordestina de Legumes',cat:'Jantar',tempo:'35 min',
+ desc:'Sopa nutritiva c/ jerimum, macaxeira e frango. Leve para dormir.',
+ ings:[{n:'Frango desfiado',a:'L:150g · J:100g'},{n:'Macaxeira em cubos',a:'100g'},{n:'Jerimum em cubos',a:'100g'},{n:'Cenoura',a:'1 média'},{n:'Cebola, alho',a:'tempero'},{n:'Coentro fresco',a:'punhado'},{n:'Sal, pimenta',a:'a gosto'}],
+ porcao:{l:'Luanthony: 350ml',j:'Jéssica: 250ml'},
+ steps:['Cozinhe frango c/ sal. Reserve caldo. Desfie.','No caldo, adicione macaxeira, jerimum e cenoura. Ferva 15 min.','Adicione frango, cebola e alho. Cozinhe 5 min.','Ajuste sal. Finalize c/ coentro.'],
+ tip:'Jerimum nordestino adoça a sopa naturalmente. Macaxeira engrossa o caldo. Típico baiano!'
+},
+tapioca:{id:'tapioca',ico:'🫓',nome:'Tapioca Fitness',cat:'Café da Manhã',tempo:'5 min',
+ desc:'Sem glúten, rápida. Carboidrato de fácil digestão. Recheio proteico.',
+ ings:[{n:'Goma de tapioca',a:'L:6col · J:4col'},{n:'Queijo de coalho',a:'50g'},{n:'Ovo (opcional)',a:'1 ovo'},{n:'Frango desfiado (opcional)',a:'50g'}],
+ porcao:{l:'Luanthony: 2 tapiocas',j:'Jéssica: 1.5'},
+ steps:['Peneire a goma. Frigideira antiaderente fogo médio. Sem óleo!','Espalhe a goma em camada fina.','Bordas soltando (~2 min) → vire com espátula.','Adicione queijo. Dobre ao meio.'],
+ tip:'C/ ovo: quebre sobre a tapioca antes de dobrar. Tampe 1 min. Tapioca + queijo coalho + coentro = o café nordestino mais gostoso!'
+},
+omelete:{id:'omelete',ico:'🍳',nome:'Omelete de Legumes',cat:'Jantar',tempo:'8 min',
+ desc:'Jantar rápido e proteico. Versatil com os legumes que tiver.',
+ ings:[{n:'Ovos',a:'L:3 · J:2'},{n:'Espinafre ou couve',a:'punhado'},{n:'Tomate, pimentão',a:'1/2 de cada'},{n:'Queijo coalho ralado',a:'1 col sopa'},{n:'Sal, coentro',a:'a gosto'},{n:'Azeite',a:'1 fio'}],
+ porcao:{l:'Luanthony: 3 ovos',j:'Jéssica: 2 ovos'},
+ steps:['Bata ovos c/ sal e pimenta.','Frigideira c/ azeite. Refogue espinafre 1 min. Adicione tomate e pimentão.','Despeje ovos por cima. Tampe 2-3 min.','Adicione queijo. Dobre ao meio.'],
+ tip:'Não mexa após despejar os ovos. Fogo médio sempre.'
+},
+ovos_mexidos:{id:'ovos_mexidos',ico:'🍳',nome:'Ovos Mexidos Cremosos',cat:'Café da Manhã',tempo:'8 min',
+ desc:'Versão cremosa e proteica. Fogo baixo = resultado profissional.',
+ ings:[{n:'Ovos',a:'L:3 · J:2'},{n:'Azeite',a:'1 fio'},{n:'Sal, pimenta',a:'a gosto'},{n:'Cream cheese light',a:'1 col chá (opcional)'}],
+ porcao:{l:'Luanthony: 3 ovos',j:'Jéssica: 2 ovos'},
+ steps:['Bata levemente. Tempere.','Frigideira antiaderente fogo BAIXO c/ azeite.','Despeje. Mexa CONTINUAMENTE c/ espátula. Movimentos lentos.','Quando quase firme mas brilhante, desligue. Calor residual termina.','Adicione cream cheese se desejar.'],
+ tip:'FOGO BAIXO é o segredo. C/ coentro picado por cima = autenticamente nordestino!'
+},
+vitamina_pos:{id:'vitamina_pos',ico:'🥤',nome:'Vitamina Pós-Treino',cat:'Pós-Treino',tempo:'3 min',
+ desc:'Janela pós-treino: 30 min após exercício = melhor absorção de nutrientes.',
+ ings:[{n:'Banana madura',a:'1 unidade'},{n:'Leite desnatado',a:'200ml'},{n:'Cacau em pó 100%',a:'1 col chá'},{n:'Mel',a:'1 col chá'}],
+ porcao:{l:'Luanthony: copo grande',j:'Jéssica: copo médio'},
+ steps:['Bata tudo no liquidificador 30 segundos.','Tome em até 30 min após treino.'],
+ tip:'Para mais proteína: 1 col sopa pasta de amendoim. Versão tropical: troque banana por manga!'
+},
+pre_treino:{id:'pre_treino',ico:'⚡',nome:'Pré-Treino: Banana + Amendoim',cat:'Pré-Treino',tempo:'1 min',
+ desc:'60-90 min antes: carboidrato + gordura boa = energia que dura o treino.',
+ ings:[{n:'Banana madura',a:'1 unidade'},{n:'Pasta amendoim integral',a:'L:1col sopa · J:1col chá'},{n:'Água',a:'400ml'}],
+ porcao:{l:'Luanthony: banana + 1 col sopa',j:'Jéssica: banana + 1 col chá'},
+ steps:['Consuma 60-90 min antes do treino (15:00 para treino às 16:00).','Banana c/ pasta ao lado para mergulhar.','Beba água gradualmente.'],
+ tip:'Evite refeições pesadas nas 2h antes. Cuscuz ou batata doce também funcionam como pré-treino natural.'
+},
+iogurte_granola:{id:'iogurte_granola',ico:'🫙',nome:'Iogurte Grego c/ Granola',cat:'Pós-Treino · Lanche',tempo:'2 min',
+ desc:'17g de proteína por 100g. Mais que muitos suplementos!',
+ ings:[{n:'Iogurte grego natural',a:'1 pote 170g'},{n:'Granola s/ açúcar',a:'L:2col · J:1col'},{n:'Frutas frescas',a:'manga, morango ou banana'},{n:'Mel',a:'1 col chá'}],
+ porcao:{l:'Luanthony: 1 pote + 2 col',j:'Jéssica: 1 pote + 1 col'},
+ steps:['Iogurte na tigela. Granola por cima (não misture — amolece).','Fruta picada. Fio de mel.','Sirva imediatamente.'],
+ tip:'Com manga picada = açaí nordestino saudável! Com acerola = vitamina C extra.'
+},
+vit_manga:{id:'vit_manga',ico:'🥭',nome:'Vitamina de Manga',cat:'Lanche · Pós-Treino',tempo:'3 min',
+ desc:'A vitamina tropical do Nordeste! Betacaroteno + vitamina C.',
+ ings:[{n:'Manga Palmer ou espada',a:'1/2 manga grande'},{n:'Leite desnatado',a:'200ml'},{n:'Mel',a:'1 col chá'},{n:'Gelo',a:'3-4 cubos'}],
+ porcao:{l:'Luanthony: copo grande',j:'Jéssica: copo médio'},
+ steps:['Descasque e pique a manga.','Bata c/ leite, mel e gelo 30 segundos.','Sirva imediatamente.'],
+ tip:'Na safra (dez-jan na Bahia) manga é baratíssima. Congele em cubos fora da temporada!'
+},
+vit_maracuja:{id:'vit_maracuja',ico:'🍋',nome:'Vitamina de Maracujá',cat:'Lanche da Manhã',tempo:'3 min',
+ desc:'Calmante natural + vitamina C. Efeito ansiolítico leve.',
+ ings:[{n:'Maracujá',a:'2 unidades'},{n:'Leite ou água de coco',a:'200ml'},{n:'Mel',a:'1 col chá'},{n:'Banana (opcional)',a:'1/2'}],
+ porcao:{l:'Luanthony: copo grande',j:'Jéssica: copo médio'},
+ steps:['Retire polpa dos maracujás.','Bata c/ leite (ou água de coco) e mel.','Para mais espesso: adicione 1/2 banana.','Coe se preferir, ou beba com semente (fibra!).'],
+ tip:'Não coe! Sementes são ricas em fibras e calmantes. Suco integral é mais nutritivo. Na Bahia, maracujá fresco da feira custa muito menos que industrializado.'
+},
+frango_cozido:{id:'frango_cozido',ico:'🍲',nome:'Frango Cozido Desfiado em Quantidade',cat:'Preparo da Semana',tempo:'35 min',
+ desc:'Estratégia de meal prep: cozinhe 500g de uma vez e use durante a semana toda!',
+ ings:[{n:'Peito de frango',a:'500g'},{n:'Alho',a:'3 dentes'},{n:'Cebola',a:'1/2'},{n:'Sal, cominho',a:'a gosto'},{n:'Coentro',a:'punhado'},{n:'Louro',a:'1 folha'}],
+ porcao:{l:'Rende ~350g desfiado',j:'Rende ~350g desfiado'},
+ steps:['Coloque frango na panela com água que cubra.','Adicione alho, cebola, sal, cominho e louro.','Cozinhe 25-30 min em fogo médio com tampa.','Tire o frango. Reserve o caldo (use na sopa!).','Desfie com 2 garfos enquanto ainda quente.','Divida em porções de 150g. Refrigere por 4 dias.'],
+ tip:'Esse caldo de frango é nutritivo! Use na sopa de legumes em vez de água. Rende 2-3 refeições. Congele o excesso.'
+},
+acai_nordestino:{id:'acai_nordestino',ico:'🫐',nome:'Açaí Nordestino (sem açaí)',cat:'Lanche · Pós-Treino',tempo:'5 min',
+ desc:'A versão nordestina do açaí! Iogurte grego + manga + granola. Rico em proteína.',
+ ings:[{n:'Iogurte grego natural',a:'170g'},{n:'Manga picada congelada ou fresca',a:'100g'},{n:'Granola s/ açúcar',a:'2 col sopa'},{n:'Banana fatiada',a:'1/2'},{n:'Mel',a:'1 col chá'},{n:'Castanha de caju picada',a:'1 col sopa'}],
+ porcao:{l:'Luanthony: pote grande',j:'Jéssica: pote médio'},
+ steps:['Congele a manga em cubos (ou use fresca).','Bata iogurte c/ manga no liquidificador brevemente para textura cremosa.','Despeje em tigela. Adicione granola, banana, castanha e mel.','Sirva imediatamente — a granola fica crocante.'],
+ tip:'Manga congelada deixa a textura igual ao açaí. Acerola fresca picada por cima = explosão de vitamina C nordestina!'
+},
+peixe_assado:{id:'peixe_assado',ico:'🐡',nome:'Peixe Assado no Forno',cat:'Jantar · Almoço',tempo:'30 min',
+ desc:'Método mais saudável: sem fritura, mantém todos os nutrientes.',
+ ings:[{n:'Peixe inteiro ou filé',a:'L:250g · J:180g'},{n:'Limão',a:'1 inteiro'},{n:'Alho',a:'4 dentes amassados'},{n:'Coentro fresco',a:'maço'},{n:'Colorau e pimenta',a:'a gosto'},{n:'Azeite',a:'2 col chá'},{n:'Sal grosso',a:'a gosto'}],
+ porcao:{l:'Luanthony: 250g',j:'Jéssica: 180g'},
+ steps:['Pré-aqueça forno a 200°C.','Faça cortes no peixe. Recheie c/ alho e coentro.','Esfregue limão, colorau, sal e azeite por toda superfície.','Coloque em assadeira forrada c/ papel alumínio.','Asse 20-25 min. Abra o alumínio nos últimos 5 min para dourar.'],
+ tip:'Peixe está pronto quando a carne se solta com garfo facilmente. Não asse em excesso — resseca. Sirva com farofa de macaxeira light ou arroz integral.'
+},
+caldo_verde_nordestino:{id:'caldo_verde_nordestino',ico:'🥬',nome:'Caldo Verde Nordestino',cat:'Jantar · Lanche',tempo:'25 min',
+ desc:'Releitura nordestina do caldo verde: couve + macaxeira + linguiça de frango light.',
+ ings:[{n:'Couve fatiada fino',a:'1 maço'},{n:'Macaxeira cozida',a:'300g'},{n:'Linguiça de frango light (opcional)',a:'100g'},{n:'Caldo de frango caseiro',a:'500ml'},{n:'Alho, cebola',a:'tempero'},{n:'Azeite, sal',a:'a gosto'}],
+ porcao:{l:'Luanthony: 350ml',j:'Jéssica: 250ml'},
+ steps:['Bata a macaxeira cozida c/ um pouco do caldo até cremosa.','Refogue alho e cebola em azeite.','Adicione o caldo e o creme de macaxeira. Ferva.','Adicione couve fatiada. Cozinhe 3 min (não passe!).','Adicione linguiça fatiada se desejar.'],
+ tip:'A couve deve ficar verde viva — não cozinhe mais que 3 min. Macaxeira substitui a batata do caldo verde tradicional e fica mais cremoso e nordestino!'
+},
+};
+
+// STATE - Carregar do localStorage
+let curTab=localStorage.getItem('forte_tab')||'treino';
+let curMonth=parseInt(localStorage.getItem('forte_month')||'0');
+let curWeek=parseInt(localStorage.getItem('forte_week')||'0');
+let curDay=parseInt(localStorage.getItem('forte_day')||'0');
+let shopMonth=0;
+const completedExs=JSON.parse(localStorage.getItem('forte_completed')||'{}');
+const extMeals=JSON.parse(localStorage.getItem('forte_meals')||'{}');
+
+// Função para salvar estado no localStorage
+function saveState(){
+  localStorage.setItem('forte_completed',JSON.stringify(completedExs));
+  localStorage.setItem('forte_meals',JSON.stringify(extMeals));
+  localStorage.setItem('forte_tab',curTab);
+  localStorage.setItem('forte_month',curMonth);
+  localStorage.setItem('forte_week',curWeek);
+  localStorage.setItem('forte_day',curDay);
+}
+
+function exKey(m,w,d,i){return `${m}_${w}_${d}_${i}`;}
+function extKey(d){return `ext_${d}`;}
+
+function init(){
+  renderMonths();renderWeeks();renderDays();
+  document.querySelectorAll('.nav-tab').forEach((b,i)=>b.classList.toggle('active',['treino','nutricao','receitas','compras','fisio'][i]===curTab));
+  document.getElementById('mstrip').style.display=(curTab==='treino'||curTab==='nutricao')?'block':'none';
+  document.getElementById('wstrip').style.display=(curTab==='treino')?'flex':'none';
+  renderContent();
+}
+function setTab(t){
+  curTab=t;
+  document.querySelectorAll('.nav-tab').forEach((b,i)=>b.classList.toggle('active',['treino','nutricao','receitas','compras','fisio'][i]===t));
+  document.getElementById('mstrip').style.display=(t==='treino'||t==='nutricao')?'block':'none';
+  document.getElementById('wstrip').style.display=(t==='treino')?'flex':'none';
+  renderContent();
+  saveState();
+}
+function renderMonths(){
+  document.getElementById('mbtns').innerHTML=MONTHS.map((m,i)=>`<button class="mbtn ${i===curMonth?'active':''}" onclick="setMonth(${i})">${m.n}</button>`).join('');
+}
+function setMonth(i){curMonth=i;curWeek=0;renderMonths();renderWeeks();renderContent();saveState();}
+function renderWeeks(){
+  document.getElementById('wbtns').innerHTML=[0,1,2,3].map(i=>`<button class="wbtn ${i===curWeek?'active':''}" onclick="setWeek(${i})">Sem ${i+1}</button>`).join('');
+  const m=MONTHS[curMonth];const c=document.getElementById('pchip');c.className=`pchip ${m.pcls}`;c.textContent=`${m.name} · ${m.ph} · ${m.season}`;
+}
+function setWeek(i){curWeek=i;renderWeeks();renderContent();saveState();}
+function renderDays(){
+  document.getElementById('dbtns').innerHTML=DA.map((d,i)=>`<button class="dbtn ${i===curDay?'active':''}" onclick="setDay(${i})"><span class="da">${d}</span><span class="dn">${i<6?'16h':'—'}</span></button>`).join('');
+}
+function setDay(i){curDay=i;renderDays();renderContent();saveState();}
+
+function renderContent(){
+  const el=document.getElementById('mainContent');
+  el.className='main slide-in';
+  if(curTab==='treino')el.innerHTML=renderTreino();
+  else if(curTab==='nutricao')el.innerHTML=renderNutricao();
+  else if(curTab==='receitas')el.innerHTML=renderReceitas();
+  else if(curTab==='compras')el.innerHTML=renderCompras();
+  else el.innerHTML=renderFisio();
+}
+
+// ── TREINO ──────────────────────────────────────────────────────────────────
+function toggleEx(m,w,d,i){
+  const k=exKey(m,w,d,i);
+  completedExs[k]=!completedExs[k];
+  renderContent();
+  saveState();
+}
+
+function renderTreino(){
+  const mo=MONTHS[curMonth];const day=PD[mo.level][curDay];const vol=WVOL[curWeek];
+  const banner=`<div class="ph-banner"><div class="phb-icon">${mo.icon}</div>
+    <div class="phb-info"><div class="phb-title">${mo.name.toUpperCase()} — ${mo.ph.toUpperCase()}</div>
+    <div class="phb-desc">Semana ${curWeek+1}/4 · Nível ${['Iniciante','Básico','Intermediário','Avançado'][mo.level]}</div></div>
+    <div class="phb-stats">
+      <span class="phb-s">🕓 16:00</span>
+      ${mo.hasBike?'<span class="phb-s">🚴 Bike</span>':''}
+      <span class="phb-s">📅 Sem ${curWeek+1}</span>
+      <span class="phb-s">${mo.season}</span>
+    </div></div>`;
+  
+  const coverSrc=COVERS[day.cover]||COVERS.treino;
+  const coverGrad=COVER_GRADS[day.cover]||COVER_GRADS.treino;
+  
+  let dayKcal=day.kcal||0;
+  let exsDone=0,exsTotal=0;
+  
+  if(day.type==='treino'){
+    exsTotal=day.exs.length;
+    day.exs.forEach((_,i)=>{if(completedExs[exKey(curMonth,curWeek,curDay,i)])exsDone++;});
+  }
+  const progPct=exsTotal>0?Math.round(exsDone/exsTotal*100):0;
+  const totalKcal=day.type==='treino'?day.exs.reduce((a,e)=>a+(e.kcal||0),0):dayKcal;
+  const burnedKcal=exsTotal>0?Math.round(totalKcal*(exsDone/exsTotal)):0;
+
+  const cover=`<div class="cover-wrap" style="background:${coverGrad}">
+    <img class="cover-img" src="${coverSrc}" alt="treino" onerror="this.style.display='none'">
+    <div class="cover-overlay"></div>
+    <div class="cover-content">
+      <div class="cover-title">${DL[curDay].toUpperCase()}</div>
+      <div class="cover-sub">${day.focus||day.type.charAt(0).toUpperCase()+day.type.slice(1)} · ${mo.name}</div>
+      <div class="cover-tags">
+        <span class="ctag ct-or">${mo.ph}</span>
+        ${day.type==='bike'?'<span class="ctag ct-bl">Bicicleta</span>':''}
+        ${day.type==='descanso'?'<span class="ctag ct-gn">Descanso</span>':''}
+        ${day.type==='mobilidade'?'<span class="ctag ct-yw">Mobilidade</span>':''}
+        ${totalKcal>0?`<span class="ctag ct-pk">🔥 ~${totalKcal} kcal</span>`:''}
+      </div>
+    </div>
+    ${exsTotal>0?`<div class="prog-ring"><div class="pr-v">${progPct}%</div><div class="pr-l">feito</div></div>`:''}
+  </div>`;
+
+  let content='';
+  if(day.type==='treino'){
+    const kcalSummary=`<div class="kcal-summary">
+      <div class="ks-box"><div class="ks-v" style="color:var(--or)">${day.exs.length}</div><div class="ks-l">Exercícios</div></div>
+      <div class="ks-box"><div class="ks-v" style="color:var(--rd)">~${totalKcal}</div><div class="ks-l">kcal total</div></div>
+      <div class="ks-box"><div class="ks-v" style="color:var(--gn)">${burnedKcal}</div><div class="ks-l">kcal queimadas</div></div>
+      <div class="ks-box"><div class="ks-v" style="color:var(--yw)">${exsDone}/${exsTotal}</div><div class="ks-l">Concluídos</div></div>
+    </div>`;
+    const progBar=exsTotal>0?`<div class="ks-bar">
+      <div class="ks-bar-t"><span>Progresso do treino</span><span style="color:var(--gn)">${burnedKcal} kcal queimadas</span></div>
+      <div class="ks-bar-bg"><div class="ks-bar-fill" style="width:${progPct}%"></div></div>
+    </div>`:'';
+    const exCards=day.exs.map((e,i)=>{
+      const k=exKey(curMonth,curWeek,curDay,i);const done=completedExs[k];
+      const adjS=e.s>1?Math.max(2,Math.round(e.s*vol)):e.s;
+      return `<div class="ex-card ${done?'done':''}">
+        <div class="ex-num">${done?'✓':String(i+1).padStart(2,'0')}</div>
+        <div class="ex-body">
+          <div class="ex-name">${e.n}</div>
+          <div class="ex-muscle">${e.m}</div>
+          <div class="ex-tags">
+            ${e.s>0?`<span class="et ts">${adjS} série${adjS>1?'s':''}</span>`:''}
+            <span class="et tr">${e.r}</span>
+            ${e.rest!=='—'?`<span class="et td">⏱ ${e.rest}</span>`:''}
+            <span class="et tk">🔥 ~${e.kcal} kcal</span>
+          </div>
+          <div class="ex-mod">💡 ${e.mod}</div>
+        </div>
+        <div class="ex-right">
+          <a class="yt-btn" href="${e.yt}" target="_blank">▶ YT</a>
+          <button class="done-btn ${done?'marked':''}" onclick="toggleEx(${curMonth},${curWeek},${curDay},${i})">
+            ${done?'✅ FEITO':'⬜ MARCAR'}
+          </button>
+        </div>
+      </div>`;
+    }).join('');
+    content=kcalSummary+progBar+`<div class="slbl">Exercícios</div><div class="ex-list">${exCards}</div>
+    <div class="tip-box"><div class="tip-box-t">💡 DICA DO DIA</div><div class="tip-box-c">${day.tip}</div></div>
+    ${exsDone===exsTotal&&exsTotal>0?`<div style="background:var(--gnd);border:1px solid var(--gn);border-radius:var(--r);padding:1rem;margin-top:.8rem;text-align:center">
+      <div style="font-family:'Anton',sans-serif;font-size:22px;color:var(--gn);letter-spacing:2px">🎉 TREINO CONCLUÍDO!</div>
+      <div style="font-size:13px;color:var(--tx2);margin-top:4px">Você queimou ~${totalKcal} kcal! Tome o pós-treino agora (17:00).</div>
+    </div>`:''}`;
+  } else if(day.type==='bike'){
+    const adjDist=mo.hasBike?day.dist:'20 min (Bike disponível a partir de Fevereiro)';
+    content=`<div class="bike-card">
+      <div style="font-size:28px;margin-bottom:.5rem">🚴</div>
+      <div class="bike-title">BICICLETA — ${day.zona}</div>
+      <div style="font-size:13px;color:var(--tx2);line-height:1.6;margin-bottom:.8rem">${day.tip}</div>
+      <div class="bike-grid">
+        <div class="bst"><div class="bst-v">${adjDist}</div><div class="bst-l">Duração</div></div>
+        <div class="bst"><div class="bst-v">~${dayKcal}</div><div class="bst-l">kcal queimadas</div></div>
+        <div class="bst"><div class="bst-v">${day.zona.split(' ')[0]}</div><div class="bst-l">Zona</div></div>
+      </div>
+      <div class="slbl" style="margin-top:.8rem">Estrutura do Treino</div>
+      <div class="bike-phases">${day.phases.map(p=>`<div class="bph">${p}</div>`).join('')}</div>
+      <a href="${YTB('ciclismo indoor treino bike playlist')}" target="_blank" style="display:inline-flex;align-items:center;gap:5px;margin-top:.8rem;background:rgba(255,0,0,.12);border:1px solid rgba(255,0,0,.3);border-radius:5px;padding:6px 11px;font-size:11px;color:#ff6b6b;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-weight:700">▶ Músicas para pedalar</a>
+    </div>
+    ${!mo.hasBike?`<div class="tip-box"><div class="tip-box-t">ℹ️ BIKE A PARTIR DE FEVEREIRO</div><div class="tip-box-c">Em Janeiro este dia é caminhada de 20-25 min. Bicicleta entra no programa a partir de Fevereiro!</div></div>`:''}`;
+  } else if(day.type==='caminhada'){
+    content=`<div class="sp-card cw">
+      <div class="sp-icon">🚶</div><div class="sp-title" style="color:var(--bl)">CAMINHADA ATIVA</div>
+      <div style="font-size:13px;color:var(--tx2);line-height:1.6">${day.tip}</div>
+      <div style="margin-top:.9rem;display:grid;grid-template-columns:1fr 1fr;gap:7px">
+        <div style="background:var(--bld);border-radius:var(--rs);padding:9px;text-align:center"><div style="font-family:'Anton',sans-serif;font-size:18px;color:var(--bl)">${day.dist}</div><div style="font-size:9px;color:var(--tx2);text-transform:uppercase">Duração</div></div>
+        <div style="background:var(--bld);border-radius:var(--rs);padding:9px;text-align:center"><div style="font-family:'Anton',sans-serif;font-size:18px;color:var(--bl)">~${dayKcal} kcal</div><div style="font-size:9px;color:var(--tx2);text-transform:uppercase">Queima</div></div>
+      </div>
+    </div>`;
+  } else if(day.type==='mobilidade'){
+    content=`<div class="sp-card cm">
+      <div class="sp-icon">🧘</div><div class="sp-title" style="color:var(--yw)">MOBILIDADE & FLEXIBILIDADE</div>
+      <div style="font-size:13px;color:var(--tx2)">Sessão de ${day.dist||'20-25 min'}. Músculos precisam disso para crescer!</div>
+      <div class="str-items">${(day.stretches||[]).map(s=>`<div class="str-item"><strong>${s.n}</strong><span class="str-dur">${s.dur}</span></div>`).join('')}</div>
+    </div>`;
+  } else {
+    content=`<div class="sp-card cr">
+      <div class="sp-icon">💤</div><div class="sp-title" style="color:var(--gn)">DESCANSO TOTAL</div>
+      <div style="font-size:13px;color:var(--tx2);line-height:1.6">${day.msg}</div>
+      <div style="margin-top:.9rem;display:flex;flex-direction:column;gap:5px;text-align:left">
+        ${['🌊 Beba 2,5-3L de água','😴 Durma 7-8 horas','🍽 Mantenha a alimentação','💆 Automassagem c/ óleo de coco','🫁 Respire fundo — gerencie o estresse'].map(t=>`<div style="background:var(--gnd);border-radius:var(--rs);padding:7px 10px;font-size:12px;color:var(--tx2);border-left:3px solid var(--gn)">${t}</div>`).join('')}
+      </div>
+    </div>`;
+  }
+  return banner+cover+content;
+}
+
+// ── NUTRIÇÃO ─────────────────────────────────────────────────────────────────
+function addExtMeal(){
+  const nm=document.getElementById('extNm').value.trim();
+  const kc=parseInt(document.getElementById('extKc').value)||0;
+  if(!nm||!kc)return;
+  const k=extKey(curDay);
+  if(!extMeals[k])extMeals[k]=[];
+  extMeals[k].push({n:nm,k:kc,id:Date.now()});
+  document.getElementById('extNm').value='';document.getElementById('extKc').value='';
+  renderContent();
+  saveState();
+}
+function delExtMeal(id){
+  const k=extKey(curDay);
+  if(extMeals[k])extMeals[k]=extMeals[k].filter(m=>m.id!==id);
+  renderContent();
+  saveState();
+}
+function sugFood(n,k){
+  document.getElementById('extNm').value=n;document.getElementById('extKc').value=k;
+}
+
+function renderNutricao(){
+  const meals=YEAR_MEALS[curMonth][curDay];const sk=extKey(curDay);const ext=extMeals[sk]||[];
+  const extTotalKcal=ext.reduce((a,m)=>a+m.k,0);
+  const mealKcalL=1880+extTotalKcal;const mealKcalJ=1480+extTotalKcal;
+  const targetL=2200;const targetJ=1700;
+  const pctL=Math.min(100,Math.round(mealKcalL/targetL*100));const pctJ=Math.min(100,Math.round(mealKcalJ/targetJ*100));
+  const profCards=`<div class="prof-grid">
+    <div class="prof-card pfl">
+      <div class="pf-top"><div class="pf-av avbl">LL</div><div><div class="pf-name">LUANTHONY</div><div class="pf-role">40 anos · 1,89m · 100kg</div></div></div>
+      <div class="pf-stats">
+        <div class="pf-st"><div class="pf-st-v" style="color:var(--or)">~2.200</div><div class="pf-st-l">kcal meta</div></div>
+        <div class="pf-st"><div class="pf-st-v" style="color:var(--or)">~155g</div><div class="pf-st-l">proteína</div></div>
+        <div class="pf-st"><div class="pf-st-v" style="color:var(--or)">28,0</div><div class="pf-st-l">IMC</div></div>
+      </div>
+      <div class="pf-goal gll">🎯 −500 kcal/dia = −2kg/mês com saúde</div>
+    </div>
+    <div class="prof-card pfj">
+      <div class="pf-top"><div class="pf-av avbj">JO</div><div><div class="pf-name">JÉSSICA</div><div class="pf-role">31 anos · 1,56m · 74kg</div></div></div>
+      <div class="pf-stats">
+        <div class="pf-st"><div class="pf-st-v" style="color:var(--pk)">~1.700</div><div class="pf-st-l">kcal meta</div></div>
+        <div class="pf-st"><div class="pf-st-v" style="color:var(--pk)">~110g</div><div class="pf-st-l">proteína</div></div>
+        <div class="pf-st"><div class="pf-st-v" style="color:var(--pk)">30,4</div><div class="pf-st-l">IMC</div></div>
+      </div>
+      <div class="pf-goal glj">🎯 −400 kcal/dia = −1,5kg/mês com saúde</div>
+    </div>
+  </div>`;
+  const mOrder=['cafe','lanche_m','almoco','pre','pos','jantar','lanche_n'];
+  const mCards=mOrder.map(k=>{const m=meals[k];return `<div class="meal-card">
+    <div class="meal-hdr"><div class="meal-ico ${m.icoCls}">${m.ico}</div><div class="meal-title">${m.t}</div><div class="meal-time">${m.time}</div></div>
+    <div class="meal-body">${m.items.map(it=>`<div class="mi">${it}</div>`).join('')}
+    <div class="pt-row"><span class="ptl">Luanthony: ${m.ptl}</span><span class="ptj">Jéssica: ${m.ptj}</span></div></div>
+    <div class="meal-footer">${m.rec?`<button class="rbtn" onclick="openRec('${m.rec}')">📖 Receita</button>`:''}</div>
+  </div>`;}).join('');
+  
+  const extList=ext.length>0?`<div class="ext-list">${ext.map(m=>`
+    <div class="ext-item"><span class="ext-item-nm">${m.n}</span><div style="display:flex;align-items:center;gap:8px"><span class="ext-item-k">${m.k} kcal</span><button class="ext-del" onclick="delExtMeal(${m.id})">✕</button></div></div>
+  `).join('')}</div>`:'<div style="font-size:12px;color:var(--tx3);text-align:center;padding:.5rem">Nenhuma refeição externa adicionada hoje.</div>';
+  
+  const calBar=`<div class="cal-bar-wrap">
+    <div class="cal-bar-t">📊 CALORIAS DO DIA ${ext.length>0?`(incluindo ${ext.length} refeição${ext.length>1?'s':''} externa${ext.length>1?'s':''})`:''}</div>
+    <div class="cal-person">
+      <div class="cal-label"><span class="cal-name">Luanthony</span><span class="cal-nums" style="color:var(--or)">${mealKcalL} / ${targetL} kcal (${pctL}%)</span></div>
+      <div class="cal-bg"><div class="cal-fill cal-l-fill" style="width:${pctL}%"></div></div>
+    </div>
+    <div class="cal-person" style="margin-bottom:0">
+      <div class="cal-label"><span class="cal-name">Jéssica</span><span class="cal-nums" style="color:var(--pk)">${mealKcalJ} / ${targetJ} kcal (${pctJ}%)</span></div>
+      <div class="cal-bg"><div class="cal-fill cal-j-fill" style="width:${pctJ}%"></div></div>
+    </div>
+    ${pctL>105||pctJ>105?`<div style="font-size:11px;color:var(--rd);margin-top:6px">⚠️ Atenção: calorias acima da meta diária com a refeição externa.</div>`:''}
+  </div>`;
+  
+  const extZone=`<div class="ext-zone">
+    <div class="ext-zone-t">
+      <span>➕ Refeição Feita por Fora</span>
+      ${ext.length>0?`<span style="color:var(--or);font-size:11px">+${extTotalKcal} kcal</span>`:''}
+    </div>
+    <div style="font-size:12px;color:var(--tx2);margin-bottom:.8rem">Comeu algo fora do plano? Adicione aqui para calcular as calorias do dia.</div>
+    <div class="ext-suggest">
+      <div style="font-size:10px;color:var(--tx3);width:100%;margin-bottom:3px">SUGESTÕES RÁPIDAS:</div>
+      ${FOODS.slice(0,12).map(f=>`<button class="sug-btn" onclick="sugFood('${f.n}',${f.k})">${f.n} · ${f.k}kcal</button>`).join('')}
+    </div>
+    <div class="ext-inputs">
+      <input id="extNm" class="ext-inp" placeholder="Nome do alimento/refeição" />
+      <input id="extKc" class="ext-inp" type="number" placeholder="Calorias (kcal)" style="max-width:160px" />
+    </div>
+    <button class="ext-btn" onclick="addExtMeal()">+ Adicionar ao Dia</button>
+    <div style="margin-top:.8rem">${extList}</div>
+  </div>`;
+  
+  return `${profCards}<div class="slbl">${DL[curDay]} — Cardápio Completo (7 refeições)</div>
+  <div style="background:var(--ord);border:1px solid var(--or);border-radius:var(--rs);padding:6px 10px;margin-bottom:.8rem;font-size:12px;color:var(--tx2)">
+    ⚡ Treino às <strong style="color:var(--or)">16:00</strong> · Pré 15:00 · Pós 17:00 · Lanche noite 21:30
+  </div>
+  <div class="meal-list">${mCards}</div>
+  ${calBar}${extZone}`;
+}
+
+// ── RECEITAS ─────────────────────────────────────────────────────────────────
+function renderReceitas(){
+  const cats=[
+    {label:'☀️ Café da Manhã',ids:['cuscuz','aveia_mingau','tapioca','ovos_mexidos']},
+    {label:'🍽 Almoço & Jantar',ids:['frango_grelhado','sardinha_grelhada','tilap_grelhada','moqueca_light','baiao_dois','sopa_legumes','omelete','peixe_assado','caldo_verde_nordestino','frango_cozido']},
+    {label:'🥤 Lanches & Pós-Treino',ids:['vitamina_pos','pre_treino','iogurte_granola','vit_manga','vit_maracuja','acai_nordestino']},
+  ];
+  return `<div style="margin-bottom:.9rem">
+    <div style="font-family:'Anton',sans-serif;font-size:22px;letter-spacing:2px;margin-bottom:3px">RECEITAS NORDESTINAS FITNESS</div>
+    <div style="font-size:12px;color:var(--tx2)">Sabores da Bahia com foco em saúde. Clique para ver modo de preparo completo.</div>
+  </div>
+  ${cats.map(c=>`<div class="slbl">${c.label}</div>
+    <div class="rec-grid" style="margin-bottom:1.2rem">
+      ${c.ids.map(id=>{const r=RECIPES[id];return r?`<div class="rcd" onclick="openRec('${r.id}')"><div class="rcd-ico">${r.ico}</div><div class="rcd-nm">${r.nome}</div><div class="rcd-cat">${r.cat}</div><div class="rcd-t">⏱ ${r.tempo}</div></div>`:''}).join('')}
+    </div>`).join('')}`;
+}
+
+// ── COMPRAS ─────────────────────────────────────────────────────────────────
+function renderCompras(){
+  const se=SHOP_SEASONAL[shopMonth];const m=MONTHS[shopMonth];
+  const monthTabs=MONTHS.map((mo,i)=>`<button class="mtab ${i===shopMonth?'active':''}" onclick="setShopMonth(${i})">${mo.n}</button>`).join('');
+  const baseShop=SHOP_BASE.map(c=>`<div class="shop-cat">
+    <div class="shop-hdr"><span>${c.cat.split(' ')[0]}</span><span class="shop-hdr-t">${c.cat.replace(/^\S+\s/,'')}</span><span class="shop-cnt">${c.items.length} itens</span></div>
+    <div class="shop-items">${c.items.map(it=>`<div class="si"><div class="si-n">${it.n}</div><div class="si-l">🟠 Luanthony: ${it.ql}</div><div class="si-j">🩷 Jéssica: ${it.qj}</div>${it.obs?`<div class="si-o">${it.obs}</div>`:''}</div>`).join('')}</div>
+  </div>`).join('');
+  const seaShop=`<div class="shop-cat" style="border:1.5px solid var(--or)">
+    <div class="shop-hdr" style="background:var(--ord)"><span>🗓</span><span class="shop-hdr-t" style="color:var(--or)">${se.cat} — Sazonais de ${m.name}</span><span class="shop-cnt">${se.items.length} itens</span></div>
+    <div class="shop-items">${se.items.map(it=>`<div class="si" style="border:1px solid var(--bd)"><div class="si-n">${it.n}</div><div class="si-l">🟠 Luanthony: ${it.ql}</div><div class="si-j">🩷 Jéssica: ${it.qj}</div>${it.obs?`<div class="si-o">${it.obs}</div>`:''}</div>`).join('')}</div>
+  </div>`;
+  return `<div style="margin-bottom:.9rem">
+    <div style="font-family:'Anton',sans-serif;font-size:22px;letter-spacing:2px;margin-bottom:3px">LISTA DE COMPRAS ANUAL</div>
+    <div style="font-size:12px;color:var(--tx2)">Selecione o mês para ver os alimentos sazonais. Base semanal + sazonais da Bahia.</div>
+  </div>
+  <div style="font-size:12px;color:var(--tx2);margin-bottom:.6rem">📅 Selecione o mês:</div>
+  <div class="month-tabs">${monthTabs}</div>
+  <div style="background:var(--ord);border:1px solid var(--or);border-radius:var(--r);padding:.8rem;margin-bottom:.9rem">
+    <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:10px;letter-spacing:2px;color:var(--or);margin-bottom:5px">💡 DICA ECONÔMICA — ${m.name.toUpperCase()} (${m.season})</div>
+    <div style="font-size:12px;color:var(--tx2);line-height:1.7">Feira livre > supermercado para frutas, verduras e peixes. Este mês: <strong style="color:var(--or)">${m.season}</strong> está em safra na Bahia! Priorize estes produtos — mais baratos, mais nutritivos e mais frescos.</div>
+  </div>
+  ${seaShop}${baseShop}
+  <div style="background:var(--gnd);border:1px solid var(--gn);border-radius:var(--r);padding:.9rem;margin-top:.5rem">
+    <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:10px;letter-spacing:2px;color:var(--gn);margin-bottom:7px">✅ DICAS DE COMPRAS NORDESTINAS</div>
+    ${['Feira livre > supermercado para peixes, frutas e verduras','Sardinha fresca da Bahia substitui o atum com vantagem','Feijão de corda = feijão nordestino mais leve e proteico','Cuscuz: fubá a granel na feira é mais barato','Mel de abelha nativa (tiúba, uruçu) — produto regional excelente','Queijo de coalho nordestino = proteína + sabor baiano','Congele frango em porções de 150-200g para a semana','Compre hortifruti na segunda-feira (mais fresco pós-fim de semana)'].map(t=>`<div style="font-size:12px;color:var(--tx2);display:flex;gap:5px;margin-bottom:3px"><span style="color:var(--gn)">✓</span>${t}</div>`).join('')}
+  </div>`;
+}
+function setShopMonth(i){shopMonth=i;renderContent();}
+
+// ── FISIO ────────────────────────────────────────────────────────────────────
+function renderFisio(){
+  return `<div style="margin-bottom:.9rem">
+    <div style="font-family:'Anton',sans-serif;font-size:22px;letter-spacing:2px;margin-bottom:3px">FISIOTERAPIA & RECUPERAÇÃO</div>
+    <div style="font-size:12px;color:var(--tx2)">Orientações personalizadas para 1 ano de evolução segura.</div>
+  </div>
+  <div class="phy-card"><div class="phy-hdr"><span>👨‍⚕️</span><span class="phy-ht">Avaliação do Casal</span></div>
+  <div class="phy-body"><div class="phy-tip">Para iniciantes absolutos, o maior risco não é a intensidade — é a pressa. Os primeiros 30 dias são de adaptação neuromuscular. Respeitar esse processo previne 90% das lesões.</div>
+  <div class="phy-grid">
+    <div class="pp-box"><div class="pp-nm pp-l">Luanthony — 40 anos · 100kg</div>
+      <div class="pp-t">100kg = carga articular elevada. Atenção redobrada nos joelhos no agachamento.</div>
+      <div class="pp-t">Aos 40 anos, a recuperação é 20-30% mais lenta. Domingo de descanso é sagrado.</div>
+      <div class="pp-t">Apneia do sono é comum com sobrepeso. Melhor sono = melhor recuperação.</div>
+      <div class="pp-t">Se dor no joelho: reduza amplitude para meia-amplitude até fortalecer o quadríceps.</div>
+    </div>
+    <div class="pp-box"><div class="pp-nm pp-j">Jéssica — 31 anos · 74kg</div>
+      <div class="pp-t">Quadril feminino mais largo → joelhos tendem a cair para dentro no agachamento. Empurre para fora!</div>
+      <div class="pp-t">Fase pré-menstrual pode reduzir desempenho. Reduza intensidade nessa semana sem culpa.</div>
+      <div class="pp-t">Ombros mais hipermóveis → cuidado com excesso de amplitude.</div>
+      <div class="pp-t">Panturrilhas mais tensas: inclua alongamento de calcanhar SEMPRE após dia de perna.</div>
+    </div>
+  </div></div></div>
+  <div class="phy-card"><div class="phy-hdr"><span>🚴</span><span class="phy-ht">Orientações para Bicicleta</span></div>
+  <div class="phy-body">
+    <div class="phy-tip"><strong>Selim:</strong> perna quase estendida no ponto mais baixo do pedal. Selim baixo sobrecarrega o joelho.</div>
+    <div class="phy-tip"><strong>Postura:</strong> costas levemente inclinadas, cotovelos suavemente dobrados. Não "pendurar" nos punhos.</div>
+    <div class="phy-tip"><strong>Progressão:</strong> nunca aumente mais de 10 min por semana. De 20 a 90 min em 1 ano é progressão excelente.</div>
+    <div class="phy-tip"><strong>Dor no joelho na bike:</strong> quase sempre é selim baixo. Ajuste 1-2cm para cima.</div>
+    <div class="phy-tip"><strong>Luanthony:</strong> resistência baixa nas primeiras 4 semanas. Aumente gradualmente.</div>
+  </div></div>
+  <div class="phy-card"><div class="phy-hdr"><span>❤️</span><span class="phy-ht">Recuperação + Clima Baiano</span></div>
+  <div class="phy-body">
+    <div class="phy-tip"><strong>Após o treino:</strong> 5-10 min de caminhada leve. Nunca pare de golpe — tontura e dificuldade de recuperação cardíaca.</div>
+    <div class="phy-tip"><strong>Calor baiano:</strong> hidrate-se 30 min ANTES de treinar. Calor + desidratação = risco de cãibras. Água de coco = isotônico perfeito!</div>
+    <div class="phy-tip"><strong>DOMS:</strong> dor muscular no dia seguinte é NORMAL nas semanas 1-2. Dor articular (joelho, ombro) é diferente — exige atenção.</div>
+    <div class="phy-tip"><strong>Auto-massagem:</strong> garrafa de água gelada na coxa 3 min após dia de perna. Simples e eficaz.</div>
+    <div class="phy-tip"><strong>Sono:</strong> 7-9 horas. 80% do hormônio de crescimento é liberado durante o sono profundo. Treino às 16h → corpo esfria → sono melhorado.</div>
+  </div></div>
+  <div class="phy-card"><div class="phy-hdr"><span>⚠️</span><span class="phy-ht">Sinais de Alerta</span></div>
+  <div class="phy-body"><div class="sig-grid">
+    <div class="sig sg"><strong>✓ NORMAL — Continue</strong>Queimação muscular, DOMS, cansaço leve, suor, fôlego curto, dificuldade para sentar no banheiro.</div>
+    <div class="sig sw"><strong>✕ ALERTA — Pare</strong>Dor articular durante movimento, lombar, tontura, enjoo, formigamento nos membros.</div>
+    <div class="sig sg"><strong>✓ ESPERADO Sem 1-2</strong>Braços/pernas pesados, sono mais profundo, mais apetite, inchaço leve nas pernas.</div>
+    <div class="sig sw"><strong>✕ MÉDICO — Urgente</strong>Dor no peito, palpitações fortes, dor irradiando para braço esquerdo, pressão alta piorando.</div>
+  </div></div></div>
+  <div class="phy-card"><div class="phy-hdr"><span>📈</span><span class="phy-ht">Evolução Segura — 12 Meses</span></div>
+  <div class="phy-body">
+    ${MONTHS.map((m,i)=>`<div style="background:var(--s2);border-radius:var(--rs);padding:8px;border-left:3px solid ${['var(--gn)','var(--gn)','var(--yw)','var(--yw)','var(--or)','var(--or)','var(--rd)','var(--rd)','var(--rd)','var(--pu)','var(--pu)','var(--pu)'][i]};margin-bottom:5px">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px;color:${['var(--gn)','var(--gn)','var(--yw)','var(--yw)','var(--or)','var(--or)','var(--rd)','var(--rd)','var(--rd)','var(--pu)','var(--pu)','var(--pu)'][i]}">${m.icon} ${m.name} — ${m.ph}</div>
+      <div style="font-size:11px;color:var(--tx2)">Nível ${['Iniciante','Iniciante','Básico Inicial','Básico','Básico Avançado','Intermediário Inicial','Intermediário','Intermediário Avançado','Avançado Inicial','Avançado','Avançado Forte','Elite'][i]} · ${m.season}</div>
+    </div>`).join('')}
+    <div class="phy-tip" style="margin-top:.5rem"><strong>Regra de ouro:</strong> Nunca aumente mais de 10% do volume por semana. Este plano segue exatamente essa progressão. Em 12 meses vocês estarão num nível que poucos alcançam!</div>
+  </div></div>`;
+}
+
+// ── MODAL ─────────────────────────────────────────────────────────────────────
+function openRec(id){
+  const r=RECIPES[id];if(!r)return;
+  document.getElementById('recContent').innerHTML=`
+    <div style="font-size:24px;margin-bottom:.4rem">${r.ico}</div>
+    <div class="rec-title">${r.nome.toUpperCase()}</div>
+    <div class="rec-desc">${r.desc}</div>
+    <div class="rec-sec"><div class="rec-sec-t">Ingredientes</div>
+      ${r.ings.map(i=>`<div class="ing-row"><span class="ing-nm">${i.n}</span><span class="ing-amt">${i.a}</span></div>`).join('')}
+      ${r.porcao?`<div class="por-row"><span class="ptl">🟠 ${r.porcao.l}</span><span class="ptj">🩷 ${r.porcao.j}</span></div>`:''}
+    </div>
+    <div class="rec-sec"><div class="rec-sec-t">Modo de Preparo</div>
+      ${r.steps.map((s,i)=>`<div class="step"><div class="sn">${i+1}</div><div class="st">${s}</div></div>`).join('')}
+    </div>
+    ${r.tip?`<div class="rec-tip-box"><strong>Dica:</strong> ${r.tip}</div>`:''}
+  `;
+  document.getElementById('recModal').classList.remove('hidden');
+}
+function closeRec(){document.getElementById('recModal').classList.add('hidden');}
+document.getElementById('recModal').addEventListener('click',function(e){if(e.target===this)closeRec();});
+
+init();
+
+// Service Worker para PWA offline
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('sw.js').catch(err=>console.log('SW registration failed:',err));
+}
+</script>
+</body>
+</html>

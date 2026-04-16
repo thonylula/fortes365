@@ -1,0 +1,36 @@
+{
+  "metadata": {
+    "title": "Prescrição de Exercícios para Melhora da Aptidão Física e Saúde",
+    "author": "Dr. João Victor Del Conti Esteves",
+    "entities": [
+      {"name": "FITT-VP", "type": "princípio"},
+      {"name": "ACSM", "type": "organização"},
+      {"name": "PAR-Q", "type": "protocolo"},
+      {"name": "Exercício Aeróbio", "type": "conceito"},
+      {"name": "Aptidão Cardiorrespiratória", "type": "conceito"}
+    ],
+    "summary": "Guia acadêmico e prático sobre a prescrição de exercícios físicos baseados em diretrizes do ACSM. Aborda o princípio FITT-VP, avaliação prévia via PAR-Q e recomendações específicas para diferentes populações (crianças, adultos, adolescentes)."
+  },
+  "content": [
+    {
+      "type": "text",
+      "page": 5,
+      "data": "Componentes FITT-VP: Frequência, Intensidade, Tempo, Tipo, Volume e Progressão. Essenciais para uma prescrição segura e eficaz."
+    },
+    {
+      "type": "text",
+      "page": 7,
+      "data": "Avaliação PAR-Q: Questionário fundamental para detectar riscos de saúde antes de iniciar atividades físicas intensas."
+    },
+    {
+      "type": "text",
+      "page": 11,
+      "data": "Recomendação Aeróbia: Adultos devem praticar de 3 a 5 dias por semana, com intensidade variando de moderada a vigorosa."
+    },
+    {
+      "type": "text",
+      "page": 31,
+      "data": "Crianças e Adolescentes: Devem acumular pelo menos 60 minutos diários de atividade física moderada a vigorosa."
+    }
+  ]
+}

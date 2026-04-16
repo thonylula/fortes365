@@ -1,0 +1,7755 @@
+[
+  [
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Cuscuz (L:4col·J:3col) c/ manteiga leve",
+          "3 ovos mexidos c/ coentro",
+          "Café c/ leite desnatado s/ açúcar"
+        ],
+        "ptl": "~450",
+        "ptj": "~360",
+        "rec": "cuscuz"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "1 manga madura picada",
+          "20g castanha de caju torrada"
+        ],
+        "ptl": "~175",
+        "ptj": "~155",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Frango grelhado (L:200g·J:150g)",
+          "Arroz integral (L:4col·J:3col)",
+          "Feijão de corda (3col sopa)",
+          "Salada verde + coentro + azeite"
+        ],
+        "ptl": "~620",
+        "ptj": "~490",
+        "rec": "frango_grelhado"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "1 banana grande",
+          "200ml água de coco gelada"
+        ],
+        "ptl": "~160",
+        "ptj": "~140",
+        "rec": "pre_treino"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina de manga: 1/2 manga+200ml leite+mel"
+        ],
+        "ptl": "~230",
+        "ptj": "~200",
+        "rec": "vit_manga"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Omelete (L:3·J:2 ovos) c/ espinafre + tomate",
+          "Salada verde + pepino + cebola roxa"
+        ],
+        "ptl": "~360",
+        "ptj": "~285",
+        "rec": "omelete"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Iogurte grego natural (1 pote) + fio de mel"
+        ],
+        "ptl": "~130",
+        "ptj": "~120",
+        "rec": "iogurte_granola"
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Tapioca (L:2·J:1.5) c/ queijo coalho",
+          "2 ovos cozidos",
+          "Suco de caju natural 200ml"
+        ],
+        "ptl": "~430",
+        "ptj": "~345",
+        "rec": "tapioca"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Salada de frutas: manga+banana+caju fresco"
+        ],
+        "ptl": "~185",
+        "ptj": "~160",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Sardinha grelhada (L:200g·J:150g)",
+          "Arroz integral (L:3col·J:2col)",
+          "Macaxeira cozida (100g·70g)",
+          "Salada: alface+tomate+coentro"
+        ],
+        "ptl": "~560",
+        "ptj": "~445",
+        "rec": "sardinha_grelhada"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Iogurte grego 170g",
+          "1 maçã"
+        ],
+        "ptl": "~195",
+        "ptj": "~170",
+        "rec": "pre_treino"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "200ml água de coco",
+          "2 ovos cozidos"
+        ],
+        "ptl": "~170",
+        "ptj": "~155",
+        "rec": null
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Sopa de legumes c/ frango (L:350ml·J:250ml)",
+          "Jerimum+macaxeira+cenoura+coentro"
+        ],
+        "ptl": "~345",
+        "ptj": "~275",
+        "rec": "sopa_legumes"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de caju (folha) s/ açúcar",
+          "1 banana"
+        ],
+        "ptl": "~90",
+        "ptj": "~80",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Aveia (L:5col·J:4col) c/ leite+canela",
+          "1 manga amassada na aveia",
+          "Café preto"
+        ],
+        "ptl": "~420",
+        "ptj": "~335",
+        "rec": "aveia_mingau"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Vitamina de manga: 1/2 manga+200ml leite+mel"
+        ],
+        "ptl": "~220",
+        "ptj": "~190",
+        "rec": "vit_manga"
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Frango desfiado (L:180g·J:130g) c/ molho de tomate",
+          "Arroz integral (L:3col·J:2col)",
+          "Feijão de corda refogado",
+          "Maxixe refogado c/ alho"
+        ],
+        "ptl": "~570",
+        "ptj": "~455",
+        "rec": "frango_grelhado"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Cuscuz pequeno (2col) c/ requeijão light",
+          "Água 400ml"
+        ],
+        "ptl": "~170",
+        "ptj": "~150",
+        "rec": "cuscuz"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina pós: banana+200ml leite+cacau"
+        ],
+        "ptl": "~220",
+        "ptj": "~190",
+        "rec": "vitamina_pos"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Sardinha assada (L:180g·J:130g) c/ limão e coentro",
+          "Salada: tomate+cebola+pimentão"
+        ],
+        "ptl": "~330",
+        "ptj": "~265",
+        "rec": "sardinha_grelhada"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Iogurte grego + morangos",
+          "1 col granola"
+        ],
+        "ptl": "~135",
+        "ptj": "~120",
+        "rec": "iogurte_granola"
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Cuscuz (L:4col·J:3col) c/ ovo mexido e coentro",
+          "Suco de caju natural 200ml"
+        ],
+        "ptl": "~460",
+        "ptj": "~370",
+        "rec": "cuscuz"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "1 manga+1 col pasta de amendoim"
+        ],
+        "ptl": "~200",
+        "ptj": "~175",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Tilápia grelhada (L:200g·J:150g)",
+          "Batata doce cozida (L:120g·J:80g)",
+          "Brócolis+cenoura no vapor c/ coentro"
+        ],
+        "ptl": "~545",
+        "ptj": "~430",
+        "rec": "tilap_grelhada"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "1 banana+1 col pasta amendoim",
+          "Água 400ml"
+        ],
+        "ptl": "~175",
+        "ptj": "~155",
+        "rec": "pre_treino"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina de manga: manga+leite+cacau"
+        ],
+        "ptl": "~230",
+        "ptj": "~200",
+        "rec": "vit_manga"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Omelete (L:3·J:2 ovos) c/ queijo coalho",
+          "Legumes: abobrinha+pimentão+tomate"
+        ],
+        "ptl": "~355",
+        "ptj": "~280",
+        "rec": "omelete"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de hibisco s/ açúcar (diurético natural)",
+          "2 castanhas de caju"
+        ],
+        "ptl": "~70",
+        "ptj": "~65",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Tapioca (L:2·J:1.5) c/ frango desfiado+queijo",
+          "Suco de acerola 200ml (vitamina C!)",
+          "Café preto"
+        ],
+        "ptl": "~440",
+        "ptj": "~355",
+        "rec": "tapioca"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Salada de frutas: manga+banana+mamão"
+        ],
+        "ptl": "~165",
+        "ptj": "~145",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Frango grelhado (L:200g·J:150g)",
+          "Feijão de corda (3col)",
+          "Arroz integral (L:4col·J:3col)",
+          "Salada c/ vinagrete de coentro"
+        ],
+        "ptl": "~600",
+        "ptj": "~475",
+        "rec": "frango_grelhado"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Batata doce (L:100g·J:70g)",
+          "2 claras cozidas"
+        ],
+        "ptl": "~190",
+        "ptj": "~155",
+        "rec": "pre_treino"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Iogurte grego + granola (2col) + manga picada"
+        ],
+        "ptl": "~250",
+        "ptj": "~215",
+        "rec": "iogurte_granola"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Peixe assado (L:180g·J:130g)",
+          "Legumes assados: jerimum+cenoura+alho",
+          "Azeite+ervas+limão"
+        ],
+        "ptl": "~360",
+        "ptj": "~285",
+        "rec": "peixe_assado"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "1 banana pequena",
+          "Chá de maracujá (ajuda no sono)"
+        ],
+        "ptl": "~85",
+        "ptj": "~75",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Vitamina: banana+aveia+leite+cacau",
+          "2 ovos mexidos ao lado",
+          "Café preto"
+        ],
+        "ptl": "~490",
+        "ptj": "~390",
+        "rec": "vitamina_pos"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Caju fresco (safra plena!)",
+          "20g castanha de caju torrada"
+        ],
+        "ptl": "~120",
+        "ptj": "~100",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Refeição especial do sábado 😊",
+          "Sugestão: frango na brasa+baião de dois+salada",
+          "Evite ultra processados"
+        ],
+        "ptl": "~700",
+        "ptj": "~550",
+        "rec": "baiao_dois"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "1 manga fresca + castanhas",
+          "Água 400ml"
+        ],
+        "ptl": "~190",
+        "ptj": "~165",
+        "rec": null
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina: banana+leite+mel"
+        ],
+        "ptl": "~210",
+        "ptj": "~185",
+        "rec": "vitamina_pos"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Frango grelhado (L:180g·J:130g)",
+          "Legumes salteados: abobrinha+brócolis",
+          "Arroz integral (L:3col·J:2col)"
+        ],
+        "ptl": "~410",
+        "ptj": "~325",
+        "rec": "frango_grelhado"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de camomila c/ mel",
+          "1 maçã ou pera"
+        ],
+        "ptl": "~80",
+        "ptj": "~70",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Pão integral (L:2·J:1.5) c/ queijo coalho",
+          "1 ovo mexido c/ coentro",
+          "Suco de laranja natural 200ml"
+        ],
+        "ptl": "~430",
+        "ptj": "~345",
+        "rec": "tapioca"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Salada de frutas c/ granola (1col)",
+          "Iogurte natural (100ml) por cima"
+        ],
+        "ptl": "~210",
+        "ptj": "~180",
+        "rec": "iogurte_granola"
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Moqueca de tilápia light (tradição baiana!)",
+          "Arroz integral",
+          "Salada verde c/ vinagrete"
+        ],
+        "ptl": "~670",
+        "ptj": "~530",
+        "rec": "moqueca_light"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Domingo sem treino — lanche leve",
+          "Frutas+iogurte grego"
+        ],
+        "ptl": "~210",
+        "ptj": "~180",
+        "rec": "iogurte_granola"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Dia de descanso — sem pós-treino",
+          "Beba 2,5-3L de água",
+          "Suco de caju gelado (natural)"
+        ],
+        "ptl": "—",
+        "ptj": "—",
+        "rec": null
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Cuscuz c/ sardinha desfiada (L:3col·J:2col)",
+          "Salada verde+tomate+cebola roxa",
+          "Azeite+limão+coentro"
+        ],
+        "ptl": "~340",
+        "ptj": "~270",
+        "rec": "cuscuz"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de maracujá (relaxante)",
+          "2 biscoitos de arroz integrais"
+        ],
+        "ptl": "~70",
+        "ptj": "~65",
+        "rec": null
+      }
+    }
+  ],
+  [
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Cuscuz (L:4col·J:3col) c/ manteiga",
+          "3 ovos mexidos+coentro+cebolinha",
+          "Suco de caju natural 200ml — safra máxima!"
+        ],
+        "ptl": "~455",
+        "ptj": "~365",
+        "rec": "cuscuz"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Vitamina de caju: 2 caju+200ml leite+mel"
+        ],
+        "ptl": "~180",
+        "ptj": "~155",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Frango grelhado (L:200g·J:150g)",
+          "Arroz integral (L:4col·J:3col)",
+          "Feijão de corda",
+          "Salada nordestina c/ coentro"
+        ],
+        "ptl": "~615",
+        "ptj": "~488",
+        "rec": "frango_grelhado"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "1 banana grande",
+          "200ml água de coco"
+        ],
+        "ptl": "~160",
+        "ptj": "~140",
+        "rec": "pre_treino"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina de caju: 2 caju frescos+leite+mel"
+        ],
+        "ptl": "~220",
+        "ptj": "~195",
+        "rec": null
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Omelete (L:3·J:2 ovos) c/ espinafre+queijo",
+          "Salada verde+pepino+tomate"
+        ],
+        "ptl": "~355",
+        "ptj": "~280",
+        "rec": "omelete"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Iogurte grego+fio de mel"
+        ],
+        "ptl": "~130",
+        "ptj": "~120",
+        "rec": "iogurte_granola"
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Tapioca (L:2·J:1.5) c/ queijo coalho+coentro",
+          "2 ovos cozidos",
+          "Suco de caju 200ml"
+        ],
+        "ptl": "~435",
+        "ptj": "~348",
+        "rec": "tapioca"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Caju fresco (à vontade na safra!)",
+          "20g castanha de caju"
+        ],
+        "ptl": "~130",
+        "ptj": "~110",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Sardinha grelhada (L:200g·J:150g)",
+          "Arroz integral (L:3col·J:2col)",
+          "Macaxeira cozida",
+          "Salada c/ alface+tomate+coentro"
+        ],
+        "ptl": "~560",
+        "ptj": "~445",
+        "rec": "sardinha_grelhada"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Iogurte grego 170g",
+          "1 banana"
+        ],
+        "ptl": "~190",
+        "ptj": "~165",
+        "rec": "pre_treino"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "200ml água de coco",
+          "2 ovos cozidos"
+        ],
+        "ptl": "~170",
+        "ptj": "~155",
+        "rec": null
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Sopa nordestina c/ frango+jerimum+macaxeira (L:350·J:250ml)"
+        ],
+        "ptl": "~340",
+        "ptj": "~270",
+        "rec": "sopa_legumes"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de folha de caju s/ açúcar",
+          "1 banana pequena"
+        ],
+        "ptl": "~90",
+        "ptj": "~80",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Aveia (L:5col·J:4col) c/ leite+canela+banana",
+          "Café preto"
+        ],
+        "ptl": "~415",
+        "ptj": "~330",
+        "rec": "aveia_mingau"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Vitamina de graviola: 100g polpa+200ml leite+mel"
+        ],
+        "ptl": "~185",
+        "ptj": "~160",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Frango desfiado (L:180g·J:130g) c/ molho",
+          "Arroz integral (L:3col·J:2col)",
+          "Feijão de corda",
+          "Chuchu refogado c/ alho"
+        ],
+        "ptl": "~565",
+        "ptj": "~450",
+        "rec": "frango_grelhado"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Cuscuz pequeno (2col)+requeijão light"
+        ],
+        "ptl": "~170",
+        "ptj": "~150",
+        "rec": "cuscuz"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina pós: banana+leite+cacau em pó"
+        ],
+        "ptl": "~220",
+        "ptj": "~190",
+        "rec": "vitamina_pos"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Sardinha assada c/ limão+coentro (L:180g·J:130g)",
+          "Salada: tomate+cebola+pimentão"
+        ],
+        "ptl": "~330",
+        "ptj": "~265",
+        "rec": "sardinha_grelhada"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Iogurte grego+granola (1col)"
+        ],
+        "ptl": "~125",
+        "ptj": "~115",
+        "rec": "iogurte_granola"
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Cuscuz (L:4col·J:3col) c/ requeijão light+coentro",
+          "Suco de caju 200ml"
+        ],
+        "ptl": "~445",
+        "ptj": "~355",
+        "rec": "cuscuz"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Caju fresco+1 banana+castanha (10g)"
+        ],
+        "ptl": "~165",
+        "ptj": "~145",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Tilápia grelhada (L:200g·J:150g)",
+          "Batata doce (L:120g·J:80g)",
+          "Brócolis+cenoura no vapor"
+        ],
+        "ptl": "~545",
+        "ptj": "~430",
+        "rec": "tilap_grelhada"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "1 banana+1 col pasta amendoim"
+        ],
+        "ptl": "~175",
+        "ptj": "~155",
+        "rec": "pre_treino"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina de caju+banana+leite"
+        ],
+        "ptl": "~225",
+        "ptj": "~195",
+        "rec": null
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Omelete (L:3·J:2 ovos) c/ queijo+tomate+coentro",
+          "Abobrinha refogada c/ alho"
+        ],
+        "ptl": "~350",
+        "ptj": "~275",
+        "rec": "omelete"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de hibisco s/ açúcar",
+          "2 castanhas de caju"
+        ],
+        "ptl": "~70",
+        "ptj": "~65",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Tapioca (L:2·J:1.5) c/ frango desfiado+queijo coalho",
+          "Suco de acerola 200ml"
+        ],
+        "ptl": "~440",
+        "ptj": "~355",
+        "rec": "tapioca"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Caju fresco+mamão fresco+banana"
+        ],
+        "ptl": "~170",
+        "ptj": "~148",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Frango grelhado (L:200g·J:150g)",
+          "Feijão de corda+arroz integral",
+          "Salada completa c/ vinagrete"
+        ],
+        "ptl": "~605",
+        "ptj": "~478",
+        "rec": "frango_grelhado"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Batata doce cozida (L:100g·J:70g)",
+          "2 claras cozidas"
+        ],
+        "ptl": "~190",
+        "ptj": "~155",
+        "rec": null
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Iogurte grego+granola (2col)+caju picado"
+        ],
+        "ptl": "~245",
+        "ptj": "~210",
+        "rec": "iogurte_granola"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Peixe assado no forno (L:180g·J:130g)",
+          "Legumes assados: jerimum+cenoura",
+          "Azeite+coentro+limão"
+        ],
+        "ptl": "~355",
+        "ptj": "~280",
+        "rec": "peixe_assado"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "1 banana pequena",
+          "Chá de camomila c/ mel"
+        ],
+        "ptl": "~85",
+        "ptj": "~75",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Vitamina especial: caju+banana+leite+mel",
+          "2 ovos mexidos ao lado",
+          "Café preto"
+        ],
+        "ptl": "~485",
+        "ptj": "~385",
+        "rec": "vitamina_pos"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Caju fresco (safra!)+castanha de caju"
+        ],
+        "ptl": "~125",
+        "ptj": "~105",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Refeição livre do sábado 😊",
+          "Sugestão: peixe grelhado+arroz+salada+suco de caju natural"
+        ],
+        "ptl": "~695",
+        "ptj": "~548",
+        "rec": "frango_grelhado"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "1 banana+castanha (15g)"
+        ],
+        "ptl": "~185",
+        "ptj": "~160",
+        "rec": null
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina pós: banana+leite+cacau"
+        ],
+        "ptl": "~210",
+        "ptj": "~182",
+        "rec": "vitamina_pos"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Frango grelhado (L:180g·J:130g)+legumes salteados",
+          "Arroz integral (L:3col·J:2col)"
+        ],
+        "ptl": "~408",
+        "ptj": "~322",
+        "rec": "frango_grelhado"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de maracujá+mel"
+        ],
+        "ptl": "~75",
+        "ptj": "~65",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Pão integral (L:2·J:1.5)+queijo coalho",
+          "Ovo mexido c/ coentro",
+          "Suco de laranja natural 200ml"
+        ],
+        "ptl": "~428",
+        "ptj": "~342",
+        "rec": "tapioca"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Salada de frutas: caju+banana+manga (se tiver)"
+        ],
+        "ptl": "~185",
+        "ptj": "~160",
+        "rec": "iogurte_granola"
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Moqueca de tilápia light (domingo especial!)",
+          "Arroz integral+salada verde"
+        ],
+        "ptl": "~668",
+        "ptj": "~528",
+        "rec": "moqueca_light"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Domingo — lanche leve",
+          "Iogurte grego+fruta da época"
+        ],
+        "ptl": "~208",
+        "ptj": "~178",
+        "rec": "iogurte_granola"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Dia de descanso",
+          "Beba 2,5-3L de água+suco de caju gelado"
+        ],
+        "ptl": "—",
+        "ptj": "—",
+        "rec": null
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Cuscuz c/ sardinha desfiada+coentro (L:3col·J:2col)",
+          "Salada verde+tomate+limão"
+        ],
+        "ptl": "~338",
+        "ptj": "~268",
+        "rec": "cuscuz"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de folha de caju s/ açúcar"
+        ],
+        "ptl": "~5",
+        "ptj": "~5",
+        "rec": null
+      }
+    }
+  ],
+  [
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Cuscuz (L:4col·J:3col) c/ ovo mexido+coentro",
+          "Vitamina de pitanga: 100g pitanga+150ml leite+mel"
+        ],
+        "ptl": "~440",
+        "ptj": "~352",
+        "rec": "cuscuz"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Pitanga fresca (100g)+20g amendoim s/ sal"
+        ],
+        "ptl": "~105",
+        "ptj": "~90",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Frango grelhado (L:200g·J:150g)",
+          "Arroz integral (L:4col·J:3col)",
+          "Feijão de corda",
+          "Salada c/ coentro+azeite"
+        ],
+        "ptl": "~618",
+        "ptj": "~488",
+        "rec": "frango_grelhado"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "1 banana+1 col pasta amendoim"
+        ],
+        "ptl": "~175",
+        "ptj": "~155",
+        "rec": "pre_treino"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina pós: banana+leite+cacau em pó"
+        ],
+        "ptl": "~222",
+        "ptj": "~192",
+        "rec": "vitamina_pos"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Omelete (L:3·J:2 ovos)+espinafre+tomate",
+          "Salada verde+pepino"
+        ],
+        "ptl": "~358",
+        "ptj": "~282",
+        "rec": "omelete"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Iogurte grego+mel"
+        ],
+        "ptl": "~130",
+        "ptj": "~120",
+        "rec": "iogurte_granola"
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Tapioca (L:2·J:1.5) c/ queijo coalho",
+          "2 ovos cozidos",
+          "Suco de cajá 200ml (vitamina C!)"
+        ],
+        "ptl": "~428",
+        "ptj": "~342",
+        "rec": "tapioca"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Cajá fresco (ácido + vitamina C) 100g",
+          "1 banana"
+        ],
+        "ptl": "~115",
+        "ptj": "~98",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Sardinha grelhada (L:200g·J:150g)",
+          "Arroz integral (L:3col·J:2col)",
+          "Macaxeira cozida",
+          "Salada: alface+tomate+coentro"
+        ],
+        "ptl": "~558",
+        "ptj": "~443",
+        "rec": "sardinha_grelhada"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Iogurte grego 170g",
+          "1 maçã"
+        ],
+        "ptl": "~193",
+        "ptj": "~168",
+        "rec": null
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "200ml água de coco",
+          "2 ovos cozidos"
+        ],
+        "ptl": "~170",
+        "ptj": "~155",
+        "rec": null
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Sopa nordestina c/ frango+legumes (L:350·J:250ml)"
+        ],
+        "ptl": "~343",
+        "ptj": "~272",
+        "rec": "sopa_legumes"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de camomila s/ açúcar",
+          "1 banana pequena"
+        ],
+        "ptl": "~90",
+        "ptj": "~80",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Aveia (L:5col·J:4col) c/ leite+canela",
+          "1 banana amassada",
+          "Café preto"
+        ],
+        "ptl": "~418",
+        "ptj": "~332",
+        "rec": "aveia_mingau"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Vitamina de cajá: 100g cajá+150ml leite+mel"
+        ],
+        "ptl": "~175",
+        "ptj": "~150",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Carne moída magra (L:180g·J:130g) refogada c/ tomate",
+          "Arroz integral (L:3col·J:2col)",
+          "Feijão de corda",
+          "Legumes: cenoura+chuchu"
+        ],
+        "ptl": "~575",
+        "ptj": "~460",
+        "rec": "frango_grelhado"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Cuscuz pequeno (2col)+requeijão light"
+        ],
+        "ptl": "~170",
+        "ptj": "~150",
+        "rec": "cuscuz"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina pós: banana+leite+mel"
+        ],
+        "ptl": "~215",
+        "ptj": "~185",
+        "rec": "vitamina_pos"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Tilápia grelhada (L:180g·J:130g)",
+          "Abobrinha+cenoura salteadas c/ alho"
+        ],
+        "ptl": "~328",
+        "ptj": "~262",
+        "rec": "tilap_grelhada"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Iogurte grego+granola (1col)"
+        ],
+        "ptl": "~125",
+        "ptj": "~115",
+        "rec": "iogurte_granola"
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Cuscuz (L:4col·J:3col)+sardinha desfiada+coentro",
+          "Café c/ leite desnatado"
+        ],
+        "ptl": "~448",
+        "ptj": "~358",
+        "rec": "cuscuz"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Pitanga+banana+20g castanha"
+        ],
+        "ptl": "~148",
+        "ptj": "~128",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Tilápia grelhada (L:200g·J:150g)",
+          "Batata doce (L:120g·J:80g)",
+          "Brócolis no vapor c/ limão"
+        ],
+        "ptl": "~542",
+        "ptj": "~428",
+        "rec": "tilap_grelhada"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "1 banana+1 col pasta amendoim",
+          "Água 400ml"
+        ],
+        "ptl": "~175",
+        "ptj": "~155",
+        "rec": "pre_treino"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina de cajá+banana+leite"
+        ],
+        "ptl": "~210",
+        "ptj": "~182",
+        "rec": null
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Omelete (L:3·J:2 ovos)+queijo coalho+pimentão",
+          "Legumes refogados c/ alho"
+        ],
+        "ptl": "~352",
+        "ptj": "~278",
+        "rec": "omelete"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de hibisco gelado s/ açúcar"
+        ],
+        "ptl": "~5",
+        "ptj": "~5",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Tapioca (L:2·J:1.5) c/ frango+queijo",
+          "Suco de laranja natural 200ml",
+          "Café preto"
+        ],
+        "ptl": "~438",
+        "ptj": "~352",
+        "rec": "tapioca"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Salada de frutas: pitanga+banana+mamão"
+        ],
+        "ptl": "~145",
+        "ptj": "~125",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Frango grelhado (L:200g·J:150g)",
+          "Feijão de corda (3col)",
+          "Arroz integral (L:4col·J:3col)",
+          "Salada completa c/ vinagrete de coentro"
+        ],
+        "ptl": "~602",
+        "ptj": "~476",
+        "rec": "frango_grelhado"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Batata doce (L:100g·J:70g)",
+          "2 claras cozidas"
+        ],
+        "ptl": "~188",
+        "ptj": "~153",
+        "rec": null
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Iogurte grego+granola (2col)+banana fatiada"
+        ],
+        "ptl": "~248",
+        "ptj": "~212",
+        "rec": "iogurte_granola"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Peixe assado no forno (L:180g·J:130g)",
+          "Legumes assados c/ azeite+ervas"
+        ],
+        "ptl": "~353",
+        "ptj": "~278",
+        "rec": "peixe_assado"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "1 banana pequena",
+          "Chá de maracujá"
+        ],
+        "ptl": "~85",
+        "ptj": "~75",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Vitamina: banana+aveia+leite+cacau",
+          "2 ovos mexidos ao lado",
+          "Café preto"
+        ],
+        "ptl": "~488",
+        "ptj": "~388",
+        "rec": "vitamina_pos"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Cajá fresco (vitamina C) + 1 banana"
+        ],
+        "ptl": "~130",
+        "ptj": "~112",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Almoço livre do sábado 😊",
+          "Sugestão: frango assado+feijão verde+arroz+salada"
+        ],
+        "ptl": "~692",
+        "ptj": "~545",
+        "rec": "baiao_dois"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Fruta da época + castanha (15g)"
+        ],
+        "ptl": "~183",
+        "ptj": "~158",
+        "rec": null
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina pós: banana+leite+cacau"
+        ],
+        "ptl": "~218",
+        "ptj": "~188",
+        "rec": "vitamina_pos"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Frango grelhado (L:180g·J:130g)",
+          "Abobrinha+brócolis salteados",
+          "Arroz integral (L:3col·J:2col)"
+        ],
+        "ptl": "~405",
+        "ptj": "~320",
+        "rec": "frango_grelhado"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de camomila+mel",
+          "1 maçã"
+        ],
+        "ptl": "~78",
+        "ptj": "~68",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Pão integral (L:2·J:1.5)+queijo coalho",
+          "Ovo mexido c/ coentro",
+          "Suco de laranja natural 200ml"
+        ],
+        "ptl": "~425",
+        "ptj": "~340",
+        "rec": "tapioca"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Salada de frutas c/ pitanga+cajá+banana+granola"
+        ],
+        "ptl": "~205",
+        "ptj": "~175",
+        "rec": "iogurte_granola"
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Baião de dois light (feijão corda+arroz+queijo coalho)",
+          "Frango desfiado ao lado (L:150g·J:100g)"
+        ],
+        "ptl": "~662",
+        "ptj": "~523",
+        "rec": "baiao_dois"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Domingo — iogurte grego+fruta"
+        ],
+        "ptl": "~205",
+        "ptj": "~175",
+        "rec": "iogurte_granola"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Dia de descanso",
+          "Beba 2,5-3L de água+suco de cajá"
+        ],
+        "ptl": "—",
+        "ptj": "—",
+        "rec": null
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Cuscuz c/ sardinha desfiada+coentro (L:3col·J:2col)",
+          "Salada verde+tomate+cebola roxa"
+        ],
+        "ptl": "~335",
+        "ptj": "~265",
+        "rec": "cuscuz"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de erva-cidreira s/ açúcar"
+        ],
+        "ptl": "~5",
+        "ptj": "~5",
+        "rec": null
+      }
+    }
+  ],
+  [
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Cuscuz (L:4col·J:3col)+ovo mexido+coentro",
+          "Vitamina de maracujá: polpa+150ml leite+mel"
+        ],
+        "ptl": "~445",
+        "ptj": "~358",
+        "rec": "cuscuz"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Maracujá fresco (polpa) c/ iogurte (100ml)+mel"
+        ],
+        "ptl": "~145",
+        "ptj": "~125",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Frango grelhado (L:200g·J:150g)",
+          "Arroz integral (L:4col·J:3col)",
+          "Feijão de corda",
+          "Salada verde+coentro+azeite"
+        ],
+        "ptl": "~618",
+        "ptj": "~488",
+        "rec": "frango_grelhado"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "1 banana+1 col pasta amendoim"
+        ],
+        "ptl": "~175",
+        "ptj": "~155",
+        "rec": "pre_treino"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina de maracujá+banana+leite"
+        ],
+        "ptl": "~218",
+        "ptj": "~188",
+        "rec": "vitamina_pos"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Omelete (L:3·J:2 ovos)+espinafre+queijo",
+          "Salada verde+pepino"
+        ],
+        "ptl": "~355",
+        "ptj": "~280",
+        "rec": "omelete"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de maracujá natural (calmante) s/ açúcar+mel"
+        ],
+        "ptl": "~30",
+        "ptj": "~28",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Tapioca (L:2·J:1.5)+queijo coalho",
+          "2 ovos cozidos",
+          "Suco de laranja+acerola 200ml"
+        ],
+        "ptl": "~430",
+        "ptj": "~344",
+        "rec": "tapioca"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Umbu fresco (fruta sertaneja!) 100g",
+          "1 banana"
+        ],
+        "ptl": "~98",
+        "ptj": "~82",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Sardinha grelhada (L:200g·J:150g)",
+          "Arroz integral (L:3col·J:2col)",
+          "Macaxeira cozida",
+          "Salada: alface+tomate+coentro"
+        ],
+        "ptl": "~558",
+        "ptj": "~443",
+        "rec": "sardinha_grelhada"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Iogurte grego 170g",
+          "1 maçã"
+        ],
+        "ptl": "~193",
+        "ptj": "~168",
+        "rec": null
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "200ml água de coco",
+          "2 ovos cozidos"
+        ],
+        "ptl": "~170",
+        "ptj": "~155",
+        "rec": null
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Sopa de frango c/ legumes nordestinos (L:350·J:250ml)",
+          "Jerimum+macaxeira+cenoura"
+        ],
+        "ptl": "~342",
+        "ptj": "~272",
+        "rec": "sopa_legumes"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de camomila",
+          "1 banana pequena"
+        ],
+        "ptl": "~90",
+        "ptj": "~80",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Aveia (L:5col·J:4col)+leite+canela",
+          "1 banana amassada",
+          "Café preto"
+        ],
+        "ptl": "~418",
+        "ptj": "~332",
+        "rec": "aveia_mingau"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Vitamina de maracujá+banana+leite+mel"
+        ],
+        "ptl": "~215",
+        "ptj": "~185",
+        "rec": "vit_maracuja"
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Carne moída magra (L:180g·J:130g) refogada",
+          "Arroz integral (L:3col·J:2col)",
+          "Feijão de corda",
+          "Chuchu refogado c/ alho"
+        ],
+        "ptl": "~572",
+        "ptj": "~457",
+        "rec": "frango_grelhado"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Cuscuz pequeno (2col)+requeijão light"
+        ],
+        "ptl": "~170",
+        "ptj": "~150",
+        "rec": "cuscuz"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina pós: banana+leite+cacau"
+        ],
+        "ptl": "~220",
+        "ptj": "~190",
+        "rec": "vitamina_pos"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Caldo verde nordestino c/ couve+macaxeira+frango (L:300·J:220ml)"
+        ],
+        "ptl": "~285",
+        "ptj": "~228",
+        "rec": "caldo_verde_nordestino"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Iogurte grego+mel+granola (1col)"
+        ],
+        "ptl": "~128",
+        "ptj": "~118",
+        "rec": "iogurte_granola"
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Cuscuz (L:4col·J:3col)+sardinha desfiada+coentro",
+          "Suco de maracujá natural 200ml"
+        ],
+        "ptl": "~450",
+        "ptj": "~360",
+        "rec": "cuscuz"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "1 banana+20g castanha de caju"
+        ],
+        "ptl": "~165",
+        "ptj": "~142",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Tilápia grelhada (L:200g·J:150g)",
+          "Batata doce (L:120g·J:80g)",
+          "Brócolis+cenoura no vapor"
+        ],
+        "ptl": "~542",
+        "ptj": "~428",
+        "rec": "tilap_grelhada"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "1 banana+1 col pasta amendoim"
+        ],
+        "ptl": "~175",
+        "ptj": "~155",
+        "rec": "pre_treino"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina de maracujá+banana+leite"
+        ],
+        "ptl": "~215",
+        "ptj": "~185",
+        "rec": "vitamina_pos"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Omelete (L:3·J:2 ovos)+couve+tomate",
+          "Legumes refogados c/ alho+coentro"
+        ],
+        "ptl": "~350",
+        "ptj": "~275",
+        "rec": "omelete"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de maracujá c/ mel (relaxa e ajuda dormir)"
+        ],
+        "ptl": "~28",
+        "ptj": "~25",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Tapioca (L:2·J:1.5)+frango desfiado+queijo",
+          "Suco de laranja natural 200ml",
+          "Café preto"
+        ],
+        "ptl": "~438",
+        "ptj": "~352",
+        "rec": "tapioca"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Salada de frutas: umbu+banana+laranja"
+        ],
+        "ptl": "~140",
+        "ptj": "~120",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Frango grelhado (L:200g·J:150g)",
+          "Feijão de corda (3col)",
+          "Arroz integral (L:4col·J:3col)",
+          "Salada completa+coentro"
+        ],
+        "ptl": "~602",
+        "ptj": "~476",
+        "rec": "frango_grelhado"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Batata doce (L:100g·J:70g)",
+          "2 claras cozidas"
+        ],
+        "ptl": "~188",
+        "ptj": "~153",
+        "rec": null
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Iogurte grego+granola (2col)+laranja picada"
+        ],
+        "ptl": "~240",
+        "ptj": "~205",
+        "rec": "iogurte_granola"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Peixe assado no forno (L:180g·J:130g)",
+          "Legumes assados c/ alho+azeite+coentro"
+        ],
+        "ptl": "~352",
+        "ptj": "~278",
+        "rec": "peixe_assado"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "1 banana pequena",
+          "Chá de maracujá"
+        ],
+        "ptl": "~85",
+        "ptj": "~75",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Vitamina: banana+aveia+leite+canela",
+          "2 ovos mexidos ao lado",
+          "Café preto"
+        ],
+        "ptl": "~485",
+        "ptj": "~385",
+        "rec": "vitamina_pos"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Maracujá + iogurte + mel"
+        ],
+        "ptl": "~138",
+        "ptj": "~118",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Almoço livre do sábado 😊",
+          "Sugestão: frango+feijão+arroz+salada+suco natural"
+        ],
+        "ptl": "~690",
+        "ptj": "~542",
+        "rec": "baiao_dois"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "1 banana+castanha (15g)"
+        ],
+        "ptl": "~182",
+        "ptj": "~158",
+        "rec": null
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina pós: banana+leite+mel"
+        ],
+        "ptl": "~212",
+        "ptj": "~182",
+        "rec": "vitamina_pos"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Frango grelhado (L:180g·J:130g)",
+          "Legumes salteados: abobrinha+cenoura+brócolis"
+        ],
+        "ptl": "~402",
+        "ptj": "~318",
+        "rec": "frango_grelhado"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de camomila+mel"
+        ],
+        "ptl": "~28",
+        "ptj": "~25",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Pão integral (L:2·J:1.5)+queijo coalho",
+          "Ovo mexido c/ coentro",
+          "Suco de laranja natural 200ml"
+        ],
+        "ptl": "~425",
+        "ptj": "~340",
+        "rec": "tapioca"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Salada de frutas: laranja+banana+maracujá (polpa)"
+        ],
+        "ptl": "~148",
+        "ptj": "~128",
+        "rec": "iogurte_granola"
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Baião de dois light+frango (L:150g·J:100g)",
+          "Salada verde+vinagrete"
+        ],
+        "ptl": "~660",
+        "ptj": "~520",
+        "rec": "baiao_dois"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Domingo — iogurte grego+banana"
+        ],
+        "ptl": "~202",
+        "ptj": "~172",
+        "rec": "iogurte_granola"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Dia de descanso",
+          "Chá de maracujá+2,5-3L água"
+        ],
+        "ptl": "—",
+        "ptj": "—",
+        "rec": null
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Cuscuz c/ sardinha+coentro (L:3col·J:2col)",
+          "Salada verde+tomate+cebola roxa"
+        ],
+        "ptl": "~335",
+        "ptj": "~265",
+        "rec": "cuscuz"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de erva-cidreira s/ açúcar"
+        ],
+        "ptl": "~5",
+        "ptj": "~5",
+        "rec": null
+      }
+    }
+  ],
+  [
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Cuscuz (L:4col·J:3col)+ovo mexido+coentro",
+          "Suco de seriguela 200ml (fruta nordestina!)"
+        ],
+        "ptl": "~442",
+        "ptj": "~354",
+        "rec": "cuscuz"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Seriguela fresca 100g",
+          "1 banana"
+        ],
+        "ptl": "~95",
+        "ptj": "~80",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Frango grelhado (L:200g·J:150g)",
+          "Arroz integral (L:4col·J:3col)",
+          "Feijão de corda",
+          "Salada c/ coentro+azeite"
+        ],
+        "ptl": "~618",
+        "ptj": "~488",
+        "rec": "frango_grelhado"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "1 banana+1 col pasta amendoim"
+        ],
+        "ptl": "~175",
+        "ptj": "~155",
+        "rec": "pre_treino"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina pós: banana+leite+cacau"
+        ],
+        "ptl": "~220",
+        "ptj": "~190",
+        "rec": "vitamina_pos"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Omelete (L:3·J:2 ovos)+espinafre+queijo",
+          "Salada verde+tomate"
+        ],
+        "ptl": "~355",
+        "ptj": "~280",
+        "rec": "omelete"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Iogurte grego+mel"
+        ],
+        "ptl": "~130",
+        "ptj": "~120",
+        "rec": "iogurte_granola"
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Tapioca (L:2·J:1.5)+queijo coalho",
+          "2 ovos cozidos",
+          "Suco de laranja natural 200ml"
+        ],
+        "ptl": "~430",
+        "ptj": "~344",
+        "rec": "tapioca"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Seriguela+laranja+1 banana"
+        ],
+        "ptl": "~130",
+        "ptj": "~112",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Sardinha grelhada (L:200g·J:150g)",
+          "Arroz integral (L:3col·J:2col)",
+          "Batata doce (L:100g·J:70g)",
+          "Salada verde+coentro"
+        ],
+        "ptl": "~572",
+        "ptj": "~455",
+        "rec": "sardinha_grelhada"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Iogurte grego 170g",
+          "1 banana"
+        ],
+        "ptl": "~190",
+        "ptj": "~165",
+        "rec": null
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "200ml água de coco",
+          "2 ovos cozidos"
+        ],
+        "ptl": "~170",
+        "ptj": "~155",
+        "rec": null
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Caldo verde nordestino (L:300·J:220ml)",
+          "Couve+macaxeira+frango desfiado"
+        ],
+        "ptl": "~282",
+        "ptj": "~225",
+        "rec": "caldo_verde_nordestino"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de camomila+mel",
+          "1 banana pequena"
+        ],
+        "ptl": "~88",
+        "ptj": "~78",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Aveia (L:5col·J:4col)+leite+canela+banana",
+          "Café preto"
+        ],
+        "ptl": "~415",
+        "ptj": "~330",
+        "rec": "aveia_mingau"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Vitamina de seriguela: 100g+150ml leite+mel"
+        ],
+        "ptl": "~170",
+        "ptj": "~145",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Carne moída magra (L:180g·J:130g) refogada",
+          "Arroz integral (L:3col·J:2col)",
+          "Feijão de corda",
+          "Maxixe+cenoura refogados"
+        ],
+        "ptl": "~570",
+        "ptj": "~455",
+        "rec": "frango_grelhado"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Cuscuz pequeno (2col)+requeijão light"
+        ],
+        "ptl": "~170",
+        "ptj": "~150",
+        "rec": "cuscuz"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina pós: banana+leite+mel"
+        ],
+        "ptl": "~215",
+        "ptj": "~185",
+        "rec": "vitamina_pos"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Sopa de frango c/ jerimum+macaxeira+cenoura (L:350·J:250ml)"
+        ],
+        "ptl": "~340",
+        "ptj": "~270",
+        "rec": "sopa_legumes"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Iogurte grego+granola (1col)+seriguela picada"
+        ],
+        "ptl": "~128",
+        "ptj": "~115",
+        "rec": "iogurte_granola"
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Cuscuz (L:4col·J:3col)+sardinha desfiada+coentro",
+          "Suco de laranja natural 200ml"
+        ],
+        "ptl": "~448",
+        "ptj": "~358",
+        "rec": "cuscuz"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "1 banana+20g amendoim torrado s/ sal"
+        ],
+        "ptl": "~165",
+        "ptj": "~142",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Tilápia grelhada (L:200g·J:150g)",
+          "Batata doce (L:120g·J:80g)",
+          "Brócolis no vapor c/ limão+coentro"
+        ],
+        "ptl": "~540",
+        "ptj": "~425",
+        "rec": "tilap_grelhada"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "1 banana+1 col pasta amendoim"
+        ],
+        "ptl": "~175",
+        "ptj": "~155",
+        "rec": "pre_treino"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina de seriguela+banana+leite"
+        ],
+        "ptl": "~210",
+        "ptj": "~180",
+        "rec": null
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Omelete (L:3·J:2 ovos)+couve+tomate+queijo",
+          "Legumes refogados"
+        ],
+        "ptl": "~350",
+        "ptj": "~275",
+        "rec": "omelete"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de hortelã s/ açúcar"
+        ],
+        "ptl": "~5",
+        "ptj": "~5",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Tapioca (L:2·J:1.5)+frango desfiado+queijo",
+          "Vitamina de seriguela 200ml",
+          "Café preto"
+        ],
+        "ptl": "~440",
+        "ptj": "~354",
+        "rec": "tapioca"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Salada de frutas: seriguela+banana+laranja"
+        ],
+        "ptl": "~138",
+        "ptj": "~118",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Frango grelhado (L:200g·J:150g)",
+          "Feijão de corda+arroz integral",
+          "Salada completa+coentro"
+        ],
+        "ptl": "~600",
+        "ptj": "~474",
+        "rec": "frango_grelhado"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Batata doce (L:100g·J:70g)",
+          "2 claras cozidas"
+        ],
+        "ptl": "~188",
+        "ptj": "~153",
+        "rec": null
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Iogurte grego+granola (2col)+banana"
+        ],
+        "ptl": "~245",
+        "ptj": "~210",
+        "rec": "iogurte_granola"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Peixe assado no forno (L:180g·J:130g)",
+          "Legumes: jerimum+cenoura+alho assados"
+        ],
+        "ptl": "~350",
+        "ptj": "~275",
+        "rec": "peixe_assado"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "1 banana",
+          "Chá de camomila+mel"
+        ],
+        "ptl": "~88",
+        "ptj": "~78",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Vitamina: banana+aveia+leite+canela",
+          "2 ovos mexidos ao lado",
+          "Café preto"
+        ],
+        "ptl": "~482",
+        "ptj": "~382",
+        "rec": "vitamina_pos"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Seriguela fresca+castanha de caju"
+        ],
+        "ptl": "~108",
+        "ptj": "~90",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Almoço livre do sábado 😊",
+          "Sugestão: moqueca light ou frango c/ baião de dois"
+        ],
+        "ptl": "~688",
+        "ptj": "~540",
+        "rec": "moqueca_light"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "1 banana+castanha"
+        ],
+        "ptl": "~180",
+        "ptj": "~155",
+        "rec": null
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina pós: banana+leite+cacau"
+        ],
+        "ptl": "~218",
+        "ptj": "~188",
+        "rec": "vitamina_pos"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Frango grelhado (L:180g·J:130g)",
+          "Legumes salteados c/ alho"
+        ],
+        "ptl": "~400",
+        "ptj": "~315",
+        "rec": "frango_grelhado"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de maracujá+mel"
+        ],
+        "ptl": "~28",
+        "ptj": "~25",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Pão integral (L:2·J:1.5)+queijo coalho",
+          "Ovo mexido c/ coentro",
+          "Suco de laranja natural 200ml"
+        ],
+        "ptl": "~425",
+        "ptj": "~340",
+        "rec": "tapioca"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Salada de frutas c/ seriguela+banana+laranja"
+        ],
+        "ptl": "~142",
+        "ptj": "~122",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Moqueca de peixe light (domingo especial!)",
+          "Arroz integral+salada verde+farofa leve"
+        ],
+        "ptl": "~665",
+        "ptj": "~525",
+        "rec": "moqueca_light"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Domingo — iogurte grego+fruta"
+        ],
+        "ptl": "~200",
+        "ptj": "~170",
+        "rec": "iogurte_granola"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Dia de descanso",
+          "2,5-3L água+chá natural"
+        ],
+        "ptl": "—",
+        "ptj": "—",
+        "rec": null
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Cuscuz c/ sardinha+coentro (L:3col·J:2col)",
+          "Salada verde+tomate"
+        ],
+        "ptl": "~332",
+        "ptj": "~262",
+        "rec": "cuscuz"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de camomila s/ açúcar"
+        ],
+        "ptl": "~5",
+        "ptj": "~5",
+        "rec": null
+      }
+    }
+  ],
+  [
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Cuscuz (L:4col·J:3col)+ovo mexido+coentro",
+          "Vitamina de goiaba: 1 goiaba+150ml leite+mel"
+        ],
+        "ptl": "~445",
+        "ptj": "~358",
+        "rec": "cuscuz"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Goiaba vermelha fresca (rica em licopeno!)",
+          "1 banana"
+        ],
+        "ptl": "~102",
+        "ptj": "~88",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Frango grelhado (L:200g·J:150g)",
+          "Arroz integral (L:4col·J:3col)",
+          "Feijão de corda",
+          "Salada c/ coentro+azeite"
+        ],
+        "ptl": "~618",
+        "ptj": "~488",
+        "rec": "frango_grelhado"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "1 banana+1 col pasta amendoim"
+        ],
+        "ptl": "~175",
+        "ptj": "~155",
+        "rec": "pre_treino"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina de goiaba+banana+leite+mel"
+        ],
+        "ptl": "~218",
+        "ptj": "~188",
+        "rec": null
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Omelete (L:3·J:2 ovos)+espinafre+queijo",
+          "Salada verde+tomate"
+        ],
+        "ptl": "~355",
+        "ptj": "~280",
+        "rec": "omelete"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Iogurte grego+mel+goiaba picada"
+        ],
+        "ptl": "~135",
+        "ptj": "~125",
+        "rec": "iogurte_granola"
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Tapioca (L:2·J:1.5)+queijo coalho",
+          "2 ovos cozidos",
+          "Suco de laranja+goiaba natural 200ml"
+        ],
+        "ptl": "~430",
+        "ptj": "~344",
+        "rec": "tapioca"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Goiaba vermelha+laranja",
+          "20g amendoim"
+        ],
+        "ptl": "~128",
+        "ptj": "~110",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Sardinha grelhada (L:200g·J:150g)",
+          "Arroz integral (L:3col·J:2col)",
+          "Batata doce (L:100g·J:70g)",
+          "Salada verde+coentro"
+        ],
+        "ptl": "~570",
+        "ptj": "~453",
+        "rec": "sardinha_grelhada"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Iogurte grego 170g",
+          "1 banana"
+        ],
+        "ptl": "~190",
+        "ptj": "~165",
+        "rec": null
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "200ml água de coco",
+          "2 ovos cozidos"
+        ],
+        "ptl": "~170",
+        "ptj": "~155",
+        "rec": null
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Caldo verde nordestino (L:300·J:220ml)",
+          "Couve fina+macaxeira+frango desfiado"
+        ],
+        "ptl": "~282",
+        "ptj": "~225",
+        "rec": "caldo_verde_nordestino"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de camomila+mel"
+        ],
+        "ptl": "~28",
+        "ptj": "~25",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Aveia (L:5col·J:4col)+leite+canela+banana",
+          "Café preto"
+        ],
+        "ptl": "~415",
+        "ptj": "~330",
+        "rec": "aveia_mingau"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Vitamina de goiaba: 1 goiaba+150ml leite+mel"
+        ],
+        "ptl": "~165",
+        "ptj": "~142",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Carne moída magra (L:180g·J:130g)",
+          "Arroz integral (L:3col·J:2col)",
+          "Feijão de corda",
+          "Chuchu+cenoura refogados"
+        ],
+        "ptl": "~568",
+        "ptj": "~452",
+        "rec": "frango_grelhado"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Cuscuz pequeno (2col)+requeijão light"
+        ],
+        "ptl": "~170",
+        "ptj": "~150",
+        "rec": "cuscuz"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina pós: banana+leite+cacau"
+        ],
+        "ptl": "~218",
+        "ptj": "~188",
+        "rec": "vitamina_pos"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Sopa c/ frango+legumes (L:350·J:250ml)",
+          "Jerimum+macaxeira+cenoura+coentro"
+        ],
+        "ptl": "~340",
+        "ptj": "~270",
+        "rec": "sopa_legumes"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Iogurte grego+granola (1col)+goiaba picada"
+        ],
+        "ptl": "~132",
+        "ptj": "~120",
+        "rec": "iogurte_granola"
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Cuscuz (L:4col·J:3col)+sardinha desfiada+coentro",
+          "Suco de laranja natural 200ml"
+        ],
+        "ptl": "~448",
+        "ptj": "~358",
+        "rec": "cuscuz"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Laranja+goiaba+banana (trio vitamínico)"
+        ],
+        "ptl": "~148",
+        "ptj": "~128",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Tilápia grelhada (L:200g·J:150g)",
+          "Batata doce (L:120g·J:80g)",
+          "Brócolis+cenoura no vapor"
+        ],
+        "ptl": "~540",
+        "ptj": "~425",
+        "rec": "tilap_grelhada"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "1 banana+1 col pasta amendoim"
+        ],
+        "ptl": "~175",
+        "ptj": "~155",
+        "rec": "pre_treino"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina de goiaba+banana+leite"
+        ],
+        "ptl": "~215",
+        "ptj": "~185",
+        "rec": null
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Omelete (L:3·J:2 ovos)+couve+tomate",
+          "Legumes refogados"
+        ],
+        "ptl": "~350",
+        "ptj": "~275",
+        "rec": "omelete"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de hibisco gelado s/ açúcar"
+        ],
+        "ptl": "~5",
+        "ptj": "~5",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Tapioca (L:2·J:1.5)+frango+queijo",
+          "Vitamina de laranja+goiaba natural",
+          "Café"
+        ],
+        "ptl": "~440",
+        "ptj": "~354",
+        "rec": "tapioca"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Salada de frutas de junho: goiaba+laranja+banana"
+        ],
+        "ptl": "~142",
+        "ptj": "~122",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Frango grelhado (L:200g·J:150g)",
+          "Feijão de corda+arroz integral",
+          "Salada completa+coentro"
+        ],
+        "ptl": "~600",
+        "ptj": "~474",
+        "rec": "frango_grelhado"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Batata doce (L:100g·J:70g)",
+          "2 claras cozidas"
+        ],
+        "ptl": "~188",
+        "ptj": "~153",
+        "rec": null
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Iogurte grego+granola (2col)+goiaba picada"
+        ],
+        "ptl": "~242",
+        "ptj": "~208",
+        "rec": "iogurte_granola"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Peixe assado no forno (L:180g·J:130g)",
+          "Legumes assados c/ alho+azeite"
+        ],
+        "ptl": "~350",
+        "ptj": "~275",
+        "rec": "peixe_assado"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "1 banana",
+          "Chá de camomila+mel"
+        ],
+        "ptl": "~88",
+        "ptj": "~78",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Vitamina de junho: goiaba+aveia+leite",
+          "2 ovos mexidos ao lado",
+          "Café preto"
+        ],
+        "ptl": "~480",
+        "ptj": "~380",
+        "rec": "vitamina_pos"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Goiaba fresca+castanha de caju"
+        ],
+        "ptl": "~102",
+        "ptj": "~85",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Almoço de festa junina saudável 😊",
+          "Sugestão: frango c/ baião de dois+salada verde",
+          "Canjica light de sobremesa (pequena porção)"
+        ],
+        "ptl": "~685",
+        "ptj": "~538",
+        "rec": "baiao_dois"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "1 banana+castanha"
+        ],
+        "ptl": "~178",
+        "ptj": "~154",
+        "rec": null
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina pós: banana+leite+cacau"
+        ],
+        "ptl": "~215",
+        "ptj": "~185",
+        "rec": "vitamina_pos"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Frango grelhado (L:180g·J:130g)",
+          "Legumes salteados: abobrinha+cenoura"
+        ],
+        "ptl": "~400",
+        "ptj": "~315",
+        "rec": "frango_grelhado"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de maracujá+mel"
+        ],
+        "ptl": "~28",
+        "ptj": "~25",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Pão integral (L:2·J:1.5)+queijo coalho",
+          "Ovo mexido c/ coentro",
+          "Suco de goiaba+laranja natural 200ml"
+        ],
+        "ptl": "~428",
+        "ptj": "~342",
+        "rec": "tapioca"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Salada de frutas c/ goiaba+laranja+banana"
+        ],
+        "ptl": "~145",
+        "ptj": "~125",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Moqueca de peixe light (domingo!)",
+          "Arroz integral+salada verde"
+        ],
+        "ptl": "~665",
+        "ptj": "~525",
+        "rec": "moqueca_light"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Domingo — iogurte grego+fruta"
+        ],
+        "ptl": "~200",
+        "ptj": "~170",
+        "rec": "iogurte_granola"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Dia de descanso",
+          "2,5-3L água+suco de goiaba natural"
+        ],
+        "ptl": "—",
+        "ptj": "—",
+        "rec": null
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Cuscuz c/ sardinha+coentro (L:3col·J:2col)",
+          "Salada verde+tomate+cebola roxa"
+        ],
+        "ptl": "~332",
+        "ptj": "~262",
+        "rec": "cuscuz"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de camomila s/ açúcar"
+        ],
+        "ptl": "~5",
+        "ptj": "~5",
+        "rec": null
+      }
+    }
+  ],
+  [
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Cuscuz (L:4col·J:3col)+ovo mexido+coentro",
+          "Suco de laranja natural 200ml — safra alta!"
+        ],
+        "ptl": "~448",
+        "ptj": "~360",
+        "rec": "cuscuz"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "2 laranjas ou mexericas frescas",
+          "20g amendoim torrado"
+        ],
+        "ptl": "~138",
+        "ptj": "~118",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Frango grelhado (L:200g·J:150g)",
+          "Arroz integral (L:4col·J:3col)",
+          "Feijão de corda",
+          "Salada verde+coentro+azeite"
+        ],
+        "ptl": "~618",
+        "ptj": "~488",
+        "rec": "frango_grelhado"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "1 banana+1 col pasta amendoim"
+        ],
+        "ptl": "~175",
+        "ptj": "~155",
+        "rec": "pre_treino"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina pós: banana+leite+cacau"
+        ],
+        "ptl": "~220",
+        "ptj": "~190",
+        "rec": "vitamina_pos"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Omelete (L:3·J:2 ovos)+espinafre+queijo",
+          "Salada verde+tomate"
+        ],
+        "ptl": "~355",
+        "ptj": "~280",
+        "rec": "omelete"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Iogurte grego+mel+mandarina picada"
+        ],
+        "ptl": "~132",
+        "ptj": "~122",
+        "rec": "iogurte_granola"
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Tapioca (L:2·J:1.5)+queijo coalho",
+          "2 ovos cozidos",
+          "Suco de laranja+acerola natural 200ml"
+        ],
+        "ptl": "~432",
+        "ptj": "~346",
+        "rec": "tapioca"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Laranja+banana+20g castanha de caju"
+        ],
+        "ptl": "~175",
+        "ptj": "~152",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Sardinha grelhada (L:200g·J:150g)",
+          "Arroz integral (L:3col·J:2col)",
+          "Macaxeira cozida",
+          "Salada: alface+tomate+coentro"
+        ],
+        "ptl": "~558",
+        "ptj": "~442",
+        "rec": "sardinha_grelhada"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Iogurte grego 170g",
+          "1 banana"
+        ],
+        "ptl": "~190",
+        "ptj": "~165",
+        "rec": null
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "200ml água de coco",
+          "2 ovos cozidos"
+        ],
+        "ptl": "~170",
+        "ptj": "~155",
+        "rec": null
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Caldo verde nordestino (L:300·J:220ml)",
+          "Couve+macaxeira+frango desfiado"
+        ],
+        "ptl": "~282",
+        "ptj": "~225",
+        "rec": "caldo_verde_nordestino"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de capim limão s/ açúcar",
+          "1 banana pequena"
+        ],
+        "ptl": "~90",
+        "ptj": "~80",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Aveia (L:5col·J:4col)+leite+canela+banana",
+          "Café preto"
+        ],
+        "ptl": "~415",
+        "ptj": "~330",
+        "rec": "aveia_mingau"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Vitamina de laranja+banana+leite"
+        ],
+        "ptl": "~198",
+        "ptj": "~172",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Carne moída magra (L:180g·J:130g)",
+          "Arroz integral (L:3col·J:2col)",
+          "Feijão de corda",
+          "Chuchu+cenoura refogados"
+        ],
+        "ptl": "~568",
+        "ptj": "~452",
+        "rec": "frango_grelhado"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Cuscuz pequeno (2col)+requeijão light"
+        ],
+        "ptl": "~170",
+        "ptj": "~150",
+        "rec": "cuscuz"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina pós: banana+leite+mel"
+        ],
+        "ptl": "~215",
+        "ptj": "~185",
+        "rec": "vitamina_pos"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Sopa c/ frango+jerimum+macaxeira (L:350·J:250ml)"
+        ],
+        "ptl": "~340",
+        "ptj": "~270",
+        "rec": "sopa_legumes"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Iogurte grego+granola (1col)+laranja picada"
+        ],
+        "ptl": "~130",
+        "ptj": "~118",
+        "rec": "iogurte_granola"
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Cuscuz (L:4col·J:3col)+sardinha desfiada+coentro",
+          "Suco de laranja natural 200ml"
+        ],
+        "ptl": "~448",
+        "ptj": "~358",
+        "rec": "cuscuz"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Mandarina frescas (2 unidades)+banana"
+        ],
+        "ptl": "~152",
+        "ptj": "~132",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Tilápia grelhada (L:200g·J:150g)",
+          "Batata doce (L:120g·J:80g)",
+          "Brócolis no vapor c/ limão"
+        ],
+        "ptl": "~540",
+        "ptj": "~425",
+        "rec": "tilap_grelhada"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "1 banana+1 col pasta amendoim"
+        ],
+        "ptl": "~175",
+        "ptj": "~155",
+        "rec": "pre_treino"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina de laranja+banana+leite"
+        ],
+        "ptl": "~198",
+        "ptj": "~172",
+        "rec": null
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Omelete (L:3·J:2 ovos)+couve+tomate",
+          "Legumes refogados"
+        ],
+        "ptl": "~350",
+        "ptj": "~275",
+        "rec": "omelete"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de gengibre+limão s/ açúcar"
+        ],
+        "ptl": "~8",
+        "ptj": "~8",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Tapioca (L:2·J:1.5)+frango+queijo",
+          "Suco de laranja+gengibre natural",
+          "Café"
+        ],
+        "ptl": "~440",
+        "ptj": "~354",
+        "rec": "tapioca"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Salada de cítricos: laranja+mandarina+banana"
+        ],
+        "ptl": "~148",
+        "ptj": "~128",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Frango grelhado (L:200g·J:150g)",
+          "Feijão de corda+arroz integral",
+          "Salada completa+coentro"
+        ],
+        "ptl": "~600",
+        "ptj": "~474",
+        "rec": "frango_grelhado"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Batata doce (L:100g·J:70g)",
+          "2 claras cozidas"
+        ],
+        "ptl": "~188",
+        "ptj": "~153",
+        "rec": null
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Iogurte grego+granola (2col)+laranja picada"
+        ],
+        "ptl": "~240",
+        "ptj": "~206",
+        "rec": "iogurte_granola"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Peixe assado (L:180g·J:130g)",
+          "Legumes assados c/ alho+azeite+ervas"
+        ],
+        "ptl": "~350",
+        "ptj": "~275",
+        "rec": "peixe_assado"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "1 banana",
+          "Chá de camomila+mel"
+        ],
+        "ptl": "~88",
+        "ptj": "~78",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Vitamina de julho: laranja+aveia+leite+canela",
+          "2 ovos mexidos ao lado",
+          "Café preto"
+        ],
+        "ptl": "~480",
+        "ptj": "~380",
+        "rec": "vitamina_pos"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Laranja+mandarina frescas",
+          "20g castanha de caju"
+        ],
+        "ptl": "~142",
+        "ptj": "~122",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Almoço livre do sábado 😊",
+          "Sugestão: frango assado+baião de dois+suco de laranja natural"
+        ],
+        "ptl": "~685",
+        "ptj": "~538",
+        "rec": "baiao_dois"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "1 banana+castanha"
+        ],
+        "ptl": "~178",
+        "ptj": "~154",
+        "rec": null
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina pós: banana+leite+cacau"
+        ],
+        "ptl": "~215",
+        "ptj": "~185",
+        "rec": "vitamina_pos"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Frango grelhado (L:180g·J:130g)",
+          "Legumes salteados c/ alho+coentro"
+        ],
+        "ptl": "~400",
+        "ptj": "~315",
+        "rec": "frango_grelhado"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de maracujá+mel"
+        ],
+        "ptl": "~28",
+        "ptj": "~25",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Pão integral (L:2·J:1.5)+queijo coalho",
+          "Ovo mexido c/ coentro",
+          "Suco de laranja natural 200ml"
+        ],
+        "ptl": "~425",
+        "ptj": "~340",
+        "rec": "tapioca"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Salada de frutas c/ laranja+mandarina+banana"
+        ],
+        "ptl": "~148",
+        "ptj": "~128",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Moqueca de peixe light (domingo!)",
+          "Arroz integral+salada verde"
+        ],
+        "ptl": "~665",
+        "ptj": "~525",
+        "rec": "moqueca_light"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Domingo — iogurte grego+fruta"
+        ],
+        "ptl": "~200",
+        "ptj": "~170",
+        "rec": "iogurte_granola"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Dia de descanso",
+          "2,5-3L água+suco de laranja natural"
+        ],
+        "ptl": "—",
+        "ptj": "—",
+        "rec": null
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Cuscuz c/ sardinha+coentro (L:3col·J:2col)",
+          "Salada verde+tomate+cebola roxa"
+        ],
+        "ptl": "~332",
+        "ptj": "~262",
+        "rec": "cuscuz"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de erva-cidreira s/ açúcar"
+        ],
+        "ptl": "~5",
+        "ptj": "~5",
+        "rec": null
+      }
+    }
+  ],
+  [
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Cuscuz (L:4col·J:3col)+ovo mexido+coentro",
+          "Vitamina de mamão: 1 fatia mamão+150ml leite+mel"
+        ],
+        "ptl": "~445",
+        "ptj": "~358",
+        "rec": "cuscuz"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Mamão papaia fresco (digestivo+vitaminas)",
+          "1 banana"
+        ],
+        "ptl": "~105",
+        "ptj": "~90",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Frango grelhado (L:200g·J:150g)",
+          "Arroz integral (L:4col·J:3col)",
+          "Feijão de corda",
+          "Salada verde+coentro+azeite"
+        ],
+        "ptl": "~618",
+        "ptj": "~488",
+        "rec": "frango_grelhado"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "1 banana+1 col pasta amendoim"
+        ],
+        "ptl": "~175",
+        "ptj": "~155",
+        "rec": "pre_treino"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina pós: banana+leite+cacau"
+        ],
+        "ptl": "~220",
+        "ptj": "~190",
+        "rec": "vitamina_pos"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Omelete (L:3·J:2 ovos)+espinafre+queijo",
+          "Salada verde+tomate+pepino"
+        ],
+        "ptl": "~355",
+        "ptj": "~280",
+        "rec": "omelete"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Iogurte grego+mel+mamão picado"
+        ],
+        "ptl": "~132",
+        "ptj": "~122",
+        "rec": "iogurte_granola"
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Tapioca (L:2·J:1.5)+queijo coalho",
+          "2 ovos cozidos",
+          "Suco de laranja natural 200ml"
+        ],
+        "ptl": "~430",
+        "ptj": "~344",
+        "rec": "tapioca"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Mamão fresco+banana+20g amendoim"
+        ],
+        "ptl": "~158",
+        "ptj": "~136",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Sardinha grelhada (L:200g·J:150g)",
+          "Arroz integral (L:3col·J:2col)",
+          "Macaxeira cozida",
+          "Salada: alface+tomate+coentro"
+        ],
+        "ptl": "~558",
+        "ptj": "~443",
+        "rec": "sardinha_grelhada"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Iogurte grego 170g",
+          "1 banana"
+        ],
+        "ptl": "~190",
+        "ptj": "~165",
+        "rec": null
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "200ml água de coco",
+          "2 ovos cozidos"
+        ],
+        "ptl": "~170",
+        "ptj": "~155",
+        "rec": null
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Sopa nordestina c/ frango+legumes (L:350·J:250ml)"
+        ],
+        "ptl": "~340",
+        "ptj": "~270",
+        "rec": "sopa_legumes"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de camomila+mel",
+          "1 banana pequena"
+        ],
+        "ptl": "~88",
+        "ptj": "~78",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Aveia (L:5col·J:4col)+leite+canela+mamão amassado",
+          "Café preto"
+        ],
+        "ptl": "~412",
+        "ptj": "~328",
+        "rec": "aveia_mingau"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Vitamina de mamão: 1 fatia+200ml leite+mel"
+        ],
+        "ptl": "~175",
+        "ptj": "~150",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Carne moída magra (L:180g·J:130g) refogada",
+          "Arroz integral (L:3col·J:2col)",
+          "Feijão de corda",
+          "Chuchu+cenoura refogados"
+        ],
+        "ptl": "~568",
+        "ptj": "~452",
+        "rec": "frango_grelhado"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Cuscuz pequeno (2col)+requeijão light"
+        ],
+        "ptl": "~170",
+        "ptj": "~150",
+        "rec": "cuscuz"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina de mamão+banana+leite"
+        ],
+        "ptl": "~182",
+        "ptj": "~158",
+        "rec": null
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Caldo verde nordestino (L:300·J:220ml)"
+        ],
+        "ptl": "~282",
+        "ptj": "~225",
+        "rec": "caldo_verde_nordestino"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Iogurte grego+granola (1col)"
+        ],
+        "ptl": "~125",
+        "ptj": "~115",
+        "rec": "iogurte_granola"
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Cuscuz (L:4col·J:3col)+sardinha desfiada+coentro",
+          "Vitamina de mamão 200ml"
+        ],
+        "ptl": "~448",
+        "ptj": "~358",
+        "rec": "cuscuz"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "1 banana nanica+20g castanha de caju"
+        ],
+        "ptl": "~162",
+        "ptj": "~140",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Tilápia grelhada (L:200g·J:150g)",
+          "Batata doce (L:120g·J:80g)",
+          "Brócolis+cenoura no vapor"
+        ],
+        "ptl": "~540",
+        "ptj": "~425",
+        "rec": "tilap_grelhada"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "1 banana+1 col pasta amendoim"
+        ],
+        "ptl": "~175",
+        "ptj": "~155",
+        "rec": "pre_treino"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina pós: banana+leite+mel"
+        ],
+        "ptl": "~215",
+        "ptj": "~185",
+        "rec": "vitamina_pos"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Omelete (L:3·J:2 ovos)+couve+tomate+queijo",
+          "Legumes refogados"
+        ],
+        "ptl": "~350",
+        "ptj": "~275",
+        "rec": "omelete"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de gengibre+limão s/ açúcar"
+        ],
+        "ptl": "~8",
+        "ptj": "~8",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Tapioca (L:2·J:1.5)+frango+queijo",
+          "Vitamina de mamão natural 200ml",
+          "Café"
+        ],
+        "ptl": "~440",
+        "ptj": "~354",
+        "rec": "tapioca"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Salada de frutas: mamão+banana+laranja"
+        ],
+        "ptl": "~140",
+        "ptj": "~120",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Frango grelhado (L:200g·J:150g)",
+          "Feijão de corda+arroz integral",
+          "Salada completa"
+        ],
+        "ptl": "~600",
+        "ptj": "~474",
+        "rec": "frango_grelhado"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Batata doce (L:100g·J:70g)",
+          "2 claras cozidas"
+        ],
+        "ptl": "~188",
+        "ptj": "~153",
+        "rec": null
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Iogurte grego+granola (2col)+mamão picado"
+        ],
+        "ptl": "~238",
+        "ptj": "~204",
+        "rec": "iogurte_granola"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Peixe assado no forno (L:180g·J:130g)",
+          "Legumes assados c/ azeite+coentro"
+        ],
+        "ptl": "~350",
+        "ptj": "~275",
+        "rec": "peixe_assado"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "1 banana",
+          "Chá de camomila+mel"
+        ],
+        "ptl": "~88",
+        "ptj": "~78",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Vitamina de agosto: mamão+aveia+leite+canela",
+          "2 ovos mexidos ao lado",
+          "Café preto"
+        ],
+        "ptl": "~478",
+        "ptj": "~378",
+        "rec": "vitamina_pos"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Mamão fresco+castanha de caju"
+        ],
+        "ptl": "~105",
+        "ptj": "~88",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Almoço livre do sábado 😊",
+          "Sugestão: frango grelhado+arroz+feijão+salada"
+        ],
+        "ptl": "~685",
+        "ptj": "~538",
+        "rec": "baiao_dois"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "1 banana+castanha"
+        ],
+        "ptl": "~178",
+        "ptj": "~154",
+        "rec": null
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina de mamão+banana+leite"
+        ],
+        "ptl": "~182",
+        "ptj": "~158",
+        "rec": null
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Frango grelhado (L:180g·J:130g)",
+          "Legumes salteados: abobrinha+cenoura"
+        ],
+        "ptl": "~400",
+        "ptj": "~315",
+        "rec": "frango_grelhado"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de maracujá+mel"
+        ],
+        "ptl": "~28",
+        "ptj": "~25",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Pão integral (L:2·J:1.5)+queijo coalho",
+          "Ovo mexido c/ coentro",
+          "Vitamina de mamão 200ml"
+        ],
+        "ptl": "~428",
+        "ptj": "~342",
+        "rec": "tapioca"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Salada de frutas c/ mamão+banana+laranja"
+        ],
+        "ptl": "~142",
+        "ptj": "~122",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Moqueca de peixe light (domingo!)",
+          "Arroz integral+salada verde"
+        ],
+        "ptl": "~665",
+        "ptj": "~525",
+        "rec": "moqueca_light"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Domingo — iogurte grego+mamão picado"
+        ],
+        "ptl": "~145",
+        "ptj": "~128",
+        "rec": "iogurte_granola"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Dia de descanso",
+          "2,5-3L água+vitamina de mamão leve"
+        ],
+        "ptl": "—",
+        "ptj": "—",
+        "rec": null
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Cuscuz c/ sardinha+coentro (L:3col·J:2col)",
+          "Salada verde+tomate+pepino"
+        ],
+        "ptl": "~332",
+        "ptj": "~262",
+        "rec": "cuscuz"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de camomila s/ açúcar"
+        ],
+        "ptl": "~5",
+        "ptj": "~5",
+        "rec": null
+      }
+    }
+  ],
+  [
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Cuscuz (L:4col·J:3col)+ovo mexido+coentro",
+          "Suco de melancia natural 200ml (hidratação!)"
+        ],
+        "ptl": "~442",
+        "ptj": "~354",
+        "rec": "cuscuz"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Melancia fresca (fatia generosa)",
+          "20g castanha de caju"
+        ],
+        "ptl": "~105",
+        "ptj": "~88",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Frango grelhado (L:200g·J:150g)",
+          "Arroz integral (L:4col·J:3col)",
+          "Feijão de corda",
+          "Salada verde+coentro+azeite"
+        ],
+        "ptl": "~618",
+        "ptj": "~488",
+        "rec": "frango_grelhado"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "1 banana+1 col pasta amendoim"
+        ],
+        "ptl": "~175",
+        "ptj": "~155",
+        "rec": "pre_treino"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina pós: banana+leite+cacau"
+        ],
+        "ptl": "~220",
+        "ptj": "~190",
+        "rec": "vitamina_pos"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Omelete (L:3·J:2 ovos)+espinafre+queijo",
+          "Salada verde+tomate+pepino"
+        ],
+        "ptl": "~355",
+        "ptj": "~280",
+        "rec": "omelete"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Iogurte grego+mel+uva fresca (se achar)"
+        ],
+        "ptl": "~135",
+        "ptj": "~125",
+        "rec": "iogurte_granola"
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Tapioca (L:2·J:1.5)+queijo coalho",
+          "2 ovos cozidos",
+          "Suco de melancia+hortelã 200ml"
+        ],
+        "ptl": "~428",
+        "ptj": "~342",
+        "rec": "tapioca"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Melancia fresca+banana+20g amendoim"
+        ],
+        "ptl": "~150",
+        "ptj": "~130",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Sardinha grelhada (L:200g·J:150g)",
+          "Arroz integral (L:3col·J:2col)",
+          "Macaxeira cozida",
+          "Salada: alface+tomate+coentro"
+        ],
+        "ptl": "~558",
+        "ptj": "~443",
+        "rec": "sardinha_grelhada"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Iogurte grego 170g",
+          "1 banana"
+        ],
+        "ptl": "~190",
+        "ptj": "~165",
+        "rec": null
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "200ml água de coco",
+          "2 ovos cozidos"
+        ],
+        "ptl": "~170",
+        "ptj": "~155",
+        "rec": null
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Sopa c/ frango+legumes nordestinos (L:350·J:250ml)"
+        ],
+        "ptl": "~340",
+        "ptj": "~270",
+        "rec": "sopa_legumes"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de camomila+mel",
+          "1 banana pequena"
+        ],
+        "ptl": "~88",
+        "ptj": "~78",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Aveia (L:5col·J:4col)+leite+canela+banana",
+          "Café preto"
+        ],
+        "ptl": "~415",
+        "ptj": "~330",
+        "rec": "aveia_mingau"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Vitamina de melancia: 200g melancia+200ml água de coco"
+        ],
+        "ptl": "~90",
+        "ptj": "~78",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Carne moída magra (L:180g·J:130g) refogada",
+          "Arroz integral (L:3col·J:2col)",
+          "Feijão de corda",
+          "Maxixe+cenoura refogados"
+        ],
+        "ptl": "~568",
+        "ptj": "~452",
+        "rec": "frango_grelhado"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Cuscuz pequeno (2col)+requeijão light"
+        ],
+        "ptl": "~170",
+        "ptj": "~150",
+        "rec": "cuscuz"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina pós: banana+leite+mel"
+        ],
+        "ptl": "~215",
+        "ptj": "~185",
+        "rec": "vitamina_pos"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Caldo verde nordestino (L:300·J:220ml)"
+        ],
+        "ptl": "~282",
+        "ptj": "~225",
+        "rec": "caldo_verde_nordestino"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Iogurte grego+granola (1col)+uva fresca"
+        ],
+        "ptl": "~132",
+        "ptj": "~120",
+        "rec": "iogurte_granola"
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Cuscuz (L:4col·J:3col)+sardinha desfiada+coentro",
+          "Suco de laranja+melancia natural 200ml"
+        ],
+        "ptl": "~445",
+        "ptj": "~355",
+        "rec": "cuscuz"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Uva fresca (antioxidante!)+1 banana"
+        ],
+        "ptl": "~130",
+        "ptj": "~112",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Tilápia grelhada (L:200g·J:150g)",
+          "Batata doce (L:120g·J:80g)",
+          "Brócolis+cenoura no vapor"
+        ],
+        "ptl": "~540",
+        "ptj": "~425",
+        "rec": "tilap_grelhada"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "1 banana+1 col pasta amendoim"
+        ],
+        "ptl": "~175",
+        "ptj": "~155",
+        "rec": "pre_treino"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Suco de melancia pós-treino: 300ml+pitada sal"
+        ],
+        "ptl": "~88",
+        "ptj": "~75",
+        "rec": null
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Omelete (L:3·J:2 ovos)+couve+tomate+queijo"
+        ],
+        "ptl": "~350",
+        "ptj": "~275",
+        "rec": "omelete"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de hibisco s/ açúcar (diurético natural)"
+        ],
+        "ptl": "~5",
+        "ptj": "~5",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Tapioca (L:2·J:1.5)+frango+queijo",
+          "Suco de melancia natural 200ml",
+          "Café preto"
+        ],
+        "ptl": "~438",
+        "ptj": "~352",
+        "rec": "tapioca"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Salada de frutas: melancia+uva+banana"
+        ],
+        "ptl": "~142",
+        "ptj": "~122",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Frango grelhado (L:200g·J:150g)",
+          "Feijão de corda+arroz integral",
+          "Salada completa+coentro"
+        ],
+        "ptl": "~600",
+        "ptj": "~474",
+        "rec": "frango_grelhado"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Batata doce (L:100g·J:70g)",
+          "2 claras cozidas"
+        ],
+        "ptl": "~188",
+        "ptj": "~153",
+        "rec": null
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Iogurte grego+granola (2col)+melancia picada"
+        ],
+        "ptl": "~225",
+        "ptj": "~192",
+        "rec": "iogurte_granola"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Peixe assado no forno (L:180g·J:130g)",
+          "Legumes assados c/ azeite+coentro"
+        ],
+        "ptl": "~350",
+        "ptj": "~275",
+        "rec": "peixe_assado"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "1 banana",
+          "Chá de maracujá+mel"
+        ],
+        "ptl": "~88",
+        "ptj": "~78",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Vitamina de setembro: melancia+aveia+leite",
+          "2 ovos mexidos ao lado",
+          "Café preto"
+        ],
+        "ptl": "~475",
+        "ptj": "~375",
+        "rec": "vitamina_pos"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Melancia fresca+castanha de caju"
+        ],
+        "ptl": "~100",
+        "ptj": "~85",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Almoço livre do sábado 😊",
+          "Sugestão: frango c/ baião de dois+suco de melancia natural gelado"
+        ],
+        "ptl": "~682",
+        "ptj": "~535",
+        "rec": "baiao_dois"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "1 banana+castanha"
+        ],
+        "ptl": "~178",
+        "ptj": "~154",
+        "rec": null
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina pós: banana+leite+cacau"
+        ],
+        "ptl": "~215",
+        "ptj": "~185",
+        "rec": "vitamina_pos"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Frango grelhado (L:180g·J:130g)",
+          "Legumes salteados c/ alho"
+        ],
+        "ptl": "~400",
+        "ptj": "~315",
+        "rec": "frango_grelhado"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de camomila+mel"
+        ],
+        "ptl": "~28",
+        "ptj": "~25",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Pão integral (L:2·J:1.5)+queijo coalho",
+          "Ovo mexido c/ coentro",
+          "Suco de melancia natural 200ml"
+        ],
+        "ptl": "~422",
+        "ptj": "~337",
+        "rec": "tapioca"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Salada de frutas c/ melancia+uva+banana"
+        ],
+        "ptl": "~142",
+        "ptj": "~122",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Moqueca de peixe light (domingo!)",
+          "Arroz integral+salada verde"
+        ],
+        "ptl": "~665",
+        "ptj": "~525",
+        "rec": "moqueca_light"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Domingo — iogurte grego+melancia picada"
+        ],
+        "ptl": "~140",
+        "ptj": "~122",
+        "rec": "iogurte_granola"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Dia de descanso",
+          "2,5-3L água+suco de melancia gelado"
+        ],
+        "ptl": "—",
+        "ptj": "—",
+        "rec": null
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Cuscuz c/ sardinha+coentro (L:3col·J:2col)",
+          "Salada verde+tomate+pepino"
+        ],
+        "ptl": "~332",
+        "ptj": "~262",
+        "rec": "cuscuz"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de hibisco s/ açúcar"
+        ],
+        "ptl": "~5",
+        "ptj": "~5",
+        "rec": null
+      }
+    }
+  ],
+  [
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Cuscuz (L:4col·J:3col)+ovo mexido+coentro",
+          "Vitamina de manga nova: 1/2 manga+150ml leite+mel"
+        ],
+        "ptl": "~448",
+        "ptj": "~360",
+        "rec": "cuscuz"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Manga nova (voltando a safra!)",
+          "Acerola fresca 50g (vitamina C máxima!)"
+        ],
+        "ptl": "~128",
+        "ptj": "~110",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Frango grelhado (L:200g·J:150g)",
+          "Arroz integral (L:4col·J:3col)",
+          "Feijão de corda",
+          "Salada verde+coentro+azeite"
+        ],
+        "ptl": "~618",
+        "ptj": "~488",
+        "rec": "frango_grelhado"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "1 banana+1 col pasta amendoim"
+        ],
+        "ptl": "~175",
+        "ptj": "~155",
+        "rec": "pre_treino"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina de manga+banana+leite+mel"
+        ],
+        "ptl": "~228",
+        "ptj": "~198",
+        "rec": "vit_manga"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Omelete (L:3·J:2 ovos)+espinafre+queijo",
+          "Salada verde+tomate+pepino"
+        ],
+        "ptl": "~355",
+        "ptj": "~280",
+        "rec": "omelete"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Iogurte grego+mel+manga picada"
+        ],
+        "ptl": "~138",
+        "ptj": "~128",
+        "rec": "iogurte_granola"
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Tapioca (L:2·J:1.5)+queijo coalho",
+          "2 ovos cozidos",
+          "Suco de acerola natural 200ml (vitamina C!)"
+        ],
+        "ptl": "~428",
+        "ptj": "~342",
+        "rec": "tapioca"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Manga nova fresca (pré-safra baiana!)",
+          "20g castanha de caju"
+        ],
+        "ptl": "~145",
+        "ptj": "~125",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Sardinha grelhada (L:200g·J:150g)",
+          "Arroz integral (L:3col·J:2col)",
+          "Macaxeira cozida",
+          "Salada: alface+tomate+coentro"
+        ],
+        "ptl": "~558",
+        "ptj": "~443",
+        "rec": "sardinha_grelhada"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Iogurte grego 170g",
+          "1 banana"
+        ],
+        "ptl": "~190",
+        "ptj": "~165",
+        "rec": null
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "200ml água de coco",
+          "2 ovos cozidos"
+        ],
+        "ptl": "~170",
+        "ptj": "~155",
+        "rec": null
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Sopa nordestina c/ frango+legumes (L:350·J:250ml)"
+        ],
+        "ptl": "~340",
+        "ptj": "~270",
+        "rec": "sopa_legumes"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de camomila+mel",
+          "1 banana pequena"
+        ],
+        "ptl": "~88",
+        "ptj": "~78",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Aveia (L:5col·J:4col)+leite+canela+banana",
+          "Café preto"
+        ],
+        "ptl": "~415",
+        "ptj": "~330",
+        "rec": "aveia_mingau"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Vitamina de manga nova: 1/2 manga+200ml leite+mel"
+        ],
+        "ptl": "~228",
+        "ptj": "~198",
+        "rec": "vit_manga"
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Carne moída magra (L:180g·J:130g) refogada",
+          "Arroz integral (L:3col·J:2col)",
+          "Feijão de corda",
+          "Chuchu+cenoura refogados"
+        ],
+        "ptl": "~568",
+        "ptj": "~452",
+        "rec": "frango_grelhado"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Cuscuz pequeno (2col)+requeijão light"
+        ],
+        "ptl": "~170",
+        "ptj": "~150",
+        "rec": "cuscuz"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina pós: banana+leite+cacau"
+        ],
+        "ptl": "~220",
+        "ptj": "~190",
+        "rec": "vitamina_pos"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Tilápia grelhada (L:180g·J:130g)",
+          "Abobrinha+cenoura salteadas"
+        ],
+        "ptl": "~328",
+        "ptj": "~262",
+        "rec": "tilap_grelhada"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Iogurte grego+granola (1col)+manga picada"
+        ],
+        "ptl": "~138",
+        "ptj": "~126",
+        "rec": "iogurte_granola"
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Cuscuz (L:4col·J:3col)+sardinha desfiada+coentro",
+          "Suco de acerola+laranja 200ml"
+        ],
+        "ptl": "~445",
+        "ptj": "~355",
+        "rec": "cuscuz"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Manga fresca+acerola+banana"
+        ],
+        "ptl": "~168",
+        "ptj": "~148",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Tilápia grelhada (L:200g·J:150g)",
+          "Batata doce (L:120g·J:80g)",
+          "Brócolis no vapor c/ limão"
+        ],
+        "ptl": "~540",
+        "ptj": "~425",
+        "rec": "tilap_grelhada"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "1 banana+1 col pasta amendoim"
+        ],
+        "ptl": "~175",
+        "ptj": "~155",
+        "rec": "pre_treino"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina de manga+acerola+leite"
+        ],
+        "ptl": "~225",
+        "ptj": "~195",
+        "rec": "vit_manga"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Omelete (L:3·J:2 ovos)+couve+tomate+queijo",
+          "Legumes refogados"
+        ],
+        "ptl": "~350",
+        "ptj": "~275",
+        "rec": "omelete"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de hibisco s/ açúcar"
+        ],
+        "ptl": "~5",
+        "ptj": "~5",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Tapioca (L:2·J:1.5)+frango+queijo",
+          "Vitamina de manga+acerola natural 200ml",
+          "Café preto"
+        ],
+        "ptl": "~442",
+        "ptj": "~356",
+        "rec": "tapioca"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Salada de frutas: manga+acerola+banana"
+        ],
+        "ptl": "~178",
+        "ptj": "~158",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Frango grelhado (L:200g·J:150g)",
+          "Feijão de corda+arroz integral",
+          "Salada completa+coentro"
+        ],
+        "ptl": "~600",
+        "ptj": "~474",
+        "rec": "frango_grelhado"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Batata doce (L:100g·J:70g)",
+          "2 claras cozidas"
+        ],
+        "ptl": "~188",
+        "ptj": "~153",
+        "rec": null
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Açaí nordestino: iogurte+manga+granola+castanha"
+        ],
+        "ptl": "~248",
+        "ptj": "~212",
+        "rec": "acai_nordestino"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Peixe assado no forno (L:180g·J:130g)",
+          "Legumes assados c/ azeite+coentro"
+        ],
+        "ptl": "~350",
+        "ptj": "~275",
+        "rec": "peixe_assado"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "1 banana",
+          "Chá de maracujá+mel"
+        ],
+        "ptl": "~88",
+        "ptj": "~78",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Vitamina de outubro: manga+aveia+leite+mel",
+          "2 ovos mexidos ao lado",
+          "Café preto"
+        ],
+        "ptl": "~485",
+        "ptj": "~385",
+        "rec": "vitamina_pos"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Manga fresca+acerola+castanha de caju"
+        ],
+        "ptl": "~152",
+        "ptj": "~132",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Almoço livre do sábado 😊",
+          "Sugestão: frango c/ baião de dois+suco de acerola natural"
+        ],
+        "ptl": "~688",
+        "ptj": "~540",
+        "rec": "baiao_dois"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "1 banana+castanha"
+        ],
+        "ptl": "~178",
+        "ptj": "~154",
+        "rec": null
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina de manga+banana+leite+cacau"
+        ],
+        "ptl": "~238",
+        "ptj": "~208",
+        "rec": "vit_manga"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Frango grelhado (L:180g·J:130g)",
+          "Legumes salteados: abobrinha+brócolis"
+        ],
+        "ptl": "~400",
+        "ptj": "~315",
+        "rec": "frango_grelhado"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de camomila+mel"
+        ],
+        "ptl": "~28",
+        "ptj": "~25",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Pão integral (L:2·J:1.5)+queijo coalho",
+          "Ovo mexido c/ coentro",
+          "Suco de acerola natural 200ml"
+        ],
+        "ptl": "~425",
+        "ptj": "~340",
+        "rec": "tapioca"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Salada de frutas c/ manga+acerola+banana"
+        ],
+        "ptl": "~178",
+        "ptj": "~158",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Moqueca de peixe light (domingo!)",
+          "Arroz integral+salada verde"
+        ],
+        "ptl": "~665",
+        "ptj": "~525",
+        "rec": "moqueca_light"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Domingo — açaí nordestino: iogurte+manga+granola"
+        ],
+        "ptl": "~238",
+        "ptj": "~205",
+        "rec": "acai_nordestino"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Dia de descanso",
+          "2,5-3L água+suco de acerola gelado"
+        ],
+        "ptl": "—",
+        "ptj": "—",
+        "rec": null
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Cuscuz c/ sardinha+coentro (L:3col·J:2col)",
+          "Salada verde+tomate+cebola roxa"
+        ],
+        "ptl": "~332",
+        "ptj": "~262",
+        "rec": "cuscuz"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de maracujá s/ açúcar"
+        ],
+        "ptl": "~5",
+        "ptj": "~5",
+        "rec": null
+      }
+    }
+  ],
+  [
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Cuscuz (L:4col·J:3col)+ovo mexido+coentro",
+          "Vitamina de manga: 1/2 manga+150ml leite+mel"
+        ],
+        "ptl": "~450",
+        "ptj": "~362",
+        "rec": "cuscuz"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Manga fresca (safra crescendo!)",
+          "20g castanha de caju nova safra"
+        ],
+        "ptl": "~145",
+        "ptj": "~125",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Frango grelhado (L:200g·J:150g)",
+          "Arroz integral (L:4col·J:3col)",
+          "Feijão de corda",
+          "Salada verde+coentro+azeite"
+        ],
+        "ptl": "~618",
+        "ptj": "~488",
+        "rec": "frango_grelhado"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "1 banana+1 col pasta amendoim"
+        ],
+        "ptl": "~175",
+        "ptj": "~155",
+        "rec": "pre_treino"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina de manga+banana+leite+cacau"
+        ],
+        "ptl": "~238",
+        "ptj": "~208",
+        "rec": "vit_manga"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Omelete (L:3·J:2 ovos)+espinafre+queijo",
+          "Salada verde+tomate+pepino"
+        ],
+        "ptl": "~355",
+        "ptj": "~280",
+        "rec": "omelete"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Iogurte grego+mel+manga picada"
+        ],
+        "ptl": "~138",
+        "ptj": "~128",
+        "rec": "iogurte_granola"
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Tapioca (L:2·J:1.5)+queijo coalho",
+          "2 ovos cozidos",
+          "Suco de caju+acerola natural 200ml"
+        ],
+        "ptl": "~432",
+        "ptj": "~346",
+        "rec": "tapioca"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Caju fresco (nova safra!) + manga fresca"
+        ],
+        "ptl": "~142",
+        "ptj": "~122",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Sardinha grelhada (L:200g·J:150g)",
+          "Arroz integral (L:3col·J:2col)",
+          "Macaxeira cozida",
+          "Salada: alface+tomate+coentro"
+        ],
+        "ptl": "~558",
+        "ptj": "~443",
+        "rec": "sardinha_grelhada"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Iogurte grego 170g",
+          "1 banana"
+        ],
+        "ptl": "~190",
+        "ptj": "~165",
+        "rec": null
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "200ml água de coco",
+          "2 ovos cozidos"
+        ],
+        "ptl": "~170",
+        "ptj": "~155",
+        "rec": null
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Sopa c/ frango+legumes nordestinos (L:350·J:250ml)"
+        ],
+        "ptl": "~340",
+        "ptj": "~270",
+        "rec": "sopa_legumes"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de caju s/ açúcar",
+          "1 banana pequena"
+        ],
+        "ptl": "~90",
+        "ptj": "~80",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Aveia (L:5col·J:4col)+leite+canela+banana",
+          "Café preto"
+        ],
+        "ptl": "~415",
+        "ptj": "~330",
+        "rec": "aveia_mingau"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Vitamina de manga+caju: 1/2 manga+1 caju+leite+mel"
+        ],
+        "ptl": "~232",
+        "ptj": "~202",
+        "rec": "vit_manga"
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Frango desfiado (L:180g·J:130g) c/ molho de tomate",
+          "Arroz integral (L:3col·J:2col)",
+          "Feijão de corda",
+          "Maxixe+cenoura refogados"
+        ],
+        "ptl": "~568",
+        "ptj": "~452",
+        "rec": "frango_grelhado"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Cuscuz pequeno (2col)+requeijão light"
+        ],
+        "ptl": "~170",
+        "ptj": "~150",
+        "rec": "cuscuz"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina pós: banana+leite+cacau"
+        ],
+        "ptl": "~220",
+        "ptj": "~190",
+        "rec": "vitamina_pos"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Tilápia grelhada (L:180g·J:130g)",
+          "Abobrinha+cenoura salteadas c/ alho"
+        ],
+        "ptl": "~328",
+        "ptj": "~262",
+        "rec": "tilap_grelhada"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Iogurte grego+granola (1col)+caju picado"
+        ],
+        "ptl": "~132",
+        "ptj": "~120",
+        "rec": "iogurte_granola"
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Cuscuz (L:4col·J:3col)+sardinha desfiada+coentro",
+          "Suco de manga+caju natural 200ml"
+        ],
+        "ptl": "~452",
+        "ptj": "~362",
+        "rec": "cuscuz"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Manga fresca+caju fresco+banana"
+        ],
+        "ptl": "~188",
+        "ptj": "~165",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Tilápia grelhada (L:200g·J:150g)",
+          "Batata doce (L:120g·J:80g)",
+          "Brócolis+cenoura no vapor"
+        ],
+        "ptl": "~540",
+        "ptj": "~425",
+        "rec": "tilap_grelhada"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "1 banana+1 col pasta amendoim"
+        ],
+        "ptl": "~175",
+        "ptj": "~155",
+        "rec": "pre_treino"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina de manga+banana+leite"
+        ],
+        "ptl": "~228",
+        "ptj": "~198",
+        "rec": "vit_manga"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Omelete (L:3·J:2 ovos)+couve+tomate+queijo",
+          "Legumes refogados"
+        ],
+        "ptl": "~350",
+        "ptj": "~275",
+        "rec": "omelete"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de hibisco s/ açúcar"
+        ],
+        "ptl": "~5",
+        "ptj": "~5",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Tapioca (L:2·J:1.5)+frango+queijo",
+          "Vitamina de caju+manga 200ml",
+          "Café preto"
+        ],
+        "ptl": "~445",
+        "ptj": "~358",
+        "rec": "tapioca"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Salada de frutas de novembro: manga+caju+banana"
+        ],
+        "ptl": "~182",
+        "ptj": "~160",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Frango grelhado (L:200g·J:150g)",
+          "Feijão de corda+arroz integral",
+          "Salada completa+coentro"
+        ],
+        "ptl": "~600",
+        "ptj": "~474",
+        "rec": "frango_grelhado"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Batata doce (L:100g·J:70g)",
+          "2 claras cozidas"
+        ],
+        "ptl": "~188",
+        "ptj": "~153",
+        "rec": null
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Açaí nordestino: iogurte+manga+granola+castanha"
+        ],
+        "ptl": "~248",
+        "ptj": "~212",
+        "rec": "acai_nordestino"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Peixe assado no forno (L:180g·J:130g)",
+          "Legumes assados c/ azeite+ervas"
+        ],
+        "ptl": "~350",
+        "ptj": "~275",
+        "rec": "peixe_assado"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "1 banana",
+          "Chá de maracujá+mel"
+        ],
+        "ptl": "~88",
+        "ptj": "~78",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Vitamina de novembro: manga+aveia+leite+cacau",
+          "2 ovos mexidos ao lado",
+          "Café preto"
+        ],
+        "ptl": "~490",
+        "ptj": "~390",
+        "rec": "vitamina_pos"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Manga fresca+caju fresco (safra!)",
+          "20g castanha"
+        ],
+        "ptl": "~155",
+        "ptj": "~135",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Almoço livre do sábado 😊",
+          "Sugestão: frango assado+baião de dois+suco de manga natural"
+        ],
+        "ptl": "~692",
+        "ptj": "~545",
+        "rec": "baiao_dois"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "1 manga fresca (pré-treino natural)"
+        ],
+        "ptl": "~100",
+        "ptj": "~88",
+        "rec": null
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina de manga+banana+leite+cacau"
+        ],
+        "ptl": "~238",
+        "ptj": "~208",
+        "rec": "vit_manga"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Frango grelhado (L:180g·J:130g)",
+          "Legumes salteados: abobrinha+brócolis+coentro"
+        ],
+        "ptl": "~400",
+        "ptj": "~315",
+        "rec": "frango_grelhado"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de camomila+mel"
+        ],
+        "ptl": "~28",
+        "ptj": "~25",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Pão integral (L:2·J:1.5)+queijo coalho",
+          "Ovo mexido c/ coentro",
+          "Suco de caju natural 200ml"
+        ],
+        "ptl": "~428",
+        "ptj": "~342",
+        "rec": "tapioca"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Salada de frutas c/ manga+caju+banana"
+        ],
+        "ptl": "~185",
+        "ptj": "~162",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Moqueca de peixe light (domingo!)",
+          "Arroz integral+salada verde+farofa leve"
+        ],
+        "ptl": "~665",
+        "ptj": "~525",
+        "rec": "moqueca_light"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Domingo — açaí nordestino: iogurte+manga+granola"
+        ],
+        "ptl": "~238",
+        "ptj": "~205",
+        "rec": "acai_nordestino"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Dia de descanso",
+          "2,5-3L água+suco de caju gelado"
+        ],
+        "ptl": "—",
+        "ptj": "—",
+        "rec": null
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Cuscuz c/ sardinha+coentro (L:3col·J:2col)",
+          "Salada verde+tomate+cebola roxa"
+        ],
+        "ptl": "~332",
+        "ptj": "~262",
+        "rec": "cuscuz"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de maracujá s/ açúcar"
+        ],
+        "ptl": "~5",
+        "ptj": "~5",
+        "rec": null
+      }
+    }
+  ],
+  [
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Cuscuz (L:4col·J:3col)+ovo mexido+coentro",
+          "Vitamina especial: manga+caju+200ml leite+mel (SAFRA MÁXIMA!)"
+        ],
+        "ptl": "~458",
+        "ptj": "~368",
+        "rec": "cuscuz"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Manga palmer madura (PREÇO MÍNIMO!)",
+          "20g castanha de caju nova"
+        ],
+        "ptl": "~168",
+        "ptj": "~145",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Frango grelhado (L:200g·J:150g)",
+          "Arroz integral (L:4col·J:3col)",
+          "Feijão de corda",
+          "Salada verde+coentro+azeite"
+        ],
+        "ptl": "~618",
+        "ptj": "~488",
+        "rec": "frango_grelhado"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "1 banana+1 col pasta amendoim"
+        ],
+        "ptl": "~175",
+        "ptj": "~155",
+        "rec": "pre_treino"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina de manga+banana+leite+cacau"
+        ],
+        "ptl": "~240",
+        "ptj": "~210",
+        "rec": "vit_manga"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Omelete (L:3·J:2 ovos)+espinafre+queijo",
+          "Salada verde+pepino+coentro"
+        ],
+        "ptl": "~355",
+        "ptj": "~280",
+        "rec": "omelete"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Iogurte grego+manga picada+mel"
+        ],
+        "ptl": "~142",
+        "ptj": "~132",
+        "rec": "iogurte_granola"
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Tapioca (L:2·J:1.5)+queijo coalho",
+          "2 ovos cozidos",
+          "Suco de caju+manga natural 200ml"
+        ],
+        "ptl": "~435",
+        "ptj": "~348",
+        "rec": "tapioca"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Manga fresca (safra plena) + caju fresco"
+        ],
+        "ptl": "~155",
+        "ptj": "~135",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Sardinha grelhada (L:200g·J:150g)",
+          "Arroz integral (L:3col·J:2col)",
+          "Macaxeira cozida",
+          "Salada: alface+tomate+coentro"
+        ],
+        "ptl": "~558",
+        "ptj": "~443",
+        "rec": "sardinha_grelhada"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Iogurte grego 170g",
+          "1 banana"
+        ],
+        "ptl": "~190",
+        "ptj": "~165",
+        "rec": null
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "200ml água de coco gelada",
+          "2 ovos cozidos"
+        ],
+        "ptl": "~170",
+        "ptj": "~155",
+        "rec": null
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Sopa leve c/ frango+legumes (L:350·J:250ml)",
+          "Jerimum+macaxeira+cenoura+coentro"
+        ],
+        "ptl": "~340",
+        "ptj": "~270",
+        "rec": "sopa_legumes"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de caju gelado s/ açúcar",
+          "1 banana pequena"
+        ],
+        "ptl": "~90",
+        "ptj": "~80",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Aveia (L:5col·J:4col)+leite+canela+manga amassada",
+          "Café preto"
+        ],
+        "ptl": "~422",
+        "ptj": "~336",
+        "rec": "aveia_mingau"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Vitamina especial de dezembro: manga+caju+leite+mel"
+        ],
+        "ptl": "~238",
+        "ptj": "~208",
+        "rec": "vit_manga"
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Frango desfiado (L:180g·J:130g) c/ molho",
+          "Arroz integral (L:3col·J:2col)",
+          "Feijão de corda",
+          "Maxixe+cenoura refogados"
+        ],
+        "ptl": "~568",
+        "ptj": "~452",
+        "rec": "frango_grelhado"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Cuscuz pequeno (2col)+requeijão light"
+        ],
+        "ptl": "~170",
+        "ptj": "~150",
+        "rec": "cuscuz"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina pós: banana+leite+cacau em pó"
+        ],
+        "ptl": "~220",
+        "ptj": "~190",
+        "rec": "vitamina_pos"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Sardinha assada c/ limão+coentro (L:180g·J:130g)",
+          "Salada: tomate+cebola+pimentão"
+        ],
+        "ptl": "~330",
+        "ptj": "~265",
+        "rec": "sardinha_grelhada"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Iogurte grego+granola (1col)+manga picada"
+        ],
+        "ptl": "~142",
+        "ptj": "~130",
+        "rec": "iogurte_granola"
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Cuscuz (L:4col·J:3col)+sardinha desfiada+coentro",
+          "Suco de manga+abacaxi 200ml (digestivo + vitamina C!)"
+        ],
+        "ptl": "~455",
+        "ptj": "~365",
+        "rec": "cuscuz"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Abacaxi fresco (antiinflamatório natural!)",
+          "20g castanha de caju"
+        ],
+        "ptl": "~118",
+        "ptj": "~100",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Tilápia grelhada (L:200g·J:150g)",
+          "Batata doce (L:120g·J:80g)",
+          "Brócolis no vapor c/ coentro"
+        ],
+        "ptl": "~540",
+        "ptj": "~425",
+        "rec": "tilap_grelhada"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "1 banana+1 col pasta amendoim"
+        ],
+        "ptl": "~175",
+        "ptj": "~155",
+        "rec": "pre_treino"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina de manga+banana+leite+mel"
+        ],
+        "ptl": "~235",
+        "ptj": "~205",
+        "rec": "vit_manga"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Omelete (L:3·J:2 ovos)+couve+tomate+queijo coalho",
+          "Legumes refogados c/ alho"
+        ],
+        "ptl": "~350",
+        "ptj": "~275",
+        "rec": "omelete"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de hibisco s/ açúcar (diurético)"
+        ],
+        "ptl": "~5",
+        "ptj": "~5",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Tapioca (L:2·J:1.5)+frango+queijo",
+          "Suco de manga+acerola 200ml (vitamina C!!)",
+          "Café preto"
+        ],
+        "ptl": "~445",
+        "ptj": "~358",
+        "rec": "tapioca"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Salada de frutas de dezembro: manga+caju+abacaxi+banana"
+        ],
+        "ptl": "~195",
+        "ptj": "~172",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Frango grelhado (L:200g·J:150g)",
+          "Feijão de corda+arroz integral",
+          "Salada completa+vinagrete de coentro"
+        ],
+        "ptl": "~600",
+        "ptj": "~474",
+        "rec": "frango_grelhado"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Batata doce (L:100g·J:70g)",
+          "2 claras cozidas"
+        ],
+        "ptl": "~188",
+        "ptj": "~153",
+        "rec": null
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Açaí nordestino: iogurte+manga+granola+castanha"
+        ],
+        "ptl": "~252",
+        "ptj": "~215",
+        "rec": "acai_nordestino"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Peixe assado no forno (L:180g·J:130g)",
+          "Legumes assados: jerimum+cenoura+alho+coentro"
+        ],
+        "ptl": "~352",
+        "ptj": "~278",
+        "rec": "peixe_assado"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "1 banana",
+          "Chá de maracujá+mel"
+        ],
+        "ptl": "~88",
+        "ptj": "~78",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Vitamina especial de dezembro: manga+aveia+leite+cacau+mel",
+          "2 ovos mexidos ao lado",
+          "Café preto"
+        ],
+        "ptl": "~495",
+        "ptj": "~395",
+        "rec": "vitamina_pos"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Manga plena safra+caju+20g castanha (FESTA DE DEZEMBRO!)"
+        ],
+        "ptl": "~168",
+        "ptj": "~145",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Almoço de festa junina saudável 😊 / Natal / Confraternização",
+          "Sugestão: frango assado+arroz integral+feijão+salada",
+          "Manga de sobremesa — você MERECE!"
+        ],
+        "ptl": "~700",
+        "ptj": "~552",
+        "rec": "baiao_dois"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "1 manga fresca (pré-treino natural de dezembro)"
+        ],
+        "ptl": "~100",
+        "ptj": "~88",
+        "rec": null
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Vitamina de manga+banana+leite+cacau"
+        ],
+        "ptl": "~240",
+        "ptj": "~210",
+        "rec": "vit_manga"
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Frango grelhado (L:180g·J:130g)",
+          "Legumes salteados: abobrinha+brócolis+coentro"
+        ],
+        "ptl": "~400",
+        "ptj": "~315",
+        "rec": "frango_grelhado"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de camomila+mel (celebre e descanse!)"
+        ],
+        "ptl": "~28",
+        "ptj": "~25",
+        "rec": null
+      }
+    },
+    {
+      "cafe": {
+        "t": "Café da Manhã",
+        "time": "07:00",
+        "ico": "☕",
+        "icoCls": "ico-cafe",
+        "items": [
+          "Pão integral (L:2·J:1.5)+queijo coalho",
+          "Ovo mexido c/ coentro",
+          "Suco de caju natural 200ml — SAFRA MÁXIMA!"
+        ],
+        "ptl": "~430",
+        "ptj": "~344",
+        "rec": "tapioca"
+      },
+      "lanche_m": {
+        "t": "Lanche da Manhã",
+        "time": "09:30",
+        "ico": "🍎",
+        "icoCls": "ico-lm",
+        "items": [
+          "Salada de frutas do fim do ano: manga+caju+abacaxi+banana"
+        ],
+        "ptl": "~200",
+        "ptj": "~178",
+        "rec": null
+      },
+      "almoco": {
+        "t": "Almoço",
+        "time": "12:00",
+        "ico": "🍽",
+        "icoCls": "ico-alm",
+        "items": [
+          "Moqueca de peixe baiana (domingo especial de dezembro!)",
+          "Arroz integral+salada verde+farofa de macaxeira"
+        ],
+        "ptl": "~672",
+        "ptj": "~532",
+        "rec": "moqueca_light"
+      },
+      "pre": {
+        "t": "Pré-Treino",
+        "time": "15:00",
+        "ico": "⚡",
+        "icoCls": "ico-pre",
+        "items": [
+          "Domingo — açaí nordestino: iogurte+manga+granola+castanha"
+        ],
+        "ptl": "~252",
+        "ptj": "~215",
+        "rec": "acai_nordestino"
+      },
+      "pos": {
+        "t": "Pós-Treino",
+        "time": "17:00",
+        "ico": "💪",
+        "icoCls": "ico-pos",
+        "items": [
+          "Dia de descanso — PARABÉNS POR 1 ANO COMPLETO!",
+          "Beba 2,5-3L água+suco de manga gelado"
+        ],
+        "ptl": "—",
+        "ptj": "—",
+        "rec": null
+      },
+      "jantar": {
+        "t": "Jantar",
+        "time": "19:30",
+        "ico": "🌙",
+        "icoCls": "ico-jan",
+        "items": [
+          "Cuscuz c/ sardinha desfiada+coentro (L:3col·J:2col)",
+          "Salada verde+tomate+cebola roxa — sabores que fizeram parte deste ano"
+        ],
+        "ptl": "~335",
+        "ptj": "~265",
+        "rec": "cuscuz"
+      },
+      "lanche_n": {
+        "t": "Lanche da Noite",
+        "time": "21:30",
+        "ico": "🌿",
+        "icoCls": "ico-ln",
+        "items": [
+          "Chá de maracujá s/ açúcar (1 ano de hábito saudável celebrado!)"
+        ],
+        "ptl": "~5",
+        "ptj": "~5",
+        "rec": null
+      }
+    }
+  ]
+]

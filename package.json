@@ -1,0 +1,14 @@
+{
+  "name": "forte365",
+  "version": "0.0.0",
+  "private": true,
+  "description": "FORTE 365 — app SaaS de calistenia acess\u00edvel (monorepo).",
+  "scripts": {
+    "seed:extract": "pnpm --filter @forte365/seed run extract",
+    "seed:sql": "pnpm --filter @forte365/seed run build-sql",
+    "seed:all": "pnpm --filter @forte365/seed run all",
+    "web:dev": "pnpm --filter @forte365/web run dev",
+    "web:build": "pnpm --filter @forte365/web run build"
+  },
+  "packageManager": "pnpm@10.17.1"
+}

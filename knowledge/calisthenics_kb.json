@@ -1,0 +1,45 @@
+{
+    "calisthenics_principles": {
+        "progressive_overload": [
+            "Aumentar repetições e séries (Volume)",
+            "Variações de exercícios mais desafiadoras (Intensidade)",
+            "Diminuir períodos de descanso (Densidade)",
+            "Aumentar o tempo sob tensão - cadência 3-1-3-1 (Técnica)",
+            "Aumentar a amplitude de movimento (Mobilidade)"
+        ],
+        "training_protocols": {
+            "PPL": "Empurrar, Puxar e Pernas. Ideal para frequência 6x/semana.",
+            "Full Body": "Corpo todo em todas as sessões. Ideal para frequência 3x/semana.",
+            "Upper/Lower": "Dividido entre superior e inferior. Ideal para 4x/semana.",
+            "Skill Focus": "Foco em progressão de habilidades (Muscle-up, Planche, etc) no início da sessão."
+        }
+    },
+    "exercise_library": {
+        "push": {
+            "iniciante": ["Flexão na Parede", "Flexão Inclinada", "Flexão de Joelhos", "Mergulho no Banco", "Prancha Alta", "Escápula Push-up"],
+            "intermediário": ["Flexão Padrão", "Flexão Diamante", "Flexão Declinada", "Pike Push-up", "Mergulho nas Paralelas (Dips)", "Pseudo Planche Push-up", "Flexão Arqueiro"],
+            "avançado": ["Flexão de Cabeça para Baixo (HSPU)", "Mergulho na Barra Reta", "Flexão Explosiva", "Flexão com uma mão", "Planche Lean Push-up", "One-arm Dip"]
+        },
+        "pull": {
+            "iniciante": ["Remada Australiana (Invertida)", "Negativa de Barra Fixa", "Barra Fixa Assistida", "Hanging (Pendurar Ativo)", "Escápula Pull-up"],
+            "intermediário": ["Barra Fixa (Pull-up)", "Canela na Barra (Chin-up)", "Barra Fixa com pegada Neutra", "Barra L-sit", "Remada em Argolas", "Commando Pull-up"],
+            "avançado": ["Muscle-up", "Barra Arqueiro (Archer)", "Barra com uma mão (Assistida)", "Front Lever Pulls", "Explosive Pull-ups (Barra no Peito)"]
+        },
+        "legs": {
+            "iniciante": ["Agachamento Livre", "Afundo", "Elevação Pélvica", "Wall Sit (Isometria)", "Panturrilha em Pé"],
+            "intermediário": ["Agachamento Sumô", "Agachamento Búlgaro", "Cossack Squat (Lateral)", "Jump Squats", "Step-ups explosivos"],
+            "avançado": ["Agachamento Pistola (Pistol Squat)", "Nordic Curls", "Agachamento Sissy", "Archer Squats", "Jump Box (Salto Biométrico)"]
+        },
+        "core": {
+            "iniciante": ["Prancha Abdominal", "Canoa (Hollow Body)", "Elevação de Joelhos (Hanging)", "Bird Dog", "Dead Bug"],
+            "intermediário": ["Ab Wheel Rollouts", "Elevação de Pernas Reta", "L-sit (Paralelas)", "Prancha Lateral Dinâmica", "Toes to Bar (Knees)"],
+            "avançado": ["Dragon Flag", "V-ups", "L-sit no chão", "Windshield Wipers (Limpadores)", "Toes to Bar (Estrito)"]
+        },
+        "skills_progression": {
+            "muscle_up": ["Barra Explosiva", "Mergulho na Barra Reta", "Transição de Muscle-up"],
+            "handstand": ["Pike Hold", "Wall Walk", "Handstand contra a parede", "Kick-ups"],
+            "front_lever": ["Tuc Front Lever", "Advanced Tuc Front Lever", "Single Leg Front Lever"],
+            "planche": ["Planche Lean", "Tuc Planche", "Advanced Tuc Planche"]
+        }
+    }
+}

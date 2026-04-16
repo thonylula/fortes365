@@ -1,0 +1,44 @@
+{
+  "cafe": {
+    "t": "Café da Manhã",
+    "time": "07:00",
+    "ico": "☕",
+    "icoCls": "ico-cafe"
+  },
+  "lm": {
+    "t": "Lanche da Manhã",
+    "time": "09:30",
+    "ico": "🍎",
+    "icoCls": "ico-lm"
+  },
+  "alm": {
+    "t": "Almoço",
+    "time": "12:00",
+    "ico": "🍽",
+    "icoCls": "ico-alm"
+  },
+  "pre": {
+    "t": "Pré-Treino",
+    "time": "15:00",
+    "ico": "⚡",
+    "icoCls": "ico-pre"
+  },
+  "pos": {
+    "t": "Pós-Treino",
+    "time": "17:00",
+    "ico": "💪",
+    "icoCls": "ico-pos"
+  },
+  "jan": {
+    "t": "Jantar",
+    "time": "19:30",
+    "ico": "🌙",
+    "icoCls": "ico-jan"
+  },
+  "ln": {
+    "t": "Lanche da Noite",
+    "time": "21:30",
+    "ico": "🌿",
+    "icoCls": "ico-ln"
+  }
+}

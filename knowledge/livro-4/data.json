@@ -1,0 +1,43 @@
+{
+  "metadata": {
+    "title": "O Guia da Musculação: Metodologias e Aplicabilidades",
+    "author": "Tiago Nutri",
+    "entities": [
+      {"name": "Hipertrofia", "type": "conceito"},
+      {"name": "SST", "type": "metodologia"},
+      {"name": "Heavy Duty", "type": "metodologia"},
+      {"name": "Stronglift 5x5", "type": "metodologia"},
+      {"name": "Mike Mentzer", "type": "especialista"},
+      {"name": "Arthur Jones", "type": "especialista"},
+      {"name": "Fernando Sardinha", "type": "especialista"}
+    ],
+    "summary": "Manual detalhado sobre técnicas avançadas de musculação, cobrindo desde conceitos básicos de fisiologia muscular até métodos de elite como SST e Heavy Duty. Oferece guias práticos para divisões de treino de A-B até A-B-C-D-E."
+  },
+  "content": [
+    {
+      "type": "text",
+      "page": 5,
+      "data": "Hipertrofia: Processo de desenvolvimento ou crescimento do músculo. Envolve estímulos mecânicos gerando microlesões e respostas biomoleculares de adaptação."
+    },
+    {
+      "type": "text",
+      "page": 13,
+      "data": "Músculos Agonistas e Antagonistas: Agonista é o principal responsável pelo movimento; Antagonista se opõe ou alonga passivamente durante a execução."
+    },
+    {
+      "type": "text",
+      "page": 28,
+      "data": "Periodização Linear: Modelo clássico com alto volume e baixa intensidade no início, invertendo gradualmente conforme o treino avança."
+    },
+    {
+      "type": "text",
+      "page": 71,
+      "data": "Método SST (Sarcoplasma Stimulating Training): Desenvolvido por Patrick Tour, foca em levar o músculo à zona de estagnação com menos descanso e mais tempo de tensão."
+    },
+    {
+      "type": "text",
+      "page": 84,
+      "data": "Heavy Duty: Sistema avançado criado por Mike Mentzer, baseado em baixíssimo volume e altíssima intensidade (falha total)."
+    }
+  ]
+}

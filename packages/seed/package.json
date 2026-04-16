@@ -1,0 +1,12 @@
+{
+  "name": "@forte365/seed",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Extrai o conteúdo do forte365_v2.html e gera supabase/seed.sql. Sem dependências externas.",
+  "scripts": {
+    "extract": "node src/extract.mjs",
+    "build-sql": "node src/build-seed-sql.mjs",
+    "all": "node src/extract.mjs && node src/build-seed-sql.mjs"
+  }
+}

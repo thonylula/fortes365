@@ -1,0 +1,74 @@
+{
+  "0": {
+    "fruit": "manga/caju",
+    "vit": "manga",
+    "fish": "sardinha",
+    "spec": "Vitamina de umbu"
+  },
+  "1": {
+    "fruit": "caju/graviola",
+    "vit": "caju",
+    "fish": "sardinha",
+    "spec": "Suco de caju natural"
+  },
+  "2": {
+    "fruit": "pitanga/cajá",
+    "vit": "cajá",
+    "fish": "tilápia",
+    "spec": "Vitamina de pitanga"
+  },
+  "3": {
+    "fruit": "maracujá/umbu",
+    "vit": "maracujá",
+    "fish": "tilápia",
+    "spec": "Suco de umbu"
+  },
+  "4": {
+    "fruit": "seriguela/jaca",
+    "vit": "seriguela",
+    "fish": "robalo",
+    "spec": "Vitamina de seriguela"
+  },
+  "5": {
+    "fruit": "goiaba/laranja",
+    "vit": "goiaba",
+    "fish": "robalo",
+    "spec": "Suco de goiaba"
+  },
+  "6": {
+    "fruit": "laranja/mandarina",
+    "vit": "laranja",
+    "fish": "tilápia",
+    "spec": "Suco de laranja"
+  },
+  "7": {
+    "fruit": "mamão/banana",
+    "vit": "mamão",
+    "fish": "sardinha",
+    "spec": "Vitamina de mamão"
+  },
+  "8": {
+    "fruit": "melancia/uva",
+    "vit": "melancia",
+    "fish": "sardinha",
+    "spec": "Suco de melancia"
+  },
+  "9": {
+    "fruit": "manga nova/acerola",
+    "vit": "manga",
+    "fish": "tilápia",
+    "spec": "Vitamina de manga"
+  },
+  "10": {
+    "fruit": "manga/caju",
+    "vit": "manga",
+    "fish": "sardinha",
+    "spec": "Suco de caju"
+  },
+  "11": {
+    "fruit": "manga plena/caju",
+    "vit": "manga",
+    "fish": "sardinha",
+    "spec": "Vitamina especial de manga"
+  }
+}

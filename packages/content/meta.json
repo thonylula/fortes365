@@ -1,0 +1,40 @@
+{
+  "covers": {
+    "treino": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=700&h=180&fit=crop&auto=format&q=75",
+    "bike": "https://images.unsplash.com/photo-1571188654248-7a89213915f7?w=700&h=180&fit=crop&auto=format&q=75",
+    "caminhada": "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=700&h=180&fit=crop&auto=format&q=75",
+    "mobilidade": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=700&h=180&fit=crop&auto=format&q=75",
+    "descanso": "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=700&h=180&fit=crop&auto=format&q=75"
+  },
+  "coverGrads": {
+    "treino": "linear-gradient(135deg,#2a1a0e,#3d1f00)",
+    "bike": "linear-gradient(135deg,#0d1f3a,#0a2d6e)",
+    "caminhada": "linear-gradient(135deg,#0f2218,#0a3320)",
+    "mobilidade": "linear-gradient(135deg,#1a1a0e,#2a2a00)",
+    "descanso": "linear-gradient(135deg,#0e1a1a,#0a2a25)"
+  },
+  "weekVolume": [
+    0.8,
+    1,
+    1.15,
+    0.9
+  ],
+  "dayLabelsLong": [
+    "Segunda",
+    "Terça",
+    "Quarta",
+    "Quinta",
+    "Sexta",
+    "Sábado",
+    "Domingo"
+  ],
+  "dayLabelsShort": [
+    "SEG",
+    "TER",
+    "QUA",
+    "QUI",
+    "SEX",
+    "SÁB",
+    "DOM"
+  ]
+}

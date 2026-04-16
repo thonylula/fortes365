@@ -1,0 +1,122 @@
+[
+  {
+    "n": "Jan",
+    "name": "Janeiro",
+    "ph": "Adaptação",
+    "pcls": "phv",
+    "icon": "🌱",
+    "level": 0,
+    "hasBike": false,
+    "season": "Manga · Caju · Umbu"
+  },
+  {
+    "n": "Fev",
+    "name": "Fevereiro",
+    "ph": "Ativação",
+    "pcls": "phv",
+    "icon": "🌿",
+    "level": 0,
+    "hasBike": true,
+    "season": "Caju · Graviola"
+  },
+  {
+    "n": "Mar",
+    "name": "Março",
+    "ph": "Consolidação",
+    "pcls": "pha",
+    "icon": "💪",
+    "level": 0,
+    "hasBike": true,
+    "season": "Pitanga · Cajá"
+  },
+  {
+    "n": "Abr",
+    "name": "Abril",
+    "ph": "Construção",
+    "pcls": "pha",
+    "icon": "🔨",
+    "level": 1,
+    "hasBike": true,
+    "season": "Maracujá · Umbu"
+  },
+  {
+    "n": "Mai",
+    "name": "Maio",
+    "ph": "Resistência",
+    "pcls": "pho",
+    "icon": "🚴",
+    "level": 1,
+    "hasBike": true,
+    "season": "Seriguela · Jaca"
+  },
+  {
+    "n": "Jun",
+    "name": "Junho",
+    "ph": "Composição",
+    "pcls": "pho",
+    "icon": "🎯",
+    "level": 1,
+    "hasBike": true,
+    "season": "Goiaba · Laranja"
+  },
+  {
+    "n": "Jul",
+    "name": "Julho",
+    "ph": "HIIT",
+    "pcls": "phr",
+    "icon": "⚡",
+    "level": 2,
+    "hasBike": true,
+    "season": "Laranja · Mandarina"
+  },
+  {
+    "n": "Ago",
+    "name": "Agosto",
+    "ph": "Força",
+    "pcls": "phr",
+    "icon": "🏋",
+    "level": 2,
+    "hasBike": true,
+    "season": "Mamão · Banana"
+  },
+  {
+    "n": "Set",
+    "name": "Setembro",
+    "ph": "Potência",
+    "pcls": "phr",
+    "icon": "💥",
+    "level": 2,
+    "hasBike": true,
+    "season": "Melancia · Uva"
+  },
+  {
+    "n": "Out",
+    "name": "Outubro",
+    "ph": "Performance",
+    "pcls": "php",
+    "icon": "🏆",
+    "level": 3,
+    "hasBike": true,
+    "season": "Manga nova · Acerola"
+  },
+  {
+    "n": "Nov",
+    "name": "Novembro",
+    "ph": "Definição",
+    "pcls": "php",
+    "icon": "💎",
+    "level": 3,
+    "hasBike": true,
+    "season": "Manga · Caju"
+  },
+  {
+    "n": "Dez",
+    "name": "Dezembro",
+    "ph": "Elite",
+    "pcls": "php",
+    "icon": "⭐",
+    "level": 3,
+    "hasBike": true,
+    "season": "Manga plena · Caju"
+  }
+]
