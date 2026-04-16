@@ -34,7 +34,7 @@ export function ReceitasView({ recipes }: { recipes: Recipe[] }) {
             <button
               key={r.slug}
               onClick={() => setSelected(r)}
-              className="rounded-xl border border-[color:var(--bd)] bg-[color:var(--s1)] p-4 text-left transition-all hover:-translate-y-0.5 hover:border-[color:var(--or)]"
+              className="rounded-xl border border-[color:var(--bd)] bg-[color:var(--s1)] p-4 text-left transition-all hover:-translate-y-0.5 hover:border-[color:var(--or)] hover:shadow-lg hover:shadow-[color:var(--or)]/5"
             >
               <div className="mb-1 text-2xl">{r.icon ?? "🍽"}</div>
               <div className="text-[13px] font-semibold">{r.title}</div>
@@ -50,8 +50,12 @@ export function ReceitasView({ recipes }: { recipes: Recipe[] }) {
       {/* Modal de receita */}
       {selected && (
         <div
-          className="fixed inset-0 z-50 flex items-end justify-center bg-black/85"
+          className="fixed inset-0 z-50 flex items-end justify-center bg-black/80 backdrop-blur-sm"
+          role="dialog"
+          aria-modal="true"
+          aria-label={selected.title}
           onClick={() => setSelected(null)}
+          onKeyDown={(e) => e.key === "Escape" && setSelected(null)}
         >
           <div
             className="w-full max-w-[660px] max-h-[88vh] overflow-y-auto rounded-t-2xl bg-[color:var(--s1)] p-5 animate-[slideUp_0.22s_ease]"
@@ -60,6 +64,7 @@ export function ReceitasView({ recipes }: { recipes: Recipe[] }) {
             <div className="mb-3 flex justify-end">
               <button
                 onClick={() => setSelected(null)}
+                aria-label="Fechar receita"
                 className="rounded-md bg-[color:var(--s3)] px-3 py-1 text-[12px] text-[color:var(--tx2)]"
               >
                 Fechar
@@ -123,12 +128,6 @@ export function ReceitasView({ recipes }: { recipes: Recipe[] }) {
         </div>
       )}
 
-      <style jsx>{`
-        @keyframes slideUp {
-          from { transform: translateY(40px); opacity: 0; }
-          to { transform: translateY(0); opacity: 1; }
-        }
-      `}</style>
     </>
   );
 }

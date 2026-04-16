@@ -224,23 +224,25 @@ export function PlanExplorer({
       {/* Main content */}
       <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-5 pb-20">
         {day && (
-          <DayView
-            day={day}
-            volumeMultiplier={volumeMultiplier}
-            monthId={monthId}
-            weekIndex={weekIndex}
-            isLoggedIn={!!user}
-            completedSlugs={completedSlugs}
-            onToggle={(slug) => {
-              setCompletedSlugs((prev) => {
-                const next = new Set(prev);
-                if (next.has(slug)) next.delete(slug);
-                else next.add(slug);
-                return next;
-              });
-            }}
-            onAchievement={handleNewAchievements}
-          />
+          <div key={`${monthId}-${weekIndex}-${dayIndex}`} className="animate-in">
+            <DayView
+              day={day}
+              volumeMultiplier={volumeMultiplier}
+              monthId={monthId}
+              weekIndex={weekIndex}
+              isLoggedIn={!!user}
+              completedSlugs={completedSlugs}
+              onToggle={(slug) => {
+                setCompletedSlugs((prev) => {
+                  const next = new Set(prev);
+                  if (next.has(slug)) next.delete(slug);
+                  else next.add(slug);
+                  return next;
+                });
+              }}
+              onAchievement={handleNewAchievements}
+            />
+          </div>
         )}
       </main>
     </div>
@@ -509,7 +511,11 @@ function ExerciseCard({
                 : { background: "none", border: "1.5px solid var(--bd)", color: "var(--tx2)" }
             }
           >
-            {isPending ? "..." : isDone ? "✓ Feito" : "Concluir"}
+            {isPending ? (
+              <svg className="h-3 w-3 animate-[spin_0.6s_linear_infinite]" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeDasharray="50 20" />
+              </svg>
+            ) : isDone ? "✓ Feito" : "Concluir"}
           </button>
         )}
       </div>

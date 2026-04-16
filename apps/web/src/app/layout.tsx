@@ -52,6 +52,12 @@ export default function RootLayout({
       className={`${anton.variable} ${barlow.variable} ${barlowCondensed.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded-md focus:bg-[color:var(--or)] focus:px-4 focus:py-2 focus:font-bold focus:text-black"
+        >
+          Pular para conteudo
+        </a>
         {children}
         {process.env.NEXT_PUBLIC_POSTHOG_KEY && (
           <Script

@@ -128,15 +128,17 @@ export function NutricaoView({ months, meals, subInfo }: { months: Month[]; meal
         </div>
 
         {/* Meal cards */}
-        <div className="flex flex-col gap-[7px]">
+        <div key={`${monthId}-${dayIndex}`} className="animate-in flex flex-col gap-[7px]">
           {dayMeals.map((meal) => (
             <MealCard key={meal.slot_key} meal={meal} />
           ))}
         </div>
 
         {dayMeals.length === 0 && (
-          <div className="rounded-md border border-[color:var(--bd)] bg-[color:var(--s1)] p-6 text-center text-sm text-[color:var(--tx3)]">
-            Sem refeições cadastradas para este dia.
+          <div className="rounded-xl border border-[color:var(--bd)] bg-[color:var(--s1)] px-6 py-10 text-center">
+            <div className="mb-3 text-4xl">🍽</div>
+            <h3 className="mb-1 font-[family-name:var(--font-display)] text-lg tracking-wider">SEM REFEICOES</h3>
+            <p className="text-sm text-[color:var(--tx2)]">Nenhuma refeicao cadastrada para este dia.</p>
           </div>
         )}
       </main>
@@ -147,7 +149,7 @@ export function NutricaoView({ months, meals, subInfo }: { months: Month[]; meal
 function MealCard({ meal }: { meal: MealRow }) {
   const d = meal.data;
   return (
-    <div className="overflow-hidden rounded-xl border border-[color:var(--bd)] bg-[color:var(--s1)]">
+    <div className="overflow-hidden rounded-xl border border-[color:var(--bd)] bg-[color:var(--s1)] transition-all hover:border-[color:var(--or)]/40 hover:shadow-md hover:shadow-black/20">
       <div className="flex items-center gap-2 border-b border-[color:var(--bd)] bg-[color:var(--s2)] px-3 py-2">
         <span
           className="flex h-[26px] w-[26px] items-center justify-center rounded-md text-[13px]"

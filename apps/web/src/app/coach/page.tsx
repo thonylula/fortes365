@@ -1,6 +1,6 @@
-import Link from "next/link";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
+import { Header } from "@/components/header";
 import { CoachChat } from "./coach-chat";
 
 export const dynamic = "force-dynamic";
@@ -17,18 +17,7 @@ export default async function CoachPage() {
 
   return (
     <div className="flex min-h-screen flex-col bg-[color:var(--bg)]">
-      <header className="sticky top-0 z-20 flex h-[52px] items-center justify-between border-b border-[color:var(--bd)] bg-[color:var(--s1)] px-4">
-        <Link href="/" className="logo">
-          FORT<span>E</span>
-          <sub>365</sub>
-        </Link>
-        <Link
-          href="/treino"
-          className="font-[family-name:var(--font-condensed)] text-[11px] font-bold uppercase tracking-[1.5px] text-[color:var(--or)]"
-        >
-          ← Treino
-        </Link>
-      </header>
+      <Header backLink={{ href: "/treino", label: "← Treino" }} />
       <CoachChat userName={name} />
     </div>
   );

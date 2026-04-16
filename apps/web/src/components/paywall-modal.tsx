@@ -11,8 +11,12 @@ export function PaywallModal({
 }) {
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 px-4"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 px-4 backdrop-blur-sm"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Conteudo premium"
       onClick={onClose}
+      onKeyDown={(e) => e.key === "Escape" && onClose()}
     >
       <div
         className="w-full max-w-md rounded-xl bg-[color:var(--s1)] p-6 animate-[slideUp_0.22s_ease]"
@@ -83,12 +87,6 @@ export function PaywallModal({
         </div>
       </div>
 
-      <style jsx>{`
-        @keyframes slideUp {
-          from { transform: translateY(20px); opacity: 0; }
-          to { transform: translateY(0); opacity: 1; }
-        }
-      `}</style>
     </div>
   );
 }

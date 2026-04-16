@@ -103,7 +103,7 @@ export function CoachChat({ userName }: { userName: string }) {
     <div className="flex flex-1 flex-col">
       {/* Messages area */}
       <div className="flex-1 overflow-y-auto px-4 py-5">
-        <div className="mx-auto max-w-2xl space-y-4">
+        <div className="mx-auto max-w-2xl space-y-4" aria-live="polite">
           {messages.length === 0 && (
             <div className="py-12 text-center">
               <div className="mb-3 text-5xl">🏋️</div>
@@ -133,7 +133,7 @@ export function CoachChat({ userName }: { userName: string }) {
           {messages.map((msg, i) => (
             <div
               key={i}
-              className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
+              className={`animate-in flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
             >
               <div
                 className="max-w-[85%] rounded-xl px-4 py-3 text-[13px] leading-relaxed"
@@ -152,8 +152,10 @@ export function CoachChat({ userName }: { userName: string }) {
                   {msg.content ? (
                     <RenderMarkdownLinks text={msg.content} />
                   ) : (
-                    <span className="animate-pulse text-[color:var(--tx3)]">
-                      Coach pensando...
+                    <span className="flex items-center gap-1 text-[color:var(--tx3)]">
+                      <span className="inline-block h-1.5 w-1.5 rounded-full bg-[color:var(--or)] animate-[typingBounce_1.4s_infinite]" />
+                      <span className="inline-block h-1.5 w-1.5 rounded-full bg-[color:var(--or)] animate-[typingBounce_1.4s_infinite_0.2s]" />
+                      <span className="inline-block h-1.5 w-1.5 rounded-full bg-[color:var(--or)] animate-[typingBounce_1.4s_infinite_0.4s]" />
                     </span>
                   )}
                 </div>
@@ -177,15 +179,21 @@ export function CoachChat({ userName }: { userName: string }) {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Pergunte ao coach..."
+            aria-label="Mensagem para o coach"
             disabled={isStreaming}
-            className="flex-1 rounded-lg border border-[color:var(--bd)] bg-[color:var(--s2)] px-4 py-2.5 text-sm text-[color:var(--tx)] placeholder:text-[color:var(--tx3)] focus:border-[color:var(--or)] focus:outline-none disabled:opacity-50"
+            className="flex-1 rounded-lg border border-[color:var(--bd)] bg-[color:var(--s2)] px-4 py-2.5 text-sm text-[color:var(--tx)] placeholder:text-[color:var(--tx3)] focus:border-[color:var(--or)] focus:outline-none disabled:opacity-60"
           />
           <button
             type="submit"
             disabled={isStreaming || !input.trim()}
-            className="shrink-0 rounded-lg bg-[color:var(--or)] px-4 py-2.5 font-[family-name:var(--font-condensed)] text-sm font-bold uppercase tracking-wider text-black transition-colors hover:bg-[#ff7733] disabled:opacity-50"
+            aria-label="Enviar mensagem"
+            className="flex shrink-0 items-center justify-center gap-1.5 rounded-lg bg-[color:var(--or)] px-4 py-2.5 font-[family-name:var(--font-condensed)] text-sm font-bold uppercase tracking-wider text-black transition-colors hover:bg-[#ff7733] disabled:opacity-50"
           >
-            {isStreaming ? "..." : "Enviar"}
+            {isStreaming ? (
+              <svg className="h-[14px] w-[14px] animate-[spin_0.6s_linear_infinite]" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeDasharray="50 20" />
+              </svg>
+            ) : "Enviar"}
           </button>
         </form>
       </div>
