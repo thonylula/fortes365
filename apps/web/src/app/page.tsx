@@ -42,21 +42,24 @@ const PILLARS: Array<{ n: string; title: string; body: string }> = [
   },
 ];
 
-const STEPS: Array<{ n: string; title: string; body: string }> = [
+const STEPS: Array<{ n: string; title: string; body: string; image: string }> = [
   {
     n: "01",
     title: "Diagnóstico",
     body: "Dois minutos para calibrar nível, objetivo e equipamento disponível.",
+    image: "/images/method-01.jpg",
   },
   {
     n: "02",
     title: "Plano",
     body: "Doze meses de periodização montados automaticamente a partir do diagnóstico.",
+    image: "/images/method-02.jpg",
   },
   {
     n: "03",
     title: "Execução",
     body: "Vídeo por exercício, timer de descanso, registro de sets e coach IA sempre ao lado.",
+    image: "/images/method-03.jpg",
   },
 ];
 
@@ -382,8 +385,31 @@ function Method() {
           {STEPS.map((s) => (
             <article
               key={s.n}
-              className="bg-[color:var(--s1)] p-8 transition-colors hover:bg-[color:var(--s2)]"
+              className="flex flex-col bg-[color:var(--s1)] p-8 transition-colors hover:bg-[color:var(--s2)]"
             >
+              <figure
+                className="relative mb-7 aspect-[4/5] overflow-hidden rounded-sm"
+                style={{
+                  backgroundColor: "var(--s2)",
+                  backgroundImage: `url(${s.image})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+                aria-label={`Ilustração — ${s.title}`}
+              >
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0"
+                  style={{
+                    background:
+                      "linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,0.55) 100%)",
+                  }}
+                />
+                <div
+                  aria-hidden="true"
+                  className="absolute left-0 top-5 h-10 w-[2px] bg-[color:var(--or)]"
+                />
+              </figure>
               <div className="flex items-center gap-3">
                 <span className="font-[family-name:var(--font-display)] text-5xl leading-none tracking-wider text-[color:var(--or)]">
                   {s.n}
@@ -674,7 +700,7 @@ function FinalCta() {
               href="/cadastro"
               className="group inline-flex h-14 w-full items-center justify-between gap-6 rounded-sm bg-[color:var(--or)] px-6 font-[family-name:var(--font-condensed)] text-[13px] font-bold uppercase tracking-[2.5px] text-black transition-colors hover:bg-[#ff7733] sm:w-auto"
             >
-              <span>Criar conta</span>
+              <span>Começar grátis</span>
               <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">
                 →
               </span>
