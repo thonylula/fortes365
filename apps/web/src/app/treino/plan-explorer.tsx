@@ -6,6 +6,7 @@ import { NavTabs } from "@/components/nav-tabs";
 import { PaywallModal } from "@/components/paywall-modal";
 import { AchievementToast } from "@/components/achievement-toast";
 import { useRestTimer, RestTimerOverlay } from "@/components/rest-timer";
+import { hapticSuccess, playSuccess, playComplete } from "@/lib/feedback";
 
 type AchievementInfo = { slug: string; title: string; emoji: string };
 
@@ -380,6 +381,7 @@ function TreinoBlock(ctx: DayCtx) {
   );
   const totalSets = exercises.reduce((sum, ex) => sum + (ex.sets ?? 0), 0);
   const doneCount = exercises.filter((ex) => ex.exercises && completedSlugs.has(ex.exercises.slug)).length;
+  const allDone = doneCount === exercises.length && doneCount > 0;
 
   return (
     <div className="space-y-4">
@@ -433,6 +435,18 @@ function TreinoBlock(ctx: DayCtx) {
             />
           ))}
         </div>
+
+        {allDone && (
+          <div className="animate-in mt-4 rounded-xl border border-[color:var(--gn)] bg-[color:var(--gnd)] p-4 text-center">
+            <div className="mb-1 text-2xl">🎉</div>
+            <div className="font-[family-name:var(--font-display)] text-lg tracking-wider text-[color:var(--gn)]">
+              TREINO COMPLETO
+            </div>
+            <p className="mt-1 text-xs text-[color:var(--tx2)]">
+              Todos os {exercises.length} exercicios concluidos. Descanse bem!
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -471,8 +485,10 @@ function ExerciseCard({
   const handleToggle = () => {
     const wasNotDone = !isDone;
     onToggle(e.slug);
-    if (wasNotDone && ex.rest) {
-      onStartRest(ex.rest, e.name);
+    if (wasNotDone) {
+      hapticSuccess();
+      playSuccess();
+      if (ex.rest) onStartRest(ex.rest, e.name);
     }
     startTransition(async () => {
       const fd = new FormData();
@@ -557,6 +573,88 @@ function ExerciseCard({
           </div>
         </div>
       )}
+
+      {/* Set logger — aparece quando exercicio esta feito */}
+      {isDone && ex.sets != null && ex.sets > 0 && (
+        <SetLogger slug={e.slug} sets={ex.sets} targetReps={ex.reps ?? ""} monthId={monthId} weekIndex={weekIndex} dayIndex={dayIndex} />
+      )}
+    </div>
+  );
+}
+
+const SET_LOG_KEY = "forte_set_logs";
+type SetLog = { reps: string; rpe: string };
+
+function loadSetLogs(key: string): SetLog[] {
+  try {
+    const raw = localStorage.getItem(SET_LOG_KEY);
+    if (!raw) return [];
+    const all = JSON.parse(raw) as Record<string, SetLog[]>;
+    return all[key] ?? [];
+  } catch { return []; }
+}
+
+function saveSetLogs(key: string, logs: SetLog[]) {
+  try {
+    const raw = localStorage.getItem(SET_LOG_KEY);
+    const all = raw ? JSON.parse(raw) as Record<string, SetLog[]> : {};
+    all[key] = logs;
+    localStorage.setItem(SET_LOG_KEY, JSON.stringify(all));
+  } catch { /* noop */ }
+}
+
+function SetLogger({ slug, sets, targetReps, monthId, weekIndex, dayIndex }: {
+  slug: string; sets: number; targetReps: string; monthId: number; weekIndex: number; dayIndex: number;
+}) {
+  const logKey = `${monthId}_${weekIndex}_${dayIndex}_${slug}`;
+  const [logs, setLogs] = useState<SetLog[]>(() => {
+    const saved = loadSetLogs(logKey);
+    if (saved.length === sets) return saved;
+    return Array.from({ length: sets }, (_, i) => saved[i] ?? { reps: "", rpe: "" });
+  });
+
+  const update = (i: number, field: "reps" | "rpe", value: string) => {
+    const cleaned = value.replace(/[^0-9]/g, "");
+    const next = [...logs];
+    next[i] = { ...next[i], [field]: cleaned };
+    setLogs(next);
+    saveSetLogs(logKey, next);
+  };
+
+  return (
+    <div className="animate-in border-t border-[color:var(--bd)] bg-[color:var(--s2)] px-[0.9rem] py-2">
+      <div className="mb-1.5 flex items-center gap-2">
+        <span className="font-[family-name:var(--font-condensed)] text-[9px] font-bold uppercase tracking-[1.5px] text-[color:var(--tx3)]">
+          Registro de series
+        </span>
+        {targetReps && (
+          <span className="text-[9px] text-[color:var(--or)]">meta: {targetReps}</span>
+        )}
+      </div>
+      <div className="flex flex-wrap gap-1.5">
+        {logs.map((log, i) => (
+          <div key={i} className="flex items-center gap-1 rounded-lg bg-[color:var(--s1)] px-2 py-1.5">
+            <span className="font-[family-name:var(--font-condensed)] text-[9px] font-bold text-[color:var(--tx3)]">S{i + 1}</span>
+            <input
+              type="text"
+              inputMode="numeric"
+              placeholder="reps"
+              value={log.reps}
+              onChange={(e) => update(i, "reps", e.target.value)}
+              className="w-10 bg-transparent text-center text-[12px] font-bold text-[color:var(--tx)] outline-none placeholder:text-[color:var(--tx3)]"
+            />
+            <span className="text-[8px] text-[color:var(--tx3)]">RPE</span>
+            <input
+              type="text"
+              inputMode="numeric"
+              placeholder="—"
+              value={log.rpe}
+              onChange={(e) => update(i, "rpe", e.target.value)}
+              className="w-6 bg-transparent text-center text-[11px] text-[color:var(--or)] outline-none placeholder:text-[color:var(--tx3)]"
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
