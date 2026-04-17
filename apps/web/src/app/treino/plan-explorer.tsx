@@ -515,10 +515,10 @@ function ExerciseCard({
     if (videoId) return;
     setVideoLoading(true);
     try {
-      const cacheKey = `yt3_${e.slug}`;
+      const cacheKey = `yt4_${e.slug}`;
       const cached = localStorage.getItem(cacheKey);
       if (cached) { setVideoId(cached); setVideoLoading(false); return; }
-      const res = await fetch(`/api/youtube-search?q=${encodeURIComponent(e.name)}`);
+      const res = await fetch(`/api/youtube-search?q=${encodeURIComponent(e.name)}&slug=${encodeURIComponent(e.slug)}`);
       const data = await res.json();
       if (data.videoId) {
         setVideoId(data.videoId);

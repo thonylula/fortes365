@@ -1,49 +1,63 @@
 import { NextRequest, NextResponse } from "next/server";
+import { createClient } from "@supabase/supabase-js";
 
-const cache = new Map<string, { videoId: string; ts: number }>();
-const TTL = 7 * 24 * 60 * 60 * 1000;
+const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
+
+const supabaseAdmin = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_ROLE_KEY!,
+);
 
 export async function GET(req: NextRequest) {
   const q = req.nextUrl.searchParams.get("q");
+  const slug = req.nextUrl.searchParams.get("slug");
   if (!q) return NextResponse.json({ error: "Missing q" }, { status: 400 });
 
-  const cacheKey = `v3_${q}`;
-  const cached = cache.get(cacheKey);
-  if (cached && Date.now() - cached.ts < TTL) {
-    return NextResponse.json({ videoId: cached.videoId });
+  if (slug) {
+    const { data } = await supabaseAdmin
+      .from("exercises")
+      .select("cached_video_id")
+      .eq("slug", slug)
+      .single();
+
+    if (data?.cached_video_id) {
+      return NextResponse.json({ videoId: data.cached_video_id }, {
+        headers: { "Cache-Control": "public, max-age=604800" },
+      });
+    }
+  }
+
+  if (!YOUTUBE_API_KEY) {
+    return NextResponse.json({ error: "No API key configured" }, { status: 503 });
   }
 
   try {
-    const query = `${q} exercicio como fazer corretamente`;
-    const searchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(query)}&sp=EgIQAQ%253D%253D`;
-    const res = await fetch(searchUrl, {
-      headers: {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "Accept-Language": "pt-BR,pt;q=0.9",
-      },
-    });
+    const searchQuery = `${q} como fazer exercicio`;
+    const url = new URL("https://www.googleapis.com/youtube/v3/search");
+    url.searchParams.set("part", "snippet");
+    url.searchParams.set("q", searchQuery);
+    url.searchParams.set("type", "video");
+    url.searchParams.set("maxResults", "1");
+    url.searchParams.set("videoDuration", "short");
+    url.searchParams.set("relevanceLanguage", "pt");
+    url.searchParams.set("regionCode", "BR");
+    url.searchParams.set("key", YOUTUBE_API_KEY);
 
-    const html = await res.text();
+    const res = await fetch(url.toString());
+    const data = await res.json();
 
-    const videoIds: string[] = [];
-    const regex = /"videoId":"([a-zA-Z0-9_-]{11})"/g;
-    let m;
-    while ((m = regex.exec(html)) !== null) {
-      if (!videoIds.includes(m[1])) videoIds.push(m[1]);
-    }
-
-    const adIds = new Set<string>();
-    const adRegex = /"adVideoId":"([a-zA-Z0-9_-]{11})"/g;
-    while ((m = adRegex.exec(html)) !== null) adIds.add(m[1]);
-
-    const filtered = videoIds.filter((id) => !adIds.has(id));
-    const videoId = filtered[0] ?? videoIds[0];
-
-    if (!videoId) {
+    if (!res.ok || !data.items?.length) {
       return NextResponse.json({ error: "No video found" }, { status: 404 });
     }
 
-    cache.set(cacheKey, { videoId, ts: Date.now() });
+    const videoId = data.items[0].id.videoId as string;
+
+    if (slug) {
+      await supabaseAdmin
+        .from("exercises")
+        .update({ cached_video_id: videoId })
+        .eq("slug", slug);
+    }
 
     return NextResponse.json({ videoId }, {
       headers: { "Cache-Control": "public, max-age=604800" },
