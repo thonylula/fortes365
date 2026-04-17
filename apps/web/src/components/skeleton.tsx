@@ -112,7 +112,7 @@ export function SkeletonHeader() {
 export function SkeletonNavTabs() {
   return (
     <div className="flex border-b border-[color:var(--bd)] bg-[color:var(--s1)]">
-      {Array.from({ length: 6 }, (_, i) => (
+      {Array.from({ length: 7 }, (_, i) => (
         <div key={i} className="flex min-w-[56px] flex-1 flex-col items-center gap-1 px-1 py-2">
           <div className="skeleton h-4 w-4 rounded" />
           <div className="skeleton h-2 w-8 rounded" />
