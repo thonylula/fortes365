@@ -11,6 +11,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import { WeeklyChallenges } from "@/components/weekly-challenges";
 import type { WorkoutRow } from "./page";
 
 type Props = {
@@ -77,6 +78,8 @@ export function ProgressView({ progress, profile, workouts, achievementCount, sk
       <h1 className="mb-6 text-center font-[family-name:var(--font-display)] text-3xl tracking-wider">
         PROGRESSO
       </h1>
+
+      <WeeklyChallenges />
 
       {/* Stats grid */}
       <div className="mb-6 grid grid-cols-2 gap-2 sm:grid-cols-4">
