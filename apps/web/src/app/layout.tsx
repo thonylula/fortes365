@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Anton, Barlow, Barlow_Condensed } from "next/font/google";
+import { PushPrompt } from "@/components/push-prompt";
 import "./globals.css";
 
 const anton = Anton({
@@ -59,6 +60,7 @@ export default function RootLayout({
           Pular para conteudo
         </a>
         {children}
+        <PushPrompt />
         {process.env.NEXT_PUBLIC_POSTHOG_KEY && (
           <Script
             id="posthog"

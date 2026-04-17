@@ -131,7 +131,29 @@ export default async function ContaPage() {
           </div>
         </div>
 
-        <form action={logout} className="mt-8">
+        {/* LGPD — Dados do usuario */}
+        <div className="mt-8 rounded-lg border border-[color:var(--bd)] bg-[color:var(--s1)] p-5">
+          <div className="slbl mb-3">Seus dados</div>
+          <div className="flex gap-2">
+            <a
+              href="/api/export-data"
+              className="flex-1 rounded-md border border-[color:var(--bd)] bg-[color:var(--s2)] py-2 text-center font-[family-name:var(--font-condensed)] text-[11px] font-bold uppercase tracking-wider text-[color:var(--tx2)] transition-colors hover:border-[color:var(--or)] hover:text-[color:var(--or)]"
+            >
+              Exportar dados
+            </a>
+            <a
+              href="/conta/excluir"
+              className="flex-1 rounded-md border border-red-500/20 bg-red-500/5 py-2 text-center font-[family-name:var(--font-condensed)] text-[11px] font-bold uppercase tracking-wider text-red-400/70 transition-colors hover:border-red-500/40 hover:text-red-400"
+            >
+              Excluir conta
+            </a>
+          </div>
+          <p className="mt-2 text-[10px] text-[color:var(--tx3)]">
+            Conforme LGPD, voce pode exportar ou excluir todos os seus dados a qualquer momento.
+          </p>
+        </div>
+
+        <form action={logout} className="mt-4">
           <button
             type="submit"
             className="w-full rounded-md border border-[color:var(--bd)] bg-[color:var(--s2)] py-2.5 font-[family-name:var(--font-condensed)] text-sm font-bold uppercase tracking-wider text-[color:var(--tx2)] transition-colors hover:border-red-500/40 hover:text-red-400"
