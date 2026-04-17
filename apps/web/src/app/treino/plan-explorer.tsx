@@ -479,6 +479,8 @@ function ExerciseCard({
 }) {
   const [isPending, startTransition] = useTransition();
   const [showVideo, setShowVideo] = useState(false);
+  const [videoId, setVideoId] = useState<string | null>(null);
+  const [videoLoading, setVideoLoading] = useState(false);
   const e = ex.exercises;
   if (!e) return null;
 
@@ -507,6 +509,25 @@ function ExerciseCard({
     });
   };
 
+  const handleShowVideo = async () => {
+    if (showVideo) { setShowVideo(false); return; }
+    setShowVideo(true);
+    if (videoId) return;
+    setVideoLoading(true);
+    try {
+      const cacheKey = `yt_${e.slug}`;
+      const cached = localStorage.getItem(cacheKey);
+      if (cached) { setVideoId(cached); setVideoLoading(false); return; }
+      const res = await fetch(`/api/youtube-search?q=${encodeURIComponent(e.name)}`);
+      const data = await res.json();
+      if (data.videoId) {
+        setVideoId(data.videoId);
+        localStorage.setItem(cacheKey, data.videoId);
+      }
+    } catch { /* fallback: no video */ }
+    setVideoLoading(false);
+  };
+
   return (
     <div
       className="overflow-hidden rounded-xl border-[1.5px] border-[color:var(--bd)] bg-[color:var(--s1)] transition-all"
@@ -529,11 +550,7 @@ function ExerciseCard({
         </div>
         <div className="flex shrink-0 flex-col items-end gap-1.5">
           {e.youtube_search_url && (
-            <button
-              onClick={() => setShowVideo(!showVideo)}
-              className="yt-btn"
-              aria-label={showVideo ? "Fechar video" : "Ver como fazer"}
-            >
+            <button onClick={handleShowVideo} className="yt-btn">
               {showVideo ? "✕ Fechar" : "▶ Ver"}
             </button>
           )}
@@ -558,19 +575,37 @@ function ExerciseCard({
         </div>
       </div>
 
-      {/* Video inline expandivel */}
-      {showVideo && e.youtube_search_url && (
+      {/* Video inline */}
+      {showVideo && (
         <div className="animate-in border-t border-[color:var(--bd)] bg-black">
-          <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
-            <iframe
-              src={e.youtube_search_url.replace("youtube.com/results?search_query=", "youtube.com/embed?listType=search&list=") + "&autoplay=0&rel=0&modestbranding=1"}
-              className="absolute inset-0 h-full w-full"
-              allow="accelerometer; encrypted-media; gyroscope"
-              allowFullScreen
-              loading="lazy"
-              title={`Video: ${e.name}`}
-            />
-          </div>
+          {videoLoading && (
+            <div className="flex items-center justify-center py-8">
+              <svg className="h-6 w-6 animate-[spin_0.6s_linear_infinite] text-[color:var(--or)]" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeDasharray="50 20" />
+              </svg>
+              <span className="ml-2 text-xs text-[color:var(--tx3)]">Buscando video...</span>
+            </div>
+          )}
+          {videoId && (
+            <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+              <iframe
+                src={`https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1`}
+                className="absolute inset-0 h-full w-full"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                loading="lazy"
+                title={`Video: ${e.name}`}
+              />
+            </div>
+          )}
+          {!videoLoading && !videoId && (
+            <div className="flex flex-col items-center gap-2 py-6">
+              <span className="text-xs text-[color:var(--tx3)]">Video nao encontrado</span>
+              <a href={e.youtube_search_url!} target="_blank" rel="noopener noreferrer" className="yt-btn">
+                Buscar no YouTube ↗
+              </a>
+            </div>
+          )}
         </div>
       )}
 
