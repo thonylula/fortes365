@@ -13,7 +13,7 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-    const searchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(q + " exercicio calistenia")}`;
+    const searchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent("como fazer " + q + " exercicio tutorial")}`;
     const res = await fetch(searchUrl, {
       headers: {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
