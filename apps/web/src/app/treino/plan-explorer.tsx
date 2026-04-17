@@ -464,6 +464,7 @@ function ExerciseCard({
   onStartRest: (rest: string, name: string) => void;
 }) {
   const [isPending, startTransition] = useTransition();
+  const [showVideo, setShowVideo] = useState(false);
   const e = ex.exercises;
   if (!e) return null;
 
@@ -492,53 +493,70 @@ function ExerciseCard({
 
   return (
     <div
-      className="ex-card"
+      className="overflow-hidden rounded-xl border-[1.5px] border-[color:var(--bd)] bg-[color:var(--s1)] transition-all"
       style={isDone ? { borderColor: "var(--gn)", background: "rgba(34,197,94,.06)" } : undefined}
     >
-      <div className="ex-num" style={isDone ? { color: "var(--gn)" } : undefined}>
-        {isDone ? "✓" : String(index + 1).padStart(2, "0")}
-      </div>
-      <div className="flex-1">
-        <div className="ex-name">{e.name}</div>
-        {e.muscle_group && <div className="ex-muscle">{e.muscle_group}</div>}
-        <div className="flex flex-wrap gap-[5px]">
-          {ex.sets != null && <span className="et ts">{ex.sets} séries</span>}
-          {ex.reps && <span className="et tr">{ex.reps}</span>}
-          {ex.rest && <span className="et td">desc {ex.rest}</span>}
-          {e.kcal_estimate != null && <span className="et tk">~{e.kcal_estimate} kcal</span>}
+      <div className="flex gap-[0.7rem] p-[0.9rem]">
+        <div className="ex-num" style={isDone ? { color: "var(--gn)" } : undefined}>
+          {isDone ? "✓" : String(index + 1).padStart(2, "0")}
         </div>
-        {e.modifier && <div className="ex-mod">{e.modifier}</div>}
+        <div className="flex-1">
+          <div className="ex-name">{e.name}</div>
+          {e.muscle_group && <div className="ex-muscle">{e.muscle_group}</div>}
+          <div className="flex flex-wrap gap-[5px]">
+            {ex.sets != null && <span className="et ts">{ex.sets} series</span>}
+            {ex.reps && <span className="et tr">{ex.reps}</span>}
+            {ex.rest && <span className="et td">desc {ex.rest}</span>}
+            {e.kcal_estimate != null && <span className="et tk">~{e.kcal_estimate} kcal</span>}
+          </div>
+          {e.modifier && <div className="ex-mod">{e.modifier}</div>}
+        </div>
+        <div className="flex shrink-0 flex-col items-end gap-1.5">
+          {e.youtube_search_url && (
+            <button
+              onClick={() => setShowVideo(!showVideo)}
+              className="yt-btn"
+              aria-label={showVideo ? "Fechar video" : "Ver como fazer"}
+            >
+              {showVideo ? "✕ Fechar" : "▶ Ver"}
+            </button>
+          )}
+          {isLoggedIn && (
+            <button
+              onClick={handleToggle}
+              disabled={isPending}
+              className="flex items-center gap-1 rounded-md px-2 py-1 font-[family-name:var(--font-condensed)] text-[10px] font-bold uppercase tracking-wider transition-colors"
+              style={
+                isDone
+                  ? { background: "var(--gnd)", border: "1.5px solid var(--gn)", color: "var(--gn)" }
+                  : { background: "none", border: "1.5px solid var(--bd)", color: "var(--tx2)" }
+              }
+            >
+              {isPending ? (
+                <svg className="h-3 w-3 animate-[spin_0.6s_linear_infinite]" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeDasharray="50 20" />
+                </svg>
+              ) : isDone ? "✓ Feito" : "Concluir"}
+            </button>
+          )}
+        </div>
       </div>
-      <div className="flex shrink-0 flex-col items-end gap-1.5">
-        {e.youtube_search_url && (
-          <a
-            href={e.youtube_search_url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="yt-btn"
-          >
-            ▶ YouTube
-          </a>
-        )}
-        {isLoggedIn && (
-          <button
-            onClick={handleToggle}
-            disabled={isPending}
-            className="flex items-center gap-1 rounded-md px-2 py-1 font-[family-name:var(--font-condensed)] text-[10px] font-bold uppercase tracking-wider transition-colors"
-            style={
-              isDone
-                ? { background: "var(--gnd)", border: "1.5px solid var(--gn)", color: "var(--gn)" }
-                : { background: "none", border: "1.5px solid var(--bd)", color: "var(--tx2)" }
-            }
-          >
-            {isPending ? (
-              <svg className="h-3 w-3 animate-[spin_0.6s_linear_infinite]" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeDasharray="50 20" />
-              </svg>
-            ) : isDone ? "✓ Feito" : "Concluir"}
-          </button>
-        )}
-      </div>
+
+      {/* Video inline expandivel */}
+      {showVideo && e.youtube_search_url && (
+        <div className="animate-in border-t border-[color:var(--bd)] bg-black">
+          <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+            <iframe
+              src={e.youtube_search_url.replace("youtube.com/results?search_query=", "youtube.com/embed?listType=search&list=") + "&autoplay=0&rel=0&modestbranding=1"}
+              className="absolute inset-0 h-full w-full"
+              allow="accelerometer; encrypted-media; gyroscope"
+              allowFullScreen
+              loading="lazy"
+              title={`Video: ${e.name}`}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
