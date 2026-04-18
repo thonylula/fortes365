@@ -2,6 +2,7 @@
 
 import { createClient } from "@/lib/supabase/server";
 import { createClient as createAdmin } from "@supabase/supabase-js";
+import { sendAccountDeletedEmail } from "@/lib/email";
 
 export async function exportUserData() {
   const supabase = await createClient();
@@ -39,6 +40,8 @@ export async function deleteAccount() {
   } = await supabase.auth.getUser();
   if (!user) return { error: "Not authenticated" };
 
+  const email = user.email;
+
   const admin = createAdmin(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.SUPABASE_SERVICE_ROLE_KEY!,
@@ -52,6 +55,14 @@ export async function deleteAccount() {
   await admin.from("subscriptions").delete().eq("user_id", user.id);
   await admin.from("profiles").delete().eq("id", user.id);
   await admin.auth.admin.deleteUser(user.id);
+
+  if (email) {
+    try {
+      await sendAccountDeletedEmail(email);
+    } catch (err) {
+      console.error("[conta/actions] deletion email failed:", err);
+    }
+  }
 
   return { ok: true };
 }

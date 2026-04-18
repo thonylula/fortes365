@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { MercadoPagoConfig, Payment } from "mercadopago";
 import { createClient as createAdminClient } from "@supabase/supabase-js";
+import { sendPaymentConfirmedEmail } from "@/lib/email";
 
 const mp = new MercadoPagoConfig({
   accessToken: process.env.MP_ACCESS_TOKEN!,
@@ -12,6 +13,13 @@ function getSupabaseAdmin() {
     process.env.SUPABASE_SERVICE_ROLE_KEY!,
   );
 }
+
+const TIER_LABEL: Record<string, string> = {
+  monthly: "Mensal",
+  annual: "Anual",
+  couple_monthly: "Casal Mensal",
+  couple_annual: "Casal Anual",
+};
 
 export async function POST(request: Request) {
   const body = await request.json();
@@ -53,19 +61,52 @@ export async function POST(request: Request) {
       periodEnd.setMonth(periodEnd.getMonth() + 1);
     }
 
-    await supabase.from("subscriptions").upsert(
-      {
-        user_id: metadata.user_id,
-        tier: metadata.plan_tier,
-        status: "active",
-        provider: "mercadopago",
-        provider_subscription_id: String(paymentId),
-        current_period_start: now.toISOString(),
-        current_period_end: periodEnd.toISOString(),
-        updated_at: now.toISOString(),
-      },
-      { onConflict: "provider_subscription_id" },
-    );
+    const { data: subscription } = await supabase
+      .from("subscriptions")
+      .upsert(
+        {
+          user_id: metadata.user_id,
+          tier: metadata.plan_tier,
+          status: "active",
+          provider: "mercadopago",
+          provider_subscription_id: String(paymentId),
+          current_period_start: now.toISOString(),
+          current_period_end: periodEnd.toISOString(),
+          updated_at: now.toISOString(),
+        },
+        { onConflict: "provider_subscription_id" },
+      )
+      .select("id, last_payment_email_sent_at")
+      .single();
+
+    // Email de confirmacao de pagamento (idempotente: max 1 por 24h)
+    try {
+      const lastSent = subscription?.last_payment_email_sent_at
+        ? new Date(subscription.last_payment_email_sent_at).getTime()
+        : 0;
+      const oneDayMs = 24 * 60 * 60 * 1000;
+      if (Date.now() - lastSent > oneDayMs) {
+        const { data: userData } = await supabase.auth.admin.getUserById(
+          metadata.user_id,
+        );
+        const email = userData?.user?.email;
+        if (email) {
+          await sendPaymentConfirmedEmail(email, {
+            plan: TIER_LABEL[metadata.plan_tier] ?? metadata.plan_tier,
+            amountBRL: Number(payment.transaction_amount ?? 0),
+            nextChargeDate: periodEnd,
+          });
+          if (subscription?.id) {
+            await supabase
+              .from("subscriptions")
+              .update({ last_payment_email_sent_at: new Date().toISOString() })
+              .eq("id", subscription.id);
+          }
+        }
+      }
+    } catch (err) {
+      console.error("[mp/webhook] payment email trigger failed:", err);
+    }
 
     return NextResponse.json({ received: true, activated: true });
   } catch (err) {
