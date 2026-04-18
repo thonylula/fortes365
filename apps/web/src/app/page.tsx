@@ -745,6 +745,7 @@ function SiteFooter() {
           <FooterColumn
             title="Empresa"
             items={[
+              ["Sobre", "/sobre"],
               ["Contato", "mailto:contato@fortes365.com.br"],
               ["Privacidade", "/privacidade"],
               ["Termos", "/termos"],
