@@ -1,4 +1,13 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+import { JsonLd } from "@/components/json-ld";
+
+export const metadata: Metadata = {
+  title: "Calistenia em casa por 12 meses",
+  description:
+    "Programa brasileiro de calistenia periodizada: 4 fases, 56 habilidades, coach IA em português e nutrição pt-BR. Mês 1 gratuito, sem cartão.",
+  alternates: { canonical: "/" },
+};
 
 const SPECS: Array<[string, string]> = [
   ["Duração", "12 meses"],
@@ -96,6 +105,7 @@ export default function Home() {
       <SiteHeader />
 
       <main id="main-content">
+        <JsonLd />
         <Hero />
         <Divider />
         <Pillars />

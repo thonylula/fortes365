@@ -1,8 +1,16 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { getSubscriptionInfo } from "@/lib/supabase/guards";
 import { CheckoutButton } from "./checkout-button";
+
+export const metadata: Metadata = {
+  title: "Planos e preços",
+  description:
+    "Escolha seu plano FORTE 365: gratuito, mensal R$14,90 ou anual R$99,90. Cancelamento em 1 clique.",
+  alternates: { canonical: "/assinar" },
+};
 
 export default async function AssinarPage({
   searchParams,

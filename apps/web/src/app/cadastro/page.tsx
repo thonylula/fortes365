@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { signup } from "../login/actions";
+
+export const metadata: Metadata = {
+  title: "Criar conta · Mês 1 grátis",
+  description:
+    "Crie sua conta no FORTE 365 e comece o programa de calistenia: mês 1 completo grátis, sem cartão.",
+  alternates: { canonical: "/cadastro" },
+};
 
 export default async function CadastroPage({
   searchParams,

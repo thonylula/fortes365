@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { login } from "./actions";
+
+export const metadata: Metadata = {
+  title: "Entrar",
+  description: "Acesse sua conta no FORTE 365 para continuar seu programa de calistenia.",
+  robots: { index: false, follow: false },
+};
 
 export default async function LoginPage({
   searchParams,
