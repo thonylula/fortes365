@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState, useTransition } from "react";
+import dynamic from "next/dynamic";
 import { toggleExerciseDone } from "@/lib/supabase/mutations";
 import { NavTabs } from "@/components/nav-tabs";
 import { PaywallModal } from "@/components/paywall-modal";
@@ -8,6 +9,16 @@ import { AchievementToast } from "@/components/achievement-toast";
 import { useRestTimer, RestTimerOverlay } from "@/components/rest-timer";
 import { hapticSuccess, playSuccess, playComplete } from "@/lib/feedback";
 import { levelByIndex, levelShort } from "@/lib/levels";
+import { isSupported as isWebcamSupported } from "@/components/webcam-coach/supported";
+
+const WebcamCoach = dynamic(() => import("@/components/webcam-coach"), {
+  ssr: false,
+  loading: () => (
+    <div className="flex items-center justify-center py-8 text-xs text-[color:var(--tx3)]">
+      Carregando coach...
+    </div>
+  ),
+});
 
 type AchievementInfo = { slug: string; title: string; emoji: string };
 
@@ -488,8 +499,11 @@ function ExerciseCard({
   const [showVideo, setShowVideo] = useState(false);
   const [videoId, setVideoId] = useState<string | null>(null);
   const [videoLoading, setVideoLoading] = useState(false);
+  const [showCoach, setShowCoach] = useState(false);
   const e = ex.exercises;
   if (!e) return null;
+
+  const coachSupported = isWebcamSupported(e.slug);
 
   const handleToggle = () => {
     const wasNotDone = !isDone;
@@ -514,6 +528,16 @@ function ExerciseCard({
         onAchievement(result.newAchievements);
       }
     });
+  };
+
+  const handleCoachStop = (detectedReps: number) => {
+    setShowCoach(false);
+    if (detectedReps > 0 && !isDone) {
+      if (typeof window !== "undefined") {
+        const msg = `Coach webcam contou ${detectedReps} reps. Marcar esta serie como feita?`;
+        if (window.confirm(msg)) handleToggle();
+      }
+    }
   };
 
   const handleShowVideo = async () => {
@@ -559,6 +583,15 @@ function ExerciseCard({
           {e.youtube_search_url && (
             <button onClick={handleShowVideo} className="yt-btn">
               {showVideo ? "✕ Fechar" : "▶ Ver"}
+            </button>
+          )}
+          {coachSupported && isLoggedIn && (
+            <button
+              onClick={() => setShowCoach((v) => !v)}
+              className="flex items-center gap-1 rounded-md border-[1.5px] border-[color:var(--or)] bg-[color:var(--ord)] px-2 py-1 font-[family-name:var(--font-condensed)] text-[10px] font-bold uppercase tracking-wider text-[color:var(--or)] transition-colors hover:bg-[color:var(--or)] hover:text-black"
+              title="Coach por webcam conta reps e avisa sobre forma"
+            >
+              {showCoach ? "✕ Coach" : "◉ Coach"}
             </button>
           )}
           {isLoggedIn && (
@@ -613,6 +646,13 @@ function ExerciseCard({
               </a>
             </div>
           )}
+        </div>
+      )}
+
+      {/* Webcam coach inline */}
+      {showCoach && coachSupported && (
+        <div className="animate-in border-t border-[color:var(--bd)]">
+          <WebcamCoach exerciseSlug={e.slug} onStop={handleCoachStop} />
         </div>
       )}
 
