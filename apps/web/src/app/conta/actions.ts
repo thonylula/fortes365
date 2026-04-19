@@ -1,5 +1,6 @@
 "use server";
 
+import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { createClient as createAdmin } from "@supabase/supabase-js";
 import { sendAccountDeletedEmail } from "@/lib/email";
@@ -65,4 +66,33 @@ export async function deleteAccount() {
   }
 
   return { ok: true };
+}
+
+export async function saveReview(formData: FormData) {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) redirect("/login");
+
+  const rating = Number(formData.get("rating"));
+  const body = String(formData.get("body") ?? "").trim().slice(0, 500);
+
+  if (!Number.isInteger(rating) || rating < 1 || rating > 5) {
+    redirect("/conta?reviewError=Selecione+uma+nota+de+1+a+5");
+  }
+
+  const { error } = await supabase.from("reviews").upsert(
+    {
+      user_id: user.id,
+      rating,
+      body,
+      updated_at: new Date().toISOString(),
+    },
+    { onConflict: "user_id" },
+  );
+
+  if (error) {
+    redirect(`/conta?reviewError=${encodeURIComponent(error.message)}`);
+  }
+
+  redirect("/conta?reviewSaved=1");
 }

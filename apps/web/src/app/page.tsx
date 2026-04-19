@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd } from "@/components/json-ld";
+import { getRecentReviews, getReviewStats, type RecentReview } from "@/lib/reviews";
 
 export const metadata: Metadata = {
   title: "Calistenia em casa por 12 meses",
@@ -99,13 +100,17 @@ const FAQ: Array<{ q: string; a: string }> = [
   },
 ];
 
-export default function Home() {
+export default async function Home() {
+  const stats = await getReviewStats();
+  const reviews = stats.count >= 3 ? await getRecentReviews(3) : [];
+  const showReviews = stats.count >= 3;
+
   return (
     <div className="flex min-h-screen flex-col bg-[color:var(--bg)]">
       <SiteHeader />
 
       <main id="main-content">
-        <JsonLd />
+        <JsonLd stats={stats} />
         <Hero />
         <Divider />
         <Pillars />
@@ -115,10 +120,16 @@ export default function Home() {
         <Pricing />
         <Divider />
         <Manifesto />
+        {showReviews && (
+          <>
+            <Divider />
+            <Reviews stats={stats} reviews={reviews} />
+          </>
+        )}
         <Divider />
-        <Faq />
+        <Faq index={showReviews ? "06" : "05"} />
         <Divider />
-        <FinalCta />
+        <FinalCta index={showReviews ? "07" : "06"} />
       </main>
 
       <SiteFooter />
@@ -640,13 +651,13 @@ function Manifesto() {
 /* FAQ                                                          */
 /* ============================================================ */
 
-function Faq() {
+function Faq({ index = "05" }: { index?: string }) {
   return (
     <section id="faq" className="scroll-mt-20">
       <div className="mx-auto max-w-5xl px-5 py-20 sm:px-8 sm:py-24">
         <div className="grid gap-10 md:grid-cols-12">
           <div className="md:col-span-4">
-            <SectionLabel index="05" label="Dúvidas" />
+            <SectionLabel index={index} label="Dúvidas" />
             <h2 className="mt-5 font-[family-name:var(--font-display)] text-3xl leading-tight tracking-wide sm:text-4xl">
               Perguntas
               <br />
@@ -689,13 +700,13 @@ function Faq() {
 /* Final CTA                                                    */
 /* ============================================================ */
 
-function FinalCta() {
+function FinalCta({ index = "06" }: { index?: string }) {
   return (
     <section>
       <div className="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32">
         <div className="grid gap-10 md:grid-cols-12 md:items-end">
           <div className="md:col-span-8">
-            <SectionLabel index="06" label="Começar" />
+            <SectionLabel index={index} label="Começar" />
             <h2 className="mt-5 font-[family-name:var(--font-display)] text-4xl leading-[1.02] tracking-wide sm:text-6xl">
               Comece hoje.
               <br />O <span className="text-[color:var(--or)]">primeiro mês</span> é gratuito.
@@ -717,6 +728,90 @@ function FinalCta() {
             </Link>
           </div>
         </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================ */
+/* Reviews (condicional — so renderiza com >= 3 avaliacoes)     */
+/* ============================================================ */
+
+function Stars({ rating, size = 16 }: { rating: number; size?: number }) {
+  const full = Math.round(rating);
+  return (
+    <span
+      aria-label={`${rating.toFixed(1)} de 5 estrelas`}
+      style={{ fontSize: size, lineHeight: 1, letterSpacing: 1 }}
+    >
+      {[1, 2, 3, 4, 5].map((n) => (
+        <span key={n} style={{ color: n <= full ? "var(--or)" : "var(--tx3)" }}>
+          {n <= full ? "★" : "☆"}
+        </span>
+      ))}
+    </span>
+  );
+}
+
+function Reviews({
+  stats,
+  reviews,
+}: {
+  stats: { count: number; average: number };
+  reviews: RecentReview[];
+}) {
+  return (
+    <section id="avaliacoes" className="scroll-mt-20 bg-[color:var(--s1)]">
+      <div className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-24">
+        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div>
+            <SectionLabel index="05" label="Avaliações" />
+            <h2 className="mt-5 font-[family-name:var(--font-display)] text-3xl leading-tight tracking-wide sm:text-4xl">
+              O que dizem
+              <br />
+              quem usa.
+            </h2>
+          </div>
+          <div className="flex items-end gap-4">
+            <div>
+              <div className="font-[family-name:var(--font-display)] text-5xl leading-none tracking-wider text-[color:var(--or)]">
+                {stats.average.toFixed(1)}
+              </div>
+              <div className="mt-2">
+                <Stars rating={stats.average} size={20} />
+              </div>
+            </div>
+            <div className="pb-1 font-[family-name:var(--font-condensed)] text-[11px] uppercase tracking-[2px] text-[color:var(--tx3)]">
+              {stats.count} avaliações
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-12 grid gap-px bg-[color:var(--bd)] md:grid-cols-3">
+          {reviews.map((r, i) => (
+            <article
+              key={i}
+              className="flex flex-col gap-4 bg-[color:var(--s1)] p-6"
+            >
+              <Stars rating={r.rating} size={18} />
+              {r.body && (
+                <p className="text-[14px] leading-[1.7] text-[color:var(--tx2)]">
+                  &ldquo;{r.body}&rdquo;
+                </p>
+              )}
+              <div className="mt-auto font-[family-name:var(--font-condensed)] text-[11px] font-bold uppercase tracking-[2px] text-[color:var(--or)]">
+                — {r.firstName}
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <p className="mt-8 text-center font-[family-name:var(--font-condensed)] text-[10px] uppercase tracking-[2px] text-[color:var(--tx3)]">
+          Tem conta? Deixe a sua em{" "}
+          <Link href="/conta" className="text-[color:var(--or)] hover:underline">
+            /conta
+          </Link>
+        </p>
       </div>
     </section>
   );

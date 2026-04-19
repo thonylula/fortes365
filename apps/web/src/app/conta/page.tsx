@@ -1,11 +1,18 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
+import { getMyReview } from "@/lib/reviews";
 import { logout } from "../login/actions";
 import { RegionSelector } from "./region-selector";
 import { AchievementSummary } from "./achievement-summary";
+import { ReviewForm } from "./review-form";
 
-export default async function ContaPage() {
+export default async function ContaPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ reviewSaved?: string; reviewError?: string }>;
+}) {
+  const { reviewSaved, reviewError } = await searchParams;
   const supabase = await createClient();
   const {
     data: { user },
@@ -45,6 +52,8 @@ export default async function ContaPage() {
         year: "numeric",
       })
     : "—";
+
+  const myReview = await getMyReview();
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -110,6 +119,18 @@ export default async function ContaPage() {
               return a ? { emoji: a.emoji, title: a.title } : null;
             }).filter(Boolean) as { emoji: string; title: string }[]}
           />
+
+          <div className="rounded-lg border border-[color:var(--bd)] bg-[color:var(--s1)] p-5">
+            <div className="slbl mb-3">Sua avaliação</div>
+            <p className="mb-4 text-xs text-[color:var(--tx3)]">
+              Sua nota aparece publicamente na landing quando houver pelo menos 3 avaliações.
+            </p>
+            <ReviewForm
+              existing={myReview}
+              saved={reviewSaved === "1"}
+              errorMessage={reviewError}
+            />
+          </div>
 
           <RegionSelector currentRegion={profile?.region ?? null} />
 
