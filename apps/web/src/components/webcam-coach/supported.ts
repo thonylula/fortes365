@@ -12,7 +12,7 @@ export type SupportedMovement = {
 const PUSH_UP: SupportedMovement = {
   detector: pushUp,
   label: "Flexao",
-  hint: "Posicione a camera de lado, corpo inteiro visivel.",
+  hint: "Camera de lado, corpo inteiro visivel.",
 };
 
 const SQUAT: SupportedMovement = {
@@ -27,21 +27,39 @@ const PULL_UP: SupportedMovement = {
   hint: "Camera frontal, barra e queixo visiveis.",
 };
 
+// Slugs reais do banco (pt-BR). Mantido sincronizado com supabase/seed.sql.
 export const SUPPORTED: Record<string, SupportedMovement> = {
-  "push-up": PUSH_UP,
-  "push-up-incline": PUSH_UP,
-  "push-up-knee": PUSH_UP,
-  "diamond-push-up": PUSH_UP,
-  "wide-push-up": PUSH_UP,
-  "squat": SQUAT,
-  "air-squat": SQUAT,
-  "bodyweight-squat": SQUAT,
-  "goblet-squat": SQUAT,
-  "split-squat": SQUAT,
+  // flexoes
+  "flexao-na-parede": PUSH_UP,
+  "flexao-de-joelhos": PUSH_UP,
+  "flexao-inclinada-na-mesa": PUSH_UP,
+  "flexao-normal-no-chao": PUSH_UP,
+  "flexao-diamante": PUSH_UP,
+  "flexao-archer": PUSH_UP,
+  "flexao-explosiva": PUSH_UP,
+  "flexao-explosiva-clap": PUSH_UP,
+  "flexao-20s-40s": PUSH_UP,
+  "pike-push-up": PUSH_UP,
+  "pike-push-up-avancado": PUSH_UP,
+  "pike-push-up-c-pes-elevados": PUSH_UP,
+
+  // agachamentos e investidas
+  "agachamento-com-cadeira": SQUAT,
+  "agachamento-livre": SQUAT,
+  "agachamento-com-pausa": SQUAT,
+  "agachamento-sumo": SQUAT,
+  "agachamento-c-salto": SQUAT,
+  "agachamento-salto-20s-40s": SQUAT,
+  "agachamento-bulgaro": SQUAT,
+  "bulgaro-c-pausa": SQUAT,
+  "jump-squat": SQUAT,
+  "pistol-squat-assistido": SQUAT,
+  "avanco-alternado": SQUAT,
+  "jump-lunge-avanco-c-salto": SQUAT,
+
+  // barra (quando aparecer no plano futuro)
   "pull-up": PULL_UP,
   "chin-up": PULL_UP,
-  "assisted-pull-up": PULL_UP,
-  "negative-pull-up": PULL_UP,
 };
 
 export function isSupported(slug: string | null | undefined): boolean {
