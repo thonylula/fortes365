@@ -35,7 +35,7 @@ export default function SobrePage() {
 
       <LegalSection index="01" title="A origem">
         <p>
-          O projeto começou como um caderno. Doze meses divididos em quatro
+          O projeto começou como um caderno. Doze níveis divididos em quatro
           fases, progressão semanal, exercícios descritos em detalhe,
           substituições para dias de dor ou cansaço.
         </p>
@@ -55,7 +55,7 @@ export default function SobrePage() {
         <ul className="list-none space-y-2 border-l border-[color:var(--bd)] pl-5">
           <li>
             <strong className="text-[color:var(--tx)]">Treino</strong> —
-            doze meses de periodização automatizada com vídeo por
+            doze níveis de periodização automatizada com vídeo por
             exercício, timer de descanso e registro de sets.
           </li>
           <li>

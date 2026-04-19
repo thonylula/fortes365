@@ -136,13 +136,13 @@ export async function sendWelcomeEmail(
   const greeting = opts.name ? `Bem-vindo, ${opts.name}.` : "Bem-vindo.";
   const subject = "Bem-vindo ao FORTE 365";
   const preheader =
-    "Sua conta foi confirmada. Programa de 12 meses pronto pra começar.";
+    "Sua conta foi confirmada. Programa em 12 níveis pronto pra começar.";
 
   const body = `
-    <p style="margin:0 0 16px 0;">Sua conta foi confirmada e o programa de doze meses está pronto.</p>
-    <p style="margin:0 0 16px 0;">O primeiro mês é gratuito. Aqui vai o roteiro sugerido:</p>
+    <p style="margin:0 0 16px 0;">Sua conta foi confirmada e o programa em doze níveis está pronto.</p>
+    <p style="margin:0 0 16px 0;">O Nível 1 (Despertar) é gratuito. Aqui vai o roteiro sugerido:</p>
     <ol style="margin:0 0 16px 20px;padding:0;">
-      <li style="margin-bottom:6px;">Abra a aba <strong>Treino</strong> e comece pela Semana 1 do Mês 1 (fase adaptação).</li>
+      <li style="margin-bottom:6px;">Abra a aba <strong>Treino</strong> e comece pela Semana 1 do <strong>Nível I — Despertar</strong>.</li>
       <li style="margin-bottom:6px;">Respeite o tempo de descanso — o timer é seu aliado, não um obstáculo.</li>
       <li style="margin-bottom:6px;">Quando bater dúvida, o <strong>Coach IA</strong> responde 24/7 em português.</li>
     </ol>
@@ -151,10 +151,10 @@ export async function sendWelcomeEmail(
 
   const text = `${greeting}
 
-Sua conta foi confirmada e o programa de doze meses está pronto.
+Sua conta foi confirmada e o programa em doze níveis está pronto.
 
-O primeiro mês é gratuito. Roteiro sugerido:
-1. Abra a aba Treino e comece pela Semana 1 do Mês 1 (fase adaptação).
+O Nível 1 (Despertar) é gratuito. Roteiro sugerido:
+1. Abra a aba Treino e comece pela Semana 1 do Nível I — Despertar.
 2. Respeite o tempo de descanso — o timer é seu aliado.
 3. Use o Coach IA para tirar dúvidas em português.
 

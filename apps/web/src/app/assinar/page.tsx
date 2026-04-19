@@ -52,7 +52,7 @@ export default async function AssinarPage({
         )}
         {status === "pendente" && (
           <div className="mb-6 rounded-md border border-[color:var(--yw)]/40 bg-[color:var(--yw)]/10 px-4 py-3 text-sm text-[color:var(--yw)]">
-            Pagamento pendente. Assim que confirmado, os 12 meses serão liberados automaticamente.
+            Pagamento pendente. Assim que confirmado, os 12 níveis serão liberados automaticamente.
           </div>
         )}
 
@@ -62,7 +62,7 @@ export default async function AssinarPage({
             ASSINE O PREMIUM
           </h1>
           <p className="mt-2 text-sm text-[color:var(--tx2)]">
-            Desbloqueie os 12 meses completos. Pague com Pix, cartão ou boleto.
+            Desbloqueie os 12 níveis completos. Pague com Pix, cartão ou boleto.
           </p>
         </div>
 
@@ -73,7 +73,7 @@ export default async function AssinarPage({
             period="/mês"
             planKey="monthly"
             features={[
-              "12 meses de treino periodizado",
+              "12 níveis de treino periodizado",
               "Nutrição + receitas + compras",
               "Coach IA em português",
               "Cancela quando quiser",

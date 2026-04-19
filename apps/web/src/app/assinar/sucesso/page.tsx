@@ -16,8 +16,8 @@ export default function SucessoPage() {
           ASSINATURA ATIVA!
         </h1>
         <p className="mt-3 text-sm text-[color:var(--tx2)]">
-          Pagamento confirmado. Você agora tem acesso completo aos 12 meses de
-          treino, nutrição, receitas e lista de compras.
+          Pagamento confirmado. Você agora tem acesso completo aos 12 níveis
+          de treino, nutrição, receitas e lista de compras.
         </p>
 
         <Link
@@ -29,7 +29,7 @@ export default function SucessoPage() {
 
         <p className="mt-4 text-xs text-[color:var(--tx3)]">
           Pode levar até 1 minuto para o sistema processar o pagamento.
-          Se os meses ainda aparecerem bloqueados, recarregue a página.
+          Se os níveis ainda aparecerem bloqueados, recarregue a página.
         </p>
       </main>
     </div>

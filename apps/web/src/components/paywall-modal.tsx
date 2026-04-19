@@ -28,8 +28,8 @@ export function PaywallModal({
             CONTEÚDO PREMIUM
           </h2>
           <p className="mt-2 text-sm text-[color:var(--tx2)]">
-            Este mês faz parte do plano completo de 12 meses.
-            O mes 1 e gratis para sempre.
+            Este nível faz parte do programa completo de 12 níveis.
+            O Nível 1 é gratis para sempre.
           </p>
         </div>
 
@@ -44,7 +44,7 @@ export function PaywallModal({
               </span>
             </div>
             <p className="text-[11px] text-[color:var(--tx2)]">
-              12 meses completos + coach IA + receitas + lista de compras
+              12 níveis completos + coach IA + receitas + lista de compras
             </p>
           </div>
           <div className="rounded-lg border border-[color:var(--bd)] bg-[color:var(--s2)] p-3">
@@ -57,7 +57,7 @@ export function PaywallModal({
               </span>
             </div>
             <p className="text-[11px] text-[color:var(--tx2)]">
-              ~R$ 8,30/mês + análise mensal de progresso com IA avançada
+              ~R$ 8,30/mês + análise periódica de progresso com IA avançada
             </p>
           </div>
         </div>
@@ -82,7 +82,7 @@ export function PaywallModal({
             onClick={onClose}
             className="w-full rounded-md border border-[color:var(--bd)] py-2.5 font-[family-name:var(--font-condensed)] text-[11px] font-bold uppercase tracking-wider text-[color:var(--tx2)] transition-colors hover:border-[color:var(--tx3)]"
           >
-            Voltar aos meses grátis
+            Voltar ao Nível 1
           </button>
         </div>
       </div>

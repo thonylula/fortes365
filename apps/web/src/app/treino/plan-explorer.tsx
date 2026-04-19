@@ -7,6 +7,7 @@ import { PaywallModal } from "@/components/paywall-modal";
 import { AchievementToast } from "@/components/achievement-toast";
 import { useRestTimer, RestTimerOverlay } from "@/components/rest-timer";
 import { hapticSuccess, playSuccess, playComplete } from "@/lib/feedback";
+import { levelByIndex, levelShort } from "@/lib/levels";
 
 type AchievementInfo = { slug: string; title: string; emoji: string };
 
@@ -143,8 +144,13 @@ export function PlanExplorer({
       <Header user={user} />
       <NavTabs />
 
-      {/* Month strip */}
+      {/* Level strip (substitui o antigo strip de meses; data continua mes 0-11) */}
       <div className="border-b border-[color:var(--bd)] bg-[color:var(--s2)] px-3 py-2 overflow-x-auto">
+        <div className="mb-1 flex items-center gap-2 text-[10px] uppercase tracking-[1.5px] text-[color:var(--tx3)]">
+          <span>Nível</span>
+          <span className="text-[color:var(--or)]">{levelByIndex(monthId).name}</span>
+          <span className="text-[color:var(--tx3)]">· {levelByIndex(monthId).subtitle}</span>
+        </div>
         <div className="flex min-w-max gap-[5px]">
           {months.map((m) => {
             const locked = !isPremium && !allowedMonths.has(m.id);
@@ -162,8 +168,9 @@ export function PlanExplorer({
                   setWeekIndex(0);
                 }}
                 style={locked ? { opacity: 0.5 } : undefined}
+                title={`Nível ${m.id + 1} — ${levelByIndex(m.id).name}`}
               >
-                {locked ? "🔒 " : ""}{m.short_name}
+                {locked ? "🔒 " : ""}{levelShort(m.id)}
               </button>
             );
           })}
@@ -188,7 +195,7 @@ export function PlanExplorer({
           ))}
         </div>
         <span className={`pchip ${month.phase_css_class} shrink-0`}>
-          {month.name} · {month.phase_label} · {month.season}
+          {month.phase_label} · {month.season}
         </span>
       </div>
 

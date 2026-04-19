@@ -1,7 +1,7 @@
 {
   "name": "FORTE 365 — Calistenia em casa",
   "short_name": "FORTE 365",
-  "description": "Plano anual de calistenia e nutrição em português. Funciona offline.",
+  "description": "Calistenia em 12 níveis progressivos, em português. Funciona offline.",
   "start_url": "/treino",
   "display": "standalone",
   "background_color": "#0b0b0b",

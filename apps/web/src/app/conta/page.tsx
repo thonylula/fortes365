@@ -142,12 +142,12 @@ export default async function ContaPage({
                   Grátis
                 </span>
                 <span className="text-xs text-[color:var(--tx3)]">
-                  Mes 1 liberado
+                  Nível 1 liberado
                 </span>
               </div>
             </div>
             <p className="mt-3 text-xs text-[color:var(--tx3)]">
-              Upgrade para Premium em breve — R$14,90/mês com 12 meses + coach IA.
+              Upgrade para Premium em breve — R$14,90/mês com 12 níveis + coach IA.
             </p>
           </div>
         </div>

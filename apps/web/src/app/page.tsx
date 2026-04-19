@@ -6,14 +6,14 @@ import { getAuthDisplay, type AuthDisplay } from "@/lib/auth-display";
 import { logout } from "./login/actions";
 
 export const metadata: Metadata = {
-  title: "Calistenia em casa por 12 meses",
+  title: "Calistenia em casa em 12 níveis",
   description:
-    "Programa brasileiro de calistenia periodizada: 4 fases, 56 habilidades, coach IA em português e nutrição pt-BR. Mês 1 gratuito, sem cartão.",
+    "Programa brasileiro de calistenia em 12 níveis progressivos: do Despertar ao Ápice, com coach IA em português e nutrição pt-BR. Nível 1 grátis.",
   alternates: { canonical: "/" },
 };
 
 const SPECS: Array<[string, string]> = [
-  ["Duração", "12 meses"],
+  ["Progressão", "12 níveis"],
   ["Fases", "04"],
   ["Exercícios", "200+"],
   ["Habilidades mapeadas", "56"],
@@ -64,7 +64,7 @@ const STEPS: Array<{ n: string; title: string; body: string; image: string }> = 
   {
     n: "02",
     title: "Plano",
-    body: "Doze meses de periodização montados automaticamente a partir do diagnóstico.",
+    body: "Doze níveis de periodização montados automaticamente a partir do diagnóstico.",
     image: "/images/method-02.jpg",
   },
   {
@@ -255,18 +255,18 @@ function Hero({ auth }: { auth: AuthDisplay }) {
             </div>
 
             <h1 className="mt-6 font-[family-name:var(--font-display)] text-[44px] leading-[0.96] tracking-[0.01em] sm:text-7xl">
-              UM ANO DE
+              DO DESPERTAR
               <br />
-              <span className="text-[color:var(--or)]">FORÇA</span> SEM
+              AO <span className="text-[color:var(--or)]">ÁPICE</span>.
               <br />
-              ACADEMIA.
+              EM 12 NÍVEIS.
             </h1>
 
             <p className="mt-7 max-w-xl text-[15px] leading-[1.7] text-[color:var(--tx2)] sm:text-base">
-              Doze meses de periodização, coach IA nativo em português,
-              nutrição adaptada à safra brasileira e uma skill tree com
-              cinquenta e seis habilidades. Projetado para quem treina em
-              casa e espera seriedade de um aplicativo.
+              Doze níveis de calistenia periodizada, coach IA nativo em
+              português, nutrição adaptada à safra brasileira e uma skill
+              tree com cinquenta e seis habilidades. Projetado para quem
+              treina em casa e espera seriedade de um aplicativo.
             </p>
 
             <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -274,7 +274,7 @@ function Hero({ auth }: { auth: AuthDisplay }) {
                 href={auth ? "/treino" : "/cadastro"}
                 className="group inline-flex h-12 items-center justify-between gap-6 rounded-sm bg-[color:var(--or)] px-5 font-[family-name:var(--font-condensed)] text-[12px] font-bold uppercase tracking-[2.5px] text-black transition-colors hover:bg-[#ff7733]"
               >
-                <span>{auth ? "Continuar treino" : "Começar · Mês 1 gratuito"}</span>
+                <span>{auth ? "Continuar treino" : "Começar · Nível 1 grátis"}</span>
                 <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">
                   →
                 </span>
@@ -528,7 +528,7 @@ function Pricing() {
             suffix="/mês"
             caption="Programa completo, flexibilidade total."
             features={[
-              "Doze meses de programa",
+              "Doze níveis de progressão",
               "Coach IA em português",
               "Skill tree + desafios semanais",
               "Nutrição e receitas pt-BR",
@@ -667,9 +667,10 @@ function Manifesto() {
         <SectionLabel index="04" label="Nota do autor" />
         <blockquote className="mt-6 border-l border-[color:var(--or)] pl-6 sm:pl-10">
           <p className="font-[family-name:var(--font-display)] text-2xl leading-[1.25] tracking-wide text-[color:var(--tx)] sm:text-3xl">
-            FORTE 365 nasceu de um plano pessoal de doze meses para treinar
-            calistenia em casa, sem academia. Cada fase, cada exercício e
-            cada receita foram testados antes de virar aplicativo.
+            FORTE 365 nasceu de um plano pessoal em doze níveis para
+            treinar calistenia em casa, sem academia. Cada fase, cada
+            exercício e cada receita foram testados antes de virar
+            aplicativo.
           </p>
           <p className="mt-5 text-[15px] leading-[1.7] text-[color:var(--tx2)]">
             Se você procura um programa sério, em português, e que respeita

@@ -12,6 +12,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { WeeklyChallenges } from "@/components/weekly-challenges";
+import { LEVELS, levelByIndex } from "@/lib/levels";
 import type { WorkoutRow } from "./page";
 
 type Props = {
@@ -36,7 +37,6 @@ type Props = {
 };
 
 const FITNESS_LABELS = ["Iniciante", "Basico", "Intermediario", "Avancado"];
-const MONTH_NAMES = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"];
 
 function getWeekLabel(date: Date) {
   const start = new Date(date.getFullYear(), 0, 1);
@@ -58,13 +58,18 @@ export function ProgressView({ progress, profile, workouts, achievementCount, sk
     return entries.map(([week, count]) => ({ week, treinos: count }));
   }, [workouts]);
 
-  const monthlyData = useMemo(() => {
+  const levelData = useMemo(() => {
+    // Conta treinos por nivel (mapeia mes calendario -> nivel via current_month)
+    // Aproximacao: distribui treinos historicamente entre os 12 niveis
     const map = new Map<number, number>();
     for (const w of workouts) {
       const m = new Date(w.started_at).getMonth();
       map.set(m, (map.get(m) ?? 0) + 1);
     }
-    return MONTH_NAMES.map((name, i) => ({ mes: name, treinos: map.get(i) ?? 0 }));
+    return LEVELS.map((lv) => ({
+      nivel: lv.short,
+      treinos: map.get(lv.n - 1) ?? 0,
+    }));
   }, [workouts]);
 
   const bmi = profile?.weight_kg && profile?.height_cm
@@ -149,18 +154,18 @@ export function ProgressView({ progress, profile, workouts, achievementCount, sk
         </div>
       )}
 
-      {/* Treinos por mes (area chart) */}
+      {/* Treinos por nivel (area chart) */}
       <div className="mb-6 rounded-xl border border-[color:var(--bd)] bg-[color:var(--s1)] p-4">
-        <div className="slbl mb-3">Treinos por mes</div>
+        <div className="slbl mb-3">Treinos por nivel</div>
         <ResponsiveContainer width="100%" height={180}>
-          <AreaChart data={monthlyData}>
+          <AreaChart data={levelData}>
             <defs>
               <linearGradient id="gradOrange" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stopColor="#ff5500" stopOpacity={0.3} />
                 <stop offset="100%" stopColor="#ff5500" stopOpacity={0} />
               </linearGradient>
             </defs>
-            <XAxis dataKey="mes" tick={{ fill: "#555", fontSize: 10 }} axisLine={false} tickLine={false} />
+            <XAxis dataKey="nivel" tick={{ fill: "#555", fontSize: 10 }} axisLine={false} tickLine={false} />
             <YAxis hide allowDecimals={false} />
             <Tooltip
               contentStyle={{ background: "#141414", border: "1px solid #2e2e2e", borderRadius: 8, fontSize: 12 }}
@@ -175,11 +180,11 @@ export function ProgressView({ progress, profile, workouts, achievementCount, sk
       {/* Posicao no plano */}
       {progress && (
         <div className="rounded-xl border border-[color:var(--bd)] bg-[color:var(--s1)] p-4">
-          <div className="slbl mb-3">Posicao no plano</div>
+          <div className="slbl mb-3">Posicao no programa</div>
           <div className="flex items-center gap-4">
             <div className="flex-1">
               <div className="mb-1 flex justify-between text-[10px] text-[color:var(--tx3)]">
-                <span>Mes {progress.current_month + 1} de 12</span>
+                <span>Nivel {progress.current_month + 1} de 12</span>
                 <span>{Math.round(((progress.current_month + 1) / 12) * 100)}%</span>
               </div>
               <div className="h-2 rounded-full bg-[color:var(--s2)]">
@@ -193,9 +198,9 @@ export function ProgressView({ progress, profile, workouts, achievementCount, sk
           <div className="mt-3 flex gap-4 text-center">
             <div>
               <div className="font-[family-name:var(--font-display)] text-lg tracking-wider" style={{ color: "var(--or)" }}>
-                {MONTH_NAMES[progress.current_month] ?? "—"}
+                {levelByIndex(progress.current_month).name}
               </div>
-              <div className="text-[9px] uppercase text-[color:var(--tx3)]">Mes atual</div>
+              <div className="text-[9px] uppercase text-[color:var(--tx3)]">Nivel atual</div>
             </div>
             <div>
               <div className="font-[family-name:var(--font-display)] text-lg tracking-wider">

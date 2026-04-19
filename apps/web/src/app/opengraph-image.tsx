@@ -124,7 +124,7 @@ export default function OpengraphImage() {
             }}
           >
             <div style={{ display: "flex", alignItems: "baseline", gap: 24 }}>
-              <span>UM ANO DE</span>
+              <span>DOZE NÍVEIS DE</span>
               <span style={{ color: OR }}>FORÇA</span>
             </div>
             <div style={{ display: "flex" }}>SEM ACADEMIA.</div>
@@ -139,7 +139,7 @@ export default function OpengraphImage() {
               lineHeight: 1.3,
             }}
           >
-            Doze meses de periodização automática, coach IA em português e
+            Calistenia periodizada em 12 níveis, coach IA em português e
             nutrição adaptada à safra brasileira.
           </div>
         </div>
@@ -164,7 +164,7 @@ export default function OpengraphImage() {
               textTransform: "uppercase",
             }}
           >
-            Mês 1 gratuito · Sem cartão
+            Nível 1 grátis · Sem cartão
           </div>
           <div
             style={{
