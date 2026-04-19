@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd } from "@/components/json-ld";
 import { getRecentReviews, getReviewStats, type RecentReview } from "@/lib/reviews";
+import { getAuthDisplay, type AuthDisplay } from "@/lib/auth-display";
+import { logout } from "./login/actions";
 
 export const metadata: Metadata = {
   title: "Calistenia em casa por 12 meses",
@@ -101,17 +103,17 @@ const FAQ: Array<{ q: string; a: string }> = [
 ];
 
 export default async function Home() {
-  const stats = await getReviewStats();
+  const [stats, auth] = await Promise.all([getReviewStats(), getAuthDisplay()]);
   const reviews = stats.count >= 3 ? await getRecentReviews(3) : [];
   const showReviews = stats.count >= 3;
 
   return (
     <div className="flex min-h-screen flex-col bg-[color:var(--bg)]">
-      <SiteHeader />
+      <SiteHeader auth={auth} />
 
       <main id="main-content">
         <JsonLd stats={stats} />
-        <Hero />
+        <Hero auth={auth} />
         <Divider />
         <Pillars />
         <Divider />
@@ -129,7 +131,7 @@ export default async function Home() {
         <Divider />
         <Faq index={showReviews ? "06" : "05"} />
         <Divider />
-        <FinalCta index={showReviews ? "07" : "06"} />
+        <FinalCta auth={auth} index={showReviews ? "07" : "06"} />
       </main>
 
       <SiteFooter />
@@ -160,7 +162,7 @@ function SectionLabel({ index, label }: { index: string; label: string }) {
 /* Header                                                       */
 /* ============================================================ */
 
-function SiteHeader() {
+function SiteHeader({ auth }: { auth: AuthDisplay }) {
   return (
     <header className="sticky top-0 z-20 border-b border-[color:var(--bd)] bg-[color:var(--bg)]/92 backdrop-blur">
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-5 sm:px-8">
@@ -176,22 +178,52 @@ function SiteHeader() {
           <HeaderLink href="#planos">Planos</HeaderLink>
           <HeaderLink href="#faq">FAQ</HeaderLink>
         </nav>
-        <div className="flex items-center gap-2">
-          <Link
-            href="/login"
-            className="hidden rounded-sm px-3 py-1.5 font-[family-name:var(--font-condensed)] text-[11px] font-bold uppercase tracking-[2px] text-[color:var(--tx2)] transition-colors hover:text-[color:var(--tx)] sm:inline-flex"
-          >
-            Entrar
-          </Link>
-          <Link
-            href="/cadastro"
-            className="inline-flex items-center rounded-sm bg-[color:var(--or)] px-3.5 py-1.5 font-[family-name:var(--font-condensed)] text-[11px] font-bold uppercase tracking-[2px] text-black transition-colors hover:bg-[#ff7733]"
-          >
-            Começar
-          </Link>
-        </div>
+        <HeaderActions auth={auth} />
       </div>
     </header>
+  );
+}
+
+function HeaderActions({ auth }: { auth: AuthDisplay }) {
+  if (!auth) {
+    return (
+      <div className="flex items-center gap-2">
+        <Link
+          href="/login"
+          className="hidden rounded-sm px-3 py-1.5 font-[family-name:var(--font-condensed)] text-[11px] font-bold uppercase tracking-[2px] text-[color:var(--tx2)] transition-colors hover:text-[color:var(--tx)] sm:inline-flex"
+        >
+          Entrar
+        </Link>
+        <Link
+          href="/cadastro"
+          className="inline-flex items-center rounded-sm bg-[color:var(--or)] px-3.5 py-1.5 font-[family-name:var(--font-condensed)] text-[11px] font-bold uppercase tracking-[2px] text-black transition-colors hover:bg-[#ff7733]"
+        >
+          Começar
+        </Link>
+      </div>
+    );
+  }
+  return (
+    <div className="flex items-center gap-3">
+      <span className="hidden font-[family-name:var(--font-condensed)] text-[11px] uppercase tracking-[2px] text-[color:var(--tx2)] md:inline">
+        Olá, {auth.firstName}
+      </span>
+      <form action={logout}>
+        <button
+          type="submit"
+          className="rounded-sm px-3 py-1.5 font-[family-name:var(--font-condensed)] text-[11px] font-bold uppercase tracking-[2px] text-[color:var(--tx2)] transition-colors hover:text-[color:var(--tx)]"
+        >
+          Sair
+        </button>
+      </form>
+      <Link
+        href="/treino"
+        className="inline-flex items-center gap-1 rounded-sm bg-[color:var(--or)] px-3.5 py-1.5 font-[family-name:var(--font-condensed)] text-[11px] font-bold uppercase tracking-[2px] text-black transition-colors hover:bg-[#ff7733]"
+      >
+        Continuar
+        <span aria-hidden="true">→</span>
+      </Link>
+    </div>
   );
 }
 
@@ -210,7 +242,7 @@ function HeaderLink({ href, children }: { href: string; children: React.ReactNod
 /* Hero                                                         */
 /* ============================================================ */
 
-function Hero() {
+function Hero({ auth }: { auth: AuthDisplay }) {
   return (
     <section className="relative overflow-hidden">
       <HeroBackdrop />
@@ -239,10 +271,10 @@ function Hero() {
 
             <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
               <Link
-                href="/cadastro"
+                href={auth ? "/treino" : "/cadastro"}
                 className="group inline-flex h-12 items-center justify-between gap-6 rounded-sm bg-[color:var(--or)] px-5 font-[family-name:var(--font-condensed)] text-[12px] font-bold uppercase tracking-[2.5px] text-black transition-colors hover:bg-[#ff7733]"
               >
-                <span>Começar · Mês 1 gratuito</span>
+                <span>{auth ? "Continuar treino" : "Começar · Mês 1 gratuito"}</span>
                 <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">
                   →
                 </span>
@@ -255,9 +287,11 @@ function Hero() {
               </a>
             </div>
 
-            <p className="mt-6 font-[family-name:var(--font-condensed)] text-[10px] uppercase tracking-[2px] text-[color:var(--tx3)]">
-              Sem cartão no cadastro · Pix, cartão ou boleto · Cancela em 1 clique
-            </p>
+            {!auth && (
+              <p className="mt-6 font-[family-name:var(--font-condensed)] text-[10px] uppercase tracking-[2px] text-[color:var(--tx3)]">
+                Sem cartão no cadastro · Pix, cartão ou boleto · Cancela em 1 clique
+              </p>
+            )}
           </div>
 
           <aside className="md:col-span-5">
@@ -700,28 +734,47 @@ function Faq({ index = "05" }: { index?: string }) {
 /* Final CTA                                                    */
 /* ============================================================ */
 
-function FinalCta({ index = "06" }: { index?: string }) {
+function FinalCta({
+  auth,
+  index = "06",
+}: {
+  auth: AuthDisplay;
+  index?: string;
+}) {
+  const loggedIn = !!auth;
   return (
     <section>
       <div className="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32">
         <div className="grid gap-10 md:grid-cols-12 md:items-end">
           <div className="md:col-span-8">
-            <SectionLabel index={index} label="Começar" />
-            <h2 className="mt-5 font-[family-name:var(--font-display)] text-4xl leading-[1.02] tracking-wide sm:text-6xl">
-              Comece hoje.
-              <br />O <span className="text-[color:var(--or)]">primeiro mês</span> é gratuito.
-            </h2>
+            <SectionLabel
+              index={index}
+              label={loggedIn ? "Seu programa" : "Começar"}
+            />
+            {loggedIn ? (
+              <h2 className="mt-5 font-[family-name:var(--font-display)] text-4xl leading-[1.02] tracking-wide sm:text-6xl">
+                Você já está
+                <br />
+                <span className="text-[color:var(--or)]">dentro</span>.
+              </h2>
+            ) : (
+              <h2 className="mt-5 font-[family-name:var(--font-display)] text-4xl leading-[1.02] tracking-wide sm:text-6xl">
+                Comece hoje.
+                <br />O <span className="text-[color:var(--or)]">primeiro mês</span> é gratuito.
+              </h2>
+            )}
             <p className="mt-6 max-w-xl text-[15px] leading-[1.7] text-[color:var(--tx2)]">
-              Sem cartão no cadastro. Trinta dias completos para decidir se
-              o programa combina com o seu ritmo.
+              {loggedIn
+                ? "Volte ao treino quando o corpo chamar. O programa continua de onde parou."
+                : "Sem cartão no cadastro. Trinta dias completos para decidir se o programa combina com o seu ritmo."}
             </p>
           </div>
           <div className="md:col-span-4 md:text-right">
             <Link
-              href="/cadastro"
+              href={loggedIn ? "/treino" : "/cadastro"}
               className="group inline-flex h-14 w-full items-center justify-between gap-6 rounded-sm bg-[color:var(--or)] px-6 font-[family-name:var(--font-condensed)] text-[13px] font-bold uppercase tracking-[2.5px] text-black transition-colors hover:bg-[#ff7733] sm:w-auto"
             >
-              <span>Começar grátis</span>
+              <span>{loggedIn ? "Voltar ao treino" : "Começar grátis"}</span>
               <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">
                 →
               </span>

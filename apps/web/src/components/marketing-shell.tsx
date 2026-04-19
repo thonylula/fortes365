@@ -1,10 +1,13 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { getAuthDisplay, type AuthDisplay } from "@/lib/auth-display";
+import { logout } from "@/app/login/actions";
 
-export function MarketingShell({ children }: { children: ReactNode }) {
+export async function MarketingShell({ children }: { children: ReactNode }) {
+  const auth = await getAuthDisplay();
   return (
     <div className="flex min-h-screen flex-col bg-[color:var(--bg)]">
-      <MinimalHeader />
+      <MinimalHeader auth={auth} />
       <main id="main-content" className="flex-1">
         {children}
       </main>
@@ -13,7 +16,7 @@ export function MarketingShell({ children }: { children: ReactNode }) {
   );
 }
 
-function MinimalHeader() {
+function MinimalHeader({ auth }: { auth: AuthDisplay }) {
   return (
     <header className="sticky top-0 z-20 border-b border-[color:var(--bd)] bg-[color:var(--bg)]/92 backdrop-blur">
       <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-5 sm:px-8">
@@ -21,20 +24,43 @@ function MinimalHeader() {
           FORT<span>E</span>
           <sub>365</sub>
         </Link>
-        <div className="flex items-center gap-2">
-          <Link
-            href="/login"
-            className="hidden rounded-sm px-3 py-1.5 font-[family-name:var(--font-condensed)] text-[11px] font-bold uppercase tracking-[2px] text-[color:var(--tx2)] transition-colors hover:text-[color:var(--tx)] sm:inline-flex"
-          >
-            Entrar
-          </Link>
-          <Link
-            href="/cadastro"
-            className="inline-flex items-center rounded-sm bg-[color:var(--or)] px-3.5 py-1.5 font-[family-name:var(--font-condensed)] text-[11px] font-bold uppercase tracking-[2px] text-black transition-colors hover:bg-[#ff7733]"
-          >
-            Começar grátis
-          </Link>
-        </div>
+        {auth ? (
+          <div className="flex items-center gap-3">
+            <span className="hidden font-[family-name:var(--font-condensed)] text-[11px] uppercase tracking-[2px] text-[color:var(--tx2)] md:inline">
+              Olá, {auth.firstName}
+            </span>
+            <form action={logout}>
+              <button
+                type="submit"
+                className="rounded-sm px-3 py-1.5 font-[family-name:var(--font-condensed)] text-[11px] font-bold uppercase tracking-[2px] text-[color:var(--tx2)] transition-colors hover:text-[color:var(--tx)]"
+              >
+                Sair
+              </button>
+            </form>
+            <Link
+              href="/treino"
+              className="inline-flex items-center gap-1 rounded-sm bg-[color:var(--or)] px-3.5 py-1.5 font-[family-name:var(--font-condensed)] text-[11px] font-bold uppercase tracking-[2px] text-black transition-colors hover:bg-[#ff7733]"
+            >
+              Continuar
+              <span aria-hidden="true">→</span>
+            </Link>
+          </div>
+        ) : (
+          <div className="flex items-center gap-2">
+            <Link
+              href="/login"
+              className="hidden rounded-sm px-3 py-1.5 font-[family-name:var(--font-condensed)] text-[11px] font-bold uppercase tracking-[2px] text-[color:var(--tx2)] transition-colors hover:text-[color:var(--tx)] sm:inline-flex"
+            >
+              Entrar
+            </Link>
+            <Link
+              href="/cadastro"
+              className="inline-flex items-center rounded-sm bg-[color:var(--or)] px-3.5 py-1.5 font-[family-name:var(--font-condensed)] text-[11px] font-bold uppercase tracking-[2px] text-black transition-colors hover:bg-[#ff7733]"
+            >
+              Começar grátis
+            </Link>
+          </div>
+        )}
       </div>
     </header>
   );
