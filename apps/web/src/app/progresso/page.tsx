@@ -47,6 +47,20 @@ export default async function ProgressoPage() {
     skillStats = { total: totalSkills ?? 0, mastered: masteredSkills ?? 0 };
   } catch { /* skill tables may not exist */ }
 
+  let dailyHealth: HealthRow[] = [];
+  try {
+    const since = new Date();
+    since.setDate(since.getDate() - 13);
+    const sinceIso = since.toISOString().slice(0, 10);
+    const { data: health } = await supabase
+      .from("daily_health_metrics")
+      .select("date, steps, active_kcal, resting_hr")
+      .eq("user_id", user.id)
+      .gte("date", sinceIso)
+      .order("date", { ascending: true });
+    dailyHealth = (health ?? []) as HealthRow[];
+  } catch { /* health tables may not exist */ }
+
   const userInfo = { email: user.email ?? "", name: user.user_metadata?.display_name as string | undefined };
 
   return (
@@ -60,6 +74,7 @@ export default async function ProgressoPage() {
         achievementCount={(achievements ?? []).length}
         skillStats={skillStats}
         memberSince={profile?.created_at ?? user.created_at}
+        dailyHealth={dailyHealth}
       />
     </div>
   );
@@ -71,4 +86,11 @@ export type WorkoutRow = {
   finished_at: string | null;
   rating: number | null;
   mood: string | null;
+};
+
+export type HealthRow = {
+  date: string;
+  steps: number | null;
+  active_kcal: number | null;
+  resting_hr: number | null;
 };

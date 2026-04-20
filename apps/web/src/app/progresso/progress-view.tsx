@@ -13,7 +13,7 @@ import {
 } from "recharts";
 import { WeeklyChallenges } from "@/components/weekly-challenges";
 import { LEVELS, levelByIndex } from "@/lib/levels";
-import type { WorkoutRow } from "./page";
+import type { WorkoutRow, HealthRow } from "./page";
 
 type Props = {
   progress: {
@@ -34,6 +34,7 @@ type Props = {
   achievementCount: number;
   skillStats: { total: number; mastered: number };
   memberSince: string;
+  dailyHealth: HealthRow[];
 };
 
 const FITNESS_LABELS = ["Iniciante", "Basico", "Intermediario", "Avancado"];
@@ -44,7 +45,7 @@ function getWeekLabel(date: Date) {
   return `S${week}`;
 }
 
-export function ProgressView({ progress, profile, workouts, achievementCount, skillStats, memberSince }: Props) {
+export function ProgressView({ progress, profile, workouts, achievementCount, skillStats, memberSince, dailyHealth }: Props) {
   const daysSinceJoin = Math.max(1, Math.floor((Date.now() - new Date(memberSince).getTime()) / 86400000));
 
   const weeklyData = useMemo(() => {
@@ -78,6 +79,17 @@ export function ProgressView({ progress, profile, workouts, achievementCount, sk
 
   const avgPerWeek = workouts.length > 0 ? (workouts.length / Math.max(1, daysSinceJoin / 7)).toFixed(1) : "0";
 
+  const todayIso = new Date().toISOString().slice(0, 10);
+  const today = dailyHealth.find((h) => h.date === todayIso) ?? null;
+  const stepsChartData = useMemo(
+    () =>
+      dailyHealth.map((h) => ({
+        date: h.date.slice(5), // MM-DD
+        passos: h.steps ?? 0,
+      })),
+    [dailyHealth],
+  );
+
   return (
     <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-6 pb-20" id="main-content">
       <h1 className="mb-6 text-center font-[family-name:var(--font-display)] text-3xl tracking-wider">
@@ -100,6 +112,42 @@ export function ProgressView({ progress, profile, workouts, achievementCount, sk
         <MiniStat label="Conquistas" value={String(achievementCount)} />
         <MiniStat label="Skills" value={`${skillStats.mastered}/${skillStats.total}`} />
       </div>
+
+      {/* Google Fit - Hoje */}
+      {dailyHealth.length > 0 && (
+        <div className="mb-6 rounded-xl border border-[color:var(--bd)] bg-[color:var(--s1)] p-4">
+          <div className="mb-3 flex items-center justify-between">
+            <div className="slbl">Hoje · Google Fit</div>
+            <span className="text-[9px] uppercase tracking-wider text-[color:var(--tx3)]">
+              {today ? "sincronizado" : "sem dados hoje"}
+            </span>
+          </div>
+          <div className="grid grid-cols-3 gap-2">
+            <HealthKpi value={today?.steps ?? null} label="Passos" color="var(--or)" />
+            <HealthKpi value={today?.active_kcal ?? null} label="kcal ativas" color="var(--or)" />
+            <HealthKpi value={today?.resting_hr ?? null} label="FC repouso" color="var(--bl)" suffix="bpm" />
+          </div>
+        </div>
+      )}
+
+      {/* Chart passos 14 dias */}
+      {stepsChartData.length > 0 && (
+        <div className="mb-6 rounded-xl border border-[color:var(--bd)] bg-[color:var(--s1)] p-4">
+          <div className="slbl mb-3">Passos · 14 dias</div>
+          <ResponsiveContainer width="100%" height={160}>
+            <BarChart data={stepsChartData}>
+              <XAxis dataKey="date" tick={{ fill: "#555", fontSize: 10 }} axisLine={false} tickLine={false} />
+              <YAxis hide allowDecimals={false} />
+              <Tooltip
+                contentStyle={{ background: "#141414", border: "1px solid #2e2e2e", borderRadius: 8, fontSize: 12 }}
+                labelStyle={{ color: "#999" }}
+                cursor={{ fill: "rgba(255,85,0,0.08)" }}
+              />
+              <Bar dataKey="passos" fill="#ff5500" radius={[4, 4, 0, 0]} />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+      )}
 
       {/* Fitness level + BMI */}
       <div className="mb-6 grid grid-cols-2 gap-2">
@@ -234,6 +282,31 @@ function MiniStat({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-lg border border-[color:var(--bd)] bg-[color:var(--s1)] px-3 py-2 text-center">
       <div className="font-[family-name:var(--font-display)] text-base tracking-wider">{value}</div>
+      <div className="text-[8px] uppercase tracking-wider text-[color:var(--tx3)]">{label}</div>
+    </div>
+  );
+}
+
+function HealthKpi({
+  value,
+  label,
+  color,
+  suffix,
+}: {
+  value: number | null;
+  label: string;
+  color: string;
+  suffix?: string;
+}) {
+  return (
+    <div className="rounded-lg bg-[color:var(--s2)] px-3 py-2 text-center">
+      <div
+        className="font-[family-name:var(--font-display)] text-lg tracking-wider"
+        style={{ color: value == null ? "var(--tx3)" : color }}
+      >
+        {value == null ? "—" : value.toLocaleString("pt-BR")}
+        {value != null && suffix ? <span className="ml-1 text-[10px] text-[color:var(--tx3)]">{suffix}</span> : null}
+      </div>
       <div className="text-[8px] uppercase tracking-wider text-[color:var(--tx3)]">{label}</div>
     </div>
   );

@@ -6,13 +6,20 @@ import { logout } from "../login/actions";
 import { RegionSelector } from "./region-selector";
 import { AchievementSummary } from "./achievement-summary";
 import { ReviewForm } from "./review-form";
+import { HealthIntegration } from "./health-integration";
 
 export default async function ContaPage({
   searchParams,
 }: {
-  searchParams: Promise<{ reviewSaved?: string; reviewError?: string }>;
+  searchParams: Promise<{
+    reviewSaved?: string;
+    reviewError?: string;
+    healthConnected?: string;
+    healthError?: string;
+  }>;
 }) {
-  const { reviewSaved, reviewError } = await searchParams;
+  const { reviewSaved, reviewError, healthConnected, healthError } =
+    await searchParams;
   const supabase = await createClient();
   const {
     data: { user },
@@ -54,6 +61,26 @@ export default async function ContaPage({
     : "—";
 
   const myReview = await getMyReview();
+
+  const healthEnabled = !!process.env.GOOGLE_OAUTH_CLIENT_ID;
+
+  let healthConnectedState = false;
+  let lastSyncAt: string | null = null;
+  if (healthEnabled) {
+    try {
+      const { data: integration } = await supabase
+        .from("health_integrations")
+        .select("last_sync_at")
+        .eq("user_id", user.id)
+        .maybeSingle();
+      if (integration) {
+        healthConnectedState = true;
+        lastSyncAt = integration.last_sync_at ?? null;
+      }
+    } catch {
+      // Tabela nao existe ainda (migration 0012 nao rodou)
+    }
+  }
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -133,6 +160,15 @@ export default async function ContaPage({
           </div>
 
           <RegionSelector currentRegion={profile?.region ?? null} />
+
+          {healthEnabled && (
+            <HealthIntegration
+              connected={healthConnectedState}
+              lastSyncAt={lastSyncAt}
+              justConnected={healthConnected === "1"}
+              errorCode={healthError ?? null}
+            />
+          )}
 
           <div className="rounded-lg border border-[color:var(--bd)] bg-[color:var(--s1)] p-5">
             <div className="slbl mb-3">Assinatura</div>
