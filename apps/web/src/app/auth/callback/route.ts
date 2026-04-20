@@ -16,17 +16,40 @@ export async function GET(request: Request) {
         if (user?.email) {
           const { data: profile } = await supabase
             .from("profiles")
-            .select("display_name, welcome_email_sent_at")
+            .select("display_name")
             .eq("id", user.id)
             .single();
-          if (profile && !profile.welcome_email_sent_at) {
+
+          // Tracking eh best-effort: se a coluna nao existir (migration 0010
+          // nao aplicada), tratamos como "email ainda nao enviado" em vez de
+          // falhar silenciosamente.
+          let alreadySent = false;
+          let trackingAvailable = true;
+          const { data: tracking, error: trackingError } = await supabase
+            .from("profiles")
+            .select("welcome_email_sent_at")
+            .eq("id", user.id)
+            .single();
+          if (trackingError) {
+            trackingAvailable = false;
+            console.warn(
+              "[auth/callback] coluna welcome_email_sent_at ausente — rode migration 0010_email_tracking.sql",
+            );
+          } else if (tracking?.welcome_email_sent_at) {
+            alreadySent = true;
+          }
+
+          if (!alreadySent) {
+            console.log(`[auth/callback] enviando welcome email para ${user.email}`);
             await sendWelcomeEmail(user.email, {
-              name: profile.display_name ?? undefined,
+              name: profile?.display_name ?? undefined,
             });
-            await supabase
-              .from("profiles")
-              .update({ welcome_email_sent_at: new Date().toISOString() })
-              .eq("id", user.id);
+            if (trackingAvailable) {
+              await supabase
+                .from("profiles")
+                .update({ welcome_email_sent_at: new Date().toISOString() })
+                .eq("id", user.id);
+            }
           }
         }
       } catch (err) {
