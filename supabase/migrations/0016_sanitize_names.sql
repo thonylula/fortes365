@@ -57,12 +57,12 @@ update public.plan_days
   set raw = jsonb_set(raw, '{tip}', to_jsonb(replace(raw->>'tip', 'Jéssica: ', '')))
   where raw->>'tip' like '%Jéssica%';
 
--- meals.data snapshots de porcoes (ptl/ptj)
-update public.meals
+-- plan_meals.data snapshots de porcoes (ptl/ptj)
+update public.plan_meals
   set data = jsonb_set(data, '{ptl}', to_jsonb(replace(data->>'ptl', 'Luanthony: ', '')))
   where data->>'ptl' like '%Luanthony%';
 
-update public.meals
+update public.plan_meals
   set data = jsonb_set(data, '{ptj}', to_jsonb(replace(data->>'ptj', 'Jéssica: ', '')))
   where data->>'ptj' like '%Jéssica%';
 
