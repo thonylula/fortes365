@@ -36,7 +36,7 @@ export default async function NutricaoPage() {
     const { data: profile } = await supabase
       .from("profiles")
       .select("region")
-      .eq("user_id", user.id)
+      .eq("id", user.id)
       .maybeSingle();
     userRegion = (profile?.region as string | null) ?? null;
   }
