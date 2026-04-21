@@ -8,6 +8,7 @@ import type { SubscriptionInfo } from "@/lib/supabase/guards";
 type Month = { id: number; short_name: string; name: string; season: string };
 type MealRow = {
   month_id: number;
+  week_index: number;
   day_index: number;
   slot_key: string;
   data: {
@@ -19,6 +20,14 @@ type MealRow = {
     ptj: string;
     rec: string | null;
   };
+};
+
+const REGION_LABEL: Record<string, string> = {
+  nordeste: "Nordeste",
+  sudeste: "Sudeste",
+  sul: "Sul",
+  norte: "Norte",
+  centro_oeste: "Centro-Oeste",
 };
 
 const DAY_SHORT = ["SEG", "TER", "QUA", "QUI", "SEX", "SÁB", "DOM"];
@@ -33,11 +42,28 @@ const SLOT_BG: Record<string, string> = {
   ln: "rgba(34,197,94,.1)",
 };
 
-export function NutricaoView({ months, meals, subInfo }: { months: Month[]; meals: MealRow[]; subInfo: SubscriptionInfo }) {
+export function NutricaoView({
+  months,
+  meals,
+  subInfo,
+  userRegion,
+  effectiveRegion,
+  hasRegion,
+  regionSupported,
+}: {
+  months: Month[];
+  meals: MealRow[];
+  subInfo: SubscriptionInfo;
+  userRegion: string | null;
+  effectiveRegion: string;
+  hasRegion: boolean;
+  regionSupported: boolean;
+}) {
   const [monthId, setMonthId] = useState(0);
   const [weekIndex, setWeekIndex] = useState(0);
   const [dayIndex, setDayIndex] = useState(0);
   const [showPaywall, setShowPaywall] = useState(false);
+  const [bannerDismissed, setBannerDismissed] = useState(false);
   const freeSet = new Set(subInfo.freeMonths);
 
   const month = months.find((m) => m.id === monthId) ?? months[0];
@@ -45,10 +71,21 @@ export function NutricaoView({ months, meals, subInfo }: { months: Month[]; meal
   const dayMeals = useMemo(
     () =>
       meals
-        .filter((m) => m.month_id === monthId && m.day_index === dayIndex)
+        .filter(
+          (m) =>
+            m.month_id === monthId &&
+            m.week_index === weekIndex &&
+            m.day_index === dayIndex,
+        )
         .sort((a, b) => SLOT_ORDER.indexOf(a.slot_key) - SLOT_ORDER.indexOf(b.slot_key)),
-    [meals, monthId, dayIndex],
+    [meals, monthId, weekIndex, dayIndex],
   );
+
+  const showRegionBanner =
+    !bannerDismissed && (!hasRegion || !regionSupported);
+  const bannerMessage = !hasRegion
+    ? "Personalize seu card\u00e1pio: complete seu perfil para receber receitas da sua regi\u00e3o."
+    : `Card\u00e1pio ${REGION_LABEL[userRegion ?? ""] ?? ""} em breve \u2014 por enquanto mostramos o ${REGION_LABEL[effectiveRegion] ?? effectiveRegion}.`;
 
   const totalKcal = dayMeals.reduce((sum, m) => {
     const v = parseInt(m.data.ptl?.replace(/[^0-9]/g, "") ?? "0");
@@ -61,6 +98,31 @@ export function NutricaoView({ months, meals, subInfo }: { months: Month[]; meal
 
       {showPaywall && (
         <PaywallModal isLoggedIn={subInfo.isLoggedIn} onClose={() => setShowPaywall(false)} />
+      )}
+
+      {showRegionBanner && (
+        <div className="flex items-start gap-2 border-b border-[color:var(--or)]/40 bg-[color:var(--ord)] px-3 py-2 text-xs text-[color:var(--tx1)]">
+          <span className="mt-0.5 text-sm leading-none">🧭</span>
+          <p className="flex-1 leading-snug">
+            {bannerMessage}
+            {!hasRegion && (
+              <>
+                {" "}
+                <a href="/onboarding" className="font-semibold text-[color:var(--or)] underline underline-offset-2">
+                  Completar perfil
+                </a>
+              </>
+            )}
+          </p>
+          <button
+            type="button"
+            aria-label="Fechar aviso"
+            onClick={() => setBannerDismissed(true)}
+            className="shrink-0 text-[color:var(--tx3)] hover:text-[color:var(--tx1)]"
+          >
+            ×
+          </button>
+        </div>
       )}
 
       {/* Month strip */}
