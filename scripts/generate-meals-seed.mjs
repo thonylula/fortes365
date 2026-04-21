@@ -1,7 +1,10 @@
-// Gera supabase/migrations/0018_seed_nordeste_meals.sql a partir de
-// scripts/data/nordeste-recipes.json. Emite 2.352 linhas (12 meses x 4 semanas
-// x 7 dias x 7 slots) para plan_meals com region='nordeste'.
+// Gera supabase/migrations/{N}_seed_{region}_meals.sql a partir de
+// scripts/data/{region}-recipes.json. Emite 2.352 linhas (12 meses x 4 semanas
+// x 7 dias x 7 slots) para plan_meals com region={region}.
 // Pseudo-determin\u00edstico: a mesma entrada gera sempre a mesma sa\u00edda.
+//
+// Uso: node scripts/generate-meals-seed.mjs <region> <migration_num>
+//   ex: node scripts/generate-meals-seed.mjs sudeste 0019
 
 import fs from "node:fs";
 import path from "node:path";
@@ -9,8 +12,22 @@ import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+const region = process.argv[2];
+const migNum = process.argv[3];
+if (!region || !migNum) {
+  console.error("uso: node scripts/generate-meals-seed.mjs <region> <migration_num>");
+  console.error("ex:  node scripts/generate-meals-seed.mjs sudeste 0019");
+  process.exit(1);
+}
+
+const ALLOWED = ["nordeste", "sudeste", "sul", "norte", "centro_oeste"];
+if (!ALLOWED.includes(region)) {
+  console.error(`region invalida: ${region}. aceita: ${ALLOWED.join(", ")}`);
+  process.exit(1);
+}
+
 const pool = JSON.parse(
-  fs.readFileSync(path.join(__dirname, "data/nordeste-recipes.json"), "utf8"),
+  fs.readFileSync(path.join(__dirname, `data/${region}-recipes.json`), "utf8"),
 );
 
 const SLOTS = ["cafe", "lm", "alm", "pre", "pos", "jan", "ln"];
@@ -32,22 +49,20 @@ function eligible(options, monthId) {
   );
 }
 
+const regionLabel = region.charAt(0).toUpperCase() + region.slice(1).replace("_", "-");
 const lines = [];
 lines.push(
-  "-- Migration 0018: seed card\u00e1pio Nordeste (gerado por scripts/generate-meals-seed.mjs)",
+  `-- Migration ${migNum}: seed card\u00e1pio ${regionLabel} (gerado por scripts/generate-meals-seed.mjs)`,
 );
 lines.push(
-  "-- 12 meses x 4 semanas x 7 dias x 7 slots = 2.352 linhas em plan_meals (region='nordeste').",
+  `-- 12 meses x 4 semanas x 7 dias x 7 slots = 2.352 linhas em plan_meals (region='${region}').`,
 );
 lines.push(
   "-- 48 combina\u00e7\u00f5es (month, week) distintas no ano; 336 day-menus \u00fanicos.",
 );
-lines.push(
-  "-- Substitui as 588 linhas antigas sem region (que eram gen\u00e9ricas/antigas).",
-);
 lines.push("");
 lines.push(
-  "delete from public.plan_meals where region is null or region = 'nordeste';",
+  `delete from public.plan_meals where region = '${region}';`,
 );
 lines.push("");
 
@@ -90,7 +105,7 @@ for (let month = 0; month < 12; month++) {
           rec: opt.rec ?? null,
         };
         valuesBatch.push(
-          `  (${month}, ${week}, ${day}, '${slot}', 'nordeste', ${jsonbLiteral(data)})`,
+          `  (${month}, ${week}, ${day}, '${slot}', '${region}', ${jsonbLiteral(data)})`,
         );
         count++;
         if (valuesBatch.length >= BATCH) flushBatch();
@@ -105,7 +120,7 @@ const outPath = path.join(
   "..",
   "supabase",
   "migrations",
-  "0018_seed_nordeste_meals.sql",
+  `${migNum}_seed_${region}_meals.sql`,
 );
 fs.writeFileSync(outPath, lines.join("\n"));
 console.log(`OK: ${count} linhas escritas em ${path.relative(process.cwd(), outPath)}`);

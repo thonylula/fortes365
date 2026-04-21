@@ -1,9 +1,8 @@
 -- Migration 0018: seed cardápio Nordeste (gerado por scripts/generate-meals-seed.mjs)
 -- 12 meses x 4 semanas x 7 dias x 7 slots = 2.352 linhas em plan_meals (region='nordeste').
 -- 48 combinações (month, week) distintas no ano; 336 day-menus únicos.
--- Substitui as 588 linhas antigas sem region (que eram genéricas/antigas).
 
-delete from public.plan_meals where region is null or region = 'nordeste';
+delete from public.plan_meals where region = 'nordeste';
 
 insert into public.plan_meals (month_id, week_index, day_index, slot_key, region, data) values
   (0, 0, 0, 'cafe', 'nordeste', '{"t":"Cafe da Manha","ico":"☕","time":"07:00","items":["Cuscuz nordestino (3 col sopa flocao)","2 ovos mexidos c/ coentro","Cafe c/ leite desnatado s/ acucar"],"ptl":"~450kcal","ptj":"","rec":"cuscuz"}'::jsonb),
