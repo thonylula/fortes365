@@ -59,6 +59,12 @@ export async function saveOnboarding(answers: Record<string, unknown>) {
       target_weight_kg: answers.target_weight_kg ?? null,
       region: answers.region ?? null,
       goals: answers.goals ?? null,
+      equipment:
+        Array.isArray(answers.equipment) && answers.equipment.length > 0
+          ? answers.equipment
+          : ["bodyweight"],
+      skill_focus:
+        answers.skill_focus === "none" ? null : (answers.skill_focus ?? null),
       fitness_level: phase.fitnessLevel,
       onboarding_completed: true,
     })
