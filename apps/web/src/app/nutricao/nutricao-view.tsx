@@ -35,6 +35,7 @@ const SLOT_BG: Record<string, string> = {
 
 export function NutricaoView({ months, meals, subInfo }: { months: Month[]; meals: MealRow[]; subInfo: SubscriptionInfo }) {
   const [monthId, setMonthId] = useState(0);
+  const [weekIndex, setWeekIndex] = useState(0);
   const [dayIndex, setDayIndex] = useState(0);
   const [showPaywall, setShowPaywall] = useState(false);
   const freeSet = new Set(subInfo.freeMonths);
@@ -75,13 +76,32 @@ export function NutricaoView({ months, meals, subInfo }: { months: Month[]; meal
                 style={locked ? { opacity: 0.5 } : undefined}
                 onClick={() => {
                   if (locked) { setShowPaywall(true); return; }
-                  setMonthId(m.id); setDayIndex(0);
+                  setMonthId(m.id); setWeekIndex(0); setDayIndex(0);
                 }}
               >
                 {locked ? "🔒 " : ""}{m.short_name}
               </button>
             );
           })}
+        </div>
+      </div>
+
+      {/* Week strip */}
+      <div className="flex items-center gap-3 overflow-x-auto border-b border-[color:var(--bd)] bg-[color:var(--bg)] px-3 py-2">
+        <span className="shrink-0 text-[10px] uppercase tracking-[1.5px] text-[color:var(--tx3)]">
+          Semana:
+        </span>
+        <div className="flex shrink-0 gap-[5px]">
+          {[0, 1, 2, 3].map((w) => (
+            <button
+              key={w}
+              className="chipbtn"
+              data-active={w === weekIndex}
+              onClick={() => setWeekIndex(w)}
+            >
+              Sem {w + 1}
+            </button>
+          ))}
         </div>
       </div>
 
@@ -120,7 +140,7 @@ export function NutricaoView({ months, meals, subInfo }: { months: Month[]; meal
         </div>
 
         {/* Meal cards */}
-        <div key={`${monthId}-${dayIndex}`} className="animate-in flex flex-col gap-[7px]">
+        <div key={`${monthId}-${weekIndex}-${dayIndex}`} className="animate-in flex flex-col gap-[7px]">
           {dayMeals.map((meal) => (
             <MealCard key={meal.slot_key} meal={meal} />
           ))}
