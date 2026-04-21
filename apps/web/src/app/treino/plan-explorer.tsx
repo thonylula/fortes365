@@ -2,7 +2,7 @@
 
 import { useMemo, useState, useTransition } from "react";
 import dynamic from "next/dynamic";
-import { toggleExerciseDone } from "@/lib/supabase/mutations";
+import { toggleExerciseDone, swapExercise } from "@/lib/supabase/mutations";
 import { NavTabs } from "@/components/nav-tabs";
 import { PaywallModal } from "@/components/paywall-modal";
 import { AchievementToast } from "@/components/achievement-toast";
@@ -62,12 +62,14 @@ type PlanDayExercise = {
   reps: string | null;
   rest: string | null;
   exercises: {
+    id: string;
     slug: string;
     name: string;
     muscle_group: string | null;
     kcal_estimate: number | null;
     modifier: string | null;
     youtube_search_url: string | null;
+    alternatives: string[] | null;
   } | null;
 };
 
@@ -496,6 +498,7 @@ function ExerciseCard({
   onStartRest: (rest: string, name: string) => void;
 }) {
   const [isPending, startTransition] = useTransition();
+  const [isSwapping, startSwapTransition] = useTransition();
   const [showVideo, setShowVideo] = useState(false);
   const [videoId, setVideoId] = useState<string | null>(null);
   const [videoLoading, setVideoLoading] = useState(false);
@@ -504,6 +507,19 @@ function ExerciseCard({
   if (!e) return null;
 
   const coachSupported = isWebcamSupported(e.slug);
+  const canSwap = !!e.alternatives && e.alternatives.length > 0;
+
+  const handleSwap = () => {
+    if (!canSwap) return;
+    startSwapTransition(async () => {
+      const fd = new FormData();
+      fd.set("planDayId", planDayId);
+      fd.set("position", String(ex.position));
+      fd.set("currentSlug", e.slug);
+      await swapExercise(fd);
+      // revalidatePath no server trata UI; o router.refresh nao e necessario porque o Supabase query eh revalidado
+    });
+  };
 
   const handleToggle = () => {
     const wasNotDone = !isDone;
@@ -592,6 +608,16 @@ function ExerciseCard({
               title="Coach por webcam conta reps e avisa sobre forma"
             >
               {showCoach ? "✕ Coach" : "◉ Coach"}
+            </button>
+          )}
+          {canSwap && isLoggedIn && !isDone && (
+            <button
+              onClick={handleSwap}
+              disabled={isSwapping}
+              className="flex items-center gap-1 rounded-md border-[1.5px] border-[color:var(--bd)] bg-[color:var(--s2)] px-2 py-1 font-[family-name:var(--font-condensed)] text-[10px] font-bold uppercase tracking-wider text-[color:var(--tx2)] transition-colors hover:border-[color:var(--or)] hover:text-[color:var(--or)] disabled:opacity-50"
+              title="Trocar por variacao alternativa"
+            >
+              {isSwapping ? "..." : "⇄ Trocar"}
             </button>
           )}
           {isLoggedIn && (

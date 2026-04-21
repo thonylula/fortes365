@@ -252,3 +252,92 @@ export async function getCompletedExercises(
   }
   return slugs;
 }
+
+export async function swapExercise(formData: FormData): Promise<{
+  ok: boolean;
+  error?: string;
+  newExerciseName?: string;
+}> {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) return { ok: false, error: "unauthenticated" };
+
+  const planDayId = formData.get("planDayId") as string;
+  const position = Number(formData.get("position"));
+  const currentSlug = formData.get("currentSlug") as string;
+
+  if (!planDayId || !currentSlug || !Number.isInteger(position)) {
+    return { ok: false, error: "invalid_input" };
+  }
+
+  // 1. Busca exercise atual + lista de alternativas
+  const { data: current } = await supabase
+    .from("exercises")
+    .select("id, alternatives")
+    .eq("slug", currentSlug)
+    .single();
+
+  if (!current?.alternatives?.length) {
+    return { ok: false, error: "no_alternatives" };
+  }
+
+  // 2. Pega primeiro alternative que nao seja o proprio exercicio
+  const altSlug = (current.alternatives as string[]).find(
+    (s) => s !== currentSlug,
+  );
+  if (!altSlug) return { ok: false, error: "no_alternatives" };
+
+  const { data: alt } = await supabase
+    .from("exercises")
+    .select("id, name")
+    .eq("slug", altSlug)
+    .single();
+  if (!alt) return { ok: false, error: "alternative_not_found" };
+
+  // 3. Ve se o user ja tem override pra esse plan_day
+  const { count: overrideCount } = await supabase
+    .from("user_plan_day_exercises")
+    .select("id", { count: "exact", head: true })
+    .eq("user_id", user.id)
+    .eq("plan_day_id", planDayId);
+
+  // 4. Se nao tem override, copia o plano global do plan_day inteiro primeiro
+  if (!overrideCount) {
+    const { data: globalRows } = await supabase
+      .from("plan_day_exercises")
+      .select("exercise_id, position, sets, reps, rest")
+      .eq("plan_day_id", planDayId);
+
+    if (globalRows && globalRows.length > 0) {
+      const insertRows = globalRows.map((row) => ({
+        user_id: user.id,
+        plan_day_id: planDayId,
+        exercise_id: row.exercise_id,
+        position: row.position,
+        sets: row.sets ?? 3,
+        reps: row.reps,
+        rest: row.rest,
+      }));
+      const { error: insErr } = await supabase
+        .from("user_plan_day_exercises")
+        .insert(insertRows);
+      if (insErr) return { ok: false, error: "copy_global_failed" };
+    }
+  }
+
+  // 5. Troca o exercise_id na posicao especifica
+  const { error: updErr } = await supabase
+    .from("user_plan_day_exercises")
+    .update({ exercise_id: alt.id })
+    .eq("user_id", user.id)
+    .eq("plan_day_id", planDayId)
+    .eq("position", position);
+
+  if (updErr) return { ok: false, error: "swap_failed" };
+
+  revalidatePath("/treino");
+
+  return { ok: true, newExerciseName: alt.name };
+}

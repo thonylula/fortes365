@@ -39,12 +39,14 @@ export default async function TreinoPage() {
             reps,
             rest,
             exercises (
+              id,
               slug,
               name,
               muscle_group,
               kcal_estimate,
               modifier,
-              youtube_search_url
+              youtube_search_url,
+              alternatives
             )
           )
         `,
@@ -71,12 +73,14 @@ export default async function TreinoPage() {
             reps,
             rest,
             exercises (
+              id,
               slug,
               name,
               muscle_group,
               kcal_estimate,
               modifier,
-              youtube_search_url
+              youtube_search_url,
+              alternatives
             )
           `,
         )
