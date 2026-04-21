@@ -1,9 +1,16 @@
 "use server";
 
 import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
 import { createClient as createAdmin } from "@supabase/supabase-js";
 import { sendAccountDeletedEmail } from "@/lib/email";
+import {
+  generatePlan,
+  type ExerciseMeta,
+  type PlanDayLite,
+  type UserProfile,
+} from "@/lib/plan-generator";
 
 export async function exportUserData() {
   const supabase = await createClient();
@@ -95,4 +102,93 @@ export async function saveReview(formData: FormData) {
   }
 
   redirect("/conta?reviewSaved=1");
+}
+
+export async function regeneratePlan(): Promise<{
+  ok: boolean;
+  error?: string;
+  daysGenerated?: number;
+}> {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) return { ok: false, error: "unauthenticated" };
+
+  const { data: profile, error: profileErr } = await supabase
+    .from("profiles")
+    .select(
+      "fitness_level, calisthenics_level, weekly_sessions, workout_duration, equipment, skill_focus, physical_issues",
+    )
+    .eq("id", user.id)
+    .single();
+
+  if (profileErr || !profile) {
+    return { ok: false, error: "profile_not_found" };
+  }
+
+  const [{ data: exercises, error: exErr }, { data: planDays, error: pdErr }] =
+    await Promise.all([
+      supabase
+        .from("exercises")
+        .select(
+          "id, slug, min_level, movement_pattern, equipment, contraindications, skill_tag, is_unilateral, is_explosive, time_based",
+        ),
+      supabase.from("plan_days").select("id, phase_id, day_index, type"),
+    ]);
+
+  if (exErr || pdErr || !exercises || !planDays) {
+    return { ok: false, error: "fetch_failed" };
+  }
+
+  const userProfile: UserProfile = {
+    fitness_level: profile.fitness_level,
+    calisthenics_level: profile.calisthenics_level,
+    weekly_sessions: profile.weekly_sessions,
+    workout_duration: profile.workout_duration,
+    equipment: profile.equipment ?? ["bodyweight"],
+    skill_focus: profile.skill_focus,
+    physical_issues: profile.physical_issues,
+  };
+
+  const generated = generatePlan(
+    userProfile,
+    exercises as ExerciseMeta[],
+    planDays as PlanDayLite[],
+  );
+
+  // Apaga overrides antigos do user e insere os novos
+  const { error: delErr } = await supabase
+    .from("user_plan_day_exercises")
+    .delete()
+    .eq("user_id", user.id);
+  if (delErr) return { ok: false, error: "delete_old_failed" };
+
+  const rows = generated.flatMap((day) =>
+    day.exercises.map((ex) => ({
+      user_id: user.id,
+      plan_day_id: day.plan_day_id,
+      exercise_id: ex.exercise_id,
+      position: ex.position,
+      sets: ex.sets,
+      reps: ex.reps,
+      rest: ex.rest,
+    })),
+  );
+
+  if (rows.length > 0) {
+    const { error: insErr } = await supabase
+      .from("user_plan_day_exercises")
+      .insert(rows);
+    if (insErr) return { ok: false, error: "insert_failed" };
+  }
+
+  await supabase
+    .from("profiles")
+    .update({ plan_generated_at: new Date().toISOString() })
+    .eq("id", user.id);
+
+  revalidatePath("/treino");
+
+  return { ok: true, daysGenerated: generated.length };
 }

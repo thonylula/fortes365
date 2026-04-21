@@ -7,6 +7,7 @@ import { RegionSelector } from "./region-selector";
 import { AchievementSummary } from "./achievement-summary";
 import { ReviewForm } from "./review-form";
 import { HealthIntegration } from "./health-integration";
+import { PlanRegenerator } from "./plan-regenerator";
 
 export default async function ContaPage({
   searchParams,
@@ -29,7 +30,7 @@ export default async function ContaPage({
 
   const { data: profile } = await supabase
     .from("profiles")
-    .select("display_name, fitness_level, region, created_at")
+    .select("display_name, fitness_level, region, created_at, plan_generated_at")
     .eq("id", user.id)
     .single();
 
@@ -160,6 +161,8 @@ export default async function ContaPage({
           </div>
 
           <RegionSelector currentRegion={profile?.region ?? null} />
+
+          <PlanRegenerator generatedAt={profile?.plan_generated_at ?? null} />
 
           {healthEnabled && (
             <HealthIntegration

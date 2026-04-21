@@ -55,8 +55,66 @@ export default async function TreinoPage() {
   ]);
 
   const months = (monthsData ?? []) as Month[];
-  const days = (daysData ?? []) as unknown as PlanDay[];
+  let days = (daysData ?? []) as unknown as PlanDay[];
   const weekVolume = (volumeData ?? []).map((v) => Number(v.multiplier));
+
+  // Se o user tem plano personalizado, usa o override no lugar do global
+  if (user) {
+    try {
+      const { data: overrides } = await supabase
+        .from("user_plan_day_exercises")
+        .select(
+          `
+            plan_day_id,
+            position,
+            sets,
+            reps,
+            rest,
+            exercises (
+              slug,
+              name,
+              muscle_group,
+              kcal_estimate,
+              modifier,
+              youtube_search_url
+            )
+          `,
+        )
+        .eq("user_id", user.id)
+        .order("position");
+
+      if (overrides && overrides.length > 0) {
+        const byPlanDay = new Map<string, unknown[]>();
+        for (const ov of overrides as unknown as Array<{
+          plan_day_id: string;
+          position: number;
+          sets: number;
+          reps: string | null;
+          rest: string | null;
+          exercises: unknown;
+        }>) {
+          const list = byPlanDay.get(ov.plan_day_id) ?? [];
+          list.push({
+            position: ov.position,
+            sets: ov.sets,
+            reps: ov.reps,
+            rest: ov.rest,
+            exercises: ov.exercises,
+          });
+          byPlanDay.set(ov.plan_day_id, list);
+        }
+        days = days.map((d) => {
+          const override = byPlanDay.get(d.id);
+          if (override && override.length > 0) {
+            return { ...d, plan_day_exercises: override as PlanDay["plan_day_exercises"] };
+          }
+          return d;
+        });
+      }
+    } catch {
+      // Tabela user_plan_day_exercises pode nao existir ainda (migration 0015 nao aplicada)
+    }
+  }
 
   if (months.length === 0 || days.length === 0) {
     return (
