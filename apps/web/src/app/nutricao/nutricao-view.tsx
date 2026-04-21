@@ -49,12 +49,8 @@ export function NutricaoView({ months, meals, subInfo }: { months: Month[]; meal
     [meals, monthId, dayIndex],
   );
 
-  const totalKcalL = dayMeals.reduce((sum, m) => {
+  const totalKcal = dayMeals.reduce((sum, m) => {
     const v = parseInt(m.data.ptl?.replace(/[^0-9]/g, "") ?? "0");
-    return sum + (isNaN(v) ? 0 : v);
-  }, 0);
-  const totalKcalJ = dayMeals.reduce((sum, m) => {
-    const v = parseInt(m.data.ptj?.replace(/[^0-9]/g, "") ?? "0");
     return sum + (isNaN(v) ? 0 : v);
   }, 0);
 
@@ -116,14 +112,10 @@ export function NutricaoView({ months, meals, subInfo }: { months: Month[]; meal
         </div>
 
         {/* Calorie summary */}
-        <div className="mb-4 grid grid-cols-2 gap-2">
+        <div className="mb-4">
           <div className="ks-box">
-            <div className="ks-v" style={{ color: "var(--or)" }}>{totalKcalL}</div>
-            <div className="ks-l">Kcal Luanthony</div>
-          </div>
-          <div className="ks-box">
-            <div className="ks-v" style={{ color: "var(--pk)" }}>{totalKcalJ}</div>
-            <div className="ks-l">Kcal Jéssica</div>
+            <div className="ks-v" style={{ color: "var(--or)" }}>{totalKcal}</div>
+            <div className="ks-l">Kcal do dia</div>
           </div>
         </div>
 
@@ -171,14 +163,13 @@ function MealCard({ meal }: { meal: MealRow }) {
             <span>{item}</span>
           </div>
         ))}
-        <div className="mt-2 flex flex-wrap gap-1.5">
-          <span className="rounded-sm px-2 py-0.5 font-[family-name:var(--font-condensed)] text-[10px] font-semibold" style={{ background: "var(--ord)", color: "var(--or)" }}>
-            L: {d.ptl}
-          </span>
-          <span className="rounded-sm px-2 py-0.5 font-[family-name:var(--font-condensed)] text-[10px] font-semibold" style={{ background: "var(--pkd)", color: "var(--pk)" }}>
-            J: {d.ptj}
-          </span>
-        </div>
+        {d.ptl && (
+          <div className="mt-2 flex flex-wrap gap-1.5">
+            <span className="rounded-sm px-2 py-0.5 font-[family-name:var(--font-condensed)] text-[10px] font-semibold" style={{ background: "var(--ord)", color: "var(--or)" }}>
+              Porção: {d.ptl}
+            </span>
+          </div>
+        )}
       </div>
     </div>
   );
