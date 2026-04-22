@@ -6,6 +6,7 @@ import { logout } from "../login/actions";
 import { RegionSelector } from "./region-selector";
 import { AchievementSummary } from "./achievement-summary";
 import { ReviewForm } from "./review-form";
+import { FeedbackForm } from "./feedback-form";
 import { HealthIntegration } from "./health-integration";
 import { PlanRegenerator } from "./plan-regenerator";
 
@@ -158,6 +159,14 @@ export default async function ContaPage({
               saved={reviewSaved === "1"}
               errorMessage={reviewError}
             />
+          </div>
+
+          <div className="rounded-lg border border-[color:var(--bd)] bg-[color:var(--s1)] p-5">
+            <div className="slbl mb-3">Enviar sugestão</div>
+            <p className="mb-4 text-xs text-[color:var(--tx3)]">
+              Tem ideia do que melhorar? Achou um bug? Conte aqui — leio cada mensagem.
+            </p>
+            <FeedbackForm />
           </div>
 
           <RegionSelector currentRegion={profile?.region ?? null} />

@@ -5,12 +5,61 @@ import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
 import { createClient as createAdmin } from "@supabase/supabase-js";
 import { sendAccountDeletedEmail } from "@/lib/email";
+import { containsProfanity } from "@/lib/profanity-filter";
 import {
   generatePlan,
   type ExerciseMeta,
   type PlanDayLite,
   type UserProfile,
 } from "@/lib/plan-generator";
+
+const FEEDBACK_CATEGORIES = new Set(["sugestao", "bug", "elogio", "outro"]);
+
+export async function submitFeedback(formData: FormData): Promise<{
+  ok: boolean;
+  error?: string;
+}> {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) return { ok: false, error: "Faca login para enviar sugestoes." };
+
+  const category = String(formData.get("category") ?? "sugestao").trim();
+  const message = String(formData.get("message") ?? "").trim();
+
+  if (!FEEDBACK_CATEGORIES.has(category)) {
+    return { ok: false, error: "Categoria invalida." };
+  }
+  if (message.length < 10) {
+    return { ok: false, error: "Sua sugestao precisa ter pelo menos 10 caracteres." };
+  }
+  if (message.length > 500) {
+    return { ok: false, error: "Sua sugestao passou de 500 caracteres. Sintetize um pouco." };
+  }
+  const distinctWords = new Set(
+    message.toLowerCase().split(/\s+/).filter((w) => w.length > 1),
+  );
+  if (distinctWords.size < 3) {
+    return { ok: false, error: "Escreva uma mensagem mais descritiva (pelo menos 3 palavras)." };
+  }
+  if (containsProfanity(message)) {
+    return {
+      ok: false,
+      error: "Sua mensagem contem linguagem inadequada. Reescreva com respeito.",
+    };
+  }
+
+  const { error } = await supabase.from("feedback").insert({
+    user_id: user.id,
+    category,
+    message,
+  });
+  if (error) return { ok: false, error: "Nao consegui salvar. Tente de novo em instantes." };
+
+  revalidatePath("/conta");
+  return { ok: true };
+}
 
 export async function exportUserData() {
   const supabase = await createClient();
