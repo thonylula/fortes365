@@ -2,52 +2,94 @@
   "_comment": "Pool de receitas tipicas do Norte (PA, AM, RO, AC, AP, RR, TO) para o motor de cardapio. Pan-Norte equilibrado: mistura Para (tacaca, pato no tucupi, manicoba, acai c/ farinha) e Amazonas (tambaqui, pirarucu, X-caboquinho, caldeirada). Cada slot tem um conjunto de opcoes; quando 'months' esta vazio, a opcao vale o ano todo. Quando preenchido (0=Jan..11=Dez), a opcao so e elegivel naqueles meses (usado para frutas sazonais). Kcal estimado por porcao adulta ativa.",
   "slots": {
     "cafe": {
-      "meta": { "t": "Cafe da Manha", "ico": "☕", "time": "07:00" },
+      "meta": {
+        "t": "Cafe da Manha",
+        "ico": "☕",
+        "time": "07:00"
+      },
       "options": [
         {
-          "items": ["Acai na tigela c/ farinha d'agua (200g polpa)", "1 banana pacova fatiada", "Cafe preto s/ acucar"],
+          "items": [
+            "Acai na tigela c/ farinha d'agua (200g polpa)",
+            "1 banana pacova fatiada",
+            "Cafe preto s/ acucar"
+          ],
           "kcal": 460,
           "rec": null,
-          "months": [1, 2, 3, 4, 5, 6]
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
         },
         {
-          "items": ["Tapioca media (2 col sopa goma)", "30g queijo coalho grelhado", "Cafe preto"],
+          "items": [
+            "Tapioca media (2 col sopa goma)",
+            "30g queijo coalho grelhado",
+            "Cafe preto"
+          ],
           "kcal": 400,
           "rec": null,
           "months": []
         },
         {
-          "items": ["2 fatias pao d'agua c/ manteiga da terra", "1 ovo mexido c/ jambu", "Cafe c/ leite desnatado"],
+          "items": [
+            "2 fatias pao d'agua c/ manteiga da terra",
+            "1 ovo mexido c/ jambu",
+            "Cafe c/ leite desnatado"
+          ],
           "kcal": 440,
           "rec": null,
           "months": []
         },
         {
-          "items": ["Cuscuz paraense c/ 30g queijo coalho", "2 ovos mexidos c/ cebolinha", "Cafe preto"],
+          "items": [
+            "Cuscuz paraense c/ 30g queijo coalho",
+            "2 ovos mexidos c/ cebolinha",
+            "Cafe preto"
+          ],
           "kcal": 450,
           "rec": null,
           "months": []
         },
         {
-          "items": ["Mingau de tapioca s/ acucar (1 tigela)", "20g castanha-do-para", "Cafe c/ leite"],
+          "items": [
+            "Mingau de tapioca s/ acucar (1 tigela)",
+            "20g castanha-do-para",
+            "Cafe c/ leite"
+          ],
           "kcal": 420,
           "rec": null,
           "months": []
         },
         {
-          "items": ["100g macaxeira cozida c/ manteiga da terra", "40g charque desfiado", "Cafe preto"],
+          "items": [
+            "100g macaxeira cozida c/ manteiga da terra",
+            "40g charque desfiado",
+            "Cafe preto"
+          ],
           "kcal": 460,
           "rec": null,
           "months": []
         },
         {
-          "items": ["Tapioca c/ coco ralado e banana pacova amassada", "Cafe c/ leite desnatado"],
+          "items": [
+            "Tapioca c/ coco ralado e banana pacova amassada",
+            "Cafe c/ leite desnatado"
+          ],
           "kcal": 420,
           "rec": null,
           "months": []
         },
         {
-          "items": ["Omelete 2 ovos c/ jambu refogado", "1 fatia pao d'agua", "Cafe preto"],
+          "items": [
+            "Omelete 2 ovos c/ jambu refogado",
+            "1 fatia pao d'agua",
+            "Cafe preto"
+          ],
           "kcal": 430,
           "rec": null,
           "months": []
@@ -55,76 +97,160 @@
       ]
     },
     "lm": {
-      "meta": { "t": "Lanche da Manha", "ico": "🥭", "time": "09:30" },
+      "meta": {
+        "t": "Lanche da Manha",
+        "ico": "🥭",
+        "time": "09:30"
+      },
       "options": [
         {
-          "items": ["1 copo polpa cupuacu batida c/ agua e mel"],
+          "items": [
+            "1 copo polpa cupuacu batida c/ agua e mel"
+          ],
           "kcal": 180,
           "rec": null,
-          "months": [11, 0, 1, 2, 3]
+          "months": [
+            11,
+            0,
+            1,
+            2,
+            3
+          ]
         },
         {
-          "items": ["4 taperebas maduros (caja)", "15g castanha-do-para"],
+          "items": [
+            "4 taperebas maduros (caja)",
+            "15g castanha-do-para"
+          ],
           "kcal": 180,
           "rec": null,
-          "months": [10, 11, 0, 1]
+          "months": [
+            10,
+            11,
+            0,
+            1
+          ]
         },
         {
-          "items": ["1 bacuri medio (polpa)", "10g castanha-do-para"],
+          "items": [
+            "1 bacuri medio (polpa)",
+            "10g castanha-do-para"
+          ],
           "kcal": 210,
           "rec": null,
-          "months": [0, 1, 2, 3, 4]
+          "months": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
         },
         {
-          "items": ["2 pupunhas cozidas c/ sal"],
+          "items": [
+            "2 pupunhas cozidas c/ sal"
+          ],
           "kcal": 240,
           "rec": null,
-          "months": [9, 10, 11, 0, 1, 2]
+          "months": [
+            9,
+            10,
+            11,
+            0,
+            1,
+            2
+          ]
         },
         {
-          "items": ["1 tucuma in natura (polpa, 60g)", "15g castanha-do-para"],
+          "items": [
+            "1 tucuma in natura (polpa, 60g)",
+            "15g castanha-do-para"
+          ],
           "kcal": 230,
           "rec": null,
-          "months": [2, 3, 4, 5, 6, 7]
+          "months": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
         },
         {
-          "items": ["1 bowl acai batido c/ agua s/ acucar (150g polpa)", "1 col sopa granola"],
+          "items": [
+            "1 bowl acai batido c/ agua s/ acucar (150g polpa)",
+            "1 col sopa granola"
+          ],
           "kcal": 260,
           "rec": null,
-          "months": [1, 2, 3, 4, 5, 6]
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
         },
         {
-          "items": ["1 biriba maduro medio"],
+          "items": [
+            "1 biriba maduro medio"
+          ],
           "kcal": 160,
           "rec": null,
-          "months": [0, 1, 2]
+          "months": [
+            0,
+            1,
+            2
+          ]
         },
         {
-          "items": ["25g castanha-do-para", "1 banana pacova"],
+          "items": [
+            "25g castanha-do-para",
+            "1 banana pacova"
+          ],
           "kcal": 230,
           "rec": null,
           "months": []
         },
         {
-          "items": ["1 copo polpa graviola batida c/ agua"],
+          "items": [
+            "1 copo polpa graviola batida c/ agua"
+          ],
           "kcal": 160,
           "rec": null,
           "months": []
         },
         {
-          "items": ["1 manga rosa media", "15g castanha-do-para"],
+          "items": [
+            "1 manga rosa media",
+            "15g castanha-do-para"
+          ],
           "kcal": 210,
           "rec": null,
           "months": []
         },
         {
-          "items": ["200g abacaxi em cubos", "15g castanha-do-para"],
+          "items": [
+            "200g abacaxi em cubos",
+            "15g castanha-do-para"
+          ],
           "kcal": 190,
           "rec": null,
-          "months": [4, 5, 6, 7, 8]
+          "months": [
+            4,
+            5,
+            6,
+            7,
+            8
+          ]
         },
         {
-          "items": ["1 goiaba media", "1 fatia fina queijo coalho"],
+          "items": [
+            "1 goiaba media",
+            "1 fatia fina queijo coalho"
+          ],
           "kcal": 200,
           "rec": null,
           "months": []
@@ -132,170 +258,299 @@
       ]
     },
     "alm": {
-      "meta": { "t": "Almoco", "ico": "🍛", "time": "12:30" },
+      "meta": {
+        "t": "Almoco",
+        "ico": "🍛",
+        "time": "12:30"
+      },
       "options": [
         {
-          "items": ["Tacaca completo (tucupi, jambu, goma, camarao seco) 1 cuia media"],
+          "items": [
+            "Tacaca completo (tucupi, jambu, goma, camarao seco) 1 cuia media"
+          ],
           "kcal": 650,
-          "rec": null,
+          "rec": "tacaca_completo",
           "months": []
         },
         {
-          "items": ["Pato no tucupi (120g pato c/ jambu)", "Arroz branco (3 col sopa)", "Farinha d'agua (1 col sopa)"],
+          "items": [
+            "Pato no tucupi (120g pato c/ jambu)",
+            "Arroz branco (3 col sopa)",
+            "Farinha d'agua (1 col sopa)"
+          ],
           "kcal": 780,
-          "rec": null,
+          "rec": "pato_no_tucupi",
           "months": []
         },
         {
-          "items": ["Manicoba paraense (200g) c/ maniva, charque, paio", "Arroz branco (3 col sopa)", "Farinha d'agua"],
+          "items": [
+            "Manicoba paraense (200g) c/ maniva, charque, paio",
+            "Arroz branco (3 col sopa)",
+            "Farinha d'agua"
+          ],
           "kcal": 760,
-          "rec": null,
+          "rec": "manicoba",
           "months": []
         },
         {
-          "items": ["Pirarucu de casaca (150g pirarucu desfiado, batata, tomate)", "Piraol light (2 col sopa)"],
+          "items": [
+            "Pirarucu de casaca (150g pirarucu desfiado, batata, tomate)",
+            "Piraol light (2 col sopa)"
+          ],
           "kcal": 720,
-          "rec": null,
+          "rec": "pirarucu_casaca",
           "months": []
         },
         {
-          "items": ["150g tambaqui assado na brasa", "Baiao leve (feijao-de-corda c/ arroz)", "Salada de jambu c/ tomate"],
+          "items": [
+            "150g tambaqui assado na brasa",
+            "Baiao leve (feijao-de-corda c/ arroz)",
+            "Salada de jambu c/ tomate"
+          ],
           "kcal": 700,
-          "rec": null,
+          "rec": "tambaqui_brasa",
           "months": []
         },
         {
-          "items": ["Caldeirada de tucunare (150g peixe, batata, pimentao)", "Arroz branco", "Farinha d'agua"],
+          "items": [
+            "Caldeirada de tucunare (150g peixe, batata, pimentao)",
+            "Arroz branco",
+            "Farinha d'agua"
+          ],
           "kcal": 680,
-          "rec": null,
+          "rec": "caldeirada_tucunare",
           "months": []
         },
         {
-          "items": ["120g filhote grelhado", "Arroz branco (3 col sopa)", "Salada verde c/ jambu"],
+          "items": [
+            "120g filhote grelhado",
+            "Arroz branco (3 col sopa)",
+            "Salada verde c/ jambu"
+          ],
           "kcal": 650,
-          "rec": null,
+          "rec": "filhote_grelhado",
           "months": []
         },
         {
-          "items": ["X-caboquinho: pao d'agua c/ queijo coalho, pupunha e tucuma (medio)"],
+          "items": [
+            "X-caboquinho: pao d'agua c/ queijo coalho, pupunha e tucuma (medio)"
+          ],
           "kcal": 720,
-          "rec": null,
-          "months": [9, 10, 11, 0, 1, 2]
+          "rec": "x_caboquinho",
+          "months": [
+            9,
+            10,
+            11,
+            0,
+            1,
+            2
+          ]
         },
         {
-          "items": ["Vatapa paraense light (120g frango, leite de castanha)", "Arroz branco (3 col sopa)", "Salada"],
+          "items": [
+            "Vatapa paraense light (120g frango, leite de castanha)",
+            "Arroz branco (3 col sopa)",
+            "Salada"
+          ],
           "kcal": 720,
-          "rec": null,
+          "rec": "vatapa_paraense_light",
           "months": []
         },
         {
-          "items": ["80g charque refogado c/ feijao manteiga", "Arroz branco (3 col sopa)", "Farofa de castanha-do-para"],
+          "items": [
+            "80g charque refogado c/ feijao manteiga",
+            "Arroz branco (3 col sopa)",
+            "Farofa de castanha-do-para"
+          ],
           "kcal": 740,
-          "rec": null,
+          "rec": "charque_feijao_manteiga",
           "months": []
         },
         {
-          "items": ["130g pirarucu grelhado", "Pirao (3 col sopa)", "Arroz branco", "Salada de folhas"],
+          "items": [
+            "130g pirarucu grelhado",
+            "Pirao (3 col sopa)",
+            "Arroz branco",
+            "Salada de folhas"
+          ],
           "kcal": 700,
-          "rec": null,
+          "rec": "pirarucu_grelhado",
           "months": []
         },
         {
-          "items": ["Moqueca amazonica de peixe branco (150g) c/ leite de castanha", "Arroz branco (2 col sopa)", "Pirao (2 col sopa)"],
+          "items": [
+            "Moqueca amazonica de peixe branco (150g) c/ leite de castanha",
+            "Arroz branco (2 col sopa)",
+            "Pirao (2 col sopa)"
+          ],
           "kcal": 740,
-          "rec": null,
+          "rec": "moqueca_amazonica",
           "months": []
         }
       ]
     },
     "pre": {
-      "meta": { "t": "Pre-Treino", "ico": "⚡", "time": "15:30" },
+      "meta": {
+        "t": "Pre-Treino",
+        "ico": "⚡",
+        "time": "15:30"
+      },
       "options": [
         {
-          "items": ["1 tapioca simples (2 col sopa goma)", "1 col ch de mel"],
+          "items": [
+            "1 tapioca simples (2 col sopa goma)",
+            "1 col ch de mel"
+          ],
           "kcal": 180,
           "rec": null,
           "months": []
         },
         {
-          "items": ["Mingau de banana pacova c/ 10g castanha-do-para"],
+          "items": [
+            "Mingau de banana pacova c/ 10g castanha-do-para"
+          ],
           "kcal": 240,
           "rec": null,
           "months": []
         },
         {
-          "items": ["1 banana pacova", "1 col sopa pasta de amendoim"],
+          "items": [
+            "1 banana pacova",
+            "1 col sopa pasta de amendoim"
+          ],
           "kcal": 230,
           "rec": null,
           "months": []
         },
         {
-          "items": ["4 col sopa cuscuz paraense c/ manteiga da terra"],
+          "items": [
+            "4 col sopa cuscuz paraense c/ manteiga da terra"
+          ],
           "kcal": 210,
           "rec": null,
           "months": []
         },
         {
-          "items": ["1 fatia pao d'agua", "1 col ch mel", "Cafe preto"],
+          "items": [
+            "1 fatia pao d'agua",
+            "1 col ch mel",
+            "Cafe preto"
+          ],
           "kcal": 200,
           "rec": null,
           "months": []
         },
         {
-          "items": ["Vitamina de cupuacu (polpa) c/ aveia e leite desnatado"],
+          "items": [
+            "Vitamina de cupuacu (polpa) c/ aveia e leite desnatado"
+          ],
           "kcal": 230,
           "rec": null,
-          "months": [11, 0, 1, 2, 3, 4]
+          "months": [
+            11,
+            0,
+            1,
+            2,
+            3,
+            4
+          ]
         },
         {
-          "items": ["Suco de acai puro c/ 1 col sopa aveia"],
+          "items": [
+            "Suco de acai puro c/ 1 col sopa aveia"
+          ],
           "kcal": 220,
           "rec": null,
-          "months": [1, 2, 3, 4, 5, 6]
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
         }
       ]
     },
     "pos": {
-      "meta": { "t": "Pos-Treino", "ico": "💪", "time": "17:00" },
+      "meta": {
+        "t": "Pos-Treino",
+        "ico": "💪",
+        "time": "17:00"
+      },
       "options": [
         {
-          "items": ["1 scoop whey protein", "100g polpa de acai s/ acucar"],
+          "items": [
+            "1 scoop whey protein",
+            "100g polpa de acai s/ acucar"
+          ],
           "kcal": 260,
           "rec": null,
-          "months": [1, 2, 3, 4, 5, 6]
+          "months": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
         },
         {
-          "items": ["Tapioca c/ queijo coalho grelhado", "1 scoop whey c/ agua"],
+          "items": [
+            "Tapioca c/ queijo coalho grelhado",
+            "1 scoop whey c/ agua"
+          ],
           "kcal": 300,
           "rec": null,
           "months": []
         },
         {
-          "items": ["3 ovos mexidos c/ jambu", "1 tapioca pequena"],
+          "items": [
+            "3 ovos mexidos c/ jambu",
+            "1 tapioca pequena"
+          ],
           "kcal": 310,
           "rec": null,
           "months": []
         },
         {
-          "items": ["Sanduiche natural: 60g frango desfiado, pao d'agua, alface"],
+          "items": [
+            "Sanduiche natural: 60g frango desfiado, pao d'agua, alface"
+          ],
           "kcal": 310,
           "rec": null,
           "months": []
         },
         {
-          "items": ["Iogurte natural (200g)", "25g castanha-do-para", "1 col ch mel"],
+          "items": [
+            "Iogurte natural (200g)",
+            "25g castanha-do-para",
+            "1 col ch mel"
+          ],
           "kcal": 290,
           "rec": null,
           "months": []
         },
         {
-          "items": ["Vitamina de pupunha c/ leite desnatado e 1 col sopa aveia"],
+          "items": [
+            "Vitamina de pupunha c/ leite desnatado e 1 col sopa aveia"
+          ],
           "kcal": 280,
           "rec": null,
-          "months": [9, 10, 11, 0, 1, 2]
+          "months": [
+            9,
+            10,
+            11,
+            0,
+            1,
+            2
+          ]
         },
         {
-          "items": ["2 ovos cozidos", "100g macaxeira cozida"],
+          "items": [
+            "2 ovos cozidos",
+            "100g macaxeira cozida"
+          ],
           "kcal": 280,
           "rec": null,
           "months": []
@@ -303,117 +558,181 @@
       ]
     },
     "jan": {
-      "meta": { "t": "Jantar", "ico": "🍲", "time": "19:30" },
+      "meta": {
+        "t": "Jantar",
+        "ico": "🍲",
+        "time": "19:30"
+      },
       "options": [
         {
-          "items": ["Caldeirada leve de tucunare (100g peixe)", "Arroz (2 col sopa)", "Salada verde"],
+          "items": [
+            "Caldeirada leve de tucunare (100g peixe)",
+            "Arroz (2 col sopa)",
+            "Salada verde"
+          ],
           "kcal": 480,
-          "rec": null,
+          "rec": "caldeirada_tucunare_light",
           "months": []
         },
         {
-          "items": ["120g tambaqui grelhado", "Abobrinha refogada", "Arroz (2 col sopa)"],
+          "items": [
+            "120g tambaqui grelhado",
+            "Abobrinha refogada",
+            "Arroz (2 col sopa)"
+          ],
           "kcal": 460,
-          "rec": null,
+          "rec": "tambaqui_grelhado",
           "months": []
         },
         {
-          "items": ["Sopa de feijao manteiga c/ charque desfiado", "2 torradas"],
+          "items": [
+            "Sopa de feijao manteiga c/ charque desfiado",
+            "2 torradas"
+          ],
           "kcal": 500,
-          "rec": null,
+          "rec": "sopa_feijao_charque",
           "months": []
         },
         {
-          "items": ["Tacaca light (tucupi c/ jambu, s/ camarao) 1 cuia pequena", "1 fatia pao d'agua"],
+          "items": [
+            "Tacaca light (tucupi c/ jambu, s/ camarao) 1 cuia pequena",
+            "1 fatia pao d'agua"
+          ],
           "kcal": 420,
-          "rec": null,
+          "rec": "tacaca_light",
           "months": []
         },
         {
-          "items": ["120g pirarucu grelhado", "Pirao leve (2 col sopa)", "Salada verde"],
+          "items": [
+            "120g pirarucu grelhado",
+            "Pirao leve (2 col sopa)",
+            "Salada verde"
+          ],
           "kcal": 480,
-          "rec": null,
+          "rec": "pirarucu_grelhado",
           "months": []
         },
         {
-          "items": ["Moqueca amazonica light (100g peixe, leite de castanha)", "Arroz (2 col sopa)"],
+          "items": [
+            "Moqueca amazonica light (100g peixe, leite de castanha)",
+            "Arroz (2 col sopa)"
+          ],
           "kcal": 470,
-          "rec": null,
+          "rec": "moqueca_amazonica_light",
           "months": []
         },
         {
-          "items": ["Sopa de legumes c/ macaxeira e peixe desfiado (1 bowl)"],
+          "items": [
+            "Sopa de legumes c/ macaxeira e peixe desfiado (1 bowl)"
+          ],
           "kcal": 440,
-          "rec": null,
+          "rec": "sopa_legumes_peixe",
           "months": []
         },
         {
-          "items": ["Omelete 3 ovos c/ jambu", "Salada verde c/ tomate"],
+          "items": [
+            "Omelete 3 ovos c/ jambu",
+            "Salada verde c/ tomate"
+          ],
           "kcal": 420,
-          "rec": null,
+          "rec": "omelete_jambu",
           "months": []
         },
         {
-          "items": ["Caldinho de feijao manteiga (1 tigela)", "1 pao d'agua"],
+          "items": [
+            "Caldinho de feijao manteiga (1 tigela)",
+            "1 pao d'agua"
+          ],
           "kcal": 450,
-          "rec": null,
+          "rec": "caldinho_feijao_manteiga",
           "months": []
         },
         {
-          "items": ["80g pato no tucupi light (s/ farinha)", "Arroz (2 col sopa)", "Salada"],
+          "items": [
+            "80g pato no tucupi light (s/ farinha)",
+            "Arroz (2 col sopa)",
+            "Salada"
+          ],
           "kcal": 500,
-          "rec": null,
+          "rec": "pato_tucupi_light",
           "months": []
         }
       ]
     },
     "ln": {
-      "meta": { "t": "Lanche da Noite", "ico": "🌙", "time": "21:30" },
+      "meta": {
+        "t": "Lanche da Noite",
+        "ico": "🌙",
+        "time": "21:30"
+      },
       "options": [
         {
-          "items": ["Iogurte natural (150g) c/ polpa de cupuacu"],
+          "items": [
+            "Iogurte natural (150g) c/ polpa de cupuacu"
+          ],
           "kcal": 170,
           "rec": null,
-          "months": [11, 0, 1, 2, 3]
+          "months": [
+            11,
+            0,
+            1,
+            2,
+            3
+          ]
         },
         {
-          "items": ["Mingau de tapioca c/ leite de coco (1 tigela pequena)"],
+          "items": [
+            "Mingau de tapioca c/ leite de coco (1 tigela pequena)"
+          ],
           "kcal": 220,
           "rec": null,
           "months": []
         },
         {
-          "items": ["1 fruta da estacao (bacuri, tapereba ou graviola)"],
+          "items": [
+            "1 fruta da estacao (bacuri, tapereba ou graviola)"
+          ],
           "kcal": 110,
           "rec": null,
           "months": []
         },
         {
-          "items": ["Cha de erva-cidreira", "2 bolachas de tapioca"],
+          "items": [
+            "Cha de erva-cidreira",
+            "2 bolachas de tapioca"
+          ],
           "kcal": 140,
           "rec": null,
           "months": []
         },
         {
-          "items": ["1 copo leite desnatado morno c/ canela"],
+          "items": [
+            "1 copo leite desnatado morno c/ canela"
+          ],
           "kcal": 120,
           "rec": null,
           "months": []
         },
         {
-          "items": ["200g mamao c/ 1 col ch mel"],
+          "items": [
+            "200g mamao c/ 1 col ch mel"
+          ],
           "kcal": 150,
           "rec": null,
           "months": []
         },
         {
-          "items": ["Iogurte natural (150g) c/ 1 banana pacova"],
+          "items": [
+            "Iogurte natural (150g) c/ 1 banana pacova"
+          ],
           "kcal": 180,
           "rec": null,
           "months": []
         },
         {
-          "items": ["100g melao c/ 1 col ch mel"],
+          "items": [
+            "100g melao c/ 1 col ch mel"
+          ],
           "kcal": 110,
           "rec": null,
           "months": []

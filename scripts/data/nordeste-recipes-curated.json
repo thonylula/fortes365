@@ -1,0 +1,611 @@
+{
+  "_comment": "Receitas curadas Nordeste (BA, PE, CE, RN, PB, AL, SE, MA, PI). Cobre os pratos únicos de Almoço e Jantar. porcao: l = Luanthony, j = Jéssica.",
+  "recipes": [
+    {
+      "slug": "carne_de_sol_grelhada",
+      "title": "Carne de Sol Grelhada",
+      "icon": "🥩",
+      "category": "Almoço · Sertanejo",
+      "time_label": "25 min",
+      "description": "Carne de sol grelhada na manteiga de garrafa — sabor sertanejo puro.",
+      "match_prefixes": ["100g carne de sol grelhada", "Carne de sol grelhada"],
+      "yt_query": "carne de sol grelhada na manteiga de garrafa",
+      "data": {
+        "porcao": { "l": "130g", "j": "100g" },
+        "ings": [
+          { "n": "Carne de sol dessalgada em tiras", "a": "300 g" },
+          { "n": "Manteiga de garrafa", "a": "2 col sopa" },
+          { "n": "Alho e cebola", "a": "a gosto" },
+          { "n": "Cheiro-verde, pimenta-do-reino", "a": "a gosto" }
+        ],
+        "steps": [
+          "Dessalgue a carne em água fria por 1h (troque 2x).",
+          "Seque bem em papel-toalha antes de grelhar.",
+          "Derreta a manteiga numa frigideira bem quente.",
+          "Sele a carne por 2 min cada lado; reserve.",
+          "Na mesma frigideira, doure alho e cebola; devolva a carne.",
+          "Finalize com cheiro-verde e pimenta."
+        ],
+        "tip": "Dessalga mal feita deixa o prato salgado demais — nunca pule a troca de águas."
+      }
+    },
+    {
+      "slug": "peixe_assado_nordestino",
+      "title": "Peixe Assado Nordestino",
+      "icon": "🐟",
+      "category": "Jantar · Leve",
+      "time_label": "35 min",
+      "description": "Pescada ou tambaqui assado com limão e coentro — simples e saboroso.",
+      "match_prefixes": ["120g peixe assado", "Peixe assado"],
+      "yt_query": "peixe assado no forno nordestino receita",
+      "data": {
+        "porcao": { "l": "150g", "j": "120g" },
+        "ings": [
+          { "n": "Postas de pescada ou tambaqui", "a": "300 g" },
+          { "n": "Limão, alho, coentro", "a": "a gosto" },
+          { "n": "Azeite de dendê (opcional)", "a": "1 col sopa" },
+          { "n": "Cebola em rodelas, pimentão", "a": "a gosto" }
+        ],
+        "steps": [
+          "Tempere o peixe com limão, alho, sal e coentro; deixe 15 min.",
+          "Disponha numa assadeira com cebola e pimentão em tiras.",
+          "Regue com azeite de dendê se for baiano.",
+          "Asse a 200 °C por 25 min, regando com o próprio caldo.",
+          "Sirva com arroz branco e salada."
+        ],
+        "tip": "Peixe frio não pega tempero — deixe em temperatura ambiente por 10 min antes do forno."
+      }
+    },
+    {
+      "slug": "peixe_grelhado_simples",
+      "title": "Peixe Grelhado Simples",
+      "icon": "🐟",
+      "category": "Jantar · Fit",
+      "time_label": "15 min",
+      "description": "Filé de peixe grelhado rapidamente na chapa com limão.",
+      "match_prefixes": ["120g peixe grelhado", "Peixe grelhado"],
+      "yt_query": "peixe grelhado simples receita fit",
+      "data": {
+        "porcao": { "l": "150g", "j": "120g" },
+        "ings": [
+          { "n": "Filé de peixe firme (tilápia/pescada)", "a": "300 g" },
+          { "n": "Limão, alho, azeite", "a": "a gosto" },
+          { "n": "Sal, pimenta, cheiro-verde", "a": "a gosto" }
+        ],
+        "steps": [
+          "Tempere os filés com limão, sal, pimenta e alho; deixe 10 min.",
+          "Seque bem antes de grelhar.",
+          "Grelhe 3 min cada lado em chapa bem quente com fio de azeite.",
+          "Sirva com limão fresco e cheiro-verde."
+        ],
+        "tip": "Não mova o peixe enquanto grelha — espere formar a crosta dourada."
+      }
+    },
+    {
+      "slug": "arrumadinho_light",
+      "title": "Arrumadinho Light",
+      "icon": "🥗",
+      "category": "Jantar · Leve",
+      "time_label": "20 min",
+      "description": "Montagem fria de carne seca, feijão verde e vinagrete — sem farofa, fica mais leve.",
+      "match_prefixes": ["Arrumadinho light"],
+      "yt_query": "arrumadinho nordestino receita light",
+      "data": {
+        "porcao": { "l": "1 prato montado", "j": "3/4 prato" },
+        "ings": [
+          { "n": "Carne seca dessalgada e desfiada", "a": "200 g" },
+          { "n": "Feijão verde cozido", "a": "1 xícara" },
+          { "n": "Tomate, cebola, pimentão picados", "a": "1 xícara" },
+          { "n": "Coentro, vinagre, limão, azeite", "a": "a gosto" }
+        ],
+        "steps": [
+          "Refogue a carne seca desfiada com cebola por 5 min.",
+          "Prepare o vinagrete: tomate, cebola, pimentão, coentro, vinagre, limão.",
+          "Num prato, monte em camadas: feijão verde, carne seca, vinagrete.",
+          "Finalize com fio de azeite."
+        ],
+        "tip": "Versão tradicional leva farofa por cima — omitir reduz muito as calorias sem perder graça."
+      }
+    },
+    {
+      "slug": "arrumadinho_tradicional",
+      "title": "Arrumadinho Tradicional",
+      "icon": "🥘",
+      "category": "Almoço · Nordestino",
+      "time_label": "30 min",
+      "description": "Carne seca refogada, feijão verde, vinagrete e farofa em camadas — clássico do sertão.",
+      "match_prefixes": ["Arrumadinho:", "Arrumadinho "],
+      "yt_query": "arrumadinho nordestino tradicional receita",
+      "data": {
+        "porcao": { "l": "1 prato completo", "j": "3/4 prato" },
+        "ings": [
+          { "n": "Carne seca dessalgada e desfiada", "a": "250 g" },
+          { "n": "Feijão verde cozido", "a": "1,5 xícaras" },
+          { "n": "Farofa de farinha de mandioca", "a": "1 xícara" },
+          { "n": "Tomate, cebola, pimentão, coentro", "a": "a gosto" },
+          { "n": "Manteiga de garrafa, azeite, limão", "a": "a gosto" }
+        ],
+        "steps": [
+          "Dessalgue e cozinhe a carne; desfie e refogue na manteiga com cebola.",
+          "Prepare o vinagrete cortando tudo em cubos pequenos.",
+          "Faça a farofa: manteiga + cebola + farinha, mexa até crocante.",
+          "Monte em camadas no prato: feijão, carne, vinagrete, farofa por cima.",
+          "Sirva morno ou em temperatura ambiente."
+        ],
+        "tip": "Arrumadinho autêntico tem cada camada bem separada — não misture antes de servir."
+      }
+    },
+    {
+      "slug": "baiao_de_dois",
+      "title": "Baião de Dois",
+      "icon": "🍚",
+      "category": "Almoço · Nordestino",
+      "time_label": "40 min",
+      "description": "Arroz e feijão-verde cozidos juntos com queijo coalho e carne seca — ícone cearense.",
+      "match_prefixes": ["Baiao de dois", "Baião de dois"],
+      "yt_query": "baião de dois receita cearense tradicional",
+      "data": {
+        "porcao": { "l": "1 prato (~350g)", "j": "3/4 prato (~280g)" },
+        "ings": [
+          { "n": "Feijão verde cozido", "a": "1,5 xícaras" },
+          { "n": "Arroz cru", "a": "1 xícara" },
+          { "n": "Queijo coalho em cubos", "a": "150 g" },
+          { "n": "Carne seca ou paio em cubinhos", "a": "100 g" },
+          { "n": "Cebola, alho, cheiro-verde, manteiga de garrafa", "a": "a gosto" }
+        ],
+        "steps": [
+          "Doure a carne seca em cubos; reserve.",
+          "Refogue cebola e alho na manteiga; junte o arroz.",
+          "Acrescente o feijão verde com um pouco do caldo.",
+          "Cubra com água quente e cozinhe por 15 min.",
+          "Nos últimos 3 min, adicione queijo coalho e carne seca.",
+          "Finalize com cheiro-verde."
+        ],
+        "tip": "Queijo coalho entra no fim — se for antes, derrete demais e perde a textura."
+      }
+    },
+    {
+      "slug": "bobo_camarao",
+      "title": "Bobó de Camarão",
+      "icon": "🦐",
+      "category": "Almoço · Baiano",
+      "time_label": "50 min",
+      "description": "Creme de mandioca com camarão, leite de coco e dendê — clássico da culinária baiana.",
+      "match_prefixes": ["Bobo de camarao", "Bobó de camarão"],
+      "yt_query": "bobó de camarão receita baiana tradicional",
+      "data": {
+        "porcao": { "l": "1 tigela (~400g)", "j": "1 tigela menor (~300g)" },
+        "ings": [
+          { "n": "Camarão limpo", "a": "400 g" },
+          { "n": "Mandioca cozida e amassada", "a": "500 g" },
+          { "n": "Leite de coco", "a": "200 ml" },
+          { "n": "Azeite de dendê", "a": "2 col sopa" },
+          { "n": "Tomate, cebola, pimentão, coentro", "a": "a gosto" },
+          { "n": "Alho, limão, pimenta", "a": "a gosto" }
+        ],
+        "steps": [
+          "Tempere o camarão com limão, sal, alho; deixe 15 min.",
+          "Refogue cebola, alho, tomate e pimentão em um pouco de dendê.",
+          "Acrescente a mandioca amassada e o leite de coco.",
+          "Cozinhe mexendo até formar um creme espesso (10 min).",
+          "Junte os camarões e cozinhe por 5 min.",
+          "Finalize com coentro e mais um fio de dendê."
+        ],
+        "tip": "Não coza o camarão demais — 4-5 min é suficiente, senão fica borrachudo."
+      }
+    },
+    {
+      "slug": "bode_assado_sertao",
+      "title": "Bode Assado ao Sertão",
+      "icon": "🍖",
+      "category": "Almoço · Sertanejo",
+      "time_label": "2h",
+      "description": "Bode assado marinado com temperos sertanejos, acompanha farofa de cuscuz.",
+      "match_prefixes": ["Bode assado"],
+      "yt_query": "bode assado sertanejo receita tradicional",
+      "data": {
+        "porcao": { "l": "150g bode + farofa", "j": "120g bode + farofa" },
+        "ings": [
+          { "n": "Pedaços de bode (pernil/paleta)", "a": "800 g" },
+          { "n": "Alho, cebola, limão, vinho tinto", "a": "a gosto" },
+          { "n": "Louro, cominho, pimenta-do-reino", "a": "a gosto" },
+          { "n": "Farofa de cuscuz pronta", "a": "2 xícaras" }
+        ],
+        "steps": [
+          "Tempere o bode com alho socado, sal, vinho e limão; deixe marinar 2h.",
+          "Acrescente cominho, louro e pimenta.",
+          "Asse em forno a 180 °C coberto por 1h30.",
+          "Destampe e doure nos últimos 20 min.",
+          "Sirva com a farofa de cuscuz ao lado."
+        ],
+        "tip": "Bode tem cheiro forte — vinho e limão neutralizam. Use marinade generoso."
+      }
+    },
+    {
+      "slug": "caldinho_feijao",
+      "title": "Caldinho de Feijão com Bacon",
+      "icon": "🥣",
+      "category": "Jantar · Aperitivo",
+      "time_label": "25 min",
+      "description": "Caldo encorpado de feijão batido com bacon crocante por cima.",
+      "match_prefixes": ["Caldinho de feijao", "Caldinho de feijão"],
+      "yt_query": "caldinho de feijão com bacon receita nordestina",
+      "data": {
+        "porcao": { "l": "1 tigela funda", "j": "1 tigela média" },
+        "ings": [
+          { "n": "Feijão carioca cozido", "a": "2 xícaras" },
+          { "n": "Bacon em cubinhos", "a": "80 g" },
+          { "n": "Cebola, alho, cheiro-verde", "a": "a gosto" },
+          { "n": "Caldo de feijão reservado", "a": "500 ml" },
+          { "n": "Pimenta-do-reino, sal", "a": "a gosto" }
+        ],
+        "steps": [
+          "Bata o feijão com caldo no liquidificador até ficar liso.",
+          "Frite o bacon em cubinhos até dourar; reserve metade.",
+          "Na gordura do bacon, refogue cebola e alho.",
+          "Acrescente o feijão batido; cozinhe por 10 min.",
+          "Sirva com bacon reservado e cheiro-verde por cima."
+        ],
+        "tip": "Coe o feijão batido antes de levar ao fogo se quiser caldo mais sedoso."
+      }
+    },
+    {
+      "slug": "canja_galinha_ne",
+      "title": "Canja de Galinha Nordestina",
+      "icon": "🍲",
+      "category": "Jantar · Reconfortante",
+      "time_label": "45 min",
+      "description": "Caldo leve de galinha com arroz e legumes — versão nordestina simples.",
+      "match_prefixes": ["Canja de galinha"],
+      "yt_query": "canja de galinha receita caseira",
+      "data": {
+        "porcao": { "l": "1 bowl grande (~500ml)", "j": "1 bowl médio (~400ml)" },
+        "ings": [
+          { "n": "Peito de galinha com osso", "a": "300 g" },
+          { "n": "Arroz cru", "a": "1/3 xícara" },
+          { "n": "Cenoura e chuchu em cubinhos", "a": "2 xícaras" },
+          { "n": "Cebola, alho, louro, cheiro-verde", "a": "a gosto" }
+        ],
+        "steps": [
+          "Cozinhe a galinha com cebola, alho e louro em 1,5 l de água por 30 min.",
+          "Retire a galinha, desfie e reserve o caldo.",
+          "Ferva o caldo; adicione arroz e cozinhe por 8 min.",
+          "Junte os legumes e cozinhe mais 10 min.",
+          "Devolva a galinha à panela; aqueça.",
+          "Finalize com cheiro-verde."
+        ],
+        "tip": "Caldo coado fica mais clean — deixe ossos e restinhos no coador."
+      }
+    },
+    {
+      "slug": "cuscuz_recheado",
+      "title": "Cuscuz Recheado",
+      "icon": "🌽",
+      "category": "Almoço · Nordestino",
+      "time_label": "30 min",
+      "description": "Cuscuz de milho recheado com queijo coalho e carne de sol — versão completa.",
+      "match_prefixes": ["Cuscuz recheado"],
+      "yt_query": "cuscuz nordestino recheado carne de sol queijo coalho",
+      "data": {
+        "porcao": { "l": "1 porção grande (~350g)", "j": "1 porção média (~280g)" },
+        "ings": [
+          { "n": "Flocão de milho", "a": "2 xícaras" },
+          { "n": "Água morna com sal", "a": "1 xícara" },
+          { "n": "Carne de sol desfiada refogada", "a": "200 g" },
+          { "n": "Queijo coalho em cubos", "a": "150 g" },
+          { "n": "Manteiga de garrafa, cebolinha", "a": "a gosto" }
+        ],
+        "steps": [
+          "Hidrate o flocão com água e sal por 5 min, mexendo.",
+          "Cozinhe no vapor (cuscuzeira) por 10 min.",
+          "Desenforme e abra ao meio como um sanduíche.",
+          "Recheie com carne de sol refogada e queijo coalho.",
+          "Feche, regue com manteiga de garrafa e finalize com cebolinha."
+        ],
+        "tip": "Flocão hidratado demais vira pasta; menos, não cozinha. Proporção 2:1 é ideal."
+      }
+    },
+    {
+      "slug": "escondidinho_carne_sol",
+      "title": "Escondidinho de Carne de Sol",
+      "icon": "🥧",
+      "category": "Almoço · Nordestino",
+      "time_label": "1h",
+      "description": "Carne de sol escondida sob camada de purê de macaxeira gratinado.",
+      "match_prefixes": ["Escondidinho de carne de sol"],
+      "yt_query": "escondidinho de carne de sol com macaxeira receita",
+      "data": {
+        "porcao": { "l": "1 porção grande", "j": "1 porção média" },
+        "ings": [
+          { "n": "Macaxeira (mandioca) cozida", "a": "600 g" },
+          { "n": "Carne de sol refogada e desfiada", "a": "300 g" },
+          { "n": "Requeijão ou catupiry", "a": "200 g" },
+          { "n": "Leite, manteiga, queijo ralado", "a": "a gosto" }
+        ],
+        "steps": [
+          "Amasse a macaxeira com leite e manteiga até virar purê liso.",
+          "Refogue a carne de sol com cebola e alho; desfie.",
+          "Num refratário, coloque metade do purê, a carne, requeijão e o resto do purê.",
+          "Cubra com queijo ralado.",
+          "Leve ao forno a 200 °C por 20 min até gratinar."
+        ],
+        "tip": "Macaxeira (raíz) é mais saborosa que a mandioca de supermercado — vale procurar."
+      }
+    },
+    {
+      "slug": "feijao_corda_pacoca",
+      "title": "Feijão-de-Corda com Paçoca de Carne Seca",
+      "icon": "🍛",
+      "category": "Jantar · Sertanejo",
+      "time_label": "40 min",
+      "description": "Feijão-de-corda cremoso servido com paçoca salgada de carne seca por cima.",
+      "match_prefixes": ["Feijao-de-corda", "Feijão-de-corda"],
+      "yt_query": "feijão de corda com paçoca de carne seca receita",
+      "data": {
+        "porcao": { "l": "1 prato (~350g)", "j": "3/4 prato (~260g)" },
+        "ings": [
+          { "n": "Feijão-de-corda seco", "a": "1 xícara" },
+          { "n": "Carne seca dessalgada desfiada", "a": "150 g" },
+          { "n": "Farinha de mandioca torrada", "a": "1/2 xícara" },
+          { "n": "Cebola, alho, coentro, manteiga de garrafa", "a": "a gosto" }
+        ],
+        "steps": [
+          "Cozinhe o feijão-de-corda em pressão por 20 min; escorra parte do caldo.",
+          "Refogue cebola e alho na manteiga; junte o feijão.",
+          "Numa travessa, bata no pilão carne seca + farinha até virar paçoca.",
+          "Sirva o feijão com a paçoca por cima e coentro fresco."
+        ],
+        "tip": "Paçoca salgada bem socada é seca — se amassar demais, vira creme."
+      }
+    },
+    {
+      "slug": "galinha_caipira_quiabo",
+      "title": "Galinha Caipira com Quiabo",
+      "icon": "🐔",
+      "category": "Almoço · Tradicional",
+      "time_label": "1h30",
+      "description": "Galinha caipira ensopada com quiabo e pirão de farinha.",
+      "match_prefixes": ["Galinha caipira ensopada"],
+      "yt_query": "galinha caipira com quiabo receita nordestina",
+      "data": {
+        "porcao": { "l": "150g galinha + quiabo", "j": "120g galinha + quiabo" },
+        "ings": [
+          { "n": "Galinha caipira em pedaços", "a": "1 kg" },
+          { "n": "Quiabo em rodelas", "a": "300 g" },
+          { "n": "Cebola, alho, tomate, cheiro-verde", "a": "a gosto" },
+          { "n": "Colorau (urucum)", "a": "1 col sopa" }
+        ],
+        "steps": [
+          "Lave o quiabo com vinagre e limão para reduzir baba; seque.",
+          "Tempere e doure a galinha com colorau em panela de pressão.",
+          "Cubra com água e cozinhe 40 min.",
+          "Abra a pressão; adicione o quiabo e cozinhe por 8 min em panela aberta.",
+          "Ajuste sal e finalize com cheiro-verde."
+        ],
+        "tip": "Quiabo cozido em panela aberta solta menos baba que em pressão."
+      }
+    },
+    {
+      "slug": "moqueca_camarao",
+      "title": "Moqueca de Camarão",
+      "icon": "🦐",
+      "category": "Almoço · Baiano",
+      "time_label": "30 min",
+      "description": "Camarão em ensopado com dendê, leite de coco e pimentão colorido.",
+      "match_prefixes": ["Moqueca de camarao", "Moqueca de camarão"],
+      "yt_query": "moqueca de camarão baiana receita tradicional",
+      "data": {
+        "porcao": { "l": "150g camarão", "j": "120g camarão" },
+        "ings": [
+          { "n": "Camarão limpo sem casca", "a": "300 g" },
+          { "n": "Tomate, cebola, pimentão em rodelas", "a": "a gosto" },
+          { "n": "Leite de coco", "a": "200 ml" },
+          { "n": "Azeite de dendê", "a": "2 col sopa" },
+          { "n": "Coentro, limão, alho, sal", "a": "a gosto" }
+        ],
+        "steps": [
+          "Tempere o camarão com limão, sal, alho; deixe 15 min.",
+          "Numa panela, faça camadas: cebola, tomate, pimentão, camarão, repetir.",
+          "Regue com leite de coco e dendê.",
+          "Cozinhe tampado em fogo baixo por 15 min (sem mexer).",
+          "Finalize com coentro abundante."
+        ],
+        "tip": "Moqueca não se mexe com colher — só sacuda a panela para não quebrar os camarões."
+      }
+    },
+    {
+      "slug": "moqueca_peixe",
+      "title": "Moqueca de Peixe",
+      "icon": "🐟",
+      "category": "Almoço · Baiano",
+      "time_label": "35 min",
+      "description": "Peixe em postas cozido em leite de coco, dendê e tomate — essência da Bahia.",
+      "match_prefixes": ["Moqueca de peixe (", "Moqueca de peixe 1"],
+      "yt_query": "moqueca baiana de peixe receita tradicional",
+      "data": {
+        "porcao": { "l": "180g peixe", "j": "150g peixe" },
+        "ings": [
+          { "n": "Postas de peixe firme (robalo/badejo)", "a": "400 g" },
+          { "n": "Tomate, cebola, pimentão em rodelas", "a": "a gosto" },
+          { "n": "Leite de coco", "a": "250 ml" },
+          { "n": "Azeite de dendê", "a": "3 col sopa" },
+          { "n": "Coentro, limão, alho", "a": "a gosto" }
+        ],
+        "steps": [
+          "Tempere o peixe com limão, sal e alho; reserve 15 min.",
+          "Numa panela de barro, faça camadas de legumes e peixe.",
+          "Cubra com leite de coco e dendê.",
+          "Cozinhe tampado em fogo baixo por 20 min sem mexer.",
+          "Finalize com coentro e sirva com arroz branco."
+        ],
+        "tip": "Panela de barro é tradição mas frigideira larga funciona — só não use alumínio (reage com o ácido)."
+      }
+    },
+    {
+      "slug": "moqueca_peixe_light",
+      "title": "Moqueca de Peixe Light",
+      "icon": "🐠",
+      "category": "Jantar · Fit",
+      "time_label": "25 min",
+      "description": "Versão mais leve da moqueca — menos dendê, mais legumes, mesmo sabor.",
+      "match_prefixes": ["Moqueca de peixe light"],
+      "yt_query": "moqueca de peixe light fit receita",
+      "data": {
+        "porcao": { "l": "130g peixe + 2 col arroz", "j": "100g peixe + 2 col arroz" },
+        "ings": [
+          { "n": "Posta de peixe magro", "a": "250 g" },
+          { "n": "Tomate, cebola, pimentão", "a": "a gosto" },
+          { "n": "Leite de coco light", "a": "150 ml" },
+          { "n": "Azeite de dendê", "a": "1 col sopa" },
+          { "n": "Coentro, limão, alho", "a": "a gosto" }
+        ],
+        "steps": [
+          "Tempere o peixe com limão, alho e sal; reserve 10 min.",
+          "Faça camadas de legumes e peixe numa panela.",
+          "Cubra com leite de coco light e só 1 col de dendê.",
+          "Cozinhe tampado em fogo baixo por 15 min.",
+          "Finalize com coentro fresco."
+        ],
+        "tip": "1 colher de dendê já dá a cor e o sabor — o resto é só caloria extra."
+      }
+    },
+    {
+      "slug": "omelete_queijo_coalho",
+      "title": "Omelete com Queijo Coalho",
+      "icon": "🍳",
+      "category": "Jantar · Rápido",
+      "time_label": "10 min",
+      "description": "Omelete rústico com cubos de queijo coalho — jantar simples e gostoso.",
+      "match_prefixes": ["Omelete 3 ovos c/ queijo coalho", "Omelete c/ queijo coalho"],
+      "yt_query": "omelete com queijo coalho receita",
+      "data": {
+        "porcao": { "l": "3 ovos", "j": "2 ovos" },
+        "ings": [
+          { "n": "Ovos caipiras", "a": "3 unidades" },
+          { "n": "Queijo coalho em cubos", "a": "80 g" },
+          { "n": "Cebolinha, manteiga, sal, pimenta", "a": "a gosto" }
+        ],
+        "steps": [
+          "Bata os ovos com sal, pimenta e cebolinha.",
+          "Aqueça manteiga em frigideira antiaderente.",
+          "Despeje os ovos; quando firmar, adicione queijo coalho.",
+          "Dobre ao meio e cozinhe mais 1 min.",
+          "Sirva com salada."
+        ],
+        "tip": "Queijo coalho em cubos grandes derrete só por fora e mantém textura — perfeito."
+      }
+    },
+    {
+      "slug": "panelada",
+      "title": "Panelada",
+      "icon": "🍲",
+      "category": "Almoço · Cearense",
+      "time_label": "2h30",
+      "description": "Prato cearense com tripas bovinas cozidas lentamente com legumes e temperos.",
+      "match_prefixes": ["Panelada"],
+      "yt_query": "panelada cearense receita tradicional",
+      "data": {
+        "porcao": { "l": "1 prato fundo (~250g)", "j": "1 prato raso (~200g)" },
+        "ings": [
+          { "n": "Buchos/tripas bovinas limpas", "a": "500 g" },
+          { "n": "Mandioca, batata, cenoura", "a": "500 g" },
+          { "n": "Cebola, alho, tomate, coentro", "a": "a gosto" },
+          { "n": "Colorau, cominho, limão, sal", "a": "a gosto" }
+        ],
+        "steps": [
+          "Limpe bem as tripas esfregando com limão e sal; enxágue.",
+          "Cozinhe em pressão com cebola e alho por 1h30.",
+          "Escorra, corte em pedaços menores e reserve o caldo.",
+          "Numa panela, refogue cebola, tomate e colorau.",
+          "Junte as tripas, a mandioca/legumes e o caldo coado.",
+          "Cozinhe aberto por 30 min até engrossar.",
+          "Finalize com coentro e cominho."
+        ],
+        "tip": "Limpeza das tripas é crítica — se não gosta do cheiro forte, esfregue com limão e vinagre por 2 passadas."
+      }
+    },
+    {
+      "slug": "sopa_feijao_verde",
+      "title": "Sopa de Feijão Verde com Carne Seca",
+      "icon": "🥣",
+      "category": "Jantar · Rústico",
+      "time_label": "45 min",
+      "description": "Caldo reforçado de feijão verde com carne seca desfiada por cima.",
+      "match_prefixes": ["Sopa de feijao verde", "Sopa de feijão verde"],
+      "yt_query": "sopa de feijão verde com carne seca receita",
+      "data": {
+        "porcao": { "l": "1 bowl grande", "j": "1 bowl médio" },
+        "ings": [
+          { "n": "Feijão verde cozido com caldo", "a": "2 xícaras" },
+          { "n": "Carne seca dessalgada desfiada", "a": "150 g" },
+          { "n": "Cebola, alho, cheiro-verde", "a": "a gosto" },
+          { "n": "Manteiga de garrafa, pimenta", "a": "a gosto" }
+        ],
+        "steps": [
+          "Refogue a carne seca desfiada na manteiga de garrafa.",
+          "Bata metade do feijão no liquidificador com caldo.",
+          "Volte à panela; junte o feijão inteiro e mais caldo.",
+          "Cozinhe por 10 min; ajuste sal.",
+          "Sirva com a carne seca por cima e cheiro-verde."
+        ],
+        "tip": "Feijão verde do Nordeste (não é o edamame) se chama feijão-verde-de-corda."
+      }
+    },
+    {
+      "slug": "sopa_legumes_charque",
+      "title": "Sopa de Legumes com Macaxeira e Charque",
+      "icon": "🥣",
+      "category": "Jantar · Nutritiva",
+      "time_label": "40 min",
+      "description": "Caldo reforçado com macaxeira, legumes e pedaços de charque.",
+      "match_prefixes": ["Sopa de legumes"],
+      "yt_query": "sopa de legumes com macaxeira e charque receita",
+      "data": {
+        "porcao": { "l": "1 bowl grande (~500ml)", "j": "1 bowl médio (~400ml)" },
+        "ings": [
+          { "n": "Charque dessalgado em cubos", "a": "200 g" },
+          { "n": "Macaxeira em cubos", "a": "300 g" },
+          { "n": "Cenoura, abobrinha, chuchu", "a": "2 xícaras" },
+          { "n": "Cebola, alho, cheiro-verde", "a": "a gosto" }
+        ],
+        "steps": [
+          "Cozinhe o charque em pressão por 20 min; reserve o caldo.",
+          "Refogue cebola e alho; junte o charque.",
+          "Acrescente macaxeira, cenoura e outros legumes.",
+          "Cubra com o caldo do charque + água morna; cozinhe 15 min.",
+          "Amasse alguns pedaços de macaxeira para engrossar.",
+          "Finalize com cheiro-verde."
+        ],
+        "tip": "Charque é mais salgado que carne seca — dessalgar em 3 águas é o mínimo."
+      }
+    },
+    {
+      "slug": "sururu_refogado",
+      "title": "Sururu Refogado",
+      "icon": "🦪",
+      "category": "Almoço · Alagoano",
+      "time_label": "25 min",
+      "description": "Sururu (marisco) refogado com leite de coco e dendê — ícone de Alagoas.",
+      "match_prefixes": ["Sururu refogado"],
+      "yt_query": "sururu refogado alagoano receita",
+      "data": {
+        "porcao": { "l": "150g", "j": "120g" },
+        "ings": [
+          { "n": "Sururu limpo (sem casca)", "a": "300 g" },
+          { "n": "Leite de coco", "a": "150 ml" },
+          { "n": "Azeite de dendê", "a": "1 col sopa" },
+          { "n": "Cebola, alho, coentro, tomate, pimentão", "a": "a gosto" }
+        ],
+        "steps": [
+          "Lave bem o sururu em água corrente várias vezes.",
+          "Refogue cebola e alho num fio de azeite.",
+          "Acrescente tomate e pimentão; cozinhe por 3 min.",
+          "Junte o sururu, leite de coco e dendê.",
+          "Cozinhe por 8-10 min mexendo ocasionalmente.",
+          "Finalize com coentro fresco."
+        ],
+        "tip": "Sururu fresco tem cheiro suave de mar — cheiro forte = já estragou."
+      }
+    }
+  ]
+}

@@ -1,0 +1,624 @@
+{
+  "_comment": "Receitas curadas Sul (RS, SC, PR). Culinária gaúcha, catarinense e paranaense — churrasco, pinhão, massa italiana. porcao: l = Luanthony, j = Jéssica.",
+  "recipes": [
+    {
+      "slug": "peixe_grelhado_sul",
+      "title": "Peixe Grelhado Simples",
+      "icon": "🐟",
+      "category": "Jantar · Fit",
+      "time_label": "15 min",
+      "description": "Filé de peixe grelhado na chapa com azeite e limão.",
+      "match_prefixes": ["120g peixe grelhado", "Peixe grelhado"],
+      "yt_query": "peixe grelhado receita fit sul",
+      "data": {
+        "porcao": { "l": "150g", "j": "120g" },
+        "ings": [
+          { "n": "Filé de peixe firme", "a": "300 g" },
+          { "n": "Limão, alho, azeite", "a": "a gosto" },
+          { "n": "Sal, pimenta, salsa", "a": "a gosto" }
+        ],
+        "steps": [
+          "Tempere o peixe com limão, alho, sal e pimenta.",
+          "Seque bem antes de grelhar.",
+          "Aqueça frigideira com fio de azeite.",
+          "Grelhe 3 min cada lado.",
+          "Finalize com salsa fresca."
+        ],
+        "tip": "Secar o peixe é 80% do ponto crocante — não pule."
+      }
+    },
+    {
+      "slug": "arroz_carreteiro",
+      "title": "Arroz Carreteiro",
+      "icon": "🍚",
+      "category": "Almoço · Gaúcho",
+      "time_label": "45 min",
+      "description": "Arroz misturado com charque desfiado — prato do carreteiro gaúcho.",
+      "match_prefixes": ["Arroz carreteiro"],
+      "yt_query": "arroz carreteiro gaúcho receita tradicional",
+      "data": {
+        "porcao": { "l": "1 prato (~350g)", "j": "3/4 prato (~280g)" },
+        "ings": [
+          { "n": "Charque dessalgado desfiado", "a": "200 g" },
+          { "n": "Arroz branco cru", "a": "1 xícara" },
+          { "n": "Cebola, alho, pimentão, tomate", "a": "a gosto" },
+          { "n": "Cheiro-verde, pimenta-calabresa", "a": "a gosto" }
+        ],
+        "steps": [
+          "Dessalgue o charque; cozinhe em pressão por 30 min; desfie.",
+          "Refogue cebola e alho em panela larga.",
+          "Doure o charque desfiado por 5 min.",
+          "Acrescente pimentão e tomate picados.",
+          "Junte o arroz lavado e mexa bem.",
+          "Cubra com 2 xícaras de água fervente; cozinhe por 15 min.",
+          "Finalize com cheiro-verde."
+        ],
+        "tip": "Tradicionalmente feito em panela de ferro no fogão a lenha — a crostinha do fundo é o melhor."
+      }
+    },
+    {
+      "slug": "barreado_paranaense",
+      "title": "Barreado Paranaense",
+      "icon": "🥩",
+      "category": "Almoço · Paranaense",
+      "time_label": "8h",
+      "description": "Carne cozida por horas em panela de barro lacrada — patrimônio cultural paranaense.",
+      "match_prefixes": ["Barreado paranaense"],
+      "yt_query": "barreado paranaense receita tradicional",
+      "data": {
+        "porcao": { "l": "180g carne + banana", "j": "150g carne + banana" },
+        "ings": [
+          { "n": "Acém bovino em cubos grandes", "a": "1 kg" },
+          { "n": "Toucinho em cubos", "a": "100 g" },
+          { "n": "Cebola, alho, louro, cominho", "a": "a gosto" },
+          { "n": "Farinha de mandioca (acompanhamento)", "a": "1 xícara" },
+          { "n": "Banana-da-terra (acompanhamento)", "a": "2 unidades" }
+        ],
+        "steps": [
+          "Tempere a carne com alho, sal, cominho e louro; deixe 1h.",
+          "Numa panela de barro (ou ferro), faça camadas alternadas de carne e toucinho.",
+          "Adicione cebola e um pouco de água.",
+          "Lacre a tampa com massa de farinha + água (técnica do 'barro').",
+          "Cozinhe em fogo baixíssimo por 8 horas (ou pressão 2h30).",
+          "Abra; a carne deve desfiar ao toque.",
+          "Sirva com farinha, banana e arroz."
+        ],
+        "tip": "Barreado é lento por tradição — na pressão perde 30% do sabor mas vira viável em dia de semana."
+      }
+    },
+    {
+      "slug": "camarao_milanesa",
+      "title": "Camarão à Milanesa",
+      "icon": "🦐",
+      "category": "Almoço · Litorâneo",
+      "time_label": "25 min",
+      "description": "Camarão empanado e frito com farinha de rosca — clássico do litoral sul.",
+      "match_prefixes": ["Camarao a milanesa", "Camarão à milanesa"],
+      "yt_query": "camarão à milanesa receita crocante",
+      "data": {
+        "porcao": { "l": "150g", "j": "120g" },
+        "ings": [
+          { "n": "Camarão grande limpo", "a": "300 g" },
+          { "n": "Farinha de trigo", "a": "1/2 xícara" },
+          { "n": "Ovos batidos", "a": "2 unidades" },
+          { "n": "Farinha de rosca", "a": "1 xícara" },
+          { "n": "Limão, alho, sal, pimenta", "a": "a gosto" }
+        ],
+        "steps": [
+          "Tempere o camarão com limão, alho, sal e pimenta; 15 min.",
+          "Passe cada camarão na farinha, no ovo, na farinha de rosca.",
+          "Aqueça óleo (fritadeira ou panela) a 180 °C.",
+          "Frite por 3 min até dourar.",
+          "Escorra em papel-toalha.",
+          "Sirva com limão e arroz branco."
+        ],
+        "tip": "Camarão frito demais fica borrachudo — 3 min no óleo bem quente é o limite."
+      }
+    },
+    {
+      "slug": "canja_galinha_sul",
+      "title": "Canja de Galinha",
+      "icon": "🍲",
+      "category": "Jantar · Reconfortante",
+      "time_label": "45 min",
+      "description": "Caldo simples de galinha com arroz e legumes — universal.",
+      "match_prefixes": ["Canja de galinha"],
+      "yt_query": "canja de galinha receita caseira sul",
+      "data": {
+        "porcao": { "l": "1 bowl grande", "j": "1 bowl médio" },
+        "ings": [
+          { "n": "Peito de galinha com osso", "a": "300 g" },
+          { "n": "Arroz cru", "a": "1/3 xícara" },
+          { "n": "Cenoura, batata, chuchu em cubos", "a": "2 xícaras" },
+          { "n": "Cebola, alho, louro, salsa", "a": "a gosto" }
+        ],
+        "steps": [
+          "Cozinhe a galinha por 30 min em 1,5 l de água com louro.",
+          "Retire, desfie e devolva o caldo ao fogo.",
+          "Adicione arroz; cozinhe 8 min.",
+          "Junte os legumes; cozinhe mais 10 min.",
+          "Devolva a galinha; finalize com salsa."
+        ],
+        "tip": "No Sul costumam adicionar cenoura ralada fina — derrete no caldo e dá cor."
+      }
+    },
+    {
+      "slug": "churrasco_misto",
+      "title": "Churrasco Misto",
+      "icon": "🔥",
+      "category": "Almoço · Gaúcho",
+      "time_label": "1h30",
+      "description": "Combinação de picanha e fraldinha assadas na brasa — o básico do churrasco gaúcho.",
+      "match_prefixes": ["Churrasco misto"],
+      "yt_query": "churrasco gaúcho picanha fraldinha receita",
+      "data": {
+        "porcao": { "l": "150g (100 picanha + 50 fraldinha)", "j": "120g (80 + 40)" },
+        "ings": [
+          { "n": "Picanha em peça", "a": "400 g" },
+          { "n": "Fraldinha em peça", "a": "300 g" },
+          { "n": "Sal grosso", "a": "3 col sopa" }
+        ],
+        "steps": [
+          "Deixe as carnes em temperatura ambiente por 30 min.",
+          "Espete a picanha em peça inteira (gordura para fora).",
+          "Espete a fraldinha pela lateral longa.",
+          "Prepare brasa bem viva.",
+          "Salgue as carnes só na hora de ir pra grelha.",
+          "Picanha: 20 min cada lado em brasa média; fraldinha: 15 min.",
+          "Descanse as carnes 5 min antes de fatiar."
+        ],
+        "tip": "Sal grosso aplicado na hora — se colocar antes, 'cozinha' a superfície e resseca."
+      }
+    },
+    {
+      "slug": "costela_brasa",
+      "title": "Costela Assada na Brasa",
+      "icon": "🥩",
+      "category": "Almoço · Gaúcho",
+      "time_label": "5h",
+      "description": "Costela bovina assada lentamente na brasa a mais de 1 metro de distância — ponto de honra gaúcho.",
+      "match_prefixes": ["Costela assada na brasa"],
+      "yt_query": "costela de fogo de chão receita gaúcha",
+      "data": {
+        "porcao": { "l": "200g", "j": "130g" },
+        "ings": [
+          { "n": "Costela bovina em ripa", "a": "1 kg" },
+          { "n": "Sal grosso", "a": "3 col sopa" }
+        ],
+        "steps": [
+          "Espete a costela inteira em vara de churrasco.",
+          "Esfregue sal grosso só no lado da carne (não na gordura).",
+          "Coloque em brasa baixa a distância de 80cm a 1m.",
+          "Asse por 5h virando a cada 1h.",
+          "Nos últimos 30 min, aproxime para dourar a gordura.",
+          "Sirva em lascas soltas."
+        ],
+        "tip": "Fogo de chão leva 8h; na churrasqueira alta, 5h. Na horizontal sem altura ajustável, use forno a 140 °C por 4h."
+      }
+    },
+    {
+      "slug": "entrevero_pinhao",
+      "title": "Entrevero de Pinhão",
+      "icon": "🌰",
+      "category": "Almoço · Serrano",
+      "time_label": "40 min",
+      "description": "Refogado de pinhão cozido, carne de gado e linguiça — prato típico do inverno serrano.",
+      "match_prefixes": ["Entrevero de pinhao", "Entrevero de pinhão"],
+      "yt_query": "entrevero de pinhão receita gaúcha",
+      "data": {
+        "porcao": { "l": "1 prato (~350g)", "j": "3/4 prato (~280g)" },
+        "ings": [
+          { "n": "Pinhão cozido descascado", "a": "300 g" },
+          { "n": "Alcatra em tiras", "a": "250 g" },
+          { "n": "Linguiça calabresa em rodelas", "a": "150 g" },
+          { "n": "Cebola, alho, pimentão, tomate", "a": "a gosto" },
+          { "n": "Cheiro-verde, pimenta", "a": "a gosto" }
+        ],
+        "steps": [
+          "Cozinhe o pinhão em pressão por 40 min; descasque.",
+          "Doure a carne em tiras; reserve.",
+          "Na mesma panela, doure a linguiça.",
+          "Refogue cebola, alho, pimentão e tomate.",
+          "Devolva a carne; junte o pinhão.",
+          "Cozinhe por 10 min em fogo baixo.",
+          "Finalize com cheiro-verde."
+        ],
+        "tip": "Pinhão no Sul é sazonal (abr-jul) — vale congelar já cozido quando encontra."
+      }
+    },
+    {
+      "slug": "frango_assado_batata_sul",
+      "title": "Frango Assado com Batata-Doce",
+      "icon": "🐔",
+      "category": "Jantar · Fit",
+      "time_label": "50 min",
+      "description": "Filés de frango assados com batata-doce em cubos — balanceado.",
+      "match_prefixes": ["Frango assado (120g)"],
+      "yt_query": "frango assado com batata doce receita fit",
+      "data": {
+        "porcao": { "l": "150g frango + 150g batata", "j": "120g frango + 100g batata" },
+        "ings": [
+          { "n": "Peito de frango em filés", "a": "400 g" },
+          { "n": "Batata-doce em cubos", "a": "400 g" },
+          { "n": "Alho, alecrim, páprica", "a": "a gosto" },
+          { "n": "Azeite, sal, pimenta, limão", "a": "a gosto" }
+        ],
+        "steps": [
+          "Tempere o frango com limão, alho, páprica; 20 min.",
+          "Espalhe batata com azeite, sal e alecrim numa assadeira.",
+          "Disponha os filés por cima.",
+          "Cubra com papel alumínio; asse a 200 °C por 25 min.",
+          "Retire o alumínio; doure por mais 15 min.",
+          "Sirva com salada."
+        ],
+        "tip": "Corte a batata em cubos iguais (~3cm) para assar por igual."
+      }
+    },
+    {
+      "slug": "galeto_primo_canto",
+      "title": "Galeto al Primo Canto",
+      "icon": "🐔",
+      "category": "Almoço · Italiano-gaúcho",
+      "time_label": "1h",
+      "description": "Frango jovem temperado com ervas e assado na brasa — tradição italiana de Caxias/Garibaldi.",
+      "match_prefixes": ["Galeto al primo canto"],
+      "yt_query": "galeto al primo canto receita gaúcha",
+      "data": {
+        "porcao": { "l": "200g frango + 2 fatias polenta", "j": "160g frango + 2 fatias" },
+        "ings": [
+          { "n": "Frango jovem (galeto) aberto", "a": "1 unidade (~800g)" },
+          { "n": "Alho, alecrim, manjerona, sálvia", "a": "a gosto" },
+          { "n": "Vinho branco, azeite, sal", "a": "a gosto" },
+          { "n": "Polenta frita (acompanhamento)", "a": "4 fatias" }
+        ],
+        "steps": [
+          "Abra o galeto (passaredo ou peça ao açougueiro).",
+          "Marinhe com alho, ervas, vinho, azeite e sal por 3h.",
+          "Asse em espeto ou grelha com brasa média por 40 min.",
+          "Pincele a marinada durante o assado.",
+          "Fatie a polenta firme e frite em óleo quente.",
+          "Sirva galeto com polenta frita ao lado."
+        ],
+        "tip": "'Al primo canto' significa 'no primeiro canto' — frango jovem, de até 40 dias, bem macio."
+      }
+    },
+    {
+      "slug": "kassler",
+      "title": "Kassler com Purê",
+      "icon": "🥓",
+      "category": "Almoço · Catarinense-alemão",
+      "time_label": "30 min",
+      "description": "Carne de porco defumada (kassler) grelhada servida com purê de batata.",
+      "match_prefixes": ["Kassler"],
+      "yt_query": "kassler defumado receita alemã",
+      "data": {
+        "porcao": { "l": "150g kassler + purê", "j": "120g kassler + purê" },
+        "ings": [
+          { "n": "Kassler em fatias", "a": "300 g" },
+          { "n": "Batata cozida", "a": "500 g" },
+          { "n": "Leite, manteiga, noz-moscada", "a": "a gosto" },
+          { "n": "Chucrute (acompanhamento)", "a": "1 xícara" }
+        ],
+        "steps": [
+          "Grelhe as fatias de kassler 2 min cada lado (já vem cozido).",
+          "Cozinhe batata; amasse com leite, manteiga e noz-moscada.",
+          "Aqueça o chucrute em panela separada por 5 min.",
+          "Monte o prato: kassler, purê, chucrute.",
+          "Opcional: mostarda ao lado."
+        ],
+        "tip": "Kassler já é defumado/cozido — só precisa grelhar pra dourar, não cozinhar."
+      }
+    },
+    {
+      "slug": "matambre_recheado",
+      "title": "Matambre Recheado",
+      "icon": "🥩",
+      "category": "Almoço · Gaúcho",
+      "time_label": "2h",
+      "description": "Corte fino de carne recheado com ovo, cenoura e temperos — assado no forno.",
+      "match_prefixes": ["Matambre recheado"],
+      "yt_query": "matambre recheado receita gaúcha",
+      "data": {
+        "porcao": { "l": "150g", "j": "120g" },
+        "ings": [
+          { "n": "Matambre bovino", "a": "600 g" },
+          { "n": "Ovos cozidos inteiros", "a": "3 unidades" },
+          { "n": "Cenoura em tiras finas", "a": "2 unidades" },
+          { "n": "Pimentão vermelho em tiras", "a": "1 unidade" },
+          { "n": "Alho, salsa, vinho branco", "a": "a gosto" }
+        ],
+        "steps": [
+          "Abra o matambre em tábua; tempere com alho, sal, salsa.",
+          "Disponha cenoura, pimentão e ovos no comprimento.",
+          "Enrole firme e amarre com barbante.",
+          "Doure em panela com um fio de azeite.",
+          "Transfira para assadeira; regue com vinho branco.",
+          "Asse coberto a 180 °C por 1h30.",
+          "Descanse 15 min antes de fatiar em rodelas grossas."
+        ],
+        "tip": "Amarração firme é crucial — se ficar frouxo, o recheio escapa durante o cozimento."
+      }
+    },
+    {
+      "slug": "omelete_queijo_colonial",
+      "title": "Omelete com Queijo Colonial",
+      "icon": "🍳",
+      "category": "Jantar · Rápido",
+      "time_label": "10 min",
+      "description": "Omelete simples com queijo colonial (semi-duro) em cubos.",
+      "match_prefixes": ["Omelete 3 ovos c/ queijo colonial"],
+      "yt_query": "omelete com queijo colonial receita",
+      "data": {
+        "porcao": { "l": "3 ovos", "j": "2 ovos" },
+        "ings": [
+          { "n": "Ovos", "a": "3 unidades" },
+          { "n": "Queijo colonial em cubos", "a": "80 g" },
+          { "n": "Cebolinha, manteiga, sal, pimenta", "a": "a gosto" }
+        ],
+        "steps": [
+          "Bata os ovos com sal, pimenta e cebolinha.",
+          "Aqueça manteiga na frigideira.",
+          "Despeje os ovos; quando firmar, adicione queijo colonial.",
+          "Dobre ao meio; cozinhe 1 min.",
+          "Sirva com salada."
+        ],
+        "tip": "Queijo colonial é mais firme que minas — derrete mais lentamente e segura textura."
+      }
+    },
+    {
+      "slug": "polenta_fortaia",
+      "title": "Polenta com Fortaia",
+      "icon": "🌽",
+      "category": "Jantar · Ítalo-gaúcho",
+      "time_label": "35 min",
+      "description": "Polenta mole acompanhada de fortaia (omelete com queijo) — prato ítalo-gaúcho.",
+      "match_prefixes": ["Polenta mole c/ fortaia", "Polenta mole com fortaia"],
+      "yt_query": "polenta com fortaia receita italiana gaúcha",
+      "data": {
+        "porcao": { "l": "1 prato (~400g)", "j": "3/4 prato (~300g)" },
+        "ings": [
+          { "n": "Fubá de milho", "a": "1 xícara" },
+          { "n": "Caldo de legumes", "a": "4 xícaras" },
+          { "n": "Ovos", "a": "3 unidades" },
+          { "n": "Queijo colonial ralado", "a": "100 g" },
+          { "n": "Manteiga, sal", "a": "a gosto" }
+        ],
+        "steps": [
+          "Ferva o caldo; adicione fubá em chuva mexendo.",
+          "Cozinhe 20 min em fogo baixo até virar polenta cremosa.",
+          "Para a fortaia: bata ovos com sal e queijo ralado.",
+          "Derreta manteiga em frigideira; despeje a mistura.",
+          "Cozinhe 3 min; vire e mais 2 min.",
+          "Sirva a polenta com a fortaia em fatias por cima."
+        ],
+        "tip": "Fortaia é quase omelete, mas mais espessa e dourada — quase uma panqueca salgada."
+      }
+    },
+    {
+      "slug": "polenta_frango",
+      "title": "Polenta com Frango Ensopado",
+      "icon": "🐔",
+      "category": "Almoço · Ítalo-gaúcho",
+      "time_label": "45 min",
+      "description": "Polenta mole servida com frango ensopado em molho de tomate.",
+      "match_prefixes": ["Polenta mole c/ frango ensopado", "Polenta mole com frango"],
+      "yt_query": "polenta com frango ensopado receita",
+      "data": {
+        "porcao": { "l": "4 col polenta + 180g frango", "j": "3 col polenta + 150g frango" },
+        "ings": [
+          { "n": "Peito ou coxa desossada em pedaços", "a": "400 g" },
+          { "n": "Molho de tomate caseiro", "a": "1,5 xícaras" },
+          { "n": "Fubá", "a": "1 xícara" },
+          { "n": "Caldo, manteiga, queijo ralado", "a": "a gosto" },
+          { "n": "Cebola, alho, ervas", "a": "a gosto" }
+        ],
+        "steps": [
+          "Tempere o frango; doure em panela.",
+          "Acrescente cebola, alho e molho de tomate.",
+          "Cubra com água e cozinhe 25 min.",
+          "Prepare a polenta (fubá + caldo, mexer 20 min).",
+          "Finalize a polenta com manteiga e queijo ralado.",
+          "Sirva a polenta com o frango e molho por cima."
+        ],
+        "tip": "Use coxa desossada — fica mais suculenta que peito em molhos longos."
+      }
+    },
+    {
+      "slug": "risoto_pinhao",
+      "title": "Risoto de Pinhão com Frango",
+      "icon": "🌰",
+      "category": "Almoço · Gaúcho",
+      "time_label": "45 min",
+      "description": "Risoto cremoso com pinhão cozido e frango desfiado — sabor de inverno sulista.",
+      "match_prefixes": ["Risoto de pinhao", "Risoto de pinhão"],
+      "yt_query": "risoto de pinhão com frango receita gaúcha",
+      "data": {
+        "porcao": { "l": "1 prato (~350g)", "j": "3/4 prato (~280g)" },
+        "ings": [
+          { "n": "Arroz arbóreo", "a": "1 xícara" },
+          { "n": "Pinhão cozido", "a": "200 g" },
+          { "n": "Frango desfiado", "a": "250 g" },
+          { "n": "Caldo de legumes", "a": "1 l" },
+          { "n": "Cebola, alho, vinho branco, parmesão", "a": "a gosto" }
+        ],
+        "steps": [
+          "Refogue cebola e alho em fio de azeite.",
+          "Acrescente o arroz e torre por 2 min.",
+          "Adicione vinho branco; deixe evaporar.",
+          "Vá juntando caldo quente concha por concha, mexendo.",
+          "Aos 15 min, adicione pinhão e frango desfiado.",
+          "Continue até arroz al dente (20 min total).",
+          "Finalize com manteiga e parmesão."
+        ],
+        "tip": "Arbóreo é essencial pra cremosidade — outros arrozes não soltam amido suficiente."
+      }
+    },
+    {
+      "slug": "risoto_frango_ervas",
+      "title": "Risoto Leve de Frango com Ervas",
+      "icon": "🍲",
+      "category": "Jantar · Fit",
+      "time_label": "35 min",
+      "description": "Versão leve do risoto com peito de frango e muitas ervas frescas.",
+      "match_prefixes": ["Risoto leve de frango"],
+      "yt_query": "risoto leve de frango com ervas receita fit",
+      "data": {
+        "porcao": { "l": "1 prato raso (~300g)", "j": "2/3 prato (~230g)" },
+        "ings": [
+          { "n": "Arroz arbóreo", "a": "3/4 xícara" },
+          { "n": "Peito de frango em cubos", "a": "300 g" },
+          { "n": "Caldo de legumes light", "a": "800 ml" },
+          { "n": "Alecrim, tomilho, salsa", "a": "a gosto" },
+          { "n": "Alho, cebola, vinho branco", "a": "a gosto" }
+        ],
+        "steps": [
+          "Doure o frango em cubos; reserve.",
+          "Refogue cebola e alho; junte arroz.",
+          "Acrescente vinho; deixe evaporar.",
+          "Vá adicionando caldo quente aos poucos.",
+          "A meio cozimento, devolva o frango.",
+          "Finalize com ervas frescas picadas.",
+          "Substitua manteiga/parmesão por só 1 col de azeite (light)."
+        ],
+        "tip": "Risoto 'light' sem manteiga final fica menos cremoso — use arroz arbóreo para compensar."
+      }
+    },
+    {
+      "slug": "sequencia_catarinense_light",
+      "title": "Sequência Catarinense Light",
+      "icon": "🦐",
+      "category": "Jantar · Fit",
+      "time_label": "30 min",
+      "description": "Mini-sequência catarinense: peixe grelhado + camarão (sem as frituras).",
+      "match_prefixes": ["Sequencia catarinense", "Sequência catarinense"],
+      "yt_query": "sequência catarinense light receita",
+      "data": {
+        "porcao": { "l": "100g peixe + 80g camarão", "j": "80g peixe + 70g camarão" },
+        "ings": [
+          { "n": "Filé de peixe branco", "a": "200 g" },
+          { "n": "Camarão limpo", "a": "160 g" },
+          { "n": "Limão, alho, manteiga", "a": "a gosto" },
+          { "n": "Arroz branco cozido", "a": "1 xícara" },
+          { "n": "Salada verde", "a": "à vontade" }
+        ],
+        "steps": [
+          "Tempere peixe e camarão com limão, alho, sal; 15 min.",
+          "Grelhe o peixe 3 min cada lado em fio de manteiga.",
+          "Salteie o camarão na mesma frigideira por 3 min.",
+          "Monte o prato: peixe, camarão, arroz, salada.",
+          "Sirva com fatia extra de limão."
+        ],
+        "tip": "Sequência tradicional tem 6+ pratos (inclui ostras, camarão frito, empadão). Esta é a versão minimalista fit."
+      }
+    },
+    {
+      "slug": "sopa_agnolini",
+      "title": "Sopa de Agnolini",
+      "icon": "🥟",
+      "category": "Jantar · Ítalo-gaúcho",
+      "time_label": "40 min",
+      "description": "Caldo de galinha com agnolini (massa recheada em formato de anel).",
+      "match_prefixes": ["Sopa de agnolini"],
+      "yt_query": "sopa de agnolini italiana receita gaúcha",
+      "data": {
+        "porcao": { "l": "1 bowl grande", "j": "1 bowl médio" },
+        "ings": [
+          { "n": "Agnolini (pronto ou caseiro)", "a": "300 g" },
+          { "n": "Caldo de galinha caseiro", "a": "1,5 l" },
+          { "n": "Parmesão ralado", "a": "a gosto" },
+          { "n": "Salsa, cebolinha", "a": "a gosto" }
+        ],
+        "steps": [
+          "Ferva o caldo de galinha bem temperado.",
+          "Cozinhe os agnolini direto no caldo por 5-8 min (conforme embalagem).",
+          "Sirva quente com parmesão ralado por cima.",
+          "Finalize com salsa fresca."
+        ],
+        "tip": "Agnolini fresco cozinha em 3 min, seco em 8-10 min — não deixe passar do ponto."
+      }
+    },
+    {
+      "slug": "sopa_capeletti",
+      "title": "Sopa de Capeletti",
+      "icon": "🍲",
+      "category": "Jantar · Ítalo-gaúcho",
+      "time_label": "40 min",
+      "description": "Caldo claro com massinha recheada capeletti — prato de Natal italiano no Sul.",
+      "match_prefixes": ["Sopa de capeletti"],
+      "yt_query": "sopa de capeletti italiana receita",
+      "data": {
+        "porcao": { "l": "1 bowl grande", "j": "1 bowl médio" },
+        "ings": [
+          { "n": "Capeletti (recheado)", "a": "300 g" },
+          { "n": "Caldo de carne ou galinha", "a": "1,5 l" },
+          { "n": "Parmesão ralado", "a": "a gosto" },
+          { "n": "Salsa", "a": "a gosto" }
+        ],
+        "steps": [
+          "Ferva o caldo.",
+          "Cozinhe o capeletti no caldo por 5-8 min.",
+          "Sirva quente com parmesão.",
+          "Finalize com salsa."
+        ],
+        "tip": "Capeletti quer dizer 'chapeuzinho' em italiano — forma diferente do agnolini (anel)."
+      }
+    },
+    {
+      "slug": "sopa_feijao_charque_sul",
+      "title": "Sopa de Feijão Preto com Charque",
+      "icon": "🥣",
+      "category": "Jantar · Gaúcho",
+      "time_label": "40 min",
+      "description": "Caldo encorpado de feijão preto com charque desfiado.",
+      "match_prefixes": ["Sopa de feijao preto", "Sopa de feijão preto"],
+      "yt_query": "sopa de feijão preto com charque receita gaúcha",
+      "data": {
+        "porcao": { "l": "1 bowl grande", "j": "1 bowl médio" },
+        "ings": [
+          { "n": "Feijão preto cozido com caldo", "a": "2 xícaras" },
+          { "n": "Charque dessalgado desfiado", "a": "150 g" },
+          { "n": "Cebola, alho, louro", "a": "a gosto" },
+          { "n": "Cheiro-verde, pimenta-calabresa", "a": "a gosto" }
+        ],
+        "steps": [
+          "Dessalgue e cozinhe o charque; desfie.",
+          "Bata metade do feijão com caldo.",
+          "Refogue cebola, alho em panela funda.",
+          "Junte charque, feijão batido e feijão inteiro + 500 ml água.",
+          "Cozinhe por 15 min em fogo baixo.",
+          "Finalize com cheiro-verde."
+        ],
+        "tip": "Feijão preto com caldo grosso é mais gaúcho que o carioca — escolha bem o feijão."
+      }
+    },
+    {
+      "slug": "sopa_pinhao",
+      "title": "Sopa de Pinhão",
+      "icon": "🌰",
+      "category": "Jantar · Serrano",
+      "time_label": "40 min",
+      "description": "Creme de pinhão com carne desfiada e cebolinha — inverno serrano na colher.",
+      "match_prefixes": ["Sopa de pinhao", "Sopa de pinhão"],
+      "yt_query": "sopa de pinhão receita gaúcha serrana",
+      "data": {
+        "porcao": { "l": "1 tigela grande", "j": "1 tigela média" },
+        "ings": [
+          { "n": "Pinhão cozido descascado", "a": "300 g" },
+          { "n": "Carne desfiada cozida", "a": "150 g" },
+          { "n": "Caldo de legumes", "a": "1 l" },
+          { "n": "Cebola, alho, creme de leite light", "a": "a gosto" },
+          { "n": "Cheiro-verde, pimenta", "a": "a gosto" }
+        ],
+        "steps": [
+          "Bata 2/3 dos pinhões com caldo no liquidificador.",
+          "Refogue cebola e alho em fio de azeite.",
+          "Acrescente o creme de pinhão e leve a ferver.",
+          "Junte carne desfiada e o restante de pinhão em pedaços.",
+          "Cozinhe 10 min; finalize com creme de leite.",
+          "Sirva com cheiro-verde."
+        ],
+        "tip": "Pinhão cozido e congelado guarda bem — dá pra fazer essa sopa o ano todo."
+      }
+    }
+  ]
+}

@@ -222,8 +222,15 @@ export function NutricaoView({
 
 function MealCard({ meal }: { meal: MealRow }) {
   const d = meal.data;
-  return (
-    <div className="overflow-hidden rounded-xl border border-[color:var(--bd)] bg-[color:var(--s1)] transition-all hover:border-[color:var(--or)]/40 hover:shadow-md hover:shadow-black/20">
+  const hasRecipe = (meal.slot_key === "alm" || meal.slot_key === "jan") && !!d.rec;
+  const baseClass =
+    "block overflow-hidden rounded-xl border border-[color:var(--bd)] bg-[color:var(--s1)] transition-all";
+  const interactiveClass = hasRecipe
+    ? " hover:-translate-y-0.5 hover:border-[color:var(--or)] hover:shadow-md hover:shadow-black/20 cursor-pointer"
+    : " hover:border-[color:var(--or)]/40 hover:shadow-md hover:shadow-black/20";
+
+  const inner = (
+    <>
       <div className="flex items-center gap-2 border-b border-[color:var(--bd)] bg-[color:var(--s2)] px-3 py-2">
         <span
           className="flex h-[26px] w-[26px] items-center justify-center rounded-md text-[13px]"
@@ -245,14 +252,36 @@ function MealCard({ meal }: { meal: MealRow }) {
             <span>{item}</span>
           </div>
         ))}
-        {d.ptl && (
+        {(d.ptl || hasRecipe) && (
           <div className="mt-2 flex flex-wrap gap-1.5">
-            <span className="rounded-sm px-2 py-0.5 font-[family-name:var(--font-condensed)] text-[10px] font-semibold" style={{ background: "var(--ord)", color: "var(--or)" }}>
-              Porção: {d.ptl}
-            </span>
+            {d.ptl && (
+              <span
+                className="rounded-sm px-2 py-0.5 font-[family-name:var(--font-condensed)] text-[10px] font-semibold"
+                style={{ background: "var(--ord)", color: "var(--or)" }}
+              >
+                Porção: {d.ptl}
+              </span>
+            )}
+            {hasRecipe && (
+              <span
+                className="rounded-sm px-2 py-0.5 font-[family-name:var(--font-condensed)] text-[10px] font-semibold"
+                style={{ background: "var(--ord)", color: "var(--or)" }}
+              >
+                📖 Ver receita
+              </span>
+            )}
           </div>
         )}
       </div>
-    </div>
+    </>
   );
+
+  if (hasRecipe) {
+    return (
+      <a href={`/receitas?slug=${encodeURIComponent(d.rec!)}`} className={baseClass + interactiveClass}>
+        {inner}
+      </a>
+    );
+  }
+  return <div className={baseClass + interactiveClass}>{inner}</div>;
 }

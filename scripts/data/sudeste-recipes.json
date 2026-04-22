@@ -2,52 +2,84 @@
   "_comment": "Pool de receitas tipicas do Sudeste (SP, RJ, MG, ES) para o motor de cardapio. Cada slot tem um conjunto de opcoes; quando 'months' esta vazio, a opcao vale o ano todo. Kcal estimado por porcao adulta ativa. Referencias: virado a paulista, feijao tropeiro, feijoada, moqueca capixaba, pao de queijo, queijo minas, vaca atolada, frango com quiabo.",
   "slots": {
     "cafe": {
-      "meta": { "t": "Cafe da Manha", "ico": "☕", "time": "07:00" },
+      "meta": {
+        "t": "Cafe da Manha",
+        "ico": "☕",
+        "time": "07:00"
+      },
       "options": [
         {
-          "items": ["1 pao frances integral c/ requeijao light", "Cafe c/ leite desnatado", "1 fruta"],
+          "items": [
+            "1 pao frances integral c/ requeijao light",
+            "Cafe c/ leite desnatado",
+            "1 fruta"
+          ],
           "kcal": 420,
           "rec": null,
           "months": []
         },
         {
-          "items": ["2 paes de queijo medios (60g)", "Cafe preto s/ acucar", "1 fatia mamao"],
+          "items": [
+            "2 paes de queijo medios (60g)",
+            "Cafe preto s/ acucar",
+            "1 fatia mamao"
+          ],
           "kcal": 450,
           "rec": "pao_de_queijo",
           "months": []
         },
         {
-          "items": ["1 fatia broa de fuba", "1 copo leite desnatado c/ cafe", "1 banana"],
+          "items": [
+            "1 fatia broa de fuba",
+            "1 copo leite desnatado c/ cafe",
+            "1 banana"
+          ],
           "kcal": 400,
           "rec": null,
           "months": []
         },
         {
-          "items": ["Vitamina: 1 banana, 2 col sopa aveia, leite desnatado, 1 col ch mel"],
+          "items": [
+            "Vitamina: 1 banana, 2 col sopa aveia, leite desnatado, 1 col ch mel"
+          ],
           "kcal": 380,
           "rec": null,
           "months": []
         },
         {
-          "items": ["Omelete 2 ovos c/ tomate e cebolinha", "1 fatia pao integral", "Cafe preto"],
+          "items": [
+            "Omelete 2 ovos c/ tomate e cebolinha",
+            "1 fatia pao integral",
+            "Cafe preto"
+          ],
           "kcal": 410,
           "rec": null,
           "months": []
         },
         {
-          "items": ["2 fatias pao integral c/ 2 col sopa ricota amassada c/ ervas", "Cafe c/ leite"],
+          "items": [
+            "2 fatias pao integral c/ 2 col sopa ricota amassada c/ ervas",
+            "Cafe c/ leite"
+          ],
           "kcal": 390,
           "rec": null,
           "months": []
         },
         {
-          "items": ["1 pote iogurte natural (200g)", "3 col sopa granola", "1 fruta picada"],
+          "items": [
+            "1 pote iogurte natural (200g)",
+            "3 col sopa granola",
+            "1 fruta picada"
+          ],
           "kcal": 420,
           "rec": null,
           "months": []
         },
         {
-          "items": ["1 pao frances c/ queijo minas frescal (30g)", "Cafe c/ leite desnatado"],
+          "items": [
+            "1 pao frances c/ queijo minas frescal (30g)",
+            "Cafe c/ leite desnatado"
+          ],
           "kcal": 430,
           "rec": null,
           "months": []
@@ -55,200 +87,351 @@
       ]
     },
     "lm": {
-      "meta": { "t": "Lanche da Manha", "ico": "🍎", "time": "09:30" },
+      "meta": {
+        "t": "Lanche da Manha",
+        "ico": "🍎",
+        "time": "09:30"
+      },
       "options": [
         {
-          "items": ["1 banana-prata", "15g mix de castanhas (para, amendoas)"],
+          "items": [
+            "1 banana-prata",
+            "15g mix de castanhas (para, amendoas)"
+          ],
           "kcal": 200,
           "rec": null,
           "months": []
         },
         {
-          "items": ["1 maca fuji media", "1 col sopa pasta de amendoim"],
+          "items": [
+            "1 maca fuji media",
+            "1 col sopa pasta de amendoim"
+          ],
           "kcal": 220,
           "rec": null,
           "months": []
         },
         {
-          "items": ["1 goiaba vermelha media"],
+          "items": [
+            "1 goiaba vermelha media"
+          ],
           "kcal": 90,
           "rec": null,
           "months": []
         },
         {
-          "items": ["1 laranja-pera media", "15g castanha"],
+          "items": [
+            "1 laranja-pera media",
+            "15g castanha"
+          ],
           "kcal": 180,
           "rec": null,
-          "months": [5, 6, 7, 8]
+          "months": [
+            5,
+            6,
+            7,
+            8
+          ]
         },
         {
-          "items": ["1 pera williams media"],
+          "items": [
+            "1 pera williams media"
+          ],
           "kcal": 100,
           "rec": null,
           "months": []
         },
         {
-          "items": ["1 pote jabuticabas (~30 unid)"],
+          "items": [
+            "1 pote jabuticabas (~30 unid)"
+          ],
           "kcal": 130,
           "rec": null,
-          "months": [10, 11, 0]
+          "months": [
+            10,
+            11,
+            0
+          ]
         },
         {
-          "items": ["8 pitangas vermelhas"],
+          "items": [
+            "8 pitangas vermelhas"
+          ],
           "kcal": 80,
           "rec": null,
-          "months": [10, 11, 0, 1]
+          "months": [
+            10,
+            11,
+            0,
+            1
+          ]
         },
         {
-          "items": ["Iogurte natural (150g) c/ 1 col sopa linhaca moida"],
+          "items": [
+            "Iogurte natural (150g) c/ 1 col sopa linhaca moida"
+          ],
           "kcal": 170,
           "rec": null,
           "months": []
         },
         {
-          "items": ["1 caqui chocolate", "10g castanha"],
+          "items": [
+            "1 caqui chocolate",
+            "10g castanha"
+          ],
           "kcal": 190,
           "rec": null,
-          "months": [2, 3, 4, 5]
+          "months": [
+            2,
+            3,
+            4,
+            5
+          ]
         },
         {
-          "items": ["1 tangerina poncã", "15g amendoas"],
+          "items": [
+            "1 tangerina poncã",
+            "15g amendoas"
+          ],
           "kcal": 180,
           "rec": null,
-          "months": [4, 5, 6, 7]
+          "months": [
+            4,
+            5,
+            6,
+            7
+          ]
         },
         {
-          "items": ["1 pote morangos (~12 unid) c/ 1 col ch mel"],
+          "items": [
+            "1 pote morangos (~12 unid) c/ 1 col ch mel"
+          ],
           "kcal": 130,
           "rec": null,
-          "months": [5, 6, 7, 8, 9]
+          "months": [
+            5,
+            6,
+            7,
+            8,
+            9
+          ]
         },
         {
-          "items": ["2 fatias abacaxi", "10g coco em lascas"],
+          "items": [
+            "2 fatias abacaxi",
+            "10g coco em lascas"
+          ],
           "kcal": 140,
           "rec": null,
-          "months": [9, 10, 11, 0, 1]
+          "months": [
+            9,
+            10,
+            11,
+            0,
+            1
+          ]
         }
       ]
     },
     "alm": {
-      "meta": { "t": "Almoco", "ico": "🍛", "time": "12:30" },
+      "meta": {
+        "t": "Almoco",
+        "ico": "🍛",
+        "time": "12:30"
+      },
       "options": [
         {
-          "items": ["Feijao preto + arroz branco (4 col sopa cada)", "120g bife grelhado", "Salada de alface, tomate e cebola", "Farofa leve"],
+          "items": [
+            "Feijao preto + arroz branco (4 col sopa cada)",
+            "120g bife grelhado",
+            "Salada de alface, tomate e cebola",
+            "Farofa leve"
+          ],
           "kcal": 720,
-          "rec": "feijao_arroz_bife",
+          "rec": "feijao_arroz_branco",
           "months": []
         },
         {
-          "items": ["Virado a paulista (feijao tropeiro)", "80g bisteca de porco grelhada", "Couve refogada", "1 banana-da-terra frita", "Arroz (2 col sopa)"],
+          "items": [
+            "Virado a paulista (feijao tropeiro)",
+            "80g bisteca de porco grelhada",
+            "Couve refogada",
+            "1 banana-da-terra frita",
+            "Arroz (2 col sopa)"
+          ],
           "kcal": 780,
           "rec": "virado_paulista",
           "months": []
         },
         {
-          "items": ["Feijao tropeiro (feijao carioca, farinha de mandioca, ovo, bacon)", "80g linguica mineira", "Couve refogada", "Salada"],
+          "items": [
+            "Feijao tropeiro (feijao carioca, farinha de mandioca, ovo, bacon)",
+            "80g linguica mineira",
+            "Couve refogada",
+            "Salada"
+          ],
           "kcal": 740,
           "rec": "feijao_tropeiro",
           "months": []
         },
         {
-          "items": ["Feijoada light (caldo c/ carnes magras) 1 concha", "Arroz branco (3 col sopa)", "Couve refogada", "Laranja em fatias", "Farofa leve"],
+          "items": [
+            "Feijoada light (caldo c/ carnes magras) 1 concha",
+            "Arroz branco (3 col sopa)",
+            "Couve refogada",
+            "Laranja em fatias",
+            "Farofa leve"
+          ],
           "kcal": 720,
-          "rec": "feijoada",
+          "rec": "feijoada_light",
           "months": []
         },
         {
-          "items": ["Frango ao molho pardo (estilo mineiro) 150g", "Angu de fuba (4 col sopa)", "Quiabo refogado", "Arroz branco"],
+          "items": [
+            "Frango ao molho pardo (estilo mineiro) 150g",
+            "Angu de fuba (4 col sopa)",
+            "Quiabo refogado",
+            "Arroz branco"
+          ],
           "kcal": 700,
           "rec": "frango_molho_pardo",
           "months": []
         },
         {
-          "items": ["Vaca atolada (costela c/ mandioca) 200g", "Arroz branco", "Couve refogada"],
+          "items": [
+            "Vaca atolada (costela c/ mandioca) 200g",
+            "Arroz branco",
+            "Couve refogada"
+          ],
           "kcal": 760,
           "rec": "vaca_atolada",
           "months": []
         },
         {
-          "items": ["Polenta cremosa (4 col sopa) c/ frango desfiado (120g)", "Salada verde c/ tomate"],
+          "items": [
+            "Polenta cremosa (4 col sopa) c/ frango desfiado (120g)",
+            "Salada verde c/ tomate"
+          ],
           "kcal": 680,
-          "rec": "polenta_frango",
+          "rec": "polenta_cremosa_frango",
           "months": []
         },
         {
-          "items": ["Moqueca capixaba (peixe 150g, urucum, tomate, cebola)", "Arroz branco (3 col sopa)", "Pirao"],
+          "items": [
+            "Moqueca capixaba (peixe 150g, urucum, tomate, cebola)",
+            "Arroz branco (3 col sopa)",
+            "Pirao"
+          ],
           "kcal": 700,
           "rec": "moqueca_capixaba",
           "months": []
         },
         {
-          "items": ["Macarronada integral ao molho bolonhesa (120g massa, 100g carne moida)", "Salada verde"],
+          "items": [
+            "Macarronada integral ao molho bolonhesa (120g massa, 100g carne moida)",
+            "Salada verde"
+          ],
           "kcal": 720,
-          "rec": "macarronada",
+          "rec": "macarronada_bolonhesa",
           "months": []
         },
         {
-          "items": ["Strogonoff de frango light (150g frango, creme de leite light)", "Arroz branco (3 col sopa)", "Batata palha (1 col sopa)", "Salada"],
+          "items": [
+            "Strogonoff de frango light (150g frango, creme de leite light)",
+            "Arroz branco (3 col sopa)",
+            "Batata palha (1 col sopa)",
+            "Salada"
+          ],
           "kcal": 740,
-          "rec": "strogonoff_frango",
+          "rec": "strogonoff_frango_light",
           "months": []
         },
         {
-          "items": ["Bife a parmegiana light (120g carne, molho de tomate, queijo minas)", "Arroz (3 col sopa)", "Batata cozida", "Salada"],
+          "items": [
+            "Bife a parmegiana light (120g carne, molho de tomate, queijo minas)",
+            "Arroz (3 col sopa)",
+            "Batata cozida",
+            "Salada"
+          ],
           "kcal": 780,
-          "rec": "parmegiana",
+          "rec": "bife_parmegiana_light",
           "months": []
         },
         {
-          "items": ["Quibe assado (150g) estilo paulistano", "Tabule", "Hortela e salada verde"],
+          "items": [
+            "Quibe assado (150g) estilo paulistano",
+            "Tabule",
+            "Hortela e salada verde"
+          ],
           "kcal": 680,
-          "rec": "quibe_assado",
+          "rec": "quibe_assado_paulistano",
           "months": []
         }
       ]
     },
     "pre": {
-      "meta": { "t": "Pre-Treino", "ico": "⚡", "time": "15:30" },
+      "meta": {
+        "t": "Pre-Treino",
+        "ico": "⚡",
+        "time": "15:30"
+      },
       "options": [
         {
-          "items": ["1 pao de queijo (30g)", "Cafe preto"],
+          "items": [
+            "1 pao de queijo (30g)",
+            "Cafe preto"
+          ],
           "kcal": 170,
           "rec": null,
           "months": []
         },
         {
-          "items": ["Mingau de aveia c/ 1 col sopa mel"],
+          "items": [
+            "Mingau de aveia c/ 1 col sopa mel"
+          ],
           "kcal": 210,
           "rec": null,
           "months": []
         },
         {
-          "items": ["1 banana", "1 col sopa pasta de amendoim"],
+          "items": [
+            "1 banana",
+            "1 col sopa pasta de amendoim"
+          ],
           "kcal": 220,
           "rec": null,
           "months": []
         },
         {
-          "items": ["2 fatias pao integral c/ 1 col ch mel", "Cafe preto"],
+          "items": [
+            "2 fatias pao integral c/ 1 col ch mel",
+            "Cafe preto"
+          ],
           "kcal": 200,
           "rec": null,
           "months": []
         },
         {
-          "items": ["Vitamina: 1 banana, 2 col sopa aveia, leite desnatado"],
+          "items": [
+            "Vitamina: 1 banana, 2 col sopa aveia, leite desnatado"
+          ],
           "kcal": 230,
           "rec": null,
           "months": []
         },
         {
-          "items": ["1 fatia bolo simples de fuba (caseiro)", "Cafe preto"],
+          "items": [
+            "1 fatia bolo simples de fuba (caseiro)",
+            "Cafe preto"
+          ],
           "kcal": 240,
           "rec": null,
           "months": []
         },
         {
-          "items": ["1 suco de laranja natural (200ml) c/ 1 col sopa aveia"],
+          "items": [
+            "1 suco de laranja natural (200ml) c/ 1 col sopa aveia"
+          ],
           "kcal": 180,
           "rec": null,
           "months": []
@@ -256,46 +439,69 @@
       ]
     },
     "pos": {
-      "meta": { "t": "Pos-Treino", "ico": "💪", "time": "17:00" },
+      "meta": {
+        "t": "Pos-Treino",
+        "ico": "💪",
+        "time": "17:00"
+      },
       "options": [
         {
-          "items": ["1 scoop whey protein", "1 banana"],
+          "items": [
+            "1 scoop whey protein",
+            "1 banana"
+          ],
           "kcal": 200,
           "rec": null,
           "months": []
         },
         {
-          "items": ["3 ovos mexidos c/ cebolinha", "1 fatia pao integral"],
+          "items": [
+            "3 ovos mexidos c/ cebolinha",
+            "1 fatia pao integral"
+          ],
           "kcal": 310,
           "rec": null,
           "months": []
         },
         {
-          "items": ["Sanduiche natural: 60g peito de frango desfiado, pao integral, alface e tomate"],
+          "items": [
+            "Sanduiche natural: 60g peito de frango desfiado, pao integral, alface e tomate"
+          ],
           "kcal": 320,
           "rec": null,
           "months": []
         },
         {
-          "items": ["1 pote iogurte natural (200g)", "2 col sopa granola", "1 col ch mel"],
+          "items": [
+            "1 pote iogurte natural (200g)",
+            "2 col sopa granola",
+            "1 col ch mel"
+          ],
           "kcal": 270,
           "rec": null,
           "months": []
         },
         {
-          "items": ["Tapioca (2 col sopa goma) c/ 60g frango desfiado"],
+          "items": [
+            "Tapioca (2 col sopa goma) c/ 60g frango desfiado"
+          ],
           "kcal": 290,
           "rec": null,
           "months": []
         },
         {
-          "items": ["2 ovos cozidos", "1 batata doce media (120g)"],
+          "items": [
+            "2 ovos cozidos",
+            "1 batata doce media (120g)"
+          ],
           "kcal": 300,
           "rec": null,
           "months": []
         },
         {
-          "items": ["Vitamina abacate c/ leite desnatado e 2 col sopa aveia"],
+          "items": [
+            "Vitamina abacate c/ leite desnatado e 2 col sopa aveia"
+          ],
           "kcal": 310,
           "rec": null,
           "months": []
@@ -303,117 +509,171 @@
       ]
     },
     "jan": {
-      "meta": { "t": "Jantar", "ico": "🍲", "time": "19:30" },
+      "meta": {
+        "t": "Jantar",
+        "ico": "🍲",
+        "time": "19:30"
+      },
       "options": [
         {
-          "items": ["Sopa de feijao c/ macarrao (1 bowl grande)", "1 fatia pao integral"],
+          "items": [
+            "Sopa de feijao c/ macarrao (1 bowl grande)",
+            "1 fatia pao integral"
+          ],
           "kcal": 460,
-          "rec": null,
+          "rec": "sopa_feijao_macarrao",
           "months": []
         },
         {
-          "items": ["Canja de galinha c/ arroz e legumes (1 bowl grande)"],
+          "items": [
+            "Canja de galinha c/ arroz e legumes (1 bowl grande)"
+          ],
           "kcal": 480,
-          "rec": null,
+          "rec": "canja_galinha_sudeste",
           "months": []
         },
         {
-          "items": ["Peito de frango grelhado (120g)", "Legumes no vapor (brocolis, cenoura, abobrinha)", "Arroz integral (2 col sopa)"],
+          "items": [
+            "Peito de frango grelhado (120g)",
+            "Legumes no vapor (brocolis, cenoura, abobrinha)",
+            "Arroz integral (2 col sopa)"
+          ],
           "kcal": 470,
-          "rec": null,
+          "rec": "peito_frango_grelhado",
           "months": []
         },
         {
-          "items": ["Omelete 3 ovos c/ queijo minas", "Salada verde c/ tomate"],
+          "items": [
+            "Omelete 3 ovos c/ queijo minas",
+            "Salada verde c/ tomate"
+          ],
           "kcal": 420,
-          "rec": null,
+          "rec": "omelete_queijo_minas",
           "months": []
         },
         {
-          "items": ["Lasanha de abobrinha light (sem massa, com peito de frango e queijo minas)"],
+          "items": [
+            "Lasanha de abobrinha light (sem massa, com peito de frango e queijo minas)"
+          ],
           "kcal": 460,
-          "rec": null,
+          "rec": "lasanha_abobrinha_light",
           "months": []
         },
         {
-          "items": ["Tilapia grelhada (120g)", "Purê de batata c/ pouca manteiga", "Brócolis refogado"],
+          "items": [
+            "Tilapia grelhada (120g)",
+            "Purê de batata c/ pouca manteiga",
+            "Brócolis refogado"
+          ],
           "kcal": 480,
-          "rec": null,
+          "rec": "tilapia_grelhada",
           "months": []
         },
         {
-          "items": ["Sopa de legumes c/ frango desfiado (1 bowl grande)"],
+          "items": [
+            "Sopa de legumes c/ frango desfiado (1 bowl grande)"
+          ],
           "kcal": 440,
-          "rec": null,
+          "rec": "sopa_legumes_frango",
           "months": []
         },
         {
-          "items": ["Torta de frango integral (1 fatia grande)", "Salada verde"],
+          "items": [
+            "Torta de frango integral (1 fatia grande)",
+            "Salada verde"
+          ],
           "kcal": 500,
-          "rec": null,
+          "rec": "torta_frango_integral",
           "months": []
         },
         {
-          "items": ["Quibe assado (100g)", "Salada caprese (tomate, mussarela de bufala, manjericao)"],
+          "items": [
+            "Quibe assado (100g)",
+            "Salada caprese (tomate, mussarela de bufala, manjericao)"
+          ],
           "kcal": 470,
-          "rec": null,
+          "rec": "quibe_assado",
           "months": []
         },
         {
-          "items": ["Polenta mole (4 col sopa) c/ molho de tomate e manjericao", "Peito de frango desfiado (80g)"],
+          "items": [
+            "Polenta mole (4 col sopa) c/ molho de tomate e manjericao",
+            "Peito de frango desfiado (80g)"
+          ],
           "kcal": 450,
-          "rec": null,
+          "rec": "polenta_mole_tomate",
           "months": []
         }
       ]
     },
     "ln": {
-      "meta": { "t": "Lanche da Noite", "ico": "🌙", "time": "21:30" },
+      "meta": {
+        "t": "Lanche da Noite",
+        "ico": "🌙",
+        "time": "21:30"
+      },
       "options": [
         {
-          "items": ["Cha de camomila", "2 torradas integrais c/ requeijao light"],
+          "items": [
+            "Cha de camomila",
+            "2 torradas integrais c/ requeijao light"
+          ],
           "kcal": 150,
           "rec": null,
           "months": []
         },
         {
-          "items": ["Iogurte natural (150g) c/ 1 col ch mel"],
+          "items": [
+            "Iogurte natural (150g) c/ 1 col ch mel"
+          ],
           "kcal": 160,
           "rec": null,
           "months": []
         },
         {
-          "items": ["1 maca fuji"],
+          "items": [
+            "1 maca fuji"
+          ],
           "kcal": 80,
           "rec": null,
           "months": []
         },
         {
-          "items": ["1 pera"],
+          "items": [
+            "1 pera"
+          ],
           "kcal": 90,
           "rec": null,
           "months": []
         },
         {
-          "items": ["1 copo leite desnatado morno c/ canela"],
+          "items": [
+            "1 copo leite desnatado morno c/ canela"
+          ],
           "kcal": 120,
           "rec": null,
           "months": []
         },
         {
-          "items": ["Vitamina leve: 1 banana, leite desnatado, canela"],
+          "items": [
+            "Vitamina leve: 1 banana, leite desnatado, canela"
+          ],
           "kcal": 180,
           "rec": null,
           "months": []
         },
         {
-          "items": ["1 pote mamao papaya c/ 1 col ch mel"],
+          "items": [
+            "1 pote mamao papaya c/ 1 col ch mel"
+          ],
           "kcal": 150,
           "rec": null,
           "months": []
         },
         {
-          "items": ["Iogurte grego (100g) c/ 1 col ch geleia light de morango"],
+          "items": [
+            "Iogurte grego (100g) c/ 1 col ch geleia light de morango"
+          ],
           "kcal": 170,
           "rec": null,
           "months": []

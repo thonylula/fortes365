@@ -1,0 +1,587 @@
+{
+  "_comment": "Receitas curadas Norte (PA, AM, AC, AP, RO, RR, TO). Culinária amazônica: tucupi, jambu, pirarucu, açaí, cupuaçu. porcao: l = Luanthony, j = Jéssica.",
+  "recipes": [
+    {
+      "slug": "filhote_grelhado",
+      "title": "Filhote Grelhado",
+      "icon": "🐟",
+      "category": "Almoço · Paraense",
+      "time_label": "20 min",
+      "description": "Filhote (peixe amazônico da família do pirarucu) grelhado com limão e azeite.",
+      "match_prefixes": ["120g filhote grelhado", "Filhote grelhado"],
+      "yt_query": "filhote grelhado peixe amazônico receita",
+      "data": {
+        "porcao": { "l": "150g", "j": "120g" },
+        "ings": [
+          { "n": "Posta de filhote", "a": "300 g" },
+          { "n": "Limão, alho, azeite", "a": "a gosto" },
+          { "n": "Sal, pimenta-do-reino, coentro", "a": "a gosto" }
+        ],
+        "steps": [
+          "Tempere o peixe com limão, alho, sal e pimenta; deixe 15 min.",
+          "Seque bem em papel-toalha antes de grelhar.",
+          "Aqueça frigideira com fio de azeite.",
+          "Grelhe 4 min cada lado em fogo médio-alto.",
+          "Finalize com coentro fresco."
+        ],
+        "tip": "Filhote é macio — não passe do ponto. 8 min total já é suficiente."
+      }
+    },
+    {
+      "slug": "pirarucu_grelhado",
+      "title": "Pirarucu Grelhado",
+      "icon": "🐠",
+      "category": "Almoço · Amazonense",
+      "time_label": "25 min",
+      "description": "Pirarucu grelhado na chapa — o 'bacalhau da Amazônia', carne branca e firme.",
+      "match_prefixes": ["120g pirarucu grelhado", "130g pirarucu grelhado", "Pirarucu grelhado"],
+      "yt_query": "pirarucu grelhado amazônico receita",
+      "data": {
+        "porcao": { "l": "150g", "j": "120g" },
+        "ings": [
+          { "n": "Posta de pirarucu fresco", "a": "300 g" },
+          { "n": "Limão, alho, azeite", "a": "a gosto" },
+          { "n": "Sal, pimenta-de-cheiro, coentro", "a": "a gosto" }
+        ],
+        "steps": [
+          "Tempere o pirarucu com limão, alho e sal; deixe 15 min.",
+          "Seque bem antes de grelhar.",
+          "Aqueça a chapa com fio de azeite.",
+          "Grelhe 4 min cada lado em fogo alto.",
+          "Finalize com coentro e pimenta-de-cheiro."
+        ],
+        "tip": "Se usar pirarucu salgado seco, dessalgar em 3 trocas de água por 24h."
+      }
+    },
+    {
+      "slug": "tambaqui_grelhado",
+      "title": "Tambaqui Grelhado",
+      "icon": "🐟",
+      "category": "Almoço · Amazônico",
+      "time_label": "25 min",
+      "description": "Tambaqui em costela grelhada com limão — peixe amazônico por excelência.",
+      "match_prefixes": ["120g tambaqui grelhado", "Tambaqui grelhado"],
+      "yt_query": "tambaqui grelhado costela receita amazônica",
+      "data": {
+        "porcao": { "l": "150g", "j": "120g" },
+        "ings": [
+          { "n": "Costela de tambaqui", "a": "300 g" },
+          { "n": "Limão, alho, pimenta-de-cheiro", "a": "a gosto" },
+          { "n": "Sal, cheiro-verde, azeite", "a": "a gosto" }
+        ],
+        "steps": [
+          "Tempere a costela com limão, alho e pimenta-de-cheiro; 20 min.",
+          "Grelhe na churrasqueira ou chapa bem quente.",
+          "Cozinhe 6 min cada lado (a costela protege do ressecamento).",
+          "Finalize com cheiro-verde fresco.",
+          "Sirva com farinha de mandioca tostada ao lado."
+        ],
+        "tip": "Costela de tambaqui tem osso — peça ao peixeiro pra 'abrir no meio' pra facilitar o consumo."
+      }
+    },
+    {
+      "slug": "tambaqui_brasa",
+      "title": "Tambaqui Assado na Brasa",
+      "icon": "🔥",
+      "category": "Almoço · Especial",
+      "time_label": "50 min",
+      "description": "Posta grande de tambaqui assada lentamente na brasa — textura e sabor incomparáveis.",
+      "match_prefixes": ["150g tambaqui assado na brasa"],
+      "yt_query": "tambaqui na brasa receita amazônica",
+      "data": {
+        "porcao": { "l": "180g", "j": "150g" },
+        "ings": [
+          { "n": "Postas grandes de tambaqui", "a": "400 g" },
+          { "n": "Limão, alho, sal, pimenta", "a": "a gosto" },
+          { "n": "Azeite, coentro", "a": "a gosto" }
+        ],
+        "steps": [
+          "Tempere as postas com limão, alho e sal; marinar 30 min.",
+          "Prepare brasa bem viva (carvão já queimado).",
+          "Coloque as postas em grelha dupla para virar fácil.",
+          "Asse 10 min cada lado, longe demais da brasa.",
+          "Pincele azeite quando virar.",
+          "Finalize com coentro."
+        ],
+        "tip": "Brasa MUITO alta queima por fora e deixa cru dentro — afaste a grelha 25-30cm das brasas."
+      }
+    },
+    {
+      "slug": "charque_feijao_manteiga",
+      "title": "Charque com Feijão-Manteiga",
+      "icon": "🍛",
+      "category": "Almoço · Amazônico",
+      "time_label": "1h",
+      "description": "Charque refogado servido com feijão-manteiga cremoso.",
+      "match_prefixes": ["80g charque refogado", "Charque refogado"],
+      "yt_query": "charque com feijão manteiga receita amazônica",
+      "data": {
+        "porcao": { "l": "100g charque + feijão", "j": "80g charque + feijão" },
+        "ings": [
+          { "n": "Charque dessalgado em cubos", "a": "200 g" },
+          { "n": "Feijão-manteiga cozido", "a": "1,5 xícaras" },
+          { "n": "Cebola, alho, cebolinha", "a": "a gosto" },
+          { "n": "Colorau, louro, pimenta", "a": "a gosto" }
+        ],
+        "steps": [
+          "Dessalgue o charque em 3 trocas de água por 24h.",
+          "Cozinhe em pressão por 30 min; desfie ou corte em cubos.",
+          "Refogue cebola e alho; junte o charque e colorau.",
+          "Em panela separada, cozinhe feijão-manteiga com louro.",
+          "Misture parte do charque refogado ao feijão; reserve o resto pra montar por cima.",
+          "Finalize com cebolinha."
+        ],
+        "tip": "Feijão-manteiga é mais cremoso que o carioca — não precisa bater nada pra engrossar."
+      }
+    },
+    {
+      "slug": "pato_tucupi_light",
+      "title": "Pato no Tucupi Light",
+      "icon": "🦆",
+      "category": "Jantar · Paraense",
+      "time_label": "1h30",
+      "description": "Versão light do pato no tucupi — sem farinha, menos gordura, mesmo sabor do Círio.",
+      "match_prefixes": ["80g pato no tucupi"],
+      "yt_query": "pato no tucupi light receita paraense",
+      "data": {
+        "porcao": { "l": "100g pato + caldo", "j": "80g pato + caldo" },
+        "ings": [
+          { "n": "Pato em pedaços magros", "a": "300 g" },
+          { "n": "Tucupi (caldo amarelo de mandioca)", "a": "500 ml" },
+          { "n": "Jambu (folhas)", "a": "1 maço" },
+          { "n": "Alho, cebolinha, pimenta-de-cheiro", "a": "a gosto" }
+        ],
+        "steps": [
+          "Tempere o pato com alho e sal; deixe 30 min.",
+          "Doure os pedaços em panela; retire o excesso de gordura.",
+          "Acrescente o tucupi filtrado e cozinhe 40 min em fogo baixo.",
+          "Branqueie o jambu rapidamente em água fervente.",
+          "Adicione o jambu ao caldo nos últimos 5 min.",
+          "Sirva com arroz (omitir a farinha reduz calorias)."
+        ],
+        "tip": "Jambu causa dormência na boca (efeito 'elétrico') — é tradição, não estranhe."
+      }
+    },
+    {
+      "slug": "caldeirada_tucunare",
+      "title": "Caldeirada de Tucunaré",
+      "icon": "🐟",
+      "category": "Almoço · Amazônico",
+      "time_label": "40 min",
+      "description": "Caldeirada tradicional com tucunaré, batata, pimentão e coentro.",
+      "match_prefixes": ["Caldeirada de tucunare", "Caldeirada de tucunaré"],
+      "yt_query": "caldeirada de tucunaré receita amazonense",
+      "data": {
+        "porcao": { "l": "180g peixe + legumes", "j": "150g peixe + legumes" },
+        "ings": [
+          { "n": "Tucunaré em postas", "a": "400 g" },
+          { "n": "Batata em cubos", "a": "300 g" },
+          { "n": "Pimentão, tomate, cebola", "a": "a gosto" },
+          { "n": "Coentro, limão, azeite, alho", "a": "a gosto" }
+        ],
+        "steps": [
+          "Tempere o peixe com limão, alho, sal; reserve 15 min.",
+          "Refogue cebola, alho e pimentão em azeite.",
+          "Acrescente tomate e cozinhe até desmanchar.",
+          "Adicione as batatas; cubra com água morna.",
+          "Após 10 min, disponha as postas sobre os legumes.",
+          "Cozinhe tampado por 15 min sem mexer.",
+          "Finalize com coentro."
+        ],
+        "tip": "Tucunaré tem espinho em Y — retire com pinça ao desossar para evitar surpresas."
+      }
+    },
+    {
+      "slug": "caldeirada_tucunare_light",
+      "title": "Caldeirada Leve de Tucunaré",
+      "icon": "🐠",
+      "category": "Jantar · Fit",
+      "time_label": "30 min",
+      "description": "Versão leve da caldeirada — menos batata, mais legumes verdes.",
+      "match_prefixes": ["Caldeirada leve de tucunare", "Caldeirada leve de tucunaré"],
+      "yt_query": "caldeirada de tucunaré light receita",
+      "data": {
+        "porcao": { "l": "130g peixe", "j": "100g peixe" },
+        "ings": [
+          { "n": "Tucunaré em postas", "a": "250 g" },
+          { "n": "Abobrinha, chuchu, cenoura", "a": "3 xícaras" },
+          { "n": "Tomate, cebola, coentro", "a": "a gosto" },
+          { "n": "Limão, alho, sal, azeite", "a": "a gosto" }
+        ],
+        "steps": [
+          "Tempere o peixe com limão, alho e sal; 15 min.",
+          "Refogue cebola e tomate em fio mínimo de azeite.",
+          "Junte os legumes em cubos e cubra com água.",
+          "Cozinhe por 8 min.",
+          "Disponha o peixe por cima; cozinhe tampado 12 min.",
+          "Finalize com coentro."
+        ],
+        "tip": "Substituindo batata por legumes verdes, vc corta ~200 kcal e aumenta fibras."
+      }
+    },
+    {
+      "slug": "caldinho_feijao_manteiga",
+      "title": "Caldinho de Feijão-Manteiga",
+      "icon": "🥣",
+      "category": "Jantar · Aperitivo",
+      "time_label": "25 min",
+      "description": "Caldo fino e cremoso de feijão-manteiga batido com temperos.",
+      "match_prefixes": ["Caldinho de feijao manteiga", "Caldinho de feijão manteiga"],
+      "yt_query": "caldinho de feijão manteiga receita amazônica",
+      "data": {
+        "porcao": { "l": "1 tigela funda", "j": "1 tigela média" },
+        "ings": [
+          { "n": "Feijão-manteiga cozido", "a": "1,5 xícaras" },
+          { "n": "Caldo do feijão", "a": "600 ml" },
+          { "n": "Cebola, alho, bacon (opcional)", "a": "a gosto" },
+          { "n": "Cheiro-verde, pimenta-de-cheiro", "a": "a gosto" }
+        ],
+        "steps": [
+          "Bata feijão + caldo no liquidificador até ficar sedoso.",
+          "Refogue cebola e alho em panela funda.",
+          "Acrescente o creme de feijão e ferva por 10 min.",
+          "Ajuste sal; a consistência deve ser de caldo, não sopa.",
+          "Sirva com cheiro-verde e pimenta-de-cheiro."
+        ],
+        "tip": "Feijão-manteiga é naturalmente mais cremoso que carioca ou preto — ideal para caldinhos."
+      }
+    },
+    {
+      "slug": "manicoba",
+      "title": "Maniçoba Paraense",
+      "icon": "🍲",
+      "category": "Almoço · Especial",
+      "time_label": "7 dias!",
+      "description": "Folha de maniva cozida por 7 dias com carnes salgadas — a 'feijoada sem feijão' do Pará.",
+      "match_prefixes": ["Manicoba paraense", "Maniçoba paraense"],
+      "yt_query": "maniçoba paraense receita tradicional",
+      "data": {
+        "porcao": { "l": "1 prato (~250g)", "j": "3/4 prato (~200g)" },
+        "ings": [
+          { "n": "Maniva moída pré-cozida", "a": "1 kg" },
+          { "n": "Charque dessalgado", "a": "200 g" },
+          { "n": "Paio e linguiça defumada", "a": "200 g" },
+          { "n": "Mocotó, orelha, pé de porco (opcional)", "a": "500 g" },
+          { "n": "Alho, cebola, louro", "a": "a gosto" }
+        ],
+        "steps": [
+          "Use maniva já cozida por 7 dias (veneno cianeto precisa ser eliminado).",
+          "Dessalgue as carnes em 3 trocas de água por 24h.",
+          "Cozinhe em pressão as carnes mais duras por 40 min.",
+          "Junte maniva cozida, paio, linguiça; ferva por 1h em panela aberta.",
+          "Ajuste sal (maniva absorve muito) e pimenta.",
+          "Sirva com arroz branco e farinha de mandioca."
+        ],
+        "tip": "ATENÇÃO: maniva crua é tóxica (cianeto). Compre sempre pré-cozida ou cozinhe 7 dias em fogo baixo — não pule etapa!"
+      }
+    },
+    {
+      "slug": "moqueca_amazonica",
+      "title": "Moqueca Amazônica de Peixe",
+      "icon": "🐟",
+      "category": "Almoço · Amazônico",
+      "time_label": "35 min",
+      "description": "Moqueca amazônica feita com leite de castanha-do-brasil (sem leite de coco).",
+      "match_prefixes": ["Moqueca amazonica de peixe", "Moqueca amazônica de peixe"],
+      "yt_query": "moqueca amazônica com leite de castanha receita",
+      "data": {
+        "porcao": { "l": "180g peixe", "j": "150g peixe" },
+        "ings": [
+          { "n": "Posta de peixe branco", "a": "400 g" },
+          { "n": "Leite de castanha-do-brasil", "a": "200 ml" },
+          { "n": "Tomate, cebola, pimentão", "a": "a gosto" },
+          { "n": "Coentro, limão, alho, sal", "a": "a gosto" }
+        ],
+        "steps": [
+          "Tempere o peixe com limão, alho, sal; 15 min.",
+          "Numa panela, faça camadas: cebola, tomate, pimentão, peixe.",
+          "Regue com leite de castanha.",
+          "Cozinhe tampado em fogo baixo 20 min sem mexer.",
+          "Finalize com muito coentro.",
+          "Sirva com arroz e farinha d'água."
+        ],
+        "tip": "Pra fazer o leite: bata 100g de castanha-do-brasil com 300ml de água; coe em pano fino."
+      }
+    },
+    {
+      "slug": "moqueca_amazonica_light",
+      "title": "Moqueca Amazônica Light",
+      "icon": "🐠",
+      "category": "Jantar · Fit",
+      "time_label": "25 min",
+      "description": "Versão reduzida da moqueca amazônica — menos castanha, mais legumes.",
+      "match_prefixes": ["Moqueca amazonica light", "Moqueca amazônica light"],
+      "yt_query": "moqueca amazônica light receita fit",
+      "data": {
+        "porcao": { "l": "130g peixe", "j": "100g peixe" },
+        "ings": [
+          { "n": "Posta de peixe magro", "a": "250 g" },
+          { "n": "Leite de castanha (diluído)", "a": "150 ml" },
+          { "n": "Tomate, cebola, pimentão, coentro", "a": "a gosto" },
+          { "n": "Limão, alho, sal", "a": "a gosto" }
+        ],
+        "steps": [
+          "Tempere o peixe com limão e alho; 10 min.",
+          "Faça camadas em panela antiaderente: legumes, peixe.",
+          "Regue com leite de castanha diluído em água.",
+          "Cozinhe 15 min tampado.",
+          "Finalize com coentro."
+        ],
+        "tip": "Leite de castanha diluído (1:1 com água) reduz calorias mas mantém o sabor."
+      }
+    },
+    {
+      "slug": "omelete_jambu",
+      "title": "Omelete com Jambu",
+      "icon": "🍳",
+      "category": "Jantar · Paraense",
+      "time_label": "10 min",
+      "description": "Omelete simples com jambu refogado — sensação de 'dormência' típica.",
+      "match_prefixes": ["Omelete 3 ovos c/ jambu"],
+      "yt_query": "omelete com jambu receita paraense",
+      "data": {
+        "porcao": { "l": "3 ovos", "j": "2 ovos" },
+        "ings": [
+          { "n": "Ovos", "a": "3 unidades" },
+          { "n": "Folhas de jambu branqueadas", "a": "1 xícara" },
+          { "n": "Cebolinha, manteiga, sal, pimenta", "a": "a gosto" }
+        ],
+        "steps": [
+          "Branqueie o jambu em água fervente por 2 min; escorra.",
+          "Bata os ovos com sal, pimenta e cebolinha.",
+          "Aqueça manteiga em frigideira.",
+          "Espalhe o jambu na frigideira; despeje os ovos.",
+          "Quando firmar, dobre ao meio e sirva."
+        ],
+        "tip": "Jambu branqueado perde um pouco da dormência — pra efeito máximo, use cru picado pequeno."
+      }
+    },
+    {
+      "slug": "pato_no_tucupi",
+      "title": "Pato no Tucupi Tradicional",
+      "icon": "🦆",
+      "category": "Almoço · Paraense",
+      "time_label": "2h",
+      "description": "Pato cozido no caldo de tucupi com jambu — prato do Círio de Nazaré.",
+      "match_prefixes": ["Pato no tucupi"],
+      "yt_query": "pato no tucupi receita paraense círio",
+      "data": {
+        "porcao": { "l": "150g pato + caldo", "j": "120g pato + caldo" },
+        "ings": [
+          { "n": "Pato em pedaços", "a": "1 kg" },
+          { "n": "Tucupi (caldo de mandioca)", "a": "1 litro" },
+          { "n": "Jambu (folhas)", "a": "2 maços" },
+          { "n": "Alho, cebolinha, pimenta-de-cheiro", "a": "a gosto" }
+        ],
+        "steps": [
+          "Tempere o pato com alho e sal; asse a 180 °C por 45 min para pegar cor.",
+          "Transfira para panela; cubra com tucupi.",
+          "Cozinhe em fogo baixo por 1h (até desfiar fácil).",
+          "Branqueie o jambu em água fervente por 3 min; escorra.",
+          "Adicione o jambu ao caldo nos últimos 10 min.",
+          "Sirva com arroz branco e farinha-d'água."
+        ],
+        "tip": "Tucupi puro é azedo e amarela os dentes — o cozimento longo neutraliza o efeito."
+      }
+    },
+    {
+      "slug": "pirarucu_casaca",
+      "title": "Pirarucu de Casaca",
+      "icon": "🐟",
+      "category": "Almoço · Amazonense",
+      "time_label": "1h",
+      "description": "Pirarucu desfiado em camadas com batata, ovos, tomate e banana — lasanha amazônica.",
+      "match_prefixes": ["Pirarucu de casaca"],
+      "yt_query": "pirarucu de casaca receita amazonense",
+      "data": {
+        "porcao": { "l": "1 porção grande (~350g)", "j": "1 porção média (~280g)" },
+        "ings": [
+          { "n": "Pirarucu salgado desfiado", "a": "400 g" },
+          { "n": "Batata inglesa em rodelas", "a": "500 g" },
+          { "n": "Banana-da-terra em rodelas", "a": "2 unidades" },
+          { "n": "Tomate em rodelas, ovos cozidos", "a": "a gosto" },
+          { "n": "Cebola, pimentão, azeitona verde", "a": "a gosto" }
+        ],
+        "steps": [
+          "Dessalgue o pirarucu em 3 trocas de água; cozinhe 15 min e desfie.",
+          "Refogue o peixe com cebola, pimentão e tomate.",
+          "Pré-cozinhe as batatas até al dente; frite as bananas levemente.",
+          "Num refratário, alterne camadas: pirarucu, batata, banana, tomate, ovo, azeitona.",
+          "Regue com azeite cada camada.",
+          "Asse a 200 °C por 25 min até dourar."
+        ],
+        "tip": "'De casaca' significa 'vestido' — cada ingrediente é uma camada, como roupa."
+      }
+    },
+    {
+      "slug": "sopa_feijao_charque",
+      "title": "Sopa de Feijão-Manteiga com Charque",
+      "icon": "🥣",
+      "category": "Jantar · Reconfortante",
+      "time_label": "40 min",
+      "description": "Sopa encorpada de feijão-manteiga com charque desfiado.",
+      "match_prefixes": ["Sopa de feijao manteiga", "Sopa de feijão manteiga"],
+      "yt_query": "sopa de feijão manteiga com charque receita",
+      "data": {
+        "porcao": { "l": "1 bowl grande", "j": "1 bowl médio" },
+        "ings": [
+          { "n": "Feijão-manteiga cozido c/ caldo", "a": "2 xícaras" },
+          { "n": "Charque dessalgado desfiado", "a": "150 g" },
+          { "n": "Cebola, alho, cheiro-verde", "a": "a gosto" },
+          { "n": "Pimenta-de-cheiro", "a": "a gosto" }
+        ],
+        "steps": [
+          "Dessalgue e cozinhe o charque; desfie.",
+          "Bata metade do feijão com caldo no liquidificador.",
+          "Refogue cebola e alho; junte charque desfiado.",
+          "Adicione feijão batido e inteiro + caldo extra.",
+          "Cozinhe por 10 min.",
+          "Finalize com cheiro-verde e pimenta-de-cheiro."
+        ],
+        "tip": "Pimenta-de-cheiro (a amarelinha) tem aroma sem ardência forte — perfeita para acabamento."
+      }
+    },
+    {
+      "slug": "sopa_legumes_peixe",
+      "title": "Sopa de Legumes com Macaxeira e Peixe",
+      "icon": "🥣",
+      "category": "Jantar · Nutritivo",
+      "time_label": "40 min",
+      "description": "Caldo com macaxeira amassada, legumes e peixe branco desfiado.",
+      "match_prefixes": ["Sopa de legumes c/ macaxeira e peixe", "Sopa de legumes com macaxeira e peixe"],
+      "yt_query": "sopa de macaxeira com peixe receita amazônica",
+      "data": {
+        "porcao": { "l": "1 bowl grande", "j": "1 bowl médio" },
+        "ings": [
+          { "n": "Macaxeira cozida", "a": "300 g" },
+          { "n": "Peixe branco cozido e desfiado", "a": "200 g" },
+          { "n": "Cenoura, chuchu em cubos", "a": "2 xícaras" },
+          { "n": "Cebola, alho, coentro, limão", "a": "a gosto" }
+        ],
+        "steps": [
+          "Cozinhe o peixe em 1 l de água com cebola; reserve o caldo.",
+          "Desfie o peixe retirando espinhas com cuidado.",
+          "Bata metade da macaxeira com caldo.",
+          "Junte o purê ao caldo; adicione cenoura e chuchu.",
+          "Cozinhe por 10 min; acrescente o peixe desfiado.",
+          "Finalize com coentro e uma pitada de limão."
+        ],
+        "tip": "Macaxeira do Norte tem sabor mais intenso que mandioca comum — não troque sem necessidade."
+      }
+    },
+    {
+      "slug": "tacaca_completo",
+      "title": "Tacacá Completo",
+      "icon": "🥣",
+      "category": "Jantar · Especial",
+      "time_label": "45 min",
+      "description": "Caldo de tucupi com goma de tapioca, jambu e camarão seco — servido na cuia.",
+      "match_prefixes": ["Tacaca completo", "Tacacá completo"],
+      "yt_query": "tacacá paraense receita tradicional",
+      "data": {
+        "porcao": { "l": "1 cuia grande (~500ml)", "j": "1 cuia média (~400ml)" },
+        "ings": [
+          { "n": "Tucupi", "a": "1 litro" },
+          { "n": "Goma de tapioca (polvilho)", "a": "1/4 xícara" },
+          { "n": "Jambu branqueado", "a": "1 maço" },
+          { "n": "Camarão seco descascado", "a": "100 g" },
+          { "n": "Alho, chicória-do-Pará, pimenta", "a": "a gosto" }
+        ],
+        "steps": [
+          "Dissolva a goma em 1 xíc de água fria; ferva mexendo até engrossar.",
+          "Aqueça o tucupi com alho e chicória por 15 min.",
+          "Hidrate o camarão em água morna; esquente rapidamente.",
+          "Branqueie o jambu (2 min em água fervente).",
+          "Monte na cuia: goma no fundo, tucupi quente, jambu, camarão.",
+          "Sirva imediatamente — tomar sem colher, na borda da cuia."
+        ],
+        "tip": "Tacacá legítimo é vendido em barraquinha. Em casa, beba bem quente, com jambu ainda firme."
+      }
+    },
+    {
+      "slug": "tacaca_light",
+      "title": "Tacacá Light",
+      "icon": "🥣",
+      "category": "Jantar · Light",
+      "time_label": "30 min",
+      "description": "Versão do tacacá sem camarão seco (reduz sódio e calorias).",
+      "match_prefixes": ["Tacaca light", "Tacacá light"],
+      "yt_query": "tacacá light sem camarão receita",
+      "data": {
+        "porcao": { "l": "1 cuia média (~400ml)", "j": "1 cuia pequena (~300ml)" },
+        "ings": [
+          { "n": "Tucupi", "a": "600 ml" },
+          { "n": "Goma de tapioca", "a": "2 col sopa" },
+          { "n": "Jambu branqueado", "a": "1 maço" },
+          { "n": "Alho, chicória-do-Pará", "a": "a gosto" }
+        ],
+        "steps": [
+          "Dissolva a goma em 1/2 xíc de água fria; ferva mexendo até engrossar.",
+          "Aqueça o tucupi com alho e chicória 15 min.",
+          "Branqueie o jambu por 2 min; escorra.",
+          "Monte na cuia: goma, tucupi, jambu.",
+          "Sirva bem quente."
+        ],
+        "tip": "Sem camarão seco, perde a proteína — combine com algo proteico à parte (ovo, queijo)."
+      }
+    },
+    {
+      "slug": "vatapa_paraense_light",
+      "title": "Vatapá Paraense Light",
+      "icon": "🍛",
+      "category": "Jantar · Cremoso",
+      "time_label": "50 min",
+      "description": "Vatapá cremoso com frango desfiado e leite de castanha — versão leve do paraense.",
+      "match_prefixes": ["Vatapa paraense", "Vatapá paraense"],
+      "yt_query": "vatapá paraense light receita",
+      "data": {
+        "porcao": { "l": "150g frango + creme", "j": "120g frango + creme" },
+        "ings": [
+          { "n": "Peito de frango desfiado", "a": "300 g" },
+          { "n": "Pão amanhecido (miolo)", "a": "2 fatias" },
+          { "n": "Leite de castanha-do-brasil", "a": "300 ml" },
+          { "n": "Camarão seco (opcional)", "a": "50 g" },
+          { "n": "Cebola, alho, coentro, azeite", "a": "a gosto" }
+        ],
+        "steps": [
+          "Deixe o pão amolecer no leite de castanha por 10 min.",
+          "Bata pão + leite no liquidificador até cremoso.",
+          "Refogue cebola, alho em fio de azeite; junte o frango desfiado.",
+          "Acrescente o creme de pão e cozinhe mexendo sem parar por 15 min.",
+          "Ajuste sal e adicione camarão seco se for usar.",
+          "Finalize com coentro."
+        ],
+        "tip": "Paraense é diferente do baiano — NÃO leva dendê nem leite de coco, só leite de castanha."
+      }
+    },
+    {
+      "slug": "x_caboquinho",
+      "title": "X-Caboquinho",
+      "icon": "🥪",
+      "category": "Jantar · Manauara",
+      "time_label": "15 min",
+      "description": "Sanduíche amazonense com pão d'água, queijo coalho, pupunha e tucumã.",
+      "match_prefixes": ["X-caboquinho:", "X-caboquinho "],
+      "yt_query": "x-caboquinho Manaus receita sanduíche amazonense",
+      "data": {
+        "porcao": { "l": "1 sanduíche médio", "j": "1/2 sanduíche" },
+        "ings": [
+          { "n": "Pão d'água ou francês", "a": "1 unidade" },
+          { "n": "Queijo coalho em fatias", "a": "80 g" },
+          { "n": "Pupunha cozida em fatias", "a": "1 unidade" },
+          { "n": "Tucumã em tiras", "a": "1/2 xícara" },
+          { "n": "Manteiga, alface", "a": "a gosto" }
+        ],
+        "steps": [
+          "Cozinhe a pupunha em água com sal por 20 min; fatie.",
+          "Grelhe o queijo coalho em chapa até dourar.",
+          "Corte o pão ao meio e passe manteiga.",
+          "Grelhe o pão na chapa até ficar crocante.",
+          "Monte: pão, queijo grelhado, pupunha, tucumã, alface.",
+          "Feche e sirva imediatamente."
+        ],
+        "tip": "Tucumã é o diferencial — amarelo intenso, gordinho, com sabor único. Sem ele, não é caboquinho de verdade."
+      }
+    }
+  ]
+}

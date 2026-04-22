@@ -41,12 +41,14 @@ async function searchYouTube(query: string): Promise<string | null> {
 export async function GET(req: NextRequest) {
   const q = req.nextUrl.searchParams.get("q");
   const slug = req.nextUrl.searchParams.get("slug");
+  const kind = req.nextUrl.searchParams.get("kind") === "recipe" ? "recipe" : "exercise";
+  const cacheTable = kind === "recipe" ? "recipes" : "exercises";
   if (!q) return NextResponse.json({ error: "Missing q" }, { status: 400 });
 
   // 1) cache hit
   if (slug) {
     const { data } = await supabaseAdmin
-      .from("exercises")
+      .from(cacheTable)
       .select("cached_video_id")
       .eq("slug", slug)
       .single();
@@ -66,14 +68,23 @@ export async function GET(req: NextRequest) {
     );
   }
 
-  // 2) queries progressivamente mais simples ate achar
-  const attempts = [
-    `${q} como fazer exercicio`,
-    `${q} calistenia tutorial`,
-    `${q} exercicio`,
-    q,
-    stripAccents(q),
-  ];
+  // 2) queries progressivamente mais simples ate achar (variam por contexto)
+  const attempts =
+    kind === "recipe"
+      ? [
+          `${q} receita como fazer`,
+          `${q} receita passo a passo`,
+          `${q} receita`,
+          q,
+          stripAccents(q),
+        ]
+      : [
+          `${q} como fazer exercicio`,
+          `${q} calistenia tutorial`,
+          `${q} exercicio`,
+          q,
+          stripAccents(q),
+        ];
 
   let videoId: string | null = null;
   for (const query of attempts) {
@@ -87,7 +98,7 @@ export async function GET(req: NextRequest) {
 
   if (slug) {
     await supabaseAdmin
-      .from("exercises")
+      .from(cacheTable)
       .update({ cached_video_id: videoId })
       .eq("slug", slug);
   }
