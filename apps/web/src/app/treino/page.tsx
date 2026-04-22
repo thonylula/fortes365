@@ -72,6 +72,10 @@ export default async function TreinoPage() {
             sets,
             reps,
             rest,
+            custom_name,
+            custom_muscle,
+            custom_cue,
+            custom_kcal,
             exercises (
               id,
               slug,
@@ -95,6 +99,10 @@ export default async function TreinoPage() {
           sets: number;
           reps: string | null;
           rest: string | null;
+          custom_name: string | null;
+          custom_muscle: string | null;
+          custom_cue: string | null;
+          custom_kcal: number | null;
           exercises: unknown;
         }>) {
           const list = byPlanDay.get(ov.plan_day_id) ?? [];
@@ -104,6 +112,10 @@ export default async function TreinoPage() {
             reps: ov.reps,
             rest: ov.rest,
             exercises: ov.exercises,
+            custom_name: ov.custom_name,
+            custom_muscle: ov.custom_muscle,
+            custom_cue: ov.custom_cue,
+            custom_kcal: ov.custom_kcal,
           });
           byPlanDay.set(ov.plan_day_id, list);
         }

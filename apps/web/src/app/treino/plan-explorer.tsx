@@ -1,8 +1,8 @@
 "use client";
 
-import { useMemo, useState, useTransition } from "react";
+import { useEffect, useMemo, useState, useTransition } from "react";
 import dynamic from "next/dynamic";
-import { toggleExerciseDone, swapExercise } from "@/lib/supabase/mutations";
+import { toggleExerciseDone, swapExercise, addCustomExercise, removeCustomExercise } from "@/lib/supabase/mutations";
 import { NavTabs } from "@/components/nav-tabs";
 import { PaywallModal } from "@/components/paywall-modal";
 import { AchievementToast } from "@/components/achievement-toast";
@@ -71,6 +71,10 @@ type PlanDayExercise = {
     youtube_search_url: string | null;
     alternatives: string[] | null;
   } | null;
+  custom_name?: string | null;
+  custom_muscle?: string | null;
+  custom_cue?: string | null;
+  custom_kcal?: number | null;
 };
 
 // ──────────────────────────────────────────────────────────────────────────
@@ -123,9 +127,44 @@ export function PlanExplorer({
   const [completedSlugs, setCompletedSlugs] = useState<Set<string>>(
     () => new Set(initialCompleted ?? []),
   );
+  const [completedCustom, setCompletedCustom] = useState<Set<string>>(new Set());
   const [showPaywall, setShowPaywall] = useState(false);
   const [pendingAchievements, setPendingAchievements] = useState<AchievementInfo[]>([]);
   const restTimer = useRestTimer();
+
+  // Hidrata estado "feito" de custom exercises a partir do localStorage.
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem("forte_custom_done");
+      if (!raw) return;
+      const obj = JSON.parse(raw) as Record<string, Record<string, boolean>>;
+      const set = new Set<string>();
+      for (const [pdId, positions] of Object.entries(obj)) {
+        for (const [pos, done] of Object.entries(positions)) {
+          if (done) set.add(`${pdId}_${pos}`);
+        }
+      }
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- hidratacao pos-mount (SSR nao acessa localStorage)
+      setCompletedCustom(set);
+    } catch { /* noop */ }
+  }, []);
+
+  const toggleCustomDone = (planDayId: string, position: number) => {
+    const key = `${planDayId}_${position}`;
+    setCompletedCustom((prev) => {
+      const next = new Set(prev);
+      const wasDone = next.has(key);
+      if (wasDone) next.delete(key); else next.add(key);
+      try {
+        const raw = localStorage.getItem("forte_custom_done");
+        const obj = (raw ? JSON.parse(raw) : {}) as Record<string, Record<string, boolean>>;
+        if (!obj[planDayId]) obj[planDayId] = {};
+        obj[planDayId][position] = !wasDone;
+        localStorage.setItem("forte_custom_done", JSON.stringify(obj));
+      } catch { /* noop */ }
+      return next;
+    });
+  };
 
   const handleNewAchievements = (achievements: AchievementInfo[]) => {
     if (achievements.length > 0) {
@@ -264,6 +303,7 @@ export function PlanExplorer({
               weekIndex={weekIndex}
               isLoggedIn={!!user}
               completedSlugs={completedSlugs}
+              completedCustom={completedCustom}
               onToggle={(slug) => {
                 setCompletedSlugs((prev) => {
                   const next = new Set(prev);
@@ -272,6 +312,7 @@ export function PlanExplorer({
                   return next;
                 });
               }}
+              onToggleCustom={toggleCustomDone}
               onAchievement={handleNewAchievements}
               onStartRest={restTimer.start}
             />
@@ -332,7 +373,9 @@ type DayCtx = {
   weekIndex: number;
   isLoggedIn: boolean;
   completedSlugs: Set<string>;
+  completedCustom: Set<string>;
   onToggle: (slug: string) => void;
+  onToggleCustom: (planDayId: string, position: number) => void;
   onAchievement: (achievements: AchievementInfo[]) => void;
   onStartRest: (rest: string, name: string) => void;
 };
@@ -394,13 +437,20 @@ function Cover({ day }: { day: PlanDay }) {
 // Treino: kcal summary + exercise list + tip
 // ──────────────────────────────────────────────────────────────────────────
 function TreinoBlock(ctx: DayCtx) {
-  const { day, volumeMultiplier, monthId, weekIndex, isLoggedIn, completedSlugs, onToggle, onAchievement, onStartRest } = ctx;
+  const { day, volumeMultiplier, monthId, weekIndex, isLoggedIn, completedSlugs, completedCustom, onToggle, onToggleCustom, onAchievement, onStartRest } = ctx;
   const exercises = [...day.plan_day_exercises].sort((a, b) => a.position - b.position);
   const totalKcal = Math.round(
-    exercises.reduce((sum, ex) => sum + (ex.exercises?.kcal_estimate ?? 0), 0) * volumeMultiplier,
+    exercises.reduce(
+      (sum, ex) => sum + (ex.exercises?.kcal_estimate ?? ex.custom_kcal ?? 0),
+      0,
+    ) * volumeMultiplier,
   );
   const totalSets = exercises.reduce((sum, ex) => sum + (ex.sets ?? 0), 0);
-  const doneCount = exercises.filter((ex) => ex.exercises && completedSlugs.has(ex.exercises.slug)).length;
+  const isDoneFor = (ex: PlanDayExercise) =>
+    ex.exercises
+      ? completedSlugs.has(ex.exercises.slug)
+      : completedCustom.has(`${day.id}_${ex.position}`);
+  const doneCount = exercises.filter(isDoneFor).length;
   const allDone = doneCount === exercises.length && doneCount > 0;
 
   return (
@@ -438,23 +488,38 @@ function TreinoBlock(ctx: DayCtx) {
       <div>
         <div className="slbl mb-2.5">Exercícios</div>
         <div className="flex flex-col gap-[7px]">
-          {exercises.map((ex, i) => (
-            <ExerciseCard
-              key={ex.position}
-              ex={ex}
-              index={i}
-              planDayId={day.id}
-              monthId={monthId}
-              weekIndex={weekIndex}
-              dayIndex={day.day_index}
-              isLoggedIn={isLoggedIn}
-              isDone={!!ex.exercises && completedSlugs.has(ex.exercises.slug)}
-              onToggle={onToggle}
-              onAchievement={onAchievement}
-              onStartRest={onStartRest}
-            />
-          ))}
+          {exercises.map((ex, i) =>
+            ex.exercises ? (
+              <ExerciseCard
+                key={ex.position}
+                ex={ex}
+                index={i}
+                planDayId={day.id}
+                monthId={monthId}
+                weekIndex={weekIndex}
+                dayIndex={day.day_index}
+                isLoggedIn={isLoggedIn}
+                isDone={completedSlugs.has(ex.exercises.slug)}
+                onToggle={onToggle}
+                onAchievement={onAchievement}
+                onStartRest={onStartRest}
+              />
+            ) : (
+              <CustomExerciseCard
+                key={ex.position}
+                ex={ex}
+                index={i}
+                planDayId={day.id}
+                isLoggedIn={isLoggedIn}
+                isDone={completedCustom.has(`${day.id}_${ex.position}`)}
+                onToggle={onToggleCustom}
+                onStartRest={onStartRest}
+              />
+            ),
+          )}
         </div>
+
+        {isLoggedIn && <AddCustomExerciseButton planDayId={day.id} />}
 
         {allDone && (
           <div className="animate-in mt-4 rounded-xl border border-[color:var(--gn)] bg-[color:var(--gnd)] p-4 text-center">
@@ -687,6 +752,306 @@ function ExerciseCard({
         <SetLogger slug={e.slug} sets={ex.sets} targetReps={ex.reps ?? ""} monthId={monthId} weekIndex={weekIndex} dayIndex={dayIndex} />
       )}
     </div>
+  );
+}
+
+// ──────────────────────────────────────────────────────────────────────────
+// CustomExerciseCard — exercicio adicionado pelo usuario (sem FK em exercises)
+// ──────────────────────────────────────────────────────────────────────────
+function CustomExerciseCard({
+  ex,
+  index,
+  planDayId,
+  isLoggedIn,
+  isDone,
+  onToggle,
+  onStartRest,
+}: {
+  ex: PlanDayExercise;
+  index: number;
+  planDayId: string;
+  isLoggedIn: boolean;
+  isDone: boolean;
+  onToggle: (planDayId: string, position: number) => void;
+  onStartRest: (rest: string, name: string) => void;
+}) {
+  const [isRemoving, startRemoveTransition] = useTransition();
+  const name = ex.custom_name ?? "Exercicio";
+  const muscle = ex.custom_muscle;
+  const cue = ex.custom_cue;
+  const kcal = ex.custom_kcal;
+
+  const handleToggle = () => {
+    const wasNotDone = !isDone;
+    onToggle(planDayId, ex.position);
+    if (wasNotDone) {
+      hapticSuccess();
+      playSuccess();
+      if (ex.rest) onStartRest(ex.rest, name);
+    }
+  };
+
+  const handleRemove = () => {
+    if (typeof window !== "undefined" && !window.confirm(`Remover "${name}"?`)) return;
+    startRemoveTransition(async () => {
+      const fd = new FormData();
+      fd.set("planDayId", planDayId);
+      fd.set("position", String(ex.position));
+      await removeCustomExercise(fd);
+    });
+  };
+
+  return (
+    <div
+      className="overflow-hidden rounded-xl border-[1.5px] border-dashed border-[color:var(--bd)] bg-[color:var(--s1)] transition-all"
+      style={isDone ? { borderColor: "var(--gn)", background: "rgba(34,197,94,.06)" } : undefined}
+    >
+      <div className="flex gap-[0.7rem] p-[0.9rem]">
+        <div className="ex-num" style={isDone ? { color: "var(--gn)" } : undefined}>
+          {isDone ? "✓" : String(index + 1).padStart(2, "0")}
+        </div>
+        <div className="flex-1">
+          <div className="ex-name">
+            {name}
+            <span
+              className="ml-2 rounded-sm px-1.5 py-0.5 align-middle text-[9px] font-bold uppercase tracking-wider"
+              style={{ background: "var(--bld)", color: "var(--bl)" }}
+            >
+              Meu
+            </span>
+          </div>
+          {muscle && <div className="ex-muscle">{muscle}</div>}
+          <div className="flex flex-wrap gap-[5px]">
+            {ex.sets != null && <span className="et ts">{ex.sets} series</span>}
+            {ex.reps && <span className="et tr">{ex.reps}</span>}
+            {ex.rest && <span className="et td">desc {ex.rest}</span>}
+            {kcal != null && <span className="et tk">~{kcal} kcal</span>}
+          </div>
+          {cue && <div className="ex-mod">{cue}</div>}
+        </div>
+        <div className="flex shrink-0 flex-col items-end gap-1.5">
+          {isLoggedIn && (
+            <button
+              onClick={handleRemove}
+              disabled={isRemoving}
+              className="flex items-center gap-1 rounded-md border-[1.5px] border-[color:var(--bd)] bg-[color:var(--s2)] px-2 py-1 font-[family-name:var(--font-condensed)] text-[10px] font-bold uppercase tracking-wider text-[color:var(--tx2)] transition-colors hover:border-red-500 hover:text-red-500 disabled:opacity-50"
+              title="Remover exercicio"
+            >
+              {isRemoving ? "..." : "🗑 Remover"}
+            </button>
+          )}
+          {isLoggedIn && (
+            <button
+              onClick={handleToggle}
+              className="flex items-center gap-1 rounded-md px-2 py-1 font-[family-name:var(--font-condensed)] text-[10px] font-bold uppercase tracking-wider transition-colors"
+              style={
+                isDone
+                  ? { background: "var(--gnd)", border: "1.5px solid var(--gn)", color: "var(--gn)" }
+                  : { background: "none", border: "1.5px solid var(--bd)", color: "var(--tx2)" }
+              }
+            >
+              {isDone ? "✓ Feito" : "Concluir"}
+            </button>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ──────────────────────────────────────────────────────────────────────────
+// AddCustomExerciseButton — botao + modal pra criar exercicio proprio
+// ──────────────────────────────────────────────────────────────────────────
+function AddCustomExerciseButton({ planDayId }: { planDayId: string }) {
+  const [open, setOpen] = useState(false);
+  const [isPending, startTransition] = useTransition();
+  const [form, setForm] = useState({
+    name: "",
+    muscle: "",
+    sets: "3",
+    reps: "",
+    rest: "",
+    kcal: "",
+    cue: "",
+  });
+  const [err, setErr] = useState<string | null>(null);
+
+  const close = () => {
+    if (isPending) return;
+    setOpen(false);
+    setErr(null);
+  };
+
+  const submit = () => {
+    if (!form.name.trim()) { setErr("Nome e obrigatorio"); return; }
+    setErr(null);
+    startTransition(async () => {
+      const fd = new FormData();
+      fd.set("planDayId", planDayId);
+      fd.set("name", form.name.trim());
+      fd.set("muscle", form.muscle.trim());
+      fd.set("sets", form.sets || "3");
+      fd.set("reps", form.reps.trim());
+      fd.set("rest", form.rest.trim());
+      fd.set("kcal", form.kcal || "0");
+      fd.set("cue", form.cue.trim());
+      const res = await addCustomExercise(fd);
+      if (res?.ok) {
+        setForm({ name: "", muscle: "", sets: "3", reps: "", rest: "", kcal: "", cue: "" });
+        setOpen(false);
+      } else {
+        setErr(res?.error ?? "falha ao adicionar");
+      }
+    });
+  };
+
+  return (
+    <>
+      <button
+        onClick={() => setOpen(true)}
+        className="mt-3 flex w-full items-center justify-center gap-2 rounded-xl border-[1.5px] border-dashed border-[color:var(--bd)] bg-[color:var(--s2)] px-3 py-3 font-[family-name:var(--font-condensed)] text-[11px] font-bold uppercase tracking-wider text-[color:var(--tx2)] transition-colors hover:border-[color:var(--or)] hover:text-[color:var(--or)]"
+      >
+        ➕ Adicionar exercicio
+      </button>
+
+      {open && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4"
+          onClick={close}
+        >
+          <div
+            className="w-full max-w-md rounded-xl border border-[color:var(--bd)] bg-[color:var(--s1)] p-5"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="mb-3 flex items-center justify-between">
+              <div className="font-[family-name:var(--font-display)] text-lg tracking-wider text-[color:var(--or)]">
+                NOVO EXERCICIO
+              </div>
+              <button
+                onClick={close}
+                className="text-[color:var(--tx3)] hover:text-[color:var(--tx)]"
+                aria-label="Fechar"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div className="flex flex-col gap-2.5">
+              <Field label="Nome *" required>
+                <input
+                  autoFocus
+                  type="text"
+                  value={form.name}
+                  onChange={(e) => setForm({ ...form, name: e.target.value })}
+                  className="w-full rounded-md border border-[color:var(--bd)] bg-[color:var(--bg)] px-2.5 py-2 text-[13px] text-[color:var(--tx)] outline-none focus:border-[color:var(--or)]"
+                  placeholder="Ex.: Prancha frontal"
+                  maxLength={80}
+                />
+              </Field>
+              <Field label="Grupo muscular">
+                <input
+                  type="text"
+                  value={form.muscle}
+                  onChange={(e) => setForm({ ...form, muscle: e.target.value })}
+                  className="w-full rounded-md border border-[color:var(--bd)] bg-[color:var(--bg)] px-2.5 py-2 text-[13px] text-[color:var(--tx)] outline-none focus:border-[color:var(--or)]"
+                  placeholder="Ex.: Core · Lombar"
+                  maxLength={60}
+                />
+              </Field>
+              <div className="grid grid-cols-3 gap-2.5">
+                <Field label="Series">
+                  <input
+                    type="number"
+                    min={1}
+                    max={10}
+                    value={form.sets}
+                    onChange={(e) => setForm({ ...form, sets: e.target.value })}
+                    className="w-full rounded-md border border-[color:var(--bd)] bg-[color:var(--bg)] px-2.5 py-2 text-[13px] text-[color:var(--tx)] outline-none focus:border-[color:var(--or)]"
+                  />
+                </Field>
+                <Field label="Reps">
+                  <input
+                    type="text"
+                    value={form.reps}
+                    onChange={(e) => setForm({ ...form, reps: e.target.value })}
+                    className="w-full rounded-md border border-[color:var(--bd)] bg-[color:var(--bg)] px-2.5 py-2 text-[13px] text-[color:var(--tx)] outline-none focus:border-[color:var(--or)]"
+                    placeholder="Ex.: 12"
+                    maxLength={20}
+                  />
+                </Field>
+                <Field label="Descanso">
+                  <input
+                    type="text"
+                    value={form.rest}
+                    onChange={(e) => setForm({ ...form, rest: e.target.value })}
+                    className="w-full rounded-md border border-[color:var(--bd)] bg-[color:var(--bg)] px-2.5 py-2 text-[13px] text-[color:var(--tx)] outline-none focus:border-[color:var(--or)]"
+                    placeholder="60s"
+                    maxLength={20}
+                  />
+                </Field>
+              </div>
+              <Field label="Kcal estimado (opcional)">
+                <input
+                  type="number"
+                  min={0}
+                  max={500}
+                  value={form.kcal}
+                  onChange={(e) => setForm({ ...form, kcal: e.target.value })}
+                  className="w-full rounded-md border border-[color:var(--bd)] bg-[color:var(--bg)] px-2.5 py-2 text-[13px] text-[color:var(--tx)] outline-none focus:border-[color:var(--or)]"
+                  placeholder="0"
+                />
+              </Field>
+              <Field label="Dica / execucao (opcional)">
+                <input
+                  type="text"
+                  value={form.cue}
+                  onChange={(e) => setForm({ ...form, cue: e.target.value })}
+                  className="w-full rounded-md border border-[color:var(--bd)] bg-[color:var(--bg)] px-2.5 py-2 text-[13px] text-[color:var(--tx)] outline-none focus:border-[color:var(--or)]"
+                  placeholder="Ex.: Contraia o core o tempo todo"
+                  maxLength={120}
+                />
+              </Field>
+
+              {err && (
+                <div className="rounded-md border border-red-500/40 bg-red-500/10 px-2 py-1.5 text-[11px] text-red-300">
+                  {err}
+                </div>
+              )}
+
+              <div className="mt-2 flex gap-2">
+                <button
+                  onClick={close}
+                  disabled={isPending}
+                  className="flex-1 rounded-md border border-[color:var(--bd)] bg-[color:var(--s2)] px-3 py-2 font-[family-name:var(--font-condensed)] text-[11px] font-bold uppercase tracking-wider text-[color:var(--tx2)] disabled:opacity-50"
+                >
+                  Cancelar
+                </button>
+                <button
+                  onClick={submit}
+                  disabled={isPending}
+                  className="flex-1 rounded-md border border-[color:var(--or)] bg-[color:var(--or)] px-3 py-2 font-[family-name:var(--font-condensed)] text-[11px] font-bold uppercase tracking-wider text-black disabled:opacity-50"
+                >
+                  {isPending ? "..." : "Adicionar"}
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      )}
+    </>
+  );
+}
+
+function Field({ label, required, children }: { label: string; required?: boolean; children: React.ReactNode }) {
+  return (
+    <label className="flex flex-col gap-1">
+      <span className="font-[family-name:var(--font-condensed)] text-[10px] font-bold uppercase tracking-[1.5px] text-[color:var(--tx3)]">
+        {label}
+        {required && <span className="ml-0.5 text-[color:var(--or)]">*</span>}
+      </span>
+      {children}
+    </label>
   );
 }
 

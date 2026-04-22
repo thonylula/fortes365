@@ -341,3 +341,127 @@ export async function swapExercise(formData: FormData): Promise<{
 
   return { ok: true, newExerciseName: alt.name };
 }
+
+// Garante que o user tenha override do plan_day (copiando o global se necessario).
+// Usado por addCustomExercise e removeCustomExercise.
+async function ensureOverride(
+  supabase: Awaited<ReturnType<typeof createClient>>,
+  userId: string,
+  planDayId: string,
+) {
+  const { count } = await supabase
+    .from("user_plan_day_exercises")
+    .select("id", { count: "exact", head: true })
+    .eq("user_id", userId)
+    .eq("plan_day_id", planDayId);
+
+  if (count && count > 0) return { ok: true as const };
+
+  const { data: globalRows } = await supabase
+    .from("plan_day_exercises")
+    .select("exercise_id, position, sets, reps, rest")
+    .eq("plan_day_id", planDayId);
+
+  if (!globalRows || globalRows.length === 0) return { ok: true as const };
+
+  const insertRows = globalRows.map((row) => ({
+    user_id: userId,
+    plan_day_id: planDayId,
+    exercise_id: row.exercise_id,
+    position: row.position,
+    sets: row.sets ?? 3,
+    reps: row.reps,
+    rest: row.rest,
+  }));
+  const { error } = await supabase
+    .from("user_plan_day_exercises")
+    .insert(insertRows);
+  if (error) return { ok: false as const, error: "copy_global_failed" };
+  return { ok: true as const };
+}
+
+export async function addCustomExercise(formData: FormData): Promise<{
+  ok: boolean;
+  error?: string;
+}> {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) return { ok: false, error: "unauthenticated" };
+
+  const planDayId = formData.get("planDayId") as string;
+  const name = ((formData.get("name") as string) ?? "").trim();
+  const muscle = ((formData.get("muscle") as string) ?? "").trim() || null;
+  const cue = ((formData.get("cue") as string) ?? "").trim() || null;
+  const reps = ((formData.get("reps") as string) ?? "").trim() || null;
+  const rest = ((formData.get("rest") as string) ?? "").trim() || null;
+  const setsRaw = Number(formData.get("sets"));
+  const kcalRaw = Number(formData.get("kcal"));
+  const sets = Number.isFinite(setsRaw) && setsRaw > 0 ? Math.min(10, Math.floor(setsRaw)) : 3;
+  const kcal = Number.isFinite(kcalRaw) && kcalRaw > 0 ? Math.min(500, Math.floor(kcalRaw)) : null;
+
+  if (!planDayId || !name) return { ok: false, error: "invalid_input" };
+
+  const ensured = await ensureOverride(supabase, user.id, planDayId);
+  if (!ensured.ok) return { ok: false, error: ensured.error };
+
+  // Proxima posicao livre no override do user para este plan_day.
+  const { data: existing } = await supabase
+    .from("user_plan_day_exercises")
+    .select("position")
+    .eq("user_id", user.id)
+    .eq("plan_day_id", planDayId)
+    .order("position", { ascending: false })
+    .limit(1);
+
+  const nextPosition = ((existing?.[0]?.position ?? -1) as number) + 1;
+
+  const { error } = await supabase.from("user_plan_day_exercises").insert({
+    user_id: user.id,
+    plan_day_id: planDayId,
+    exercise_id: null,
+    position: nextPosition,
+    sets,
+    reps,
+    rest,
+    custom_name: name,
+    custom_muscle: muscle,
+    custom_cue: cue,
+    custom_kcal: kcal,
+  });
+  if (error) return { ok: false, error: "insert_failed" };
+
+  revalidatePath("/treino");
+  return { ok: true };
+}
+
+export async function removeCustomExercise(formData: FormData): Promise<{
+  ok: boolean;
+  error?: string;
+}> {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) return { ok: false, error: "unauthenticated" };
+
+  const planDayId = formData.get("planDayId") as string;
+  const position = Number(formData.get("position"));
+  if (!planDayId || !Number.isInteger(position)) {
+    return { ok: false, error: "invalid_input" };
+  }
+
+  // So permite remover linhas custom (exercise_id IS NULL).
+  const { error } = await supabase
+    .from("user_plan_day_exercises")
+    .delete()
+    .eq("user_id", user.id)
+    .eq("plan_day_id", planDayId)
+    .eq("position", position)
+    .is("exercise_id", null);
+  if (error) return { ok: false, error: "delete_failed" };
+
+  revalidatePath("/treino");
+  return { ok: true };
+}
