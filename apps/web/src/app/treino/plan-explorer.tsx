@@ -75,6 +75,16 @@ type PlanDayExercise = {
   custom_muscle?: string | null;
   custom_cue?: string | null;
   custom_kcal?: number | null;
+  added_by_user?: boolean;
+};
+
+export type CatalogEntry = {
+  id: string;
+  slug: string;
+  name: string;
+  muscle_group: string | null;
+  kcal_estimate: number | null;
+  modifier: string | null;
 };
 
 // ──────────────────────────────────────────────────────────────────────────
@@ -108,6 +118,7 @@ export function PlanExplorer({
   months,
   days,
   weekVolume,
+  exerciseCatalog,
   user,
   initialCompleted,
   isPremium,
@@ -116,6 +127,7 @@ export function PlanExplorer({
   months: Month[];
   days: PlanDay[];
   weekVolume: number[];
+  exerciseCatalog: CatalogEntry[];
   user: UserInfo;
   initialCompleted?: string[];
   isPremium?: boolean;
@@ -302,6 +314,7 @@ export function PlanExplorer({
               monthId={monthId}
               weekIndex={weekIndex}
               isLoggedIn={!!user}
+              exerciseCatalog={exerciseCatalog}
               completedSlugs={completedSlugs}
               completedCustom={completedCustom}
               onToggle={(slug) => {
@@ -372,6 +385,7 @@ type DayCtx = {
   monthId: number;
   weekIndex: number;
   isLoggedIn: boolean;
+  exerciseCatalog: CatalogEntry[];
   completedSlugs: Set<string>;
   completedCustom: Set<string>;
   onToggle: (slug: string) => void;
@@ -386,9 +400,9 @@ function DayView(ctx: DayCtx) {
     <div className="space-y-4">
       <Cover day={day} />
       {day.type === "treino" && <TreinoBlock {...ctx} />}
-      {(day.type === "caminhada" || day.type === "bike") && <CardioBlock day={day} />}
-      {day.type === "mobilidade" && <MobilidadeBlock day={day} />}
-      {day.type === "descanso" && <DescansoBlock day={day} />}
+      {(day.type === "caminhada" || day.type === "bike") && <CardioBlock {...ctx} />}
+      {day.type === "mobilidade" && <MobilidadeBlock {...ctx} />}
+      {day.type === "descanso" && <DescansoBlock {...ctx} />}
     </div>
   );
 }
@@ -437,7 +451,7 @@ function Cover({ day }: { day: PlanDay }) {
 // Treino: kcal summary + exercise list + tip
 // ──────────────────────────────────────────────────────────────────────────
 function TreinoBlock(ctx: DayCtx) {
-  const { day, volumeMultiplier, monthId, weekIndex, isLoggedIn, completedSlugs, completedCustom, onToggle, onToggleCustom, onAchievement, onStartRest } = ctx;
+  const { day, volumeMultiplier, isLoggedIn, exerciseCatalog } = ctx;
   const exercises = [...day.plan_day_exercises].sort((a, b) => a.position - b.position);
   const totalKcal = Math.round(
     exercises.reduce(
@@ -446,12 +460,11 @@ function TreinoBlock(ctx: DayCtx) {
     ) * volumeMultiplier,
   );
   const totalSets = exercises.reduce((sum, ex) => sum + (ex.sets ?? 0), 0);
-  const isDoneFor = (ex: PlanDayExercise) =>
+  const doneCount = exercises.filter((ex) =>
     ex.exercises
-      ? completedSlugs.has(ex.exercises.slug)
-      : completedCustom.has(`${day.id}_${ex.position}`);
-  const doneCount = exercises.filter(isDoneFor).length;
-  const allDone = doneCount === exercises.length && doneCount > 0;
+      ? ctx.completedSlugs.has(ex.exercises.slug)
+      : ctx.completedCustom.has(`${day.id}_${ex.position}`),
+  ).length;
 
   return (
     <div className="space-y-4">
@@ -487,53 +500,74 @@ function TreinoBlock(ctx: DayCtx) {
 
       <div>
         <div className="slbl mb-2.5">Exercícios</div>
-        <div className="flex flex-col gap-[7px]">
-          {exercises.map((ex, i) =>
-            ex.exercises ? (
-              <ExerciseCard
-                key={ex.position}
-                ex={ex}
-                index={i}
-                planDayId={day.id}
-                monthId={monthId}
-                weekIndex={weekIndex}
-                dayIndex={day.day_index}
-                isLoggedIn={isLoggedIn}
-                isDone={completedSlugs.has(ex.exercises.slug)}
-                onToggle={onToggle}
-                onAchievement={onAchievement}
-                onStartRest={onStartRest}
-              />
-            ) : (
-              <CustomExerciseCard
-                key={ex.position}
-                ex={ex}
-                index={i}
-                planDayId={day.id}
-                isLoggedIn={isLoggedIn}
-                isDone={completedCustom.has(`${day.id}_${ex.position}`)}
-                onToggle={onToggleCustom}
-                onStartRest={onStartRest}
-              />
-            ),
-          )}
-        </div>
-
-        {isLoggedIn && <AddCustomExerciseButton planDayId={day.id} />}
-
-        {allDone && (
-          <div className="animate-in mt-4 rounded-xl border border-[color:var(--gn)] bg-[color:var(--gnd)] p-4 text-center">
-            <div className="mb-1 text-2xl">🎉</div>
-            <div className="font-[family-name:var(--font-display)] text-lg tracking-wider text-[color:var(--gn)]">
-              TREINO COMPLETO
-            </div>
-            <p className="mt-1 text-xs text-[color:var(--tx2)]">
-              Todos os {exercises.length} exercicios concluidos. Descanse bem!
-            </p>
-          </div>
+        <ExerciseList exercises={exercises} ctx={ctx} />
+        {isLoggedIn && (
+          <AddCustomExerciseButton planDayId={day.id} catalog={exerciseCatalog} />
         )}
       </div>
     </div>
+  );
+}
+
+// ──────────────────────────────────────────────────────────────────────────
+// ExerciseList — lista reusavel de exercicios (treino + dias com adicionados)
+// ──────────────────────────────────────────────────────────────────────────
+function ExerciseList({ exercises, ctx }: { exercises: PlanDayExercise[]; ctx: DayCtx }) {
+  const { day, monthId, weekIndex, isLoggedIn, completedSlugs, completedCustom, onToggle, onToggleCustom, onAchievement, onStartRest } = ctx;
+  const doneCount = exercises.filter((ex) =>
+    ex.exercises
+      ? completedSlugs.has(ex.exercises.slug)
+      : completedCustom.has(`${day.id}_${ex.position}`),
+  ).length;
+  const allDone = doneCount === exercises.length && doneCount > 0;
+
+  return (
+    <>
+      <div className="flex flex-col gap-[7px]">
+        {exercises.map((ex, i) =>
+          ex.exercises ? (
+            <ExerciseCard
+              key={ex.position}
+              ex={ex}
+              index={i}
+              planDayId={day.id}
+              monthId={monthId}
+              weekIndex={weekIndex}
+              dayIndex={day.day_index}
+              isLoggedIn={isLoggedIn}
+              isDone={completedSlugs.has(ex.exercises.slug)}
+              canRemove={!!ex.added_by_user}
+              onToggle={onToggle}
+              onAchievement={onAchievement}
+              onStartRest={onStartRest}
+            />
+          ) : (
+            <CustomExerciseCard
+              key={ex.position}
+              ex={ex}
+              index={i}
+              planDayId={day.id}
+              isLoggedIn={isLoggedIn}
+              isDone={completedCustom.has(`${day.id}_${ex.position}`)}
+              onToggle={onToggleCustom}
+              onStartRest={onStartRest}
+            />
+          ),
+        )}
+      </div>
+
+      {allDone && (
+        <div className="animate-in mt-4 rounded-xl border border-[color:var(--gn)] bg-[color:var(--gnd)] p-4 text-center">
+          <div className="mb-1 text-2xl">🎉</div>
+          <div className="font-[family-name:var(--font-display)] text-lg tracking-wider text-[color:var(--gn)]">
+            TREINO COMPLETO
+          </div>
+          <p className="mt-1 text-xs text-[color:var(--tx2)]">
+            Todos os {exercises.length} exercicios concluidos. Descanse bem!
+          </p>
+        </div>
+      )}
+    </>
   );
 }
 
@@ -546,6 +580,7 @@ function ExerciseCard({
   dayIndex,
   isLoggedIn,
   isDone,
+  canRemove,
   onToggle,
   onAchievement,
   onStartRest,
@@ -558,12 +593,14 @@ function ExerciseCard({
   dayIndex: number;
   isLoggedIn: boolean;
   isDone: boolean;
+  canRemove?: boolean;
   onToggle: (slug: string) => void;
   onAchievement: (achievements: AchievementInfo[]) => void;
   onStartRest: (rest: string, name: string) => void;
 }) {
   const [isPending, startTransition] = useTransition();
   const [isSwapping, startSwapTransition] = useTransition();
+  const [isRemoving, startRemoveTransition] = useTransition();
   const [showVideo, setShowVideo] = useState(false);
   const [videoId, setVideoId] = useState<string | null>(null);
   const [videoLoading, setVideoLoading] = useState(false);
@@ -573,6 +610,16 @@ function ExerciseCard({
 
   const coachSupported = isWebcamSupported(e.slug);
   const canSwap = !!e.alternatives && e.alternatives.length > 0;
+
+  const handleRemove = () => {
+    if (typeof window !== "undefined" && !window.confirm(`Remover "${e.name}"?`)) return;
+    startRemoveTransition(async () => {
+      const fd = new FormData();
+      fd.set("planDayId", planDayId);
+      fd.set("position", String(ex.position));
+      await removeCustomExercise(fd);
+    });
+  };
 
   const handleSwap = () => {
     if (!canSwap) return;
@@ -683,6 +730,16 @@ function ExerciseCard({
               title="Trocar por variacao alternativa"
             >
               {isSwapping ? "..." : "⇄ Trocar"}
+            </button>
+          )}
+          {canRemove && isLoggedIn && (
+            <button
+              onClick={handleRemove}
+              disabled={isRemoving}
+              className="flex items-center gap-1 rounded-md border-[1.5px] border-[color:var(--bd)] bg-[color:var(--s2)] px-2 py-1 font-[family-name:var(--font-condensed)] text-[10px] font-bold uppercase tracking-wider text-[color:var(--tx2)] transition-colors hover:border-red-500 hover:text-red-500 disabled:opacity-50"
+              title="Remover exercicio adicionado"
+            >
+              {isRemoving ? "..." : "🗑 Remover"}
             </button>
           )}
           {isLoggedIn && (
@@ -860,21 +917,26 @@ function CustomExerciseCard({
 }
 
 // ──────────────────────────────────────────────────────────────────────────
-// AddCustomExerciseButton — botao + modal pra criar exercicio proprio
+// AddCustomExerciseButton — botao + modal pra criar exercicio (catalogo ou livre)
 // ──────────────────────────────────────────────────────────────────────────
-function AddCustomExerciseButton({ planDayId }: { planDayId: string }) {
+const EMPTY_FORM = { name: "", muscle: "", sets: "3", reps: "", rest: "", kcal: "", cue: "" };
+const INPUT_CLASS =
+  "w-full rounded-md border border-[color:var(--bd)] bg-[color:var(--bg)] px-2.5 py-2 text-[13px] text-[color:var(--tx)] outline-none focus:border-[color:var(--or)] disabled:opacity-60";
+
+function AddCustomExerciseButton({
+  planDayId,
+  catalog,
+}: {
+  planDayId: string;
+  catalog: CatalogEntry[];
+}) {
   const [open, setOpen] = useState(false);
   const [isPending, startTransition] = useTransition();
-  const [form, setForm] = useState({
-    name: "",
-    muscle: "",
-    sets: "3",
-    reps: "",
-    rest: "",
-    kcal: "",
-    cue: "",
-  });
+  const [form, setForm] = useState(EMPTY_FORM);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
   const [err, setErr] = useState<string | null>(null);
+
+  const datalistId = `exercise-catalog-${planDayId}`;
 
   const close = () => {
     if (isPending) return;
@@ -882,12 +944,35 @@ function AddCustomExerciseButton({ planDayId }: { planDayId: string }) {
     setErr(null);
   };
 
+  const handleNameChange = (value: string) => {
+    const match = catalog.find((c) => c.name === value);
+    if (match) {
+      setSelectedId(match.id);
+      setForm((f) => ({
+        ...f,
+        name: match.name,
+        muscle: match.muscle_group ?? "",
+        kcal: match.kcal_estimate != null ? String(match.kcal_estimate) : "",
+        cue: match.modifier ?? "",
+      }));
+    } else {
+      setSelectedId(null);
+      setForm((f) => ({ ...f, name: value }));
+    }
+  };
+
+  const clearSelection = () => {
+    setSelectedId(null);
+    setForm(EMPTY_FORM);
+  };
+
   const submit = () => {
-    if (!form.name.trim()) { setErr("Nome e obrigatorio"); return; }
+    if (!selectedId && !form.name.trim()) { setErr("Escolha do catalogo ou digite um nome"); return; }
     setErr(null);
     startTransition(async () => {
       const fd = new FormData();
       fd.set("planDayId", planDayId);
+      if (selectedId) fd.set("exerciseId", selectedId);
       fd.set("name", form.name.trim());
       fd.set("muscle", form.muscle.trim());
       fd.set("sets", form.sets || "3");
@@ -897,7 +982,8 @@ function AddCustomExerciseButton({ planDayId }: { planDayId: string }) {
       fd.set("cue", form.cue.trim());
       const res = await addCustomExercise(fd);
       if (res?.ok) {
-        setForm({ name: "", muscle: "", sets: "3", reps: "", rest: "", kcal: "", cue: "" });
+        setForm(EMPTY_FORM);
+        setSelectedId(null);
         setOpen(false);
       } else {
         setErr(res?.error ?? "falha ao adicionar");
@@ -920,7 +1006,7 @@ function AddCustomExerciseButton({ planDayId }: { planDayId: string }) {
           onClick={close}
         >
           <div
-            className="w-full max-w-md rounded-xl border border-[color:var(--bd)] bg-[color:var(--s1)] p-5"
+            className="max-h-[92vh] w-full max-w-md overflow-y-auto rounded-xl border border-[color:var(--bd)] bg-[color:var(--s1)] p-5"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="mb-3 flex items-center justify-between">
@@ -936,26 +1022,53 @@ function AddCustomExerciseButton({ planDayId }: { planDayId: string }) {
               </button>
             </div>
 
+            <datalist id={datalistId}>
+              {catalog.map((c) => (
+                <option key={c.id} value={c.name}>
+                  {c.muscle_group ?? ""}
+                </option>
+              ))}
+            </datalist>
+
             <div className="flex flex-col gap-2.5">
-              <Field label="Nome *" required>
-                <input
-                  autoFocus
-                  type="text"
-                  value={form.name}
-                  onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  className="w-full rounded-md border border-[color:var(--bd)] bg-[color:var(--bg)] px-2.5 py-2 text-[13px] text-[color:var(--tx)] outline-none focus:border-[color:var(--or)]"
-                  placeholder="Ex.: Prancha frontal"
-                  maxLength={80}
-                />
+              <Field label="Nome">
+                <div className="flex gap-2">
+                  <input
+                    autoFocus
+                    type="text"
+                    list={datalistId}
+                    value={form.name}
+                    onChange={(e) => handleNameChange(e.target.value)}
+                    className={INPUT_CLASS}
+                    placeholder="Digite ou escolha do catalogo"
+                    maxLength={80}
+                  />
+                  {selectedId && (
+                    <button
+                      type="button"
+                      onClick={clearSelection}
+                      className="shrink-0 rounded-md border border-[color:var(--bd)] bg-[color:var(--s2)] px-2 text-[11px] font-bold uppercase tracking-wider text-[color:var(--tx2)] hover:border-[color:var(--or)] hover:text-[color:var(--or)]"
+                      title="Limpar selecao"
+                    >
+                      ↻
+                    </button>
+                  )}
+                </div>
+                {selectedId && (
+                  <span className="text-[10px] text-[color:var(--or)]">
+                    Exercicio do catalogo — dados preenchidos automaticamente
+                  </span>
+                )}
               </Field>
               <Field label="Grupo muscular">
                 <input
                   type="text"
                   value={form.muscle}
                   onChange={(e) => setForm({ ...form, muscle: e.target.value })}
-                  className="w-full rounded-md border border-[color:var(--bd)] bg-[color:var(--bg)] px-2.5 py-2 text-[13px] text-[color:var(--tx)] outline-none focus:border-[color:var(--or)]"
+                  className={INPUT_CLASS}
                   placeholder="Ex.: Core · Lombar"
                   maxLength={60}
+                  disabled={!!selectedId}
                 />
               </Field>
               <div className="grid grid-cols-3 gap-2.5">
@@ -966,7 +1079,7 @@ function AddCustomExerciseButton({ planDayId }: { planDayId: string }) {
                     max={10}
                     value={form.sets}
                     onChange={(e) => setForm({ ...form, sets: e.target.value })}
-                    className="w-full rounded-md border border-[color:var(--bd)] bg-[color:var(--bg)] px-2.5 py-2 text-[13px] text-[color:var(--tx)] outline-none focus:border-[color:var(--or)]"
+                    className={INPUT_CLASS}
                   />
                 </Field>
                 <Field label="Reps">
@@ -974,7 +1087,7 @@ function AddCustomExerciseButton({ planDayId }: { planDayId: string }) {
                     type="text"
                     value={form.reps}
                     onChange={(e) => setForm({ ...form, reps: e.target.value })}
-                    className="w-full rounded-md border border-[color:var(--bd)] bg-[color:var(--bg)] px-2.5 py-2 text-[13px] text-[color:var(--tx)] outline-none focus:border-[color:var(--or)]"
+                    className={INPUT_CLASS}
                     placeholder="Ex.: 12"
                     maxLength={20}
                   />
@@ -984,31 +1097,33 @@ function AddCustomExerciseButton({ planDayId }: { planDayId: string }) {
                     type="text"
                     value={form.rest}
                     onChange={(e) => setForm({ ...form, rest: e.target.value })}
-                    className="w-full rounded-md border border-[color:var(--bd)] bg-[color:var(--bg)] px-2.5 py-2 text-[13px] text-[color:var(--tx)] outline-none focus:border-[color:var(--or)]"
+                    className={INPUT_CLASS}
                     placeholder="60s"
                     maxLength={20}
                   />
                 </Field>
               </div>
-              <Field label="Kcal estimado (opcional)">
+              <Field label="Kcal estimado">
                 <input
                   type="number"
                   min={0}
                   max={500}
                   value={form.kcal}
                   onChange={(e) => setForm({ ...form, kcal: e.target.value })}
-                  className="w-full rounded-md border border-[color:var(--bd)] bg-[color:var(--bg)] px-2.5 py-2 text-[13px] text-[color:var(--tx)] outline-none focus:border-[color:var(--or)]"
+                  className={INPUT_CLASS}
                   placeholder="0"
+                  disabled={!!selectedId}
                 />
               </Field>
-              <Field label="Dica / execucao (opcional)">
+              <Field label="Dica / execucao">
                 <input
                   type="text"
                   value={form.cue}
                   onChange={(e) => setForm({ ...form, cue: e.target.value })}
-                  className="w-full rounded-md border border-[color:var(--bd)] bg-[color:var(--bg)] px-2.5 py-2 text-[13px] text-[color:var(--tx)] outline-none focus:border-[color:var(--or)]"
+                  className={INPUT_CLASS}
                   placeholder="Ex.: Contraia o core o tempo todo"
                   maxLength={120}
+                  disabled={!!selectedId}
                 />
               </Field>
 
@@ -1133,9 +1248,36 @@ function SetLogger({ slug, sets, targetReps, monthId, weekIndex, dayIndex }: {
 }
 
 // ──────────────────────────────────────────────────────────────────────────
+// ExtraExercises — lista de exercicios adicionados pelo user em dia nao-treino
+// + botao de adicionar. Renderiza so se houver algum ou se o user estiver logado.
+// ──────────────────────────────────────────────────────────────────────────
+function ExtraExercises({ ctx }: { ctx: DayCtx }) {
+  const { day, isLoggedIn, exerciseCatalog } = ctx;
+  const exercises = [...day.plan_day_exercises].sort((a, b) => a.position - b.position);
+  const hasExercises = exercises.length > 0;
+
+  if (!hasExercises && !isLoggedIn) return null;
+
+  return (
+    <div>
+      {hasExercises && (
+        <>
+          <div className="slbl mb-2.5">Exercícios do dia</div>
+          <ExerciseList exercises={exercises} ctx={ctx} />
+        </>
+      )}
+      {isLoggedIn && (
+        <AddCustomExerciseButton planDayId={day.id} catalog={exerciseCatalog} />
+      )}
+    </div>
+  );
+}
+
+// ──────────────────────────────────────────────────────────────────────────
 // Cardio (caminhada + bike)
 // ──────────────────────────────────────────────────────────────────────────
-function CardioBlock({ day }: { day: PlanDay }) {
+function CardioBlock(ctx: DayCtx) {
+  const { day } = ctx;
   return (
     <div className="space-y-4">
       <div className="grid grid-cols-3 gap-[7px]">
@@ -1182,6 +1324,8 @@ function CardioBlock({ day }: { day: PlanDay }) {
           </div>
         </div>
       )}
+
+      <ExtraExercises ctx={ctx} />
     </div>
   );
 }
@@ -1189,7 +1333,8 @@ function CardioBlock({ day }: { day: PlanDay }) {
 // ──────────────────────────────────────────────────────────────────────────
 // Mobilidade
 // ──────────────────────────────────────────────────────────────────────────
-function MobilidadeBlock({ day }: { day: PlanDay }) {
+function MobilidadeBlock(ctx: DayCtx) {
+  const { day } = ctx;
   const stretches = day.raw?.stretches ?? [];
   return (
     <div className="space-y-4">
@@ -1214,6 +1359,8 @@ function MobilidadeBlock({ day }: { day: PlanDay }) {
           ))}
         </div>
       </div>
+
+      <ExtraExercises ctx={ctx} />
     </div>
   );
 }
@@ -1221,19 +1368,24 @@ function MobilidadeBlock({ day }: { day: PlanDay }) {
 // ──────────────────────────────────────────────────────────────────────────
 // Descanso
 // ──────────────────────────────────────────────────────────────────────────
-function DescansoBlock({ day }: { day: PlanDay }) {
+function DescansoBlock(ctx: DayCtx) {
+  const { day } = ctx;
   return (
-    <div
-      className="rounded-xl border p-8 text-center"
-      style={{ borderColor: "var(--gn)", background: "var(--s1)" }}
-    >
-      <div className="mb-3 text-5xl">🛌</div>
-      <div className="font-[family-name:var(--font-display)] text-2xl tracking-widest">
-        DESCANSO
+    <div className="space-y-4">
+      <div
+        className="rounded-xl border p-8 text-center"
+        style={{ borderColor: "var(--gn)", background: "var(--s1)" }}
+      >
+        <div className="mb-3 text-5xl">🛌</div>
+        <div className="font-[family-name:var(--font-display)] text-2xl tracking-widest">
+          DESCANSO
+        </div>
+        <p className="mt-3 text-[13px] text-[color:var(--tx2)] leading-relaxed">
+          {day.message ?? "Descanso total. Hidrate-se e durma bem."}
+        </p>
       </div>
-      <p className="mt-3 text-[13px] text-[color:var(--tx2)] leading-relaxed">
-        {day.message ?? "Descanso total. Hidrate-se e durma bem."}
-      </p>
+
+      <ExtraExercises ctx={ctx} />
     </div>
   );
 }

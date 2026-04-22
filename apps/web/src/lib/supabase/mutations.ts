@@ -391,6 +391,8 @@ export async function addCustomExercise(formData: FormData): Promise<{
   if (!user) return { ok: false, error: "unauthenticated" };
 
   const planDayId = formData.get("planDayId") as string;
+  const exerciseIdRaw = ((formData.get("exerciseId") as string) ?? "").trim();
+  const exerciseId = exerciseIdRaw || null;
   const name = ((formData.get("name") as string) ?? "").trim();
   const muscle = ((formData.get("muscle") as string) ?? "").trim() || null;
   const cue = ((formData.get("cue") as string) ?? "").trim() || null;
@@ -401,7 +403,18 @@ export async function addCustomExercise(formData: FormData): Promise<{
   const sets = Number.isFinite(setsRaw) && setsRaw > 0 ? Math.min(10, Math.floor(setsRaw)) : 3;
   const kcal = Number.isFinite(kcalRaw) && kcalRaw > 0 ? Math.min(500, Math.floor(kcalRaw)) : null;
 
-  if (!planDayId || !name) return { ok: false, error: "invalid_input" };
+  if (!planDayId) return { ok: false, error: "invalid_input" };
+  if (!exerciseId && !name) return { ok: false, error: "invalid_input" };
+
+  // Se veio exerciseId, confirma que ele existe no catalogo.
+  if (exerciseId) {
+    const { data: cat } = await supabase
+      .from("exercises")
+      .select("id")
+      .eq("id", exerciseId)
+      .maybeSingle();
+    if (!cat) return { ok: false, error: "exercise_not_found" };
+  }
 
   const ensured = await ensureOverride(supabase, user.id, planDayId);
   if (!ensured.ok) return { ok: false, error: ensured.error };
@@ -417,19 +430,35 @@ export async function addCustomExercise(formData: FormData): Promise<{
 
   const nextPosition = ((existing?.[0]?.position ?? -1) as number) + 1;
 
-  const { error } = await supabase.from("user_plan_day_exercises").insert({
-    user_id: user.id,
-    plan_day_id: planDayId,
-    exercise_id: null,
-    position: nextPosition,
-    sets,
-    reps,
-    rest,
-    custom_name: name,
-    custom_muscle: muscle,
-    custom_cue: cue,
-    custom_kcal: kcal,
-  });
+  const insertRow = exerciseId
+    ? {
+        user_id: user.id,
+        plan_day_id: planDayId,
+        exercise_id: exerciseId,
+        position: nextPosition,
+        sets,
+        reps,
+        rest,
+        custom_name: null,
+        custom_muscle: null,
+        custom_cue: null,
+        custom_kcal: null,
+      }
+    : {
+        user_id: user.id,
+        plan_day_id: planDayId,
+        exercise_id: null,
+        position: nextPosition,
+        sets,
+        reps,
+        rest,
+        custom_name: name,
+        custom_muscle: muscle,
+        custom_cue: cue,
+        custom_kcal: kcal,
+      };
+
+  const { error } = await supabase.from("user_plan_day_exercises").insert(insertRow);
   if (error) return { ok: false, error: "insert_failed" };
 
   revalidatePath("/treino");
@@ -452,14 +481,26 @@ export async function removeCustomExercise(formData: FormData): Promise<{
     return { ok: false, error: "invalid_input" };
   }
 
-  // So permite remover linhas custom (exercise_id IS NULL).
+  // So permite remover linhas que o user adicionou (position > max global).
+  // Assim evitamos que o user apague um exercicio que faz parte do plano
+  // original e perca referencia pra recuperar.
+  const { data: globalMax } = await supabase
+    .from("plan_day_exercises")
+    .select("position")
+    .eq("plan_day_id", planDayId)
+    .order("position", { ascending: false })
+    .limit(1);
+  const globalMaxPos = (globalMax?.[0]?.position ?? -1) as number;
+  if (position <= globalMaxPos) {
+    return { ok: false, error: "cannot_remove_global_exercise" };
+  }
+
   const { error } = await supabase
     .from("user_plan_day_exercises")
     .delete()
     .eq("user_id", user.id)
     .eq("plan_day_id", planDayId)
-    .eq("position", position)
-    .is("exercise_id", null);
+    .eq("position", position);
   if (error) return { ok: false, error: "delete_failed" };
 
   revalidatePath("/treino");

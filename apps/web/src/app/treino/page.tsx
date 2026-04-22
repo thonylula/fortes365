@@ -1,7 +1,7 @@
 import { createClient } from "@/lib/supabase/server";
 import { getCompletedExercises } from "@/lib/supabase/mutations";
 import { getSubscriptionInfo } from "@/lib/supabase/guards";
-import { PlanExplorer, type Month, type PlanDay } from "./plan-explorer";
+import { PlanExplorer, type Month, type PlanDay, type CatalogEntry } from "./plan-explorer";
 
 export const dynamic = "force-dynamic";
 
@@ -12,7 +12,12 @@ export default async function TreinoPage() {
     data: { user },
   } = await supabase.auth.getUser();
 
-  const [{ data: monthsData }, { data: daysData }, { data: volumeData }] = await Promise.all([
+  const [
+    { data: monthsData },
+    { data: daysData },
+    { data: volumeData },
+    { data: catalogData },
+  ] = await Promise.all([
     supabase
       .from("months")
       .select("id, short_name, name, phase_label, phase_css_class, icon, level, has_bike, season")
@@ -54,11 +59,16 @@ export default async function TreinoPage() {
       .order("phase_id")
       .order("day_index"),
     supabase.from("week_volume").select("week_index, multiplier").order("week_index"),
+    supabase
+      .from("exercises")
+      .select("id, slug, name, muscle_group, kcal_estimate, modifier")
+      .order("name"),
   ]);
 
   const months = (monthsData ?? []) as Month[];
   let days = (daysData ?? []) as unknown as PlanDay[];
   const weekVolume = (volumeData ?? []).map((v) => Number(v.multiplier));
+  const exerciseCatalog = (catalogData ?? []) as CatalogEntry[];
 
   // Se o user tem plano personalizado, usa o override no lugar do global
   if (user) {
@@ -92,6 +102,17 @@ export default async function TreinoPage() {
         .order("position");
 
       if (overrides && overrides.length > 0) {
+        // Max position no plano global de cada plan_day, pra marcar linhas
+        // adicionadas pelo user (position > max => addedByUser).
+        const maxGlobalByPlanDay = new Map<string, number>();
+        for (const d of days) {
+          let max = -1;
+          for (const ex of d.plan_day_exercises ?? []) {
+            if (ex.position > max) max = ex.position;
+          }
+          maxGlobalByPlanDay.set(d.id, max);
+        }
+
         const byPlanDay = new Map<string, unknown[]>();
         for (const ov of overrides as unknown as Array<{
           plan_day_id: string;
@@ -105,6 +126,7 @@ export default async function TreinoPage() {
           custom_kcal: number | null;
           exercises: unknown;
         }>) {
+          const maxGlobal = maxGlobalByPlanDay.get(ov.plan_day_id) ?? -1;
           const list = byPlanDay.get(ov.plan_day_id) ?? [];
           list.push({
             position: ov.position,
@@ -116,6 +138,7 @@ export default async function TreinoPage() {
             custom_muscle: ov.custom_muscle,
             custom_cue: ov.custom_cue,
             custom_kcal: ov.custom_kcal,
+            added_by_user: ov.position > maxGlobal,
           });
           byPlanDay.set(ov.plan_day_id, list);
         }
@@ -163,6 +186,7 @@ export default async function TreinoPage() {
       months={months}
       days={days}
       weekVolume={weekVolume}
+      exerciseCatalog={exerciseCatalog}
       user={userInfo}
       initialCompleted={initialCompleted}
       isPremium={subInfo.isPremium}
