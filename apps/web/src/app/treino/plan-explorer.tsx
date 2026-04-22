@@ -85,6 +85,7 @@ export type CatalogEntry = {
   kcal_estimate: number | null;
   modifier: string | null;
   movement_pattern: string | null;
+  min_level: number | null;
 };
 
 // ─────────────────────────────────────────────────────────────────
@@ -501,6 +502,7 @@ export function PlanExplorer({
               weekIndex={weekIndex}
               isLoggedIn={!!user}
               exerciseCatalog={exerciseCatalog}
+              currentLevel={monthId + 1}
               completedSlugs={completedSlugs}
               completedCustom={completedCustom}
               onToggle={(slug) => {
@@ -572,6 +574,7 @@ type DayCtx = {
   weekIndex: number;
   isLoggedIn: boolean;
   exerciseCatalog: CatalogEntry[];
+  currentLevel: number;
   completedSlugs: Set<string>;
   completedCustom: Set<string>;
   onToggle: (slug: string) => void;
@@ -637,7 +640,7 @@ function Cover({ day }: { day: PlanDay }) {
 // Treino: kcal summary + exercise list + tip
 // ──────────────────────────────────────────────────────────────────────────
 function TreinoBlock(ctx: DayCtx) {
-  const { day, volumeMultiplier, isLoggedIn, exerciseCatalog } = ctx;
+  const { day, volumeMultiplier, isLoggedIn, exerciseCatalog, currentLevel } = ctx;
   const exercises = [...day.plan_day_exercises].sort((a, b) => a.position - b.position);
   const totalKcal = Math.round(
     exercises.reduce(
@@ -692,6 +695,7 @@ function TreinoBlock(ctx: DayCtx) {
             planDayId={day.id}
             catalog={exerciseCatalog}
             currentExercises={day.plan_day_exercises}
+            currentLevel={currentLevel}
           />
         )}
       </div>
@@ -1152,10 +1156,12 @@ function AddCustomExerciseButton({
   planDayId,
   catalog,
   currentExercises,
+  currentLevel,
 }: {
   planDayId: string;
   catalog: CatalogEntry[];
   currentExercises: PlanDayExercise[];
+  currentLevel: number;
 }) {
   const [open, setOpen] = useState(false);
   const [isPending, startTransition] = useTransition();
@@ -1165,8 +1171,10 @@ function AddCustomExerciseButton({
 
   const datalistId = `exercise-catalog-${planDayId}`;
 
-  // Reordena o catalogo baseado no que ja esta no dia:
-  // warmup primeiro se ainda nao tem, antagonistas sobem, etc.
+  // Reordena e filtra o catalogo baseado no dia atual + nivel do user:
+  // - drop exercicios muito acima do nivel (min_level > currentLevel + 2)
+  // - warmup primeiro se ainda nao tem, antagonistas sobem, etc.
+  // - bonus de afinidade: min_level mais proximo do currentLevel sobe
   const sortedCatalog = useMemo(() => {
     const existing = new Set<string>();
     for (const ex of currentExercises) {
@@ -1175,13 +1183,21 @@ function AddCustomExerciseButton({
         if (cat?.movement_pattern) existing.add(cat.movement_pattern);
       }
     }
-    return [...catalog].sort((a, b) => {
-      const sa = scorePattern(a.movement_pattern, existing);
-      const sb = scorePattern(b.movement_pattern, existing);
+    const levelCeiling = currentLevel + 2;
+    const filtered = catalog.filter(
+      (c) => c.min_level == null || c.min_level <= levelCeiling,
+    );
+    return filtered.sort((a, b) => {
+      const patternA = scorePattern(a.movement_pattern, existing);
+      const patternB = scorePattern(b.movement_pattern, existing);
+      const gapA = a.min_level != null ? Math.abs(a.min_level - currentLevel) : 6;
+      const gapB = b.min_level != null ? Math.abs(b.min_level - currentLevel) : 6;
+      const sa = patternA + gapA * 0.5;
+      const sb = patternB + gapB * 0.5;
       if (sa !== sb) return sa - sb;
       return a.name.localeCompare(b.name, "pt-BR");
     });
-  }, [catalog, currentExercises]);
+  }, [catalog, currentExercises, currentLevel]);
 
   const close = () => {
     if (isPending) return;
@@ -1532,7 +1548,7 @@ function SetLogger({ slug, sets, targetReps, monthId, weekIndex, dayIndex }: {
 // + botao de adicionar. Renderiza so se houver algum ou se o user estiver logado.
 // ──────────────────────────────────────────────────────────────────────────
 function ExtraExercises({ ctx }: { ctx: DayCtx }) {
-  const { day, isLoggedIn, exerciseCatalog } = ctx;
+  const { day, isLoggedIn, exerciseCatalog, currentLevel } = ctx;
   const exercises = [...day.plan_day_exercises].sort((a, b) => a.position - b.position);
   const hasExercises = exercises.length > 0;
 
@@ -1551,6 +1567,7 @@ function ExtraExercises({ ctx }: { ctx: DayCtx }) {
           planDayId={day.id}
           catalog={exerciseCatalog}
           currentExercises={day.plan_day_exercises}
+          currentLevel={currentLevel}
         />
       )}
     </div>
