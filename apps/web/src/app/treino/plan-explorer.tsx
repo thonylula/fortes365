@@ -1305,7 +1305,7 @@ function AddCustomExerciseButton({
             className="max-h-[92vh] w-full max-w-md overflow-y-auto rounded-xl border border-[color:var(--bd)] bg-[color:var(--s1)] p-5"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="mb-3 flex items-center justify-between">
+            <div className="mb-1 flex items-center justify-between">
               <div className="font-[family-name:var(--font-display)] text-lg tracking-wider text-[color:var(--or)]">
                 NOVO EXERCICIO
               </div>
@@ -1316,6 +1316,12 @@ function AddCustomExerciseButton({
               >
                 ✕
               </button>
+            </div>
+            <div className="mb-3 text-[10px] uppercase tracking-[1.5px] text-[color:var(--tx3)]">
+              Nivel atual: <span className="text-[color:var(--or)]">{currentLevel}</span>
+              {" · "}
+              {sortedCatalog.length} exercicios sugeridos
+              <span className="ml-1 text-[color:var(--tx3)]">de {catalog.length}</span>
             </div>
 
             <datalist id={datalistId}>
