@@ -115,6 +115,68 @@ const PATTERN_BASE_SCORE: Record<string, number> = {
   core_dyn: 82,
 };
 
+// ──────────────────────────────────────────────────────────────────────────
+// ConfirmDialog — modal de confirmacao (substitui window.confirm nativo)
+// ──────────────────────────────────────────────────────────────────────────
+function ConfirmDialog({
+  title,
+  message,
+  confirmLabel = "Confirmar",
+  cancelLabel = "Cancelar",
+  variant = "default",
+  disabled,
+  onConfirm,
+  onCancel,
+}: {
+  title: string;
+  message: string;
+  confirmLabel?: string;
+  cancelLabel?: string;
+  variant?: "default" | "danger";
+  disabled?: boolean;
+  onConfirm: () => void;
+  onCancel: () => void;
+}) {
+  const confirmClass =
+    variant === "danger"
+      ? "border-red-500 bg-red-500 text-white"
+      : "border-[color:var(--or)] bg-[color:var(--or)] text-black";
+  return (
+    <div
+      className="fixed inset-0 z-[60] flex items-center justify-center bg-black/70 px-4"
+      onClick={() => {
+        if (!disabled) onCancel();
+      }}
+    >
+      <div
+        className="w-full max-w-sm rounded-xl border border-[color:var(--bd)] bg-[color:var(--s1)] p-5 shadow-xl"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="mb-2 font-[family-name:var(--font-display)] text-lg tracking-wider text-[color:var(--or)]">
+          {title}
+        </div>
+        <p className="mb-4 text-[13px] leading-relaxed text-[color:var(--tx2)]">{message}</p>
+        <div className="flex gap-2">
+          <button
+            onClick={onCancel}
+            disabled={disabled}
+            className="flex-1 rounded-md border border-[color:var(--bd)] bg-[color:var(--s2)] px-3 py-2 font-[family-name:var(--font-condensed)] text-[11px] font-bold uppercase tracking-wider text-[color:var(--tx2)] disabled:opacity-50"
+          >
+            {cancelLabel}
+          </button>
+          <button
+            onClick={onConfirm}
+            disabled={disabled}
+            className={`flex-1 rounded-md border px-3 py-2 font-[family-name:var(--font-condensed)] text-[11px] font-bold uppercase tracking-wider disabled:opacity-50 ${confirmClass}`}
+          >
+            {confirmLabel}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function scorePattern(pattern: string | null, existing: Set<string>): number {
   const baseLookup = pattern != null ? PATTERN_BASE_SCORE[pattern] : undefined;
   let score: number = baseLookup ?? 90;
@@ -649,14 +711,16 @@ function ExerciseCard({
   const [videoId, setVideoId] = useState<string | null>(null);
   const [videoLoading, setVideoLoading] = useState(false);
   const [showCoach, setShowCoach] = useState(false);
+  const [confirmRemove, setConfirmRemove] = useState(false);
+  const [pendingCoachReps, setPendingCoachReps] = useState<number | null>(null);
   const e = ex.exercises;
   if (!e) return null;
 
   const coachSupported = isWebcamSupported(e.slug);
   const canSwap = !!e.alternatives && e.alternatives.length > 0;
 
-  const handleRemove = () => {
-    if (typeof window !== "undefined" && !window.confirm(`Remover "${e.name}"?`)) return;
+  const doRemove = () => {
+    setConfirmRemove(false);
     startRemoveTransition(async () => {
       const fd = new FormData();
       fd.set("planDayId", planDayId);
@@ -705,10 +769,7 @@ function ExerciseCard({
   const handleCoachStop = (detectedReps: number) => {
     setShowCoach(false);
     if (detectedReps > 0 && !isDone) {
-      if (typeof window !== "undefined") {
-        const msg = `Coach webcam contou ${detectedReps} reps. Marcar esta serie como feita?`;
-        if (window.confirm(msg)) handleToggle();
-      }
+      setPendingCoachReps(detectedReps);
     }
   };
 
@@ -778,7 +839,7 @@ function ExerciseCard({
           )}
           {isLoggedIn && !isDone && (
             <button
-              onClick={handleRemove}
+              onClick={() => setConfirmRemove(true)}
               disabled={isRemoving}
               className="flex items-center gap-1 rounded-md border-[1.5px] border-[color:var(--bd)] bg-[color:var(--s2)] px-2 py-1 font-[family-name:var(--font-condensed)] text-[10px] font-bold uppercase tracking-wider text-[color:var(--tx2)] transition-colors hover:border-red-500 hover:text-red-500 disabled:opacity-50"
               title="Remover do dia"
@@ -852,6 +913,32 @@ function ExerciseCard({
       {isDone && ex.sets != null && ex.sets > 0 && (
         <SetLogger slug={e.slug} sets={ex.sets} targetReps={ex.reps ?? ""} monthId={monthId} weekIndex={weekIndex} dayIndex={dayIndex} />
       )}
+
+      {confirmRemove && (
+        <ConfirmDialog
+          title="Remover exercicio"
+          message={`Tem certeza que quer remover "${e.name}" deste dia?`}
+          confirmLabel="Remover"
+          variant="danger"
+          disabled={isRemoving}
+          onConfirm={doRemove}
+          onCancel={() => setConfirmRemove(false)}
+        />
+      )}
+
+      {pendingCoachReps != null && (
+        <ConfirmDialog
+          title="Coach contou reps"
+          message={`Coach webcam contou ${pendingCoachReps} reps. Marcar esta serie como feita?`}
+          confirmLabel="Marcar feito"
+          cancelLabel="Descartar"
+          onConfirm={() => {
+            setPendingCoachReps(null);
+            handleToggle();
+          }}
+          onCancel={() => setPendingCoachReps(null)}
+        />
+      )}
     </div>
   );
 }
@@ -877,6 +964,7 @@ function CustomExerciseCard({
   onStartRest: (rest: string, name: string) => void;
 }) {
   const [isRemoving, startRemoveTransition] = useTransition();
+  const [confirmRemove, setConfirmRemove] = useState(false);
   const name = ex.custom_name ?? "Exercicio";
   const muscle = ex.custom_muscle;
   const cue = ex.custom_cue;
@@ -892,8 +980,8 @@ function CustomExerciseCard({
     }
   };
 
-  const handleRemove = () => {
-    if (typeof window !== "undefined" && !window.confirm(`Remover "${name}"?`)) return;
+  const doRemove = () => {
+    setConfirmRemove(false);
     startRemoveTransition(async () => {
       const fd = new FormData();
       fd.set("planDayId", planDayId);
@@ -933,7 +1021,7 @@ function CustomExerciseCard({
         <div className="flex shrink-0 flex-col items-end gap-1.5">
           {isLoggedIn && (
             <button
-              onClick={handleRemove}
+              onClick={() => setConfirmRemove(true)}
               disabled={isRemoving}
               className="flex items-center gap-1 rounded-md border-[1.5px] border-[color:var(--bd)] bg-[color:var(--s2)] px-2 py-1 font-[family-name:var(--font-condensed)] text-[10px] font-bold uppercase tracking-wider text-[color:var(--tx2)] transition-colors hover:border-red-500 hover:text-red-500 disabled:opacity-50"
               title="Remover exercicio"
@@ -956,6 +1044,18 @@ function CustomExerciseCard({
           )}
         </div>
       </div>
+
+      {confirmRemove && (
+        <ConfirmDialog
+          title="Remover exercicio"
+          message={`Tem certeza que quer remover "${name}" deste dia?`}
+          confirmLabel="Remover"
+          variant="danger"
+          disabled={isRemoving}
+          onConfirm={doRemove}
+          onCancel={() => setConfirmRemove(false)}
+        />
+      )}
     </div>
   );
 }
