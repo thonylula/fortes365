@@ -84,7 +84,51 @@ export type CatalogEntry = {
   muscle_group: string | null;
   kcal_estimate: number | null;
   modifier: string | null;
+  movement_pattern: string | null;
 };
+
+// ─────────────────────────────────────────────────────────────────
+// Ordenacao do catalogo no autocomplete.
+// Score menor = aparece primeiro. Usa movement_pattern (0013):
+// warmup → mobility → squat/hinge → push/pull → plyo/cardio →
+// skill → core (finalizador).
+// Ajustes contextuais: penaliza repeticao (+50) e recompensa
+// antagonista (-5) baseado nos exercicios ja no dia.
+// ─────────────────────────────────────────────────────────────────
+const PATTERN_BASE_SCORE: Record<string, number> = {
+  warmup: 10,
+  mobility: 20,
+  squat: 30,
+  hinge: 31,
+  push_horizontal: 40,
+  push_vertical: 41,
+  pull_horizontal: 42,
+  pull_vertical: 43,
+  plyometric: 50,
+  cardio: 60,
+  skill_balance: 70,
+  skill_handstand: 71,
+  skill_planche: 72,
+  skill_lever: 73,
+  core_antiext: 80,
+  core_antirot: 81,
+  core_dyn: 82,
+};
+
+function scorePattern(pattern: string | null, existing: Set<string>): number {
+  const baseLookup = pattern != null ? PATTERN_BASE_SCORE[pattern] : undefined;
+  let score: number = baseLookup ?? 90;
+  if (pattern && existing.has(pattern)) score += 50;
+  if (pattern === "pull_horizontal" || pattern === "pull_vertical") {
+    if (existing.has("push_horizontal") || existing.has("push_vertical")) score -= 5;
+  }
+  if (pattern === "push_horizontal" || pattern === "push_vertical") {
+    if (existing.has("pull_horizontal") || existing.has("pull_vertical")) score -= 5;
+  }
+  if (pattern === "hinge" && existing.has("squat")) score -= 5;
+  if (pattern === "squat" && existing.has("hinge")) score -= 5;
+  return score;
+}
 
 // ──────────────────────────────────────────────────────────────────────────
 // Constantes visuais (equivalentes às do forte365_v2.html)
@@ -501,7 +545,11 @@ function TreinoBlock(ctx: DayCtx) {
         <div className="slbl mb-2.5">Exercícios</div>
         <ExerciseList exercises={exercises} ctx={ctx} />
         {isLoggedIn && (
-          <AddCustomExerciseButton planDayId={day.id} catalog={exerciseCatalog} />
+          <AddCustomExerciseButton
+            planDayId={day.id}
+            catalog={exerciseCatalog}
+            currentExercises={day.plan_day_exercises}
+          />
         )}
       </div>
     </div>
@@ -922,9 +970,11 @@ const INPUT_CLASS =
 function AddCustomExerciseButton({
   planDayId,
   catalog,
+  currentExercises,
 }: {
   planDayId: string;
   catalog: CatalogEntry[];
+  currentExercises: PlanDayExercise[];
 }) {
   const [open, setOpen] = useState(false);
   const [isPending, startTransition] = useTransition();
@@ -934,6 +984,24 @@ function AddCustomExerciseButton({
 
   const datalistId = `exercise-catalog-${planDayId}`;
 
+  // Reordena o catalogo baseado no que ja esta no dia:
+  // warmup primeiro se ainda nao tem, antagonistas sobem, etc.
+  const sortedCatalog = useMemo(() => {
+    const existing = new Set<string>();
+    for (const ex of currentExercises) {
+      if (ex.exercises?.id) {
+        const cat = catalog.find((c) => c.id === ex.exercises?.id);
+        if (cat?.movement_pattern) existing.add(cat.movement_pattern);
+      }
+    }
+    return [...catalog].sort((a, b) => {
+      const sa = scorePattern(a.movement_pattern, existing);
+      const sb = scorePattern(b.movement_pattern, existing);
+      if (sa !== sb) return sa - sb;
+      return a.name.localeCompare(b.name, "pt-BR");
+    });
+  }, [catalog, currentExercises]);
+
   const close = () => {
     if (isPending) return;
     setOpen(false);
@@ -941,7 +1009,7 @@ function AddCustomExerciseButton({
   };
 
   const handleNameChange = (value: string) => {
-    const match = catalog.find((c) => c.name === value);
+    const match = sortedCatalog.find((c) => c.name === value);
     if (match) {
       setSelectedId(match.id);
       setForm((f) => ({
@@ -1019,7 +1087,7 @@ function AddCustomExerciseButton({
             </div>
 
             <datalist id={datalistId}>
-              {catalog.map((c) => (
+              {sortedCatalog.map((c) => (
                 <option key={c.id} value={c.name}>
                   {c.muscle_group ?? ""}
                 </option>
@@ -1263,7 +1331,11 @@ function ExtraExercises({ ctx }: { ctx: DayCtx }) {
         </>
       )}
       {isLoggedIn && (
-        <AddCustomExerciseButton planDayId={day.id} catalog={exerciseCatalog} />
+        <AddCustomExerciseButton
+          planDayId={day.id}
+          catalog={exerciseCatalog}
+          currentExercises={day.plan_day_exercises}
+        />
       )}
     </div>
   );

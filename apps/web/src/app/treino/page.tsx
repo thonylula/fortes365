@@ -61,7 +61,7 @@ export default async function TreinoPage() {
     supabase.from("week_volume").select("week_index, multiplier").order("week_index"),
     supabase
       .from("exercises")
-      .select("id, slug, name, muscle_group, kcal_estimate, modifier")
+      .select("id, slug, name, muscle_group, kcal_estimate, modifier, movement_pattern")
       .order("name"),
   ]);
 
