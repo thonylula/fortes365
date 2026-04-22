@@ -50,35 +50,5 @@ export async function updateSession(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  // Onboarding redirect: force new users through the quiz
-  const isOnboardingPage = request.nextUrl.pathname === "/onboarding";
-  const isApiRoute = request.nextUrl.pathname.startsWith("/api/");
-  const isCallbackRoute = request.nextUrl.pathname === "/auth/callback";
-  const isStaticRoute = request.nextUrl.pathname === "/" || request.nextUrl.pathname.startsWith("/_next");
-
-  if (user && !isAuthPage && !isApiRoute && !isCallbackRoute && !isStaticRoute) {
-    try {
-      const { data: profile, error } = await supabase
-        .from("profiles")
-        .select("onboarding_completed")
-        .eq("id", user.id)
-        .single();
-
-      if (!error && profile && profile.onboarding_completed === false && !isOnboardingPage) {
-        const url = request.nextUrl.clone();
-        url.pathname = "/onboarding";
-        return NextResponse.redirect(url);
-      }
-
-      if (!error && profile?.onboarding_completed && isOnboardingPage) {
-        const url = request.nextUrl.clone();
-        url.pathname = "/treino";
-        return NextResponse.redirect(url);
-      }
-    } catch {
-      // Migration not yet applied or query error — skip onboarding check
-    }
-  }
-
   return supabaseResponse;
 }
