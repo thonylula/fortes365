@@ -253,24 +253,24 @@
         },
         {
           "items": [
-            "Virado a paulista (feijao tropeiro)",
-            "80g bisteca de porco grelhada",
+            "Virado a paulista light (feijao tropeiro sem bacon)",
+            "120g lombo de porco grelhado (magro)",
             "Couve refogada",
-            "1 banana-da-terra frita",
+            "1 banana-da-terra assada",
             "Arroz (2 col sopa)"
           ],
-          "kcal": 780,
+          "kcal": 580,
           "rec": "virado_paulista",
           "months": []
         },
         {
           "items": [
-            "Feijao tropeiro (feijao carioca, farinha de mandioca, ovo, bacon)",
-            "80g linguica mineira",
+            "Feijao tropeiro light (feijao carioca, farinha de mandioca, ovo mexido)",
+            "120g frango grelhado",
             "Couve refogada",
             "Salada"
           ],
-          "kcal": 740,
+          "kcal": 560,
           "rec": "feijao_tropeiro",
           "months": []
         },
@@ -299,11 +299,12 @@
         },
         {
           "items": [
-            "Vaca atolada (costela c/ mandioca) 200g",
+            "Carne magra cozida c/ mandioca (150g musculo, mandioca 150g)",
             "Arroz branco",
-            "Couve refogada"
+            "Couve refogada",
+            "Cenoura cozida"
           ],
-          "kcal": 760,
+          "kcal": 570,
           "rec": "vaca_atolada",
           "months": []
         },
@@ -348,22 +349,22 @@
         },
         {
           "items": [
-            "Bife a parmegiana light (120g carne, molho de tomate, queijo minas)",
-            "Arroz (3 col sopa)",
+            "Frango grelhado ao molho de tomate caseiro (130g)",
+            "Arroz integral (3 col sopa)",
             "Batata cozida",
-            "Salada"
+            "Salada verde"
           ],
-          "kcal": 780,
+          "kcal": 560,
           "rec": "bife_parmegiana_light",
           "months": []
         },
         {
           "items": [
-            "Quibe assado (150g) estilo paulistano",
+            "Quibe de forno light (120g carne moida magra, trigo fino, hortela)",
             "Tabule",
-            "Hortela e salada verde"
+            "Salada verde"
           ],
-          "kcal": 680,
+          "kcal": 540,
           "rec": "quibe_assado_paulistano",
           "months": []
         }

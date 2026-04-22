@@ -29,21 +29,23 @@
         },
         {
           "items": [
-            "Polenta brustolada na brasa (2 fatias)",
-            "30g queijo colonial",
+            "Polenta cremosa leve (3 col sopa)",
+            "20g queijo minas light",
+            "1 ovo cozido",
             "Cafe preto"
           ],
-          "kcal": 460,
+          "kcal": 370,
           "rec": null,
           "months": []
         },
         {
           "items": [
-            "Omelete 2 ovos c/ linguica toscana picada",
-            "1 fatia pao colonial",
+            "Omelete 2 ovos c/ frango desfiado (40g)",
+            "1 fatia pao colonial integral",
+            "1 tomate em rodelas",
             "Cafe c/ leite"
           ],
-          "kcal": 460,
+          "kcal": 380,
           "rec": null,
           "months": []
         },
@@ -219,10 +221,10 @@
         },
         {
           "items": [
-            "30g queijo colonial",
-            "1 col sopa geleia caseira"
+            "20g queijo minas light",
+            "1 maca pequena"
           ],
-          "kcal": 220,
+          "kcal": 140,
           "rec": null,
           "months": []
         },
@@ -253,12 +255,12 @@
       "options": [
         {
           "items": [
-            "Churrasco misto: 100g picanha + 50g fraldinha",
-            "Arroz branco (3 col sopa)",
-            "Maionese de batata (1 col sopa)",
-            "Salada verde"
+            "Frango assado no alecrim (140g peito)",
+            "Arroz integral (3 col sopa)",
+            "Mandioca cozida (100g)",
+            "Salada verde c/ tomate"
           ],
-          "kcal": 780,
+          "kcal": 540,
           "rec": "churrasco_misto",
           "months": []
         },
@@ -273,10 +275,11 @@
         },
         {
           "items": [
-            "Galeto al primo canto (180g frango temperado) c/ polenta frita (2 fatias)",
-            "Salada"
+            "Galeto al primo canto assado c/ ervas (150g frango)",
+            "Polenta cremosa (3 col sopa)",
+            "Salada verde"
           ],
-          "kcal": 760,
+          "kcal": 560,
           "rec": "galeto_primo_canto",
           "months": []
         },
@@ -324,10 +327,11 @@
         },
         {
           "items": [
-            "Entrevero de pinhao (pinhao, carne, linguica) 200g",
-            "Arroz branco (2 col sopa)"
+            "Entrevero de pinhao light (pinhao cozido, carne magra 100g, temperos)",
+            "Arroz branco (3 col sopa)",
+            "Salada verde"
           ],
-          "kcal": 760,
+          "kcal": 560,
           "rec": "entrevero_pinhao",
           "months": [
             4,
@@ -357,19 +361,22 @@
         },
         {
           "items": [
-            "Costela assada na brasa (130g)",
+            "Alcatra assada na brasa (130g)",
             "Arroz carreteiro leve (3 col sopa)",
+            "Aipim cozido (100g)",
             "Salada verde"
           ],
-          "kcal": 760,
+          "kcal": 570,
           "rec": "costela_brasa",
           "months": []
         },
         {
           "items": [
-            "Camarao a milanesa (120g) c/ arroz branco e salada de folhas"
+            "Camarao grelhado no alho (120g)",
+            "Arroz branco (3 col sopa)",
+            "Legumes refogados (abobrinha, cenoura)"
           ],
-          "kcal": 720,
+          "kcal": 520,
           "rec": "camarao_milanesa",
           "months": []
         }
@@ -384,7 +391,8 @@
       "options": [
         {
           "items": [
-            "2 fatias polenta frita leve",
+            "3 col sopa polenta cremosa leve",
+            "1 ovo cozido",
             "1 col ch mel"
           ],
           "kcal": 200,

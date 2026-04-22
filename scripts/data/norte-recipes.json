@@ -37,11 +37,12 @@
         },
         {
           "items": [
-            "2 fatias pao d'agua c/ manteiga da terra",
-            "1 ovo mexido c/ jambu",
+            "2 fatias pao d'agua c/ requeijao light (1 col sopa)",
+            "2 ovos mexidos c/ jambu",
+            "1 tomate fatiado",
             "Cafe c/ leite desnatado"
           ],
-          "kcal": 440,
+          "kcal": 380,
           "rec": null,
           "months": []
         },
@@ -266,29 +267,30 @@
       "options": [
         {
           "items": [
-            "Tacaca completo (tucupi, jambu, goma, camarao seco) 1 cuia media"
+            "Caldo verde amazonico (tucupi c/ jambu, frango desfiado 100g, batata)",
+            "Arroz branco (2 col sopa)"
           ],
-          "kcal": 650,
+          "kcal": 520,
           "rec": "tacaca_completo",
           "months": []
         },
         {
           "items": [
-            "Pato no tucupi (120g pato c/ jambu)",
+            "Frango caipira no tucupi (130g frango c/ jambu)",
             "Arroz branco (3 col sopa)",
-            "Farinha d'agua (1 col sopa)"
+            "Salada de pepino e tomate"
           ],
-          "kcal": 780,
+          "kcal": 560,
           "rec": "pato_no_tucupi",
           "months": []
         },
         {
           "items": [
-            "Manicoba paraense (200g) c/ maniva, charque, paio",
+            "Manicoba light (150g maniva c/ carne magra dessalgada)",
             "Arroz branco (3 col sopa)",
-            "Farinha d'agua"
+            "Couve refogada"
           ],
-          "kcal": 760,
+          "kcal": 560,
           "rec": "manicoba",
           "months": []
         },
@@ -333,9 +335,10 @@
         },
         {
           "items": [
-            "X-caboquinho: pao d'agua c/ queijo coalho, pupunha e tucuma (medio)"
+            "Sanduiche natural: pao d'agua integral c/ frango desfiado (80g), pupunha grelhada, alface",
+            "1 copo agua de coco"
           ],
-          "kcal": 720,
+          "kcal": 490,
           "rec": "x_caboquinho",
           "months": [
             9,
@@ -379,11 +382,11 @@
         },
         {
           "items": [
-            "Moqueca amazonica de peixe branco (150g) c/ leite de castanha",
-            "Arroz branco (2 col sopa)",
-            "Pirao (2 col sopa)"
+            "Moqueca amazonica light (150g tambaqui, urucum, tomate, cebola)",
+            "Arroz branco (3 col sopa)",
+            "Quiabo refogado"
           ],
-          "kcal": 740,
+          "kcal": 550,
           "rec": "moqueca_amazonica",
           "months": []
         }

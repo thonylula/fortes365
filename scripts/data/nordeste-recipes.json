@@ -77,11 +77,12 @@
         },
         {
           "items": [
-            "2 fatias pao integral c/ manteiga de garrafa",
-            "1 ovo cozido",
+            "2 fatias pao integral c/ requeijao light (1 col sopa)",
+            "1 ovo mexido",
+            "1 banana prata",
             "Cafe c/ leite"
           ],
-          "kcal": 430,
+          "kcal": 380,
           "rec": null,
           "months": []
         }
@@ -259,12 +260,12 @@
         },
         {
           "items": [
-            "100g carne de sol grelhada",
-            "150g macaxeira frita em azeite",
+            "100g carne de sol grelhada (dessalgada)",
+            "150g macaxeira cozida",
             "Vinagrete c/ coentro",
             "Arroz (3 col sopa)"
           ],
-          "kcal": 780,
+          "kcal": 540,
           "rec": "carne_de_sol_grelhada",
           "months": []
         },
@@ -312,21 +313,22 @@
         },
         {
           "items": [
-            "Bobo de camarao c/ mandioca e leite de coco (250g)",
-            "Arroz branco (2 col sopa)"
+            "Moqueca de camarao light c/ leite de coco light (180g)",
+            "Arroz branco (3 col sopa)",
+            "Quiabo refogado"
           ],
-          "kcal": 780,
+          "kcal": 560,
           "rec": "bobo_camarao",
           "months": []
         },
         {
           "items": [
-            "Feijao-de-corda c/ pacoca de carne seca (80g)",
+            "Feijao-de-corda c/ carne seca magra desfiada (80g)",
             "Arroz branco",
-            "Farofa de manteiga",
+            "Farofa de cuscuz (1 col sopa)",
             "Alface c/ tomate"
           ],
-          "kcal": 760,
+          "kcal": 540,
           "rec": "feijao_corda_pacoca",
           "months": []
         },
@@ -408,9 +410,10 @@
         },
         {
           "items": [
-            "4 col sopa cuscuz puro c/ manteiga de garrafa"
+            "4 col sopa cuscuz puro c/ requeijao light (1 col cha)",
+            "1 ovo cozido"
           ],
-          "kcal": 210,
+          "kcal": 200,
           "rec": null,
           "months": []
         },

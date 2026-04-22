@@ -273,10 +273,11 @@
         },
         {
           "items": [
-            "Empadao goiano (1 fatia media c/ frango e guariroba)",
+            "Frango assado c/ guariroba (130g peito c/ palmito pupunha refogado)",
+            "Arroz branco (3 col sopa)",
             "Salada verde"
           ],
-          "kcal": 720,
+          "kcal": 540,
           "rec": "empadao_goiano",
           "months": []
         },
@@ -310,10 +311,12 @@
         },
         {
           "items": [
-            "Costela de chao pantaneira (130g) c/ mandioca assada",
+            "Carne bovina magra pantaneira (130g patinho cozido c/ ervas)",
+            "Mandioca cozida (100g)",
+            "Legumes refogados (abobrinha, cenoura)",
             "Salada verde"
           ],
-          "kcal": 760,
+          "kcal": 560,
           "rec": "costela_pantaneira",
           "months": []
         },
@@ -356,11 +359,12 @@
         },
         {
           "items": [
-            "Arroz c/ sua de porco (cupim 100g)",
+            "Arroz carreteiro light (100g carne seca magra dessalgada)",
             "Mandioca cozida",
+            "Couve refogada",
             "Salada"
           ],
-          "kcal": 740,
+          "kcal": 540,
           "rec": "arroz_sua_de_porco",
           "months": []
         }
@@ -610,7 +614,8 @@
       "options": [
         {
           "items": [
-            "1 pe-de-moleque pequeno (caseiro c/ amendoim)"
+            "1 banana",
+            "1 col sopa pasta de amendoim integral (sem acucar)"
           ],
           "kcal": 180,
           "rec": null,
