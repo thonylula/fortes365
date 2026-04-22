@@ -177,6 +177,28 @@ function ConfirmDialog({
   );
 }
 
+// Defaults razoaveis de reps/rest por pattern. Aplicados ao escolher do
+// catalogo (o user ainda pode editar).
+const PATTERN_DEFAULTS: Record<string, { reps: string; rest: string; sets: string }> = {
+  warmup: { sets: "1", reps: "3 min", rest: "—" },
+  mobility: { sets: "1", reps: "20s cada", rest: "—" },
+  cardio: { sets: "1", reps: "5 min", rest: "—" },
+  squat: { sets: "3", reps: "10", rest: "60s" },
+  hinge: { sets: "3", reps: "10", rest: "60s" },
+  push_horizontal: { sets: "3", reps: "8", rest: "60s" },
+  push_vertical: { sets: "3", reps: "6", rest: "75s" },
+  pull_horizontal: { sets: "3", reps: "8", rest: "60s" },
+  pull_vertical: { sets: "3", reps: "6", rest: "75s" },
+  plyometric: { sets: "3", reps: "8", rest: "90s" },
+  skill_balance: { sets: "3", reps: "30s", rest: "60s" },
+  skill_handstand: { sets: "3", reps: "20s", rest: "90s" },
+  skill_planche: { sets: "3", reps: "10s", rest: "90s" },
+  skill_lever: { sets: "3", reps: "10s", rest: "90s" },
+  core_antiext: { sets: "3", reps: "30s", rest: "45s" },
+  core_antirot: { sets: "3", reps: "10 cada", rest: "45s" },
+  core_dyn: { sets: "3", reps: "15", rest: "45s" },
+};
+
 function scorePattern(pattern: string | null, existing: Set<string>): number {
   const baseLookup = pattern != null ? PATTERN_BASE_SCORE[pattern] : undefined;
   let score: number = baseLookup ?? 90;
@@ -1112,12 +1134,16 @@ function AddCustomExerciseButton({
     const match = sortedCatalog.find((c) => c.name === value);
     if (match) {
       setSelectedId(match.id);
+      const defaults = match.movement_pattern ? PATTERN_DEFAULTS[match.movement_pattern] : undefined;
       setForm((f) => ({
         ...f,
         name: match.name,
         muscle: match.muscle_group ?? "",
         kcal: match.kcal_estimate != null ? String(match.kcal_estimate) : "",
         cue: match.modifier ?? "",
+        sets: defaults?.sets ?? f.sets,
+        reps: defaults?.reps ?? "",
+        rest: defaults?.rest ?? "",
       }));
     } else {
       setSelectedId(null);
