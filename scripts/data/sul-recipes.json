@@ -1,0 +1,438 @@
+{
+  "_comment": "Pool de receitas tipicas do Sul (RS, SC, PR) para o motor de cardapio. Pan-Sul equilibrado: churrasco gaucho, arroz carreteiro, galeto al primo canto (colonia italiana), barreado paranaense, kassler/chucrute (colonia alema), polenta, sopa de capeletti, sequencia de peixe catarinense, pinhao sazonal (mai-ago). Cada slot tem um conjunto de opcoes; quando 'months' esta vazio, a opcao vale o ano todo. Quando preenchido (0=Jan..11=Dez), a opcao so e elegivel naqueles meses (usado para frutas sazonais e pinhao). Kcal estimado por porcao adulta ativa.",
+  "slots": {
+    "cafe": {
+      "meta": { "t": "Cafe da Manha", "ico": "☕", "time": "07:00" },
+      "options": [
+        {
+          "items": ["2 fatias pao colonial c/ nata e mel", "Cafe c/ leite desnatado"],
+          "kcal": 440,
+          "rec": null,
+          "months": []
+        },
+        {
+          "items": ["1 fatia cuca leve c/ uva-passa", "Cafe preto s/ acucar", "1 fruta"],
+          "kcal": 420,
+          "rec": null,
+          "months": []
+        },
+        {
+          "items": ["Polenta brustolada na brasa (2 fatias)", "30g queijo colonial", "Cafe preto"],
+          "kcal": 460,
+          "rec": null,
+          "months": []
+        },
+        {
+          "items": ["Omelete 2 ovos c/ linguica toscana picada", "1 fatia pao colonial", "Cafe c/ leite"],
+          "kcal": 460,
+          "rec": null,
+          "months": []
+        },
+        {
+          "items": ["Tapioca c/ queijo colonial grelhado", "Chimarrao amargo"],
+          "kcal": 400,
+          "rec": null,
+          "months": []
+        },
+        {
+          "items": ["2 fatias pao de milho c/ manteiga", "1 ovo cozido", "Cafe c/ leite desnatado"],
+          "kcal": 430,
+          "rec": null,
+          "months": []
+        },
+        {
+          "items": ["Ricota fresca (50g) c/ mel", "2 fatias pao integral", "Cafe preto"],
+          "kcal": 420,
+          "rec": null,
+          "months": []
+        },
+        {
+          "items": ["Iogurte natural (200g) c/ 2 col sopa aveia e mel", "1 fruta da estacao"],
+          "kcal": 400,
+          "rec": null,
+          "months": []
+        }
+      ]
+    },
+    "lm": {
+      "meta": { "t": "Lanche da Manha", "ico": "🥭", "time": "09:30" },
+      "options": [
+        {
+          "items": ["20 pinhoes cozidos c/ sal"],
+          "kcal": 220,
+          "rec": null,
+          "months": [4, 5, 6, 7]
+        },
+        {
+          "items": ["1 cacho medio uva niagara (~150g)", "10g nozes"],
+          "kcal": 190,
+          "rec": null,
+          "months": [0, 1, 2]
+        },
+        {
+          "items": ["1 maca gala media", "15g nozes"],
+          "kcal": 200,
+          "rec": null,
+          "months": [2, 3, 4, 5]
+        },
+        {
+          "items": ["1 bergamota grande", "15g nozes"],
+          "kcal": 170,
+          "rec": null,
+          "months": [3, 4, 5, 6, 7]
+        },
+        {
+          "items": ["1 pessego medio", "10g nozes"],
+          "kcal": 150,
+          "rec": null,
+          "months": [10, 11, 0]
+        },
+        {
+          "items": ["200g morangos frescos", "1 col sopa aveia"],
+          "kcal": 160,
+          "rec": null,
+          "months": [6, 7, 8, 9, 10]
+        },
+        {
+          "items": ["2 figos maduros"],
+          "kcal": 140,
+          "rec": null,
+          "months": [11, 0, 1, 2]
+        },
+        {
+          "items": ["1 pera williams media", "10g nozes"],
+          "kcal": 180,
+          "rec": null,
+          "months": [0, 1, 2, 3]
+        },
+        {
+          "items": ["3 ameixas pretas maduras", "10g nozes"],
+          "kcal": 150,
+          "rec": null,
+          "months": [10, 11, 0]
+        },
+        {
+          "items": ["30g queijo colonial", "1 col sopa geleia caseira"],
+          "kcal": 220,
+          "rec": null,
+          "months": []
+        },
+        {
+          "items": ["Iogurte natural (150g) c/ 1 col sopa granola"],
+          "kcal": 200,
+          "rec": null,
+          "months": []
+        },
+        {
+          "items": ["1 banana c/ 1 col ch mel e canela"],
+          "kcal": 160,
+          "rec": null,
+          "months": []
+        }
+      ]
+    },
+    "alm": {
+      "meta": { "t": "Almoco", "ico": "🍛", "time": "12:30" },
+      "options": [
+        {
+          "items": ["Churrasco misto: 100g picanha + 50g fraldinha", "Arroz branco (3 col sopa)", "Maionese de batata (1 col sopa)", "Salada verde"],
+          "kcal": 780,
+          "rec": null,
+          "months": []
+        },
+        {
+          "items": ["Arroz carreteiro (100g charque, arroz, cebola)", "Salada de alface c/ tomate"],
+          "kcal": 720,
+          "rec": null,
+          "months": []
+        },
+        {
+          "items": ["Galeto al primo canto (180g frango temperado) c/ polenta frita (2 fatias)", "Salada"],
+          "kcal": 760,
+          "rec": null,
+          "months": []
+        },
+        {
+          "items": ["Barreado paranaense (150g carne cozida em panela de barro) c/ banana", "Farinha de mandioca", "Arroz branco"],
+          "kcal": 720,
+          "rec": null,
+          "months": []
+        },
+        {
+          "items": ["Matambre recheado (120g) c/ ovo e cenoura", "Arroz branco (3 col sopa)", "Salada"],
+          "kcal": 700,
+          "rec": null,
+          "months": []
+        },
+        {
+          "items": ["Polenta mole c/ frango ensopado (150g frango)", "Salada verde"],
+          "kcal": 680,
+          "rec": null,
+          "months": []
+        },
+        {
+          "items": ["Risoto de pinhao c/ frango desfiado (200g)"],
+          "kcal": 720,
+          "rec": null,
+          "months": [4, 5, 6, 7]
+        },
+        {
+          "items": ["Entrevero de pinhao (pinhao, carne, linguica) 200g", "Arroz branco (2 col sopa)"],
+          "kcal": 760,
+          "rec": null,
+          "months": [4, 5, 6, 7]
+        },
+        {
+          "items": ["Kassler (120g carne de porco defumada) c/ pure de batata", "Chucrute"],
+          "kcal": 720,
+          "rec": null,
+          "months": []
+        },
+        {
+          "items": ["Sequencia catarinense light: 100g peixe grelhado + 80g camarao", "Arroz branco", "Salada"],
+          "kcal": 700,
+          "rec": null,
+          "months": []
+        },
+        {
+          "items": ["Costela assada na brasa (130g)", "Arroz carreteiro leve (3 col sopa)", "Salada verde"],
+          "kcal": 760,
+          "rec": null,
+          "months": []
+        },
+        {
+          "items": ["Camarao a milanesa (120g) c/ arroz branco e salada de folhas"],
+          "kcal": 720,
+          "rec": null,
+          "months": []
+        }
+      ]
+    },
+    "pre": {
+      "meta": { "t": "Pre-Treino", "ico": "⚡", "time": "15:30" },
+      "options": [
+        {
+          "items": ["2 fatias polenta frita leve", "1 col ch mel"],
+          "kcal": 200,
+          "rec": null,
+          "months": []
+        },
+        {
+          "items": ["1 fatia pao colonial", "1 col sopa mel", "Cafe preto"],
+          "kcal": 210,
+          "rec": null,
+          "months": []
+        },
+        {
+          "items": ["1 banana c/ 1 col sopa aveia e mel"],
+          "kcal": 240,
+          "rec": null,
+          "months": []
+        },
+        {
+          "items": ["15 pinhoes cozidos"],
+          "kcal": 190,
+          "rec": null,
+          "months": [4, 5, 6, 7]
+        },
+        {
+          "items": ["Vitamina de uva c/ 1 col sopa aveia"],
+          "kcal": 220,
+          "rec": null,
+          "months": [0, 1, 2]
+        },
+        {
+          "items": ["Tapioca simples (2 col sopa goma) c/ 1 col ch mel"],
+          "kcal": 180,
+          "rec": null,
+          "months": []
+        },
+        {
+          "items": ["Chimarrao amargo + 2 biscoitos de polvilho"],
+          "kcal": 150,
+          "rec": null,
+          "months": []
+        }
+      ]
+    },
+    "pos": {
+      "meta": { "t": "Pos-Treino", "ico": "💪", "time": "17:00" },
+      "options": [
+        {
+          "items": ["1 scoop whey protein", "1 cacho pequeno uva niagara"],
+          "kcal": 230,
+          "rec": null,
+          "months": [0, 1, 2]
+        },
+        {
+          "items": ["Tapioca c/ queijo colonial grelhado", "1 scoop whey c/ agua"],
+          "kcal": 310,
+          "rec": null,
+          "months": []
+        },
+        {
+          "items": ["3 ovos mexidos c/ cebolinha", "2 fatias polenta grelhada"],
+          "kcal": 320,
+          "rec": null,
+          "months": []
+        },
+        {
+          "items": ["Sanduiche de frango desfiado (60g) no pao colonial", "Alface"],
+          "kcal": 300,
+          "rec": null,
+          "months": []
+        },
+        {
+          "items": ["Iogurte natural (200g)", "20g nozes", "1 col ch mel serrano"],
+          "kcal": 280,
+          "rec": null,
+          "months": []
+        },
+        {
+          "items": ["Vitamina de maca c/ aveia (1 col sopa) e leite desnatado"],
+          "kcal": 290,
+          "rec": null,
+          "months": [2, 3, 4, 5]
+        },
+        {
+          "items": ["2 ovos cozidos", "1 batata doce media (100g)"],
+          "kcal": 280,
+          "rec": null,
+          "months": []
+        }
+      ]
+    },
+    "jan": {
+      "meta": { "t": "Jantar", "ico": "🍲", "time": "19:30" },
+      "options": [
+        {
+          "items": ["Sopa de capeletti (1 bowl grande)"],
+          "kcal": 480,
+          "rec": null,
+          "months": []
+        },
+        {
+          "items": ["120g peixe grelhado", "Polenta mole c/ queijo (3 col sopa)", "Salada verde"],
+          "kcal": 500,
+          "rec": null,
+          "months": []
+        },
+        {
+          "items": ["Sopa de feijao preto c/ charque desfiado", "2 torradas"],
+          "kcal": 520,
+          "rec": null,
+          "months": []
+        },
+        {
+          "items": ["Risoto leve de frango (150g) c/ ervas", "Salada"],
+          "kcal": 480,
+          "rec": null,
+          "months": []
+        },
+        {
+          "items": ["Omelete 3 ovos c/ queijo colonial", "Salada de alface c/ tomate"],
+          "kcal": 440,
+          "rec": null,
+          "months": []
+        },
+        {
+          "items": ["Sopa de pinhao (1 tigela grande)"],
+          "kcal": 450,
+          "rec": null,
+          "months": [4, 5, 6, 7]
+        },
+        {
+          "items": ["Canja de galinha c/ arroz e legumes (1 bowl)", "2 torradas"],
+          "kcal": 460,
+          "rec": null,
+          "months": []
+        },
+        {
+          "items": ["Polenta mole c/ fortaia (ovos c/ queijo) 1 porcao", "Salada"],
+          "kcal": 520,
+          "rec": null,
+          "months": []
+        },
+        {
+          "items": ["Sopa de agnolini (1 bowl grande)"],
+          "kcal": 480,
+          "rec": null,
+          "months": []
+        },
+        {
+          "items": ["Frango assado (120g) c/ batata doce (100g)", "Salada verde"],
+          "kcal": 480,
+          "rec": null,
+          "months": []
+        }
+      ]
+    },
+    "ln": {
+      "meta": { "t": "Lanche da Noite", "ico": "🌙", "time": "21:30" },
+      "options": [
+        {
+          "items": ["1 fatia pequena cuca de banana caseira"],
+          "kcal": 200,
+          "rec": null,
+          "months": []
+        },
+        {
+          "items": ["Chimarrao amargo + 2 biscoitos de polvilho"],
+          "kcal": 140,
+          "rec": null,
+          "months": []
+        },
+        {
+          "items": ["Iogurte natural (150g) c/ 1 col sopa geleia caseira"],
+          "kcal": 190,
+          "rec": null,
+          "months": []
+        },
+        {
+          "items": ["1 cacho pequeno uva niagara (~100g)"],
+          "kcal": 90,
+          "rec": null,
+          "months": [0, 1, 2]
+        },
+        {
+          "items": ["1 maca assada c/ canela"],
+          "kcal": 130,
+          "rec": null,
+          "months": [2, 3, 4, 5]
+        },
+        {
+          "items": ["200g morangos c/ iogurte natural"],
+          "kcal": 180,
+          "rec": null,
+          "months": [6, 7, 8, 9, 10]
+        },
+        {
+          "items": ["1 copo leite desnatado morno c/ mel e canela"],
+          "kcal": 120,
+          "rec": null,
+          "months": []
+        },
+        {
+          "items": ["30g queijo colonial c/ 1 col sopa geleia de pessego"],
+          "kcal": 220,
+          "rec": null,
+          "months": []
+        }
+      ]
+    }
+  },
+  "seasonal_months_label": {
+    "0": "uva, pessego, figo, pera, ameixa",
+    "1": "uva, figo, pera, morango-final",
+    "2": "uva, maca, figo, pera, morango",
+    "3": "maca, pera, bergamota, morango",
+    "4": "maca, bergamota, pinhao",
+    "5": "maca, bergamota, pinhao",
+    "6": "pinhao, bergamota, morango",
+    "7": "pinhao, bergamota, morango",
+    "8": "morango, pinhao-final",
+    "9": "morango, pessego-inicio",
+    "10": "pessego, morango, ameixa",
+    "11": "pessego, figo, ameixa"
+  }
+}
