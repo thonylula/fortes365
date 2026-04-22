@@ -177,6 +177,65 @@ function ConfirmDialog({
   );
 }
 
+// Patterns cujas "reps" sao tempo (ex: "30s", "3 min"). Ao redistribuir
+// volume por mudanca de series, nao mexemos nesses — so no descanso.
+const TIME_BASED_PATTERNS = new Set([
+  "warmup",
+  "mobility",
+  "cardio",
+  "core_antiext",
+  "skill_balance",
+  "skill_handstand",
+  "skill_planche",
+  "skill_lever",
+]);
+
+// Parse descanso pra segundos ("60s" → 60, "3 min" → 180, "—" → null).
+function parseRestSeconds(rest: string): number | null {
+  const trimmed = rest.trim();
+  if (!trimmed || trimmed === "—") return null;
+  const sec = trimmed.match(/^(\d+)\s*s$/);
+  if (sec) return parseInt(sec[1], 10);
+  const min = trimmed.match(/^(\d+)\s*min$/);
+  if (min) return parseInt(min[1], 10) * 60;
+  const onlyNum = trimmed.match(/^(\d+)$/);
+  if (onlyNum) return parseInt(onlyNum[1], 10);
+  return null;
+}
+
+// Recalcula reps/rest mantendo volume total (reps-based) ou so ajustando
+// descanso (time-based). Usado quando o user altera o numero de series
+// depois de escolher do catalogo.
+function redistributeForSets(
+  pattern: string | null,
+  baseSets: number,
+  newSets: number,
+  baseReps: string,
+  baseRest: string,
+): { reps: string; rest: string } {
+  if (baseSets <= 0 || newSets <= 0 || newSets === baseSets) {
+    return { reps: baseReps, rest: baseRest };
+  }
+  // Descanso: +15s por serie a mais, -15s por serie a menos (minimo 15s).
+  const baseRestSec = parseRestSeconds(baseRest);
+  const newRest =
+    baseRestSec != null
+      ? `${Math.max(15, baseRestSec + (newSets - baseSets) * 15)}s`
+      : baseRest;
+  // Time-based: nao mexe em reps (sao tempo por si proprias).
+  if (!pattern || TIME_BASED_PATTERNS.has(pattern)) {
+    return { reps: baseReps, rest: newRest };
+  }
+  // Rep-based: mantem volume total. "8 cada" vira "6 cada" etc.
+  const numMatch = baseReps.match(/^(\d+)(.*)$/);
+  if (!numMatch) return { reps: baseReps, rest: newRest };
+  const baseRepsNum = parseInt(numMatch[1], 10);
+  const suffix = numMatch[2];
+  const volume = baseSets * baseRepsNum;
+  const newRepsNum = Math.max(4, Math.round(volume / newSets));
+  return { reps: `${newRepsNum}${suffix}`, rest: newRest };
+}
+
 // Defaults razoaveis de reps/rest por pattern. Aplicados ao escolher do
 // catalogo (o user ainda pode editar).
 const PATTERN_DEFAULTS: Record<string, { reps: string; rest: string; sets: string }> = {
@@ -1156,6 +1215,37 @@ function AddCustomExerciseButton({
     setForm(EMPTY_FORM);
   };
 
+  // Quando o user muda o numero de series em um exercicio selecionado do
+  // catalogo, redistribui reps/rest coerentemente (mantem volume total
+  // pra reps-based; ajusta descanso pra todos).
+  const handleSetsChange = (value: string) => {
+    if (!selectedId) {
+      setForm((f) => ({ ...f, sets: value }));
+      return;
+    }
+    const newSets = parseInt(value, 10);
+    if (!Number.isFinite(newSets) || newSets < 1) {
+      setForm((f) => ({ ...f, sets: value }));
+      return;
+    }
+    const match = catalog.find((c) => c.id === selectedId);
+    const pattern = match?.movement_pattern ?? null;
+    const base = pattern ? PATTERN_DEFAULTS[pattern] : undefined;
+    if (!base) {
+      setForm((f) => ({ ...f, sets: value }));
+      return;
+    }
+    const baseSets = parseInt(base.sets, 10);
+    const { reps, rest } = redistributeForSets(
+      pattern,
+      baseSets,
+      newSets,
+      base.reps,
+      base.rest,
+    );
+    setForm((f) => ({ ...f, sets: value, reps, rest }));
+  };
+
   const submit = () => {
     if (!selectedId && !form.name.trim()) { setErr("Escolha do catalogo ou digite um nome"); return; }
     setErr(null);
@@ -1268,7 +1358,7 @@ function AddCustomExerciseButton({
                     min={1}
                     max={10}
                     value={form.sets}
-                    onChange={(e) => setForm({ ...form, sets: e.target.value })}
+                    onChange={(e) => handleSetsChange(e.target.value)}
                     className={INPUT_CLASS}
                   />
                 </Field>
