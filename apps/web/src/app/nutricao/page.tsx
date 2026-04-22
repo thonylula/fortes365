@@ -22,7 +22,7 @@ type MealRow = {
   };
 };
 
-const REGIONS_WITH_DATA = new Set(["nordeste", "sudeste"]);
+const REGIONS_WITH_DATA = new Set(["nordeste", "sudeste", "norte"]);
 const FALLBACK_REGION = "nordeste";
 
 export default async function NutricaoPage() {
