@@ -75,7 +75,6 @@ type PlanDayExercise = {
   custom_muscle?: string | null;
   custom_cue?: string | null;
   custom_kcal?: number | null;
-  added_by_user?: boolean;
 };
 
 export type CatalogEntry = {
@@ -536,7 +535,6 @@ function ExerciseList({ exercises, ctx }: { exercises: PlanDayExercise[]; ctx: D
               dayIndex={day.day_index}
               isLoggedIn={isLoggedIn}
               isDone={completedSlugs.has(ex.exercises.slug)}
-              canRemove={!!ex.added_by_user}
               onToggle={onToggle}
               onAchievement={onAchievement}
               onStartRest={onStartRest}
@@ -580,7 +578,6 @@ function ExerciseCard({
   dayIndex,
   isLoggedIn,
   isDone,
-  canRemove,
   onToggle,
   onAchievement,
   onStartRest,
@@ -593,7 +590,6 @@ function ExerciseCard({
   dayIndex: number;
   isLoggedIn: boolean;
   isDone: boolean;
-  canRemove?: boolean;
   onToggle: (slug: string) => void;
   onAchievement: (achievements: AchievementInfo[]) => void;
   onStartRest: (rest: string, name: string) => void;
@@ -732,12 +728,12 @@ function ExerciseCard({
               {isSwapping ? "..." : "⇄ Trocar"}
             </button>
           )}
-          {canRemove && isLoggedIn && (
+          {isLoggedIn && !isDone && (
             <button
               onClick={handleRemove}
               disabled={isRemoving}
               className="flex items-center gap-1 rounded-md border-[1.5px] border-[color:var(--bd)] bg-[color:var(--s2)] px-2 py-1 font-[family-name:var(--font-condensed)] text-[10px] font-bold uppercase tracking-wider text-[color:var(--tx2)] transition-colors hover:border-red-500 hover:text-red-500 disabled:opacity-50"
-              title="Remover exercicio adicionado"
+              title="Remover do dia"
             >
               {isRemoving ? "..." : "🗑 Remover"}
             </button>

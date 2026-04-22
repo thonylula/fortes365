@@ -481,19 +481,10 @@ export async function removeCustomExercise(formData: FormData): Promise<{
     return { ok: false, error: "invalid_input" };
   }
 
-  // So permite remover linhas que o user adicionou (position > max global).
-  // Assim evitamos que o user apague um exercicio que faz parte do plano
-  // original e perca referencia pra recuperar.
-  const { data: globalMax } = await supabase
-    .from("plan_day_exercises")
-    .select("position")
-    .eq("plan_day_id", planDayId)
-    .order("position", { ascending: false })
-    .limit(1);
-  const globalMaxPos = (globalMax?.[0]?.position ?? -1) as number;
-  if (position <= globalMaxPos) {
-    return { ok: false, error: "cannot_remove_global_exercise" };
-  }
+  // Garante override (copia global se for 1a mudanca), senao o DELETE
+  // nao atinge nada em dias que o user nunca tocou.
+  const ensured = await ensureOverride(supabase, user.id, planDayId);
+  if (!ensured.ok) return { ok: false, error: ensured.error };
 
   const { error } = await supabase
     .from("user_plan_day_exercises")

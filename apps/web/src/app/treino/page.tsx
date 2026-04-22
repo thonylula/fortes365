@@ -102,17 +102,6 @@ export default async function TreinoPage() {
         .order("position");
 
       if (overrides && overrides.length > 0) {
-        // Max position no plano global de cada plan_day, pra marcar linhas
-        // adicionadas pelo user (position > max => addedByUser).
-        const maxGlobalByPlanDay = new Map<string, number>();
-        for (const d of days) {
-          let max = -1;
-          for (const ex of d.plan_day_exercises ?? []) {
-            if (ex.position > max) max = ex.position;
-          }
-          maxGlobalByPlanDay.set(d.id, max);
-        }
-
         const byPlanDay = new Map<string, unknown[]>();
         for (const ov of overrides as unknown as Array<{
           plan_day_id: string;
@@ -126,7 +115,6 @@ export default async function TreinoPage() {
           custom_kcal: number | null;
           exercises: unknown;
         }>) {
-          const maxGlobal = maxGlobalByPlanDay.get(ov.plan_day_id) ?? -1;
           const list = byPlanDay.get(ov.plan_day_id) ?? [];
           list.push({
             position: ov.position,
@@ -138,7 +126,6 @@ export default async function TreinoPage() {
             custom_muscle: ov.custom_muscle,
             custom_cue: ov.custom_cue,
             custom_kcal: ov.custom_kcal,
-            added_by_user: ov.position > maxGlobal,
           });
           byPlanDay.set(ov.plan_day_id, list);
         }
