@@ -196,21 +196,39 @@ export default async function ContaPage({
 
           {isAdmin && (
             <div className="rounded-lg border border-[color:var(--or)]/40 bg-[color:var(--ord)] p-5">
-              <div className="mb-1 font-[family-name:var(--font-condensed)] text-[10px] font-bold uppercase tracking-[2px] text-[color:var(--or)]">
+              <div className="mb-3 font-[family-name:var(--font-condensed)] text-[10px] font-bold uppercase tracking-[2px] text-[color:var(--or)]">
                 🛠 Área DEV
               </div>
-              <div className="mb-3 text-sm font-bold">
-                Sugestões de todos os usuários
+              <div className="flex flex-col gap-2">
+                <Link
+                  href="/admin/feedback"
+                  className="flex items-center justify-between rounded-md border border-[color:var(--or)]/30 bg-[color:var(--s1)]/60 px-4 py-3 transition-colors hover:border-[color:var(--or)] hover:bg-[color:var(--s1)]"
+                >
+                  <div>
+                    <div className="text-sm font-bold">💬 Sugestões</div>
+                    <div className="text-xs text-[color:var(--tx3)]">
+                      Feedback de todos os usuários
+                    </div>
+                  </div>
+                  <span className="font-[family-name:var(--font-condensed)] text-[12px] font-bold uppercase tracking-[1.5px] text-[color:var(--or)]">
+                    Abrir →
+                  </span>
+                </Link>
+                <Link
+                  href="/admin/assinaturas"
+                  className="flex items-center justify-between rounded-md border border-[color:var(--or)]/30 bg-[color:var(--s1)]/60 px-4 py-3 transition-colors hover:border-[color:var(--or)] hover:bg-[color:var(--s1)]"
+                >
+                  <div>
+                    <div className="text-sm font-bold">💎 Assinaturas</div>
+                    <div className="text-xs text-[color:var(--tx3)]">
+                      Controle de dias e planos ativos
+                    </div>
+                  </div>
+                  <span className="font-[family-name:var(--font-condensed)] text-[12px] font-bold uppercase tracking-[1.5px] text-[color:var(--or)]">
+                    Abrir →
+                  </span>
+                </Link>
               </div>
-              <p className="mb-4 text-xs text-[color:var(--tx3)]">
-                Você é admin. Veja aqui o que chegou da galera — filtrado por categoria, com email do remetente pra responder.
-              </p>
-              <Link
-                href="/admin/feedback"
-                className="inline-flex h-10 items-center justify-center rounded-sm bg-[color:var(--or)] px-4 font-[family-name:var(--font-condensed)] text-[12px] font-bold uppercase tracking-[2px] text-black transition-colors hover:bg-[#ff7733]"
-              >
-                Abrir painel →
-              </Link>
             </div>
           )}
 
