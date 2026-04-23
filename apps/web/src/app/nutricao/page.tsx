@@ -46,19 +46,30 @@ export default async function NutricaoPage() {
   const hasRegion = !!userRegion;
   const regionSupported = !userRegion || REGIONS_WITH_DATA.has(userRegion);
 
-  const [{ data: months }, { data: meals }] = await Promise.all([
+  // plan_meals tem 12 meses × 4 sem × 7 dias × 7 slots = 2352 rows por regiao.
+  // O PostgREST da Supabase tem db-max-rows=1000 (cap de servidor) que ignora
+  // .limit() do cliente. Por isso quebramos em 3 batches de 4 meses (784 rows
+  // cada, bem sob o cap) e concatenamos. Queries rodam em paralelo.
+  const mealsBatches: number[][] = [
+    [0, 1, 2, 3],
+    [4, 5, 6, 7],
+    [8, 9, 10, 11],
+  ];
+  const [monthsRes, ...mealsRes] = await Promise.all([
     supabase.from("months").select("id, short_name, name, season").order("id"),
-    // 12 meses × 4 sem × 7 dias × 7 slots = 2352 rows. Precisa passar do default
-    // PostgREST (1000) senao jun corta e jul-dez somem.
-    supabase
-      .from("plan_meals")
-      .select("month_id, week_index, day_index, slot_key, data")
-      .eq("region", effectiveRegion)
-      .order("month_id")
-      .order("week_index")
-      .order("day_index")
-      .limit(3000),
+    ...mealsBatches.map((ids) =>
+      supabase
+        .from("plan_meals")
+        .select("month_id, week_index, day_index, slot_key, data")
+        .eq("region", effectiveRegion)
+        .in("month_id", ids)
+        .order("month_id")
+        .order("week_index")
+        .order("day_index"),
+    ),
   ]);
+  const months = monthsRes.data;
+  const meals = mealsRes.flatMap((r) => r.data ?? []);
 
   return (
     <div className="flex min-h-screen flex-col bg-[color:var(--bg)]">
