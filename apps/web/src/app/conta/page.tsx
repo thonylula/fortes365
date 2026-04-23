@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
+import { ensureAdmin } from "@/lib/admin";
 import { getMyReview } from "@/lib/reviews";
 import { logout } from "../login/actions";
 import { RegionSelector } from "./region-selector";
@@ -63,6 +64,9 @@ export default async function ContaPage({
     : "—";
 
   const myReview = await getMyReview();
+
+  const adminCheck = await ensureAdmin(supabase);
+  const isAdmin = adminCheck.ok;
 
   const healthEnabled = !!process.env.GOOGLE_OAUTH_CLIENT_ID;
 
@@ -180,6 +184,26 @@ export default async function ContaPage({
               justConnected={healthConnected === "1"}
               errorCode={healthError ?? null}
             />
+          )}
+
+          {isAdmin && (
+            <div className="rounded-lg border border-[color:var(--or)]/40 bg-[color:var(--ord)] p-5">
+              <div className="mb-1 font-[family-name:var(--font-condensed)] text-[10px] font-bold uppercase tracking-[2px] text-[color:var(--or)]">
+                🛠 Área DEV
+              </div>
+              <div className="mb-3 text-sm font-bold">
+                Sugestões de todos os usuários
+              </div>
+              <p className="mb-4 text-xs text-[color:var(--tx3)]">
+                Você é admin. Veja aqui o que chegou da galera — filtrado por categoria, com email do remetente pra responder.
+              </p>
+              <Link
+                href="/admin/feedback"
+                className="inline-flex h-10 items-center justify-center rounded-sm bg-[color:var(--or)] px-4 font-[family-name:var(--font-condensed)] text-[12px] font-bold uppercase tracking-[2px] text-black transition-colors hover:bg-[#ff7733]"
+              >
+                Abrir painel →
+              </Link>
+            </div>
           )}
 
           <div className="rounded-lg border border-[color:var(--bd)] bg-[color:var(--s1)] p-5">
