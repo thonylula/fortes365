@@ -48,13 +48,16 @@ export default async function NutricaoPage() {
 
   const [{ data: months }, { data: meals }] = await Promise.all([
     supabase.from("months").select("id, short_name, name, season").order("id"),
+    // 12 meses × 4 sem × 7 dias × 7 slots = 2352 rows. Precisa passar do default
+    // PostgREST (1000) senao jun corta e jul-dez somem.
     supabase
       .from("plan_meals")
       .select("month_id, week_index, day_index, slot_key, data")
       .eq("region", effectiveRegion)
       .order("month_id")
       .order("week_index")
-      .order("day_index"),
+      .order("day_index")
+      .limit(3000),
   ]);
 
   return (
