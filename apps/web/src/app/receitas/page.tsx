@@ -12,6 +12,7 @@ type Recipe = {
   time_label: string | null;
   description: string | null;
   cached_video_id: string | null;
+  state: string | null;
   data: {
     ings?: { n: string; a: string }[];
     steps?: string[];
@@ -46,7 +47,7 @@ export default async function ReceitasPage() {
   const { data: recipes } = await supabase
     .from("recipes")
     .select(
-      "slug, title, icon, category, time_label, description, cached_video_id, data",
+      "slug, title, icon, category, time_label, description, cached_video_id, state, data",
     )
     .eq("region", effectiveRegion)
     .order("title");

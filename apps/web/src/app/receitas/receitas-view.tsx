@@ -11,6 +11,7 @@ type Recipe = {
   time_label: string | null;
   description: string | null;
   cached_video_id: string | null;
+  state: string | null;
   data: {
     ings?: { n: string; a: string }[];
     steps?: string[];
@@ -181,7 +182,14 @@ export function ReceitasView({
                 <div className="text-[10px] uppercase tracking-wider text-[color:var(--tx2)]">
                   {r.category}
                 </div>
-                <div className="mt-1 text-[10px] text-[color:var(--tx3)]">{r.time_label}</div>
+                <div className="mt-1 flex flex-wrap items-center gap-1.5 text-[10px] text-[color:var(--tx3)]">
+                  {r.state && (
+                    <span className="rounded-sm bg-[color:var(--or)]/15 px-1.5 py-0.5 font-semibold text-[color:var(--or)]">
+                      📍 {r.state}
+                    </span>
+                  )}
+                  <span>{r.time_label}</span>
+                </div>
               </button>
             ))}
           </div>
@@ -216,6 +224,15 @@ export function ReceitasView({
             <h2 className="font-[family-name:var(--font-display)] text-[22px] tracking-wider text-[color:var(--or)]">
               {selected.title}
             </h2>
+            <div className="mb-3 flex flex-wrap items-center gap-1.5 text-[11px] text-[color:var(--tx3)]">
+              {selected.state && (
+                <span className="rounded-sm bg-[color:var(--or)]/15 px-2 py-0.5 font-semibold text-[color:var(--or)]">
+                  📍 {selected.state}
+                </span>
+              )}
+              {selected.category && <span>{selected.category}</span>}
+              {selected.time_label && <span>· {selected.time_label}</span>}
+            </div>
             <p className="mb-4 text-[12px] leading-relaxed text-[color:var(--tx2)]">
               {selected.description}
             </p>
