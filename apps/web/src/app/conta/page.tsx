@@ -10,6 +10,7 @@ import { ReviewForm } from "./review-form";
 import { FeedbackForm } from "./feedback-form";
 import { HealthIntegration } from "./health-integration";
 import { PlanRegenerator } from "./plan-regenerator";
+import { SubscriptionCard } from "./subscription-card";
 
 export default async function ContaPage({
   searchParams,
@@ -67,6 +68,13 @@ export default async function ContaPage({
 
   const adminCheck = await ensureAdmin(supabase);
   const isAdmin = adminCheck.ok;
+
+  const { data: activeSub } = await supabase
+    .from("subscriptions")
+    .select("tier, status, current_period_end, cancel_at_period_end")
+    .eq("user_id", user.id)
+    .eq("status", "active")
+    .maybeSingle();
 
   const healthEnabled = !!process.env.GOOGLE_OAUTH_CLIENT_ID;
 
@@ -206,22 +214,7 @@ export default async function ContaPage({
             </div>
           )}
 
-          <div className="rounded-lg border border-[color:var(--bd)] bg-[color:var(--s1)] p-5">
-            <div className="slbl mb-3">Assinatura</div>
-            <div className="rounded-md bg-[color:var(--s2)] px-4 py-3">
-              <div className="flex items-center justify-between">
-                <span className="font-[family-name:var(--font-condensed)] text-sm font-bold uppercase tracking-wider text-[color:var(--gn)]">
-                  Grátis
-                </span>
-                <span className="text-xs text-[color:var(--tx3)]">
-                  Nível 1 liberado
-                </span>
-              </div>
-            </div>
-            <p className="mt-3 text-xs text-[color:var(--tx3)]">
-              Upgrade para Premium em breve — R$14,90/mês com 12 níveis + coach IA.
-            </p>
-          </div>
+          <SubscriptionCard sub={activeSub} />
         </div>
 
         {/* LGPD — Dados do usuario */}
