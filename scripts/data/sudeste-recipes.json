@@ -278,23 +278,24 @@
         },
         {
           "items": [
-            "Feijoada light (1 concha c/ carnes magras dessalgadas)",
+            "Lombo suino magro grelhado (130g)",
             "Arroz (2 col sopa)",
+            "Feijao preto (3 col sopa)",
             "Couve refogada",
             "Laranja em fatias"
           ],
-          "kcal": 520,
-          "rec": "feijoada_light",
+          "kcal": 490,
+          "rec": "lombo_feijao_preto_couve",
           "months": []
         },
         {
           "items": [
-            "Frango mineiro light (130g frango c/ quiabo refogado)",
+            "Frango ensopado mineiro c/ quiabo (130g peito)",
             "Angu de fuba (3 col sopa)",
             "Salada verde"
           ],
-          "kcal": 500,
-          "rec": "frango_molho_pardo",
+          "kcal": 480,
+          "rec": "frango_quiabo_mineiro",
           "months": []
         },
         {
@@ -310,11 +311,12 @@
         },
         {
           "items": [
-            "Polenta cremosa (3 col sopa) c/ frango desfiado (100g)",
+            "Polenta mole leve (3 col sopa, sem queijo)",
+            "Frango grelhado por cima (120g peito)",
             "Salada verde c/ tomate"
           ],
-          "kcal": 480,
-          "rec": "polenta_cremosa_frango",
+          "kcal": 460,
+          "rec": "polenta_mole_frango_grelhado",
           "months": []
         },
         {
@@ -338,12 +340,13 @@
         },
         {
           "items": [
-            "Strogonoff de frango light (130g frango, creme de leite light s/ batata palha)",
+            "Frango ao molho rustico de tomate (130g peito)",
             "Arroz (2 col sopa)",
-            "Salada"
+            "Brocolis no vapor",
+            "Salada verde"
           ],
-          "kcal": 520,
-          "rec": "strogonoff_frango_light",
+          "kcal": 460,
+          "rec": "frango_molho_tomate_brocolis",
           "months": []
         },
         {
@@ -555,7 +558,7 @@
         },
         {
           "items": [
-            "Lasanha de abobrinha light (sem massa, c/ peito de frango e queijo minas light)"
+            "Lasanha de abobrinha ao molho de tomate fresco (sem creme, c/ 120g peito de frango e queijo minas light)"
           ],
           "kcal": 440,
           "rec": "lasanha_abobrinha_light",
@@ -581,11 +584,12 @@
         },
         {
           "items": [
-            "Torta de frango light (1 fatia pequena, massa integral)",
-            "Salada verde"
+            "Frango desfiado refogado (120g peito)",
+            "Pure de abobora leve (3 col sopa)",
+            "Salada verde c/ tomate"
           ],
-          "kcal": 480,
-          "rec": "torta_frango_integral",
+          "kcal": 430,
+          "rec": "frango_desfiado_pure_abobora",
           "months": []
         },
         {

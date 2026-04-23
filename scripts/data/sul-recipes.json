@@ -277,32 +277,34 @@
         },
         {
           "items": [
-            "Galeto al primo canto assado c/ ervas (130g frango)",
-            "Polenta cremosa (3 col sopa)",
+            "Galeto assado c/ ervas (130g frango)",
+            "Polenta mole leve (3 col sopa, sem queijo)",
             "Salada verde"
           ],
-          "kcal": 500,
+          "kcal": 470,
           "rec": "galeto_primo_canto",
           "months": []
         },
         {
           "items": [
-            "Barreado light (130g carne magra cozida) c/ banana-da-terra assada",
-            "Farinha de mandioca (1 col sopa)",
-            "Arroz (1 col sopa)"
+            "Patinho em cubos ensopado rapido (130g)",
+            "Polenta mole leve (3 col sopa)",
+            "Salada verde c/ tomate",
+            "Banana-da-terra assada (1/2 unidade)"
           ],
-          "kcal": 500,
-          "rec": "barreado_paranaense",
+          "kcal": 480,
+          "rec": "patinho_ensopado_polenta",
           "months": []
         },
         {
           "items": [
-            "Matambre recheado light (120g c/ ovo e cenoura)",
-            "Arroz (2 col sopa)",
-            "Salada"
+            "Patinho grelhado (130g)",
+            "Batata-doce assada (100g)",
+            "Salada de folhas c/ tomate",
+            "Cenoura ralada"
           ],
-          "kcal": 500,
-          "rec": "matambre_recheado",
+          "kcal": 450,
+          "rec": "patinho_batata_doce_salada",
           "months": []
         },
         {
@@ -316,10 +318,13 @@
         },
         {
           "items": [
-            "Risoto leve de pinhao c/ frango desfiado (100g + 100g pinhao cozido + 2 col arroz)"
+            "Arroz integral (2 col sopa)",
+            "Frango grelhado ao alecrim (120g peito)",
+            "Pinhao cozido (15g, acento regional)",
+            "Couve refogada"
           ],
-          "kcal": 520,
-          "rec": "risoto_pinhao",
+          "kcal": 470,
+          "rec": "arroz_frango_alecrim_pinhao_light",
           "months": [
             4,
             5,
@@ -329,12 +334,13 @@
         },
         {
           "items": [
-            "Entrevero de pinhao light (pinhao cozido, 100g carne magra, temperos)",
+            "Frango grelhado em cubos (130g peito)",
             "Arroz (2 col sopa)",
-            "Salada verde"
+            "Pinhao cozido (15g, acento regional)",
+            "Repolho refogado"
           ],
-          "kcal": 510,
-          "rec": "entrevero_pinhao",
+          "kcal": 470,
+          "rec": "frango_arroz_pinhao_repolho",
           "months": [
             4,
             5,
@@ -552,7 +558,7 @@
       "options": [
         {
           "items": [
-            "Sopa de capeletti light (1 bowl)",
+            "Caldo de frango c/ legumes e capeletti integral (1/2 xicara de massa, 1 bowl)",
             "1 torrada integral"
           ],
           "kcal": 420,
@@ -580,11 +586,12 @@
         },
         {
           "items": [
-            "Risoto leve de frango (100g frango + arroz 2 col + ervas)",
-            "Salada"
+            "Arroz integral (2 col sopa)",
+            "Frango desfiado ao alecrim (120g peito)",
+            "Salada verde c/ tomate"
           ],
-          "kcal": 460,
-          "rec": "risoto_frango_ervas",
+          "kcal": 420,
+          "rec": "arroz_frango_alecrim_jantar",
           "months": []
         },
         {
@@ -598,10 +605,11 @@
         },
         {
           "items": [
-            "Sopa de pinhao light (1 tigela grande)"
+            "Sopa de feijao preto c/ carne magra desfiada (60g patinho, 1 bowl)",
+            "1 torrada integral"
           ],
-          "kcal": 430,
-          "rec": "sopa_pinhao",
+          "kcal": 420,
+          "rec": "sopa_feijao_carne_magra",
           "months": [
             4,
             5,
@@ -629,9 +637,10 @@
         },
         {
           "items": [
-            "Sopa de agnolini light (1 bowl)"
+            "Caldo de frango caseiro c/ legumes e agnolini integral (1/2 xicara de massa, 1 bowl)",
+            "1 torrada integral"
           ],
-          "kcal": 440,
+          "kcal": 430,
           "rec": "sopa_agnolini",
           "months": []
         },

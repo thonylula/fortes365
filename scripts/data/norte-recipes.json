@@ -283,22 +283,24 @@
         },
         {
           "items": [
-            "Manicoba light (150g maniva c/ 80g carne magra dessalgada)",
-            "Arroz (2 col sopa)",
-            "Couve refogada"
+            "Frango ao tucupi sem farinha (130g peito)",
+            "Arroz integral (2 col sopa)",
+            "Jambu refogado",
+            "Salada verde"
           ],
-          "kcal": 490,
-          "rec": "manicoba",
+          "kcal": 460,
+          "rec": "frango_tucupi_sem_farinha",
           "months": []
         },
         {
           "items": [
-            "Pirarucu de casaca light (120g pirarucu desfiado, batata, tomate)",
-            "Arroz (1 col sopa)",
-            "Salada verde"
+            "Pirarucu grelhado ao limao (130g)",
+            "Arroz integral (2 col sopa)",
+            "Salada de jambu c/ tomate",
+            "Feijao-de-corda (2 col sopa)"
           ],
-          "kcal": 500,
-          "rec": "pirarucu_casaca",
+          "kcal": 470,
+          "rec": "pirarucu_grelhado_limao",
           "months": []
         },
         {
@@ -350,12 +352,13 @@
         },
         {
           "items": [
-            "Vatapa paraense light (120g frango, leite de castanha light)",
-            "Arroz (2 col sopa)",
-            "Salada"
+            "Camarao ao tucupi (130g) sem creme",
+            "Arroz integral (2 col sopa)",
+            "Quiabo refogado",
+            "Salada verde"
           ],
-          "kcal": 520,
-          "rec": "vatapa_paraense_light",
+          "kcal": 470,
+          "rec": "camarao_tucupi_light",
           "months": []
         },
         {

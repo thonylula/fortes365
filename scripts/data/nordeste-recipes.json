@@ -289,32 +289,35 @@
         },
         {
           "items": [
-            "Moqueca de peixe light (130g peixe, leite de coco light)",
-            "Arroz (2 col sopa)",
-            "Quiabo refogado"
-          ],
-          "kcal": 490,
-          "rec": "moqueca_peixe",
-          "months": []
-        },
-        {
-          "items": [
-            "Moqueca de camarao light (120g camarao, leite de coco light)",
-            "Arroz (2 col sopa)",
+            "Peixe branco grelhado ao molho de tomate caseiro (130g pescada)",
+            "Arroz integral (2 col sopa)",
+            "Feijao-verde (3 col sopa)",
             "Salada verde"
           ],
-          "kcal": 500,
-          "rec": "moqueca_camarao",
+          "kcal": 470,
+          "rec": "peixe_molho_tomate_feijao_verde",
           "months": []
         },
         {
           "items": [
-            "Moqueca de camarao light (150g camarao, leite de coco light)",
-            "Arroz (2 col sopa)",
-            "Quiabo refogado"
+            "Pescada grelhada ao coentro (130g)",
+            "Pirao leve (2 col sopa)",
+            "Quiabo refogado",
+            "Salada verde"
           ],
-          "kcal": 520,
-          "rec": "bobo_camarao",
+          "kcal": 470,
+          "rec": "pescada_coentro_pirao_light",
+          "months": []
+        },
+        {
+          "items": [
+            "Camarao grelhado ao alho (130g)",
+            "Arroz integral (2 col sopa)",
+            "Vinagrete de tomate c/ cebola",
+            "Folhas verdes"
+          ],
+          "kcal": 470,
+          "rec": "camarao_grelhado_alho_integral",
           "months": []
         },
         {
@@ -340,11 +343,13 @@
         },
         {
           "items": [
-            "Panelada light (150g tripas cozidas c/ legumes)",
-            "Arroz (2 col sopa)"
+            "Carne magra ensopada rapido (120g patinho) c/ jerimum (150g)",
+            "Arroz integral (2 col sopa)",
+            "Couve refogada",
+            "Salada"
           ],
-          "kcal": 500,
-          "rec": "panelada",
+          "kcal": 470,
+          "rec": "carne_magra_jerimum_ensopado",
           "months": []
         },
         {
@@ -360,7 +365,7 @@
         },
         {
           "items": [
-            "Sururu refogado light (120g c/ leite de coco light)",
+            "Sururu refogado ao caldo de peixe caseiro (120g)",
             "Arroz (2 col sopa)",
             "Salada verde"
           ],
@@ -561,7 +566,7 @@
         },
         {
           "items": [
-            "Escondidinho light c/ 80g carne de sol magra + pure macaxeira leve"
+            "Escondidinho leve c/ 80g carne de sol magra + pure de macaxeira (2 col) + salada verde"
           ],
           "kcal": 470,
           "rec": "escondidinho_carne_sol",
@@ -569,10 +574,10 @@
         },
         {
           "items": [
-            "Moqueca de peixe light (120g) c/ arroz (2 col sopa) + salada"
+            "Peixe branco grelhado ao tomate (120g) c/ arroz integral (2 col sopa) + feijao-verde + salada"
           ],
-          "kcal": 470,
-          "rec": "moqueca_peixe_light",
+          "kcal": 450,
+          "rec": "peixe_tomate_jantar",
           "months": []
         },
         {
