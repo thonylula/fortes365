@@ -11,6 +11,14 @@ export type SubscriptionInfo = {
 
 const FREE_MONTHS = [0]; // Janeiro
 
+function getAdminEmails(): string[] {
+  const raw = process.env.ADMIN_EMAILS ?? "";
+  return raw
+    .split(",")
+    .map((e) => e.trim().toLowerCase())
+    .filter(Boolean);
+}
+
 export async function getSubscriptionInfo(): Promise<SubscriptionInfo> {
   const supabase = await createClient();
   const {
@@ -19,6 +27,12 @@ export async function getSubscriptionInfo(): Promise<SubscriptionInfo> {
 
   if (!user) {
     return { isLoggedIn: false, isPremium: false, tier: "anonymous", freeMonths: FREE_MONTHS };
+  }
+
+  // Admin bypass: email na allowlist ADMIN_EMAILS tem acesso total sem precisar
+  // de row em subscriptions. Util pra DEV/suporte sem inflar a tabela.
+  if (user.email && getAdminEmails().includes(user.email.toLowerCase())) {
+    return { isLoggedIn: true, isPremium: true, tier: "admin", freeMonths: FREE_MONTHS };
   }
 
   const { data: sub } = await supabase
