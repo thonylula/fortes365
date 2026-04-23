@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { NavTabs } from "@/components/nav-tabs";
 import { PaywallModal } from "@/components/paywall-modal";
 import type { SubscriptionInfo } from "@/lib/supabase/guards";
+import { getFruitsForMonth } from "@/lib/regional-fruits";
 
 type Month = { id: number; short_name: string; name: string; season: string };
 type MealRow = {
@@ -189,7 +190,12 @@ export function NutricaoView({
             <h1 className="font-[family-name:var(--font-display)] text-xl tracking-wider">
               {month.name} · {DAY_SHORT[dayIndex]}
             </h1>
-            <p className="text-xs text-[color:var(--tx3)]">{month.season}</p>
+            <p className="text-xs text-[color:var(--tx3)]">
+              <span className="font-[family-name:var(--font-condensed)] uppercase tracking-[1.5px] text-[color:var(--or)]">
+                Frutas do mês:
+              </span>{" "}
+              {getFruitsForMonth(effectiveRegion, month.id)}
+            </p>
           </div>
         </div>
 

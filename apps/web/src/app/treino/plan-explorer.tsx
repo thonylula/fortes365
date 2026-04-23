@@ -446,7 +446,7 @@ export function PlanExplorer({
           ))}
         </div>
         <span className={`pchip ${month.phase_css_class} shrink-0`}>
-          {month.phase_label} · {month.season}
+          {month.phase_label}
         </span>
       </div>
 
