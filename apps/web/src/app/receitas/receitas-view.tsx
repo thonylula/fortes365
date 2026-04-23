@@ -15,7 +15,6 @@ type Recipe = {
     ings?: { n: string; a: string }[];
     steps?: string[];
     tip?: string;
-    porcao?: { l: string; j: string };
   };
 };
 
@@ -253,23 +252,6 @@ export function ReceitasView({
                 </a>
               )}
             </div>
-
-            {selected.data.porcao && (
-              <div className="mb-4 flex flex-wrap gap-1.5">
-                <span
-                  className="rounded-sm px-2 py-0.5 font-[family-name:var(--font-condensed)] text-[10px] font-semibold"
-                  style={{ background: "var(--ord)", color: "var(--or)" }}
-                >
-                  {selected.data.porcao.l}
-                </span>
-                <span
-                  className="rounded-sm px-2 py-0.5 font-[family-name:var(--font-condensed)] text-[10px] font-semibold"
-                  style={{ background: "var(--pkd)", color: "var(--pk)" }}
-                >
-                  {selected.data.porcao.j}
-                </span>
-              </div>
-            )}
 
             {selected.data.ings && selected.data.ings.length > 0 && (
               <div className="mb-4">

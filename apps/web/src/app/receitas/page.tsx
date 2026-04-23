@@ -16,7 +16,6 @@ type Recipe = {
     ings?: { n: string; a: string }[];
     steps?: string[];
     tip?: string;
-    porcao?: { l: string; j: string };
   };
 };
 
