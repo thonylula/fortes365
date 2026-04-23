@@ -41,12 +41,15 @@ async function searchYouTube(query: string): Promise<string | null> {
 export async function GET(req: NextRequest) {
   const q = req.nextUrl.searchParams.get("q");
   const slug = req.nextUrl.searchParams.get("slug");
-  const kind = req.nextUrl.searchParams.get("kind") === "recipe" ? "recipe" : "exercise";
-  const cacheTable = kind === "recipe" ? "recipes" : "exercises";
+  const rawKind = req.nextUrl.searchParams.get("kind");
+  const kind: "recipe" | "exercise" | "stretch" =
+    rawKind === "recipe" ? "recipe" : rawKind === "stretch" ? "stretch" : "exercise";
+  // stretches nao tem tabela propria (stretches vivem em plan_days.raw). sem cache no DB.
+  const cacheTable = kind === "recipe" ? "recipes" : kind === "exercise" ? "exercises" : null;
   if (!q) return NextResponse.json({ error: "Missing q" }, { status: 400 });
 
   // 1) cache hit
-  if (slug) {
+  if (slug && cacheTable) {
     const { data } = await supabaseAdmin
       .from(cacheTable)
       .select("cached_video_id")
@@ -78,6 +81,14 @@ export async function GET(req: NextRequest) {
           q,
           stripAccents(q),
         ]
+      : kind === "stretch"
+      ? [
+          `${q} alongamento como fazer`,
+          `${q} alongamento yoga`,
+          `${q} alongamento`,
+          q,
+          stripAccents(q),
+        ]
       : [
           `${q} como fazer exercicio`,
           `${q} calistenia tutorial`,
@@ -96,7 +107,7 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: "No video found" }, { status: 404 });
   }
 
-  if (slug) {
+  if (slug && cacheTable) {
     await supabaseAdmin
       .from(cacheTable)
       .update({ cached_video_id: videoId })

@@ -1653,21 +1653,121 @@ function MobilidadeBlock(ctx: DayCtx) {
         <div className="slbl mb-2.5">Alongamentos</div>
         <div className="flex flex-col gap-[7px]">
           {stretches.map((s, i) => (
-            <div
-              key={i}
-              className="flex items-center justify-between rounded-lg bg-[color:var(--s2)] px-3 py-2 text-[12px]"
-              style={{ borderLeft: "3px solid var(--yw)" }}
-            >
-              <span className="font-semibold">{s.n}</span>
-              <span className="font-[family-name:var(--font-condensed)] text-[10px] font-bold text-[color:var(--yw)]">
-                {s.dur}
-              </span>
-            </div>
+            <StretchRow key={i} name={s.n} dur={s.dur} />
           ))}
         </div>
       </div>
 
       <ExtraExercises ctx={ctx} />
+    </div>
+  );
+}
+
+type StretchVideoState =
+  | { status: "idle" }
+  | { status: "loading" }
+  | { status: "ready"; videoId: string }
+  | { status: "error" };
+
+function StretchRow({ name, dur }: { name: string; dur: string }) {
+  const [expanded, setExpanded] = useState(false);
+  const [video, setVideo] = useState<StretchVideoState>({ status: "idle" });
+
+  const cacheKey = `yt4_stretch_${name
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "")
+    .replace(/[^a-z0-9]+/g, "_")
+    .replace(/^_+|_+$/g, "")}`;
+
+  async function loadVideo() {
+    try {
+      const cached = localStorage.getItem(cacheKey);
+      if (cached) {
+        setVideo({ status: "ready", videoId: cached });
+        return;
+      }
+    } catch {}
+
+    setVideo({ status: "loading" });
+    try {
+      const url = `/api/youtube-search?q=${encodeURIComponent(name)}&kind=stretch`;
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`status ${res.status}`);
+      const json = (await res.json()) as { videoId?: string };
+      if (!json.videoId) throw new Error("no videoId");
+      try {
+        localStorage.setItem(cacheKey, json.videoId);
+      } catch {}
+      setVideo({ status: "ready", videoId: json.videoId });
+    } catch {
+      setVideo({ status: "error" });
+    }
+  }
+
+  function handleClick() {
+    if (!expanded && video.status === "idle") {
+      loadVideo();
+    }
+    setExpanded((e) => !e);
+  }
+
+  return (
+    <div
+      className="overflow-hidden rounded-lg bg-[color:var(--s2)]"
+      style={{ borderLeft: "3px solid var(--yw)" }}
+    >
+      <button
+        type="button"
+        onClick={handleClick}
+        aria-expanded={expanded}
+        className="flex w-full items-center justify-between px-3 py-2 text-[12px] text-left hover:bg-[color:var(--s3)]/50 transition-colors"
+      >
+        <span className="flex items-center gap-2">
+          <span
+            className="text-[10px] text-[color:var(--tx3)] transition-transform"
+            style={{ transform: expanded ? "rotate(90deg)" : "rotate(0deg)" }}
+            aria-hidden
+          >
+            ▶
+          </span>
+          <span className="font-semibold">{name}</span>
+        </span>
+        <span className="font-[family-name:var(--font-condensed)] text-[10px] font-bold text-[color:var(--yw)]">
+          {dur}
+        </span>
+      </button>
+      {expanded && (
+        <div className="border-t border-[color:var(--bd)] bg-black/20 p-2">
+          {video.status === "loading" && (
+            <div className="flex aspect-video w-full items-center justify-center rounded bg-[color:var(--s3)] text-[11px] text-[color:var(--tx3)]">
+              Buscando vídeo…
+            </div>
+          )}
+          {video.status === "ready" && (
+            <div className="overflow-hidden rounded bg-black">
+              <iframe
+                title={`Vídeo: ${name}`}
+                src={`https://www.youtube-nocookie.com/embed/${video.videoId}?rel=0&modestbranding=1`}
+                className="aspect-video w-full"
+                loading="lazy"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          )}
+          {video.status === "error" && (
+            <a
+              href={`https://www.youtube.com/results?search_query=${encodeURIComponent(name + " alongamento")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex aspect-video w-full items-center justify-center rounded border border-dashed border-[color:var(--bd)] bg-[color:var(--s3)] text-[12px] text-[color:var(--or)]"
+            >
+              Buscar no YouTube ↗
+            </a>
+          )}
+        </div>
+      )}
     </div>
   );
 }
