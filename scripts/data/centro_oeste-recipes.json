@@ -84,6 +84,27 @@
           "kcal": 270,
           "rec": null,
           "months": []
+        },
+        {
+          "items": [
+            "Polvilho azedo",
+            "Queijo meia-cura ralado",
+            "Ovos",
+            "Leite desnatado"
+          ],
+          "kcal": 300,
+          "rec": "chipa_assada_ms",
+          "months": []
+        },
+        {
+          "items": [
+            "1 tapioca pequena c/ queijo minas light",
+            "Café com leite desnatado",
+            "1 fruta"
+          ],
+          "kcal": 290,
+          "rec": null,
+          "months": []
         }
       ]
     },
@@ -363,6 +384,193 @@
           "kcal": 500,
           "rec": "arroz_sua_de_porco",
           "months": []
+        },
+        {
+          "items": [
+            "Filé de tucunaré",
+            "Arroz branco cozido",
+            "Folhas verdes c/ tomate",
+            "Limão, alho, coentro"
+          ],
+          "kcal": 510,
+          "rec": "tucunare_paranoa_df",
+          "months": []
+        },
+        {
+          "items": [
+            "Filé de peixe branco",
+            "Abobrinha, cenoura em fatias",
+            "Tomate, cebola",
+            "Limão, alho, coentro"
+          ],
+          "kcal": 510,
+          "rec": "peixe_telha_df",
+          "months": []
+        },
+        {
+          "items": [
+            "Peito de frango em cubos",
+            "Arroz branco cru",
+            "Caroços de pequi",
+            "Cebola, alho, pimentão"
+          ],
+          "kcal": 510,
+          "rec": "galinhada_df",
+          "months": []
+        },
+        {
+          "items": [
+            "Farinha integral",
+            "Óleo, água",
+            "Peito de frango desfiado cozido",
+            "Tomate, cebola, azeitona"
+          ],
+          "kcal": 510,
+          "rec": "empadao_mini_df",
+          "months": []
+        },
+        {
+          "items": [
+            "Carne seca dessalgada desfiada",
+            "Mandioca cozida em cubos",
+            "Cebola, alho, tomate",
+            "Folhas verdes"
+          ],
+          "kcal": 510,
+          "rec": "carne_seca_mandioca_df",
+          "months": []
+        },
+        {
+          "items": [
+            "Peito de frango em cubos",
+            "Arroz branco cozido",
+            "Caroços de pequi",
+            "Folhas verdes"
+          ],
+          "kcal": 510,
+          "rec": "arroz_pequi_frango_df",
+          "months": []
+        },
+        {
+          "items": [
+            "Filé de frango caipira",
+            "Batata-doce em cubos",
+            "Cenoura em rodelas",
+            "Alecrim, alho, limão"
+          ],
+          "kcal": 510,
+          "rec": "caipira_forno_df",
+          "months": []
+        },
+        {
+          "items": [
+            "Carne seca dessalgada desfiada",
+            "Farinha de mandioca torrada",
+            "Cebola, alho, coentro",
+            "Folhas verdes"
+          ],
+          "kcal": 510,
+          "rec": "pacoca_cerrado_df",
+          "months": []
+        },
+        {
+          "items": [
+            "Filé de pintado",
+            "Mandioca cozida em cubos",
+            "Folhas verdes c/ tomate",
+            "Limão, alho, coentro"
+          ],
+          "kcal": 510,
+          "rec": "pintado_grelhado_ms",
+          "months": []
+        },
+        {
+          "items": [
+            "Fubá ou farinha de milho",
+            "Leite desnatado",
+            "Queijo fresco ralado",
+            "Ovos"
+          ],
+          "kcal": 510,
+          "rec": "sopa_paraguaia_ms",
+          "months": []
+        },
+        {
+          "items": [
+            "Posta de pacu",
+            "Folha de bananeira grande",
+            "Limão, alho, coentro",
+            "Arroz branco (acompanhamento)"
+          ],
+          "kcal": 510,
+          "rec": "pacu_assado_ms",
+          "months": []
+        },
+        {
+          "items": [
+            "Patinho em cubos",
+            "Mandioca, batata, cenoura em cubos",
+            "Repolho em tiras",
+            "Cebola, alho, louro"
+          ],
+          "kcal": 510,
+          "rec": "puchero_ms",
+          "months": []
+        },
+        {
+          "items": [
+            "Peito de galinha caipira",
+            "Tomate, cebola, pimentão",
+            "Arroz branco cozido",
+            "Cheiro-verde, coentro"
+          ],
+          "kcal": 510,
+          "rec": "galinha_pantaneira_ms",
+          "months": []
+        },
+        {
+          "items": [
+            "Carne seca dessalgada desfiada",
+            "Mandioca cozida em cubos",
+            "Cebola, alho, coentro",
+            "Folhas verdes"
+          ],
+          "kcal": 510,
+          "rec": "mbore_ms",
+          "months": []
+        },
+        {
+          "items": [
+            "Arroz branco cozido",
+            "Carne seca desfiada",
+            "Cebola, alho, tomate",
+            "Cheiro-verde, coentro"
+          ],
+          "kcal": 510,
+          "rec": "reviro_ms",
+          "months": []
+        },
+        {
+          "items": [
+            "Peito de frango caipira em cubos",
+            "Quiabo em rodelas",
+            "Angu de fubá",
+            "Tomate, cebola, alho"
+          ],
+          "kcal": 510,
+          "rec": "frango_quiabo_go",
+          "months": []
+        },
+        {
+          "items": [
+            "Milho verde em grãos",
+            "Peito de frango desfiado cozido",
+            "Queijo minas light ralado",
+            "Cebola, alho"
+          ],
+          "kcal": 510,
+          "rec": "pamonha_salgada_go",
+          "months": []
         }
       ]
     },
@@ -600,6 +808,17 @@
           ],
           "kcal": 440,
           "rec": "arroz_carne_seca",
+          "months": []
+        },
+        {
+          "items": [
+            "Peito de frango caipira desfiado",
+            "Cenoura, batata-doce, abobrinha",
+            "Caldo de galinha caseiro",
+            "Cebola, alho, cheiro-verde"
+          ],
+          "kcal": 440,
+          "rec": "sopa_legumes_caipira_df",
           "months": []
         }
       ]

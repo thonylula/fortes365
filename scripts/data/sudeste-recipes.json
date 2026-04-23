@@ -369,6 +369,193 @@
           "kcal": 500,
           "rec": "quibe_assado_paulistano",
           "months": []
+        },
+        {
+          "items": [
+            "Filé de peixe-galo (ou badejo)",
+            "Arroz branco cozido",
+            "Folhas verdes c/ tomate",
+            "Limão, alho, coentro"
+          ],
+          "kcal": 510,
+          "rec": "peixe_galo_grelhado_es",
+          "months": []
+        },
+        {
+          "items": [
+            "Carne de siri desfiada",
+            "Tomate, cebola, pimentão picados",
+            "Urucum (colorau)",
+            "Arroz branco cozido"
+          ],
+          "kcal": 510,
+          "rec": "muma_siri_light_es",
+          "months": []
+        },
+        {
+          "items": [
+            "Camarões limpos",
+            "Tomate, cebola, pimentão em rodelas",
+            "Urucum em pó",
+            "Arroz branco cozido"
+          ],
+          "kcal": 510,
+          "rec": "moqueca_camarao_capixaba",
+          "months": []
+        },
+        {
+          "items": [
+            "Carne de siri + camarão",
+            "Palmito picado",
+            "Claras batidas em neve",
+            "Tomate, cebola, coentro"
+          ],
+          "kcal": 510,
+          "rec": "torta_capixaba_light",
+          "months": []
+        },
+        {
+          "items": [
+            "Filé de peixe branco",
+            "Banana-da-terra madura em fatias",
+            "Urucum em pó",
+            "Folhas verdes"
+          ],
+          "kcal": 510,
+          "rec": "peixe_urucum_banana_es",
+          "months": []
+        },
+        {
+          "items": [
+            "Camarões limpos",
+            "Mandioca cozida amassada",
+            "Leite de coco light",
+            "Tomate, cebola, pimentão"
+          ],
+          "kcal": 510,
+          "rec": "bobo_camarao_capixaba_light",
+          "months": []
+        },
+        {
+          "items": [
+            "Postas de robalo",
+            "Tomate, cebola, pimentão em rodelas",
+            "Urucum em pó",
+            "Arroz branco cozido"
+          ],
+          "kcal": 510,
+          "rec": "moqueca_robalo_es",
+          "months": []
+        },
+        {
+          "items": [
+            "Filé de peixe branco",
+            "Farinha de mandioca fina",
+            "Caldo de peixe (ou legumes)",
+            "Cebola, alho, coentro, urucum"
+          ],
+          "kcal": 510,
+          "rec": "pirao_capixaba_light",
+          "months": []
+        },
+        {
+          "items": [
+            "Filé mignon em medalhão",
+            "Alho em lâminas",
+            "Arroz branco cozido",
+            "Folhas verdes c/ tomate"
+          ],
+          "kcal": 510,
+          "rec": "file_oswaldo_aranha_light",
+          "months": []
+        },
+        {
+          "items": [
+            "Filé mignon em cubinhos",
+            "Tomate, cebola picados",
+            "Arroz branco cozido",
+            "Ovo para pochê"
+          ],
+          "kcal": 510,
+          "rec": "picadinho_carioca_light",
+          "months": []
+        },
+        {
+          "items": [
+            "Lombo de bacalhau dessalgado",
+            "Batata cozida em fatias",
+            "Cebola em rodelas",
+            "Pimentão em tiras"
+          ],
+          "kcal": 510,
+          "rec": "bacalhau_assado_rj",
+          "months": []
+        },
+        {
+          "items": [
+            "Peito de frango grelhado em tiras",
+            "Canjica branca cozida",
+            "Caldo de legumes",
+            "Cebola, alho, tomate"
+          ],
+          "kcal": 510,
+          "rec": "frango_xerem_rj",
+          "months": []
+        },
+        {
+          "items": [
+            "Costela magra em pedaços",
+            "Mandioca cozida em cubos",
+            "Cebola, alho, tomate, louro",
+            "Folhas verdes"
+          ],
+          "kcal": 510,
+          "rec": "costela_mandioca_rj",
+          "months": []
+        },
+        {
+          "items": [
+            "Feijão preto cozido com caldo",
+            "Lombo suíno magro em cubos",
+            "Carne seca desfiada dessalgada",
+            "Arroz branco cozido"
+          ],
+          "kcal": 510,
+          "rec": "feijoada_light_rj",
+          "months": []
+        },
+        {
+          "items": [
+            "Mandioquinha cozida e amassada",
+            "Farinha de trigo",
+            "Ovo",
+            "Peito de frango desfiado cozido"
+          ],
+          "kcal": 510,
+          "rec": "nhoque_mandioquinha_sp",
+          "months": []
+        },
+        {
+          "items": [
+            "Peito de frango em tiras",
+            "Macarrão para yakisoba integral",
+            "Brócolis, cenoura, repolho, pimentão",
+            "Shoyu light, gengibre ralado, alho"
+          ],
+          "kcal": 510,
+          "rec": "yakisoba_light_sp",
+          "months": []
+        },
+        {
+          "items": [
+            "Peito de frango grelhado (150g)",
+            "Arroz + feijão (2 col sopa cada)",
+            "Salada verde c/ tomate",
+            "1 fatia laranja"
+          ],
+          "kcal": 500,
+          "rec": "peito_frango_grelhado",
+          "months": []
         }
       ]
     },
@@ -609,6 +796,17 @@
           ],
           "kcal": 420,
           "rec": "polenta_mole_tomate",
+          "months": []
+        },
+        {
+          "items": [
+            "Filé de peixe branco em cubos",
+            "Batata em cubos pequenos",
+            "Tomate, cebola, pimentão",
+            "Caldo de legumes caseiro"
+          ],
+          "kcal": 440,
+          "rec": "caldo_peixe_capixaba",
           "months": []
         }
       ]

@@ -387,6 +387,116 @@
           "kcal": 480,
           "rec": "camarao_milanesa",
           "months": []
+        },
+        {
+          "items": [
+            "Patinho em cubos",
+            "Cebola, alho, louro, cominho",
+            "Farinha de mandioca fina",
+            "Banana-da-terra em rodelas"
+          ],
+          "kcal": 510,
+          "rec": "barreado_paranaense_light",
+          "months": []
+        },
+        {
+          "items": [
+            "Peito de frango em filé",
+            "Pinhão cozido descascado",
+            "Cebola roxa em pluma",
+            "Folhas verdes c/ tomate"
+          ],
+          "kcal": 510,
+          "rec": "pinhao_frango_curitiba",
+          "months": []
+        },
+        {
+          "items": [
+            "Posta de tainha",
+            "Arroz branco cozido",
+            "Folhas verdes c/ tomate",
+            "Limão, alho, salsa"
+          ],
+          "kcal": 510,
+          "rec": "tainha_grelhada_pr",
+          "months": []
+        },
+        {
+          "items": [
+            "Pernil de carneiro magro em cubos",
+            "Mandioca cozida em cubos",
+            "Cebola, alho, vinho tinto seco",
+            "Alecrim, louro, colorau"
+          ],
+          "kcal": 510,
+          "rec": "carneiro_buraco_light_pr",
+          "months": []
+        },
+        {
+          "items": [
+            "Farinha de trigo",
+            "Ovo",
+            "Peito de frango desfiado cozido",
+            "Cebola refogada, alho, salsa"
+          ],
+          "kcal": 510,
+          "rec": "pierogi_frango_pr",
+          "months": []
+        },
+        {
+          "items": [
+            "Patinho desfiado cozido",
+            "Pimentão verde e vermelho em tiras",
+            "Cebola em pluma",
+            "Azeitona preta, tomate, salsa"
+          ],
+          "kcal": 510,
+          "rec": "carne_louca_paranaense",
+          "months": []
+        },
+        {
+          "items": [
+            "Quirera de milho (canjiquinha amarela)",
+            "Peito de frango desfiado cozido",
+            "Couve em tiras finas",
+            "Caldo de galinha"
+          ],
+          "kcal": 510,
+          "rec": "quirera_frango_pr",
+          "months": []
+        },
+        {
+          "items": [
+            "Batata cozida amassada",
+            "Espinafre cozido picado",
+            "Farinha de trigo",
+            "Ovo"
+          ],
+          "kcal": 510,
+          "rec": "nhoque_espinafre_pr",
+          "months": []
+        },
+        {
+          "items": [
+            "Peito de marreco (ou pato) magro",
+            "Maçã verde em cubos",
+            "Cebola refogada, sálvia, alecrim",
+            "Farinha de mandioca (leve)"
+          ],
+          "kcal": 510,
+          "rec": "marreco_recheado_sc_light",
+          "months": []
+        },
+        {
+          "items": [
+            "Camarão grande limpo",
+            "Arroz branco cozido",
+            "Folhas verdes c/ tomate",
+            "Limão, alho, salsa"
+          ],
+          "kcal": 510,
+          "rec": "camarao_barra_velha_sc",
+          "months": []
         }
       ]
     },
@@ -651,6 +761,28 @@
           ],
           "kcal": 480,
           "rec": "frango_assado_batata_sul",
+          "months": []
+        },
+        {
+          "items": [
+            "Ostras frescas abertas",
+            "Queijo minas light ralado",
+            "Alho picado, salsa, manjericão",
+            "Limão, azeite, sal"
+          ],
+          "kcal": 440,
+          "rec": "ostras_gratinadas_sc_light",
+          "months": []
+        },
+        {
+          "items": [
+            "Filé de peixe branco",
+            "Endro e alecrim frescos",
+            "Batata cozida em rodelas",
+            "Limão, alho, mostarda dijon"
+          ],
+          "kcal": 440,
+          "rec": "peixe_pomerano_sc",
           "months": []
         }
       ]

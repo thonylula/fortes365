@@ -391,6 +391,435 @@
           "kcal": 490,
           "rec": "moqueca_amazonica",
           "months": []
+        },
+        {
+          "items": [
+            "Filé de pirarucu fresco",
+            "Mandioca amarela em cubos",
+            "Limão, alho, coentro",
+            "Folhas verdes"
+          ],
+          "kcal": 510,
+          "rec": "pirarucu_grelhado_ac",
+          "months": []
+        },
+        {
+          "items": [
+            "Pirarucu salgado dessalgado",
+            "Farinha de mandioca amarela",
+            "Cebola, alho, pimenta-de-cheiro",
+            "Folhas verdes"
+          ],
+          "kcal": 510,
+          "rec": "pacoca_pirarucu_ac",
+          "months": []
+        },
+        {
+          "items": [
+            "Posta de dourado",
+            "Batata e cenoura em cubos",
+            "Tomate, cebola, pimentão",
+            "Arroz branco (acompanhamento)"
+          ],
+          "kcal": 510,
+          "rec": "caldeirada_dourado_ac",
+          "months": []
+        },
+        {
+          "items": [
+            "Pirarucu dessalgado desfiado",
+            "Mandioca cozida em cubos",
+            "Banana-da-terra assada",
+            "Cebola, alho, coentro"
+          ],
+          "kcal": 510,
+          "rec": "baixaria_light_ac",
+          "months": []
+        },
+        {
+          "items": [
+            "Peito de frango desfiado cozido",
+            "Banana-da-terra em cubos",
+            "Farinha de mandioca",
+            "Cebola, alho, coentro"
+          ],
+          "kcal": 510,
+          "rec": "farofa_banana_frango_ac",
+          "months": []
+        },
+        {
+          "items": [
+            "Peito de galinha caipira",
+            "Mandioca descascada em cubos",
+            "Tomate, cebola, alho",
+            "Coentro, cheiro-verde, azeite"
+          ],
+          "kcal": 510,
+          "rec": "galinha_caipira_mandioca_ac",
+          "months": []
+        },
+        {
+          "items": [
+            "Peito de frango em filés",
+            "Tucupi (caldo amarelo)",
+            "Arroz branco cozido",
+            "Jambu em folhas"
+          ],
+          "kcal": 510,
+          "rec": "frango_tucupi_ac",
+          "months": []
+        },
+        {
+          "items": [
+            "Feijão-de-corda cozido",
+            "Carne seca dessalgada desfiada",
+            "Cebola, alho, tomate",
+            "Arroz branco cozido (acompanhamento)"
+          ],
+          "kcal": 510,
+          "rec": "feijao_corda_carne_seca_ac",
+          "months": []
+        },
+        {
+          "items": [
+            "Filé de tucunaré",
+            "Arroz branco cozido",
+            "Folhas verdes c/ tomate",
+            "Limão, alho, azeite"
+          ],
+          "kcal": 510,
+          "rec": "tucunare_grelhado_ap",
+          "months": []
+        },
+        {
+          "items": [
+            "Posta de gurijuba",
+            "Batata-doce em rodelas",
+            "Tomate, cebola, pimentão",
+            "Limão, alho, coentro"
+          ],
+          "kcal": 510,
+          "rec": "gurijuba_forno_ap",
+          "months": []
+        },
+        {
+          "items": [
+            "Filé de pirarucu",
+            "Mandioca em cubos",
+            "Folhas verdes",
+            "Limão, alho, coentro"
+          ],
+          "kcal": 510,
+          "rec": "pirarucu_limao_ap",
+          "months": []
+        },
+        {
+          "items": [
+            "Camarão grande limpo",
+            "Jambu em folhas",
+            "Arroz branco cozido",
+            "Alho, limão, azeite"
+          ],
+          "kcal": 510,
+          "rec": "camarao_jambu_ap",
+          "months": []
+        },
+        {
+          "items": [
+            "Costela de peixe grande",
+            "Limão, alho, coentro",
+            "Arroz branco (acompanhamento)",
+            "Salada verde"
+          ],
+          "kcal": 510,
+          "rec": "costela_peixe_assada_ap",
+          "months": []
+        },
+        {
+          "items": [
+            "Filé de peixe branco",
+            "Leite de coco light",
+            "Arroz branco cozido",
+            "Folhas verdes"
+          ],
+          "kcal": 510,
+          "rec": "peixe_leite_coco_light_ap",
+          "months": []
+        },
+        {
+          "items": [
+            "Peito de frango desfiado cozido",
+            "Castanha-do-pará picada",
+            "Farinha de mandioca",
+            "Cebola, alho, cheiro-verde"
+          ],
+          "kcal": 510,
+          "rec": "farofa_castanha_frango_ap",
+          "months": []
+        },
+        {
+          "items": [
+            "Costela de tambaqui",
+            "Batata-doce em rodelas",
+            "Cebola, pimentão, tomate",
+            "Limão, alho, coentro"
+          ],
+          "kcal": 510,
+          "rec": "tambaqui_forno_ro",
+          "months": []
+        },
+        {
+          "items": [
+            "Filé de pintado",
+            "Arroz branco cozido",
+            "Tomate, cebola, cheiro-verde (vinagrete)",
+            "Folhas verdes"
+          ],
+          "kcal": 510,
+          "rec": "pintado_grelhado_ro",
+          "months": []
+        },
+        {
+          "items": [
+            "Filé de pirarucu",
+            "Legumes mistos em cubos",
+            "Tomate, cebola, pimentão",
+            "Limão, alho, coentro"
+          ],
+          "kcal": 510,
+          "rec": "pirarucu_forno_ro",
+          "months": []
+        },
+        {
+          "items": [
+            "Peito de frango caipira",
+            "Mandioca em cubos",
+            "Tomate, cebola, alho",
+            "Coentro, cheiro-verde"
+          ],
+          "kcal": 510,
+          "rec": "frango_caipira_mandioca_ro",
+          "months": []
+        },
+        {
+          "items": [
+            "Feijão carioca cozido",
+            "Carne seca dessalgada desfiada",
+            "Cebola, alho, tomate",
+            "Arroz branco cozido (acompanhamento)"
+          ],
+          "kcal": 510,
+          "rec": "feijao_carne_seca_ro",
+          "months": []
+        },
+        {
+          "items": [
+            "Costela bovina magra",
+            "Sal grosso",
+            "Arroz branco cozido",
+            "Folhas verdes e vinagrete"
+          ],
+          "kcal": 510,
+          "rec": "costela_brasa_ro",
+          "months": []
+        },
+        {
+          "items": [
+            "Arroz branco cozido",
+            "Peixe branco cozido desfiado",
+            "Cebola, alho, tomate",
+            "Coentro, cheiro-verde"
+          ],
+          "kcal": 510,
+          "rec": "arroz_peixe_desfiado_ro",
+          "months": []
+        },
+        {
+          "items": [
+            "Filé de peixe (tambaqui/surubim)",
+            "Pimenta-de-cheiro fresca",
+            "Chicória ou coentro",
+            "Mandioca cozida em cubos"
+          ],
+          "kcal": 510,
+          "rec": "damurida_light_rr",
+          "months": []
+        },
+        {
+          "items": [
+            "Lombo suíno magro em cubos",
+            "Batata e cenoura em cubos",
+            "Tomate, cebola, alho",
+            "Arroz branco cozido (acompanhamento)"
+          ],
+          "kcal": 510,
+          "rec": "porco_ensopado_rr",
+          "months": []
+        },
+        {
+          "items": [
+            "Posta de tambaqui",
+            "Arroz branco cozido",
+            "Folhas verdes c/ tomate",
+            "Limão, alho, coentro"
+          ],
+          "kcal": 510,
+          "rec": "tambaqui_rr",
+          "months": []
+        },
+        {
+          "items": [
+            "Carne seca dessalgada desfiada",
+            "Mandioca cozida em cubos",
+            "Cebola, alho, coentro",
+            "Folhas verdes"
+          ],
+          "kcal": 510,
+          "rec": "carne_seca_mandioca_rr",
+          "months": []
+        },
+        {
+          "items": [
+            "Peito de frango caipira",
+            "Arroz branco cozido",
+            "Tomate, cebola, alho",
+            "Coentro, cheiro-verde"
+          ],
+          "kcal": 510,
+          "rec": "frango_caipira_rr",
+          "months": []
+        },
+        {
+          "items": [
+            "Arroz branco cozido",
+            "Carne seca dessalgada desfiada",
+            "Cebola, alho, tomate, pimentão",
+            "Cheiro-verde, coentro"
+          ],
+          "kcal": 510,
+          "rec": "arroz_carreteiro_rr",
+          "months": []
+        },
+        {
+          "items": [
+            "Filé de peixe firme",
+            "Folha de bananeira grande",
+            "Limão, alho, coentro",
+            "Arroz branco cozido (acompanhamento)"
+          ],
+          "kcal": 510,
+          "rec": "peixe_folha_rr",
+          "months": []
+        },
+        {
+          "items": [
+            "Feijão-de-corda cozido",
+            "Cebola, alho, tomate",
+            "Arroz branco cozido (acompanhamento)",
+            "Coentro, cheiro-verde"
+          ],
+          "kcal": 510,
+          "rec": "feijao_corda_rr",
+          "months": []
+        },
+        {
+          "items": [
+            "Peito de frango desfiado cozido",
+            "Farinha de mandioca",
+            "Cebola, alho",
+            "Cheiro-verde, coentro"
+          ],
+          "kcal": 510,
+          "rec": "farofa_frango_rr",
+          "months": []
+        },
+        {
+          "items": [
+            "Peito de galinha caipira",
+            "Caroços de pequi cozidos",
+            "Arroz branco cozido",
+            "Cebola, alho, açafrão"
+          ],
+          "kcal": 510,
+          "rec": "galinha_pequi_to",
+          "months": []
+        },
+        {
+          "items": [
+            "Posta de pacu",
+            "Folha de bananeira",
+            "Limão, alho, coentro",
+            "Arroz branco (acompanhamento)"
+          ],
+          "kcal": 510,
+          "rec": "pacu_assado_to",
+          "months": []
+        },
+        {
+          "items": [
+            "Filé de tucunaré",
+            "Farinha d'água",
+            "Arroz branco cozido",
+            "Folhas verdes c/ tomate"
+          ],
+          "kcal": 510,
+          "rec": "tucunare_to",
+          "months": []
+        },
+        {
+          "items": [
+            "Peito de frango caipira",
+            "Arroz branco cozido",
+            "Tomate, cebola, alho",
+            "Folhas verdes"
+          ],
+          "kcal": 510,
+          "rec": "frango_caipira_to",
+          "months": []
+        },
+        {
+          "items": [
+            "Arroz branco cozido",
+            "Carne seca dessalgada desfiada",
+            "Cebola, alho, tomate",
+            "Cheiro-verde, coentro"
+          ],
+          "kcal": 510,
+          "rec": "maria_isabel_to",
+          "months": []
+        },
+        {
+          "items": [
+            "Carne-de-sol dessalgada em tiras",
+            "Mandioca cozida em cubos",
+            "Cebola, alho, limão",
+            "Folhas verdes"
+          ],
+          "kcal": 510,
+          "rec": "carne_sol_mandioca_to",
+          "months": []
+        },
+        {
+          "items": [
+            "Peito de frango em cubos",
+            "Arroz branco cru",
+            "Caroços de pequi",
+            "Cebola, alho, pimentão"
+          ],
+          "kcal": 510,
+          "rec": "galinhada_to",
+          "months": []
+        },
+        {
+          "items": [
+            "Pupunha cozida em metades",
+            "Peito de frango desfiado cozido",
+            "Tomate, cebola, alho",
+            "Coentro, cheiro-verde"
+          ],
+          "kcal": 510,
+          "rec": "pupunha_frango_pa",
+          "months": []
         }
       ]
     },
@@ -661,6 +1090,138 @@
           ],
           "kcal": 470,
           "rec": "pato_tucupi_light",
+          "months": []
+        },
+        {
+          "items": [
+            "Posta de tambaqui",
+            "Abobrinha, cenoura, pimentão em fatias",
+            "Limão, alho, coentro",
+            "Azeite, sal, urucum"
+          ],
+          "kcal": 440,
+          "rec": "tambaqui_forno_ac",
+          "months": []
+        },
+        {
+          "items": [
+            "Farinha d'água ou amarela",
+            "Pirarucu dessalgado desfiado",
+            "Água gelada",
+            "Limão, cebola, coentro"
+          ],
+          "kcal": 440,
+          "rec": "chibe_pirarucu_ac",
+          "months": []
+        },
+        {
+          "items": [
+            "Açaí puro (sem açúcar)",
+            "Filé de peixe branco desfiado",
+            "Farinha de tapioca",
+            "Limão, alho, azeite"
+          ],
+          "kcal": 440,
+          "rec": "acai_salgado_peixe_ap",
+          "months": []
+        },
+        {
+          "items": [
+            "Tucupi (caldo amarelo)",
+            "Jambu em folhas",
+            "Camarão seco",
+            "Goma de tapioca"
+          ],
+          "kcal": 440,
+          "rec": "tacaca_amapaense_ap",
+          "months": []
+        },
+        {
+          "items": [
+            "Posta de gurijuba",
+            "Batata, cenoura em cubos",
+            "Tomate, cebola, pimentão",
+            "Coentro, alho, limão"
+          ],
+          "kcal": 440,
+          "rec": "caldeirada_gurijuba_ap",
+          "months": []
+        },
+        {
+          "items": [
+            "Posta de matrinxã",
+            "Batata, cenoura em cubos",
+            "Tomate, cebola, pimentão",
+            "Coentro, alho, limão"
+          ],
+          "kcal": 440,
+          "rec": "caldeirada_matrinxa_ro",
+          "months": []
+        },
+        {
+          "items": [
+            "Filé de peixe branco",
+            "Arroz integral cozido",
+            "Folhas verdes c/ tomate",
+            "Limão, alho, coentro"
+          ],
+          "kcal": 440,
+          "rec": "peixe_forno_ro",
+          "months": []
+        },
+        {
+          "items": [
+            "Peito de galinha caipira",
+            "Arroz cru",
+            "Cenoura e batata em cubos",
+            "Cebola, alho, louro"
+          ],
+          "kcal": 440,
+          "rec": "canja_galinha_ro",
+          "months": []
+        },
+        {
+          "items": [
+            "Posta de aruanã ou outro peixe",
+            "Batata, cenoura em cubos",
+            "Tomate, cebola, pimentão",
+            "Coentro, alho, limão"
+          ],
+          "kcal": 440,
+          "rec": "caldeirada_aruana_rr",
+          "months": []
+        },
+        {
+          "items": [
+            "Filé de peixe branco",
+            "Jambu em folhas",
+            "Mandioca cozida (miolo)",
+            "Cebola, alho, coentro"
+          ],
+          "kcal": 440,
+          "rec": "caldo_peixe_jambu_to",
+          "months": []
+        },
+        {
+          "items": [
+            "Filé de peixe branco",
+            "Legumes mistos (cenoura, abobrinha)",
+            "Tomate, cebola",
+            "Limão, alho, coentro"
+          ],
+          "kcal": 440,
+          "rec": "peixe_forno_to",
+          "months": []
+        },
+        {
+          "items": [
+            "Peito de frango desfiado cozido",
+            "Cenoura, abobrinha, batata em cubos",
+            "Caldo de galinha",
+            "Cebola, alho, cheiro-verde"
+          ],
+          "kcal": 440,
+          "rec": "sopa_legumes_frango_to",
           "months": []
         }
       ]
