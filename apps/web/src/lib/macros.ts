@@ -328,3 +328,58 @@ export function inferFoodRole(name: string): "protein" | "carb" | "fat" | "volum
   if (matches(lower, CARB_KEYWORDS)) return "carb";
   return "volume";
 }
+
+/**
+ * Personaliza um item de refeição (string) com base no perfil científico do
+ * user. Detecta o padrão "(L:Xunit·J:Yunit)" típico do plan_meals — onde
+ * "L:" é a porção pra Luanthony (perfil ref ~75kg), "J:" pra Jéssica (~58kg) —
+ * e substitui pela porção escalada pro user atual.
+ *
+ * Exemplos:
+ *   "Tilápia grelhada (L:200g·J:150g)" + user 90kg →
+ *     "Tilápia grelhada (240g)"  ← usa initial detectada do contexto
+ *   "Arroz integral (L:3col·J:2col)" + user 60kg →
+ *     "Arroz integral (2col)"
+ *   "Brócolis no vapor"  → string inalterada (sem padrão ou role=volume)
+ *
+ * Se metrics for null, retorna a string original (fail-soft).
+ */
+const PERSONALIZE_PATTERN = /\((?:L|♂|H)\s*:?\s*([\d.,]+\s*[a-zA-Zçãéíóúâêîôû]+)\s*[··]?\s*(?:J|♀|M)\s*:?\s*[\d.,]+\s*[a-zA-Zçãéíóúâêîôû]+\)/i;
+const PERSONALIZE_PATTERN_SOLO = /\((?:L|♂|H)\s*:?\s*([\d.,]+\s*[a-zA-Zçãéíóúâêîôû]+)\)/i;
+
+export function personalizeMealItem(
+  item: string,
+  metrics: UserMetrics | null,
+  initial?: string | null,
+): string {
+  if (!metrics) return item;
+  const role = inferFoodRole(item);
+  if (role === "volume") return item.replace(PERSONALIZE_PATTERN, "").replace(PERSONALIZE_PATTERN_SOLO, "").trim();
+
+  const m = item.match(PERSONALIZE_PATTERN) ?? item.match(PERSONALIZE_PATTERN_SOLO);
+  if (!m) return item;
+
+  const baseQty = m[1].trim();
+  const scaledQty = scaleQuantity(baseQty, metrics, role);
+  const display = initial ? `${initial}: ${scaledQty}` : scaledQty;
+  return item.replace(m[0], `(${display})`);
+}
+
+/**
+ * Escala um número estimado de kcal (ex: ptl="~545") pelo ratio entre o
+ * target calórico do user e o do perfil de referência.
+ * Aceita formatos "~545", "545", "545kcal".
+ */
+export function personalizeKcal(text: string, metrics: UserMetrics | null): string {
+  if (!metrics) return text;
+  const m = text.match(/([\d.,]+)/);
+  if (!m) return text;
+  const baseKcal = parseFloat(m[1].replace(",", "."));
+  if (!Number.isFinite(baseKcal)) return text;
+
+  const userTarget = calculateKcalTarget(metrics);
+  const refTarget = calculateKcalTarget(REFERENCE_PROFILE);
+  const factor = userTarget / refTarget;
+  const scaled = Math.round(baseKcal * factor);
+  return text.replace(m[1], String(scaled));
+}

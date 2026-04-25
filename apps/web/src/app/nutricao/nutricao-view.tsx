@@ -5,6 +5,11 @@ import { NavTabs } from "@/components/nav-tabs";
 import { PaywallModal } from "@/components/paywall-modal";
 import type { SubscriptionInfo } from "@/lib/supabase/guards";
 import { getFruitsForMonth } from "@/lib/regional-fruits";
+import {
+  personalizeKcal,
+  personalizeMealItem,
+  type UserMetrics,
+} from "@/lib/macros";
 
 type Month = { id: number; short_name: string; name: string; season: string };
 type MealRow = {
@@ -51,6 +56,8 @@ export function NutricaoView({
   effectiveRegion,
   hasRegion,
   regionSupported,
+  userInitial,
+  userMetrics,
 }: {
   months: Month[];
   meals: MealRow[];
@@ -59,6 +66,8 @@ export function NutricaoView({
   effectiveRegion: string;
   hasRegion: boolean;
   regionSupported: boolean;
+  userInitial?: string | null;
+  userMetrics?: UserMetrics | null;
 }) {
   const [monthId, setMonthId] = useState(0);
   const [weekIndex, setWeekIndex] = useState(0);
@@ -89,7 +98,10 @@ export function NutricaoView({
     : `Card\u00e1pio ${REGION_LABEL[userRegion ?? ""] ?? ""} em breve \u2014 por enquanto mostramos o ${REGION_LABEL[effectiveRegion] ?? effectiveRegion}.`;
 
   const totalKcal = dayMeals.reduce((sum, m) => {
-    const v = parseInt(m.data.ptl?.replace(/[^0-9]/g, "") ?? "0");
+    const ptlPersonalized = userMetrics
+      ? personalizeKcal(m.data.ptl ?? "", userMetrics)
+      : (m.data.ptl ?? "");
+    const v = parseInt(ptlPersonalized.replace(/[^0-9]/g, "") || "0");
     return sum + (isNaN(v) ? 0 : v);
   }, 0);
 
@@ -210,7 +222,12 @@ export function NutricaoView({
         {/* Meal cards */}
         <div key={`${monthId}-${weekIndex}-${dayIndex}`} className="animate-in flex flex-col gap-[7px]">
           {dayMeals.map((meal) => (
-            <MealCard key={meal.slot_key} meal={meal} />
+            <MealCard
+              key={meal.slot_key}
+              meal={meal}
+              userInitial={userInitial}
+              userMetrics={userMetrics}
+            />
           ))}
         </div>
 
@@ -226,7 +243,15 @@ export function NutricaoView({
   );
 }
 
-function MealCard({ meal }: { meal: MealRow }) {
+function MealCard({
+  meal,
+  userInitial,
+  userMetrics,
+}: {
+  meal: MealRow;
+  userInitial?: string | null;
+  userMetrics?: UserMetrics | null;
+}) {
   const d = meal.data;
   const hasRecipe = (meal.slot_key === "alm" || meal.slot_key === "jan") && !!d.rec;
   const baseClass =
@@ -234,6 +259,12 @@ function MealCard({ meal }: { meal: MealRow }) {
   const interactiveClass = hasRecipe
     ? " hover:-translate-y-0.5 hover:border-[color:var(--or)] hover:shadow-md hover:shadow-black/20 cursor-pointer"
     : " hover:border-[color:var(--or)]/40 hover:shadow-md hover:shadow-black/20";
+
+  const personalizedItems = userMetrics
+    ? d.items.map((it) => personalizeMealItem(it, userMetrics, userInitial))
+    : d.items;
+  const personalizedPtl =
+    d.ptl && userMetrics ? personalizeKcal(d.ptl, userMetrics) : d.ptl;
 
   const inner = (
     <>
@@ -252,20 +283,20 @@ function MealCard({ meal }: { meal: MealRow }) {
         </span>
       </div>
       <div className="px-3 py-2.5">
-        {d.items.map((item, i) => (
+        {personalizedItems.map((item, i) => (
           <div key={i} className="flex gap-1.5 text-[12px] leading-relaxed text-[color:var(--tx2)]">
             <span className="text-[color:var(--tx3)]">•</span>
             <span>{item}</span>
           </div>
         ))}
-        {(d.ptl || hasRecipe) && (
+        {(personalizedPtl || hasRecipe) && (
           <div className="mt-2 flex flex-wrap gap-1.5">
-            {d.ptl && (
+            {personalizedPtl && (
               <span
                 className="rounded-sm px-2 py-0.5 font-[family-name:var(--font-condensed)] text-[10px] font-semibold"
                 style={{ background: "var(--ord)", color: "var(--or)" }}
               >
-                Porção: {d.ptl}
+                Porção: {personalizedPtl}
               </span>
             )}
             {hasRecipe && (

@@ -1,6 +1,7 @@
 import { createClient } from "@/lib/supabase/server";
 import { getSubscriptionInfo } from "@/lib/supabase/guards";
 import { Header } from "@/components/header";
+import { metricsFromProfile } from "@/lib/macros";
 import { NutricaoView } from "./nutricao-view";
 
 export const dynamic = "force-dynamic";
@@ -32,13 +33,24 @@ export default async function NutricaoPage() {
   } = await supabase.auth.getUser();
 
   let userRegion: string | null = null;
+  let userInitial: string | null = null;
+  let userMetrics: ReturnType<typeof metricsFromProfile> = null;
   if (user) {
     const { data: profile } = await supabase
       .from("profiles")
-      .select("region")
+      .select(
+        "display_name, region, weight_kg, height_cm, sex, birth_date, activity_level, goal",
+      )
       .eq("id", user.id)
       .maybeSingle();
     userRegion = (profile?.region as string | null) ?? null;
+    userInitial =
+      (
+        (profile?.display_name as string | undefined)?.trim().charAt(0) ??
+        user.email?.trim().charAt(0) ??
+        ""
+      ).toUpperCase() || null;
+    userMetrics = profile ? metricsFromProfile(profile) : null;
   }
 
   // Se o user tem region populada e temos cardapio para ela, usa. Senao, fallback.
@@ -82,6 +94,8 @@ export default async function NutricaoPage() {
         effectiveRegion={effectiveRegion}
         hasRegion={hasRegion}
         regionSupported={regionSupported}
+        userInitial={userInitial}
+        userMetrics={userMetrics}
       />
     </div>
   );
