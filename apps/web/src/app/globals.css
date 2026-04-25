@@ -509,6 +509,25 @@ body {
   outline-offset: 2px;
 }
 
+/* Inputs do formulário científico (peso/altura/sexo/etc) */
+.metrics-input {
+  width: 100%;
+  background: var(--s2);
+  border: 1px solid var(--bd);
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--tx);
+  transition: 0.15s;
+}
+.metrics-input:focus {
+  outline: none;
+  border-color: var(--or);
+  background: var(--s1);
+}
+.metrics-input::placeholder { color: var(--tx3); }
+
 /* ──────────────────────────────────────────────────────────────────────────
    HERO MISSION × CINEMA — header da aba Treino (Opção D do mockup).
    Atmosfera cinematográfica (radial gradient, scanlines, glow) + densidade

@@ -4,6 +4,7 @@ import { useCallback, useMemo, useState } from "react";
 import { NavTabs } from "@/components/nav-tabs";
 import { PaywallModal } from "@/components/paywall-modal";
 import type { SubscriptionInfo } from "@/lib/supabase/guards";
+import { inferFoodRole, scaleQuantity, type UserMetrics } from "@/lib/macros";
 
 type ShopItem = {
   scope: string;
@@ -20,11 +21,13 @@ export function ComprasView({
   months,
   subInfo,
   userInitial,
+  userMetrics,
 }: {
   items: ShopItem[];
   months: Month[];
   subInfo: SubscriptionInfo;
   userInitial?: string | null;
+  userMetrics?: UserMetrics | null;
 }) {
   const [monthId, setMonthId] = useState(0);
   const [showPaywall, setShowPaywall] = useState(false);
@@ -111,7 +114,7 @@ export function ComprasView({
             <div className="mb-6">
               <div className="slbl mb-2.5">Frutas de {month.name}</div>
               {groupByCategory(seasonalItems).map(([cat, catItems]) => (
-                <ShopCategory key={cat} category={cat} items={catItems} checked={checked} onToggle={toggleCheck} userInitial={userInitial} />
+                <ShopCategory key={cat} category={cat} items={catItems} checked={checked} onToggle={toggleCheck} userInitial={userInitial} userMetrics={userMetrics} />
               ))}
             </div>
           )}
@@ -120,7 +123,7 @@ export function ComprasView({
           <div>
             <div className="slbl mb-2.5">Lista base (todo mes)</div>
             {groupByCategory(baseItems).map(([cat, catItems]) => (
-              <ShopCategory key={cat} category={cat} items={catItems} checked={checked} onToggle={toggleCheck} userInitial={userInitial} />
+              <ShopCategory key={cat} category={cat} items={catItems} checked={checked} onToggle={toggleCheck} userInitial={userInitial} userMetrics={userMetrics} />
             ))}
           </div>
 
@@ -143,12 +146,14 @@ function ShopCategory({
   checked,
   onToggle,
   userInitial,
+  userMetrics,
 }: {
   category: string;
   items: ShopItem[];
   checked: Set<string>;
   onToggle: (key: string) => void;
   userInitial?: string | null;
+  userMetrics?: UserMetrics | null;
 }) {
   return (
     <div className="mb-3 overflow-hidden rounded-xl border border-[color:var(--bd)] bg-[color:var(--s1)]">
@@ -182,11 +187,17 @@ function ShopCategory({
               </span>
               <div className="flex-1">
                 <div className={`text-[13px] font-semibold ${isDone ? "line-through" : ""}`}>{item.name}</div>
-                {item.raw?.ql && (
-                  <div className="text-[11px] text-[color:var(--or)]">
-                    {userInitial ? `${userInitial}: ${item.raw.ql}` : item.raw.ql}
-                  </div>
-                )}
+                {item.raw?.ql && (() => {
+                  const role = inferFoodRole(item.name);
+                  const qty = userMetrics
+                    ? scaleQuantity(item.raw.ql, userMetrics, role)
+                    : item.raw.ql;
+                  return (
+                    <div className="text-[11px] text-[color:var(--or)]">
+                      {userInitial ? `${userInitial}: ${qty}` : qty}
+                    </div>
+                  );
+                })()}
                 {item.raw?.obs && (
                   <div className="mt-0.5 text-[10px] italic text-[color:var(--tx3)]">
                     {item.raw.obs}

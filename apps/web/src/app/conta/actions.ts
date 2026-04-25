@@ -15,6 +15,63 @@ import {
 
 const FEEDBACK_CATEGORIES = new Set(["sugestao", "bug", "elogio", "outro"]);
 
+const VALID_SEX = new Set(["M", "F", "O"]);
+const VALID_ACTIVITY = new Set(["sedentary", "light", "moderate", "very", "extreme"]);
+const VALID_GOAL = new Set(["cutting", "maintenance", "bulking"]);
+
+export async function saveUserMetrics(formData: FormData): Promise<{
+  ok: boolean;
+  error?: string;
+}> {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) return { ok: false, error: "Faça login para salvar seu perfil." };
+
+  const weight = Number(formData.get("weight_kg"));
+  const height = Number(formData.get("height_cm"));
+  const sex = String(formData.get("sex") ?? "");
+  const birth_date = String(formData.get("birth_date") ?? "");
+  const activity = String(formData.get("activity_level") ?? "");
+  const goal = String(formData.get("goal") ?? "");
+
+  if (!Number.isFinite(weight) || weight < 30 || weight > 300) {
+    return { ok: false, error: "Peso inválido (30-300kg)." };
+  }
+  if (!Number.isFinite(height) || height < 100 || height > 250) {
+    return { ok: false, error: "Altura inválida (100-250cm)." };
+  }
+  if (!VALID_SEX.has(sex)) return { ok: false, error: "Sexo inválido." };
+  if (!birth_date || !/^\d{4}-\d{2}-\d{2}$/.test(birth_date)) {
+    return { ok: false, error: "Data de nascimento inválida." };
+  }
+  if (!VALID_ACTIVITY.has(activity)) return { ok: false, error: "Nível de atividade inválido." };
+  if (!VALID_GOAL.has(goal)) return { ok: false, error: "Objetivo inválido." };
+
+  const { error } = await supabase
+    .from("profiles")
+    .update({
+      weight_kg: weight,
+      height_cm: Math.round(height),
+      sex,
+      birth_date,
+      activity_level: activity,
+      goal,
+      updated_at: new Date().toISOString(),
+    })
+    .eq("id", user.id);
+
+  if (error) {
+    return { ok: false, error: "Não foi possível salvar. Tente de novo." };
+  }
+
+  revalidatePath("/conta");
+  revalidatePath("/compras");
+  revalidatePath("/nutricao");
+  return { ok: true };
+}
+
 export async function submitFeedback(formData: FormData): Promise<{
   ok: boolean;
   error?: string;

@@ -11,6 +11,8 @@ import { FeedbackForm } from "./feedback-form";
 import { HealthIntegration } from "./health-integration";
 import { PlanRegenerator } from "./plan-regenerator";
 import { SubscriptionCard } from "./subscription-card";
+import { MetricsForm } from "./metrics-form";
+import { MetricsCard } from "./metrics-card";
 
 export default async function ContaPage({
   searchParams,
@@ -33,7 +35,9 @@ export default async function ContaPage({
 
   const { data: profile } = await supabase
     .from("profiles")
-    .select("display_name, fitness_level, region, created_at, plan_generated_at")
+    .select(
+      "display_name, fitness_level, region, created_at, plan_generated_at, weight_kg, height_cm, sex, birth_date, activity_level, goal",
+    )
     .eq("id", user.id)
     .single();
 
@@ -179,6 +183,20 @@ export default async function ContaPage({
               Tem ideia do que melhorar? Achou um bug? Conte aqui — leio cada mensagem.
             </p>
             <FeedbackForm />
+          </div>
+
+          {/* Perfil científico — base para cálculo personalizado de macros */}
+          <div className="rounded-lg border border-[color:var(--bd)] bg-[color:var(--s1)] p-5">
+            <div className="slbl mb-1">Perfil científico</div>
+            <p className="mb-4 text-xs text-[color:var(--tx3)]">
+              Seu peso, altura, sexo e objetivo são usados pra calcular suas metas
+              calóricas e de macronutrientes. Quanto mais preciso, melhor a
+              recomendação de quantidade nas listas de compra e cardápio.
+            </p>
+            <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+              <MetricsForm initial={profile ?? {}} />
+              <MetricsCard profile={profile ?? {}} />
+            </div>
           </div>
 
           <RegionSelector currentRegion={profile?.region ?? null} />
