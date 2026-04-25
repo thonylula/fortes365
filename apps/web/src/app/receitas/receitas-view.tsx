@@ -1,7 +1,17 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { NavTabs } from "@/components/nav-tabs";
+import type { Macros, UserMetrics } from "@/lib/macros";
+import {
+  FILTER_LABEL,
+  fitScore,
+  hasReliableNutrition,
+  recipeFitsFilter,
+  recipeTags,
+  type FilterKey,
+  type RecipeNutrition,
+} from "@/lib/recipes";
 
 type Recipe = {
   slug: string;
@@ -17,6 +27,7 @@ type Recipe = {
     steps?: string[];
     tip?: string;
   };
+  nutrition: RecipeNutrition;
 };
 
 const REGION_LABEL: Record<string, string> = {
@@ -26,6 +37,8 @@ const REGION_LABEL: Record<string, string> = {
   norte: "Norte",
   centro_oeste: "Centro-Oeste",
 };
+
+const FILTERS: FilterKey[] = ["all", "for_you", "hiperproteica", "low_kcal", "pos_treino", "low_carb"];
 
 type VideoState =
   | { status: "loading" }
@@ -38,16 +51,38 @@ export function ReceitasView({
   effectiveRegion,
   hasRegion,
   regionSupported,
+  userMetrics,
+  dailyTarget,
 }: {
   recipes: Recipe[];
   userRegion: string | null;
   effectiveRegion: string;
   hasRegion: boolean;
   regionSupported: boolean;
+  userMetrics: UserMetrics | null;
+  dailyTarget: Macros | null;
 }) {
   const [selected, setSelected] = useState<Recipe | null>(null);
   const [video, setVideo] = useState<VideoState>({ status: "loading" });
   const [bannerDismissed, setBannerDismissed] = useState(false);
+  const [filter, setFilter] = useState<FilterKey>("all");
+
+  // Pré-calcula tags + score por receita (memoizado por mudança de perfil/lista)
+  const annotated = useMemo(() => {
+    return recipes.map((r) => {
+      const tags = recipeTags(r.nutrition);
+      const score = fitScore(r.nutrition, userMetrics, dailyTarget);
+      return { recipe: r, tags, score };
+    });
+  }, [recipes, userMetrics, dailyTarget]);
+
+  const filtered = useMemo(() => {
+    const list = annotated.filter((a) => recipeFitsFilter(a.tags, a.score, filter));
+    if (filter === "for_you") {
+      return [...list].sort((a, b) => b.score - a.score);
+    }
+    return list;
+  }, [annotated, filter]);
 
   // Deep-link: abrir automaticamente a receita cujo slug casa com ?slug=
   useEffect(() => {
@@ -114,13 +149,16 @@ export function ReceitasView({
 
   function closeModal() {
     setSelected(null);
-    // limpa o ?slug= da URL pra evitar reabrir em refresh
     if (typeof window !== "undefined" && window.location.search.includes("slug=")) {
       const url = new URL(window.location.href);
       url.searchParams.delete("slug");
       window.history.replaceState({}, "", url.toString());
     }
   }
+
+  const selectedAnnot = selected
+    ? annotated.find((a) => a.recipe.slug === selected.slug) ?? null
+    : null;
 
   return (
     <>
@@ -155,43 +193,124 @@ export function ReceitasView({
       )}
 
       <main className="mx-auto w-full max-w-3xl flex-1 px-4 py-5 pb-20">
-        <h1 className="mb-4 font-[family-name:var(--font-display)] text-xl tracking-wider">
+        <h1 className="mb-3 font-[family-name:var(--font-display)] text-xl tracking-wider">
           RECEITAS
         </h1>
 
-        {recipes.length === 0 ? (
+        {/* Filtros baseados no perfil científico */}
+        <div className="mb-4 -mx-4 flex gap-1.5 overflow-x-auto px-4 pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          {FILTERS.map((key) => {
+            const isActive = filter === key;
+            const isDisabled = key === "for_you" && !userMetrics;
+            return (
+              <button
+                key={key}
+                type="button"
+                disabled={isDisabled}
+                onClick={() => setFilter(key)}
+                title={isDisabled ? "Preencha seu perfil em /conta pra ver receitas que encaixam no seu objetivo" : undefined}
+                className={
+                  "shrink-0 rounded-md px-3 py-1.5 font-[family-name:var(--font-condensed)] text-[11px] font-bold uppercase tracking-[1.5px] transition-colors " +
+                  (isActive
+                    ? "bg-[color:var(--or)] text-black"
+                    : "border border-[color:var(--bd)] bg-[color:var(--s2)] text-[color:var(--tx2)] hover:border-[color:var(--or)]/50 hover:text-[color:var(--tx)]") +
+                  (isDisabled ? " cursor-not-allowed opacity-40 hover:border-[color:var(--bd)] hover:text-[color:var(--tx2)]" : "")
+                }
+              >
+                {FILTER_LABEL[key]}
+              </button>
+            );
+          })}
+        </div>
+
+        {!userMetrics && (
+          <p className="mb-3 text-[11px] leading-relaxed text-[color:var(--tx3)]">
+            Macros mostrados em cada receita são absolutos. Pra ver quais encaixam no seu objetivo (cutting/manutenção/bulking), {" "}
+            <a href="/conta" className="text-[color:var(--or)] underline underline-offset-2">
+              preencha seu perfil
+            </a>
+            .
+          </p>
+        )}
+
+        {filtered.length === 0 ? (
           <div className="rounded-xl border border-[color:var(--bd)] bg-[color:var(--s1)] px-6 py-10 text-center">
             <div className="mb-3 text-4xl">🍽</div>
             <h3 className="mb-1 font-[family-name:var(--font-display)] text-lg tracking-wider">
-              SEM RECEITAS
+              {recipes.length === 0 ? "SEM RECEITAS" : "NENHUMA RECEITA NESSE FILTRO"}
             </h3>
             <p className="text-sm text-[color:var(--tx2)]">
-              Nenhuma receita cadastrada para esta região ainda.
+              {recipes.length === 0
+                ? "Nenhuma receita cadastrada para esta região ainda."
+                : "Tente outro filtro ou abra Tudo pra ver todas as receitas."}
             </p>
           </div>
         ) : (
           <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
-            {recipes.map((r) => (
-              <button
-                key={r.slug}
-                onClick={() => setSelected(r)}
-                className="rounded-xl border border-[color:var(--bd)] bg-[color:var(--s1)] p-4 text-left transition-all hover:-translate-y-0.5 hover:border-[color:var(--or)] hover:shadow-lg hover:shadow-[color:var(--or)]/5"
-              >
-                <div className="mb-1 text-2xl">{r.icon ?? "🍽"}</div>
-                <div className="text-[13px] font-semibold">{r.title}</div>
-                <div className="text-[10px] uppercase tracking-wider text-[color:var(--tx2)]">
-                  {r.category}
-                </div>
-                <div className="mt-1 flex flex-wrap items-center gap-1.5 text-[10px] text-[color:var(--tx3)]">
-                  {r.state && (
-                    <span className="rounded-sm bg-[color:var(--or)]/15 px-1.5 py-0.5 font-semibold text-[color:var(--or)]">
-                      📍 {r.state}
+            {filtered.map(({ recipe: r, score }) => {
+              const reliable = hasReliableNutrition(r.nutrition);
+              const kcalColor =
+                !userMetrics || !reliable
+                  ? "var(--tx)"
+                  : score >= 70
+                    ? "var(--gn)"
+                    : score >= 40
+                      ? "var(--tx)"
+                      : "var(--tx3)";
+              return (
+                <button
+                  key={r.slug}
+                  onClick={() => setSelected(r)}
+                  className={
+                    "relative rounded-xl border bg-[color:var(--s1)] p-4 text-left transition-all hover:-translate-y-0.5 hover:shadow-lg " +
+                    (score >= 70
+                      ? "border-[color:var(--or)]/60 hover:border-[color:var(--or)] hover:shadow-[color:var(--or)]/10"
+                      : "border-[color:var(--bd)] hover:border-[color:var(--or)] hover:shadow-[color:var(--or)]/5")
+                  }
+                >
+                  {score >= 70 && (
+                    <span className="absolute right-1.5 top-1.5 rounded-sm bg-[color:var(--or)] px-1.5 py-0.5 font-[family-name:var(--font-condensed)] text-[9px] font-bold uppercase tracking-wider text-black">
+                      ★ pra você
                     </span>
                   )}
-                  <span>{r.time_label}</span>
-                </div>
-              </button>
-            ))}
+                  <div className="mb-1 text-2xl">{r.icon ?? "🍽"}</div>
+                  <div className="text-[13px] font-semibold leading-tight">{r.title}</div>
+                  <div className="mt-0.5 text-[10px] uppercase tracking-wider text-[color:var(--tx2)]">
+                    {r.category}
+                  </div>
+                  <div className="mt-1 flex flex-wrap items-center gap-1.5 text-[10px] text-[color:var(--tx3)]">
+                    {r.state && (
+                      <span className="rounded-sm bg-[color:var(--or)]/15 px-1.5 py-0.5 font-semibold text-[color:var(--or)]">
+                        📍 {r.state}
+                      </span>
+                    )}
+                    <span>{r.time_label}</span>
+                  </div>
+
+                  {r.nutrition.total > 0 && (
+                    <div className="mt-2 border-t border-white/5 pt-1.5 font-[family-name:var(--font-mono)] text-[10px] leading-tight text-[color:var(--tx3)]">
+                      <div>
+                        {!reliable && (
+                          <span
+                            className="mr-0.5 text-[color:var(--tx3)]/70"
+                            title="Estimativa parcial — alguns ingredientes não estão no banco"
+                          >
+                            ~
+                          </span>
+                        )}
+                        <span className="font-bold" style={{ color: kcalColor }}>
+                          {r.nutrition.kcal}
+                        </span>
+                        <span> kcal</span>
+                      </div>
+                      <div className="mt-0.5">
+                        P {r.nutrition.protein_g}g · C {r.nutrition.carb_g}g · G {r.nutrition.fat_g}g
+                      </div>
+                    </div>
+                  )}
+                </button>
+              );
+            })}
           </div>
         )}
       </main>
@@ -232,10 +351,28 @@ export function ReceitasView({
               )}
               {selected.category && <span>{selected.category}</span>}
               {selected.time_label && <span>· {selected.time_label}</span>}
+              {selectedAnnot && selectedAnnot.score >= 70 && (
+                <span className="rounded-sm bg-[color:var(--or)] px-1.5 py-0.5 font-[family-name:var(--font-condensed)] text-[10px] font-bold uppercase tracking-wider text-black">
+                  ★ pra você
+                </span>
+              )}
             </div>
             <p className="mb-4 text-[12px] leading-relaxed text-[color:var(--tx2)]">
               {selected.description}
             </p>
+
+            {/* Bloco "esta refeição vs sua meta" */}
+            {userMetrics && dailyTarget && hasReliableNutrition(selected.nutrition) && (
+              <div className="mb-4 rounded-md border border-[color:var(--bd)] bg-[color:var(--s2)] p-4">
+                <div className="slbl mb-3">Esta refeição vs. sua meta diária</div>
+                <div className="space-y-2">
+                  <MiniBar label="Kcal" value={selected.nutrition.kcal} target={dailyTarget.kcal} unit="" color="var(--or)" />
+                  <MiniBar label="Proteína" value={selected.nutrition.protein_g} target={dailyTarget.protein_g} unit="g" color="var(--or)" />
+                  <MiniBar label="Carbo" value={selected.nutrition.carb_g} target={dailyTarget.carb_g} unit="g" color="var(--gn)" />
+                  <MiniBar label="Gordura" value={selected.nutrition.fat_g} target={dailyTarget.fat_g} unit="g" color="#facc15" />
+                </div>
+              </div>
+            )}
 
             {/* Bloco de vídeo YouTube */}
             <div className="mb-4">
@@ -311,5 +448,36 @@ export function ReceitasView({
         </div>
       )}
     </>
+  );
+}
+
+function MiniBar({
+  label,
+  value,
+  target,
+  unit,
+  color,
+}: {
+  label: string;
+  value: number;
+  target: number;
+  unit: string;
+  color: string;
+}) {
+  const pct = target > 0 ? Math.min(100, Math.round((value / target) * 100)) : 0;
+  return (
+    <div>
+      <div className="mb-1 flex items-baseline justify-between font-[family-name:var(--font-mono)] text-[11px]">
+        <span className="text-[color:var(--tx2)]">{label}</span>
+        <span className="text-[color:var(--tx3)]">
+          <span className="font-bold text-[color:var(--tx)]">{value}</span>
+          {unit} / {target}
+          {unit} <span className="ml-1 text-[10px]">({pct}%)</span>
+        </span>
+      </div>
+      <div className="h-1.5 overflow-hidden rounded-full bg-[color:var(--s3)]">
+        <div style={{ width: `${pct}%`, background: color }} className="h-full" />
+      </div>
+    </div>
   );
 }
