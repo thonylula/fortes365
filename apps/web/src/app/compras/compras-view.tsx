@@ -5,6 +5,12 @@ import { NavTabs } from "@/components/nav-tabs";
 import { PaywallModal } from "@/components/paywall-modal";
 import type { SubscriptionInfo } from "@/lib/supabase/guards";
 import { inferFoodRole, scaleQuantity, type UserMetrics } from "@/lib/macros";
+import {
+  findFoodByName,
+  nutritionForQuantity,
+  roleFromCategory,
+  type Food,
+} from "@/lib/foods";
 
 type ShopItem = {
   scope: string;
@@ -22,12 +28,14 @@ export function ComprasView({
   subInfo,
   userInitial,
   userMetrics,
+  foods,
 }: {
   items: ShopItem[];
   months: Month[];
   subInfo: SubscriptionInfo;
   userInitial?: string | null;
   userMetrics?: UserMetrics | null;
+  foods?: Food[];
 }) {
   const [monthId, setMonthId] = useState(0);
   const [showPaywall, setShowPaywall] = useState(false);
@@ -114,7 +122,7 @@ export function ComprasView({
             <div className="mb-6">
               <div className="slbl mb-2.5">Frutas de {month.name}</div>
               {groupByCategory(seasonalItems).map(([cat, catItems]) => (
-                <ShopCategory key={cat} category={cat} items={catItems} checked={checked} onToggle={toggleCheck} userInitial={userInitial} userMetrics={userMetrics} />
+                <ShopCategory key={cat} category={cat} items={catItems} checked={checked} onToggle={toggleCheck} userInitial={userInitial} userMetrics={userMetrics} foods={foods} />
               ))}
             </div>
           )}
@@ -123,7 +131,7 @@ export function ComprasView({
           <div>
             <div className="slbl mb-2.5">Lista base (todo mes)</div>
             {groupByCategory(baseItems).map(([cat, catItems]) => (
-              <ShopCategory key={cat} category={cat} items={catItems} checked={checked} onToggle={toggleCheck} userInitial={userInitial} userMetrics={userMetrics} />
+              <ShopCategory key={cat} category={cat} items={catItems} checked={checked} onToggle={toggleCheck} userInitial={userInitial} userMetrics={userMetrics} foods={foods} />
             ))}
           </div>
 
@@ -147,6 +155,7 @@ function ShopCategory({
   onToggle,
   userInitial,
   userMetrics,
+  foods,
 }: {
   category: string;
   items: ShopItem[];
@@ -154,6 +163,7 @@ function ShopCategory({
   onToggle: (key: string) => void;
   userInitial?: string | null;
   userMetrics?: UserMetrics | null;
+  foods?: Food[];
 }) {
   return (
     <div className="mb-3 overflow-hidden rounded-xl border border-[color:var(--bd)] bg-[color:var(--s1)]">
@@ -188,14 +198,28 @@ function ShopCategory({
               <div className="flex-1">
                 <div className={`text-[13px] font-semibold ${isDone ? "line-through" : ""}`}>{item.name}</div>
                 {item.raw?.ql && (() => {
-                  const role = inferFoodRole(item.name);
+                  // Tabela foods (TACO/USDA/Embrapa) tem prioridade sobre o
+                  // keyword matching pra inferir role e mostrar nutrição real.
+                  const food = foods ? findFoodByName(item.name, foods) : null;
+                  const role = food
+                    ? roleFromCategory(food.category)
+                    : inferFoodRole(item.name);
                   const qty = userMetrics
                     ? scaleQuantity(item.raw.ql, userMetrics, role)
                     : item.raw.ql;
+                  const nut = food ? nutritionForQuantity(food, qty) : null;
                   return (
-                    <div className="text-[11px] text-[color:var(--or)]">
-                      {userInitial ? `${userInitial}: ${qty}` : qty}
-                    </div>
+                    <>
+                      <div className="text-[11px] text-[color:var(--or)]">
+                        {userInitial ? `${userInitial}: ${qty}` : qty}
+                      </div>
+                      {nut && (
+                        <div className="font-[family-name:var(--font-condensed)] text-[10px] text-[color:var(--tx3)]">
+                          {nut.kcal}kcal · P {nut.protein_g}g · C {nut.carb_g}g · G{" "}
+                          {nut.fat_g}g
+                        </div>
+                      )}
+                    </>
                   );
                 })()}
                 {item.raw?.obs && (

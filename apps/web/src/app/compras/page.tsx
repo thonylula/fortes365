@@ -2,6 +2,7 @@ import { createClient } from "@/lib/supabase/server";
 import { getSubscriptionInfo } from "@/lib/supabase/guards";
 import { Header } from "@/components/header";
 import { metricsFromProfile } from "@/lib/macros";
+import type { Food } from "@/lib/foods";
 import { ComprasView } from "./compras-view";
 
 export const dynamic = "force-dynamic";
@@ -23,9 +24,12 @@ export default async function ComprasPage() {
     data: { user },
   } = await supabase.auth.getUser();
 
-  const [{ data: items }, { data: months }, profileRes] = await Promise.all([
+  const [{ data: items }, { data: months }, foodsRes, profileRes] = await Promise.all([
     supabase.from("shopping_items").select("scope, month_id, category, name, amount, raw"),
     supabase.from("months").select("id, short_name, name").order("id"),
+    supabase
+      .from("foods")
+      .select("slug, name, category, kcal_per_100g, protein_g, carb_g, fat_g, fiber_g, state, source, note"),
     user
       ? supabase
           .from("profiles")
@@ -36,6 +40,7 @@ export default async function ComprasPage() {
           .maybeSingle()
       : Promise.resolve({ data: null }),
   ]);
+  const foods = (foodsRes.data ?? []) as Food[];
 
   const profile = profileRes.data as {
     display_name?: string | null;
@@ -62,6 +67,7 @@ export default async function ComprasPage() {
         subInfo={await getSubscriptionInfo()}
         userInitial={userInitial}
         userMetrics={userMetrics}
+        foods={foods}
       />
     </div>
   );
