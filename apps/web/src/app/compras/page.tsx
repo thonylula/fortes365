@@ -28,7 +28,7 @@ export default async function ComprasPage() {
     supabase.from("shopping_items").select("scope, month_id, category, name, amount, raw"),
     supabase.from("months").select("id, short_name, name").order("id"),
     supabase
-      .from("foods")
+      .from("forte_foods")
       .select("slug, name, category, kcal_per_100g, protein_g, carb_g, fat_g, fiber_g, state, source, note"),
     user
       ? supabase

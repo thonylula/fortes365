@@ -10,7 +10,7 @@
 -- - USDA FoodData Central (alimentos importados/genericos)
 -- - Embrapa Frutas (frutas regionais)
 
-create table if not exists public.foods (
+create table if not exists public.forte_foods (
   slug text primary key,
   name text not null,
   category text not null check (category in (
@@ -27,13 +27,13 @@ create table if not exists public.foods (
   created_at timestamptz not null default now()
 );
 
-create index if not exists foods_category_idx on public.foods (category);
+create index if not exists foods_category_idx on public.forte_foods (category);
 
 -- ─────────────────────────────────────────────────────────────────
 -- Seed: 60 alimentos cobrindo o que aparece em shopping_items
 -- ─────────────────────────────────────────────────────────────────
 
-insert into public.foods (slug, name, category, kcal_per_100g, protein_g, carb_g, fat_g, fiber_g, state, source, note) values
+insert into public.forte_foods (slug, name, category, kcal_per_100g, protein_g, carb_g, fat_g, fiber_g, state, source, note) values
 -- ── PROTEINAS ANIMAIS ──
 ('peito_frango', 'Peito de frango', 'protein', 165, 31, 0, 3.6, 0, 'cooked', 'TACO', 'Sem pele, grelhado'),
 ('coxa_frango', 'Coxa de frango', 'protein', 209, 26, 0, 11, 0, 'cooked', 'TACO', 'Sem pele'),

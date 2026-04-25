@@ -71,7 +71,7 @@ export default async function NutricaoPage() {
   const [monthsRes, foodsRes, ...mealsRes] = await Promise.all([
     supabase.from("months").select("id, short_name, name, season").order("id"),
     supabase
-      .from("foods")
+      .from("forte_foods")
       .select("slug, name, category, kcal_per_100g, protein_g, carb_g, fat_g, fiber_g, state, source, note"),
     ...mealsBatches.map((ids) =>
       supabase
