@@ -15,7 +15,17 @@ type ShopItem = {
 };
 type Month = { id: number; short_name: string; name: string };
 
-export function ComprasView({ items, months, subInfo }: { items: ShopItem[]; months: Month[]; subInfo: SubscriptionInfo }) {
+export function ComprasView({
+  items,
+  months,
+  subInfo,
+  userInitial,
+}: {
+  items: ShopItem[];
+  months: Month[];
+  subInfo: SubscriptionInfo;
+  userInitial?: string | null;
+}) {
   const [monthId, setMonthId] = useState(0);
   const [showPaywall, setShowPaywall] = useState(false);
   const [checked, setChecked] = useState<Set<string>>(() => new Set());
@@ -101,7 +111,7 @@ export function ComprasView({ items, months, subInfo }: { items: ShopItem[]; mon
             <div className="mb-6">
               <div className="slbl mb-2.5">Frutas de {month.name}</div>
               {groupByCategory(seasonalItems).map(([cat, catItems]) => (
-                <ShopCategory key={cat} category={cat} items={catItems} checked={checked} onToggle={toggleCheck} />
+                <ShopCategory key={cat} category={cat} items={catItems} checked={checked} onToggle={toggleCheck} userInitial={userInitial} />
               ))}
             </div>
           )}
@@ -110,7 +120,7 @@ export function ComprasView({ items, months, subInfo }: { items: ShopItem[]; mon
           <div>
             <div className="slbl mb-2.5">Lista base (todo mes)</div>
             {groupByCategory(baseItems).map(([cat, catItems]) => (
-              <ShopCategory key={cat} category={cat} items={catItems} checked={checked} onToggle={toggleCheck} />
+              <ShopCategory key={cat} category={cat} items={catItems} checked={checked} onToggle={toggleCheck} userInitial={userInitial} />
             ))}
           </div>
 
@@ -127,7 +137,19 @@ export function ComprasView({ items, months, subInfo }: { items: ShopItem[]; mon
   );
 }
 
-function ShopCategory({ category, items, checked, onToggle }: { category: string; items: ShopItem[]; checked: Set<string>; onToggle: (key: string) => void }) {
+function ShopCategory({
+  category,
+  items,
+  checked,
+  onToggle,
+  userInitial,
+}: {
+  category: string;
+  items: ShopItem[];
+  checked: Set<string>;
+  onToggle: (key: string) => void;
+  userInitial?: string | null;
+}) {
   return (
     <div className="mb-3 overflow-hidden rounded-xl border border-[color:var(--bd)] bg-[color:var(--s1)]">
       <div className="flex items-center gap-2 border-b border-[color:var(--bd)] bg-[color:var(--s2)] px-3 py-2">
@@ -160,14 +182,11 @@ function ShopCategory({ category, items, checked, onToggle }: { category: string
               </span>
               <div className="flex-1">
                 <div className={`text-[13px] font-semibold ${isDone ? "line-through" : ""}`}>{item.name}</div>
-                <div className="flex flex-wrap gap-1">
-                  {item.raw?.ql && (
-                    <span className="text-[11px] text-[color:var(--or)]">L: {item.raw.ql}</span>
-                  )}
-                  {item.raw?.qj && (
-                    <span className="text-[11px] text-[color:var(--pk)]">J: {item.raw.qj}</span>
-                  )}
-                </div>
+                {item.raw?.ql && (
+                  <div className="text-[11px] text-[color:var(--or)]">
+                    {userInitial ? `${userInitial}: ${item.raw.ql}` : item.raw.ql}
+                  </div>
+                )}
                 {item.raw?.obs && (
                   <div className="mt-0.5 text-[10px] italic text-[color:var(--tx3)]">
                     {item.raw.obs}
