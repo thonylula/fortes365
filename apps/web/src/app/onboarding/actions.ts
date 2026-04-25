@@ -34,6 +34,15 @@ export async function saveOnboarding(answers: Record<string, unknown>) {
 
   const phase = calculatePhase(answers);
 
+  // Converte idade em anos (UI) pra birth_date (schema). Aproxima 01/jan
+  // do ano de nascimento — granular o suficiente pro cálculo de BMR.
+  let birthDate: string | null = null;
+  const ageYears = Number(answers.age_years);
+  if (Number.isFinite(ageYears) && ageYears >= 14 && ageYears <= 100) {
+    const birthYear = new Date().getFullYear() - ageYears;
+    birthDate = `${birthYear}-01-01`;
+  }
+
   await supabase
     .from("profiles")
     .update({
@@ -59,6 +68,11 @@ export async function saveOnboarding(answers: Record<string, unknown>) {
       target_weight_kg: answers.target_weight_kg ?? null,
       region: answers.region ?? null,
       goals: answers.goals ?? null,
+      // Campos científicos pro calculador de macros (Mifflin-St Jeor + ISSN 2017)
+      sex: answers.sex ?? null,
+      birth_date: birthDate,
+      activity_level: answers.activity_level ?? null,
+      goal: answers.goal ?? null,
       equipment:
         Array.isArray(answers.equipment) && answers.equipment.length > 0
           ? answers.equipment
