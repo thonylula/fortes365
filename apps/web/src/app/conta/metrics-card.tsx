@@ -47,43 +47,43 @@ export function MetricsCard({ profile }: { profile: ProfileData }) {
   const fatPct = 100 - proteinPct - carbPct;
 
   return (
-    <div className="rounded-lg border border-[color:var(--or)]/30 bg-gradient-to-br from-[color:var(--ord)] to-[color:var(--s1)] p-5">
-      <div className="mb-3 flex items-baseline justify-between gap-2">
+    <div className="rounded-lg border border-[color:var(--or)]/30 bg-gradient-to-br from-[color:var(--ord)] to-[color:var(--s1)] p-6">
+      <div className="mb-4 flex items-baseline justify-between gap-3">
         <div className="slbl">Suas metas (calculadas)</div>
-        <div className="font-[family-name:var(--font-condensed)] text-[9px] uppercase tracking-[2px] text-[color:var(--tx3)]">
+        <div className="font-[family-name:var(--font-condensed)] text-[10px] uppercase tracking-[1.5px] text-[color:var(--tx3)]">
           Mifflin-St Jeor · ISSN 2017
         </div>
       </div>
 
       {/* Linha 1: BMR / TDEE / Idade */}
-      <div className="mb-4 grid grid-cols-3 gap-2">
+      <div className="mb-5 grid grid-cols-3 gap-3">
         <Stat label="TMB" value={bmr} unit="kcal" hint="basal" />
         <Stat label="TDEE" value={tdee} unit="kcal" hint="diário" />
         <Stat label="Idade" value={age} unit="anos" />
       </div>
 
       {/* Meta calórica destacada */}
-      <div className="mb-4 rounded-md bg-black/30 px-4 py-3">
-        <div className="flex items-baseline justify-between">
+      <div className="mb-5 rounded-md bg-black/30 px-5 py-4">
+        <div className="flex flex-wrap items-baseline justify-between gap-2">
           <span className="font-[family-name:var(--font-condensed)] text-[10px] font-bold uppercase tracking-[2px] text-[color:var(--tx2)]">
             Meta calórica diária
           </span>
-          <span className="font-[family-name:var(--font-condensed)] text-[10px] uppercase tracking-[1.5px] text-[color:var(--or)]">
+          <span className="rounded-sm bg-[color:var(--ord)] px-2 py-0.5 font-[family-name:var(--font-condensed)] text-[10px] font-bold uppercase tracking-[1.5px] text-[color:var(--or)]">
             {GOAL_LABEL[metrics.goal]}
           </span>
         </div>
-        <div className="mt-1 flex items-baseline gap-2">
-          <span className="font-[family-name:var(--font-display)] text-4xl text-[color:var(--or)] leading-none">
+        <div className="mt-2 flex items-baseline gap-2">
+          <span className="font-[family-name:var(--font-display)] text-5xl text-[color:var(--or)] leading-none">
             {m.kcal}
           </span>
-          <span className="font-[family-name:var(--font-mono)] text-sm text-[color:var(--tx3)]">
-            kcal
+          <span className="font-[family-name:var(--font-mono)] text-base text-[color:var(--tx3)]">
+            kcal/dia
           </span>
         </div>
       </div>
 
-      {/* Macros */}
-      <div className="grid grid-cols-3 gap-2">
+      {/* Macros — empilha em col-span menor pra evitar aperto */}
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
         <MacroBox
           label="Proteína"
           grams={m.protein_g}
@@ -108,13 +108,13 @@ export function MetricsCard({ profile }: { profile: ProfileData }) {
       </div>
 
       {/* Barra horizontal mostrando proporção visual */}
-      <div className="mt-3 flex h-1.5 overflow-hidden rounded-full bg-[color:var(--s2)]">
+      <div className="mt-4 flex h-2 overflow-hidden rounded-full bg-[color:var(--s2)]">
         <div style={{ width: `${proteinPct}%`, background: "var(--or)" }} />
         <div style={{ width: `${carbPct}%`, background: "var(--gn)" }} />
         <div style={{ width: `${fatPct}%`, background: "#facc15" }} />
       </div>
 
-      <p className="mt-4 text-[10px] leading-relaxed text-[color:var(--tx3)]">
+      <p className="mt-4 text-[11px] leading-relaxed text-[color:var(--tx3)]">
         Atividade: {ACTIVITY_LABEL[metrics.activity_level]} · Proteína:{" "}
         {(m.protein_g / metrics.weight_kg).toFixed(1)}g/kg · Gordura:{" "}
         {(m.fat_g / metrics.weight_kg).toFixed(2)}g/kg
@@ -135,12 +135,12 @@ function Stat({
   hint?: string;
 }) {
   return (
-    <div className="rounded-md bg-black/20 px-3 py-2">
-      <div className="font-[family-name:var(--font-condensed)] text-[9px] font-bold uppercase tracking-[2px] text-[color:var(--tx3)]">
+    <div className="rounded-md bg-black/20 px-3 py-3">
+      <div className="font-[family-name:var(--font-condensed)] text-[10px] font-bold uppercase tracking-[2px] text-[color:var(--tx3)]">
         {label}
       </div>
-      <div className="mt-1 flex items-baseline gap-1">
-        <span className="font-[family-name:var(--font-mono)] text-base font-bold text-[color:var(--tx)]">
+      <div className="mt-1.5 flex items-baseline gap-1">
+        <span className="font-[family-name:var(--font-mono)] text-lg font-bold text-[color:var(--tx)]">
           {value}
         </span>
         <span className="font-[family-name:var(--font-mono)] text-[10px] text-[color:var(--tx3)]">
@@ -148,7 +148,7 @@ function Stat({
         </span>
       </div>
       {hint && (
-        <div className="mt-0.5 font-[family-name:var(--font-condensed)] text-[9px] uppercase tracking-[1.5px] text-[color:var(--tx3)]">
+        <div className="mt-1 font-[family-name:var(--font-condensed)] text-[9px] uppercase tracking-[1.5px] text-[color:var(--tx3)]">
           {hint}
         </div>
       )}
@@ -171,28 +171,29 @@ function MacroBox({
 }) {
   return (
     <div
-      className="rounded-md border bg-black/20 px-3 py-2"
+      className="rounded-md border bg-black/20 px-3 py-3"
       style={{ borderColor: `${color}33` }}
     >
       <div
-        className="font-[family-name:var(--font-condensed)] text-[9px] font-bold uppercase tracking-[2px]"
+        className="font-[family-name:var(--font-condensed)] text-[10px] font-bold uppercase tracking-[2px]"
         style={{ color }}
       >
         {label}
       </div>
-      <div className="mt-1 flex items-baseline gap-1">
+      <div className="mt-1.5 flex items-baseline gap-1">
         <span
-          className="font-[family-name:var(--font-display)] text-2xl leading-none"
+          className="font-[family-name:var(--font-display)] text-3xl leading-none"
           style={{ color }}
         >
           {grams}
         </span>
-        <span className="font-[family-name:var(--font-mono)] text-[10px] text-[color:var(--tx3)]">
+        <span className="font-[family-name:var(--font-mono)] text-xs text-[color:var(--tx3)]">
           g
         </span>
       </div>
-      <div className="mt-1 font-[family-name:var(--font-mono)] text-[10px] text-[color:var(--tx3)]">
-        {kcal}kcal · {pct}%
+      <div className="mt-1.5 flex items-center justify-between font-[family-name:var(--font-mono)] text-[10px] text-[color:var(--tx3)]">
+        <span>{kcal}kcal</span>
+        <span style={{ color }}>{pct}%</span>
       </div>
     </div>
   );

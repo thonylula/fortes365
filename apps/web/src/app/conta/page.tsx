@@ -115,7 +115,7 @@ export default async function ContaPage({
         </Link>
       </header>
 
-      <main className="mx-auto w-full max-w-lg flex-1 px-6 py-10">
+      <main className="mx-auto w-full max-w-3xl flex-1 px-6 py-10">
         <h1 className="mb-6 font-[family-name:var(--font-display)] text-3xl tracking-wider">
           MINHA CONTA
         </h1>
@@ -186,14 +186,14 @@ export default async function ContaPage({
           </div>
 
           {/* Perfil científico — base para cálculo personalizado de macros */}
-          <div className="rounded-lg border border-[color:var(--bd)] bg-[color:var(--s1)] p-5">
+          <div className="rounded-lg border border-[color:var(--bd)] bg-[color:var(--s1)] p-6">
             <div className="slbl mb-1">Perfil científico</div>
-            <p className="mb-4 text-xs text-[color:var(--tx3)]">
+            <p className="mb-5 text-xs text-[color:var(--tx3)]">
               Seu peso, altura, sexo e objetivo são usados pra calcular suas metas
               calóricas e de macronutrientes. Quanto mais preciso, melhor a
               recomendação de quantidade nas listas de compra e cardápio.
             </p>
-            <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+            <div className="space-y-6">
               <MetricsForm initial={profile ?? {}} />
               <MetricsCard profile={profile ?? {}} />
             </div>
