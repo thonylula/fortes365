@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FORTE 365 — Redesign C · Cinematic Hero</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #050505;
+    --s1: #0e0e0e;
+    --s2: #181818;
+    --bd: #232323;
+    --or: #ff6b1a;
+    --or-h: #ffae54;
+    --or-d: #c24500;
+    --gn: #22c55e;
+    --tx: #ffffff;
+    --tx2: #b3b3b3;
+    --tx3: #6e6e6e;
+    --display: 'Bebas Neue', sans-serif;
+    --condensed: 'Barlow Condensed', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--tx);
+    font-family: var(--condensed);
+    margin: 0;
+    min-height: 100vh;
+  }
+
+  .display { font-family: var(--display); }
+  .condensed { font-family: var(--condensed); }
+  .mono { font-family: var(--mono); }
+
+  .label {
+    font-family: var(--condensed);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    font-size: 10px;
+    color: var(--tx3);
+  }
+
+  /* Top nav minimal */
+  .nav-bar {
+    border-bottom: 1px solid var(--bd);
+    background: rgba(5,5,5,0.85);
+    backdrop-filter: blur(12px);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .navtab {
+    font-family: var(--condensed);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--tx3);
+    padding: 20px 0;
+    transition: 0.2s;
+    cursor: pointer;
+  }
+  .navtab:hover { color: var(--tx); }
+  .navtab.active { color: var(--or); }
+
+  /* Cinematic hero */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding: 56px 0 44px;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 30% 30%, rgba(255,107,26,0.45), transparent 70%),
+      radial-gradient(ellipse 60% 50% at 80% 80%, rgba(194,69,0,0.25), transparent 60%),
+      linear-gradient(180deg, #1a0a02 0%, #0a0502 70%, var(--bg) 100%);
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/></svg>");
+    opacity: 0.08;
+    mix-blend-mode: overlay;
+  }
+  .hero-bg .scanline {
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+      180deg,
+      transparent 0,
+      transparent 3px,
+      rgba(255,255,255,0.012) 3px,
+      rgba(255,255,255,0.012) 4px
+    );
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Level number badge */
+  .level-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 18px 10px 14px;
+    background: rgba(0,0,0,0.45);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 999px;
+    backdrop-filter: blur(8px);
+  }
+  .level-badge .num {
+    font-family: var(--display);
+    font-size: 28px;
+    color: var(--or);
+    line-height: 1;
+    letter-spacing: 0.04em;
+  }
+  .level-badge .total {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--tx2);
+    letter-spacing: 0.05em;
+  }
+  .level-badge .lbl {
+    font-family: var(--condensed);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.32em;
+    color: var(--tx2);
+    border-left: 1px solid rgba(255,255,255,0.15);
+    padding-left: 14px;
+  }
+
+  /* Phase floating badge */
+  .phase {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 18px;
+    background: rgba(0,0,0,0.4);
+    border: 1.5px solid var(--or);
+    border-radius: 999px;
+    color: var(--or);
+    font-family: var(--condensed);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.32em;
+    font-size: 11px;
+    backdrop-filter: blur(8px);
+  }
+  .phase::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    background: var(--or);
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--or);
+    animation: pulse 1.6s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.85); }
+  }
+
+  /* Massive level name with tracking */
+  .level-name {
+    font-family: var(--display);
+    font-size: clamp(56px, 13vw, 168px);
+    line-height: 0.85;
+    letter-spacing: 0.18em;
+    color: var(--tx);
+    font-weight: 400;
+    margin: 0;
+    text-shadow: 0 4px 30px rgba(0,0,0,0.6);
+  }
+
+  .level-tagline {
+    font-family: var(--condensed);
+    font-style: italic;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.4em;
+    color: var(--tx2);
+    margin-top: 12px;
+    font-weight: 400;
+  }
+
+  /* Mini progress bar inside hero */
+  .mini-progress {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: rgba(0,0,0,0.35);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 14px 18px;
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+  }
+  .mp-bar {
+    flex: 1;
+    height: 6px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 999px;
+    overflow: hidden;
+    position: relative;
+    min-width: 120px;
+  }
+  .mp-bar > span {
+    display: block;
+    height: 100%;
+    width: 8.3%;
+    background: linear-gradient(90deg, var(--or), var(--or-h));
+    border-radius: 999px;
+    box-shadow: 0 0 12px rgba(255,107,26,0.5);
+  }
+
+  /* Week tabs */
+  .weeks {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    background: var(--s1);
+    border: 1px solid var(--bd);
+    padding: 8px;
+    border-radius: 14px;
+  }
+  .week {
+    background: transparent;
+    border: 0;
+    padding: 14px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+    color: var(--tx3);
+    font-family: var(--condensed);
+    text-align: center;
+  }
+  .week:hover { background: rgba(255,255,255,0.04); color: var(--tx2); }
+  .week.active {
+    background: linear-gradient(180deg, rgba(255,107,26,0.18), rgba(255,107,26,0.04));
+    color: var(--or);
+    box-shadow: inset 0 0 0 1px rgba(255,107,26,0.5);
+  }
+  .week .nm {
+    font-family: var(--display);
+    font-size: 22px;
+    line-height: 1;
+    letter-spacing: 0.05em;
+  }
+  .week .lbl {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    margin-top: 4px;
+    font-weight: 700;
+    opacity: 0.7;
+  }
+
+  /* Day tabs */
+  .days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    background: var(--s1);
+    border: 1px solid var(--bd);
+    padding: 10px;
+    border-radius: 14px;
+  }
+  .day {
+    background: transparent;
+    border: 0;
+    padding: 16px 4px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+    color: var(--tx2);
+    font-family: var(--condensed);
+    text-align: center;
+    position: relative;
+  }
+  .day:hover { background: rgba(255,255,255,0.04); }
+  .day.active {
+    background: linear-gradient(180deg, rgba(255,107,26,0.22), rgba(255,107,26,0.06));
+    box-shadow: inset 0 0 0 1px rgba(255,107,26,0.6);
+  }
+  .day .name {
+    font-family: var(--display);
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: 0.05em;
+    color: inherit;
+  }
+  .day.active .name { color: var(--or); }
+  .day .ty {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-weight: 700;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+  .day .icon {
+    width: 5px; height: 5px; border-radius: 50%; display: inline-block;
+  }
+  .ic-treino { background: var(--or); box-shadow: 0 0 6px var(--or); }
+  .ic-mobil { background: #facc15; box-shadow: 0 0 6px #facc15; }
+  .ic-camin { background: #60a5fa; box-shadow: 0 0 6px #60a5fa; }
+  .ic-bike { background: #a78bfa; box-shadow: 0 0 6px #a78bfa; }
+  .ic-desc { background: var(--gn); box-shadow: 0 0 6px var(--gn); }
+  .day .ty.treino { color: var(--or); }
+  .day .ty.mobil { color: #facc15; }
+  .day .ty.camin { color: #60a5fa; }
+  .day .ty.bike { color: #a78bfa; }
+  .day .ty.desc { color: var(--gn); }
+  .day:not(.active) .ty { color: var(--tx3); }
+  .day:not(.active) .ty .icon { opacity: 0.6; }
+
+  /* Step indicator above hero */
+  .step-indicator {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 28px;
+    align-items: center;
+  }
+  .step-indicator .seg {
+    height: 3px;
+    flex: 1;
+    background: rgba(255,255,255,0.08);
+    border-radius: 999px;
+    transition: 0.3s;
+  }
+  .step-indicator .seg.done {
+    background: linear-gradient(90deg, var(--or), var(--or-h));
+    box-shadow: 0 0 8px rgba(255,107,26,0.5);
+  }
+  .step-indicator .lbl {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--tx2);
+    margin-left: 8px;
+    letter-spacing: 0.05em;
+  }
+
+  /* Stats row at hero bottom */
+  .stats-row {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .stat {
+    display: flex;
+    flex-direction: column;
+  }
+  .stat .lbl {
+    font-family: var(--condensed);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: var(--tx3);
+    font-weight: 700;
+  }
+  .stat .val {
+    font-family: var(--mono);
+    font-size: 18px;
+    color: var(--tx);
+    margin-top: 4px;
+    font-weight: 700;
+  }
+  .stat .val.acc { color: var(--or); }
+
+  /* Brand */
+  .brand {
+    font-family: var(--display);
+    font-size: 28px;
+    letter-spacing: 0.06em;
+  }
+
+  @media (max-width: 768px) {
+    .level-name { letter-spacing: 0.1em; }
+    .level-tagline { font-size: 11px; letter-spacing: 0.3em; }
+    .day .ty { display: none; }
+    .day { padding: 14px 2px; }
+    .week { padding: 10px 4px; }
+    .week .nm { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Top nav -->
+<nav class="nav-bar">
+  <div class="mx-auto max-w-6xl px-4 md:px-8 flex items-center justify-between gap-6">
+    <div class="brand py-3 shrink-0">
+      <span style="color:var(--or)">FORT</span><span style="color:var(--tx)">E</span>
+      <span class="text-[10px] opacity-50 ml-1 mono align-top">365</span>
+    </div>
+    <div class="hidden lg:flex gap-7 overflow-x-auto">
+      <a class="navtab active">Treino</a>
+      <a class="navtab">Nutrição</a>
+      <a class="navtab">Receitas</a>
+      <a class="navtab">Compras</a>
+      <a class="navtab">Skills</a>
+      <a class="navtab">Ranking</a>
+      <a class="navtab">Progresso</a>
+      <a class="navtab">Coach IA</a>
+    </div>
+    <div class="condensed text-xs uppercase tracking-[0.2em] text-[color:var(--tx2)] shrink-0 flex items-center gap-2">
+      <span class="w-7 h-7 rounded-full bg-[color:var(--or)] text-black flex items-center justify-center font-bold">L</span>
+      <span class="hidden sm:inline">OLIVEIRA</span>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="scanline"></div>
+  </div>
+
+  <div class="hero-content mx-auto max-w-6xl px-4 md:px-8">
+
+    <!-- 12-segment progress -->
+    <div class="step-indicator">
+      <div class="seg done"></div>
+      <div class="seg"></div>
+      <div class="seg"></div>
+      <div class="seg"></div>
+      <div class="seg"></div>
+      <div class="seg"></div>
+      <div class="seg"></div>
+      <div class="seg"></div>
+      <div class="seg"></div>
+      <div class="seg"></div>
+      <div class="seg"></div>
+      <div class="seg"></div>
+      <span class="lbl">01/12</span>
+    </div>
+
+    <div class="flex items-center gap-3 flex-wrap mb-6 md:mb-8">
+      <div class="level-badge">
+        <span class="num">01</span>
+        <span class="total">/ 12</span>
+        <span class="lbl">Nível</span>
+      </div>
+      <div class="phase">FASE: ADAPTAÇÃO</div>
+    </div>
+
+    <h1 class="level-name">DESPERTAR</h1>
+    <p class="level-tagline">— O CORPO SE LEMBRA —</p>
+
+    <div class="mt-8 md:mt-10 grid grid-cols-12 gap-4 md:gap-6 items-end">
+      <div class="col-span-12 md:col-span-7">
+        <div class="mini-progress">
+          <span class="label">Mês 01/12</span>
+          <div class="mp-bar"><span></span></div>
+          <span class="mono text-xs text-[color:var(--or)] font-bold">8.3%</span>
+        </div>
+      </div>
+      <div class="col-span-12 md:col-span-5">
+        <div class="stats-row md:justify-end">
+          <div class="stat">
+            <span class="lbl">Streak</span>
+            <span class="val acc">14<span class="text-[color:var(--tx3)] text-xs ml-1">d</span></span>
+          </div>
+          <div class="stat">
+            <span class="lbl">Sessões</span>
+            <span class="val">028<span class="text-[color:var(--tx3)] text-xs ml-1">/365</span></span>
+          </div>
+          <div class="stat">
+            <span class="lbl">Hoje</span>
+            <span class="val">2h<span class="text-[color:var(--tx3)] text-xs ml-1">15</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Week + Day controls -->
+<section class="mx-auto max-w-6xl px-4 md:px-8 -mt-2 relative z-10">
+
+  <div class="grid grid-cols-12 gap-3 md:gap-5">
+    <div class="col-span-12 md:col-span-4">
+      <div class="label mb-2 px-2">Semana / 4</div>
+      <div class="weeks">
+        <button class="week active">
+          <div class="nm">01</div>
+          <div class="lbl">SEM</div>
+        </button>
+        <button class="week">
+          <div class="nm">02</div>
+          <div class="lbl">SEM</div>
+        </button>
+        <button class="week">
+          <div class="nm">03</div>
+          <div class="lbl">SEM</div>
+        </button>
+        <button class="week">
+          <div class="nm">04</div>
+          <div class="lbl">SEM</div>
+        </button>
+      </div>
+    </div>
+
+    <div class="col-span-12 md:col-span-8">
+      <div class="label mb-2 px-2">Dia / 7</div>
+      <div class="days">
+        <button class="day active">
+          <div class="name">SEG</div>
+          <div class="ty treino"><span class="icon ic-treino"></span> TREINO</div>
+        </button>
+        <button class="day">
+          <div class="name">TER</div>
+          <div class="ty treino"><span class="icon ic-treino"></span> TREINO</div>
+        </button>
+        <button class="day">
+          <div class="name">QUA</div>
+          <div class="ty mobil"><span class="icon ic-mobil"></span> MOBIL</div>
+        </button>
+        <button class="day">
+          <div class="name">QUI</div>
+          <div class="ty treino"><span class="icon ic-treino"></span> TREINO</div>
+        </button>
+        <button class="day">
+          <div class="name">SEX</div>
+          <div class="ty camin"><span class="icon ic-camin"></span> CAMIN</div>
+        </button>
+        <button class="day">
+          <div class="name">SAB</div>
+          <div class="ty bike"><span class="icon ic-bike"></span> BIKE</div>
+        </button>
+        <button class="day">
+          <div class="name">DOM</div>
+          <div class="ty desc"><span class="icon ic-desc"></span> DESC</div>
+        </button>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- Demo content placeholder -->
+<main class="mx-auto max-w-6xl px-4 md:px-8 py-14">
+  <div class="rounded-2xl border border-[color:var(--bd)] bg-[color:var(--s1)] p-10 text-center">
+    <div class="label mb-3">PREVIEW · DIA SELECIONADO</div>
+    <div class="display text-6xl text-[color:var(--or)]" style="letter-spacing:0.05em;">SEGUNDA · 16h</div>
+    <p class="condensed text-[color:var(--tx2)] mt-3 max-w-md mx-auto">
+      Aqui entrariam os exercícios do dia. O foco do mockup é o cabeçalho acima.
+    </p>
+  </div>
+</main>
+
+</body>
+</html>

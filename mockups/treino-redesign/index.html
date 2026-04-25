@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FORTE 365 — Treino · 3 Direções de Redesign</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;500;600;700&family=Fraunces:opsz,wght,SOFT@9..144,300;9..144,400;9..144,600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --s1: #141414;
+    --s2: #1c1c1c;
+    --bd: #2a2a2a;
+    --or: #ff6b1a;
+    --gn: #22c55e;
+    --tx: #ededed;
+    --tx2: #a3a3a3;
+    --tx3: #6b7280;
+  }
+  body {
+    background: var(--bg);
+    color: var(--tx);
+    font-family: 'Barlow Condensed', sans-serif;
+    margin: 0;
+    min-height: 100vh;
+  }
+  .display { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.04em; }
+  .serif-i { font-family: 'Fraunces', serif; font-style: italic; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+
+  .card {
+    background: var(--s1);
+    border: 1.5px solid var(--bd);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: 0.25s;
+    display: flex;
+    flex-direction: column;
+  }
+  .card:hover {
+    border-color: var(--or);
+    transform: translateY(-2px);
+  }
+  .frame {
+    aspect-ratio: 16/10;
+    border-bottom: 1px solid var(--bd);
+    overflow: hidden;
+    background: #050505;
+    position: relative;
+  }
+  .frame iframe {
+    width: 200%;
+    height: 200%;
+    border: 0;
+    transform: scale(0.5);
+    transform-origin: top left;
+    pointer-events: none;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    background: rgba(255,107,26,0.12);
+    border: 1px solid rgba(255,107,26,0.5);
+    border-radius: 999px;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-weight: 700;
+    color: var(--or);
+  }
+  .open-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background: var(--or);
+    color: black;
+    border-radius: 6px;
+    font-family: 'Barlow Condensed', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: 0.18s;
+  }
+  .open-link:hover { background: #ff8540; }
+</style>
+</head>
+<body>
+
+<div class="mx-auto max-w-7xl px-4 md:px-8 py-12">
+
+  <header class="mb-12">
+    <div class="display text-4xl mb-2">
+      <span style="color:var(--or)">FORT</span>E
+      <span class="text-xs opacity-50 mono align-top">365</span>
+      <span class="text-[color:var(--tx2)] ml-3 text-2xl">/ TREINO · REDESIGN</span>
+    </div>
+    <p class="text-[color:var(--tx2)] max-w-2xl">
+      Três direções estéticas distintas para o cabeçalho da aba Treino. Cada uma resolve
+      o mesmo problema (12 níveis × 4 semanas × 7 dias) com uma identidade visual diferente.
+      Abra cada um em tela cheia para avaliar.
+    </p>
+  </header>
+
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+    <!-- A -->
+    <article class="card">
+      <div class="frame">
+        <iframe src="A-mission-control.html" loading="lazy" scrolling="no"></iframe>
+      </div>
+      <div class="p-6 flex flex-col gap-4 grow">
+        <div class="flex items-center justify-between gap-3">
+          <span class="badge">OPÇÃO A</span>
+          <span class="text-[10px] uppercase tracking-[0.3em] text-[color:var(--tx3)] font-bold">DENSO · TÉCNICO</span>
+        </div>
+        <h2 class="display text-3xl">MISSION CONTROL</h2>
+        <p class="text-sm text-[color:var(--tx2)] grow">
+          Painel atlético com número gigante <span class="mono text-[color:var(--or)]">01/12</span>, brackets de canto,
+          progresso anual visível e dados em monoespaçada. Vibe de cockpit de corrida ou
+          dashboard de smartwatch fitness.
+        </p>
+        <ul class="text-xs text-[color:var(--tx3)] space-y-1 leading-relaxed">
+          <li>✓ Sensação de progressão muito forte (8.3% / 028 dias / streak 14)</li>
+          <li>✓ Tipos de treino com cores + dots (visual claro)</li>
+          <li>✓ Mais hierarquia: nome do nível em destaque grande</li>
+          <li>· Mais "informação" na tela — pode parecer denso pra alguns</li>
+        </ul>
+        <a href="A-mission-control.html" class="open-link self-start" target="_blank">
+          Abrir em tela cheia →
+        </a>
+      </div>
+    </article>
+
+    <!-- B -->
+    <article class="card">
+      <div class="frame">
+        <iframe src="B-editorial-hub.html" loading="lazy" scrolling="no"></iframe>
+      </div>
+      <div class="p-6 flex flex-col gap-4 grow">
+        <div class="flex items-center justify-between gap-3">
+          <span class="badge">OPÇÃO B</span>
+          <span class="text-[10px] uppercase tracking-[0.3em] text-[color:var(--tx3)] font-bold">REFINADO · ESPAÇADO</span>
+        </div>
+        <h2 class="display text-3xl">EDITORIAL HUB</h2>
+        <p class="text-sm text-[color:var(--tx2)] grow">
+          Restraint absoluto. Numerais romanos como masthead de revista,
+          headline em <span class="serif-i text-[color:var(--or)]">italic serif</span>, metadados em uma
+          linha. Sensação de revista de luxo ou relógio mecânico.
+        </p>
+        <ul class="text-xs text-[color:var(--tx3)] space-y-1 leading-relaxed">
+          <li>✓ Os 12 níveis cabem todos numa linha (sem scroll)</li>
+          <li>✓ Headline editorial dá peso e personalidade ao "DESPERTAR"</li>
+          <li>✓ Sutil, fica quieto quando não é o foco</li>
+          <li>· Menos gamification — quem busca recompensa visual pode achar frio</li>
+        </ul>
+        <a href="B-editorial-hub.html" class="open-link self-start" target="_blank">
+          Abrir em tela cheia →
+        </a>
+      </div>
+    </article>
+
+    <!-- C -->
+    <article class="card">
+      <div class="frame">
+        <iframe src="C-cinematic-hero.html" loading="lazy" scrolling="no"></iframe>
+      </div>
+      <div class="p-6 flex flex-col gap-4 grow">
+        <div class="flex items-center justify-between gap-3">
+          <span class="badge">OPÇÃO C</span>
+          <span class="text-[10px] uppercase tracking-[0.3em] text-[color:var(--tx3)] font-bold">CINEMATOGRÁFICO · GRADIENTE</span>
+        </div>
+        <h2 class="display text-3xl">CINEMATIC HERO</h2>
+        <p class="text-sm text-[color:var(--tx2)] grow">
+          Hero com gradiente laranja/escuro tipo "now playing" do Spotify ou tela
+          de seleção de personagem. Nome do nível espaçado <span style="letter-spacing:0.2em">D E S P E R T A R</span>,
+          phase como badge flutuante.
+        </p>
+        <ul class="text-xs text-[color:var(--tx3)] space-y-1 leading-relaxed">
+          <li>✓ Mais "atrativo/recompensador" — fica bonito de abrir</li>
+          <li>✓ 12-segment progress no topo (evita os romanos)</li>
+          <li>✓ Week + Day como cards arredondados embaixo</li>
+          <li>· Hero é mais alto — empurra conteúdo do dia mais pra baixo</li>
+        </ul>
+        <a href="C-cinematic-hero.html" class="open-link self-start" target="_blank">
+          Abrir em tela cheia →
+        </a>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- Comparison table -->
+  <section class="mt-16">
+    <h2 class="display text-2xl mb-4 text-[color:var(--tx2)]">COMPARAÇÃO RÁPIDA</h2>
+    <div class="overflow-x-auto rounded-lg border border-[color:var(--bd)]">
+      <table class="w-full text-sm">
+        <thead class="bg-[color:var(--s1)] border-b border-[color:var(--bd)]">
+          <tr class="text-left">
+            <th class="p-3 text-[color:var(--tx3)] uppercase tracking-[0.2em] text-[10px] font-bold">Critério</th>
+            <th class="p-3 text-[color:var(--or)] uppercase tracking-[0.2em] text-[10px] font-bold">A · Mission Control</th>
+            <th class="p-3 text-[color:var(--or)] uppercase tracking-[0.2em] text-[10px] font-bold">B · Editorial Hub</th>
+            <th class="p-3 text-[color:var(--or)] uppercase tracking-[0.2em] text-[10px] font-bold">C · Cinematic Hero</th>
+          </tr>
+        </thead>
+        <tbody class="text-[color:var(--tx2)]">
+          <tr class="border-b border-[color:var(--bd)]">
+            <td class="p-3 text-[color:var(--tx)]">Hierarquia visual</td>
+            <td class="p-3">Forte (número 01 + nome grande)</td>
+            <td class="p-3">Calma (headline editorial)</td>
+            <td class="p-3">Máxima (nome ocupa hero inteiro)</td>
+          </tr>
+          <tr class="border-b border-[color:var(--bd)]">
+            <td class="p-3 text-[color:var(--tx)]">Sensação de progresso</td>
+            <td class="p-3">Explícita (8.3% / 028 dias)</td>
+            <td class="p-3">Sutil (linha de 12 segmentos)</td>
+            <td class="p-3">Visual (12-segment + barra)</td>
+          </tr>
+          <tr class="border-b border-[color:var(--bd)]">
+            <td class="p-3 text-[color:var(--tx)]">Gamification</td>
+            <td class="p-3">Leve (streak 14, sessão #028)</td>
+            <td class="p-3">Mínima</td>
+            <td class="p-3">Média (badges + glow)</td>
+          </tr>
+          <tr class="border-b border-[color:var(--bd)]">
+            <td class="p-3 text-[color:var(--tx)]">Altura do header</td>
+            <td class="p-3">Média (~340px desktop)</td>
+            <td class="p-3">Alta (~480px) — mas espaço respirável</td>
+            <td class="p-3">Alta (~440px) — hero domina</td>
+          </tr>
+          <tr class="border-b border-[color:var(--bd)]">
+            <td class="p-3 text-[color:var(--tx)]">Mobile (360px)</td>
+            <td class="p-3">Bom (grid 4+7 funciona)</td>
+            <td class="p-3">Excelente (tudo cabe natural)</td>
+            <td class="p-3">Bom (hero responde bem)</td>
+          </tr>
+          <tr class="border-b border-[color:var(--bd)]">
+            <td class="p-3 text-[color:var(--tx)]">Esforço de implementação</td>
+            <td class="p-3">Médio (brackets + grid)</td>
+            <td class="p-3">Médio (carregar Fraunces)</td>
+            <td class="p-3">Maior (gradient + scanlines + glow)</td>
+          </tr>
+          <tr>
+            <td class="p-3 text-[color:var(--tx)]">Personalidade</td>
+            <td class="p-3">Atleta sério, militar, performático</td>
+            <td class="p-3">Editorial, refinado, contemplativo</td>
+            <td class="p-3">Cinematográfico, recompensador, vibrante</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Recommendation -->
+  <section class="mt-12 p-6 rounded-lg border border-[color:var(--or)]/40 bg-[color:var(--or)]/5">
+    <div class="flex items-start gap-4">
+      <span class="badge shrink-0">SUGESTÃO</span>
+      <div>
+        <p class="text-[color:var(--tx)] leading-relaxed">
+          Pra um app fitness que você abre <strong>todo dia</strong> e onde a recompensa
+          visual importa mas a densidade de informação ajuda no acompanhamento, a
+          <strong class="text-[color:var(--or)]">Opção A (Mission Control)</strong> é o
+          melhor equilíbrio: dá personalidade forte, mostra progresso explícito,
+          gamification leve, e funciona em qualquer largura sem precisar carregar
+          fonte serif extra.
+        </p>
+        <p class="text-[color:var(--tx2)] mt-3 text-sm leading-relaxed">
+          Se você quer o <em>"uau"</em> visual no primeiro abrir do dia, vai de
+          <strong class="text-[color:var(--or)]">Opção C</strong>. Se prefere algo
+          quieto, sofisticado e minimalista, vai de <strong class="text-[color:var(--or)]">Opção B</strong>.
+          Se gostou de elementos de mais de uma, dá pra mixar — me diz qual e eu monto a versão final.
+        </p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+</body>
+</html>

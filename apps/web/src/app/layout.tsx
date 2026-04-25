@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
-import { Anton, Barlow, Barlow_Condensed } from "next/font/google";
+import { Anton, Barlow, Barlow_Condensed, JetBrains_Mono } from "next/font/google";
 import { PushPrompt } from "@/components/push-prompt";
 import {
   SITE_DESCRIPTION,
@@ -28,6 +28,13 @@ const barlow = Barlow({
 const barlowCondensed = Barlow_Condensed({
   weight: ["600", "700", "800"],
   variable: "--font-barlow-condensed",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  weight: ["400", "500", "700"],
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
   display: "swap",
 });
@@ -95,7 +102,7 @@ export default function RootLayout({
     <html
       lang="pt-BR"
       suppressHydrationWarning
-      className={`${anton.variable} ${barlow.variable} ${barlowCondensed.variable} h-full antialiased`}
+      className={`${anton.variable} ${barlow.variable} ${barlowCondensed.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">
         <a

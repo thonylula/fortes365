@@ -310,6 +310,8 @@ export function PlanExplorer({
   initialCompleted,
   isPremium,
   freeMonths,
+  currentStreak,
+  totalSessions,
 }: {
   months: Month[];
   days: PlanDay[];
@@ -319,6 +321,8 @@ export function PlanExplorer({
   initialCompleted?: string[];
   isPremium?: boolean;
   freeMonths?: number[];
+  currentStreak?: number;
+  totalSessions?: number;
 }) {
   const [monthId, setMonthId] = useState(0);
   const [weekIndex, setWeekIndex] = useState(0);
@@ -395,81 +399,28 @@ export function PlanExplorer({
       <Header user={user} />
       <NavTabs />
 
-      {/* Level strip (substitui o antigo strip de meses; data continua mes 0-11) */}
-      <div className="border-b border-[color:var(--bd)] bg-[color:var(--s2)] px-3 py-2 overflow-x-auto">
-        <div className="mb-1 flex items-center gap-2 text-[10px] uppercase tracking-[1.5px] text-[color:var(--tx3)]">
-          <span>Nível</span>
-          <span className="text-[color:var(--or)]">{levelByIndex(monthId).name}</span>
-          <span className="text-[color:var(--tx3)]">· {levelByIndex(monthId).subtitle}</span>
-        </div>
-        <div className="flex min-w-max gap-[5px]">
-          {months.map((m) => {
-            const locked = !isPremium && !allowedMonths.has(m.id);
-            return (
-              <button
-                key={m.id}
-                className="chipbtn"
-                data-active={m.id === monthId}
-                onClick={() => {
-                  if (locked) {
-                    setShowPaywall(true);
-                    return;
-                  }
-                  setMonthId(m.id);
-                  setWeekIndex(0);
-                }}
-                style={locked ? { opacity: 0.5 } : undefined}
-                title={`Nível ${m.id + 1} — ${levelByIndex(m.id).name}`}
-              >
-                {locked ? "🔒 " : ""}{levelShort(m.id)}
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Week strip + phase chip */}
-      <div className="flex items-center gap-3 overflow-x-auto border-b border-[color:var(--bd)] bg-[color:var(--bg)] px-3 py-2">
-        <span className="shrink-0 text-[10px] uppercase tracking-[1.5px] text-[color:var(--tx3)]">
-          Semana:
-        </span>
-        <div className="flex shrink-0 gap-[5px]">
-          {[0, 1, 2, 3].map((w) => (
-            <button
-              key={w}
-              className="chipbtn"
-              data-active={w === weekIndex}
-              onClick={() => setWeekIndex(w)}
-            >
-              Sem {w + 1}
-            </button>
-          ))}
-        </div>
-        <span className={`pchip ${month.phase_css_class} shrink-0`}>
-          {month.phase_label}
-        </span>
-      </div>
-
-      {/* Day strip */}
-      <div className="border-b border-[color:var(--bd)] bg-[color:var(--s1)] px-3 py-2 overflow-x-auto">
-        <div className="flex min-w-max gap-[5px]">
-          {DAY_SHORT.map((label, i) => {
-            const phaseDay = phaseDays.find((d) => d.day_index === i);
-            const isTraining = phaseDay?.type === "treino";
-            return (
-              <button
-                key={i}
-                className="daybtn"
-                data-active={i === dayIndex}
-                onClick={() => setDayIndex(i)}
-              >
-                <span className="da">{label}</span>
-                <span className="dn">{isTraining ? "16h" : "—"}</span>
-              </button>
-            );
-          })}
-        </div>
-      </div>
+      <TreinoHeroHeader
+        months={months}
+        monthId={monthId}
+        weekIndex={weekIndex}
+        dayIndex={dayIndex}
+        phaseDays={phaseDays}
+        isPremium={!!isPremium}
+        allowedMonths={allowedMonths}
+        currentStreak={currentStreak ?? 0}
+        totalSessions={totalSessions ?? 0}
+        onSelectMonth={(id) => {
+          const locked = !isPremium && !allowedMonths.has(id);
+          if (locked) {
+            setShowPaywall(true);
+            return;
+          }
+          setMonthId(id);
+          setWeekIndex(0);
+        }}
+        onSelectWeek={setWeekIndex}
+        onSelectDay={setDayIndex}
+      />
 
       {showPaywall && (
         <PaywallModal isLoggedIn={!!user} onClose={() => setShowPaywall(false)} />
@@ -561,6 +512,264 @@ function Header({ user }: { user: UserInfo }) {
         )}
       </div>
     </header>
+  );
+}
+
+// ──────────────────────────────────────────────────────────────────────────
+// TreinoHeroHeader — Mission × Cinema
+// Substitui as 3 strips antigas (Level / Week / Day) por um hero unificado.
+// ──────────────────────────────────────────────────────────────────────────
+
+const DAY_TYPE_META: Record<string, { label: string; iconClass: string; tyClass: string }> = {
+  treino: { label: "TREINO", iconClass: "fmc-icon-treino", tyClass: "fmc-ty-treino" },
+  caminhada: { label: "CAMIN", iconClass: "fmc-icon-camin", tyClass: "fmc-ty-camin" },
+  bike: { label: "BIKE", iconClass: "fmc-icon-bike", tyClass: "fmc-ty-bike" },
+  mobilidade: { label: "MOBIL", iconClass: "fmc-icon-mobil", tyClass: "fmc-ty-mobil" },
+  descanso: { label: "DESC", iconClass: "fmc-icon-desc", tyClass: "fmc-ty-desc" },
+};
+
+function TreinoHeroHeader({
+  months,
+  monthId,
+  weekIndex,
+  dayIndex,
+  phaseDays,
+  isPremium,
+  allowedMonths,
+  currentStreak,
+  totalSessions,
+  onSelectMonth,
+  onSelectWeek,
+  onSelectDay,
+}: {
+  months: Month[];
+  monthId: number;
+  weekIndex: number;
+  dayIndex: number;
+  phaseDays: PlanDay[];
+  isPremium: boolean;
+  allowedMonths: Set<number>;
+  currentStreak: number;
+  totalSessions: number;
+  onSelectMonth: (id: number) => void;
+  onSelectWeek: (week: number) => void;
+  onSelectDay: (day: number) => void;
+}) {
+  const month = months.find((m) => m.id === monthId) ?? months[0];
+  const levelInfo = levelByIndex(monthId);
+  const monthNum = String(monthId + 1).padStart(2, "0");
+  // Progresso anual: assume 28 dias/mês × 12 = 336 dias do plano
+  const totalDaysInPlan = months.length * 28;
+  const completedDays = monthId * 28; // dias até o início do mês atual
+  const progressPct = months.length > 0 ? ((monthId + 1) / months.length) * 100 : 0;
+
+  const today = new Date();
+  const dateStr = today.toLocaleDateString("pt-BR");
+  const timeStr = today.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
+  const sessionNum = String(totalSessions).padStart(3, "0");
+
+  return (
+    <>
+      {/* Status bar técnica */}
+      <div className="fmc-status-bar">
+        <div className="mx-auto flex h-7 max-w-6xl items-center justify-between px-4 md:px-8">
+          <div className="flex items-center gap-3">
+            <span className="fmc-dot" />
+            <span>SISTEMA · ATIVO</span>
+            <span className="opacity-50">/</span>
+            <span>SESSÃO #{sessionNum}</span>
+          </div>
+          <div className="hidden items-center gap-3 md:flex">
+            <span>{dateStr} · {timeStr}</span>
+            <span className="opacity-50">/</span>
+            <span className="text-[color:var(--gn)]">↗ STREAK {currentStreak}</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Hero cinematográfico */}
+      <section className="fmc-hero">
+        <div className="fmc-hero-bg">
+          <div className="fmc-grid" />
+          <div className="fmc-scanline" />
+        </div>
+
+        <div className="fmc-hero-content mx-auto max-w-6xl px-4 py-7 md:px-8 md:py-9">
+          <div className="grid grid-cols-12 items-end gap-5 md:gap-8">
+            {/* Bracketed number */}
+            <div className="col-span-12 md:col-span-5">
+              <div className="fmc-label mb-2">Nível Atual / {months.length}</div>
+              <div className="fmc-num-wrap inline-block">
+                <span className="fmc-br tl" />
+                <span className="fmc-br tr" />
+                <span className="fmc-br bl" />
+                <span className="fmc-br br" />
+                <div className="flex items-baseline gap-3">
+                  <span className="fmc-num">{monthNum}</span>
+                  <div className="flex flex-col items-start">
+                    <span className="font-[family-name:var(--font-mono)] text-lg leading-none text-[color:var(--tx2)]">
+                      /{String(months.length).padStart(2, "0")}
+                    </span>
+                    <span className="fmc-label mt-1.5" style={{ fontSize: "9px" }}>
+                      {levelInfo.name}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Level info + phase */}
+            <div className="col-span-12 pb-1 md:col-span-7">
+              <div className="fmc-label mb-2">Designação</div>
+              <h1 className="fmc-level-name">{levelInfo.name}</h1>
+              {levelInfo.subtitle && (
+                <p className="fmc-level-tagline">— {levelInfo.subtitle.toUpperCase()} —</p>
+              )}
+              <div className="mt-4 flex flex-wrap items-center gap-3">
+                <div className="fmc-phase-tag">FASE: {month.phase_label.toUpperCase()}</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Progresso anual + stats */}
+          <div className="mt-7 grid grid-cols-12 items-center gap-4 md:gap-6">
+            <div className="col-span-12 md:col-span-7">
+              <div className="mb-2 flex items-center gap-3">
+                <span className="fmc-label">PROGRESSO ANUAL</span>
+                <span className="font-[family-name:var(--font-mono)] text-sm font-bold text-[color:var(--or)]">
+                  {progressPct.toFixed(1)}%
+                </span>
+                <span className="font-[family-name:var(--font-mono)] text-xs opacity-50">·</span>
+                <span className="font-[family-name:var(--font-mono)] text-xs text-[color:var(--tx2)]">
+                  MÊS {monthNum} / {String(months.length).padStart(2, "0")}
+                </span>
+              </div>
+              <div className="fmc-progress-track">
+                <div className="fmc-progress-fill" style={{ width: `${progressPct}%` }} />
+                <div className="fmc-progress-segments" />
+              </div>
+            </div>
+            <div className="col-span-12 md:col-span-5">
+              <div className="flex flex-wrap gap-5 md:justify-end">
+                <div className="fmc-stat">
+                  <div className="lbl">Streak</div>
+                  <div className="val acc">
+                    {currentStreak}
+                    <span className="sub">d</span>
+                  </div>
+                </div>
+                <div className="fmc-stat">
+                  <div className="lbl">Sessões</div>
+                  <div className="val">
+                    {sessionNum}
+                    <span className="sub">/{totalDaysInPlan}</span>
+                  </div>
+                </div>
+                <div className="fmc-stat">
+                  <div className="lbl">Concluídos</div>
+                  <div className="val">
+                    {completedDays}
+                    <span className="sub">d</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Painel Week + Day */}
+      <section className="fmc-control-panel">
+        <div className="mx-auto max-w-6xl px-4 py-5 md:px-8">
+          <div className="grid grid-cols-12 gap-4">
+            {/* Months strip (compacto, escondido por padrão; pode ser usado pra navegar entre níveis) */}
+            <div className="col-span-12">
+              <div className="fmc-label mb-2 flex items-center gap-2">
+                <span>Níveis</span>
+                <span className="font-[family-name:var(--font-mono)] normal-case tracking-normal text-[color:var(--or)]">
+                  ▸ {monthNum}
+                </span>
+              </div>
+              <div className="flex gap-1.5 overflow-x-auto pb-1">
+                {months.map((m) => {
+                  const locked = !isPremium && !allowedMonths.has(m.id);
+                  const isActive = m.id === monthId;
+                  return (
+                    <button
+                      key={m.id}
+                      type="button"
+                      onClick={() => onSelectMonth(m.id)}
+                      data-active={isActive}
+                      className="fmc-week-chip shrink-0"
+                      style={locked ? { opacity: 0.5 } : undefined}
+                      title={`Nível ${m.id + 1} — ${levelByIndex(m.id).name}`}
+                    >
+                      <span className="num">{locked ? "🔒" : levelShort(m.id)}</span>
+                      <span className="lbl">{m.short_name}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Week */}
+            <div className="col-span-12 md:col-span-4">
+              <div className="fmc-label mb-2 flex items-center justify-between">
+                <span>Semana / 4</span>
+                <span className="font-[family-name:var(--font-mono)] normal-case tracking-normal text-[color:var(--or)]">
+                  ▸ {weekIndex + 1}
+                </span>
+              </div>
+              <div className="grid grid-cols-4 gap-1.5">
+                {[0, 1, 2, 3].map((w) => (
+                  <button
+                    key={w}
+                    type="button"
+                    onClick={() => onSelectWeek(w)}
+                    data-active={w === weekIndex}
+                    className="fmc-week-chip"
+                  >
+                    <span className="num">{String(w + 1).padStart(2, "0")}</span>
+                    <span className="lbl">SEM</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Day */}
+            <div className="col-span-12 md:col-span-8">
+              <div className="fmc-label mb-2 flex items-center justify-between">
+                <span>Dia / 7</span>
+                <span className="font-[family-name:var(--font-mono)] normal-case tracking-normal text-[color:var(--or)]">
+                  ▸ {DAY_SHORT[dayIndex]}
+                </span>
+              </div>
+              <div className="grid grid-cols-7 gap-1.5">
+                {DAY_SHORT.map((label, i) => {
+                  const phaseDay = phaseDays.find((d) => d.day_index === i);
+                  const meta = DAY_TYPE_META[phaseDay?.type ?? "treino"];
+                  return (
+                    <button
+                      key={i}
+                      type="button"
+                      onClick={() => onSelectDay(i)}
+                      data-active={i === dayIndex}
+                      className="fmc-day-chip"
+                    >
+                      <span className="day-name">{label}</span>
+                      <span className={`day-type ${meta.tyClass}`}>
+                        <span className={`icon ${meta.iconClass}`} />
+                        {meta.label}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
 

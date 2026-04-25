@@ -161,6 +161,20 @@ export default async function TreinoPage() {
 
   const subInfo = await getSubscriptionInfo();
 
+  let currentStreak = 0;
+  let totalSessions = 0;
+  if (user) {
+    const { data: progress } = await supabase
+      .from("user_progress")
+      .select("current_streak, total_xp")
+      .eq("user_id", user.id)
+      .maybeSingle();
+    currentStreak = progress?.current_streak ?? 0;
+    // Heurística: cada exercício concluído rende ~50 XP. Convertendo de volta
+    // dá uma estimativa razoável de sessões/exercícios feitos no ano.
+    totalSessions = Math.floor((progress?.total_xp ?? 0) / 50);
+  }
+
   const firstDay = (days as PlanDay[]).find((d) => d.phase_id === 0 && d.day_index === 0);
   let initialCompleted: string[] = [];
   if (user && firstDay) {
@@ -178,6 +192,8 @@ export default async function TreinoPage() {
       initialCompleted={initialCompleted}
       isPremium={subInfo.isPremium}
       freeMonths={subInfo.freeMonths}
+      currentStreak={currentStreak}
+      totalSessions={totalSessions}
     />
   );
 }

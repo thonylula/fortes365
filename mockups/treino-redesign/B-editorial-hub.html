@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FORTE 365 — Redesign B · Editorial Hub</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;500;600;700&family=Fraunces:opsz,wght,SOFT@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --s1: #131313;
+    --s2: #1a1a1a;
+    --bd: #1f1f1f;
+    --bd2: #2a2a2a;
+    --or: #ff6b1a;
+    --ord: rgba(255,107,26,.08);
+    --gn: #22c55e;
+    --tx: #f5f1ea;          /* slightly warm cream */
+    --tx2: #9a9590;
+    --tx3: #5a5552;
+    --display: 'Bebas Neue', sans-serif;
+    --condensed: 'Barlow Condensed', sans-serif;
+    --serif: 'Fraunces', serif;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--tx);
+    font-family: var(--condensed);
+    margin: 0;
+    min-height: 100vh;
+    font-feature-settings: "ss01", "kern";
+  }
+
+  /* Hairline grain */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/></svg>");
+    opacity: 0.025;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+    z-index: 100;
+  }
+
+  .display { font-family: var(--display); }
+  .condensed { font-family: var(--condensed); }
+  .serif { font-family: var(--serif); }
+
+  .label {
+    font-family: var(--condensed);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.32em;
+    font-size: 10px;
+    color: var(--tx3);
+  }
+
+  /* Editorial hairline */
+  .hr {
+    height: 1px;
+    background: var(--bd2);
+  }
+  .hr-strong {
+    height: 1px;
+    background: var(--tx2);
+    opacity: 0.3;
+  }
+
+  /* Top nav restrained */
+  .top-bar {
+    border-bottom: 1px solid var(--bd);
+  }
+
+  .navtab {
+    font-family: var(--condensed);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    color: var(--tx2);
+    padding: 22px 0;
+    transition: 0.18s;
+    cursor: pointer;
+    position: relative;
+  }
+  .navtab:hover { color: var(--tx); }
+  .navtab.active { color: var(--tx); }
+  .navtab.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background: var(--or);
+    border-radius: 50%;
+  }
+
+  /* Roman numerals stepper */
+  .roman {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0;
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+  }
+  .roman .num {
+    color: var(--tx3);
+    font-size: 13px;
+    padding: 0 14px;
+    cursor: pointer;
+    transition: 0.18s;
+    line-height: 1;
+    letter-spacing: 0.02em;
+  }
+  .roman .num:hover { color: var(--tx); }
+  .roman .num.active {
+    color: var(--or);
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .roman .sep {
+    color: var(--bd2);
+    font-size: 10px;
+    user-select: none;
+  }
+
+  /* Headline */
+  .head-no {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--tx3);
+    font-size: 18px;
+    letter-spacing: 0.05em;
+  }
+  .head-name {
+    font-family: var(--display);
+    font-size: clamp(56px, 9vw, 96px);
+    line-height: 0.92;
+    letter-spacing: 0.01em;
+    color: var(--tx);
+    font-weight: 400;
+  }
+  .head-name .end-dot {
+    color: var(--or);
+  }
+
+  /* Subtitle line */
+  .meta-line {
+    font-family: var(--condensed);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.32em;
+    color: var(--tx2);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+  }
+  .meta-line .dot { width: 3px; height: 3px; background: var(--tx3); border-radius: 50%; display: inline-block; }
+  .meta-line .accent { color: var(--or); }
+
+  /* Day strip — refined */
+  .days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    border-top: 1px solid var(--bd);
+    border-bottom: 1px solid var(--bd);
+  }
+  .day {
+    padding: 22px 0 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.18s;
+    border-right: 1px solid var(--bd);
+    position: relative;
+    background: transparent;
+    border-top: 0;
+    border-bottom: 0;
+    border-left: 0;
+    color: inherit;
+    font-family: inherit;
+  }
+  .day:last-child { border-right: 0; }
+  .day:hover { background: var(--s1); }
+  .day .name {
+    font-family: var(--condensed);
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    color: var(--tx2);
+    text-transform: uppercase;
+  }
+  .day .num {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 300;
+    font-size: 36px;
+    line-height: 1;
+    margin-top: 8px;
+    color: var(--tx);
+    letter-spacing: -0.01em;
+  }
+  .day .ty {
+    margin-top: 8px;
+    font-family: var(--condensed);
+    font-size: 9px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--tx3);
+    font-weight: 600;
+  }
+  .day.active {
+    background: var(--bg);
+  }
+  .day.active::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: 50%;
+    transform: translateX(-50%);
+    width: 28px;
+    height: 2px;
+    background: var(--or);
+  }
+  .day.active .name { color: var(--or); }
+  .day.active .num { color: var(--or); }
+  .day.active .ty { color: var(--tx); font-weight: 700; }
+
+  /* Week stepper */
+  .weeks {
+    display: flex;
+    gap: 0;
+    align-items: center;
+  }
+  .week {
+    flex: 1;
+    text-align: center;
+    padding: 16px 0;
+    cursor: pointer;
+    transition: 0.18s;
+    border-right: 1px solid var(--bd);
+    background: transparent;
+    border-top: 0; border-bottom: 0; border-left: 0;
+    color: inherit;
+    font-family: inherit;
+  }
+  .week:last-child { border-right: 0; }
+  .week .lbl {
+    font-family: var(--condensed);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.32em;
+    color: var(--tx3);
+  }
+  .week .nm {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 22px;
+    color: var(--tx);
+    margin-top: 4px;
+  }
+  .week:hover { background: var(--s1); }
+  .week.active .lbl { color: var(--or); }
+  .week.active .nm { color: var(--or); }
+
+  /* Annual progress, very minimal */
+  .progress-line {
+    display: flex;
+    gap: 4px;
+    margin-top: 6px;
+  }
+  .progress-line span {
+    height: 2px;
+    flex: 1;
+    background: var(--bd2);
+  }
+  .progress-line span.done { background: var(--or); }
+
+  @media (max-width: 768px) {
+    .roman .num { padding: 0 8px; font-size: 11px; }
+    .roman .num.active { font-size: 15px; }
+    .day .num { font-size: 26px; }
+    .day .ty { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Top bar with brand and tabs -->
+<div class="top-bar">
+  <div class="mx-auto max-w-6xl px-6 md:px-10 flex items-center justify-between gap-8">
+    <div class="display text-3xl py-4 shrink-0 tracking-wide">
+      <span style="color:var(--or)">FORT</span><span style="color:var(--tx)">E</span>
+      <span class="text-[10px] opacity-50 ml-1 align-top serif italic">365</span>
+    </div>
+    <nav class="hidden lg:flex gap-9 overflow-x-auto">
+      <a class="navtab active">Treino</a>
+      <a class="navtab">Nutrição</a>
+      <a class="navtab">Receitas</a>
+      <a class="navtab">Compras</a>
+      <a class="navtab">Skills</a>
+      <a class="navtab">Ranking</a>
+      <a class="navtab">Progresso</a>
+      <a class="navtab">Coach IA</a>
+    </nav>
+    <div class="condensed text-[11px] uppercase tracking-[0.28em] text-[color:var(--tx2)] shrink-0 flex items-center gap-3">
+      <span class="serif italic text-base text-[color:var(--or)] -mt-px">L.</span>
+      <span>OLIVEIRA</span>
+    </div>
+  </div>
+</div>
+
+<!-- Editorial level stepper -->
+<section class="border-b border-[color:var(--bd)]">
+  <div class="mx-auto max-w-6xl px-6 md:px-10 py-5 flex items-center justify-between gap-6 flex-wrap">
+    <div class="flex items-center gap-5">
+      <span class="label">Nível</span>
+      <div class="roman">
+        <span class="num active">I</span><span class="sep">·</span>
+        <span class="num">II</span><span class="sep">·</span>
+        <span class="num">III</span><span class="sep">·</span>
+        <span class="num">IV</span><span class="sep">·</span>
+        <span class="num">V</span><span class="sep">·</span>
+        <span class="num">VI</span><span class="sep">·</span>
+        <span class="num">VII</span><span class="sep">·</span>
+        <span class="num">VIII</span><span class="sep">·</span>
+        <span class="num">IX</span><span class="sep">·</span>
+        <span class="num">X</span><span class="sep">·</span>
+        <span class="num">XI</span><span class="sep">·</span>
+        <span class="num">XII</span>
+      </div>
+    </div>
+    <div class="flex items-center gap-3 shrink-0">
+      <span class="label">Progresso</span>
+      <div class="progress-line w-32">
+        <span class="done"></span><span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <span class="serif italic text-[color:var(--tx2)] text-sm">8.3<span class="text-xs">%</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- Hero headline -->
+<section class="border-b border-[color:var(--bd)]">
+  <div class="mx-auto max-w-6xl px-6 md:px-10 py-14 md:py-16">
+
+    <div class="grid grid-cols-12 gap-8 items-end">
+      <div class="col-span-12 md:col-span-9">
+        <div class="head-no mb-3">N<sup style="font-size:50%; vertical-align: super;">o</sup>&nbsp;01 — Mês&nbsp;1 de&nbsp;12</div>
+        <h1 class="head-name">DESPERTAR<span class="end-dot">.</span></h1>
+
+        <p class="serif italic text-[color:var(--tx2)] text-xl md:text-2xl mt-5 max-w-2xl leading-snug">
+          O corpo se lembra. A primeira fase é sobre acordar a&nbsp;memória muscular, sem pressa.
+        </p>
+
+        <div class="meta-line mt-6">
+          <span class="accent">FASE: ADAPTAÇÃO</span>
+          <span class="dot"></span>
+          <span>1ª de 4 fases</span>
+          <span class="dot"></span>
+          <span>SEMANA 1</span>
+          <span class="dot"></span>
+          <span class="accent">SEGUNDA</span>
+        </div>
+      </div>
+
+      <div class="col-span-12 md:col-span-3 md:text-right">
+        <div class="label mb-2">Volume previsto</div>
+        <div class="serif italic text-[color:var(--tx)] text-5xl">2h<span class="text-2xl text-[color:var(--tx2)]">15</span></div>
+        <div class="label mt-3 mb-1">Streak</div>
+        <div class="serif italic text-[color:var(--or)] text-4xl">14<span class="serif text-base text-[color:var(--tx3)] italic ml-1">dias</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Week stepper -->
+<section>
+  <div class="mx-auto max-w-6xl px-6 md:px-10">
+    <div class="weeks">
+      <button class="week active">
+        <div class="lbl">Semana</div>
+        <div class="nm">i</div>
+      </button>
+      <button class="week">
+        <div class="lbl">Semana</div>
+        <div class="nm">ii</div>
+      </button>
+      <button class="week">
+        <div class="lbl">Semana</div>
+        <div class="nm">iii</div>
+      </button>
+      <button class="week">
+        <div class="lbl">Semana</div>
+        <div class="nm">iv</div>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Day strip -->
+<section>
+  <div class="mx-auto max-w-6xl px-6 md:px-10">
+    <div class="days">
+      <button class="day active">
+        <div class="name">SEG</div>
+        <div class="num">01</div>
+        <div class="ty">Treino</div>
+      </button>
+      <button class="day">
+        <div class="name">TER</div>
+        <div class="num">02</div>
+        <div class="ty">Treino</div>
+      </button>
+      <button class="day">
+        <div class="name">QUA</div>
+        <div class="num">03</div>
+        <div class="ty">Mobilidade</div>
+      </button>
+      <button class="day">
+        <div class="name">QUI</div>
+        <div class="num">04</div>
+        <div class="ty">Treino</div>
+      </button>
+      <button class="day">
+        <div class="name">SEX</div>
+        <div class="num">05</div>
+        <div class="ty">Caminhada</div>
+      </button>
+      <button class="day">
+        <div class="name">SAB</div>
+        <div class="num">06</div>
+        <div class="ty">Bike</div>
+      </button>
+      <button class="day">
+        <div class="name">DOM</div>
+        <div class="num">07</div>
+        <div class="ty">Descanso</div>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Demo content placeholder -->
+<main class="mx-auto max-w-6xl px-6 md:px-10 py-16">
+  <div class="text-center max-w-2xl mx-auto">
+    <div class="label mb-4">Hoje</div>
+    <h2 class="serif italic text-5xl text-[color:var(--tx)] leading-tight">
+      Seis exercícios. Duas séries de cada.<br>
+      <span class="text-[color:var(--or)]">Sem pressa.</span>
+    </h2>
+    <p class="serif italic text-[color:var(--tx2)] mt-4 text-lg">
+      Aqui entrariam os cards de exercícios. O foco do mockup é o cabeçalho acima.
+    </p>
+  </div>
+</main>
+
+</body>
+</html>

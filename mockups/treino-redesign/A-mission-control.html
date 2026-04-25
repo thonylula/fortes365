@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FORTE 365 — Redesign A · Mission Control</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --s1: #141414;
+    --s2: #1c1c1c;
+    --s3: #262626;
+    --bd: #2a2a2a;
+    --or: #ff6b1a;
+    --ord: rgba(255,107,26,.12);
+    --or-glow: rgba(255,107,26,.4);
+    --gn: #22c55e;
+    --tx: #ededed;
+    --tx2: #a3a3a3;
+    --tx3: #6b7280;
+    --display: 'Bebas Neue', sans-serif;
+    --condensed: 'Barlow Condensed', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--tx);
+    font-family: var(--condensed);
+    margin: 0;
+    min-height: 100vh;
+  }
+
+  /* Subtle technical grid */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,107,26,.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,107,26,.025) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    z-index: 0;
+    mask-image: radial-gradient(ellipse at top, black 30%, transparent 80%);
+  }
+
+  .display { font-family: var(--display); letter-spacing: 0.04em; }
+  .condensed { font-family: var(--condensed); }
+  .mono { font-family: var(--mono); }
+  .label { font-family: var(--condensed); font-weight: 700; text-transform: uppercase; letter-spacing: 0.3em; font-size: 10px; color: var(--tx3); }
+  .label-sm { font-size: 9px; }
+
+  /* Hero number */
+  .hero-num {
+    font-family: var(--display);
+    font-size: clamp(96px, 18vw, 180px);
+    line-height: 0.78;
+    color: var(--or);
+    letter-spacing: -0.04em;
+    text-shadow: 0 0 50px rgba(255,107,26,.25);
+    font-weight: 400;
+  }
+
+  /* Corner brackets */
+  .brackets {
+    position: relative;
+  }
+  .brackets > .br {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border-color: var(--or);
+    border-style: solid;
+    border-width: 0;
+  }
+  .brackets > .br.tl { top: -2px; left: -2px; border-top-width: 2px; border-left-width: 2px; }
+  .brackets > .br.tr { top: -2px; right: -2px; border-top-width: 2px; border-right-width: 2px; }
+  .brackets > .br.bl { bottom: -2px; left: -2px; border-bottom-width: 2px; border-left-width: 2px; }
+  .brackets > .br.br { bottom: -2px; right: -2px; border-bottom-width: 2px; border-right-width: 2px; }
+
+  /* Phase tag w/ pulse */
+  .phase-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--ord);
+    border: 1.5px solid var(--or);
+    color: var(--or);
+    font-family: var(--condensed);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    padding: 6px 14px 6px 12px;
+    font-size: 11px;
+    border-radius: 2px;
+  }
+  .phase-tag::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--or);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--or);
+    animation: pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+  }
+
+  /* Annual progress segmented bar */
+  .progress-track {
+    height: 8px;
+    background: var(--s2);
+    border: 1px solid var(--bd);
+    position: relative;
+    overflow: hidden;
+    border-radius: 1px;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--or), #ff8540);
+    width: 8.3%;
+    box-shadow: 0 0 16px var(--or-glow);
+    position: relative;
+  }
+  .progress-fill::after {
+    content: '';
+    position: absolute;
+    right: -1px; top: -3px; bottom: -3px;
+    width: 2px;
+    background: var(--or);
+    box-shadow: 0 0 8px var(--or);
+  }
+  .progress-segments {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(90deg, transparent 0, transparent calc(100%/12 - 1px), var(--bd) calc(100%/12 - 1px), var(--bd) calc(100%/12));
+    background-size: calc(100%/12) 100%;
+    pointer-events: none;
+    z-index: 2;
+    mix-blend-mode: overlay;
+  }
+
+  /* Week chip */
+  .week-chip {
+    background: var(--s2);
+    border: 1.5px solid var(--bd);
+    color: var(--tx2);
+    font-family: var(--condensed);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.18s;
+    position: relative;
+    border-radius: 2px;
+    padding: 12px 8px;
+    text-align: center;
+  }
+  .week-chip:hover {
+    border-color: rgba(255,107,26,.5);
+    color: var(--tx);
+  }
+  .week-chip.active {
+    background: var(--ord);
+    border-color: var(--or);
+    color: var(--or);
+  }
+  .week-chip.active::after {
+    content: '';
+    position: absolute;
+    top: -1px; left: -1px; right: -1px;
+    height: 2px;
+    background: var(--or);
+  }
+  .week-chip .num { display: block; font-family: var(--display); font-size: 24px; line-height: 1; margin-bottom: 4px; letter-spacing: 0; color: inherit; }
+  .week-chip .label { font-size: 9px; letter-spacing: 0.2em; color: inherit; opacity: 0.7; }
+
+  /* Day chip */
+  .day-chip {
+    background: var(--s2);
+    border: 1.5px solid var(--bd);
+    color: var(--tx2);
+    cursor: pointer;
+    transition: 0.18s;
+    border-radius: 2px;
+    padding: 14px 6px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    position: relative;
+  }
+  .day-chip:hover { border-color: rgba(255,107,26,.5); color: var(--tx); }
+  .day-chip.active {
+    background: var(--ord);
+    border-color: var(--or);
+    color: var(--or);
+  }
+  .day-chip.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: -1px; right: -1px;
+    height: 2px;
+    background: var(--or);
+  }
+  .day-chip .day-name {
+    font-family: var(--display);
+    font-size: 22px;
+    line-height: 1;
+    color: inherit;
+    letter-spacing: 0.05em;
+  }
+  .day-chip .day-type {
+    font-family: var(--condensed);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-top: 4px;
+    display: flex; align-items: center; gap: 3px;
+  }
+  .day-chip .icon {
+    width: 6px; height: 6px; border-radius: 50%; display: inline-block;
+  }
+  .ic-treino { background: var(--or); box-shadow: 0 0 6px var(--or); }
+  .ic-mobil { background: #facc15; box-shadow: 0 0 6px #facc15; }
+  .ic-camin { background: #60a5fa; box-shadow: 0 0 6px #60a5fa; }
+  .ic-bike { background: #a78bfa; box-shadow: 0 0 6px #a78bfa; }
+  .ic-desc { background: var(--gn); box-shadow: 0 0 6px var(--gn); }
+  .ty-treino { color: var(--or); }
+  .ty-mobil { color: #facc15; }
+  .ty-camin { color: #60a5fa; }
+  .ty-bike { color: #a78bfa; }
+  .ty-desc { color: var(--gn); }
+
+  .day-chip:not(.active) .day-type { color: var(--tx3); }
+
+  /* Top status bar */
+  .status-bar {
+    border-bottom: 1px solid var(--bd);
+    background: var(--s1);
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--tx3);
+  }
+  .status-bar .dot {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--or);
+    box-shadow: 0 0 8px var(--or);
+    animation: pulse 1.6s infinite;
+  }
+
+  /* Nav tabs */
+  .navtab {
+    font-family: var(--condensed);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--tx2);
+    padding: 18px 0;
+    border-bottom: 2px solid transparent;
+    transition: 0.18s;
+    cursor: pointer;
+  }
+  .navtab:hover { color: var(--tx); }
+  .navtab.active {
+    color: var(--or);
+    border-bottom-color: var(--or);
+  }
+
+  @media (max-width: 640px) {
+    .hero-num { font-size: 110px; }
+    .brackets > .br { width: 18px; height: 18px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Status strip -->
+<div class="status-bar relative z-10">
+  <div class="mx-auto max-w-6xl px-4 md:px-8 h-7 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <span class="dot"></span>
+      <span>SISTEMA · ATIVO</span>
+      <span class="opacity-50">/</span>
+      <span>SESSÃO #028</span>
+    </div>
+    <div class="hidden md:flex items-center gap-3">
+      <span>23/04/2026 · 14:32</span>
+      <span class="opacity-50">/</span>
+      <span class="text-[color:var(--gn)]">↗ STREAK 14</span>
+    </div>
+  </div>
+</div>
+
+<!-- Top nav -->
+<nav class="border-b border-[color:var(--bd)] bg-[color:var(--s1)]/80 backdrop-blur-sm relative z-10">
+  <div class="mx-auto max-w-6xl px-4 md:px-8 flex items-center justify-between gap-6">
+    <div class="display text-3xl py-3 shrink-0">
+      <span style="color:var(--or)">FORT</span><span style="color:var(--tx)">E</span>
+      <span class="text-xs opacity-50 ml-1 mono align-top">365</span>
+    </div>
+    <div class="hidden lg:flex gap-8 overflow-x-auto">
+      <a class="navtab active">Treino</a>
+      <a class="navtab">Nutrição</a>
+      <a class="navtab">Receitas</a>
+      <a class="navtab">Compras</a>
+      <a class="navtab">Skills</a>
+      <a class="navtab">Ranking</a>
+      <a class="navtab">Progresso</a>
+      <a class="navtab">Coach IA</a>
+    </div>
+    <div class="condensed text-xs uppercase tracking-[0.15em] text-[color:var(--tx2)] shrink-0">
+      <span class="text-[color:var(--or)]">L.</span> OLIVEIRA
+    </div>
+  </div>
+</nav>
+
+<!-- Hero header -->
+<header class="relative z-10 border-b border-[color:var(--bd)]">
+  <div class="mx-auto max-w-6xl px-4 md:px-8 py-8 md:py-10">
+
+    <div class="grid grid-cols-12 gap-6 md:gap-8 items-end">
+
+      <!-- Big number with brackets -->
+      <div class="col-span-12 md:col-span-5">
+        <div class="label mb-2">Nível Atual / 12</div>
+        <div class="brackets inline-block px-5 pt-2 pb-1">
+          <span class="br tl"></span><span class="br tr"></span>
+          <span class="br bl"></span><span class="br br"></span>
+          <div class="flex items-baseline gap-3">
+            <span class="hero-num">01</span>
+            <div class="flex flex-col items-start">
+              <span class="mono text-[color:var(--tx3)] text-xl leading-none">/12</span>
+              <span class="label label-sm mt-2">DESPERTAR</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Level info -->
+      <div class="col-span-12 md:col-span-7 pb-2">
+        <div class="label mb-2">Designação · Fase 1/4</div>
+        <div class="flex items-baseline gap-4 flex-wrap mb-3">
+          <h1 class="display text-5xl md:text-7xl text-[color:var(--tx)] leading-none">DESPERTAR</h1>
+        </div>
+        <div class="flex items-center gap-3 flex-wrap">
+          <div class="phase-tag">FASE: ADAPTAÇÃO</div>
+          <span class="condensed text-xs uppercase tracking-[0.2em] text-[color:var(--tx3)]">
+            O CORPO SE LEMBRA
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Annual progress -->
+    <div class="mt-8 md:mt-10 grid grid-cols-12 gap-3 md:gap-6 items-center">
+      <div class="col-span-12 md:col-span-3 flex items-center gap-3">
+        <span class="label">PROGRESSO ANUAL</span>
+        <span class="mono text-[color:var(--or)] text-sm font-bold">8.3%</span>
+      </div>
+      <div class="col-span-12 md:col-span-6">
+        <div class="progress-track">
+          <div class="progress-fill"></div>
+          <div class="progress-segments"></div>
+        </div>
+      </div>
+      <div class="col-span-12 md:col-span-3 md:text-right flex items-center md:justify-end gap-3">
+        <span class="mono text-[color:var(--tx)] text-sm">028</span>
+        <span class="label">DIAS COMPLETADOS</span>
+        <span class="mono text-[color:var(--tx3)]">/365</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Week + Day combined panel -->
+<section class="relative z-10 border-b border-[color:var(--bd)] bg-[color:var(--s1)]">
+  <div class="mx-auto max-w-6xl px-4 md:px-8 py-5">
+    <div class="grid grid-cols-12 gap-4">
+
+      <!-- Week strip (left) -->
+      <div class="col-span-12 md:col-span-4">
+        <div class="label mb-3 flex items-center justify-between">
+          <span>Semana / 4</span>
+          <span class="mono text-[color:var(--or)] normal-case tracking-normal">▸ 1</span>
+        </div>
+        <div class="grid grid-cols-4 gap-1.5">
+          <button class="week-chip active">
+            <span class="num">01</span>
+            <span class="label">SEM</span>
+          </button>
+          <button class="week-chip">
+            <span class="num">02</span>
+            <span class="label">SEM</span>
+          </button>
+          <button class="week-chip">
+            <span class="num">03</span>
+            <span class="label">SEM</span>
+          </button>
+          <button class="week-chip">
+            <span class="num">04</span>
+            <span class="label">SEM</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Day strip (right, larger) -->
+      <div class="col-span-12 md:col-span-8">
+        <div class="label mb-3 flex items-center justify-between">
+          <span>Dia / 7</span>
+          <span class="mono text-[color:var(--or)] normal-case tracking-normal">▸ SEG</span>
+        </div>
+        <div class="grid grid-cols-7 gap-1.5">
+          <button class="day-chip active">
+            <span class="day-name">SEG</span>
+            <span class="day-type ty-treino"><span class="icon ic-treino"></span> TREINO</span>
+          </button>
+          <button class="day-chip">
+            <span class="day-name">TER</span>
+            <span class="day-type ty-treino"><span class="icon ic-treino"></span> TREINO</span>
+          </button>
+          <button class="day-chip">
+            <span class="day-name">QUA</span>
+            <span class="day-type ty-mobil"><span class="icon ic-mobil"></span> MOBIL</span>
+          </button>
+          <button class="day-chip">
+            <span class="day-name">QUI</span>
+            <span class="day-type ty-treino"><span class="icon ic-treino"></span> TREINO</span>
+          </button>
+          <button class="day-chip">
+            <span class="day-name">SEX</span>
+            <span class="day-type ty-camin"><span class="icon ic-camin"></span> CAMIN</span>
+          </button>
+          <button class="day-chip">
+            <span class="day-name">SAB</span>
+            <span class="day-type ty-bike"><span class="icon ic-bike"></span> BIKE</span>
+          </button>
+          <button class="day-chip">
+            <span class="day-name">DOM</span>
+            <span class="day-type ty-desc"><span class="icon ic-desc"></span> DESC</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Demo content placeholder -->
+<main class="mx-auto max-w-6xl px-4 md:px-8 py-12 relative z-10">
+  <div class="rounded border border-[color:var(--bd)] bg-[color:var(--s1)] p-8 text-center">
+    <div class="label mb-3">PREVIEW · DIA SELECIONADO</div>
+    <div class="display text-5xl text-[color:var(--or)]">SEG · 16h</div>
+    <p class="condensed text-[color:var(--tx2)] mt-3 max-w-md mx-auto">Aqui entrariam os exercícios do dia. O foco do mockup é o cabeçalho acima.</p>
+  </div>
+</main>
+
+</body>
+</html>
