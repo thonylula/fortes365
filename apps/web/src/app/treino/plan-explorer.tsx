@@ -682,15 +682,15 @@ function TreinoHeroHeader({
       <section className="fmc-control-panel">
         <div className="mx-auto max-w-6xl px-4 py-5 md:px-8">
           <div className="grid grid-cols-12 gap-4">
-            {/* Months strip (compacto, escondido por padrão; pode ser usado pra navegar entre níveis) */}
+            {/* Strip de níveis (12) — pílulas horizontais compactas, só numeral romano */}
             <div className="col-span-12">
               <div className="fmc-label mb-2 flex items-center gap-2">
-                <span>Níveis</span>
+                <span>Níveis / 12</span>
                 <span className="font-[family-name:var(--font-mono)] normal-case tracking-normal text-[color:var(--or)]">
-                  ▸ {monthNum}
+                  ▸ {monthNum} · {levelInfo.name}
                 </span>
               </div>
-              <div className="flex gap-1.5 overflow-x-auto pb-1">
+              <div className="flex flex-wrap gap-1.5 pb-1">
                 {months.map((m) => {
                   const locked = !isPremium && !allowedMonths.has(m.id);
                   const isActive = m.id === monthId;
@@ -700,12 +700,11 @@ function TreinoHeroHeader({
                       type="button"
                       onClick={() => onSelectMonth(m.id)}
                       data-active={isActive}
-                      className="fmc-week-chip shrink-0"
+                      className="fmc-level-chip"
                       style={locked ? { opacity: 0.5 } : undefined}
                       title={`Nível ${m.id + 1} — ${levelByIndex(m.id).name}`}
                     >
-                      <span className="num">{locked ? "🔒" : levelShort(m.id)}</span>
-                      <span className="lbl">{m.short_name}</span>
+                      {locked ? "🔒" : levelShort(m.id)}
                     </button>
                   );
                 })}

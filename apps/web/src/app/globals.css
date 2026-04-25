@@ -737,6 +737,50 @@ body {
   z-index: 10;
 }
 
+/* Chip horizontal compacto pra navegação de níveis (12 ao todo).
+   Mais largo que alto, sem mês embaixo — só o numeral romano. */
+.fmc-level-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--s2);
+  border: 1.5px solid var(--bd);
+  color: var(--tx2);
+  font-family: var(--font-display);
+  cursor: pointer;
+  transition: 0.18s;
+  position: relative;
+  border-radius: 4px;
+  padding: 0 14px;
+  height: 34px;
+  min-width: 52px;
+  font-size: 16px;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.fmc-level-chip:hover:not(:disabled) {
+  border-color: rgba(255, 107, 26, 0.4);
+  color: var(--tx);
+}
+.fmc-level-chip[data-active="true"] {
+  background: linear-gradient(180deg, rgba(255, 107, 26, 0.25), rgba(255, 107, 26, 0.05));
+  border-color: var(--or);
+  color: var(--or);
+  box-shadow: 0 0 14px rgba(255, 107, 26, 0.18), inset 0 0 0 1px rgba(255, 107, 26, 0.3);
+}
+.fmc-level-chip[data-active="true"]::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: -1px;
+  right: -1px;
+  height: 2px;
+  background: var(--or);
+  box-shadow: 0 0 8px var(--or);
+}
+
 .fmc-week-chip {
   background: var(--s2);
   border: 1.5px solid var(--bd);
