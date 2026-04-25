@@ -95,7 +95,7 @@ export function FeedbackForm() {
         type="button"
         onClick={submit}
         disabled={isPending || message.trim().length < 10}
-        className="inline-flex h-11 items-center justify-center rounded-sm bg-[color:var(--or)] px-5 font-[family-name:var(--font-condensed)] text-[12px] font-bold uppercase tracking-[2px] text-black transition-colors hover:bg-[#ff7733] disabled:cursor-not-allowed disabled:opacity-40"
+        className="act-btn is-lg is-primary"
       >
         {isPending ? "Enviando..." : "Enviar sugestao"}
       </button>

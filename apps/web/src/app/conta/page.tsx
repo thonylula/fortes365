@@ -239,16 +239,10 @@ export default async function ContaPage({
         <div className="mt-8 rounded-lg border border-[color:var(--bd)] bg-[color:var(--s1)] p-5">
           <div className="slbl mb-3">Seus dados</div>
           <div className="flex gap-2">
-            <a
-              href="/api/export-data"
-              className="flex-1 rounded-md border border-[color:var(--bd)] bg-[color:var(--s2)] py-2 text-center font-[family-name:var(--font-condensed)] text-[11px] font-bold uppercase tracking-wider text-[color:var(--tx2)] transition-colors hover:border-[color:var(--or)] hover:text-[color:var(--or)]"
-            >
+            <a href="/api/export-data" className="act-btn is-block">
               Exportar dados
             </a>
-            <a
-              href="/conta/excluir"
-              className="flex-1 rounded-md border border-red-500/20 bg-red-500/5 py-2 text-center font-[family-name:var(--font-condensed)] text-[11px] font-bold uppercase tracking-wider text-red-400/70 transition-colors hover:border-red-500/40 hover:text-red-400"
-            >
+            <a href="/conta/excluir" className="act-btn is-block is-danger">
               Excluir conta
             </a>
           </div>
@@ -258,10 +252,7 @@ export default async function ContaPage({
         </div>
 
         <form action={logout} className="mt-4">
-          <button
-            type="submit"
-            className="w-full rounded-md border border-[color:var(--bd)] bg-[color:var(--s2)] py-2.5 font-[family-name:var(--font-condensed)] text-sm font-bold uppercase tracking-wider text-[color:var(--tx2)] transition-colors hover:border-red-500/40 hover:text-red-400"
-          >
+          <button type="submit" className="act-btn is-block is-lg is-danger">
             Sair da conta
           </button>
         </form>

@@ -897,16 +897,22 @@ function ExerciseCard({
           </div>
           {e.modifier && <div className="ex-mod">{e.modifier}</div>}
         </div>
-        <div className="flex shrink-0 flex-col items-end gap-1.5">
+        <div className="flex shrink-0 flex-col items-stretch gap-1.5">
           {e.youtube_search_url && (
-            <button onClick={handleShowVideo} className="yt-btn">
+            <button
+              type="button"
+              onClick={handleShowVideo}
+              className="act-btn is-primary"
+              title="Ver demonstração no YouTube"
+            >
               {showVideo ? "✕ Fechar" : "▶ Ver"}
             </button>
           )}
           {coachSupported && isLoggedIn && (
             <button
+              type="button"
               onClick={() => setShowCoach((v) => !v)}
-              className="flex items-center gap-1 rounded-md border-[1.5px] border-[color:var(--or)] bg-[color:var(--ord)] px-2 py-1 font-[family-name:var(--font-condensed)] text-[10px] font-bold uppercase tracking-wider text-[color:var(--or)] transition-colors hover:bg-[color:var(--or)] hover:text-black"
+              className="act-btn is-accent"
               title="Coach por webcam conta reps e avisa sobre forma"
             >
               {showCoach ? "✕ Coach" : "◉ Coach"}
@@ -914,9 +920,10 @@ function ExerciseCard({
           )}
           {canSwap && isLoggedIn && !isDone && (
             <button
+              type="button"
               onClick={handleSwap}
               disabled={isSwapping}
-              className="flex items-center gap-1 rounded-md border-[1.5px] border-[color:var(--bd)] bg-[color:var(--s2)] px-2 py-1 font-[family-name:var(--font-condensed)] text-[10px] font-bold uppercase tracking-wider text-[color:var(--tx2)] transition-colors hover:border-[color:var(--or)] hover:text-[color:var(--or)] disabled:opacity-50"
+              className="act-btn"
               title="Trocar por variacao alternativa"
             >
               {isSwapping ? "..." : "⇄ Trocar"}
@@ -924,9 +931,10 @@ function ExerciseCard({
           )}
           {isLoggedIn && !isDone && (
             <button
+              type="button"
               onClick={() => setConfirmRemove(true)}
               disabled={isRemoving}
-              className="flex items-center gap-1 rounded-md border-[1.5px] border-[color:var(--bd)] bg-[color:var(--s2)] px-2 py-1 font-[family-name:var(--font-condensed)] text-[10px] font-bold uppercase tracking-wider text-[color:var(--tx2)] transition-colors hover:border-red-500 hover:text-red-500 disabled:opacity-50"
+              className="act-btn is-danger"
               title="Remover do dia"
             >
               {isRemoving ? "..." : "🗑 Remover"}
@@ -934,14 +942,10 @@ function ExerciseCard({
           )}
           {isLoggedIn && (
             <button
+              type="button"
               onClick={handleToggle}
               disabled={isPending}
-              className="flex items-center gap-1 rounded-md px-2 py-1 font-[family-name:var(--font-condensed)] text-[10px] font-bold uppercase tracking-wider transition-colors"
-              style={
-                isDone
-                  ? { background: "var(--gnd)", border: "1.5px solid var(--gn)", color: "var(--gn)" }
-                  : { background: "none", border: "1.5px solid var(--bd)", color: "var(--tx2)" }
-              }
+              className={`act-btn ${isDone ? "is-success" : ""}`}
             >
               {isPending ? (
                 <svg className="h-3 w-3 animate-[spin_0.6s_linear_infinite]" viewBox="0 0 24 24" fill="none">
@@ -1103,12 +1107,13 @@ function CustomExerciseCard({
           </div>
           {cue && <div className="ex-mod">{cue}</div>}
         </div>
-        <div className="flex shrink-0 flex-col items-end gap-1.5">
+        <div className="flex shrink-0 flex-col items-stretch gap-1.5">
           {isLoggedIn && (
             <button
+              type="button"
               onClick={() => setConfirmRemove(true)}
               disabled={isRemoving}
-              className="flex items-center gap-1 rounded-md border-[1.5px] border-[color:var(--bd)] bg-[color:var(--s2)] px-2 py-1 font-[family-name:var(--font-condensed)] text-[10px] font-bold uppercase tracking-wider text-[color:var(--tx2)] transition-colors hover:border-red-500 hover:text-red-500 disabled:opacity-50"
+              className="act-btn is-danger"
               title="Remover exercicio"
             >
               {isRemoving ? "..." : "🗑 Remover"}
@@ -1116,13 +1121,9 @@ function CustomExerciseCard({
           )}
           {isLoggedIn && (
             <button
+              type="button"
               onClick={handleToggle}
-              className="flex items-center gap-1 rounded-md px-2 py-1 font-[family-name:var(--font-condensed)] text-[10px] font-bold uppercase tracking-wider transition-colors"
-              style={
-                isDone
-                  ? { background: "var(--gnd)", border: "1.5px solid var(--gn)", color: "var(--gn)" }
-                  : { background: "none", border: "1.5px solid var(--bd)", color: "var(--tx2)" }
-              }
+              className={`act-btn ${isDone ? "is-success" : ""}`}
             >
               {isDone ? "✓ Feito" : "Concluir"}
             </button>

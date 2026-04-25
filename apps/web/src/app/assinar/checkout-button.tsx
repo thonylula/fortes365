@@ -39,12 +39,7 @@ export function CheckoutButton({
     <button
       onClick={handleClick}
       disabled={loading}
-      className="mt-4 w-full rounded-md py-2.5 font-[family-name:var(--font-condensed)] text-sm font-bold uppercase tracking-wider transition-colors disabled:opacity-50"
-      style={
-        highlight
-          ? { background: "var(--or)", color: "#000" }
-          : { background: "var(--s3)", color: "var(--tx2)", border: "1px solid var(--bd)" }
-      }
+      className={`act-btn is-block is-lg mt-4 ${highlight ? "is-primary" : ""}`}
     >
       {loading ? "Redirecionando..." : "Assinar"}
     </button>

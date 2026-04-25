@@ -46,10 +46,7 @@ export function SubscriptionCard({ sub }: { sub: Sub | null }) {
             <span className="text-xs text-[color:var(--tx3)]">Nível 1 liberado</span>
           </div>
         </div>
-        <Link
-          href="/assinar"
-          className="mt-3 inline-flex h-10 items-center justify-center rounded-sm bg-[color:var(--or)] px-5 font-[family-name:var(--font-condensed)] text-[12px] font-bold uppercase tracking-[2px] text-black transition-colors hover:bg-[#ff7733]"
-        >
+        <Link href="/assinar" className="act-btn is-lg is-primary mt-3">
           Assinar Premium →
         </Link>
       </div>
@@ -115,10 +112,7 @@ export function SubscriptionCard({ sub }: { sub: Sub | null }) {
       )}
 
       {sub.cancel_at_period_end ? (
-        <Link
-          href="/assinar"
-          className="mt-3 inline-flex h-10 items-center justify-center rounded-sm bg-[color:var(--or)] px-5 font-[family-name:var(--font-condensed)] text-[12px] font-bold uppercase tracking-[2px] text-black transition-colors hover:bg-[#ff7733]"
-        >
+        <Link href="/assinar" className="act-btn is-lg is-primary mt-3">
           Reativar Premium →
         </Link>
       ) : (
@@ -126,7 +120,7 @@ export function SubscriptionCard({ sub }: { sub: Sub | null }) {
           type="button"
           onClick={handleCancel}
           disabled={isPending}
-          className="mt-3 inline-flex h-10 items-center justify-center rounded-sm border border-[color:var(--bd)] bg-[color:var(--s2)] px-4 font-[family-name:var(--font-condensed)] text-[11px] font-bold uppercase tracking-[1.5px] text-[color:var(--tx2)] transition-colors hover:border-red-500/40 hover:text-red-400 disabled:cursor-not-allowed disabled:opacity-40"
+          className="act-btn is-lg is-danger mt-3"
         >
           {isPending ? "Cancelando..." : "Cancelar assinatura"}
         </button>

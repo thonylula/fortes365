@@ -325,6 +325,85 @@ body {
     color: #fff;
   }
 
+  /* ── Action button system: padronizado em altura, largura, fonte e radius.
+     Usado nos cards de exercício e em grupos de botões em /conta. */
+  .act-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    min-width: 92px;
+    height: 28px;
+    padding: 0 10px;
+    font-family: var(--font-barlow-condensed);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1.5px solid var(--bd);
+    border-radius: 5px;
+    background: var(--s2);
+    color: var(--tx2);
+    transition: 0.18s;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+  .act-btn:hover:not(:disabled) {
+    border-color: var(--or);
+    color: var(--or);
+  }
+  .act-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  /* default = ghost (cinza). variantes abaixo. */
+  .act-btn.is-primary {
+    background: var(--or);
+    color: #000;
+    border-color: var(--or);
+  }
+  .act-btn.is-primary:hover:not(:disabled) {
+    background: #ff7733;
+    border-color: #ff7733;
+    color: #000;
+  }
+  .act-btn.is-accent {
+    background: var(--ord);
+    border-color: var(--or);
+    color: var(--or);
+  }
+  .act-btn.is-accent:hover:not(:disabled) {
+    background: var(--or);
+    color: #000;
+  }
+  .act-btn.is-success {
+    background: var(--gnd);
+    border-color: var(--gn);
+    color: var(--gn);
+  }
+  .act-btn.is-success:hover:not(:disabled) {
+    background: var(--gn);
+    color: #000;
+  }
+  .act-btn.is-danger:hover:not(:disabled) {
+    border-color: rgb(239, 68, 68);
+    color: rgb(239, 68, 68);
+  }
+  /* tamanho cheio para botões em linha (largura 100% do container) */
+  .act-btn.is-block {
+    width: 100%;
+    min-width: 0;
+  }
+  /* tamanho maior para CTAs (form submit, "Assinar Premium", etc.) */
+  .act-btn.is-lg {
+    height: 40px;
+    padding: 0 18px;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    min-width: 140px;
+  }
+
   /* Calorie summary boxes */
   .ks-box {
     background: var(--s2);
