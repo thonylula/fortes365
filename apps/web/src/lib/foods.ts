@@ -129,3 +129,66 @@ export function nutritionForQuantity(
     fat_g: +(food.fat_g * factor).toFixed(1),
   };
 }
+
+/**
+ * Parse de um item de refeição (string) pra extrair (food, quantidade)
+ * usável pelo nutritionForQuantity. Suporta padrões:
+ * - "Tilápia grelhada (200g)" — quantidade entre parênteses
+ * - "Tilápia grelhada (L:200g)" — com initial (após personalizar)
+ * - "Tilápia grelhada 200g" — quantidade solta
+ *
+ * Returna null se não conseguir identificar tanto food quanto qty.
+ */
+export function parseMealItem(
+  itemString: string,
+  foods: Food[],
+): { food: Food; quantity: string } | null {
+  // Captura quantidade dentro de parênteses, com ou sem prefixo "X:"
+  let qtyMatch = itemString.match(/\(\s*(?:[A-Za-zÀ-ÿ]+\s*:\s*)?([\d.,]+\s*(?:kg|g|ml|l))\b/i);
+  // Fallback: quantidade no meio do texto sem parênteses
+  if (!qtyMatch) {
+    qtyMatch = itemString.match(/([\d.,]+\s*(?:kg|g|ml|l))\b/i);
+  }
+  if (!qtyMatch) return null;
+
+  // Nome: remove qualquer texto entre parênteses pra match limpo
+  const namePart = itemString.replace(/\s*\(.*?\)/g, "").trim();
+  const food = findFoodByName(namePart, foods);
+  if (!food) return null;
+
+  return { food, quantity: qtyMatch[1].replace(/\s+/g, "") };
+}
+
+/**
+ * Soma kcal+macros de múltiplos items (uma refeição inteira ou o dia
+ * inteiro). Items que não casarem com nenhum food da tabela são ignorados.
+ */
+export function sumNutrition(
+  items: string[],
+  foods: Food[],
+): { kcal: number; protein_g: number; carb_g: number; fat_g: number; matched: number; total: number } {
+  let kcal = 0;
+  let protein_g = 0;
+  let carb_g = 0;
+  let fat_g = 0;
+  let matched = 0;
+  for (const it of items) {
+    const parsed = parseMealItem(it, foods);
+    if (!parsed) continue;
+    const nut = nutritionForQuantity(parsed.food, parsed.quantity);
+    if (!nut) continue;
+    kcal += nut.kcal;
+    protein_g += nut.protein_g;
+    carb_g += nut.carb_g;
+    fat_g += nut.fat_g;
+    matched++;
+  }
+  return {
+    kcal: Math.round(kcal),
+    protein_g: +protein_g.toFixed(1),
+    carb_g: +carb_g.toFixed(1),
+    fat_g: +fat_g.toFixed(1),
+    matched,
+    total: items.length,
+  };
+}

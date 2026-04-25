@@ -6,10 +6,12 @@ import { PaywallModal } from "@/components/paywall-modal";
 import type { SubscriptionInfo } from "@/lib/supabase/guards";
 import { getFruitsForMonth } from "@/lib/regional-fruits";
 import {
+  calculateMacros,
   personalizeKcal,
   personalizeMealItem,
   type UserMetrics,
 } from "@/lib/macros";
+import { sumNutrition, type Food } from "@/lib/foods";
 
 type Month = { id: number; short_name: string; name: string; season: string };
 type MealRow = {
@@ -58,6 +60,7 @@ export function NutricaoView({
   regionSupported,
   userInitial,
   userMetrics,
+  foods,
 }: {
   months: Month[];
   meals: MealRow[];
@@ -68,6 +71,7 @@ export function NutricaoView({
   regionSupported: boolean;
   userInitial?: string | null;
   userMetrics?: UserMetrics | null;
+  foods?: Food[];
 }) {
   const [monthId, setMonthId] = useState(0);
   const [weekIndex, setWeekIndex] = useState(0);
@@ -104,6 +108,22 @@ export function NutricaoView({
     const v = parseInt(ptlPersonalized.replace(/[^0-9]/g, "") || "0");
     return sum + (isNaN(v) ? 0 : v);
   }, 0);
+
+  // Resumo nutricional cientifico: soma kcal+macros de todos os items
+  // do dia (já personalizados) e compara com a meta calculada do user.
+  // Só roda se temos foods cadastrados e perfil científico preenchido.
+  const dailyNutrition = useMemo(() => {
+    if (!foods || foods.length === 0 || !userMetrics) return null;
+    const allItems: string[] = [];
+    for (const meal of dayMeals) {
+      for (const item of meal.data.items) {
+        allItems.push(personalizeMealItem(item, userMetrics, userInitial));
+      }
+    }
+    return sumNutrition(allItems, foods);
+  }, [dayMeals, foods, userMetrics, userInitial]);
+
+  const dailyTarget = userMetrics ? calculateMacros(userMetrics) : null;
 
   return (
     <>
@@ -211,13 +231,28 @@ export function NutricaoView({
           </div>
         </div>
 
-        {/* Calorie summary */}
-        <div className="mb-4">
-          <div className="ks-box">
-            <div className="ks-v" style={{ color: "var(--or)" }}>{totalKcal}</div>
-            <div className="ks-l">Kcal do dia</div>
+        {/* Resumo nutricional cientifico do dia */}
+        {dailyNutrition && dailyTarget ? (
+          <DailyNutritionCard
+            actual={dailyNutrition}
+            target={dailyTarget}
+          />
+        ) : (
+          <div className="mb-4">
+            <div className="ks-box">
+              <div className="ks-v" style={{ color: "var(--or)" }}>{totalKcal}</div>
+              <div className="ks-l">Kcal do dia</div>
+            </div>
+            {!userMetrics && (
+              <p className="mt-2 text-center text-[10px] text-[color:var(--tx3)]">
+                <a href="/conta" className="text-[color:var(--or)] underline">
+                  Complete seu perfil científico
+                </a>{" "}
+                para ver macros personalizados.
+              </p>
+            )}
           </div>
-        </div>
+        )}
 
         {/* Meal cards */}
         <div key={`${monthId}-${weekIndex}-${dayIndex}`} className="animate-in flex flex-col gap-[7px]">
@@ -321,4 +356,183 @@ function MealCard({
     );
   }
   return <div className={baseClass + interactiveClass}>{inner}</div>;
+}
+
+// ──────────────────────────────────────────────────────────────────────────
+// DailyNutritionCard
+// Soma kcal+P/C/G de todas as refeições do dia (já personalizadas) e
+// compara com a meta calculada a partir do perfil científico do user.
+// ──────────────────────────────────────────────────────────────────────────
+type Macros = { kcal: number; protein_g: number; carb_g: number; fat_g: number };
+type DailyTotals = Macros & { matched: number; total: number };
+
+function DailyNutritionCard({
+  actual,
+  target,
+}: {
+  actual: DailyTotals;
+  target: Macros;
+}) {
+  const kcalPct = Math.min(150, Math.round((actual.kcal / target.kcal) * 100));
+  const proteinPct = Math.min(150, Math.round((actual.protein_g / target.protein_g) * 100));
+  const carbPct = Math.min(150, Math.round((actual.carb_g / target.carb_g) * 100));
+  const fatPct = Math.min(150, Math.round((actual.fat_g / target.fat_g) * 100));
+
+  const coverage = actual.total > 0 ? Math.round((actual.matched / actual.total) * 100) : 0;
+
+  return (
+    <div className="mb-4 overflow-hidden rounded-xl border border-[color:var(--or)]/30 bg-gradient-to-br from-[color:var(--ord)] to-[color:var(--s1)]">
+      <div className="border-b border-[color:var(--or)]/20 bg-black/20 px-4 py-2">
+        <div className="flex items-baseline justify-between gap-2">
+          <div className="font-[family-name:var(--font-condensed)] text-[10px] font-bold uppercase tracking-[2px] text-[color:var(--or)]">
+            Resumo nutricional do dia
+          </div>
+          <div className="font-[family-name:var(--font-condensed)] text-[9px] uppercase tracking-[1.5px] text-[color:var(--tx3)]">
+            {actual.matched}/{actual.total} alimentos · {coverage}% rastreado
+          </div>
+        </div>
+      </div>
+
+      <div className="p-4">
+        {/* Kcal destaque */}
+        <div className="mb-3">
+          <div className="flex items-baseline justify-between">
+            <div className="flex items-baseline gap-2">
+              <span className="font-[family-name:var(--font-display)] text-4xl leading-none text-[color:var(--or)]">
+                {actual.kcal}
+              </span>
+              <span className="font-[family-name:var(--font-mono)] text-sm text-[color:var(--tx3)]">
+                / {target.kcal} kcal
+              </span>
+            </div>
+            <span
+              className="font-[family-name:var(--font-mono)] text-sm font-bold"
+              style={{ color: pctColor(kcalPct) }}
+            >
+              {kcalPct}%
+            </span>
+          </div>
+          <ProgressBar pct={kcalPct} color="var(--or)" />
+        </div>
+
+        {/* Macros */}
+        <div className="grid grid-cols-3 gap-2">
+          <MacroProgress
+            label="Proteína"
+            actual={actual.protein_g}
+            target={target.protein_g}
+            pct={proteinPct}
+            color="var(--or)"
+          />
+          <MacroProgress
+            label="Carbo"
+            actual={actual.carb_g}
+            target={target.carb_g}
+            pct={carbPct}
+            color="var(--gn)"
+          />
+          <MacroProgress
+            label="Gordura"
+            actual={actual.fat_g}
+            target={target.fat_g}
+            pct={fatPct}
+            color="#facc15"
+          />
+        </div>
+
+        {coverage < 100 && coverage > 0 && (
+          <p className="mt-3 text-[10px] leading-relaxed text-[color:var(--tx3)]">
+            ℹ️ Alguns itens não estão na tabela nutricional (TACO/USDA/Embrapa).
+            Os totais somam apenas alimentos com macros conhecidos.
+          </p>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function MacroProgress({
+  label,
+  actual,
+  target,
+  pct,
+  color,
+}: {
+  label: string;
+  actual: number;
+  target: number;
+  pct: number;
+  color: string;
+}) {
+  return (
+    <div
+      className="rounded-md border bg-black/20 px-3 py-2"
+      style={{ borderColor: `${color}33` }}
+    >
+      <div
+        className="font-[family-name:var(--font-condensed)] text-[9px] font-bold uppercase tracking-[2px]"
+        style={{ color }}
+      >
+        {label}
+      </div>
+      <div className="mt-1 flex items-baseline gap-1">
+        <span
+          className="font-[family-name:var(--font-display)] text-xl leading-none"
+          style={{ color }}
+        >
+          {Math.round(actual)}
+        </span>
+        <span className="font-[family-name:var(--font-mono)] text-[10px] text-[color:var(--tx3)]">
+          /{target}g
+        </span>
+      </div>
+      <div className="mt-1.5">
+        <ProgressBar pct={pct} color={color} small />
+      </div>
+      <div
+        className="mt-0.5 text-right font-[family-name:var(--font-mono)] text-[10px] font-bold"
+        style={{ color: pctColor(pct) }}
+      >
+        {pct}%
+      </div>
+    </div>
+  );
+}
+
+function ProgressBar({
+  pct,
+  color,
+  small,
+}: {
+  pct: number;
+  color: string;
+  small?: boolean;
+}) {
+  return (
+    <div
+      className={`relative overflow-hidden rounded-full bg-[color:var(--s2)]`}
+      style={{ height: small ? 3 : 6 }}
+    >
+      <div
+        className="h-full rounded-full transition-all"
+        style={{
+          width: `${Math.min(100, pct)}%`,
+          background: pct > 110 ? "#ef4444" : color,
+          boxShadow: `0 0 8px ${color}88`,
+        }}
+      />
+    </div>
+  );
+}
+
+/**
+ * Cor do badge de % conforme zona:
+ * - <80%: laranja claro (faltando)
+ * - 80-110%: verde (na meta)
+ * - >110%: vermelho (estourado)
+ */
+function pctColor(pct: number): string {
+  if (pct < 80) return "var(--tx2)";
+  if (pct <= 110) return "var(--gn)";
+  return "#ef4444";
 }

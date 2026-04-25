@@ -2,6 +2,7 @@ import { createClient } from "@/lib/supabase/server";
 import { getSubscriptionInfo } from "@/lib/supabase/guards";
 import { Header } from "@/components/header";
 import { metricsFromProfile } from "@/lib/macros";
+import type { Food } from "@/lib/foods";
 import { NutricaoView } from "./nutricao-view";
 
 export const dynamic = "force-dynamic";
@@ -67,8 +68,11 @@ export default async function NutricaoPage() {
     [4, 5, 6, 7],
     [8, 9, 10, 11],
   ];
-  const [monthsRes, ...mealsRes] = await Promise.all([
+  const [monthsRes, foodsRes, ...mealsRes] = await Promise.all([
     supabase.from("months").select("id, short_name, name, season").order("id"),
+    supabase
+      .from("foods")
+      .select("slug, name, category, kcal_per_100g, protein_g, carb_g, fat_g, fiber_g, state, source, note"),
     ...mealsBatches.map((ids) =>
       supabase
         .from("plan_meals")
@@ -81,6 +85,7 @@ export default async function NutricaoPage() {
     ),
   ]);
   const months = monthsRes.data;
+  const foods = (foodsRes.data ?? []) as Food[];
   const meals = mealsRes.flatMap((r) => r.data ?? []);
 
   return (
@@ -96,6 +101,7 @@ export default async function NutricaoPage() {
         regionSupported={regionSupported}
         userInitial={userInitial}
         userMetrics={userMetrics}
+        foods={foods}
       />
     </div>
   );
