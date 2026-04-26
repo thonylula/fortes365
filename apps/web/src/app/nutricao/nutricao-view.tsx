@@ -7,7 +7,6 @@ import type { SubscriptionInfo } from "@/lib/supabase/guards";
 import { getFruitsForMonth } from "@/lib/regional-fruits";
 import {
   calculateMacros,
-  personalizeKcal,
   personalizeMealItem,
   type UserMetrics,
 } from "@/lib/macros";
@@ -24,8 +23,8 @@ type MealRow = {
     ico: string;
     time: string;
     items: string[];
-    ptl: string;
-    ptj: string;
+    ptl: string; // deprecado: kcal agora computado via sumNutrition do foods.ts
+    ptj: string; // deprecado: idem
     rec: string | null;
   };
 };
@@ -100,14 +99,6 @@ export function NutricaoView({
   const bannerMessage = !hasRegion
     ? "Personalize seu card\u00e1pio: complete seu perfil para receber receitas da sua regi\u00e3o."
     : `Card\u00e1pio ${REGION_LABEL[userRegion ?? ""] ?? ""} em breve \u2014 por enquanto mostramos o ${REGION_LABEL[effectiveRegion] ?? effectiveRegion}.`;
-
-  const totalKcal = dayMeals.reduce((sum, m) => {
-    const ptlPersonalized = userMetrics
-      ? personalizeKcal(m.data.ptl ?? "", userMetrics)
-      : (m.data.ptl ?? "");
-    const v = parseInt(ptlPersonalized.replace(/[^0-9]/g, "") || "0");
-    return sum + (isNaN(v) ? 0 : v);
-  }, 0);
 
   // Resumo nutricional cientifico: soma kcal+macros de todos os items
   // do dia (já personalizados) e compara com a meta calculada do user.
@@ -231,27 +222,25 @@ export function NutricaoView({
           </div>
         </div>
 
-        {/* Resumo nutricional cientifico do dia */}
+        {/* Resumo nutricional do dia.
+            3 estados: card cientifico completo, prompt de perfil, ou aviso de banco vazio.
+            NUNCA mostramos kcal sem base em forte_foods (TACO/USDA/Embrapa). */}
         {dailyNutrition && dailyTarget ? (
-          <DailyNutritionCard
-            actual={dailyNutrition}
-            target={dailyTarget}
-          />
-        ) : (
-          <div className="mb-4">
-            <div className="ks-box">
-              <div className="ks-v" style={{ color: "var(--or)" }}>{totalKcal}</div>
-              <div className="ks-l">Kcal do dia</div>
+          <DailyNutritionCard actual={dailyNutrition} target={dailyTarget} />
+        ) : !userMetrics ? (
+          <div className="mb-4 rounded-xl border border-dashed border-[color:var(--bd)] bg-[color:var(--s1)] p-5 text-center">
+            <div className="font-[family-name:var(--font-condensed)] text-[10px] font-bold uppercase tracking-[2px] text-[color:var(--tx3)]">
+              Resumo nutricional
             </div>
-            {!userMetrics && (
-              <p className="mt-2 text-center text-[10px] text-[color:var(--tx3)]">
-                <a href="/conta" className="text-[color:var(--or)] underline">
-                  Complete seu perfil científico
-                </a>{" "}
-                para ver macros personalizados.
-              </p>
-            )}
+            <p className="mt-2 text-xs leading-relaxed text-[color:var(--tx2)]">
+              <a href="/conta" className="text-[color:var(--or)] underline">
+                Complete seu perfil científico
+              </a>{" "}
+              pra calcular suas calorias e macros do dia (Mifflin-St Jeor + ISSN 2017).
+            </p>
           </div>
+        ) : (
+          <NoFoodsCard target={dailyTarget!} />
         )}
 
         {/* Meal cards */}
@@ -262,6 +251,7 @@ export function NutricaoView({
               meal={meal}
               userInitial={userInitial}
               userMetrics={userMetrics}
+              foods={foods}
             />
           ))}
         </div>
@@ -282,10 +272,12 @@ function MealCard({
   meal,
   userInitial,
   userMetrics,
+  foods,
 }: {
   meal: MealRow;
   userInitial?: string | null;
   userMetrics?: UserMetrics | null;
+  foods?: Food[];
 }) {
   const d = meal.data;
   const hasRecipe = (meal.slot_key === "alm" || meal.slot_key === "jan") && !!d.rec;
@@ -298,8 +290,20 @@ function MealCard({
   const personalizedItems = userMetrics
     ? d.items.map((it) => personalizeMealItem(it, userMetrics, userInitial))
     : d.items;
-  const personalizedPtl =
-    d.ptl && userMetrics ? personalizeKcal(d.ptl, userMetrics) : d.ptl;
+
+  // Kcal/macros CIENTIFICOS via sumNutrition contra forte_foods (TACO/USDA/Embrapa).
+  // NUNCA usamos data.ptl (chute do seed) como fonte de número exibido.
+  const mealNutrition = useMemo(() => {
+    if (!foods || foods.length === 0 || !userMetrics) return null;
+    return sumNutrition(personalizedItems, foods);
+  }, [foods, userMetrics, personalizedItems]);
+
+  const coverage =
+    mealNutrition && mealNutrition.total > 0
+      ? mealNutrition.matched / mealNutrition.total
+      : 0;
+  const showFull = !!mealNutrition && coverage >= 0.7;
+  const showPartial = !!mealNutrition && coverage >= 0.3 && coverage < 0.7;
 
   const inner = (
     <>
@@ -324,14 +328,23 @@ function MealCard({
             <span>{item}</span>
           </div>
         ))}
-        {(personalizedPtl || hasRecipe) && (
+        {(showFull || showPartial || hasRecipe) && (
           <div className="mt-2 flex flex-wrap gap-1.5">
-            {personalizedPtl && (
+            {showFull && mealNutrition && (
               <span
                 className="rounded-sm px-2 py-0.5 font-[family-name:var(--font-condensed)] text-[10px] font-semibold"
                 style={{ background: "var(--ord)", color: "var(--or)" }}
               >
-                Porção: {personalizedPtl}
+                Porção: {mealNutrition.kcal} kcal · P {Math.round(mealNutrition.protein_g)}g · C {Math.round(mealNutrition.carb_g)}g · G {Math.round(mealNutrition.fat_g)}g
+              </span>
+            )}
+            {showPartial && mealNutrition && (
+              <span
+                className="rounded-sm px-2 py-0.5 font-[family-name:var(--font-condensed)] text-[10px] font-semibold"
+                style={{ background: "var(--ord)", color: "var(--or)" }}
+                title={`Estimativa parcial — ${mealNutrition.matched} de ${mealNutrition.total} ingredientes na tabela TACO/USDA/Embrapa`}
+              >
+                ~{mealNutrition.kcal} kcal
               </span>
             )}
             {hasRecipe && (
@@ -356,6 +369,39 @@ function MealCard({
     );
   }
   return <div className={baseClass + interactiveClass}>{inner}</div>;
+}
+
+// ──────────────────────────────────────────────────────────────────────────
+// NoFoodsCard
+// Renderizado quando user tem perfil cientifico mas forte_foods está vazia
+// (migration 0035 não aplicada). Mostra a meta diária pra contexto e pede
+// apoio admin pra popular o banco. Honesto > falso.
+// ──────────────────────────────────────────────────────────────────────────
+function NoFoodsCard({ target }: { target: Macros }) {
+  return (
+    <div className="mb-4 overflow-hidden rounded-xl border border-[color:var(--bd)] bg-[color:var(--s1)]">
+      <div className="border-b border-[color:var(--bd)] bg-black/20 px-4 py-2">
+        <div className="font-[family-name:var(--font-condensed)] text-[10px] font-bold uppercase tracking-[2px] text-[color:var(--tx2)]">
+          ⚠ Banco nutricional indisponível
+        </div>
+      </div>
+      <div className="p-4">
+        <p className="mb-3 text-[12px] leading-relaxed text-[color:var(--tx3)]">
+          Tabela de alimentos (TACO 4ª ed · USDA · Embrapa) não está populada
+          em produção. Sem ela, não calculamos kcal/macros reais das refeições —
+          preferimos não mostrar a chute.
+        </p>
+        <div className="rounded-md border border-[color:var(--or)]/30 bg-[color:var(--ord)] p-3">
+          <div className="font-[family-name:var(--font-condensed)] text-[10px] font-bold uppercase tracking-[1.5px] text-[color:var(--or)]">
+            Sua meta diária (calculada do seu perfil)
+          </div>
+          <div className="mt-1 font-[family-name:var(--font-mono)] text-sm text-[color:var(--tx)]">
+            {target.kcal} kcal · P {target.protein_g}g · C {target.carb_g}g · G {target.fat_g}g
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 // ──────────────────────────────────────────────────────────────────────────
