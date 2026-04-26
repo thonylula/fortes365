@@ -26,6 +26,12 @@ export type Food = {
   state?: string | null;
   source?: string | null;
   note?: string | null;
+  /**
+   * Peso medio em gramas de uma unidade discreta do alimento (ovo=50,
+   * banana=120, mama=200). Usado pelo parser pra entender "1 ovo cozido"
+   * sem g/kg explicito. Null = nao tem unidade discreta natural.
+   */
+  unit_weight_g?: number | null;
 };
 
 /**
@@ -131,32 +137,108 @@ export function nutritionForQuantity(
 }
 
 /**
- * Parse de um item de refeição (string) pra extrair (food, quantidade)
- * usável pelo nutritionForQuantity. Suporta padrões:
- * - "Tilápia grelhada (200g)" — quantidade entre parênteses
- * - "Tilápia grelhada (L:200g)" — com initial (após personalizar)
- * - "Tilápia grelhada 200g" — quantidade solta
+ * Tabela de pesos médios por unidade culinária (TBCA-USP Medidas Caseiras
+ * + USDA Food Portion Sizes). Usada quando o item da refeição expressa a
+ * quantidade em unidade natural ("1 col sopa azeite") em vez de gramas.
  *
- * Returna null se não conseguir identificar tanto food quanto qty.
+ * Match é case-insensitive e tolera variações comuns ("col sopa" /
+ * "colher de sopa" / "colher sopa", etc).
+ */
+const IMPLICIT_UNIT_GRAMS: Array<{ pattern: RegExp; grams: number; label: string }> = [
+  // Colher de sopa: ~15g de seco/grão; ~13ml de óleo
+  { pattern: /col(?:her)?\s*(?:de\s+)?sopa/i, grams: 15, label: "col sopa" },
+  // Colher de chá: ~5g
+  { pattern: /col(?:her)?\s*(?:de\s+)?(?:cha|chá|ch)\b/i, grams: 5, label: "col cha" },
+  // Colher de café: ~3g (menor que chá)
+  { pattern: /col(?:her)?\s*(?:de\s+)?(?:cafe|café)/i, grams: 3, label: "col cafe" },
+  // Fatia: ~30g (pão, queijo, frios)
+  { pattern: /fatias?\b/i, grams: 30, label: "fatia" },
+  // Torrada: ~12g
+  { pattern: /torradas?\b/i, grams: 12, label: "torrada" },
+  // Scoop (whey): ~30g
+  { pattern: /scoops?\b/i, grams: 30, label: "scoop" },
+  // Copo: 200ml ~= 200g (densidade de líquido aquoso)
+  { pattern: /copos?\b/i, grams: 200, label: "copo" },
+  // Bowl/tigela: ~250g
+  { pattern: /bowls?\b|tigelas?\b/i, grams: 250, label: "bowl" },
+  // Xícara: ~150g (sólidos) ou 240ml (líquidos) — uso 150 como meio termo
+  { pattern: /x[ií]caras?\b/i, grams: 150, label: "xicara" },
+  // Punhado: ~30g (oleaginosas, frutas secas)
+  { pattern: /punhados?\b/i, grams: 30, label: "punhado" },
+  // Concha: ~80ml (sopa, caldo)
+  { pattern: /conchas?\b/i, grams: 80, label: "concha" },
+  // Posta (peixe): ~120g
+  { pattern: /postas?\b/i, grams: 120, label: "posta" },
+];
+
+/**
+ * Parse de um item de refeição (string) pra extrair (food, quantidade)
+ * usável pelo nutritionForQuantity. Tenta em 3 níveis (cada um mais
+ * permissivo que o anterior):
+ *
+ * 1. Quantidade explícita em g/kg/ml/l:
+ *    - "Tilápia grelhada (200g)"
+ *    - "Tilápia grelhada (L:200g)" (com initial após personalizar)
+ *    - "200g tilápia grelhada"
+ *
+ * 2. Unidade culinária implícita (TBCA-USP):
+ *    - "1 col sopa azeite" → 15g azeite
+ *    - "2 fatias pao integral" → 60g pao
+ *    - "1 scoop whey" → 30g whey
+ *
+ * 3. "X [food]" usando o unit_weight_g cadastrado no próprio food:
+ *    - "1 ovo cozido" → 50g (ovo_inteiro.unit_weight_g = 50)
+ *    - "2 bananas" → 200g (banana_prata.unit_weight_g = 100)
+ *    - "1 manga espada" → 200g (manga.unit_weight_g = 200)
+ *
+ * Retorna null se não casar em nenhum nível.
  */
 export function parseMealItem(
   itemString: string,
   foods: Food[],
 ): { food: Food; quantity: string } | null {
-  // Captura quantidade dentro de parênteses, com ou sem prefixo "X:"
+  // Nível 1: quantidade explícita em g/kg/ml/l
   let qtyMatch = itemString.match(/\(\s*(?:[A-Za-zÀ-ÿ]+\s*:\s*)?([\d.,]+\s*(?:kg|g|ml|l))\b/i);
-  // Fallback: quantidade no meio do texto sem parênteses
   if (!qtyMatch) {
     qtyMatch = itemString.match(/([\d.,]+\s*(?:kg|g|ml|l))\b/i);
   }
-  if (!qtyMatch) return null;
+  if (qtyMatch) {
+    const namePart = itemString.replace(/\s*\(.*?\)/g, "").trim();
+    const food = findFoodByName(namePart, foods);
+    if (!food) return null;
+    return { food, quantity: qtyMatch[1].replace(/\s+/g, "") };
+  }
 
-  // Nome: remove qualquer texto entre parênteses pra match limpo
-  const namePart = itemString.replace(/\s*\(.*?\)/g, "").trim();
-  const food = findFoodByName(namePart, foods);
-  if (!food) return null;
+  // Nível 2: unidade culinária implícita ("1 col sopa azeite", "2 fatias pao")
+  for (const unit of IMPLICIT_UNIT_GRAMS) {
+    // Captura "X <unit> Y" onde Y é o nome do alimento
+    const re = new RegExp(`^\\s*(\\d+(?:[.,]\\d+)?)\\s+${unit.pattern.source}\\s+(.+?)$`, "i");
+    const m = itemString.match(re);
+    if (m) {
+      const count = parseFloat(m[1].replace(",", "."));
+      const namePart = m[2].replace(/\s*\(.*?\)/g, "").trim();
+      const food = findFoodByName(namePart, foods);
+      if (food) {
+        const grams = Math.round(count * unit.grams);
+        return { food, quantity: `${grams}g` };
+      }
+    }
+  }
 
-  return { food, quantity: qtyMatch[1].replace(/\s+/g, "") };
+  // Nível 3: "X [food]" usando unit_weight_g do food
+  // Captura "1 ovo cozido", "2 bananas", "1 manga espada madura"
+  const countMatch = itemString.match(/^\s*(\d+(?:[.,]\d+)?)\s+([a-zA-ZÀ-ÿ].+?)$/);
+  if (countMatch) {
+    const count = parseFloat(countMatch[1].replace(",", "."));
+    const namePart = countMatch[2].replace(/\s*\(.*?\)/g, "").trim();
+    const food = findFoodByName(namePart, foods);
+    if (food && food.unit_weight_g) {
+      const grams = Math.round(count * food.unit_weight_g);
+      return { food, quantity: `${grams}g` };
+    }
+  }
+
+  return null;
 }
 
 /**

@@ -72,7 +72,7 @@ export default async function NutricaoPage() {
     supabase.from("months").select("id, short_name, name, season").order("id"),
     supabase
       .from("forte_foods")
-      .select("slug, name, category, kcal_per_100g, protein_g, carb_g, fat_g, fiber_g, state, source, note"),
+      .select("slug, name, category, kcal_per_100g, protein_g, carb_g, fat_g, fiber_g, state, source, note, unit_weight_g"),
     ...mealsBatches.map((ids) =>
       supabase
         .from("plan_meals")
