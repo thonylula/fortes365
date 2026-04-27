@@ -14,13 +14,30 @@ function stripAccents(s: string): string {
   return s.normalize("NFD").replace(/\p{Diacritic}/gu, "");
 }
 
-async function searchYouTube(query: string): Promise<string | null> {
-  if (!YOUTUBE_API_KEY) return null;
+// Mesma blacklist da rota /api/youtube-search — manter sincronizado
+const TITLE_BLACKLIST: RegExp[] = [
+  /\brotina completa\b/i,
+  /\btreino completo\b/i,
+  /\b\d+\s*dias\b/i,
+  /\b\d+\s*min(?:utos)?\s+de\b/i,
+  /\bsequ[eê]ncia\s+de\s+exerc[íi]cios\b/i,
+  /\bworkout\s+\d+\s*min(?:utes)?\b/i,
+  /\bfull\s+body\s+workout\b/i,
+  /\bworkout\s+routine\b/i,
+];
+
+type YouTubeSearchItem = {
+  id?: { videoId?: string };
+  snippet?: { title?: string };
+};
+
+async function searchYouTube(query: string): Promise<YouTubeSearchItem[]> {
+  if (!YOUTUBE_API_KEY) return [];
   const url = new URL("https://www.googleapis.com/youtube/v3/search");
   url.searchParams.set("part", "snippet");
   url.searchParams.set("q", query);
   url.searchParams.set("type", "video");
-  url.searchParams.set("maxResults", "3");
+  url.searchParams.set("maxResults", "5");
   url.searchParams.set("videoEmbeddable", "true");
   url.searchParams.set("relevanceLanguage", "pt");
   url.searchParams.set("regionCode", "BR");
@@ -29,26 +46,61 @@ async function searchYouTube(query: string): Promise<string | null> {
 
   try {
     const res = await fetch(url.toString());
-    if (!res.ok) return null;
-    const data = (await res.json()) as {
-      items?: Array<{ id?: { videoId?: string } }>;
-    };
-    return data.items?.[0]?.id?.videoId ?? null;
+    if (!res.ok) return [];
+    const data = (await res.json()) as { items?: YouTubeSearchItem[] };
+    return data.items ?? [];
   } catch {
-    return null;
+    return [];
   }
 }
 
-async function resolveVideoFor(name: string): Promise<string | null> {
-  const attempts = [
-    `${name} como fazer exercicio`,
-    `${name} calistenia tutorial`,
-    `${name} exercicio`,
-    name,
-    stripAccents(name),
-  ];
+function pickBestVideoId(items: YouTubeSearchItem[]): string | null {
+  if (items.length === 0) return null;
+  const filtered = items.filter((it) => {
+    const title = it.snippet?.title ?? "";
+    return !TITLE_BLACKLIST.some((re) => re.test(title));
+  });
+  return filtered[0]?.id?.videoId ?? items[0]?.id?.videoId ?? null;
+}
+
+type ExerciseRow = {
+  slug: string;
+  name: string;
+  youtube_query: string | null;
+  movement_pattern: string | null;
+  muscle_group: string | null;
+};
+
+/**
+ * Constroi a lista de queries em ordem, contextualizada pelo exercicio.
+ * Reusa a logica da rota publica /api/youtube-search.
+ */
+function buildAttempts(ex: ExerciseRow): string[] {
+  const attempts: string[] = [];
+  if (ex.youtube_query) {
+    attempts.push(ex.youtube_query);
+  }
+  const isWarmup =
+    ex.movement_pattern === "warmup" ||
+    (ex.muscle_group ?? "").toLowerCase().includes("aquecimento");
+  if (isWarmup) {
+    attempts.push(`aquecimento ${ex.name} como fazer correto`);
+    attempts.push(`${ex.name} aquecimento tutorial`);
+  } else {
+    attempts.push(`${ex.name} como fazer exercicio correto`);
+    attempts.push(`${ex.name} calistenia tutorial`);
+    attempts.push(`${ex.name} exercicio`);
+  }
+  attempts.push(ex.name);
+  attempts.push(stripAccents(ex.name));
+  return attempts;
+}
+
+async function resolveVideoFor(ex: ExerciseRow): Promise<string | null> {
+  const attempts = buildAttempts(ex);
   for (const q of attempts) {
-    const vid = await searchYouTube(q);
+    const items = await searchYouTube(q);
+    const vid = pickBestVideoId(items);
     if (vid) return vid;
   }
   return null;
@@ -76,7 +128,7 @@ export async function GET(req: NextRequest) {
   // Pega N exercicios sem cache ainda
   const { data: exercises, error: selErr } = await supabaseAdmin
     .from("exercises")
-    .select("slug, name")
+    .select("slug, name, youtube_query, movement_pattern, muscle_group")
     .is("cached_video_id", null)
     .order("slug")
     .limit(limit);
@@ -93,8 +145,8 @@ export async function GET(req: NextRequest) {
   const processed: Array<{ slug: string; videoId: string }> = [];
   const failures: string[] = [];
 
-  for (const ex of exercises ?? []) {
-    const videoId = await resolveVideoFor(ex.name);
+  for (const ex of (exercises ?? []) as ExerciseRow[]) {
+    const videoId = await resolveVideoFor(ex);
     if (videoId) {
       await supabaseAdmin
         .from("exercises")

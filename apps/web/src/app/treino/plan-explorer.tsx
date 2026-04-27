@@ -1066,16 +1066,42 @@ function ExerciseCard({
     }
   };
 
+  // Cache key version 5: bumped pra invalidar caches do yt4 que ficaram com
+  // videos errados pra alguns exercicios (warmups especificamente — vide
+  // migration 0040). Bumpar a versao ao mudar a logica de busca evita que
+  // users vejam video antigo em cache enquanto a API ja retorna o novo.
+  const cacheKey = `yt5_${e.slug}`;
+
   const handleShowVideo = async () => {
     if (showVideo) { setShowVideo(false); return; }
     setShowVideo(true);
     if (videoId) return;
     setVideoLoading(true);
     try {
-      const cacheKey = `yt4_${e.slug}`;
       const cached = localStorage.getItem(cacheKey);
       if (cached) { setVideoId(cached); setVideoLoading(false); return; }
       const res = await fetch(`/api/youtube-search?q=${encodeURIComponent(e.name)}&slug=${encodeURIComponent(e.slug)}`);
+      const data = await res.json();
+      if (data.videoId) {
+        setVideoId(data.videoId);
+        localStorage.setItem(cacheKey, data.videoId);
+      }
+    } catch { /* fallback: no video */ }
+    setVideoLoading(false);
+  };
+
+  // Botao "video errado": busca outro candidato pulando o atual. Limpa cache
+  // local + DB via skip param, persiste o novo. Self-service pro user fugir
+  // de match ruim sem precisar admin.
+  const handleRefetchVideo = async () => {
+    if (!videoId) return;
+    const previousId = videoId;
+    setVideoLoading(true);
+    setVideoId(null);
+    try {
+      localStorage.removeItem(cacheKey);
+      const url = `/api/youtube-search?q=${encodeURIComponent(e.name)}&slug=${encodeURIComponent(e.slug)}&skip=${encodeURIComponent(previousId)}`;
+      const res = await fetch(url);
       const data = await res.json();
       if (data.videoId) {
         setVideoId(data.videoId);
@@ -1177,16 +1203,28 @@ function ExerciseCard({
             </div>
           )}
           {videoId && (
-            <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
-              <iframe
-                src={`https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1`}
-                className="absolute inset-0 h-full w-full"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                loading="lazy"
-                title={`Video: ${e.name}`}
-              />
-            </div>
+            <>
+              <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+                <iframe
+                  src={`https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1`}
+                  className="absolute inset-0 h-full w-full"
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  loading="lazy"
+                  title={`Video: ${e.name}`}
+                />
+              </div>
+              <div className="flex items-center justify-between gap-2 px-3 py-2 text-[11px] text-[color:var(--tx3)]">
+                <span>Não é o exercício certo?</span>
+                <button
+                  type="button"
+                  onClick={handleRefetchVideo}
+                  className="rounded-md border border-[color:var(--bd)] bg-[color:var(--s2)] px-3 py-1 font-[family-name:var(--font-condensed)] text-[10px] font-bold uppercase tracking-[1.5px] text-[color:var(--or)] hover:border-[color:var(--or)]"
+                >
+                  🔄 Buscar outro
+                </button>
+              </div>
+            </>
           )}
           {!videoLoading && !videoId && (
             <div className="flex flex-col items-center gap-2 py-6">
