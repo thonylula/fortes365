@@ -244,6 +244,10 @@ export function parseMealItem(
 /**
  * Soma kcal+macros de múltiplos items (uma refeição inteira ou o dia
  * inteiro). Items que não casarem com nenhum food da tabela são ignorados.
+ *
+ * Defensive: parseMealItem agora roda dentro de try/catch — qualquer
+ * RegExp catastrofico ou item malformado vira "não-match" silencioso em
+ * vez de crashar a arvore inteira.
  */
 export function sumNutrition(
   items: string[],
@@ -255,10 +259,32 @@ export function sumNutrition(
   let fat_g = 0;
   let matched = 0;
   for (const it of items) {
-    const parsed = parseMealItem(it, foods);
+    if (typeof it !== "string") continue;
+    let parsed: { food: Food; quantity: string } | null = null;
+    try {
+      parsed = parseMealItem(it, foods);
+    } catch (err) {
+      console.warn("[foods] parseMealItem failed for item:", it, err);
+      continue;
+    }
     if (!parsed) continue;
-    const nut = nutritionForQuantity(parsed.food, parsed.quantity);
+    let nut: { kcal: number; protein_g: number; carb_g: number; fat_g: number } | null = null;
+    try {
+      nut = nutritionForQuantity(parsed.food, parsed.quantity);
+    } catch (err) {
+      console.warn("[foods] nutritionForQuantity failed:", parsed, err);
+      continue;
+    }
     if (!nut) continue;
+    if (
+      !Number.isFinite(nut.kcal) ||
+      !Number.isFinite(nut.protein_g) ||
+      !Number.isFinite(nut.carb_g) ||
+      !Number.isFinite(nut.fat_g)
+    ) {
+      console.warn("[foods] non-finite nutrition skipped:", parsed, nut);
+      continue;
+    }
     kcal += nut.kcal;
     protein_g += nut.protein_g;
     carb_g += nut.carb_g;

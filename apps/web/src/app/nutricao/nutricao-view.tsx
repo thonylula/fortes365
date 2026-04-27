@@ -103,11 +103,16 @@ export function NutricaoView({
   // Resumo nutricional cientifico: soma kcal+macros de todos os items
   // do dia (já personalizados) e compara com a meta calculada do user.
   // Só roda se temos foods cadastrados e perfil científico preenchido.
+  // Defensive: meal.data.items pode ser null/undefined em rows malformadas
+  // do plan_meals — evita crash da arvore inteira.
   const dailyNutrition = useMemo(() => {
     if (!foods || foods.length === 0 || !userMetrics) return null;
     const allItems: string[] = [];
     for (const meal of dayMeals) {
-      for (const item of meal.data.items) {
+      const items = meal.data?.items;
+      if (!Array.isArray(items)) continue;
+      for (const item of items) {
+        if (typeof item !== "string") continue;
         allItems.push(personalizeMealItem(item, userMetrics, userInitial));
       }
     }
@@ -279,7 +284,7 @@ function MealCard({
   userMetrics?: UserMetrics | null;
   foods?: Food[];
 }) {
-  const d = meal.data;
+  const d = meal.data ?? ({} as MealRow["data"]);
   const hasRecipe = (meal.slot_key === "alm" || meal.slot_key === "jan") && !!d.rec;
   const baseClass =
     "block overflow-hidden rounded-xl border border-[color:var(--bd)] bg-[color:var(--s1)] transition-all";
@@ -287,9 +292,14 @@ function MealCard({
     ? " hover:-translate-y-0.5 hover:border-[color:var(--or)] hover:shadow-md hover:shadow-black/20 cursor-pointer"
     : " hover:border-[color:var(--or)]/40 hover:shadow-md hover:shadow-black/20";
 
+  // Defensive: d.items pode vir null/undefined ou nao-array em rows
+  // malformadas — fallback pra array vazio em vez de crash.
+  const safeItems: string[] = Array.isArray(d.items)
+    ? d.items.filter((it): it is string => typeof it === "string")
+    : [];
   const personalizedItems = userMetrics
-    ? d.items.map((it) => personalizeMealItem(it, userMetrics, userInitial))
-    : d.items;
+    ? safeItems.map((it) => personalizeMealItem(it, userMetrics, userInitial))
+    : safeItems;
 
   // Kcal/macros CIENTIFICOS via sumNutrition contra forte_foods (TACO/USDA/Embrapa).
   // NUNCA usamos data.ptl (chute do seed) como fonte de número exibido.
