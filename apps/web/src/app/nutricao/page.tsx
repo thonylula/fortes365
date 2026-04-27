@@ -1,8 +1,9 @@
 import { createClient } from "@/lib/supabase/server";
 import { getSubscriptionInfo } from "@/lib/supabase/guards";
 import { Header } from "@/components/header";
-import { metricsFromProfile } from "@/lib/macros";
+import { metricsFromProfile, personalizeMealItem } from "@/lib/macros";
 import type { Food } from "@/lib/foods";
+import { enrichFoodsFromOpenFoodFacts } from "@/lib/foods-cache";
 import { NutricaoView } from "./nutricao-view";
 
 export const dynamic = "force-dynamic";
@@ -85,8 +86,30 @@ export default async function NutricaoPage() {
     ),
   ]);
   const months = monthsRes.data;
-  const foods = (foodsRes.data ?? []) as Food[];
+  let foods = (foodsRes.data ?? []) as Food[];
   const meals = mealsRes.flatMap((r) => r.data ?? []);
+
+  // Auto-cache via Open Food Facts: pra items que ainda não estão em
+  // forte_foods, busca na OFF (3.5M produtos), salva o resultado e usa.
+  // Cap de 6 lookups por render — banco cresce gradualmente conforme
+  // mais cardápios forem visitados, sem estourar rate limit da OFF.
+  if (userMetrics) {
+    try {
+      const allItems: string[] = [];
+      for (const m of meals) {
+        const items = (m as MealRow).data?.items;
+        if (!Array.isArray(items)) continue;
+        for (const it of items) {
+          if (typeof it === "string") {
+            allItems.push(personalizeMealItem(it, userMetrics, userInitial));
+          }
+        }
+      }
+      foods = await enrichFoodsFromOpenFoodFacts(allItems, foods);
+    } catch (err) {
+      console.warn("[nutricao] OFF enrich failed, continuando com banco local:", err);
+    }
+  }
 
   return (
     <div className="flex min-h-screen flex-col bg-[color:var(--bg)]">

@@ -199,6 +199,75 @@ export default async function ContaPage({
             </div>
           </div>
 
+          {/* Como calculamos — transparência metodológica */}
+          <div className="rounded-lg border border-[color:var(--bd)] bg-[color:var(--s1)] p-6">
+            <div className="slbl mb-3">Como calculamos suas calorias</div>
+            <p className="mb-4 text-sm leading-relaxed text-[color:var(--tx2)]">
+              Todo número que você vê em <span className="text-[color:var(--tx)]">/nutricao</span>{" "}
+              vem de tabelas nutricionais reais — nada de chute. Sua meta diária usa a equação
+              de Mifflin-St Jeor (gold standard, 1990), e os macros de cada refeição são
+              somados a partir do peso real dos ingredientes.
+            </p>
+            <div className="mb-4 grid grid-cols-1 gap-2 sm:grid-cols-2">
+              <div className="rounded-md border border-[color:var(--bd)] bg-[color:var(--s2)] p-3">
+                <div className="font-[family-name:var(--font-condensed)] text-[10px] font-bold uppercase tracking-[1.5px] text-[color:var(--or)]">
+                  TACO 4ª ed
+                </div>
+                <div className="mt-1 text-[11px] text-[color:var(--tx3)]">
+                  Tabela Brasileira de Composição de Alimentos — NEPA/Unicamp, 2011
+                </div>
+              </div>
+              <div className="rounded-md border border-[color:var(--bd)] bg-[color:var(--s2)] p-3">
+                <div className="font-[family-name:var(--font-condensed)] text-[10px] font-bold uppercase tracking-[1.5px] text-[color:var(--or)]">
+                  USDA FoodData Central
+                </div>
+                <div className="mt-1 text-[11px] text-[color:var(--tx3)]">
+                  Departamento de Agricultura dos EUA — referência internacional
+                </div>
+              </div>
+              <div className="rounded-md border border-[color:var(--bd)] bg-[color:var(--s2)] p-3">
+                <div className="font-[family-name:var(--font-condensed)] text-[10px] font-bold uppercase tracking-[1.5px] text-[color:var(--or)]">
+                  TBCA-USP
+                </div>
+                <div className="mt-1 text-[11px] text-[color:var(--tx3)]">
+                  Tabela Brasileira de Composição de Alimentos — USP/FoRC
+                </div>
+              </div>
+              <div className="rounded-md border border-[color:var(--bd)] bg-[color:var(--s2)] p-3">
+                <div className="font-[family-name:var(--font-condensed)] text-[10px] font-bold uppercase tracking-[1.5px] text-[color:var(--or)]">
+                  <a
+                    href="https://world.openfoodfacts.org"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:underline"
+                  >
+                    Open Food Facts ↗
+                  </a>
+                </div>
+                <div className="mt-1 text-[11px] text-[color:var(--tx3)]">
+                  Base aberta colaborativa com mais de 3 milhões de produtos
+                </div>
+              </div>
+            </div>
+            <p className="mb-3 text-xs leading-relaxed text-[color:var(--tx3)]">
+              Quando o cardápio menciona um alimento que ainda não conhecemos,
+              consultamos a <a
+                href="https://world.openfoodfacts.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[color:var(--or)] underline underline-offset-2"
+              >Open Food Facts</a>{" "}
+              em tempo real e guardamos o resultado. O banco vai ficando mais
+              completo conforme o app é usado — você se beneficia do que outros
+              já consultaram, e quem vier depois usa o que você consultou.
+            </p>
+            <p className="text-[11px] leading-relaxed text-[color:var(--tx3)]">
+              Open Food Facts é um projeto sem fins lucrativos sob licença ODbL.
+              Os dados que usamos vêm dos rótulos das embalagens enviados por
+              voluntários do mundo todo.
+            </p>
+          </div>
+
           <RegionSelector currentRegion={profile?.region ?? null} />
 
           <PlanRegenerator generatedAt={profile?.plan_generated_at ?? null} />

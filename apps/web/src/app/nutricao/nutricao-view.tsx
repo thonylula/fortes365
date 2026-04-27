@@ -498,10 +498,25 @@ function DailyNutritionCard({
 
         {coverage < 100 && coverage > 0 && (
           <p className="mt-3 text-[10px] leading-relaxed text-[color:var(--tx3)]">
-            ℹ️ Alguns itens não estão na tabela nutricional (TACO/USDA/Embrapa).
-            Os totais somam apenas alimentos com macros conhecidos.
+            ℹ️ Alguns itens ainda não estão no banco. Os totais somam apenas alimentos com macros conhecidos.
           </p>
         )}
+
+        <p className="mt-3 border-t border-white/5 pt-2 text-[10px] leading-relaxed text-[color:var(--tx3)]">
+          Macros calculados com{" "}
+          <span className="text-[color:var(--tx2)]">TACO 4ª ed (NEPA-Unicamp)</span>
+          {" · "}
+          <span className="text-[color:var(--tx2)]">USDA FoodData Central</span>
+          {" · "}
+          <a
+            href="https://world.openfoodfacts.org"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[color:var(--or)] underline underline-offset-2 hover:opacity-80"
+          >
+            Open Food Facts
+          </a>
+        </p>
       </div>
     </div>
   );
