@@ -32,6 +32,12 @@ export type Food = {
    * sem g/kg explicito. Null = nao tem unidade discreta natural.
    */
   unit_weight_g?: number | null;
+  /**
+   * Porcao tipica em gramas usada quando o item da refeicao nao traz
+   * quantidade (ex: "Arroz branco cozido", "Peito de frango grelhado").
+   * Distinto de unit_weight_g (peso de UMA unidade discreta).
+   */
+  default_serving_g?: number | null;
 };
 
 /**
@@ -49,6 +55,23 @@ function normalize(s: string): string {
 }
 
 /**
+ * Stem leve pra match plural↔singular: "torradas" → "torrada",
+ * "ovos" → "ovo", "bananas" → "banana". Não mexe em palavras curtas
+ * (≤3 chars) pra evitar falsos como "vês" → "vê".
+ */
+function stem(word: string): string {
+  if (word.length <= 3) return word;
+  if (word.endsWith("oes")) return word.slice(0, -3) + "ao"; // "limoes" → "limao"
+  if (word.endsWith("aes")) return word.slice(0, -3) + "ao"; // "paes" → "pao"
+  if (word.endsWith("ais")) return word.slice(0, -3) + "al"; // "naturais" → "natural"
+  if (word.endsWith("eis")) return word.slice(0, -3) + "el"; // "papeis" → "papel"
+  if (word.endsWith("res") || word.endsWith("res")) return word.slice(0, -2); // "doces" → "doce"
+  if (word.endsWith("es") && word.length > 4) return word.slice(0, -2); // "frutas" stays, "carnes" → "carne"
+  if (word.endsWith("s")) return word.slice(0, -1); // "torradas" → "torrada"
+  return word;
+}
+
+/**
  * Faz lookup fuzzy de um nome de item de receita/compra contra a tabela
  * de foods. Retorna o melhor match ou null.
  *
@@ -63,6 +86,8 @@ function normalize(s: string): string {
 export function findFoodByName(itemName: string, foods: Food[]): Food | null {
   const target = normalize(itemName);
   if (!target) return null;
+  // Stemmed version handles plurais (torradas→torrada, ovos→ovo, paes→pao)
+  const targetStem = target.split(" ").map(stem).join(" ");
 
   let bestMatch: Food | null = null;
   let bestScore = 0;
@@ -70,6 +95,7 @@ export function findFoodByName(itemName: string, foods: Food[]): Food | null {
   for (const food of foods) {
     const candidate = normalize(food.name);
     if (!candidate) continue;
+    const candidateStem = candidate.split(" ").map(stem).join(" ");
 
     let score = 0;
     if (target.includes(candidate)) {
@@ -78,10 +104,15 @@ export function findFoodByName(itemName: string, foods: Food[]): Food | null {
     } else if (candidate.includes(target)) {
       // item é substring do food — match mais fraco
       score = target.length;
+    } else if (targetStem.includes(candidateStem)) {
+      // match via stem (plural↔singular, e.g. "torradas integrais" ⊃ "torrada integral")
+      score = candidateStem.length * 1.5;
+    } else if (candidateStem.includes(targetStem)) {
+      score = targetStem.length * 0.9;
     } else {
       // tenta match por primeira palavra (ex: "tilapia grelhada" vs "tilapia")
-      const firstWord = target.split(" ")[0];
-      const firstFoodWord = candidate.split(" ")[0];
+      const firstWord = stem(target.split(" ")[0] ?? "");
+      const firstFoodWord = stem(candidate.split(" ")[0] ?? "");
       if (firstWord && firstWord === firstFoodWord && firstWord.length >= 4) {
         score = firstWord.length;
       }
@@ -235,6 +266,21 @@ export function parseMealItem(
     if (food && food.unit_weight_g) {
       const grams = Math.round(count * food.unit_weight_g);
       return { food, quantity: `${grams}g` };
+    }
+  }
+
+  // Nível 4: item sem quantidade nem count ("Arroz branco cozido",
+  // "Peito de frango desfiado cozido", "Folhas verdes c/ tomate") usa o
+  // default_serving_g do food matched. Sem default_serving_g definido,
+  // o item permanece "não-matched" — silêncio honesto.
+  const cleanName = itemString
+    .replace(/\s*\(.*?\)/g, "")
+    .replace(/[,;:].+$/, "") // descarta tudo após pontuação ("Sanduiche: 60g frango..." → "Sanduiche")
+    .trim();
+  if (cleanName.length >= 3) {
+    const food = findFoodByName(cleanName, foods);
+    if (food && food.default_serving_g) {
+      return { food, quantity: `${food.default_serving_g}g` };
     }
   }
 

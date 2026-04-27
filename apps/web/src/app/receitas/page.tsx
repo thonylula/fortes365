@@ -64,7 +64,7 @@ export default async function ReceitasPage() {
     supabase
       .from("forte_foods")
       .select(
-        "slug, name, category, kcal_per_100g, protein_g, carb_g, fat_g, fiber_g, state, source, note, unit_weight_g",
+        "slug, name, category, kcal_per_100g, protein_g, carb_g, fat_g, fiber_g, state, source, note, unit_weight_g, default_serving_g",
       ),
   ]);
   const recipes = (recipesRes.data ?? []) as Recipe[];

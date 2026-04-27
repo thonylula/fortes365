@@ -29,7 +29,7 @@ export default async function ComprasPage() {
     supabase.from("months").select("id, short_name, name").order("id"),
     supabase
       .from("forte_foods")
-      .select("slug, name, category, kcal_per_100g, protein_g, carb_g, fat_g, fiber_g, state, source, note, unit_weight_g"),
+      .select("slug, name, category, kcal_per_100g, protein_g, carb_g, fat_g, fiber_g, state, source, note, unit_weight_g, default_serving_g"),
     user
       ? supabase
           .from("profiles")
