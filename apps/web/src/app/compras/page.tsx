@@ -3,6 +3,7 @@ import { getSubscriptionInfo } from "@/lib/supabase/guards";
 import { Header } from "@/components/header";
 import { metricsFromProfile } from "@/lib/macros";
 import type { Food } from "@/lib/foods";
+import { enrichFoodsFromOpenFoodFacts } from "@/lib/foods-cache";
 import { ComprasView } from "./compras-view";
 
 export const dynamic = "force-dynamic";
@@ -40,7 +41,20 @@ export default async function ComprasPage() {
           .maybeSingle()
       : Promise.resolve({ data: null }),
   ]);
-  const foods = (foodsRes.data ?? []) as Food[];
+  let foods = (foodsRes.data ?? []) as Food[];
+
+  // Auto-cache via Open Food Facts: pra items da lista de compras que
+  // ainda nao estao em forte_foods, busca na OFF e salva pra proxima.
+  // Mesma pattern de /nutricao e /receitas — banco cresce conforme o app
+  // e usado, em qualquer aba que dependa de macros.
+  try {
+    const allItems = (items ?? []).map((it) =>
+      it.amount ? `${it.amount} ${it.name}` : it.name,
+    );
+    foods = await enrichFoodsFromOpenFoodFacts(allItems, foods);
+  } catch (err) {
+    console.warn("[compras] OFF enrich failed, continuando com banco local:", err);
+  }
 
   const profile = profileRes.data as {
     display_name?: string | null;
