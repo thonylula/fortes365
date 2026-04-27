@@ -14,22 +14,51 @@ function stripAccents(s: string): string {
 
 /**
  * Padroes de titulo que sinalizam video generico/longo demais pra ser
- * tutorial direto do exercicio. Rejeitamos esses na hora de escolher.
- *
- * Justificativa: pra "Circulos de Braço" (warmup de 30s), nao queremos
- * "Treino completo de braços em 10 minutos" — esse fica primeiro no
- * YouTube por watch time, mas é genérico errado.
+ * tutorial direto do exercicio.
  */
 const TITLE_BLACKLIST: RegExp[] = [
   /\brotina completa\b/i,
   /\btreino completo\b/i,
-  /\b\d+\s*dias\b/i, // "30 dias", "21 dias"
-  /\b\d+\s*min(?:utos)?\s+de\b/i, // "10 minutos de exercicios"
+  /\b\d+\s*dias\b/i,
+  /\b\d+\s*min(?:utos)?\s+de\b/i,
   /\bsequ[eê]ncia\s+de\s+exerc[íi]cios\b/i,
   /\bworkout\s+\d+\s*min(?:utes)?\b/i,
   /\bfull\s+body\s+workout\b/i,
   /\bworkout\s+routine\b/i,
+  /\bbra[çc]os?\s+firmes/i, // caso reportado: "Braços firmes e resistentes" generico
+  /\bperna\s+forte/i,
 ];
+
+/**
+ * Duracao maxima aceita por contexto. Tutoriais sao naturalmente curtos —
+ * cortar por duracao e o filtro mais robusto contra videos genericos
+ * (compilacoes, treinos completos, "10 minutos de braço") que dominam o
+ * ranking do YouTube por watch time.
+ *
+ * Aquecimento:    180s (3min) — circulos, rotacoes, mobilidade
+ * Alongamento:    240s (4min)
+ * Exercicio:      360s (6min) — calistenia, demonstracao tecnica
+ * Receita:        900s (15min) — preparo de prato
+ */
+const MAX_DURATION_SEC: Record<string, number> = {
+  warmup: 180,
+  stretch: 240,
+  exercise: 360,
+  recipe: 900,
+};
+
+/**
+ * Parse ISO 8601 duration ("PT1M30S" → 90 segundos).
+ * Aceita H, M, S em qualquer combinacao. Tolerante a formatos invalidos.
+ */
+function parseISO8601Duration(d: string): number {
+  const m = d.match(/^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?$/);
+  if (!m) return Number.MAX_SAFE_INTEGER;
+  const h = parseInt(m[1] ?? "0", 10);
+  const min = parseInt(m[2] ?? "0", 10);
+  const s = parseInt(m[3] ?? "0", 10);
+  return h * 3600 + min * 60 + s;
+}
 
 type YouTubeSearchItem = {
   id?: { videoId?: string };
@@ -42,11 +71,12 @@ async function searchYouTube(query: string): Promise<YouTubeSearchItem[]> {
   url.searchParams.set("part", "snippet");
   url.searchParams.set("q", query);
   url.searchParams.set("type", "video");
-  url.searchParams.set("maxResults", "5");
+  url.searchParams.set("maxResults", "8");
   url.searchParams.set("videoEmbeddable", "true");
   url.searchParams.set("relevanceLanguage", "pt");
   url.searchParams.set("regionCode", "BR");
   url.searchParams.set("safeSearch", "none");
+  url.searchParams.set("videoDuration", "short"); // hint pro algoritmo: <4min preferido
   url.searchParams.set("key", YOUTUBE_API_KEY);
 
   try {
@@ -60,24 +90,85 @@ async function searchYouTube(query: string): Promise<YouTubeSearchItem[]> {
 }
 
 /**
- * Filtra items pela blacklist de titulos genericos. Retorna o primeiro
- * videoId que passou no filtro, ou (se nada passar) o primeiro original
- * como fallback minimo — ainda melhor que erro 404.
+ * Busca duracoes (em segundos) pra uma lista de videoIds via videos.list.
+ * Custa 1 unidade de quota (vs 100 do search) — barato.
  */
-function pickBestVideoId(items: YouTubeSearchItem[], skipVideoId?: string | null): string | null {
-  if (items.length === 0) return null;
-  const filtered = items.filter((it) => {
-    const title = it.snippet?.title ?? "";
-    if (skipVideoId && it.id?.videoId === skipVideoId) return false;
-    return !TITLE_BLACKLIST.some((re) => re.test(title));
-  });
-  return filtered[0]?.id?.videoId ?? items[0]?.id?.videoId ?? null;
+async function getDurations(videoIds: string[]): Promise<Record<string, number>> {
+  if (!YOUTUBE_API_KEY || videoIds.length === 0) return {};
+  const url = new URL("https://www.googleapis.com/youtube/v3/videos");
+  url.searchParams.set("part", "contentDetails");
+  url.searchParams.set("id", videoIds.join(","));
+  url.searchParams.set("key", YOUTUBE_API_KEY);
+  try {
+    const res = await fetch(url.toString());
+    if (!res.ok) return {};
+    const data = (await res.json()) as {
+      items?: Array<{ id?: string; contentDetails?: { duration?: string } }>;
+    };
+    const result: Record<string, number> = {};
+    for (const item of data.items ?? []) {
+      if (item.id && item.contentDetails?.duration) {
+        result[item.id] = parseISO8601Duration(item.contentDetails.duration);
+      }
+    }
+    return result;
+  } catch {
+    return {};
+  }
 }
 
 /**
- * Busca um exercicio pelo slug pra obter youtube_query custom
- * (override por admin) e movement_pattern (pra contextualizar query).
+ * Escolhe o melhor candidato:
+ * 1. Duracao <= max do contexto (warmup=3min, exercise=6min, etc)
+ * 2. Titulo nao casa com TITLE_BLACKLIST
+ * 3. Pula skipVideoId (caso "buscar outro" do user)
+ *
+ * Se ninguem passa em (1)+(2), relaxa: pega o mais curto remanescente.
+ * Se ainda nada, fallback pro primeiro original (melhor que erro 404).
  */
+async function pickBestVideoId(
+  items: YouTubeSearchItem[],
+  contextKey: string,
+  skipVideoId?: string | null,
+): Promise<string | null> {
+  if (items.length === 0) return null;
+  const maxDuration = MAX_DURATION_SEC[contextKey] ?? 600;
+
+  const candidates = items
+    .filter((it) => it.id?.videoId)
+    .filter((it) => !skipVideoId || it.id?.videoId !== skipVideoId);
+  if (candidates.length === 0) return null;
+
+  const ids = candidates.map((it) => it.id!.videoId!);
+  const durations = await getDurations(ids);
+
+  // Filtro completo: duracao OK + titulo nao na blacklist
+  const passing = candidates.filter((it) => {
+    const id = it.id!.videoId!;
+    const dur = durations[id] ?? Number.MAX_SAFE_INTEGER;
+    if (dur > maxDuration) return false;
+    const title = it.snippet?.title ?? "";
+    if (TITLE_BLACKLIST.some((re) => re.test(title))) return false;
+    return true;
+  });
+  if (passing.length > 0) return passing[0].id!.videoId!;
+
+  // Relaxa: pelo menos passa duracao (ignora blacklist)
+  const byDuration = candidates
+    .map((it) => ({ id: it.id!.videoId!, dur: durations[it.id!.videoId!] ?? Number.MAX_SAFE_INTEGER }))
+    .filter((x) => x.dur <= maxDuration);
+  if (byDuration.length > 0) {
+    byDuration.sort((a, b) => a.dur - b.dur);
+    return byDuration[0].id;
+  }
+
+  // Ultimo recurso: o mais curto remanescente
+  const allSorted = candidates
+    .map((it) => ({ id: it.id!.videoId!, dur: durations[it.id!.videoId!] ?? Number.MAX_SAFE_INTEGER }))
+    .sort((a, b) => a.dur - b.dur);
+  return allSorted[0]?.id ?? null;
+}
+
 async function fetchExerciseHints(
   slug: string,
 ): Promise<{ youtube_query: string | null; movement_pattern: string | null; muscle_group: string | null } | null> {
@@ -89,46 +180,48 @@ async function fetchExerciseHints(
   return data ?? null;
 }
 
-/**
- * Constroi a lista de queries a tentar, em ordem de especificidade.
- * - Se exercise tem youtube_query custom, ele entra primeiro.
- * - Senao, contextualiza por movement_pattern (warmup/strength/etc).
- * - Fallbacks progressivos pra garantir que algo seja achado.
- */
 async function buildAttempts(
   q: string,
   slug: string | null,
   kind: "recipe" | "exercise" | "stretch",
-): Promise<string[]> {
+): Promise<{ attempts: string[]; contextKey: string }> {
   if (kind === "recipe") {
-    return [
-      `${q} receita como fazer`,
-      `${q} receita passo a passo`,
-      `${q} receita`,
-      q,
-      stripAccents(q),
-    ];
+    return {
+      attempts: [
+        `${q} receita como fazer`,
+        `${q} receita passo a passo`,
+        `${q} receita`,
+        q,
+        stripAccents(q),
+      ],
+      contextKey: "recipe",
+    };
   }
   if (kind === "stretch") {
-    return [
-      `${q} alongamento como fazer correto`,
-      `${q} alongamento yoga tutorial`,
-      `${q} alongamento`,
-      q,
-      stripAccents(q),
-    ];
+    return {
+      attempts: [
+        `${q} alongamento como fazer correto`,
+        `${q} alongamento yoga tutorial`,
+        `${q} alongamento`,
+        q,
+        stripAccents(q),
+      ],
+      contextKey: "stretch",
+    };
   }
 
-  // exercise: tenta override custom primeiro
+  // exercise: detecta warmup pelo banco pra ajustar contexto e duracao max
+  let contextKey = "exercise";
   if (slug) {
     const hints = await fetchExerciseHints(slug);
+    const isWarmup =
+      hints?.movement_pattern === "warmup" ||
+      (hints?.muscle_group ?? "").toLowerCase().includes("aquecimento");
+    if (isWarmup) contextKey = "warmup";
     const attempts: string[] = [];
     if (hints?.youtube_query) {
       attempts.push(hints.youtube_query);
     }
-    const isWarmup =
-      hints?.movement_pattern === "warmup" ||
-      (hints?.muscle_group ?? "").toLowerCase().includes("aquecimento");
     if (isWarmup) {
       attempts.push(`aquecimento ${q} como fazer correto`);
       attempts.push(`${q} aquecimento tutorial`);
@@ -139,17 +232,19 @@ async function buildAttempts(
     }
     attempts.push(q);
     attempts.push(stripAccents(q));
-    return attempts;
+    return { attempts, contextKey };
   }
 
-  // sem slug: comportamento original
-  return [
-    `${q} como fazer exercicio correto`,
-    `${q} calistenia tutorial`,
-    `${q} exercicio`,
-    q,
-    stripAccents(q),
-  ];
+  return {
+    attempts: [
+      `${q} como fazer exercicio correto`,
+      `${q} calistenia tutorial`,
+      `${q} exercicio`,
+      q,
+      stripAccents(q),
+    ],
+    contextKey: "exercise",
+  };
 }
 
 export async function GET(req: NextRequest) {
@@ -160,18 +255,16 @@ export async function GET(req: NextRequest) {
   const skipVideoId = req.nextUrl.searchParams.get("skip");
   const kind: "recipe" | "exercise" | "stretch" =
     rawKind === "recipe" ? "recipe" : rawKind === "stretch" ? "stretch" : "exercise";
-  // stretches nao tem tabela propria (stretches vivem em plan_days.raw). sem cache no DB.
   const cacheTable = kind === "recipe" ? "recipes" : kind === "exercise" ? "exercises" : null;
   if (!q) return NextResponse.json({ error: "Missing q" }, { status: 400 });
 
-  // 1) cache hit (pulado quando nocache=1 ou skip=<videoId> — pro botao "video errado")
+  // 1) cache hit (pulado quando nocache=1 ou skip=<videoId>)
   if (slug && cacheTable && !nocache && !skipVideoId) {
     const { data } = await supabaseAdmin
       .from(cacheTable)
       .select("cached_video_id")
       .eq("slug", slug)
       .single();
-
     if (data?.cached_video_id) {
       return NextResponse.json(
         { videoId: data.cached_video_id, source: "cache" },
@@ -187,13 +280,13 @@ export async function GET(req: NextRequest) {
     );
   }
 
-  // 2) queries progressivamente mais simples ate achar (com filtro de titulo)
-  const attempts = await buildAttempts(q, slug, kind);
+  // 2) Tenta queries em ordem; pra cada, busca + filtra duracao + blacklist
+  const { attempts, contextKey } = await buildAttempts(q, slug, kind);
 
   let videoId: string | null = null;
   for (const query of attempts) {
     const items = await searchYouTube(query);
-    videoId = pickBestVideoId(items, skipVideoId);
+    videoId = await pickBestVideoId(items, contextKey, skipVideoId);
     if (videoId) break;
   }
 

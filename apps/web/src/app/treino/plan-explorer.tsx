@@ -1066,11 +1066,11 @@ function ExerciseCard({
     }
   };
 
-  // Cache key version 5: bumped pra invalidar caches do yt4 que ficaram com
-  // videos errados pra alguns exercicios (warmups especificamente — vide
-  // migration 0040). Bumpar a versao ao mudar a logica de busca evita que
-  // users vejam video antigo em cache enquanto a API ja retorna o novo.
-  const cacheKey = `yt5_${e.slug}`;
+  // Cache key version 6: bumped novamente pra invalidar caches yt5 que
+  // foram populados ANTES do filtro de duracao (migration 0041). Sem
+  // bumpar, users com yt5 cached continuariam vendo video errado mesmo
+  // com a logica nova ja deployada.
+  const cacheKey = `yt6_${e.slug}`;
 
   const handleShowVideo = async () => {
     if (showVideo) { setShowVideo(false); return; }
