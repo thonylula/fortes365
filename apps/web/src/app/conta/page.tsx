@@ -270,7 +270,13 @@ export default async function ContaPage({
 
           <RegionSelector currentRegion={profile?.region ?? null} />
 
-          <PlanRegenerator generatedAt={profile?.plan_generated_at ?? null} />
+          {/* Gerar plano personalizado — feature em desenvolvimento, restrita
+              a admins enquanto valida com cardapio piloto. Nao mostrar pra
+              users normais ate o fluxo estar polido (evita confusao com o
+              cardapio padrao ja gerado em /onboarding). */}
+          {isAdmin && (
+            <PlanRegenerator generatedAt={profile?.plan_generated_at ?? null} />
+          )}
 
           {healthEnabled && (
             <HealthIntegration
