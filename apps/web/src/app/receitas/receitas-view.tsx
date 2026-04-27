@@ -361,18 +361,47 @@ export function ReceitasView({
               {selected.description}
             </p>
 
-            {/* Bloco "esta refeição vs sua meta" */}
-            {userMetrics && dailyTarget && hasReliableNutrition(selected.nutrition) && (
-              <div className="mb-4 rounded-md border border-[color:var(--bd)] bg-[color:var(--s2)] p-4">
-                <div className="slbl mb-3">Esta refeição vs. sua meta diária</div>
-                <div className="space-y-2">
-                  <MiniBar label="Kcal" value={selected.nutrition.kcal} target={dailyTarget.kcal} unit="" color="var(--or)" />
-                  <MiniBar label="Proteína" value={selected.nutrition.protein_g} target={dailyTarget.protein_g} unit="g" color="var(--or)" />
-                  <MiniBar label="Carbo" value={selected.nutrition.carb_g} target={dailyTarget.carb_g} unit="g" color="var(--gn)" />
-                  <MiniBar label="Gordura" value={selected.nutrition.fat_g} target={dailyTarget.fat_g} unit="g" color="#facc15" />
+            {/* Bloco "esta refeição vs sua meta" — sempre aparece quando user tem perfil.
+                3 estados: completo (cobertura ≥70%), parcial (1-69%), sem dados (0%). */}
+            {userMetrics && dailyTarget && (() => {
+              const reliable = hasReliableNutrition(selected.nutrition);
+              const hasAnyData = selected.nutrition.matched > 0;
+              return (
+                <div className="mb-4 rounded-md border border-[color:var(--bd)] bg-[color:var(--s2)] p-4">
+                  <div className="slbl mb-3 flex items-center justify-between gap-2">
+                    <span>Esta refeição vs. sua meta diária</span>
+                    {hasAnyData && !reliable && (
+                      <span
+                        className="rounded-sm bg-[color:var(--ord)] px-1.5 py-0.5 font-[family-name:var(--font-condensed)] text-[9px] font-bold uppercase tracking-wider text-[color:var(--or)]"
+                        title={`Estimativa parcial — ${selected.nutrition.matched} de ${selected.nutrition.total} ingredientes na tabela nutricional`}
+                      >
+                        ~ Parcial
+                      </span>
+                    )}
+                  </div>
+                  {hasAnyData ? (
+                    <>
+                      <div className="space-y-2">
+                        <MiniBar label="Kcal" value={selected.nutrition.kcal} target={dailyTarget.kcal} unit="" color="var(--or)" />
+                        <MiniBar label="Proteína" value={selected.nutrition.protein_g} target={dailyTarget.protein_g} unit="g" color="var(--or)" />
+                        <MiniBar label="Carbo" value={selected.nutrition.carb_g} target={dailyTarget.carb_g} unit="g" color="var(--gn)" />
+                        <MiniBar label="Gordura" value={selected.nutrition.fat_g} target={dailyTarget.fat_g} unit="g" color="#facc15" />
+                      </div>
+                      {!reliable && (
+                        <p className="mt-3 text-[10px] leading-relaxed text-[color:var(--tx3)]">
+                          Calculado com {selected.nutrition.matched} de {selected.nutrition.total} ingredientes. Os outros não estão no banco — os números aqui podem estar abaixo do real.
+                        </p>
+                      )}
+                    </>
+                  ) : (
+                    <p className="text-[12px] leading-relaxed text-[color:var(--tx2)]">
+                      Os ingredientes desta receita ainda não estão no banco nutricional.
+                      Os macros aparecem aqui assim que pelo menos um ingrediente for reconhecido (TACO, USDA, Open Food Facts).
+                    </p>
+                  )}
                 </div>
-              </div>
-            )}
+              );
+            })()}
 
             {/* Bloco de vídeo YouTube */}
             <div className="mb-4">

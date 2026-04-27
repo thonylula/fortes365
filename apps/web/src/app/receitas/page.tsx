@@ -2,6 +2,7 @@ import { createClient } from "@/lib/supabase/server";
 import { Header } from "@/components/header";
 import { calculateMacros, metricsFromProfile } from "@/lib/macros";
 import { sumNutrition, type Food } from "@/lib/foods";
+import { enrichFoodsFromOpenFoodFacts } from "@/lib/foods-cache";
 import type { RecipeNutrition } from "@/lib/recipes";
 import { ReceitasView } from "./receitas-view";
 
@@ -68,7 +69,20 @@ export default async function ReceitasPage() {
       ),
   ]);
   const recipes = (recipesRes.data ?? []) as Recipe[];
-  const foods = (foodsRes.data ?? []) as Food[];
+  let foods = (foodsRes.data ?? []) as Food[];
+
+  // Auto-cache via Open Food Facts: pra ingredientes de receita que ainda
+  // não estão em forte_foods, busca na OFF (3.5M produtos) e salva. Banco
+  // cresce gradualmente conforme receitas são abertas. Cap interno de 6
+  // lookups por render mantém render rápido e dentro do rate limit.
+  try {
+    const allIngredients = recipes.flatMap((r) =>
+      (r.data?.ings ?? []).map((i) => `${i.a} ${i.n}`),
+    );
+    foods = await enrichFoodsFromOpenFoodFacts(allIngredients, foods);
+  } catch (err) {
+    console.warn("[receitas] OFF enrich failed, continuando com banco local:", err);
+  }
 
   // Deriva nutrição de cada receita a partir dos ingredientes do data.ings
   const recipesWithNutrition: RecipeWithNutrition[] = recipes.map((r) => {
